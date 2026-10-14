@@ -47,6 +47,8 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [sortBy, setSortBy] = useState<'popularity' | 'fee-asc' | 'fee-desc' | 'duration'>('popularity');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [blogIndex, setBlogIndex] = useState<number>(0);
+  const blogVisible = 3;
 
   // Filter and sort courses
   const filteredCourses = useMemo(() => {
@@ -361,9 +363,6 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       <section className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 gap-3">
           <div>
-            <span className="text-xs font-normal text-[#115eaf] uppercase tracking-wider block">
-              Fee Structure Matrix
-            </span>
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
               LPU Online Fee Structure 2026 (Semester & Total)
             </h2>
@@ -527,11 +526,8 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       <section className="content-block bg-[#f0f3ff]/50 border-t border-[#e7eeff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-left max-w-3xl mb-[18px]">
-            <span className="text-xs font-normal text-[#115eaf] uppercase tracking-wider block">
-              Course Catalog
-            </span>
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
-              LPU Online Popular Programmes
+              LPU Online All Courses
             </h2>
             <p className="section-description text-xs sm:text-sm text-[#43474d] font-normal leading-relaxed text-left">
               LPU Online popular courses include a variety of UG, PG and other courses across various disciplines. LPU Online courses are designed to provide strong academic knowledge along with practical and industry-relevant skills. The courses offered by LPU Online cover various specialisations, helping students choose programmes suitable for their career goals.
@@ -644,12 +640,73 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
         </div>
       </section>
 
+      {/* LPU ONLINE ADMISSION DATES 2026 */}
+      <section className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-2xl border border-[#d5e3ff] bg-gradient-to-br from-[#f9fbff] via-[#f0f3ff] to-white shadow-sm overflow-hidden">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 px-5 sm:px-6 py-5 border-b border-[#dfe9ff]">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
+                LPU Online Admission Dates 2026
+              </h2>
+            </div>
+            <button
+              type="button"
+              onClick={() => onOpenApply()}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#115eaf] bg-white text-[#115eaf] text-xs sm:text-sm font-semibold hover:bg-[#eaf1ff] transition-colors"
+            >
+              <Calendar className="w-4 h-4" />
+              View Admission Portal
+            </button>
+          </div>
+
+          <div className="p-5 sm:p-6">
+            <p className="text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal">
+              <button
+                type="button"
+                onClick={() => onOpenApply()}
+                className="font-semibold text-[#115eaf] hover:underline"
+              >
+                LPU Online admission
+              </button>{' '}
+              starts early in the academic year. Candidates need to complete the online application form and upload required documents through the official admission portal. Check the table below for LPU online admission dates 2026:
+            </p>
+
+            <div className="mt-5 overflow-hidden rounded-xl border border-[#dfe9ff] bg-white">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs sm:text-sm">
+                  <thead>
+                    <tr className="bg-[#0b2540] text-white">
+                      <th className="py-3 px-4 font-bold">Event</th>
+                      <th className="py-3 px-4 font-bold">Details</th>
+                      <th className="py-3 px-4 font-bold">Tentative Date</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#e7eeff]">
+                    {[
+                      ['Application Form Release', 'Online Programs', 'January 2026'],
+                      ['Admission Registration Begins', 'UG / PG Courses', 'January – February 2026'],
+                      ['Last Date to Apply', 'Online Courses', 'July 2026'],
+                      ['Document Verification', 'Online', 'After Application'],
+                      ['Admission Confirmation', 'Selected Candidates', 'Within Few Days'],
+                      ['Academic Session Begins', 'Online Programs', 'August 2026']
+                    ].map(([event, details, date], idx) => (
+                      <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
+                        <td className="py-3.5 px-4 font-bold text-[#000f22]">{event}</td>
+                        <td className="py-3.5 px-4 text-[#43474d]">{details}</td>
+                        <td className="py-3.5 px-4 text-[#115eaf] font-semibold">{date}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* LPU E-CONNECT LEARNING ECOSYSTEM (HOW YOU STUDY) */}
       <section className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-[18px]">
-          <span className="text-xs font-normal text-[#115eaf] uppercase tracking-wider block">
-            Learning Experience
-          </span>
           <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
             How You Study: The LPU e-Connect Platform
           </h2>
@@ -724,12 +781,12 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       <section className="content-block bg-white border-y border-[#e7eeff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-left mb-[18px]">
-            <span className="text-xs font-normal text-[#115eaf] uppercase tracking-wider block">
-              Student Feedback
-            </span>
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
-              What Students Say About Studying at LPU Online
+              LPU Online Reviews
             </h2>
+            <p className="section-description text-xs text-[#74777e] mt-1">
+              Authentic feedback from working executives, entrepreneurs, and graduates studying on LPU e-Connect
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
@@ -761,13 +818,10 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* FAQS SECTION (ALL 12 AUTHENTIC FAQS FROM API) */}
-      <section className="content-block max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="content-block max-w-7xl mx-0 px-4 sm:px-6 lg:px-8">
         <div className="text-left mb-[18px]">
-          <span className="text-xs font-normal text-[#115eaf] uppercase tracking-wider block">
-            Got Questions?
-          </span>
           <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
-            Frequently Asked Questions About Fees & Admissions
+            Frequently Asked Questions (LPU Online)
           </h2>
           <p className="section-description text-xs text-[#43474d] font-normal">
             Clear, honest answers regarding government approvals, examination procedure, and fee payments.
@@ -800,6 +854,104 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* Blogs */}
+      <section className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-end justify-between gap-3 flex-wrap">
+          <div>
+            <h2 className="section-title mt-2 text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
+              Latest <span className="text-[#115eaf]">Blogs</span>
+            </h2>
+            <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal max-w-[850px]">
+              {DEGREEFYD_LPU_API.blogs.description}
+            </p>
+          </div>
+          <button
+            onClick={() => onOpenHelpDesk()}
+            className="h-11 px-5 inline-flex items-center gap-2.5 rounded-xl border border-[#0b2540] text-[#0b2540] text-sm font-bold hover:bg-[#0b2540] hover:text-white transition-all shrink-0"
+          >
+            View All Blogs
+            <span className="text-[#115eaf] text-lg leading-none">→</span>
+          </button>
+        </div>
+
+        <div className="flex items-center gap-3 mt-[18px]">
+          <button
+            onClick={() => setBlogIndex((i) => Math.max(0, i - 1))}
+            disabled={blogIndex === 0}
+            aria-label="Previous blogs"
+            className="shrink-0 w-[42px] h-[42px] rounded-full border border-[#d5e3ff] bg-white text-[#000f22] text-lg flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white disabled:opacity-35 disabled:cursor-default transition-all"
+          >
+            ←
+          </button>
+
+          <div className="w-full overflow-hidden">
+            <div
+              className="flex"
+              style={{
+                gap: '22px',
+                transform: `translateX(-${blogIndex * (100 / blogVisible)}%)`,
+                transition: 'transform .45s cubic-bezier(.4,0,.2,1)'
+              }}
+            >
+              {DEGREEFYD_LPU_API.blogs.posts.map((post, i) => (
+                <article
+                  key={i}
+                  className="min-w-0 overflow-hidden bg-white border border-[#e7eeff] rounded-2xl hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
+                  style={{ flex: `0 0 calc((100% - ${(blogVisible - 1) * 22}px) / ${blogVisible})` }}
+                >
+                  <a href="#" className="relative block h-[185px] overflow-hidden bg-[#f0f3ff]">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                    <span className="absolute left-3.5 top-3.5 px-2.5 py-1.5 rounded-[20px] bg-[#115eaf] text-white text-[11px] font-bold leading-none">
+                      {post.category}
+                    </span>
+                  </a>
+                  <div className="p-[18px]">
+                    <h3 className="text-[#000f22] text-lg leading-snug font-bold font-sans">{post.title}</h3>
+                    <p className="mt-[7.5px] mb-4 text-sm text-[#43474d] leading-relaxed font-normal">{post.excerpt}</p>
+                    <div className="flex items-center justify-between gap-3.5">
+                      <span className="flex items-center gap-1.5 text-[13px] text-[#43474d] font-normal">
+                        <Clock className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
+                        {post.date}
+                      </span>
+                      <a href="#" className="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#115eaf] hover:text-[#004689] transition-colors">
+                        Read More
+                        <span className="text-lg leading-none hover:translate-x-1 transition-transform">→</span>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <button
+            onClick={() => setBlogIndex((i) => Math.min(Math.max(0, DEGREEFYD_LPU_API.blogs.posts.length - blogVisible), i + 1))}
+            disabled={blogIndex >= DEGREEFYD_LPU_API.blogs.posts.length - blogVisible}
+            aria-label="Next blogs"
+            className="shrink-0 w-[42px] h-[42px] rounded-full border border-[#d5e3ff] bg-white text-[#000f22] text-lg flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white disabled:opacity-35 disabled:cursor-default transition-all"
+          >
+            →
+          </button>
+        </div>
+
+        <div className="flex justify-center items-center gap-[7px]">
+          {Array.from({ length: Math.max(0, DEGREEFYD_LPU_API.blogs.posts.length - blogVisible) + 1 }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setBlogIndex(i)}
+              aria-label={`Go to blog slide ${i + 1}`}
+              className={`h-[7px] rounded-[10px] border-none cursor-pointer transition-all ${
+                i === blogIndex ? 'w-[23px] bg-[#115eaf]' : 'w-[7px] bg-[#d5e3ff]'
+              }`}
+            />
+          ))}
         </div>
       </section>
 

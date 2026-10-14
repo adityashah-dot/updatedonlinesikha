@@ -267,16 +267,23 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
   return (
     <div className="w-full max-w-[1280px] mx-auto px-4 md:px-6 py-5 space-y-5">
       {/* Hero */}
-      <section className="bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-6 md:p-8">
-        <div className="max-w-4xl mx-auto text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-[11px] font-semibold tracking-wide">
-            <ShieldCheck className="w-4 h-4 text-amber-600" />
+      <section className="relative overflow-hidden rounded-2xl border border-[#e2e8f0] bg-gradient-to-br from-[#edf6ff] via-white to-[#f8fbff] p-6 md:p-8 shadow-[0_20px_60px_rgba(17,94,175,0.08)]">
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-r from-[#dbeafe]/60 via-[#e0f2fe]/30 to-[#d1fae5]/30 blur-2xl" />
+        <div className="absolute -left-14 top-10 h-40 w-40 rounded-full bg-[#60a5fa]/20 blur-3xl" />
+        <div className="absolute -right-12 bottom-0 h-48 w-48 rounded-full bg-[#2dd4bf]/10 blur-3xl" />
+
+        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#e2e8f0] text-[#1f2937] text-[11px] font-semibold tracking-wide shadow-sm">
+            <ShieldCheck className="w-4 h-4 text-[#115eaf]" />
             UGC-DEB • AICTE • NAAC A++ ACCREDITED UNIVERSITIES
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold font-sans text-[#000f22] tracking-tight leading-tight">
-            Discover, Compare &amp; Enroll in India's Top Online Universities
+          <h1 className="text-3xl md:text-5xl font-extrabold font-sans tracking-tight leading-tight">
+            <span className="block text-[#000f22]">Discover, Compare &amp; Enroll in</span>
+            <span className="block bg-gradient-to-r from-[#115eaf] via-[#2563eb] to-[#0d9488] bg-clip-text text-transparent">
+              India's Top Online Universities
+            </span>
           </h1>
-          <p className="text-[#43474d] text-[15px] md:text-[16px] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-[#475569] text-[15px] md:text-[16px] max-w-2xl mx-auto leading-relaxed">
             Find government-recognized online degrees designed for working professionals with zero-cost EMI and 100% remote proctored exams.
           </p>
 

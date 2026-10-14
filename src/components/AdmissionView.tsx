@@ -54,54 +54,76 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
         </div>
       </div>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-[10px]">
         {/* PAGE HERO */}
-        <section className="bg-white rounded-lg border border-[#e7eeff] p-5 sm:p-6 space-y-5 shadow-xs" id="overview">
-          <div className="space-y-3">
-            <h1 className="text-3xl sm:text-4xl font-bold text-[#000f22] tracking-tight font-sans">
-              LPU Online Admission 2026
-            </h1>
-            <p className="text-sm sm:text-base text-[#43474d] leading-relaxed font-normal">
-              {DEGREEFYD_LPU_API.admissionProcess.intro}
-            </p>
-          </div>
+        <section
+          className="bg-white rounded-2xl border border-[#e1eaff] p-5 sm:p-6 md:p-8 shadow-[0_4px_18px_rgba(21,65,125,0.04)]"
+          id="overview"
+          style={{ fontFamily: 'Poppins, sans-serif' }}
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-4 items-start">
+            <div className="lg:col-span-7 space-y-3">
+              <p className="flex items-center gap-[10px] mb-[10px] text-[11px] sm:text-[12px] font-semibold text-[#1763c5] uppercase tracking-[1.6px]">
+                <span className="w-7 h-1 rounded-full bg-[#1763e9]" />
+                Admissions Open
+              </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 bg-[#f0f3ff] p-4 rounded-lg border border-[#e7eeff]">
-            <div className="space-y-1 border-r border-[#c4c6ce] pr-2">
-              <span className="text-xs font-normal text-[#74777e] block">Admission Status</span>
-              <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded text-[11px] font-semibold bg-[#DCFCE7] text-[#166534] border border-[#BBF7D0]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A]" />
-                {DEGREEFYD_LPU_API.importantDates[0].date}
-              </span>
-            </div>
-            <div className="space-y-1 md:border-r border-[#c4c6ce] px-1 md:px-2">
-              <span className="text-xs font-normal text-[#74777e] block">Mode of Application</span>
-              <span className="text-base font-semibold text-[#000f22]">Online</span>
-            </div>
-            <div className="space-y-1 border-r border-[#c4c6ce] px-1 md:px-2">
-              <span className="text-xs font-normal text-[#74777e] block">Admission Criteria</span>
-              <span className="text-base font-semibold text-[#000f22]">Merit-based</span>
-            </div>
-            <div className="space-y-1 pl-1 md:pl-2">
-              <span className="text-xs font-normal text-[#74777e] block">Registration Fee</span>
-              <span className="text-base font-bold text-[#115eaf]">₹600</span>
-            </div>
-          </div>
+              <h1 className="m-0 mb-[10px] text-[clamp(28px,3vw,42px)] leading-[1.2] tracking-[-1.2px] font-bold text-[#071a34]">
+                LPU Online Admission 2026
+              </h1>
 
-          <div className="flex flex-wrap items-center gap-3 pt-1">
-            <button
-              onClick={() => onOpenApply()}
-              className="bg-[#115eaf] hover:bg-[#084A8C] text-white px-5 py-2.5 rounded font-semibold text-sm transition-colors shadow-sm"
-            >
-              Apply Now
-            </button>
-            <button
-              onClick={onOpenBrochure}
-              className="bg-white hover:bg-[#EFF6FF] text-[#0b2540] border border-[#0b2540] px-5 py-2.5 rounded font-semibold text-sm transition-colors inline-flex items-center gap-1.5"
-            >
-              <Download className="w-4 h-4 text-[#115eaf]" />
-              Download Brochure
-            </button>
+              <p className="m-0 text-sm text-[#2d3137] leading-relaxed font-normal">
+                LPU Online admission 2026 is ongoing for its UG and PG courses. Students can apply for MBA, MCA, BBA and BCA courses through the portal. LPU Online registration 2026 last date for this session is February 28, 2026. Admission follows a merit-based selection process for most online distance learning courses. The official website handles the complete digital application and document verification process. Applicants must check eligibility criteria before paying the registration fee online.
+              </p>
+
+              <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-0 bg-[#f7f9ff] border border-[#e1eaff] rounded-[10px] p-2.5 sm:p-3">
+                <div className="min-w-0 px-2 sm:px-2.5 py-1 border-r border-[#d7e1f0]">
+                  <span className="block mb-1 text-[10px] leading-[1.4] text-[#75849a]">Admission Status</span>
+                  <span className="block text-[12px] leading-[1.4] font-semibold text-[#129b55]">● Ongoing</span>
+                </div>
+                <div className="min-w-0 px-2 sm:px-2.5 py-1 border-r border-[#d7e1f0]">
+                  <span className="block mb-1 text-[10px] leading-[1.4] text-[#75849a]">Mode of Application</span>
+                  <span className="block text-[12px] leading-[1.4] font-semibold text-[#0b1e3a]">Online</span>
+                </div>
+                <div className="min-w-0 px-2 sm:px-2.5 py-1 border-r border-[#d7e1f0]">
+                  <span className="block mb-1 text-[10px] leading-[1.4] text-[#75849a]">Admission Criteria</span>
+                  <span className="block text-[12px] leading-[1.4] font-semibold text-[#0b1e3a]">Merit-based</span>
+                </div>
+                <div className="min-w-0 px-2 sm:px-2.5 py-1">
+                  <span className="block mb-1 text-[10px] leading-[1.4] text-[#75849a]">Registration Fee</span>
+                  <span className="block text-[12px] leading-[1.4] font-semibold text-[#1763c5]">₹600</span>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2.5 mt-4">
+                <button
+                  onClick={() => onOpenApply()}
+                  className="inline-flex items-center justify-center gap-2 min-h-[42px] px-4 sm:px-5 rounded-[7px] text-[13px] font-semibold text-white bg-[#1763b5] shadow-[0_3px_8px_rgba(23,99,181,0.14)] hover:bg-[#0d519b] transition-all duration-200"
+                >
+                  Apply Now
+                  <span aria-hidden="true">→</span>
+                </button>
+
+                <button
+                  onClick={onOpenBrochure}
+                  className="inline-flex items-center justify-center gap-2 min-h-[42px] px-4 sm:px-5 rounded-[7px] text-[13px] font-semibold text-[#0b2342] bg-white border border-[#17375e] hover:bg-[#f5f8ff] transition-all duration-200"
+                >
+                  <Download className="w-[17px] h-[17px]" />
+                  Download Brochure
+                </button>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5 lg:mr-[50px]">
+              <div className="rounded-2xl overflow-hidden border border-[#e7eeff] shadow-xs bg-[#f9f9ff]">
+                <img
+                  src={DEGREEFYD_LPU_API.hero.backgroundImage}
+                  alt="LPU Online campus and student learning"
+                  className="w-full h-48 sm:h-60 lg:h-64 object-cover block"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
         </section>
         {universityNavigation}
@@ -146,7 +168,6 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
         <section className="page-section card bg-white border border-[#e7eeff] rounded-2xl shadow-xs">
           <div className="flex flex-col md:flex-row justify-between md:items-center gap-2 border-b border-[#e7eeff] pb-4">
             <div className="text-left">
-              <span className="text-xs font-bold text-[#115eaf] uppercase tracking-wider block">Admission Criteria</span>
               <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
                 LPU Online Eligibility and Selection Criteria
               </h2>
@@ -214,7 +235,6 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
 <section className="page-section card bg-white border border-[#e7eeff] rounded-2xl shadow-xs">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 pb-4 border-b border-[#e7eeff]">
             <div>
-              <span className="text-xs font-bold text-[#115eaf] uppercase tracking-wider block">Important Dates</span>
               <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
                 LPU Online Admission 2026 Dates
               </h2>
@@ -264,7 +284,6 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
         {/* SCHOLARSHIPS (From API) */}
         <section className="page-section card bg-white border border-[#e7eeff] rounded-2xl shadow-xs">
           <div>
-            <span className="text-xs font-bold text-[#115eaf] uppercase tracking-wider block">Fee Support</span>
             <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
               LPU Online Scholarships
             </h2>
@@ -306,7 +325,6 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
         {/* EXAMINATION PATTERN (From API) */}
         <section className="page-section card bg-white border border-[#e7eeff] rounded-2xl shadow-xs">
           <div>
-            <span className="text-xs font-bold text-[#115eaf] uppercase tracking-wider block">Evaluation</span>
             <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
               LPU Online Examination Pattern
             </h2>

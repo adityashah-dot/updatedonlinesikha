@@ -208,9 +208,6 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
             <div className="p-5 rounded-2xl bg-[#f0f3ff] border border-[#d5e3ff] space-y-4">
               <div className="flex items-start justify-between">
                 <div>
-                  <span className="text-xs font-bold text-[#115eaf] uppercase tracking-wider block">
-                    100% Home-Based Proctored Testing
-                  </span>
                   <h4 className="font-bold text-base text-[#000f22] mt-0.5">
                     AI-Monitored Remote Examination Simulator
                   </h4>

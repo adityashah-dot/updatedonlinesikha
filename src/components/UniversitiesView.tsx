@@ -752,10 +752,6 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
         <div className="bg-white rounded-2xl border border-[#d5e3ff] p-5 md:p-6 shadow-xs">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#e7eeff]">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#f0f3ff] text-[#115eaf] text-[11px] font-semibold mb-1">
-                <ArrowLeftRight className="w-3.5 h-3.5" />
-                <span>Quick Decision Matrix</span>
-              </div>
               <h2 className="text-lg font-bold text-[#000f22]">
                 Side-by-Side Comparison: Top Online Universities
               </h2>

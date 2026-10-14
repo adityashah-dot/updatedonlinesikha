@@ -37,6 +37,25 @@ const RECRUITER_LOGOS: { name: string; src: string }[] = [
   { name: 'Times Internet', src: '/logos/timesinternet.jpg' },
 ];
 
+const CAMPUS_IMAGES = [
+  {
+    src: '/images/campusviewlpu.jpeg',
+    alt: 'Lovely Professional University campus view',
+  },
+  {
+    src: '/images/campusarealpu.jpeg',
+    alt: 'Lovely Professional University campus aerial view',
+  },
+  {
+    src: '/images/campusviewlpu.jpeg',
+    alt: 'Lovely Professional University campus view',
+  },
+  {
+    src: '/images/campusarealpu.jpeg',
+    alt: 'Lovely Professional University campus aerial view',
+  },
+];
+
 const RecruiterScroll: React.FC = () => {
   const doubled = [...RECRUITER_LOGOS, ...RECRUITER_LOGOS];
   return (
@@ -95,7 +114,90 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
   const [blogIndex, setBlogIndex] = useState(0);
   const [blogVisible, setBlogVisible] = useState(3);
   const [openAdmissionStep, setOpenAdmissionStep] = useState<number>(0);
+  const [visibleAdmissionSteps, setVisibleAdmissionSteps] = useState<number[]>([]);
   const [examStep, setExamStep] = useState<number>(0);
+
+  const ADMISSION_FLOW_STEPS = [
+    {
+      title: 'Online Registration',
+      description:
+        'Visit the Lovely Professional University Online official portal and register using personal details such as name, email ID and mobile number. Login credentials are generated after successful registration.',
+    },
+    {
+      title: 'Application Form Submission',
+      description:
+        'Fill out the online application form by selecting the desired programme and entering personal and academic details.',
+    },
+    {
+      title: 'Document Upload',
+      description:
+        'Upload scanned copies of academic documents, identity proof, and photographs as part of the application process.',
+    },
+    {
+      title: 'Eligibility Verification',
+      description:
+        'The university verifies eligibility based on academic qualifications and programme guidelines.',
+    },
+    {
+      title: 'Fee Payment and Admission Confirmation',
+      description:
+        'Admission is confirmed after fee payment. Roll number and LMS login are issued to the student.',
+    },
+  ];
+
+  useEffect(() => {
+    const stepNodes = Array.from(document.querySelectorAll('.admission-flow-step')) as HTMLElement[];
+    if (!stepNodes.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      setVisibleAdmissionSteps(stepNodes.map((_, index) => index));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = Number((entry.target as HTMLElement).dataset.stepIndex ?? 0);
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              setVisibleAdmissionSteps((prev) => (prev.includes(index) ? prev : [...prev, index]));
+            }, index * 260);
+          }
+        });
+      },
+      { threshold: 0.35 }
+    );
+
+    stepNodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const revealNodes = Array.from(document.querySelectorAll('.exam-step-reveal')) as HTMLElement[];
+    if (!revealNodes.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      revealNodes.forEach((node) => node.classList.add('show'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('show');
+            }, index * 120);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    revealNodes.forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
 
   const EXAM_STEPS = [
     {
@@ -341,9 +443,6 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
             <section id="highlights" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div className="flex items-center justify-between flex-wrap gap-3">
                 <div>
-                  <span className="px-2.5 py-0.5 rounded bg-[#f0f3ff] text-[#115eaf] text-xs font-normal border border-[#d5e3ff]">
-                    Official Facts 2026
-                  </span>
                   <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
                     LPU Online Highlights 2026
                   </h2>
@@ -424,7 +523,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
 
               {/* CTA */}
               <div className="p-5 rounded-2xl bg-[#f0f3ff] border border-[#d5e3ff] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-[18px]">
-                <p className="text-sm font-normal text-[#2d3137] leading-relaxed">
+                <p className="text-sm font-semibold text-[#2d3137] leading-relaxed">
                   Unlock Full College Insights to Choose the Right Program for Your Future
                 </p>
                 <div className="flex flex-wrap gap-2.5">
@@ -534,12 +633,82 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               </div>
             </section>
 
+            {/* LPU Online Campus */}
+            <section
+              id="campus"
+              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+              style={{ fontFamily: 'Poppins, sans-serif' }}
+            >
+              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3">
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
+                    LPU Online Campus
+                  </h2>
+                  <p className="mt-2 text-sm text-[#43474d] leading-relaxed font-normal max-w-2xl">
+                    The digital campus experience is designed for flexibility, with a modern learning ecosystem,
+                    live support, academic resources, and a connected student community built for working professionals.
+                  </p>
+                </div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#d5e3ff] bg-[#f0f3ff] px-3 py-1.5 text-[11px] font-semibold text-[#115eaf]">
+                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#115eaf]" />
+                  Campus Experience
+                </div>
+              </div>
+
+              <style>{`
+                .campus-marquee {
+                  position: relative;
+                  display: flex;
+                  gap: 16px;
+                  width: max-content;
+                  animation: campus-scroll 26s linear infinite;
+                }
+                .campus-marquee:hover {
+                  animation-play-state: paused;
+                }
+                @keyframes campus-scroll {
+                  from { transform: translateX(0); }
+                  to { transform: translateX(-50%); }
+                }
+                .campus-card {
+                  flex: 0 0 auto;
+                  width: min(280px, 72vw);
+                  overflow: hidden;
+                  border-radius: 18px;
+                  border: 1px solid #e7eeff;
+                  background: #fff;
+                  box-shadow: 0 10px 22px rgba(11, 37, 64, 0.06);
+                }
+                .campus-card img {
+                  display: block;
+                  width: 100%;
+                  height: 220px;
+                  object-fit: cover;
+                }
+                @media (max-width: 640px) {
+                  .campus-card {
+                    width: min(240px, 76vw);
+                  }
+                  .campus-card img {
+                    height: 180px;
+                  }
+                }
+              `}</style>
+
+              <div className="mt-[18px] overflow-hidden rounded-[18px] border border-[#e7eeff] bg-[#f9f9ff] p-2">
+                <div className="campus-marquee">
+                  {[...CAMPUS_IMAGES, ...CAMPUS_IMAGES].map((image, idx) => (
+                    <div key={`${image.alt}-${idx}`} className="campus-card">
+                      <img src={image.src} alt={image.alt} loading="lazy" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
             {/* 3. Eligibility and Selection Criteria (From API) */}
             <section id="eligibility-criteria" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
-                <span className="px-2.5 py-0.5 rounded bg-[#f0f3ff] text-[#115eaf] text-xs font-normal border border-[#d5e3ff]">
-                  Admission Criteria
-                </span>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
                   LPU Online Eligibility and Selection Criteria
                 </h2>
@@ -586,12 +755,9 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               </ul>
             </section>
 
-            {/* 5. Admission Process 2026 (Accordion) */}
+            {/* 5. Admission Process 2026 */}
             <section id="admission-process" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
-                <span className="px-2.5 py-0.5 rounded bg-[#f0f3ff] text-[#115eaf] text-xs font-normal border border-[#d5e3ff]">
-                  Admission Flow
-                </span>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
                   LPU Online Admission Process 2026
                 </h2>
@@ -604,111 +770,153 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                 </p>
               </div>
 
-              {/* Process List */}
+              <style>{`
+                .admission-flow-step {
+                  --admission-badge-w: 78px;
+                  display: grid;
+                  grid-template-columns: calc(var(--admission-badge-w) + 18px) minmax(0, 1fr);
+                  gap: 0.625rem;
+                }
+                .admission-flow-left {
+                  display: flex;
+                  flex-direction: column;
+                }
+                .admission-flow-badge {
+                  position: relative;
+                  width: var(--admission-badge-w);
+                  height: 34px;
+                  display: grid;
+                  place-items: center;
+                  background: #0b2540;
+                  color: #fff;
+                  font-size: 13px;
+                  font-weight: 600;
+                  clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
+                  letter-spacing: 0.02em;
+                }
+                .admission-flow-badge span {
+                  padding-right: 6px;
+                }
+                .admission-flow-conn {
+                  flex: 1;
+                  min-height: 42px;
+                  padding-right: 8px;
+                  margin-bottom: 4px;
+                  width: var(--admission-badge-w);
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: space-evenly;
+                  opacity: 0;
+                }
+                .admission-flow-conn i {
+                  display: block;
+                  width: 9px;
+                  height: 9px;
+                  border-right: 2.5px solid #115eaf;
+                  border-bottom: 2.5px solid #115eaf;
+                  transform: rotate(45deg);
+                  opacity: 0.22;
+                }
+                .admission-flow-step:last-child .admission-flow-conn {
+                  display: none;
+                }
+                .admission-flow-body {
+                  padding: 2px 0 26px;
+                  opacity: 0;
+                  transform: translateY(14px);
+                }
+                .admission-flow-step.is-visible .admission-flow-badge {
+                  clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
+                  transition: clip-path 0.7s cubic-bezier(0.2, 0.9, 0.25, 1);
+                }
+                .admission-flow-step.is-visible .admission-flow-body {
+                  opacity: 1;
+                  transform: none;
+                  transition: opacity 0.6s ease 0.35s, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s;
+                }
+                .admission-flow-step.is-visible .admission-flow-conn {
+                  opacity: 1;
+                  transition: opacity 0.4s ease 0.7s;
+                }
+                .admission-flow-step.is-visible .admission-flow-conn i {
+                  animation: admission-wave 1.4s ease-in-out infinite;
+                }
+                .admission-flow-step.is-visible .admission-flow-conn i:nth-child(2) {
+                  animation-delay: 0.22s;
+                }
+                .admission-flow-step.is-visible .admission-flow-conn i:nth-child(3) {
+                  animation-delay: 0.44s;
+                }
+                @keyframes admission-wave {
+                  0%, 100% {
+                    opacity: 0.2;
+                    transform: rotate(45deg) translate(0, 0);
+                  }
+                  45% {
+                    opacity: 1;
+                    transform: rotate(45deg) translate(2px, 2px);
+                  }
+                }
+                @media (max-width: 640px) {
+                  .admission-flow-step {
+                    --admission-badge-w: 66px;
+                    gap: 0.5rem;
+                  }
+                  .admission-flow-badge {
+                    height: 30px;
+                    font-size: 11px;
+                  }
+                  .admission-flow-body h3 {
+                    font-size: 16px;
+                  }
+                  .admission-flow-body p {
+                    font-size: 14px;
+                  }
+                }
+                @media (prefers-reduced-motion: reduce) {
+                  .admission-flow-body,
+                  .admission-flow-conn,
+                  .admission-flow-badge {
+                    opacity: 1 !important;
+                    transform: none !important;
+                    transition: none !important;
+                  }
+                  .admission-flow-step.is-visible .admission-flow-conn i {
+                    animation: none !important;
+                  }
+                }
+              `}</style>
+
               <div className="mt-[18px] flex flex-col gap-3">
-                {[
-                  {
-                    title: 'Online Registration',
-                    description:
-                      'Visit the Lovely Professional University Online official portal and register using personal details such as name, email ID and mobile number. Login credentials are generated after successful registration.',
-                  },
-                  {
-                    title: 'Application Form Submission',
-                    description:
-                      'Fill out the online application form by selecting the desired programme and entering personal and academic details.',
-                  },
-                  {
-                    title: 'Document Upload',
-                    description:
-                      'Upload scanned copies of academic documents, identity proof, and photographs as part of the application process.',
-                  },
-                  {
-                    title: 'Eligibility Verification',
-                    description:
-                      'The university verifies eligibility based on academic qualifications and programme guidelines.',
-                  },
-                  {
-                    title: 'Fee Payment and Admission Confirmation',
-                    description:
-                      'Admission is confirmed after fee payment. Roll number and LMS login are issued to the student.',
-                  },
-                ].map((step, i) => {
-                  const isOpen = openAdmissionStep === i;
+                {ADMISSION_FLOW_STEPS.map((step, i) => {
                   const stepNo = String(i + 1).padStart(2, '0');
+                  const isVisible = visibleAdmissionSteps.includes(i);
+
                   return (
                     <div
                       key={i}
-                      className={`grid grid-cols-[52px_minmax(0,1fr)] sm:grid-cols-[78px_minmax(0,1fr)] gap-2.5 sm:gap-[18px] ${i < 4 ? 'relative' : ''}`}
+                      data-step-index={i}
+                      className={`admission-flow-step ${isVisible ? 'is-visible' : ''}`}
                     >
-                      {/* Step number */}
-                      <div className="relative flex justify-center">
-                        {i < 4 && (
-                          <span
-                            aria-hidden="true"
-                            className={`absolute top-[52px] sm:top-[68px] bottom-[-12px] w-px ${isOpen ? 'bg-[#115eaf]/40' : 'bg-[#e7eeff]'}`}
-                          />
-                        )}
-                        <button
-                          type="button"
-                          aria-expanded={isOpen}
-                          aria-label={`Open Step ${stepNo}`}
-                          onClick={() => setOpenAdmissionStep(isOpen ? -1 : i)}
-                          className={`relative z-[2] w-[52px] h-[52px] sm:w-[68px] sm:h-[68px] rounded-[10px] sm:rounded-[12px] border text-[10px] sm:text-xs font-bold cursor-pointer transition-all duration-200 ${
-                            isOpen
-                              ? 'bg-[#115eaf] border-[#115eaf] text-white'
-                              : 'bg-white border-[#d5e3ff] text-[#43474d] hover:border-[#115eaf] hover:-translate-y-px'
-                          }`}
-                        >
-                          STEP {stepNo}
-                        </button>
+                      <div className="admission-flow-left">
+                        <div className="admission-flow-badge">
+                          <span>Step {stepNo}</span>
+                        </div>
+                        <div className="admission-flow-conn" aria-hidden="true">
+                          <i />
+                          <i />
+                          <i />
+                        </div>
                       </div>
 
-                      {/* Content */}
-                      <div
-                        className={`rounded-[12px] border bg-white overflow-hidden transition-all duration-200 ${
-                          isOpen ? 'border-[#d5e3ff] shadow-[0_5px_18px_rgba(7,29,65,0.06)]' : 'border-[#e7eeff]'
-                        }`}
-                      >
-                        <button
-                          type="button"
-                          aria-expanded={isOpen}
-                          onClick={() => setOpenAdmissionStep(isOpen ? -1 : i)}
-                          className="w-full flex items-center justify-between gap-[15px] px-4 sm:px-5 py-[15px] sm:py-[18px] border-0 bg-transparent text-left cursor-pointer"
-                        >
-                          <span className="text-[16px] sm:text-[19px] leading-[1.35] font-medium text-[#000f22] font-sans">
-                            {step.title}
-                          </span>
-                          <span
-                            className={`shrink-0 w-[28px] h-[28px] sm:w-8 sm:h-8 flex items-center justify-center rounded-full border border-[#d5e3ff] bg-[#f0f3ff] text-[#115eaf] leading-none transition-all duration-200 ${
-                              isOpen ? 'rotate-180 bg-[#115eaf] border-[#115eaf] text-white' : 'hover:border-[#115eaf] hover:bg-white'
-                            }`}
-                            aria-hidden="true"
-                          >
-                            <svg
-                              width="14"
-                              height="14"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            >
-                              <path d="m6 9 6 6 6-6" />
-                            </svg>
-                          </span>
-                        </button>
-
-                        <div
-                          className="grid transition-[grid-template-rows] duration-300 ease-in-out"
-                          style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
-                        >
-                          <div className="overflow-hidden">
-                            <p className="px-4 sm:px-5 pb-[16px] sm:pb-[19px] text-[13px] sm:text-[15px] leading-[1.5] sm:leading-[1.55] text-[#43474d] font-normal">
-                              {step.description}
-                            </p>
-                          </div>
-                        </div>
+                      <div className="admission-flow-body">
+                        <h3 className="mb-1 text-[18px] font-semibold leading-[1.35] text-[#000f22] font-sans">
+                          {step.title}
+                        </h3>
+                        <p className="m-0 text-[15px] leading-[1.55] text-[#43474d] font-normal">
+                          {step.description}
+                        </p>
                       </div>
                     </div>
                   );
@@ -750,9 +958,6 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
             {/* 7. Examination Pattern (Interactive Module) */}
             <section id="examination-pattern" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
-                <span className="px-2.5 py-0.5 rounded bg-[#f0f3ff] text-[#115eaf] text-xs font-normal border border-[#d5e3ff]">
-                  Evaluation
-                </span>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
                   LPU Online Examination Pattern
                 </h2>
@@ -764,140 +969,106 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                 </p>
               </div>
 
-              <div className="mt-[18px] grid grid-cols-1 md:grid-cols-[250px_minmax(0,1fr)] border border-[#d5e3ff] rounded-[14px] overflow-hidden shadow-xs">
-                {/* Left nav */}
-                <div
-                  role="tablist"
-                  aria-label="Examination process"
-                  className="bg-gradient-to-b from-[#f0f3ff] to-[#f9f9ff] border-b md:border-b-0 md:border-r border-[#d5e3ff] p-2.5 grid grid-cols-2 md:grid-cols-1 gap-1"
-                >
-                  <div className="col-span-2 md:col-span-1 text-xs font-semibold text-[#43474d] px-2 pt-1.5 pb-2">
-                    Examination Process
-                  </div>
-                  {[
-                    { title: 'Semester-Based Structure', subtitle: 'Academic system' },
-                    { title: 'Continuous Internal Assessment', subtitle: 'During semester' },
-                    { title: 'End-Semester Online Examination', subtitle: 'End of semester' },
-                    { title: 'Result Declaration', subtitle: 'After evaluation' },
-                  ].map((step, i) => {
-                    const isActive = examStep === i;
-                    return (
-                      <button
-                        key={i}
-                        type="button"
-                        role="tab"
-                        aria-selected={isActive}
-                        onClick={() => setExamStep(i)}
-                        className={`flex items-center gap-2.5 w-full px-2 py-[9px] rounded-[9px] text-left cursor-pointer transition-all duration-200 ${
-                          isActive
-                            ? 'bg-white shadow-[0_2px_10px_rgba(17,94,175,0.18)] ring-1 ring-[#115eaf]/25'
-                            : 'bg-white/40 hover:bg-white/80 hover:shadow-sm'
-                        }`}
-                      >
-                        <span
-                          className={`flex-none w-[30px] h-[30px] grid place-items-center rounded-lg border text-xs font-semibold transition-colors duration-200 ${
-                            isActive
-                              ? 'bg-[#115eaf] border-[#115eaf] text-white shadow-[0_2px_6px_rgba(17,94,175,0.35)]'
-                              : 'bg-white/70 border-[#d5e3ff] text-[#43474d] group-hover:border-[#115eaf]'
-                          }`}
-                        >
-                          {String(i + 1).padStart(2, '0')}
-                        </span>
-                        <span className="min-w-0">
-                          <span
-                            className={`block text-[13.5px] font-semibold leading-[1.3] truncate ${
-                              isActive ? 'text-[#115eaf]' : 'text-[#000f22]'
-                            }`}
-                          >
-                            {step.title}
-                          </span>
-                          <span className="block text-[11.5px] font-normal text-[#43474d] mt-px">{step.subtitle}</span>
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
+              <style>{`
+                .exam-step {
+                  --exam-badge-w: 78px;
+                  position: relative;
+                  display: grid;
+                  grid-template-columns: calc(var(--exam-badge-w) + 18px) minmax(0, 1fr);
+                  padding-bottom: 30px;
+                }
+                .exam-step:last-child {
+                  padding-bottom: 0;
+                }
+                .exam-step:not(:last-child)::before {
+                  content: "";
+                  position: absolute;
+                  left: calc(var(--exam-badge-w) / 2 - 5px);
+                  top: 40px;
+                  bottom: 6px;
+                  width: 3px;
+                  background: repeating-linear-gradient(180deg, #0b2540 0 4px, transparent 4px 9px);
+                  animation: exam-flow-down 0.9s linear infinite;
+                }
+                @keyframes exam-flow-down {
+                  from { background-position: 0 0; }
+                  to { background-position: 0 9px; }
+                }
+                .exam-badge {
+                  width: var(--exam-badge-w);
+                  height: 34px;
+                  display: grid;
+                  place-items: center;
+                  background: #0b2540;
+                  color: #fff;
+                  font-size: 13px;
+                  font-weight: 600;
+                  clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
+                }
+                .exam-badge span {
+                  padding-right: 6px;
+                }
+                .exam-body h3 {
+                  margin: 2px 0 3px;
+                  font-size: 18px;
+                  font-weight: 600;
+                  line-height: 1.35;
+                  color: #000f22;
+                }
+                .exam-body p {
+                  margin: 0;
+                  font-size: 15px;
+                  line-height: 1.55;
+                  color: #43474d;
+                }
+                .exam-step-reveal {
+                  opacity: 0;
+                  transform: translateY(20px);
+                  transition: opacity 0.6s ease, transform 0.6s ease;
+                }
+                .exam-step-reveal.show {
+                  opacity: 1;
+                  transform: none;
+                }
+                @media (max-width: 640px) {
+                  .exam-step {
+                    --exam-badge-w: 66px;
+                  }
+                  .exam-badge {
+                    font-size: 12px;
+                  }
+                  .exam-body h3 {
+                    font-size: 16px;
+                  }
+                  .exam-body p {
+                    font-size: 14px;
+                  }
+                }
+                @media (prefers-reduced-motion: reduce) {
+                  .exam-step::before,
+                  .exam-step-reveal {
+                    animation: none !important;
+                    transition: none !important;
+                    opacity: 1 !important;
+                    transform: none !important;
+                  }
+                }
+              `}</style>
 
-                {/* Right content */}
-                <div className="flex flex-col p-[18px] sm:p-5 sm:px-7 bg-gradient-to-br from-white via-white to-[#f0f3ff]/40">
-                  <div className="flex justify-between gap-3 text-xs font-medium text-[#43474d] mb-3">
-                    <span>Examination Step</span>
-                    <span className="text-[#115eaf] font-semibold tabular-nums">
-                      {String(examStep + 1).padStart(2, '0')} / {String(EXAM_STEPS.length).padStart(2, '0')}
-                    </span>
-                  </div>
-
-                  <div className="flex-1" role="tabpanel" aria-live="polite">
-                    <h3 className="text-lg sm:text-[22px] font-semibold leading-[1.3] text-[#000f22] font-sans mb-2 flex items-center gap-2.5">
-                      <span className="w-1 self-stretch rounded-full bg-[#115eaf]/25" aria-hidden="true" />
-                      {EXAM_STEPS[examStep].title}
-                    </h3>
-                    <p className="text-[14px] sm:text-[15px] leading-[1.65] font-normal text-[#43474d]">
-                      {EXAM_STEPS[examStep].description}
-                    </p>
-
-                    <div className="mt-[18px] mb-2 text-[13px] font-semibold text-[#000f22] flex items-center gap-2">
-                      <span className="h-px w-5 bg-[#115eaf]/40" aria-hidden="true" />
-                      Key points
-                    </div>
-                    <ul className="list-none grid gap-2">
-                      {EXAM_STEPS[examStep].points.map((pt, i) => (
-                        <li
-                          key={i}
-                          className="relative pl-[26px] text-[14px] leading-[1.55] font-normal text-[#000f22] bg-[#f9f9ff]/60 border border-[#e7eeff] rounded-lg py-1.5 pr-2.5"
-                        >
-                          <span
-                            aria-hidden="true"
-                            className="absolute left-0 top-[11px] w-4 h-4 rounded-full bg-[#115eaf]/15 border border-[#115eaf]/30 flex items-center justify-center"
-                          >
-                            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path
-                                d="M4.5 8.2l2.3 2.3 4.7-4.9"
-                                stroke="#115eaf"
-                                strokeWidth="1.8"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              />
-                            </svg>
-                          </span>
-                          {pt}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="flex items-center justify-between gap-4 mt-3.5 pt-3 border-t border-[#d5e3ff]">
-                    <div className="flex-1 max-w-[260px]">
-                      <div className="h-1.5 bg-[#e7eeff] rounded-full overflow-hidden">
-                        <div
-                          className="h-full rounded-full bg-gradient-to-r from-[#115eaf] to-[#004689] transition-[width] duration-300 ease-out shadow-[0_0_6px_rgba(17,94,175,0.45)]"
-                          style={{ width: `${((examStep + 1) / EXAM_STEPS.length) * 100}%` }}
-                        />
-                      </div>
-                      <div className="mt-[5px] text-[11.5px] font-normal text-[#43474d]">
-                        Step {examStep + 1} of {EXAM_STEPS.length}
+              <div className="mt-[18px]">
+                {EXAM_STEPS.map((step, index) => (
+                  <div key={step.title} className="exam-step exam-step-reveal">
+                    <div>
+                      <div className="exam-badge">
+                        <span>Step {String(index + 1).padStart(2, '0')}</span>
                       </div>
                     </div>
-                    <div className="flex gap-2">
-                      <button
-                        type="button"
-                        onClick={() => setExamStep((s) => Math.max(0, s - 1))}
-                        disabled={examStep === 0}
-                        className="min-w-[84px] px-3 py-[7px] border border-[#d5e3ff] rounded-lg bg-white text-xs font-medium text-[#000f22] cursor-pointer transition-all hover:border-[#115eaf] hover:bg-[#115eaf]/10 hover:text-[#004689] hover:shadow-xs disabled:opacity-45 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:shadow-none"
-                      >
-                        ← Previous
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setExamStep((s) => Math.min(EXAM_STEPS.length - 1, s + 1))}
-                        disabled={examStep === EXAM_STEPS.length - 1}
-                        className="min-w-[84px] px-3 py-[7px] border border-[#d5e3ff] rounded-lg bg-white text-xs font-medium text-[#000f22] cursor-pointer transition-all hover:border-[#115eaf] hover:bg-[#115eaf]/10 hover:text-[#004689] hover:shadow-xs disabled:opacity-45 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:shadow-none"
-                      >
-                        Next →
-                      </button>
+                    <div className="exam-body">
+                      <h3>{step.title}</h3>
+                      <p>{step.description}</p>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
             </section>
 
@@ -968,29 +1139,70 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               </div>
 
               {/* Campus Photos */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
-                <figure className="overflow-hidden rounded-xl border border-[#e7eeff] bg-[#f0f3ff]">
-                  <img
-                    src="/images/campusviewlpu.jpeg"
-                    alt="Lovely Professional University campus view"
-                    className="w-full h-44 sm:h-52 object-cover"
-                    loading="lazy"
-                  />
-                  <figcaption className="px-3 py-2 text-[11px] text-[#43474d] bg-white border-t border-[#e7eeff]">
-                    LPU Campus View — Phagwara, Punjab
-                  </figcaption>
-                </figure>
-                <figure className="overflow-hidden rounded-xl border border-[#e7eeff] bg-[#f0f3ff]">
-                  <img
-                    src="/images/campusarealpu.jpeg"
-                    alt="Lovely Professional University campus aerial view"
-                    className="w-full h-44 sm:h-52 object-cover"
-                    loading="lazy"
-                  />
-                  <figcaption className="px-3 py-2 text-[11px] text-[#43474d] bg-white border-t border-[#e7eeff]">
-                    LPU Campus Aerial View
-                  </figcaption>
-                </figure>
+              <style>{`
+                .campus-marquee {
+                  overflow: hidden;
+                  position: relative;
+                  border-radius: 14px;
+                  border: 1px solid #e7eeff;
+                  background: #f0f3ff;
+                  margin-top: 18px;
+                }
+                .campus-marquee-track {
+                  display: flex;
+                  width: max-content;
+                  animation: campus-marquee 24s linear infinite;
+                }
+                .campus-marquee-track:hover {
+                  animation-play-state: paused;
+                }
+                .campus-marquee-item {
+                  flex: 0 0 auto;
+                  width: min(320px, 72vw);
+                  background: #f9f9ff;
+                  overflow: hidden;
+                  border-right: 1px solid #e7eeff;
+                }
+                .campus-marquee-item img {
+                  display: block;
+                  width: 100%;
+                  height: 220px;
+                  object-fit: cover;
+                }
+                .campus-marquee-item figcaption {
+                  padding: 10px 12px;
+                  font-size: 11px;
+                  color: #43474d;
+                  background: white;
+                  border-top: 1px solid #e7eeff;
+                }
+                @keyframes campus-marquee {
+                  from {
+                    transform: translateX(0);
+                  }
+                  to {
+                    transform: translateX(-50%);
+                  }
+                }
+                @media (max-width: 640px) {
+                  .campus-marquee-item {
+                    width: min(280px, 80vw);
+                  }
+                  .campus-marquee-item img {
+                    height: 180px;
+                  }
+                }
+              `}</style>
+
+              <div className="campus-marquee">
+                <div className="campus-marquee-track">
+                  {[...CAMPUS_IMAGES, ...CAMPUS_IMAGES].map((image, index) => (
+                    <figure key={`${image.src}-${index}`} className="campus-marquee-item">
+                      <img src={image.src} alt={image.alt} loading="lazy" />
+                      <figcaption>{image.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
               </div>
 
               <div className="flex flex-wrap gap-2 pt-1 mt-[18px]">
@@ -1007,15 +1219,6 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               {/* Top Heading Block (Placed at the top of section) */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#d5e3ff]/70">
                 <div>
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[11px] font-normal flex items-center gap-1">
-                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
-                      UGC-DEB Validated & Govt Approved
-                    </span>
-                    <span className="px-2.5 py-0.5 rounded bg-white text-[#115eaf] text-[11px] font-normal border border-[#d5e3ff]">
-                      100% Equivalent
-                    </span>
-                  </div>
                   <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
                     LPU Online Sample Degree
                   </h2>
@@ -1086,15 +1289,6 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               {/* Header and Rating Summary Bar */}
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-[#e7eeff]">
                 <div>
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-normal flex items-center gap-1">
-                      <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-                      4.8 / 5.0 Rating
-                    </span>
-                    <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-normal">
-                      1,400+ Verified Submissions
-                    </span>
-                  </div>
                   <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans mt-2">
                     LPU Online Reviews
                   </h2>
@@ -1367,9 +1561,6 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
             <section id="blogs" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div className="flex items-end justify-between gap-3 flex-wrap">
                 <div>
-                  <span className="inline-flex px-2.5 py-1 rounded-full bg-[#f0f3ff] text-[#115eaf] text-xs font-bold border border-[#d5e3ff]">
-                    {DEGREEFYD_LPU_API.blogs.label}
-                  </span>
                   <h2 className="section-title mt-2 text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
                     Latest <span className="text-[#115eaf]">Blogs</span>
                   </h2>
@@ -1466,20 +1657,6 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               </div>
             </section>
 
-            {/* Related Colleges */}
-            <section id="related-colleges" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
-              <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                Related Colleges
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-[18px]">
-                {DEGREEFYD_LPU_API.relatedColleges.map((college, i) => (
-                  <div key={i} className="p-4 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] hover:border-[#115eaf] transition-all cursor-pointer">
-                    <span className="font-bold text-xs text-[#000f22]">{college.name}</span>
-                    <span className="block text-[11px] text-[#74777e] mt-1">{college.location}</span>
-                  </div>
-                ))}
-              </div>
-            </section>
         </div>
       </div>
 

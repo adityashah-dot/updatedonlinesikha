@@ -411,7 +411,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
                 {/* Quote Block */}
                 <div className="relative">
                   <Quote className="w-6 h-6 text-slate-200 dark:text-slate-700 absolute -top-1 -left-1 -z-0 opacity-70" />
-                  <p className="relative z-1 text-xs sm:text-[13px] text-[#2d3139] dark:text-slate-300 leading-relaxed italic line-clamp-4">
+                  <p className="relative z-1 text-sm sm:text-[14px] font-semibold text-[#2d3139] dark:text-slate-300 leading-relaxed line-clamp-4">
                     "{item.quote}"
                   </p>
                 </div>

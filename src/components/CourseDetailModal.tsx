@@ -118,9 +118,6 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
             <div className="lg:col-span-5 p-6 rounded-2xl bg-[#f9f9ff] border border-[#d5e3ff] shadow-sm space-y-4">
               <div className="flex justify-between items-center pb-3 border-b border-[#e7eeff]">
                 <div>
-                  <span className="text-xs font-bold text-[#115eaf] uppercase tracking-wider block">
-                    Tuition & Installments
-                  </span>
                   <h3 className="font-bold text-base text-[#000f22] font-sans">
                     Fee Breakdown & Plans
                   </h3>
@@ -246,9 +243,6 @@ export const CourseDetailModal: React.FC<CourseDetailModalProps> = ({
           <div className="space-y-4">
             <div className="flex flex-col sm:flex-row justify-between sm:items-end gap-2 border-b border-[#e7eeff] pb-3">
               <div>
-                <span className="text-xs font-bold text-[#115eaf] uppercase tracking-wider block">
-                  NEP 2020 Aligned Structure
-                </span>
                 <h3 className="text-xl font-bold text-[#000f22] font-sans">
                   Comprehensive Semester Syllabus Roadmap
                 </h3>
