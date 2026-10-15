@@ -304,7 +304,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
               </div>
 
               <div
-                className={`max-w-[85%] rounded-2xl ${
+                className={`max-w-[85%] break-words rounded-2xl ${
                   isUser
                     ? 'bg-[#0b2540] text-white rounded-tr-xs px-4 py-3 shadow-xs font-sans text-xs sm:text-[13px] font-normal leading-relaxed'
                     : 'bg-white border border-[#e7eeff] text-[#1a222f] rounded-tl-xs p-4 sm:p-5 shadow-xs font-sans text-xs sm:text-[13px] leading-relaxed'

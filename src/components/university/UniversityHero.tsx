@@ -164,7 +164,7 @@ export const UniversityHero: React.FC<UniversityHeroProps> = ({
                 </button>
               </div>
 
-              <div className="flex items-center gap-3 text-xs text-slate-500 justify-center lg:justify-end w-full">
+              <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500 justify-center lg:justify-end w-full">
                 {university.quickStats.emiStarting && (
                   <button
                     type="button"

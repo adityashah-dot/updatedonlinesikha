@@ -1191,7 +1191,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex flex-wrap items-center gap-2.5">
                     <button
                       onClick={() => onOpenApply()}
                       className="px-4 py-2 bg-[#115eaf] text-white rounded-lg text-xs font-semibold shadow hover:bg-[#004689] active:scale-95 transition-all flex items-center gap-1.5"
@@ -1235,7 +1235,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                   </p>
                 </div>
 
-                <div className="flex items-center gap-3 bg-[#f0f3ff] border border-[#d5e3ff] p-2.5 rounded-xl shrink-0">
+                <div className="flex flex-wrap items-center justify-center gap-3 bg-[#f0f3ff] border border-[#d5e3ff] p-2.5 rounded-xl shrink-0 max-w-full">
                   <div className="text-center">
                     <span className="block text-lg font-black text-[#115eaf]">94%</span>
                     <span className="text-[9px] text-[#43474d] font-bold">Completion Rate</span>
@@ -1260,7 +1260,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                     <button
                       key={cat}
                       onClick={() => setSelectedReviewCategory(cat)}
-                      className={`px-3 py-1 rounded-lg font-bold transition-all text-[11px] ${
+                      className={`px-3 py-1 rounded-lg font-bold transition-all text-[11px] max-md:min-h-[36px] max-md:px-4 ${
                         selectedReviewCategory === cat
                           ? 'bg-[#115eaf] text-white shadow-xs'
                           : 'bg-[#f0f3ff] text-[#43474d] hover:bg-[#e0ecff] hover:text-[#000f22]'
@@ -1364,7 +1364,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                     Admissions for Spring 2026 intake are currently open. Book a 1-on-1 counseling session with our admissions team.
                   </p>
                 </div>
-                <div className="flex items-center gap-2.5 shrink-0">
+                <div className="flex flex-wrap items-center justify-center gap-2.5">
                   <button
                     onClick={() => onOpenApply()}
                     className="px-5 py-2.5 bg-[#115eaf] text-white rounded-xl text-xs font-bold shadow hover:bg-[#004689] active:scale-95 transition-all"
@@ -1686,7 +1686,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
       <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex items-center">
         {/* Slide-up Panel */}
         <div
-          className={`w-72 bg-white border border-[#e7eeff] shadow-2xl rounded-2xl transition-all duration-300 ${
+          className={`w-72 max-w-[calc(100vw-48px)] bg-white border border-[#e7eeff] shadow-2xl rounded-2xl transition-all duration-300 ${
             counselPanelOpen ? 'opacity-100 translate-x-0 pointer-events-auto' : 'opacity-0 translate-x-3 pointer-events-none'
           }`}
         >
@@ -1757,7 +1757,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
       {/* Vertical Edge Tab — "Free Apply" */}
       <button
         onClick={() => setCounselPanelOpen(!counselPanelOpen)}
-        className="w-12 h-[200px] bg-[#115eaf] hover:bg-[#004689] rounded-l-2xl shadow-md flex items-center justify-center transition-colors"
+        className="hidden lg:flex w-12 h-[200px] bg-[#115eaf] hover:bg-[#004689] rounded-l-2xl shadow-md items-center justify-center transition-colors"
       >
         <span className="block text-white text-sm font-normal whitespace-nowrap -rotate-90">
           {counselPanelOpen ? 'Close' : 'Free Apply'}

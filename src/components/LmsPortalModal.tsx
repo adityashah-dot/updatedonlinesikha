@@ -39,7 +39,7 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
           </div>
           <button 
             onClick={onClose}
-            className="p-2 text-white/70 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
+            className="p-2 min-h-[44px] text-white/70 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -49,7 +49,7 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
         <div className="bg-[#f0f3ff] px-6 py-2 border-b border-[#e7eeff] flex items-center gap-2 overflow-x-auto">
           <button
             onClick={() => setActiveTab('vault')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
+            className={`px-4 py-2 min-h-[44px] rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
               activeTab === 'vault' ? 'bg-[#115eaf] text-white shadow-xs' : 'text-[#43474d] hover:bg-[#e7eeff]'
             }`}
           >
@@ -58,7 +58,7 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
           </button>
           <button
             onClick={() => setActiveTab('ebooks')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
+            className={`px-4 py-2 min-h-[44px] rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
               activeTab === 'ebooks' ? 'bg-[#115eaf] text-white shadow-xs' : 'text-[#43474d] hover:bg-[#e7eeff]'
             }`}
           >
@@ -67,7 +67,7 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
           </button>
           <button
             onClick={() => setActiveTab('exams')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
+            className={`px-4 py-2 min-h-[44px] rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
               activeTab === 'exams' ? 'bg-[#115eaf] text-white shadow-xs' : 'text-[#43474d] hover:bg-[#e7eeff]'
             }`}
           >
@@ -76,7 +76,7 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
           </button>
           <button
             onClick={() => setActiveTab('schedule')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
+            className={`px-4 py-2 min-h-[44px] rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all ${
               activeTab === 'schedule' ? 'bg-[#115eaf] text-white shadow-xs' : 'text-[#43474d] hover:bg-[#e7eeff]'
             }`}
           >
@@ -86,7 +86,7 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
         </div>
 
         {/* Tab Content */}
-        <div className="p-6 flex-grow space-y-6">
+        <div className="p-6 flex-grow min-h-0 space-y-6">
           {activeTab === 'vault' && (
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -145,7 +145,7 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
                     <div className="mt-4 pt-3 border-t border-[#e7eeff] flex items-center justify-between">
                       <button
                         onClick={() => setPlayingVideo(playingVideo === item.id ? null : item.id)}
-                        className="px-3 py-1.5 rounded-lg bg-[#115eaf] text-white text-xs font-semibold flex items-center gap-1.5 hover:bg-[#004689] transition-colors"
+                        className="px-3 py-1.5 min-h-[44px] rounded-lg bg-[#115eaf] text-white text-xs font-semibold flex items-center gap-1.5 hover:bg-[#004689] transition-colors"
                       >
                         <Play className="w-3.5 h-3.5 fill-current" />
                         <span>{playingVideo === item.id ? 'Pause Preview' : 'Play Lecture'}</span>
@@ -172,7 +172,7 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
 
           {activeTab === 'ebooks' && (
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-wrap items-center justify-between">
                 <div>
                   <h4 className="font-bold text-sm text-[#000f22]">Digital Library & Searchable Course Kits</h4>
                   <p className="text-xs text-[#43474d]">Official university e-books, slide decks, and offline synchronizable audio notes</p>
@@ -241,7 +241,7 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
             <div className="space-y-3">
               <h4 className="font-bold text-sm text-[#000f22]">Upcoming Interactive Live Masterclasses</h4>
               <div className="space-y-2 text-xs">
-                <div className="p-3 rounded-xl border border-[#e7eeff] bg-white flex items-center justify-between">
+                <div className="p-3 rounded-xl border border-[#e7eeff] bg-white flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-3">
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                     <div>
@@ -251,7 +251,7 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
                   </div>
                   <span className="text-xs font-bold text-[#115eaf]">Live Video Link Active</span>
                 </div>
-                <div className="p-3 rounded-xl border border-[#e7eeff] bg-white flex items-center justify-between">
+                <div className="p-3 rounded-xl border border-[#e7eeff] bg-white flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-3">
                     <span className="w-2.5 h-2.5 rounded-full bg-blue-400"></span>
                     <div>
@@ -261,7 +261,7 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
                   </div>
                   <span className="text-xs text-[#74777e]">Upcoming Today</span>
                 </div>
-                <div className="p-3 rounded-xl border border-[#e7eeff] bg-white flex items-center justify-between">
+                <div className="p-3 rounded-xl border border-[#e7eeff] bg-white flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-3">
                     <span className="w-2.5 h-2.5 rounded-full bg-blue-400"></span>
                     <div>
@@ -284,7 +284,7 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
           <div className="flex items-center gap-3 w-full sm:w-auto">
             <button
               onClick={onClose}
-              className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-[#000f22] text-xs font-semibold hover:bg-white"
+              className="flex-1 sm:flex-none px-4 py-2.5 min-h-[44px] rounded-xl border border-[#c4c6ce] text-[#000f22] text-xs font-semibold hover:bg-white"
             >
               Close Preview
             </button>
@@ -293,7 +293,7 @@ export const LmsPortalModal: React.FC<LmsPortalModalProps> = ({ isOpen, onClose,
                 onClose();
                 onOpenApply();
               }}
-              className="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-[#115eaf] text-white text-xs font-bold shadow hover:bg-[#004689] flex items-center justify-center gap-1.5"
+              className="flex-1 sm:flex-none px-5 py-2.5 min-h-[44px] rounded-xl bg-[#115eaf] text-white text-xs font-bold shadow hover:bg-[#004689] flex items-center justify-center gap-1.5"
             >
               <span>Enroll for Full LMS Access</span>
               <ExternalLink className="w-3.5 h-3.5" />

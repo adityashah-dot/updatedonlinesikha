@@ -22,7 +22,7 @@ export const HelpDeskModal: React.FC<HelpDeskModalProps> = ({ isOpen, onClose })
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
       <div 
-        className="bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-[#e7eeff] overflow-hidden relative"
+        className="bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-[#e7eeff] overflow-hidden max-h-[92vh] overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -42,7 +42,7 @@ export const HelpDeskModal: React.FC<HelpDeskModalProps> = ({ isOpen, onClose })
           </div>
           <button 
             onClick={onClose}
-            className="p-2 text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
+            className="p-2 min-h-[44px] text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -50,7 +50,7 @@ export const HelpDeskModal: React.FC<HelpDeskModalProps> = ({ isOpen, onClose })
 
         <div className="p-6 space-y-6">
           {/* Quick Direct Contacts */}
-          <div className="grid grid-cols-2 gap-3 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
             <a 
               href="tel:18008894422" 
               className="p-3.5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] hover:border-[#115eaf] transition-all flex flex-col items-center text-center group"
@@ -87,7 +87,7 @@ export const HelpDeskModal: React.FC<HelpDeskModalProps> = ({ isOpen, onClose })
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Your Full Name"
-                    className="w-full px-3 py-2 rounded-lg border border-[#c4c6ce] bg-white focus:border-[#115eaf] outline-none"
+                    className="w-full px-3 py-2 rounded-lg border border-[#c4c6ce] bg-white focus:border-[#115eaf] outline-none text-base sm:text-sm"
                   />
                 </div>
                 <div>
@@ -98,12 +98,12 @@ export const HelpDeskModal: React.FC<HelpDeskModalProps> = ({ isOpen, onClose })
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="10-digit Mobile Number"
-                    className="w-full px-3 py-2 rounded-lg border border-[#c4c6ce] bg-white focus:border-[#115eaf] outline-none"
+                    className="w-full px-3 py-2 rounded-lg border border-[#c4c6ce] bg-white focus:border-[#115eaf] outline-none text-base sm:text-sm"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-2.5 rounded-lg bg-[#115eaf] text-white font-bold hover:bg-[#004689] transition-all shadow-xs"
+                  className="w-full py-2.5 min-h-[44px] rounded-lg bg-[#115eaf] text-white font-bold hover:bg-[#004689] transition-all shadow-xs"
                 >
                   Schedule Callback (Within 15 Mins)
                 </button>
@@ -133,7 +133,7 @@ export const HelpDeskModal: React.FC<HelpDeskModalProps> = ({ isOpen, onClose })
         <div className="p-4 border-t border-[#e7eeff] bg-[#f9f9ff] text-center">
           <button
             onClick={onClose}
-            className="px-6 py-2 rounded-xl border border-[#c4c6ce] text-xs font-bold text-[#000f22] hover:bg-white"
+            className="px-6 py-2 min-h-[44px] rounded-xl border border-[#c4c6ce] text-xs font-bold text-[#000f22] hover:bg-white"
           >
             Close
           </button>

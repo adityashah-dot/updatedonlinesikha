@@ -80,7 +80,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
       {/* Breadcrumb */}
       <div className="bg-[#f0f3ff] border-b border-[#e7eeff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
-          <nav className="flex items-center text-xs text-[#43474d] space-x-2 font-medium">
+          <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-[#43474d] font-medium">
             <span className="hover:text-[#115eaf] cursor-pointer">Home</span>
             <ChevronRight className="w-3.5 h-3.5 text-[#74777e]" />
             <span className="hover:text-[#115eaf] cursor-pointer">Lovely Professional University Online</span>
@@ -134,7 +134,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
                 <select
                   value={calcCourseId}
                   onChange={(e) => setCalcCourseId(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-xs sm:text-sm font-semibold text-[#000f22] focus:border-[#115eaf] outline-none"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm font-semibold text-[#000f22] focus:border-[#115eaf] outline-none"
                 >
                   {COURSES_DATA.map(c => (
                     <option key={c.id} value={c.id}>{c.name} (₹{c.totalFee.toLocaleString('en-IN')})</option>

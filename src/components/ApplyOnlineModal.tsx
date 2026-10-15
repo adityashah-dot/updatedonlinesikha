@@ -76,7 +76,7 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
           </div>
           <button 
             onClick={onClose}
-            className="p-2 text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
+            className="p-2 min-h-[44px] text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -113,7 +113,7 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
                   value={formData.fullName}
                   onChange={(e) => handleInputChange('fullName', e.target.value)}
                   placeholder="e.g. Rahul Sharma"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
                 />
               </div>
 
@@ -129,7 +129,7 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
                     value={formData.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
                     placeholder="10-digit Mobile Number"
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
                   />
                 </div>
                 <div>
@@ -142,7 +142,7 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     placeholder="rahul.sharma@example.com"
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
+                    className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
                   />
                 </div>
               </div>
@@ -165,7 +165,7 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
                           city: cities[0] || ''
                         }));
                       }}
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 bg-white cursor-pointer hover:border-[#115eaf]/50 transition-colors font-medium"
+                      className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 bg-white cursor-pointer hover:border-[#115eaf]/50 transition-colors font-medium"
                     >
                       <option value="">Select State</option>
                       {INDIAN_STATES.map((st) => (
@@ -184,7 +184,7 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
                       disabled={!formData.state}
                       value={formData.city}
                       onChange={(e) => handleInputChange('city', e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 bg-white cursor-pointer disabled:bg-[#f0f3ff] disabled:text-[#74777e] disabled:cursor-not-allowed hover:border-[#115eaf]/50 transition-colors font-medium"
+                      className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 bg-white cursor-pointer disabled:bg-[#f0f3ff] disabled:text-[#74777e] disabled:cursor-not-allowed hover:border-[#115eaf]/50 transition-colors font-medium"
                     >
                       <option value="">{formData.state ? 'Select City' : 'Select State first'}</option>
                       {formData.state && (INDIAN_STATES_CITIES[formData.state] || []).map((ct) => (
@@ -216,7 +216,7 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
                 <select
                   value={formData.courseId}
                   onChange={(e) => handleInputChange('courseId', e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl border border-[#c4c6ce] text-sm font-semibold text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 cursor-pointer"
+                  className="w-full px-4 py-3 rounded-xl border border-[#c4c6ce] text-base sm:text-sm font-semibold text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 cursor-pointer"
                 >
                   {COURSES_DATA.map((c) => (
                     <option key={c.id} value={c.id}>
@@ -240,7 +240,7 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
                 <select
                   value={formData.qualification}
                   onChange={(e) => handleInputChange('qualification', e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf]"
                 >
                   <option value="12th Pass">10+2 Intermediate (CBSE/ICSE/State)</option>
                   <option value="Graduation Completed">Bachelor’s Degree (B.Com/BBA/BCA/B.Sc/BA/B.Tech)</option>
@@ -253,13 +253,13 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
                 <label className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-1.5">
                   Qualifying Aggregate Marks Range *
                 </label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {['Above 75% (Merit)', '60% - 75%', '50% - 60%'].map((range) => (
                     <button
                       key={range}
                       type="button"
                       onClick={() => handleInputChange('marksPercentage', range)}
-                      className={`p-2.5 rounded-xl text-xs font-semibold text-center border transition-all ${
+                      className={`p-2.5 min-h-[44px] rounded-xl text-xs font-semibold text-center border transition-all ${
                         formData.marksPercentage === range
                           ? 'border-[#115eaf] bg-[#e7eeff] text-[#115eaf]'
                           : 'border-[#c4c6ce] text-[#43474d] hover:bg-[#f0f3ff]'
@@ -315,7 +315,7 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
                     className="mt-1 text-[#115eaf] focus:ring-[#115eaf]"
                   />
                   <div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
                       <span className="font-bold text-sm text-[#000f22]">Full Semester Payment with 20% Early Bird Grant</span>
                       <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#ffdcc3] text-[#6e3900]">
                         Save ₹{Math.round(selectedCourse.perSemFee * 0.2).toLocaleString('en-IN')}/sem
@@ -343,7 +343,7 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
                     className="mt-1 text-[#115eaf] focus:ring-[#115eaf]"
                   />
                   <div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
                       <span className="font-bold text-sm text-[#000f22]">Zero-Cost Monthly EMI Plan</span>
                       <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">
                         0% Interest
@@ -430,7 +430,7 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
               </div>
 
               {/* Next Steps callout */}
-              <div className="grid grid-cols-2 gap-3 text-left max-w-sm mx-auto text-xs text-[#43474d]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left max-w-sm mx-auto text-xs text-[#43474d]">
                 <div className="p-3 rounded-lg border border-[#e7eeff] bg-white flex items-start gap-2">
                   <Clock className="w-4 h-4 text-[#115eaf] shrink-0 mt-0.5" />
                   <span>Call from advisor within 15 mins for transcript review</span>

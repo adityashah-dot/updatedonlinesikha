@@ -24,7 +24,7 @@ export const UniversityLms: React.FC<UniversityLmsProps> = ({ university, onOpen
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Left: LMS Features */}
         <div className="bg-white border border-slate-200 rounded-xl p-5 sm:p-6 shadow-xs space-y-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
               <Laptop className="w-5 h-5 text-blue-700" />
               <h3 className="text-base font-bold text-slate-900">

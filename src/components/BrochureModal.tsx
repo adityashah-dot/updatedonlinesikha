@@ -45,7 +45,7 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
       <div 
-        className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-[#e7eeff] overflow-hidden relative"
+        className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-[#e7eeff] overflow-hidden max-h-[92vh] overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -65,7 +65,7 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({
           </div>
           <button 
             onClick={onClose}
-            className="p-2 text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
+            className="p-2 min-h-[44px] text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -81,7 +81,7 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({
                 <select
                   value={courseId}
                   onChange={(e) => setCourseId(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-semibold text-[#000f22] focus:outline-none focus:border-[#115eaf]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm font-semibold text-[#000f22] focus:outline-none focus:border-[#115eaf]"
                 >
                   <option value="all">Complete University Prospectus & All 9 Syllabi</option>
                   {COURSES_DATA.map(c => (
@@ -102,7 +102,7 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your.email@example.com"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf]"
                 />
               </div>
 
@@ -117,7 +117,7 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="10-digit Mobile Number"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf]"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf]"
                 />
               </div>
 
@@ -149,7 +149,7 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({
               </div>
               <button
                 onClick={handleReset}
-                className="px-6 py-2.5 rounded-xl bg-[#115eaf] text-white font-bold text-xs shadow hover:bg-[#004689] transition-all"
+                className="px-6 py-2.5 min-h-[44px] rounded-xl bg-[#115eaf] text-white font-bold text-xs shadow hover:bg-[#004689] transition-all"
               >
                 Close Window
               </button>

@@ -49,6 +49,10 @@ export default function App() {
 
   const activeTab: TabType = routeToTab(location.pathname, location.search);
 
+  // Courses & Admission only show in bottom dock when inside a university detail page
+  const isUniversityDetail =
+    location.pathname.startsWith('/universities/') && location.pathname !== '/universities';
+
   const scrollToHomeSection = (id: string) => {
     window.setTimeout(() => {
       const el = document.getElementById(id);
@@ -260,18 +264,20 @@ export default function App() {
 
       {/* Mobile Sticky Bottom Navigation Dock */}
       <nav className="md:hidden fixed bottom-0 left-0 w-full z-40 bg-white border-t border-[#e7eeff] px-3 py-2 flex items-center justify-around shadow-lg">
-        <button
-          onClick={() => {
-            setActiveTab('courses');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${
-            activeTab === 'courses' ? 'bg-[#e7eeff] text-[#115eaf]' : 'text-[#43474d]'
-          }`}
-        >
-          <BookOpen className="w-4 h-4 mb-0.5" />
-          <span>Courses</span>
-        </button>
+        {isUniversityDetail && (
+          <button
+            onClick={() => {
+              setActiveTab('courses');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${
+              activeTab === 'courses' ? 'bg-[#e7eeff] text-[#115eaf]' : 'text-[#43474d]'
+            }`}
+          >
+            <BookOpen className="w-4 h-4 mb-0.5" />
+            <span>Courses</span>
+          </button>
+        )}
 
         <button
           onClick={() => {
@@ -299,18 +305,20 @@ export default function App() {
           <span>Universities</span>
         </button>
 
-        <button
-          onClick={() => {
-            setActiveTab('admission');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${
-            activeTab === 'admission' ? 'bg-[#e7eeff] text-[#115eaf]' : 'text-[#43474d]'
-          }`}
-        >
-          <GraduationCap className="w-4 h-4 mb-0.5" />
-          <span>Admission</span>
-        </button>
+        {isUniversityDetail && (
+          <button
+            onClick={() => {
+              setActiveTab('admission');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${
+              activeTab === 'admission' ? 'bg-[#e7eeff] text-[#115eaf]' : 'text-[#43474d]'
+            }`}
+          >
+            <GraduationCap className="w-4 h-4 mb-0.5" />
+            <span>Admission</span>
+          </button>
+        )}
 
         <button
           onClick={() => {

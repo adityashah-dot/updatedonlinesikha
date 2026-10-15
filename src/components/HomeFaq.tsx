@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle, ShieldCheck, Laptop, CreditCard, Briefcase, GraduationCap, ArrowRight } from 'lucide-react';
+import { ChevronDown, ShieldCheck, Laptop, CreditCard, Briefcase, GraduationCap, ArrowRight } from 'lucide-react';
 
 interface FaqItem {
   question: string;
@@ -87,14 +87,6 @@ export const HomeFaq: React.FC<HomeFaqProps> = ({ onOpenHelpDesk }) => {
     <section id="faqs" className="bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-5 md:p-7">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end pb-4 border-b border-[#c4c6ce]/40 gap-3">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-[#115eaf]/10 text-[#115eaf]">
-              <HelpCircle className="w-4 h-4" />
-            </span>
-            <span className="text-xs font-semibold text-[#115eaf] uppercase tracking-wider">
-              Student Knowledge Base
-            </span>
-          </div>
           <h2 className="text-2xl font-bold text-[#000f22] tracking-tight">
             Frequently Asked Questions
           </h2>

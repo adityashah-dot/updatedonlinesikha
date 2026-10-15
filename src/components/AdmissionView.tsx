@@ -88,7 +88,7 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
       {/* Breadcrumb Bar */}
       <div className="bg-[#f0f3ff] border-b border-[#e7eeff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
-          <nav className="flex items-center text-xs text-[#43474d] space-x-2 font-medium">
+          <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-[#43474d] font-medium">
             <span className="hover:text-[#115eaf] cursor-pointer">Home</span>
             <ChevronRight className="w-3.5 h-3.5 text-[#74777e]" />
             <span className="hover:text-[#115eaf] cursor-pointer">Colleges</span>
@@ -456,7 +456,7 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
           <div className="card lg:col-span-8 bg-white border border-[#e7eeff] rounded-2xl shadow-xs p-5 sm:p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
               <div className="p-3.5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] space-y-1">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center justify-between gap-1">
                   <span className="font-bold text-[#000f22] flex items-center gap-1.5">
                     <CheckCircle className="w-4 h-4 text-[#115eaf]" />
                     10th Marksheet & Certificate
@@ -467,7 +467,7 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
               </div>
 
               <div className="p-3.5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] space-y-1">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center justify-between gap-1">
                   <span className="font-bold text-[#000f22] flex items-center gap-1.5">
                     <CheckCircle className="w-4 h-4 text-[#115eaf]" />
                     12th Class Marksheet
@@ -478,7 +478,7 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
               </div>
 
               <div className="p-3.5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] space-y-1">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center justify-between gap-1">
                   <span className="font-bold text-[#000f22] flex items-center gap-1.5">
                     <CheckCircle className="w-4 h-4 text-[#115eaf]" />
                     Graduation Degree / Marksheets
@@ -489,7 +489,7 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
               </div>
 
               <div className="p-3.5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] space-y-1">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center justify-between gap-1">
                   <span className="font-bold text-[#000f22] flex items-center gap-1.5">
                     <CheckCircle className="w-4 h-4 text-[#115eaf]" />
                     Valid Government Photo ID
@@ -571,7 +571,7 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
                     value={callbackName}
                     onChange={(e) => setCallbackName(e.target.value)}
                     placeholder="Full Name"
-                    className="w-full h-10 px-3 rounded-xl border border-[#c4c6ce] focus:border-[#115eaf] outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-[#c4c6ce] focus:border-[#115eaf] outline-none text-base sm:text-xs"
                   />
                   <input
                     type="tel"
@@ -580,12 +580,12 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
                     value={callbackPhone}
                     onChange={(e) => setCallbackPhone(e.target.value)}
                     placeholder="Mobile Number (+91)"
-                    className="w-full h-10 px-3 rounded-xl border border-[#c4c6ce] focus:border-[#115eaf] outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-[#c4c6ce] focus:border-[#115eaf] outline-none text-base sm:text-xs"
                   />
                   <select
                     value={callbackCourse}
                     onChange={(e) => setCallbackCourse(e.target.value)}
-                    className="w-full h-10 px-3 rounded-xl border border-[#c4c6ce] focus:border-[#115eaf] outline-none"
+                    className="w-full h-10 px-3 rounded-xl border border-[#c4c6ce] focus:border-[#115eaf] outline-none text-base sm:text-xs"
                   >
                     {COURSES_DATA.map(c => (
                       <option key={c.id} value={c.id}>{c.name}</option>

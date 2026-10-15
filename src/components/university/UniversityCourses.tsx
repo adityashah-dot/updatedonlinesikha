@@ -58,7 +58,7 @@ export const UniversityCourses: React.FC<UniversityCoursesProps> = ({
           <button
             type="button"
             onClick={() => setLevelFilter('all')}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 ${
               levelFilter === 'all'
                 ? 'bg-white text-slate-900 shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
@@ -69,7 +69,7 @@ export const UniversityCourses: React.FC<UniversityCoursesProps> = ({
           <button
             type="button"
             onClick={() => setLevelFilter('PG')}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 ${
               levelFilter === 'PG'
                 ? 'bg-white text-slate-900 shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
@@ -80,7 +80,7 @@ export const UniversityCourses: React.FC<UniversityCoursesProps> = ({
           <button
             type="button"
             onClick={() => setLevelFilter('UG')}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 ${
               levelFilter === 'UG'
                 ? 'bg-white text-slate-900 shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'

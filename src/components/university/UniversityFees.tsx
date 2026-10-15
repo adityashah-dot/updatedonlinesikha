@@ -57,7 +57,7 @@ export const UniversityFees: React.FC<UniversityFeesProps> = ({
       {/* Scholarships Matrix */}
       {university.feesAndFinancing.scholarships && university.feesAndFinancing.scholarships.length > 0 && (
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-1">
             <h3 className="text-base sm:text-lg font-semibold text-slate-900">
               Scholarships & Fee Concession Schemes
             </h3>
