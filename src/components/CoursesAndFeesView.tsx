@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Course, CourseCategory } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
 import { INSTITUTION_HIGHLIGHTS, PLACEMENT_STATS } from '../data/institutionalData';
@@ -25,6 +25,18 @@ import {
   Gift,
   Clock
 } from 'lucide-react';
+import { TableOfContents, TocItem } from './TableOfContents';
+
+const COURSES_TOC_ITEMS: TocItem[] = [
+  { id: 'fee-structure', label: 'LPU Online Fee Structure 2026 (Semester & Total)' },
+  { id: 'all-courses', label: 'LPU Online Degree Programs Catalog' },
+  { id: 'admission-dates', label: 'LPU Online Admission Dates & Deadlines' },
+  { id: 'learning-platform', label: 'How You Study (LPU e-Connect Platform)' },
+  { id: 'student-reviews', label: 'LPU Online Student Reviews & Ratings' },
+  { id: 'faqs', label: 'Frequently Asked Questions' },
+  { id: 'blogs', label: 'Blogs' },
+  { id: 'counselor-helpline', label: 'Academic Counseling & Helpline' },
+];
 
 interface CoursesAndFeesViewProps {
   onSelectCourse: (course: Course) => void;
@@ -48,7 +60,24 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
   const [sortBy, setSortBy] = useState<'popularity' | 'fee-asc' | 'fee-desc' | 'duration'>('popularity');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [blogIndex, setBlogIndex] = useState<number>(0);
+  const [activeSection, setActiveSection] = useState<string>('fee-structure');
   const blogVisible = 3;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 160;
+      for (let i = COURSES_TOC_ITEMS.length - 1; i >= 0; i--) {
+        const el = document.getElementById(COURSES_TOC_ITEMS[i].id);
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(COURSES_TOC_ITEMS[i].id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Filter and sort courses
   const filteredCourses = useMemo(() => {
@@ -245,6 +274,16 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
 
       {universityNavigation}
 
+      {/* Table of Contents - Directly on the Page */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-1">
+        <TableOfContents
+          title="Table of contents"
+          items={COURSES_TOC_ITEMS}
+          activeId={activeSection}
+          onItemClick={(id) => setActiveSection(id)}
+        />
+      </div>
+
       {/* INTERACTIVE FILTER STRIP & SEARCH */}
       <section className="sticky top-20 z-30 bg-white/95 backdrop-blur-md border-y border-[#e7eeff] shadow-xs py-3.5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -360,7 +399,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* FEE TRANSPARENCY MATRIX (SIDE-BY-SIDE TABLES) */}
-      <section className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="fee-structure" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 gap-3">
           <div>
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
@@ -523,7 +562,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* COMPREHENSIVE COURSES CATALOG (3x3 DESKTOP GRID) */}
-      <section className="content-block bg-[#f0f3ff]/50 border-t border-[#e7eeff]">
+      <section id="all-courses" className="content-block bg-[#f0f3ff]/50 border-t border-[#e7eeff] scroll-mt-[100px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-left max-w-3xl mb-[18px]">
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
@@ -641,7 +680,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* LPU ONLINE ADMISSION DATES 2026 */}
-      <section className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="admission-dates" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
         <div className="rounded-2xl border border-[#d5e3ff] bg-gradient-to-br from-[#f9fbff] via-[#f0f3ff] to-white shadow-sm overflow-hidden">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 px-5 sm:px-6 py-5 border-b border-[#dfe9ff]">
             <div>
@@ -705,7 +744,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* LPU E-CONNECT LEARNING ECOSYSTEM (HOW YOU STUDY) */}
-      <section className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="learning-platform" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
         <div className="mb-[18px]">
           <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
             How You Study: The LPU e-Connect Platform
@@ -778,7 +817,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* TESTIMONIALS (STUDENT EXPERIENCES FROM API) */}
-      <section className="content-block bg-white border-y border-[#e7eeff]">
+      <section id="student-reviews" className="content-block bg-white border-y border-[#e7eeff] scroll-mt-[100px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-left mb-[18px]">
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
@@ -818,7 +857,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* FAQS SECTION (ALL 12 AUTHENTIC FAQS FROM API) */}
-      <section className="content-block max-w-7xl mx-0 px-4 sm:px-6 lg:px-8">
+      <section id="faqs" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
         <div className="text-left mb-[18px]">
           <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
             Frequently Asked Questions (LPU Online)
@@ -858,7 +897,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* Blogs */}
-      <section className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="blogs" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
         <div className="flex items-end justify-between gap-3 flex-wrap">
           <div>
             <h2 className="section-title mt-2 text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
@@ -956,7 +995,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* COUNSELOR CTA STRIP */}
-      <section className="content-block bg-[#0b2540] text-white">
+      <section id="counselor-helpline" className="content-block bg-[#0b2540] text-white scroll-mt-[100px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-5">
           <div>
             <h3 className="section-title text-lg sm:text-xl font-bold font-sans tracking-tight">

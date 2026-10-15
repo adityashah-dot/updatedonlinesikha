@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Course } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
 import { 
@@ -13,6 +13,13 @@ import {
   ChevronRight,
   UserCheck
 } from 'lucide-react';
+import { TableOfContents, TocItem } from './TableOfContents';
+
+const SCHOLARSHIPS_TOC_ITEMS: TocItem[] = [
+  { id: 'scholarship-overview', label: 'LPU Online Scholarships Overview 2026' },
+  { id: 'scholarship-calculator', label: 'Interactive Tuition Fee & Savings Calculator' },
+  { id: 'scholarship-schemes', label: 'LPU Online Scholarship Schemes & Concessions' },
+];
 
 interface ScholarshipsViewProps {
   onOpenApply: (courseId?: string) => void;
@@ -26,6 +33,23 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
   const [isDefense, setIsDefense] = useState(false);
   const [isSingleGirl, setIsSingleGirl] = useState(false);
   const [isAlumni, setIsAlumni] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('scholarship-overview');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 160;
+      for (let i = SCHOLARSHIPS_TOC_ITEMS.length - 1; i >= 0; i--) {
+        const el = document.getElementById(SCHOLARSHIPS_TOC_ITEMS[i].id);
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(SCHOLARSHIPS_TOC_ITEMS[i].id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const selectedCourse = COURSES_DATA.find(c => c.id === calcCourseId) || COURSES_DATA[3];
 
@@ -68,7 +92,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-[10px]">
         {/* Header */}
-        <div className="page-section text-center max-w-3xl mx-auto">
+        <div id="scholarship-overview" className="page-section text-center max-w-3xl mx-auto scroll-mt-[100px]">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFBEB] text-[#92400E] border border-[#FDE68A] text-xs font-bold">
             <Sparkles className="w-3.5 h-3.5 text-[#D97706]" />
             Fee Waivers & Concessions 2026
@@ -83,8 +107,16 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
 
         {universityNavigation}
 
+        {/* Table of Contents - Directly on the Page */}
+        <TableOfContents
+          title="Table of contents"
+          items={SCHOLARSHIPS_TOC_ITEMS}
+          activeId={activeSection}
+          onItemClick={(id) => setActiveSection(id)}
+        />
+
         {/* INTERACTIVE SCHOLARSHIP CALCULATOR */}
-        <section className="page-section card bg-white rounded-2xl border-2 border-[#115eaf]/30 shadow-lg">
+        <section id="scholarship-calculator" className="page-section card bg-white rounded-2xl border-2 border-[#115eaf]/30 shadow-lg scroll-mt-[100px]">
           <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
             {/* Left Config Controls */}
             <div className="w-full lg:w-3/5 space-y-5">
@@ -215,7 +247,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
         </section>
 
         {/* 6 SCHOLARSHIP PILLARS GRID */}
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section id="scholarship-schemes" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-mt-[100px]">
           <div className="card bg-white border border-[#e7eeff] rounded-2xl shadow-xs flex flex-col justify-between hover:border-[#115eaf] transition-all">
             <div>
               <div className="w-10 h-10 rounded-xl bg-[#FFFBEB] text-[#92400E] flex items-center justify-center mb-3">

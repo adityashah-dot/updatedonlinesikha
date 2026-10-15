@@ -24,6 +24,7 @@ import {
   Clock,
   ArrowRight,
 } from 'lucide-react';
+import { TableOfContents } from './TableOfContents';
 
 const RECRUITER_LOGOS: { name: string; src: string }[] = [
   { name: 'Amazon', src: '/logos/amazon.jpg' },
@@ -243,20 +244,20 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
   const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations', 'Technology', 'Evaluation', 'Info'];
 
   const TOC_ITEMS = [
-    { id: 'latest-news', label: '1. Latest News & Updates' },
-    { id: 'highlights', label: '2. Highlights 2026' },
-    { id: 'courses-fees', label: '3. LPU Online Courses and Fees 2026' },
-    { id: 'eligibility-criteria', label: '4. Eligibility & Selection' },
-    { id: 'admission-process', label: '5. Admission Process 2026' },
-    { id: 'rankings', label: '6. Rankings & Accreditations' },
-    { id: 'examination-pattern', label: '7. Examination Pattern' },
-    { id: 'placements', label: '8. Placements' },
-    { id: 'campus', label: '9. Campus' },
-    { id: 'sample-degree', label: '10. Sample Degree' },
-    { id: 'reviews-section', label: '11. Reviews & FAQs' },
-    { id: 'compare-colleges', label: '12. Compare Colleges' },
-    { id: 'blogs', label: '13. Blogs' },
-    { id: 'related-colleges', label: '14. Related Colleges' },
+    { id: 'latest-news', label: 'LPU Online Latest News & Updates' },
+    { id: 'highlights', label: 'LPU Online Admission Highlights 2026' },
+    { id: 'courses-fees', label: 'LPU Online Courses and Fees 2026' },
+    { id: 'eligibility-criteria', label: 'LPU Online Eligibility & Selection Criteria 2026' },
+    { id: 'admission-process', label: 'LPU Online Admission Process 2026' },
+    { id: 'rankings', label: 'LPU Online Rankings & Accreditations' },
+    { id: 'examination-pattern', label: 'LPU Online Examination Pattern' },
+    { id: 'placements', label: 'LPU Online Placements' },
+    { id: 'campus', label: 'LPU Online Campus' },
+    { id: 'sample-degree', label: 'LPU Online Sample Degree' },
+    { id: 'reviews-section', label: 'LPU Online Student Reviews & FAQs' },
+    { id: 'compare-colleges', label: 'Compare Colleges' },
+    { id: 'blogs', label: 'Blogs' },
+    { id: 'related-colleges', label: 'Related Colleges' },
   ];
 
   // Dynamic scrollspy to highlight active section in TOC as user scrolls
@@ -426,6 +427,16 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
       {/* MAIN CONTENT */}
       <div className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3">
         <div className="section-container">
+            {/* Table of Contents - Directly on the Page */}
+            <TableOfContents
+              title="Table of contents"
+              items={TOC_ITEMS}
+              activeId={activeSection}
+              onItemClick={(id) => setActiveSection(id)}
+              defaultExpanded={true}
+              collapsedCount={7}
+            />
+
             {/* 1. Latest News and Updates */}
             <section id="latest-news" className="page-section card bg-[#f0f3ff] rounded-2xl border border-[#d5e3ff] scroll-mt-[130px]">
               <h2 className="section-title text-lg sm:text-xl font-bold text-[#000f22] font-sans">
@@ -633,80 +644,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               </div>
             </section>
 
-            {/* LPU Online Campus */}
-            <section
-              id="campus"
-              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
-              style={{ fontFamily: 'Poppins, sans-serif' }}
-            >
-              <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-3">
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                    LPU Online Campus
-                  </h2>
-                  <p className="mt-2 text-sm text-[#43474d] leading-relaxed font-normal max-w-2xl">
-                    The digital campus experience is designed for flexibility, with a modern learning ecosystem,
-                    live support, academic resources, and a connected student community built for working professionals.
-                  </p>
-                </div>
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#d5e3ff] bg-[#f0f3ff] px-3 py-1.5 text-[11px] font-semibold text-[#115eaf]">
-                  <span className="inline-block h-2.5 w-2.5 rounded-full bg-[#115eaf]" />
-                  Campus Experience
-                </div>
-              </div>
-
-              <style>{`
-                .campus-marquee {
-                  position: relative;
-                  display: flex;
-                  gap: 16px;
-                  width: max-content;
-                  animation: campus-scroll 26s linear infinite;
-                }
-                .campus-marquee:hover {
-                  animation-play-state: paused;
-                }
-                @keyframes campus-scroll {
-                  from { transform: translateX(0); }
-                  to { transform: translateX(-50%); }
-                }
-                .campus-card {
-                  flex: 0 0 auto;
-                  width: min(280px, 72vw);
-                  overflow: hidden;
-                  border-radius: 18px;
-                  border: 1px solid #e7eeff;
-                  background: #fff;
-                  box-shadow: 0 10px 22px rgba(11, 37, 64, 0.06);
-                }
-                .campus-card img {
-                  display: block;
-                  width: 100%;
-                  height: 220px;
-                  object-fit: cover;
-                }
-                @media (max-width: 640px) {
-                  .campus-card {
-                    width: min(240px, 76vw);
-                  }
-                  .campus-card img {
-                    height: 180px;
-                  }
-                }
-              `}</style>
-
-              <div className="mt-[18px] overflow-hidden rounded-[18px] border border-[#e7eeff] bg-[#f9f9ff] p-2">
-                <div className="campus-marquee">
-                  {[...CAMPUS_IMAGES, ...CAMPUS_IMAGES].map((image, idx) => (
-                    <div key={`${image.alt}-${idx}`} className="campus-card">
-                      <img src={image.src} alt={image.alt} loading="lazy" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            {/* 3. Eligibility and Selection Criteria (From API) */}
+            {/* 4. Eligibility and Selection Criteria (From API) */}
             <section id="eligibility-criteria" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
@@ -1199,7 +1137,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                   {[...CAMPUS_IMAGES, ...CAMPUS_IMAGES].map((image, index) => (
                     <figure key={`${image.src}-${index}`} className="campus-marquee-item">
                       <img src={image.src} alt={image.alt} loading="lazy" />
-                      <figcaption>{image.caption}</figcaption>
+                      <figcaption>{image.alt}</figcaption>
                     </figure>
                   ))}
                 </div>
