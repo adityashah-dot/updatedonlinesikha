@@ -182,7 +182,7 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
           items={ADMISSION_TOC_ITEMS}
           activeId={activeSection}
           onItemClick={(id) => setActiveSection(id)}
-          defaultExpanded={true}
+          defaultExpanded={false}
           collapsedCount={6}
         />
 

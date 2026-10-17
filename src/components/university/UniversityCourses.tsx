@@ -41,7 +41,7 @@ export const UniversityCourses: React.FC<UniversityCoursesProps> = ({
   }, [university.courses, levelFilter, searchQuery]);
 
   return (
-    <section id="courses" className="scroll-mt-32 space-y-6">
+    <section id="courses" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
       {/* Header and Controls */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-3">
         <div>

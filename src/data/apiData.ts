@@ -179,23 +179,24 @@ export const DEGREEFYD_LPU_API = {
     },
     {
       id: "cu-online",
-      name: "Chandigarh University (CU Online)",
+      name: "Chandigarh University Online",
       short: "CU",
       location: "Mohali, Punjab",
       established: "2012",
-      rankNote: "Ranked #32 by NIRF 2024",
-      highlight: { text: "QS World Ranked", tone: "blue" as const },
+      rankNote: "Ranked #19 by NIRF",
+      highlight: { text: "NAAC A+ Accredited", tone: "blue" as const },
       naac: "NAAC A+ Accredited",
-      approvals: ["UGC-DEB Entitled", "AICTE Approved"],
-      feeLabel: "₹1,35,000",
+      approvals: ["UGC Entitled", "NAAC A+"],
+      feeLabel: "₹75,000 onwards",
       emi: "₹4,500/month",
+      logoImage: "https://images.DegreeFYD.com/colleges/9842/chandigarh_university_online_courses_and_admission_2025_logo.webp",
       specs: [
-        { label: "Exam Mode", value: "Web-Proctored AI" },
-        { label: "LMS Delivery", value: "Blackboard App + Live" },
+        { label: "Exam Mode", value: "Online Proctored" },
+        { label: "LMS Delivery", value: "Digital LMS + Live" },
         { label: "Hiring Partners", value: "300+ Corporates" },
-        { label: "Scholarships", value: "Up to 30% Early Bird", highlight: true }
+        { label: "Scholarships", value: "Up to 25% Early Bird", highlight: true }
       ],
-      tracks: ["Online MBA (FinTech/Analytics)", "Online MCA (Data Science)", "Online BBA", "Online M.Com"]
+      tracks: ["Online MBA", "Online MCA", "Online BBA", "Online BCA"]
     },
     {
       id: "amity-online",

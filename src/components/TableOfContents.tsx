@@ -23,7 +23,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
   activeId,
   onItemClick,
   className = '',
-  defaultExpanded = true,
+  defaultExpanded = false,
   collapsedCount = 6,
 }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(defaultExpanded);

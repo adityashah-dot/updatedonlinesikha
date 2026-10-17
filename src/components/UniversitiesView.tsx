@@ -418,8 +418,12 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
   return (
     <div className="pb-20 md:pb-8">
       {/* ================= HERO & DISCOVERY SEARCH BAR ================= */}
-      <section className="bg-gradient-to-b from-[#f0f3ff] via-white to-[#f9f9ff] border-b border-[#e7eeff] pt-8 pb-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden border-b border-[#e7eeff] bg-[#f2f6fb] pt-8 pb-10 shadow-[0_18px_45px_rgba(15,23,42,0.02)]">
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-r from-[#eaf3ff]/80 via-[#f3f8ff]/40 to-[#edfdf7]/50 blur-2xl" />
+        <div className="absolute -left-12 top-10 h-36 w-36 rounded-full bg-[#93c5fd]/10 blur-3xl" />
+        <div className="absolute -right-12 bottom-0 h-40 w-40 rounded-full bg-[#a7f3d0]/10 blur-3xl" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-7">
             <div className="mb-3 text-[11px] font-medium text-[#43474d]">
               <span className="text-[#115eaf] font-semibold">Accredited by UGC, AICTE &amp; NAAC</span>
@@ -506,7 +510,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
       </section>
 
       {/* ================= MAIN: FILTERS + LISTING ================= */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-[#f3f6fb] rounded-t-[28px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* LEFT SIDEBAR FILTERS */}
           <aside className="lg:col-span-3 bg-white rounded-2xl border border-[#d5e3ff] p-5 shadow-xs sticky top-20 hidden lg:block">
@@ -601,17 +605,17 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                 <article
                   key={u.id}
                   onClick={() => navigate(`/universities/${u.id}`)}
-                  className="bg-white rounded-2xl border border-[#d5e3ff] p-5 md:p-6 shadow-xs hover:shadow-xl hover:border-[#115eaf] transition-all duration-300 relative flex flex-col cursor-pointer"
+                  className="bg-white rounded-2xl border border-[#d5e3ff] p-4 md:p-5 shadow-xs hover:shadow-xl hover:border-[#115eaf] transition-all duration-300 relative flex flex-col cursor-pointer"
                 >
                   {/* Top row: identity + fee */}
-                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 pb-3 border-b border-[#e7eeff]">
-                    <div className="flex items-start gap-4">
-                      <div className="w-16 h-16 rounded-2xl bg-[#f0f3ff] border border-[#d5e3ff] flex flex-col items-center justify-center shrink-0 shadow-xs overflow-hidden">
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 pb-2.5 border-b border-[#e7eeff]">
+                    <div className="flex items-start gap-3">
+                      <div className="w-14 h-14 rounded-xl bg-[#f0f3ff] border border-[#d5e3ff] flex flex-col items-center justify-center shrink-0 shadow-xs overflow-hidden">
                         {u.logoImage ? (
                           <img
                             src={u.logoImage}
                             alt={`${u.short} Logo`}
-                            className="w-14 h-14 object-contain rounded-lg bg-white p-1"
+                            className="w-12 h-12 object-contain rounded-lg bg-white p-0.5"
                             onError={(e) => {
                               (e.target as HTMLImageElement).style.display = 'none';
                             }}
@@ -620,7 +624,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           <img
                             src={DEGREEFYD_LPU_API.hero.logoImage}
                             alt="LPU Logo"
-                            className="w-14 h-14 object-contain rounded-lg bg-white p-1"
+                            className="w-12 h-12 object-contain rounded-lg bg-white p-0.5"
                             onError={(e) => {
                               (e.target as HTMLImageElement).style.display = 'none';
                             }}
@@ -663,7 +667,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           <span className="text-[#B45309] font-semibold line-clamp-1" title={u.rankNote}>{u.rankNote}</span>
                         </p>
 
-                        <div className={`flex flex-wrap items-center ${u.isLpu || u.id === 'cu-online' ? 'gap-1.5' : 'gap-2'} mt-2.5`}>
+                        <div className={`flex flex-wrap items-center ${u.isLpu || u.id === 'cu-online' ? 'gap-1.5' : 'gap-2'} mt-2`}>
                           <span className="px-2.5 py-1 bg-amber-50 text-amber-900 border border-amber-200 rounded-lg text-[11px] font-semibold flex items-center gap-1 shadow-xs shrink-0">
                             <Star className="w-3 h-3 text-amber-600 fill-amber-500" />
                             {u.naac}
@@ -681,7 +685,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                     </div>
 
                     {/* Fee box */}
-                    <div className="text-left md:text-right bg-[#f9f9ff] md:bg-transparent p-3.5 md:p-0 rounded-xl shrink-0 border md:border-0 border-[#e7eeff]">
+                    <div className="text-left md:text-right bg-[#f9f9ff] md:bg-transparent p-3 md:p-0 rounded-xl shrink-0 border md:border-0 border-[#e7eeff]">
                       <span className="block text-[11px] text-[#74777e] font-semibold uppercase">
                         Total Program Fee
                       </span>
@@ -689,7 +693,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                         {u.feeLabel}{' '}
                         <span className="text-xs text-[#43474d] font-normal">onwards</span>
                       </div>
-                      <div className="inline-flex items-center gap-1 px-2.5 py-1 mt-1 bg-emerald-50 text-emerald-800 rounded-full text-[11px] font-semibold border border-emerald-200/60 shadow-xs">
+                      <div className="inline-flex items-center gap-1 px-2.5 py-0.5 mt-1 bg-emerald-50 text-emerald-800 rounded-full text-[11px] font-semibold border border-emerald-200/60 shadow-xs">
                         <CreditCard className="w-3 h-3" />
                         EMI starts {u.emi}
                       </div>
@@ -697,7 +701,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                   </div>
 
                   {/* Spec grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3 my-1.5 bg-[#f9f9ff] rounded-xl px-4 border border-[#e7eeff] text-center sm:text-left">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 py-2.5 my-0 bg-[#f9f9ff] rounded-xl px-3.5 border border-[#e7eeff] text-center sm:text-left">
                     {u.specs.map((s) => {
                       const Icon = specIconByLabel[s.label] || Monitor;
                       return (
@@ -723,7 +727,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                   </div>
 
                   {/* Tracks + CTAs */}
-                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 pt-2.5">
+                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 pt-2">
                     <div className="flex flex-wrap items-center gap-1.5">
                       <span className="text-[11px] text-[#74777e] uppercase font-semibold mr-1">
                         Popular Tracks:
@@ -749,7 +753,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
 
                     <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto lg:shrink-0">
                       <label 
-                        className="flex items-center gap-1.5 text-[13px] font-medium text-[#43474d] cursor-pointer sm:mr-2 select-none hover:text-[#000f22] py-2 min-h-[44px]"
+                        className="flex items-center gap-1.5 text-[13px] font-medium text-[#43474d] cursor-pointer sm:mr-2 select-none hover:text-[#000f22] py-1.5 min-h-[40px]"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <input
@@ -765,7 +769,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           e.stopPropagation();
                           onOpenBrochure();
                         }}
-                        className="px-3.5 py-2 rounded-xl bg-[#f0f3ff] hover:bg-[#dee8ff] text-[#000f22] text-xs font-semibold border border-[#d5e3ff] transition-colors flex items-center gap-1 min-h-[44px]"
+                        className="px-3.5 py-1.5 rounded-xl bg-[#f0f3ff] hover:bg-[#dee8ff] text-[#000f22] text-xs font-semibold border border-[#d5e3ff] transition-colors flex items-center gap-1 min-h-[40px]"
                       >
                         <Download className="w-4 h-4" />
                         <span>Brochure</span>
@@ -775,7 +779,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           e.stopPropagation();
                           onOpenApply();
                         }}
-                        className="px-4 py-2 rounded-xl bg-[#115eaf] hover:bg-[#004689] text-white text-xs font-semibold transition-all shadow-sm active:scale-95 flex items-center gap-1 min-h-[44px]"
+                        className="px-4 py-1.5 rounded-xl bg-[#115eaf] hover:bg-[#004689] text-white text-xs font-semibold transition-all shadow-sm active:scale-95 flex items-center gap-1 min-h-[40px]"
                       >
                         <span>Apply Now</span>
                         <ArrowRight className="w-3.5 h-3.5" />

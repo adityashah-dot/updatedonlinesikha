@@ -3,6 +3,7 @@ import { Course } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
 import { PLACEMENT_STATS } from '../data/institutionalData';
 import { DEGREEFYD_LPU_API } from '../data/apiData';
+import { ProgrammeCardsSection, ProgrammeCardData } from './ProgrammeCardsSection';
 import { INDIAN_STATES, INDIAN_STATES_CITIES } from '../data/indianLocations';
 import {
   CheckCircle,
@@ -162,7 +163,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
           if (entry.isIntersecting) {
             setTimeout(() => {
               setVisibleAdmissionSteps((prev) => (prev.includes(index) ? prev : [...prev, index]));
-            }, index * 260);
+            }, index * 150);
           }
         });
       },
@@ -241,12 +242,100 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
     },
   ];
 
-  const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations', 'Technology', 'Evaluation', 'Info'];
+  const LPU_POPULAR_PROGRAMMES: ProgrammeCardData[] = [
+  {
+    id: 'mba',
+    title: 'Online MBA',
+    subtitle: 'Master of Business Administration',
+    duration: '2 Years',
+    fee: '₹1,86,000',
+    mode: 'Online',
+    specialisations: [
+      'Finance',
+      'Marketing',
+      'Human Resource',
+      'Data Science',
+      'Business Analytics',
+      'Operations',
+      'International Business',
+      'Digital Marketing',
+      'IT',
+      'Retail',
+      'Supply Chain',
+      'Agri-Business',
+    ],
+  },
+  {
+    id: 'mca',
+    title: 'Online MCA',
+    subtitle: 'Master of Computer Applications',
+    duration: '2 Years',
+    fee: '₹1,40,000',
+    mode: 'Online',
+    specialisations: [
+      'Cloud Computing',
+      'AI & Machine Learning',
+      'Full Stack Development',
+      'Data Science',
+      'Cyber Security',
+      'Blockchain',
+      'AR/VR',
+    ],
+  },
+  {
+    id: 'bca',
+    title: 'Online BCA',
+    subtitle: 'Bachelor of Computer Applications',
+    duration: '3 Years',
+    fee: '₹1,59,000',
+    mode: 'Online',
+    specialisations: ['Cloud & DevOps', 'Data Analytics', 'AI & ML'],
+  },
+  {
+    id: 'bba',
+    title: 'Online BBA',
+    subtitle: 'Bachelor of Business Administration',
+    duration: '3 Years',
+    fee: '₹1,38,000',
+    mode: 'Online',
+    specialisations: ['General', 'Business Analytics'],
+  },
+  {
+    id: 'ba',
+    title: 'Online BA',
+    subtitle: 'Bachelor of Arts',
+    duration: '3 Years',
+    fee: '₹1,14,000',
+    mode: 'Online',
+    specialisations: [
+      'English',
+      'Political Science',
+      'Sociology',
+      'Psychology',
+      'History',
+      'Economics',
+      'Public Administration',
+      'Artificial Intelligence',
+    ],
+  },
+  {
+    id: 'mcom',
+    title: 'Online M.Com',
+    subtitle: 'Master of Commerce',
+    duration: '2 Years',
+    fee: '₹96,000',
+    mode: 'Online',
+    specialisations: ['Finance', 'Accounting & Taxation'],
+  },
+];
+
+const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations', 'Technology', 'Evaluation', 'Info'];
 
   const TOC_ITEMS = [
     { id: 'latest-news', label: 'LPU Online Latest News & Updates' },
     { id: 'highlights', label: 'LPU Online Admission Highlights 2026' },
     { id: 'courses-fees', label: 'LPU Online Courses and Fees 2026' },
+    { id: 'popular-programmes', label: 'LPU Online Popular Programmes' },
     { id: 'eligibility-criteria', label: 'LPU Online Eligibility & Selection Criteria 2026' },
     { id: 'admission-process', label: 'LPU Online Admission Process 2026' },
     { id: 'rankings', label: 'LPU Online Rankings & Accreditations' },
@@ -433,7 +522,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               items={TOC_ITEMS}
               activeId={activeSection}
               onItemClick={(id) => setActiveSection(id)}
-              defaultExpanded={true}
+              defaultExpanded={false}
               collapsedCount={7}
             />
 
@@ -644,6 +733,16 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
               </div>
             </section>
 
+            {/* 3b. Popular Programmes (Programme Cards) */}
+            <ProgrammeCardsSection
+              sectionId="popular-programmes"
+              title="LPU Online Popular Programmes"
+              description="Explore LPU Online’s most popular UG and PG programmes across Management, Computer Applications, Commerce, and Arts — built for working professionals."
+              programmes={LPU_POPULAR_PROGRAMMES}
+              onOpenBrochure={() => onOpenBrochure()}
+              onOpenApply={() => onOpenApply()}
+            />
+
             {/* 4. Eligibility and Selection Criteria (From API) */}
             <section id="eligibility-criteria" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
@@ -766,25 +865,25 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                 }
                 .admission-flow-step.is-visible .admission-flow-badge {
                   clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
-                  transition: clip-path 0.7s cubic-bezier(0.2, 0.9, 0.25, 1);
+                  transition: clip-path 0.3s cubic-bezier(0.2, 0.9, 0.25, 1);
                 }
                 .admission-flow-step.is-visible .admission-flow-body {
                   opacity: 1;
                   transform: none;
-                  transition: opacity 0.6s ease 0.35s, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s;
+                  transition: opacity 0.3s ease 0.1s, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s;
                 }
                 .admission-flow-step.is-visible .admission-flow-conn {
                   opacity: 1;
-                  transition: opacity 0.4s ease 0.7s;
+                  transition: opacity 0.3s ease 0.35s;
                 }
                 .admission-flow-step.is-visible .admission-flow-conn i {
-                  animation: admission-wave 1.4s ease-in-out infinite;
+                  animation: admission-wave 0.9s ease-in-out infinite;
                 }
                 .admission-flow-step.is-visible .admission-flow-conn i:nth-child(2) {
-                  animation-delay: 0.22s;
+                  animation-delay: 0.15s;
                 }
                 .admission-flow-step.is-visible .admission-flow-conn i:nth-child(3) {
-                  animation-delay: 0.44s;
+                  animation-delay: 0.3s;
                 }
                 @keyframes admission-wave {
                   0%, 100% {
@@ -1081,14 +1180,18 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                 .campus-marquee {
                   overflow: hidden;
                   position: relative;
-                  border-radius: 14px;
+                  border-radius: 18px;
                   border: 1px solid #e7eeff;
                   background: #f0f3ff;
                   margin-top: 18px;
+                  padding: 10px;
                 }
                 .campus-marquee-track {
                   display: flex;
+                  align-items: stretch;
+                  gap: 14px;
                   width: max-content;
+                  padding-right: 10px;
                   animation: campus-marquee 24s linear infinite;
                 }
                 .campus-marquee-track:hover {
@@ -1097,15 +1200,18 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                 .campus-marquee-item {
                   flex: 0 0 auto;
                   width: min(320px, 72vw);
-                  background: #f9f9ff;
+                  background: #ffffff;
                   overflow: hidden;
-                  border-right: 1px solid #e7eeff;
+                  border: 1px solid #e7eeff;
+                  border-radius: 18px;
+                  box-shadow: 0 10px 24px rgba(18, 37, 71, 0.08);
                 }
                 .campus-marquee-item img {
                   display: block;
                   width: 100%;
                   height: 220px;
                   object-fit: cover;
+                  border-radius: 18px 18px 0 0;
                 }
                 .campus-marquee-item figcaption {
                   padding: 10px 12px;
@@ -1113,6 +1219,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                   color: #43474d;
                   background: white;
                   border-top: 1px solid #e7eeff;
+                  border-radius: 0 0 18px 18px;
                 }
                 @keyframes campus-marquee {
                   from {
@@ -1123,6 +1230,12 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
                   }
                 }
                 @media (max-width: 640px) {
+                  .campus-marquee {
+                    padding: 8px;
+                  }
+                  .campus-marquee-track {
+                    gap: 10px;
+                  }
                   .campus-marquee-item {
                     width: min(280px, 80vw);
                   }

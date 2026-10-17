@@ -11,7 +11,7 @@ export const UniversityLms: React.FC<UniversityLmsProps> = ({ university, onOpen
   const [isDegreeModalOpen, setIsDegreeModalOpen] = useState(false);
 
   return (
-    <section id="lms" className="scroll-mt-32 space-y-11">
+    <section id="lms" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-11">
       <div>
         <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
           Learning Platform & Examination Pattern
