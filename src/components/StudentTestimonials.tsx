@@ -227,11 +227,11 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
         {/* Controls: Category Filter + Navigation Buttons */}
         <div className="flex flex-wrap items-center gap-2 shrink-0">
           {/* Segmented Category Buttons */}
-          <div className="inline-flex items-center p-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700">
+          <div className="inline-flex items-center p-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 max-w-full overflow-x-auto scrollbar-none" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             <button
               type="button"
               onClick={() => setActiveCategory('all')}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer ${
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[36px] ${
                 activeCategory === 'all'
                   ? 'bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold'
                   : 'text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
@@ -242,7 +242,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             <button
               type="button"
               onClick={() => setActiveCategory('management')}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer ${
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[36px] ${
                 activeCategory === 'management'
                   ? 'bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold'
                   : 'text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
@@ -253,7 +253,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             <button
               type="button"
               onClick={() => setActiveCategory('tech')}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer ${
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[36px] ${
                 activeCategory === 'tech'
                   ? 'bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold'
                   : 'text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
@@ -264,7 +264,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             <button
               type="button"
               onClick={() => setActiveCategory('commerce')}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer ${
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[36px] ${
                 activeCategory === 'commerce'
                   ? 'bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold'
                   : 'text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'

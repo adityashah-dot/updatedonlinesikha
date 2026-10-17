@@ -105,7 +105,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       {/* Breadcrumb Bar */}
       <div className="bg-white border-b border-[#e7eeff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <nav className="flex items-center text-xs text-[#43474d] space-x-2 font-medium">
+          <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-[#43474d] font-medium">
             <span className="hover:text-[#115eaf] cursor-pointer">Home</span>
             <ChevronRight className="w-3.5 h-3.5 text-[#74777e]" />
             <span className="hover:text-[#115eaf] cursor-pointer">Colleges</span>
@@ -345,7 +345,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by degree name or subject..."
                 aria-label="Search courses by degree name or subject"
-                className="w-full h-10 pl-9 pr-3 rounded-xl border border-[#c4c6ce] bg-white text-xs sm:text-sm font-normal focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all outline-none"
+                className="w-full h-10 pl-9 pr-3 rounded-xl border border-[#c4c6ce] bg-white text-base sm:text-sm font-normal focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all outline-none"
               />
             </div>
 
@@ -354,7 +354,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
                 aria-label="Sort courses"
-                className="w-full h-10 px-3 pr-8 rounded-xl border border-[#c4c6ce] bg-white text-xs sm:text-sm font-normal text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none appearance-none cursor-pointer"
+                className="w-full h-10 px-3 pr-8 rounded-xl border border-[#c4c6ce] bg-white text-base sm:text-sm font-normal text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none appearance-none cursor-pointer"
               >
                 <option value="popularity">Sort: Popularity</option>
                 <option value="fee-asc">Fee: Low to High</option>
@@ -461,7 +461,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                 </table>
               </div>
             </div>
-            <div className="p-3.5 bg-[#f9f9ff] border-t border-[#e7eeff] flex items-center justify-between text-xs text-[#43474d] font-normal">
+            <div className="p-3.5 bg-[#f9f9ff] border-t border-[#e7eeff] flex flex-wrap items-center justify-between gap-2 text-xs text-[#43474d] font-normal">
               <span>Registration Fee: ₹600 (adjusted during enrollment)</span>
               <button
                 onClick={() => onOpenApply('bba')}
@@ -522,7 +522,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                 </table>
               </div>
             </div>
-            <div className="p-3.5 bg-[#f9f9ff] border-t border-[#e7eeff] flex items-center justify-between text-xs text-[#43474d] font-normal">
+            <div className="p-3.5 bg-[#f9f9ff] border-t border-[#e7eeff] flex flex-wrap items-center justify-between gap-2 text-xs text-[#43474d] font-normal">
               <span>Specializations selected during second semester</span>
               <button
                 onClick={() => onOpenApply('mba')}
@@ -659,13 +659,13 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                     <div className="mt-3 grid grid-cols-2 gap-1.5 pt-1">
                       <button
                         onClick={() => onSelectCourse(course)}
-                        className="w-full py-1.5 px-2 rounded-lg bg-[#115eaf] text-white text-[11px] font-medium text-center hover:bg-[#004689] active:scale-95 transition-all shadow-xs flex items-center justify-center"
+                        className="w-full py-1.5 px-2 min-h-[44px] md:min-h-0 rounded-lg bg-[#115eaf] text-white text-[11px] font-medium text-center hover:bg-[#004689] active:scale-95 transition-all shadow-xs flex items-center justify-center"
                       >
                         View Details
                       </button>
                       <button
                         onClick={() => onOpenBrochure(course)}
-                        className="w-full py-1.5 px-2 rounded-lg bg-[#f0f3ff] text-[#001b3c] hover:bg-[#e7eeff] text-[11px] font-normal flex items-center justify-center gap-1 transition-colors border border-[#dce5fa]"
+                        className="w-full py-1.5 px-2 min-h-[44px] md:min-h-0 rounded-lg bg-[#f0f3ff] text-[#001b3c] hover:bg-[#e7eeff] text-[11px] font-normal flex items-center justify-center gap-1 transition-colors border border-[#dce5fa]"
                       >
                         <Download className="w-3 h-3 text-[#115eaf]" />
                         <span>Syllabus</span>
@@ -1005,7 +1005,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
               Speak directly with an Online Siksha university advisor. We review your documents, help generate your DEB ID, and guide your admission at zero cost.
             </p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <button
               onClick={() => onOpenApply()}
               className="px-5 py-2.5 rounded-lg bg-[#115eaf] text-white text-xs sm:text-sm font-semibold shadow hover:bg-[#004689] active:scale-95 transition-all"

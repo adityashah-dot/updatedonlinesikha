@@ -8,13 +8,13 @@ interface UniversityOverviewProps {
 
 export const UniversityOverview: React.FC<UniversityOverviewProps> = ({ university }) => {
   return (
-    <section id="overview" className="scroll-mt-32 space-y-6">
+    <section id="overview" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
       {/* Editorial Title & Lead */}
       <div>
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight leading-snug">
+        <h2 className="text-xl sm:text-2xl font-extrabold text-[#000f22] tracking-[-0.02em] leading-snug">
           About {university.name}
         </h2>
-        <div className="mt-1.5 space-y-2.5 text-slate-700 text-sm sm:text-base leading-relaxed max-w-4xl">
+        <div className="mt-2 space-y-2.5 text-[#43474d] text-sm sm:text-base leading-relaxed max-w-4xl">
           {university.overview.introParagraphs.map((paragraph, idx) => (
             <p key={idx}>{paragraph}</p>
           ))}
@@ -23,7 +23,7 @@ export const UniversityOverview: React.FC<UniversityOverviewProps> = ({ universi
 
       {/* Latest News / Updates Banner (if present) */}
       {university.overview.latestNews && (
-        <div className="p-4 sm:p-5 rounded-xl bg-blue-50/70 border border-blue-200/80 flex items-start gap-3">
+        <div className="p-4 sm:p-5 rounded-xl bg-[#f0f3ff] border border-[#d5e3ff] flex items-start gap-3">
           <div className="p-2 rounded-lg bg-blue-100 text-blue-800 shrink-0 mt-0.5">
             <BookOpen className="w-4 h-4" />
           </div>
@@ -33,10 +33,10 @@ export const UniversityOverview: React.FC<UniversityOverviewProps> = ({ universi
               <span aria-hidden="true" className="text-blue-300">·</span>
               <span className="text-xs text-blue-700">{university.overview.latestNews.date}</span>
             </div>
-            <h3 className="text-sm font-semibold text-slate-900">
+            <h3 className="text-sm font-semibold text-[#000f22]">
               {university.overview.latestNews.title}
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600">
+            <p className="text-xs sm:text-sm text-[#43474d]">
               {university.overview.latestNews.description}
             </p>
           </div>
@@ -46,25 +46,25 @@ export const UniversityOverview: React.FC<UniversityOverviewProps> = ({ universi
       {/* Institutional Highlights Grid / Table */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-slate-900">
+          <h3 className="text-lg font-semibold text-[#000f22]">
             Key Institutional Highlights
           </h3>
-          <span className="text-xs text-slate-500 font-medium">
+          <span className="text-xs text-[#43474d] font-medium">
             Verified {university.verifiedYear || '2026'}
           </span>
         </div>
 
-        <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
-          <div className="divide-y divide-slate-200/80">
+        <div className="bg-white border border-[#e7eeff] rounded-xl overflow-hidden shadow-xs">
+          <div className="divide-y divide-[#e7eeff]">
             {university.overview.highlightsTable.map((item, idx) => (
               <div
                 key={idx}
-                className="grid grid-cols-1 sm:grid-cols-3 p-3.5 sm:px-6 hover:bg-slate-50/70 transition-colors gap-1 sm:gap-4 items-baseline"
+                className="grid grid-cols-1 sm:grid-cols-3 p-3.5 sm:px-6 hover:bg-[#f0f3ff]/60 transition-colors gap-1 sm:gap-4 items-baseline"
               >
-                <div className="text-xs sm:text-sm font-medium text-slate-500">
+                <div className="text-xs sm:text-sm font-medium text-[#43474d]">
                   {item.label}
                 </div>
-                <div className="sm:col-span-2 text-xs sm:text-sm font-semibold text-slate-900">
+                <div className="sm:col-span-2 text-xs sm:text-sm font-semibold text-[#000f22]">
                   {item.value}
                 </div>
               </div>
@@ -73,7 +73,7 @@ export const UniversityOverview: React.FC<UniversityOverviewProps> = ({ universi
         </div>
 
         {university.overview.highlightsSummary && (
-          <p className="text-xs text-slate-500 leading-normal">
+          <p className="text-xs text-[#43474d] leading-normal">
             {university.overview.highlightsSummary}
           </p>
         )}

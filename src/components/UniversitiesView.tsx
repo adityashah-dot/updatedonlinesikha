@@ -13,7 +13,7 @@ import {
   Video,
   TrendingUp,
   Download,
-  ArrowLeftRight,
+  CheckCircle,
   ChevronDown,
   ExternalLink,
   HelpCircle,
@@ -22,6 +22,7 @@ import {
   ChevronRight,
   List,
   LayoutGrid,
+  X,
   Award,
   Globe,
   ClipboardCheck,
@@ -79,6 +80,45 @@ const FEE_RANGES = [
 
 const EXAM_MODES = ['100% Online Proctored', 'Designated Center Based'];
 const PAYMENT_MODES = ['No-Cost Monthly EMI', 'Pay-Per-Semester Plan'];
+
+type MatrixUniversity = (typeof DEGREEFYD_LPU_API.onlineUniversities)[number];
+type MatrixCell = { text: string; tone?: string; badge?: boolean };
+
+const COMPARE_MATRIX_ROWS: { param: string; getCell: (u: MatrixUniversity) => MatrixCell }[] = [
+  {
+    param: 'UGC-DEB Statutory Entitlement',
+    getCell: (u) =>
+      u.approvals.some((a) => a.includes('UGC-DEB'))
+        ? { text: 'Category-1 Approved', tone: 'text-emerald-700 font-semibold' }
+        : { text: u.approvals[0], tone: 'text-emerald-700 font-semibold' },
+  },
+  {
+    param: 'NAAC Accreditation Grade',
+    getCell: (u) => ({ text: u.naac.replace('NAAC ', ''), badge: true }),
+  },
+  {
+    param: 'NIRF Ranking',
+    getCell: (u) => ({ text: u.rankNote }),
+  },
+  {
+    param: 'Total Program Fees',
+    getCell: (u) => ({ text: u.feeLabel, tone: 'font-bold text-[#000f22]' }),
+  },
+  {
+    param: 'Monthly 0-Cost EMI Option',
+    getCell: (u) => ({ text: u.emi, tone: 'text-emerald-700 font-semibold' }),
+  },
+  {
+    param: 'Examination Methodology',
+    getCell: (u) => ({
+      text: u.specs.find((s) => /exam/i.test(s.label))?.value || u.specs[0].value,
+    }),
+  },
+  {
+    param: 'Campus Location',
+    getCell: (u) => ({ text: u.location }),
+  },
+];
 
 const DEGREES = [
   {
@@ -204,6 +244,15 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
   const [feeRange, setFeeRange] = useState<number>(1);
   const [examChecked, setExamChecked] = useState<boolean[]>([true, false]);
   const [paymentChecked, setPaymentChecked] = useState<boolean[]>([true, true]);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+
+  const resetFilters = () => {
+    setDegreeChecked([true, true, false]);
+    setApprovalChecked(APPROVAL_FILTERS.map((a) => a.checked));
+    setFeeRange(1);
+    setExamChecked([true, false]);
+    setPaymentChecked([true, true]);
+  };
 
   const toggleCompare = (id: string) => {
     setCompared((prev) => {
@@ -213,11 +262,168 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
     });
   };
 
+  const compareList = DEGREEFYD_LPU_API.onlineUniversities.filter((u) =>
+    compared.includes(u.id)
+  );
+
+  const filterBody = (
+    <>
+      <div className="pt-4 divide-y divide-[#e7eeff]">
+        {/* Degree Level */}
+        <div className="pb-5">
+          <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
+            <span>Degree Level</span>
+            <ChevronDown className="w-4 h-4 text-[#74777e]" />
+          </h2>
+          <div className="space-y-2.5">
+            {DEGREE_FILTERS.map((d, i) => (
+              <label key={d} className="flex items-center gap-2.5 cursor-pointer py-1">
+                <input
+                  type="checkbox"
+                  checked={degreeChecked[i]}
+                  onChange={() =>
+                    setDegreeChecked((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
+                  }
+                  className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
+                />
+                <span className="text-[13px] font-normal text-[#000f22]">{d}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Approvals */}
+        <div className="py-5">
+          <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
+            <span>Approvals &amp; Accreditations</span>
+            <ChevronDown className="w-4 h-4 text-[#74777e]" />
+          </h2>
+          <div className="space-y-2.5">
+            {APPROVAL_FILTERS.map((a, i) => (
+              <label key={a.label} className="flex items-center justify-between gap-2 cursor-pointer py-1">
+                <span className="flex items-center gap-2.5 min-w-0">
+                  <input
+                    type="checkbox"
+                    checked={approvalChecked[i]}
+                    onChange={() =>
+                      setApprovalChecked((prev) =>
+                        prev.map((v, idx) => (idx === i ? !v : v))
+                      )
+                    }
+                    className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce] shrink-0"
+                  />
+                  <span className="text-[13px] font-normal text-[#000f22]">{a.label}</span>
+                </span>
+                <span className="text-[11px] font-semibold text-[#74777e] bg-[#f0f3ff] px-2 py-0.5 rounded-full shrink-0">
+                  {a.count}
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Fee */}
+        <div className="py-5">
+          <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
+            <span>Total Course Fee</span>
+            <ChevronDown className="w-4 h-4 text-[#74777e]" />
+          </h2>
+          <div className="space-y-2">
+            {FEE_RANGES.map((f, i) => (
+              <label key={f} className="flex items-center gap-2.5 cursor-pointer py-1">
+                <input
+                  type="radio"
+                  name="fee_filter"
+                  checked={feeRange === i}
+                  onChange={() => setFeeRange(i)}
+                  className="w-4 h-4 text-[#115eaf] border-[#c4c6ce]"
+                />
+                <span className="text-[13px] font-normal text-[#000f22]">{f}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Exam Mode */}
+        <div className="py-5">
+          <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
+            <span>Examination Mode</span>
+            <ChevronDown className="w-4 h-4 text-[#74777e]" />
+          </h2>
+          <div className="space-y-2.5">
+            {EXAM_MODES.map((m, i) => (
+              <label key={m} className="flex items-center gap-2.5 cursor-pointer py-1">
+                <input
+                  type="checkbox"
+                  checked={examChecked[i]}
+                  onChange={() =>
+                    setExamChecked((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
+                  }
+                  className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
+                />
+                <span className="text-[13px] font-normal text-[#000f22]">{m}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Payment */}
+        <div className="pt-5">
+          <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
+            <span>Payment Flexibility</span>
+            <ChevronDown className="w-4 h-4 text-[#74777e]" />
+          </h2>
+          <div className="space-y-2.5">
+            {PAYMENT_MODES.map((m, i) => (
+              <label key={m} className="flex items-center gap-2.5 cursor-pointer py-1">
+                <input
+                  type="checkbox"
+                  checked={paymentChecked[i]}
+                  onChange={() =>
+                    setPaymentChecked((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
+                  }
+                  className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
+                />
+                <span className="text-[13px] font-normal text-[#000f22]">{m}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Sidebar promo */}
+      <div className="mt-6 p-4 rounded-xl bg-gradient-to-br from-[#f0f3ff] to-[#e7eeff] border border-[#d5e3ff] shadow-xs">
+        <div className="flex items-start gap-3">
+          <div className="w-9 h-9 rounded-xl bg-[#115eaf] text-white flex items-center justify-center shrink-0 shadow-xs">
+            <BadgeCheck className="w-5 h-5" />
+          </div>
+          <div>
+            <h3 className="text-sm font-bold text-[#000f22]">Confused about approvals?</h3>
+            <p className="text-xs font-normal text-[#43474d] mt-1 leading-snug">
+              Talk to an unbiased UGC counsellor to verify your degree validity and fee waivers.
+            </p>
+            <button
+              onClick={onOpenHelpDesk}
+              className="mt-2.5 text-xs font-semibold text-[#115eaf] hover:underline inline-flex items-center min-h-[44px]"
+            >
+              <span>Book 1-on-1 Call</span>
+              <ArrowRight className="w-3.5 h-3.5 ml-1" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+
   return (
     <div className="pb-20 md:pb-8">
       {/* ================= HERO & DISCOVERY SEARCH BAR ================= */}
-      <section className="bg-gradient-to-b from-[#f0f3ff] via-white to-[#f9f9ff] border-b border-[#e7eeff] pt-8 pb-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden border-b border-[#e7eeff] bg-[#f2f6fb] pt-8 pb-10 shadow-[0_18px_45px_rgba(15,23,42,0.02)]">
+        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-r from-[#eaf3ff]/80 via-[#f3f8ff]/40 to-[#edfdf7]/50 blur-2xl" />
+        <div className="absolute -left-12 top-10 h-36 w-36 rounded-full bg-[#93c5fd]/10 blur-3xl" />
+        <div className="absolute -right-12 bottom-0 h-40 w-40 rounded-full bg-[#a7f3d0]/10 blur-3xl" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-7">
             <div className="mb-3 text-[11px] font-medium text-[#43474d]">
               <span className="text-[#115eaf] font-semibold">Accredited by UGC, AICTE &amp; NAAC</span>
@@ -304,7 +510,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
       </section>
 
       {/* ================= MAIN: FILTERS + LISTING ================= */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-[#f3f6fb] rounded-t-[28px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* LEFT SIDEBAR FILTERS */}
           <aside className="lg:col-span-3 bg-white rounded-2xl border border-[#d5e3ff] p-5 shadow-xs sticky top-20 hidden lg:block">
@@ -317,163 +523,13 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                 </span>
               </div>
               <button
-                onClick={() => {
-                  setDegreeChecked([true, true, false]);
-                  setApprovalChecked(APPROVAL_FILTERS.map((a) => a.checked));
-                  setFeeRange(1);
-                  setExamChecked([true, false]);
-                  setPaymentChecked([true, true]);
-                }}
+                onClick={resetFilters}
                 className="text-[#115eaf] text-xs hover:underline font-semibold"
               >
                 Reset
               </button>
             </div>
-
-            <div className="pt-4 divide-y divide-[#e7eeff]">
-              {/* Degree Level */}
-              <div className="pb-5">
-                <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
-                  <span>Degree Level</span>
-                  <ChevronDown className="w-4 h-4 text-[#74777e]" />
-                </h2>
-                <div className="space-y-2.5">
-                  {DEGREE_FILTERS.map((d, i) => (
-                    <label key={d} className="flex items-center gap-2.5 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={degreeChecked[i]}
-                        onChange={() =>
-                          setDegreeChecked((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
-                        }
-                        className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
-                      />
-                      <span className="text-[13px] font-normal text-[#000f22]">{d}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Approvals */}
-              <div className="py-5">
-                <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
-                  <span>Approvals &amp; Accreditations</span>
-                  <ChevronDown className="w-4 h-4 text-[#74777e]" />
-                </h2>
-                <div className="space-y-2.5">
-                  {APPROVAL_FILTERS.map((a, i) => (
-                    <label key={a.label} className="flex items-center justify-between cursor-pointer">
-                      <span className="flex items-center gap-2.5">
-                        <input
-                          type="checkbox"
-                          checked={approvalChecked[i]}
-                          onChange={() =>
-                            setApprovalChecked((prev) =>
-                              prev.map((v, idx) => (idx === i ? !v : v))
-                            )
-                          }
-                          className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
-                        />
-                        <span className="text-[13px] font-normal text-[#000f22]">{a.label}</span>
-                      </span>
-                      <span className="text-[11px] font-semibold text-[#74777e] bg-[#f0f3ff] px-2 py-0.5 rounded-full">
-                        {a.count}
-                      </span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Fee */}
-              <div className="py-5">
-                <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
-                  <span>Total Course Fee</span>
-                  <ChevronDown className="w-4 h-4 text-[#74777e]" />
-                </h2>
-                <div className="space-y-2">
-                  {FEE_RANGES.map((f, i) => (
-                    <label key={f} className="flex items-center gap-2.5 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="fee_filter"
-                        checked={feeRange === i}
-                        onChange={() => setFeeRange(i)}
-                        className="w-4 h-4 text-[#115eaf] border-[#c4c6ce]"
-                      />
-                      <span className="text-[13px] font-normal text-[#000f22]">{f}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Exam Mode */}
-              <div className="py-5">
-                <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
-                  <span>Examination Mode</span>
-                  <ChevronDown className="w-4 h-4 text-[#74777e]" />
-                </h2>
-                <div className="space-y-2.5">
-                  {EXAM_MODES.map((m, i) => (
-                    <label key={m} className="flex items-center gap-2.5 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={examChecked[i]}
-                        onChange={() =>
-                          setExamChecked((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
-                        }
-                        className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
-                      />
-                      <span className="text-[13px] font-normal text-[#000f22]">{m}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-
-              {/* Payment */}
-              <div className="pt-5">
-                <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
-                  <span>Payment Flexibility</span>
-                  <ChevronDown className="w-4 h-4 text-[#74777e]" />
-                </h2>
-                <div className="space-y-2.5">
-                  {PAYMENT_MODES.map((m, i) => (
-                    <label key={m} className="flex items-center gap-2.5 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={paymentChecked[i]}
-                        onChange={() =>
-                          setPaymentChecked((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
-                        }
-                        className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
-                      />
-                      <span className="text-[13px] font-normal text-[#000f22]">{m}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Sidebar promo */}
-            <div className="mt-6 p-4 rounded-xl bg-gradient-to-br from-[#f0f3ff] to-[#e7eeff] border border-[#d5e3ff] shadow-xs">
-              <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-xl bg-[#115eaf] text-white flex items-center justify-center shrink-0 shadow-xs">
-                  <BadgeCheck className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-[#000f22]">Confused about approvals?</h3>
-                  <p className="text-xs font-normal text-[#43474d] mt-1 leading-snug">
-                    Talk to an unbiased UGC counsellor to verify your degree validity and fee waivers.
-                  </p>
-                  <button
-                    onClick={onOpenHelpDesk}
-                    className="mt-2.5 text-xs font-semibold text-[#115eaf] hover:underline inline-flex items-center"
-                  >
-                    <span>Book 1-on-1 Call</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                  </button>
-                </div>
-              </div>
-            </div>
+            {filterBody}
           </aside>
 
           {/* RIGHT LISTINGS */}
@@ -490,6 +546,13 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                 </span>
               </div>
               <div className="flex items-center gap-3 ml-auto">
+                <button
+                  onClick={() => setFiltersOpen(true)}
+                  className="lg:hidden inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#f0f3ff] hover:bg-[#dee8ff] text-[#115eaf] text-xs font-semibold border border-[#d5e3ff] transition-colors min-h-[44px]"
+                >
+                  <SlidersHorizontal className="w-4 h-4" />
+                  <span>Filters</span>
+                </button>
                 <div className="flex items-center gap-2">
                   <span className="text-[11px] text-[#74777e] font-medium hidden sm:inline">
                     Sort By:
@@ -542,17 +605,17 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                 <article
                   key={u.id}
                   onClick={() => navigate(`/universities/${u.id}`)}
-                  className="bg-white rounded-2xl border border-[#d5e3ff] p-5 md:p-6 shadow-xs hover:shadow-xl hover:border-[#115eaf] transition-all duration-300 relative flex flex-col cursor-pointer"
+                  className="bg-white rounded-2xl border border-[#d5e3ff] p-4 md:p-5 shadow-xs hover:shadow-xl hover:border-[#115eaf] transition-all duration-300 relative flex flex-col cursor-pointer"
                 >
                   {/* Top row: identity + fee */}
-                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 pb-4 border-b border-[#e7eeff]">
-                    <div className="flex items-start gap-4">
-                      <div className="w-16 h-16 rounded-2xl bg-[#f0f3ff] border border-[#d5e3ff] flex flex-col items-center justify-center shrink-0 shadow-xs overflow-hidden">
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 pb-2.5 border-b border-[#e7eeff]">
+                    <div className="flex items-start gap-3">
+                      <div className="w-14 h-14 rounded-xl bg-[#f0f3ff] border border-[#d5e3ff] flex flex-col items-center justify-center shrink-0 shadow-xs overflow-hidden">
                         {u.logoImage ? (
                           <img
                             src={u.logoImage}
                             alt={`${u.short} Logo`}
-                            className="w-14 h-14 object-contain rounded-lg bg-white p-1"
+                            className="w-12 h-12 object-contain rounded-lg bg-white p-0.5"
                             onError={(e) => {
                               (e.target as HTMLImageElement).style.display = 'none';
                             }}
@@ -561,7 +624,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           <img
                             src={DEGREEFYD_LPU_API.hero.logoImage}
                             alt="LPU Logo"
-                            className="w-14 h-14 object-contain rounded-lg bg-white p-1"
+                            className="w-12 h-12 object-contain rounded-lg bg-white p-0.5"
                             onError={(e) => {
                               (e.target as HTMLImageElement).style.display = 'none';
                             }}
@@ -580,11 +643,11 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
 
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2 mb-1">
-                          <h2 className="text-base sm:text-lg font-bold text-[#000f22] leading-snug">
+                          <h2 className="text-base sm:text-lg font-bold text-[#000f22] leading-snug line-clamp-2" title={u.name}>
                             {u.name}
                           </h2>
                           <span
-                            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold flex items-center gap-1 ${
+                            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold flex items-center gap-1 shrink-0 ${
                               toneMap[u.highlight.tone].badge
                             } ${toneMap[u.highlight.tone].text} ${toneMap[u.highlight.tone].border}`}
                           >
@@ -601,18 +664,18 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           <span>•</span>
                           <span>{u.established}</span>
                           <span>•</span>
-                          <span className="text-[#B45309] font-semibold">{u.rankNote}</span>
+                          <span className="text-[#B45309] font-semibold line-clamp-1" title={u.rankNote}>{u.rankNote}</span>
                         </p>
 
-                        <div className={`flex flex-wrap items-center ${u.isLpu || u.id === 'cu-online' ? 'gap-1.5' : 'gap-2'} mt-2.5`}>
-                          <span className="px-2.5 py-1 bg-amber-50 text-amber-900 border border-amber-200 rounded-lg text-[11px] font-semibold flex items-center gap-1 shadow-xs">
+                        <div className={`flex flex-wrap items-center ${u.isLpu || u.id === 'cu-online' ? 'gap-1.5' : 'gap-2'} mt-2`}>
+                          <span className="px-2.5 py-1 bg-amber-50 text-amber-900 border border-amber-200 rounded-lg text-[11px] font-semibold flex items-center gap-1 shadow-xs shrink-0">
                             <Star className="w-3 h-3 text-amber-600 fill-amber-500" />
                             {u.naac}
                           </span>
-                          {u.approvals.map((a) => (
+                          {u.approvals.slice(0, 2).map((a) => (
                             <span
                               key={a}
-                              className="px-2.5 py-1 bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] rounded-lg text-[11px] font-semibold"
+                              className="px-2.5 py-1 bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] rounded-lg text-[11px] font-semibold shrink-0"
                             >
                               {a}
                             </span>
@@ -622,7 +685,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                     </div>
 
                     {/* Fee box */}
-                    <div className="text-left md:text-right bg-[#f9f9ff] md:bg-transparent p-3.5 md:p-0 rounded-xl shrink-0 border md:border-0 border-[#e7eeff]">
+                    <div className="text-left md:text-right bg-[#f9f9ff] md:bg-transparent p-3 md:p-0 rounded-xl shrink-0 border md:border-0 border-[#e7eeff]">
                       <span className="block text-[11px] text-[#74777e] font-semibold uppercase">
                         Total Program Fee
                       </span>
@@ -630,7 +693,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                         {u.feeLabel}{' '}
                         <span className="text-xs text-[#43474d] font-normal">onwards</span>
                       </div>
-                      <div className="inline-flex items-center gap-1 px-2.5 py-1 mt-1 bg-emerald-50 text-emerald-800 rounded-full text-[11px] font-semibold border border-emerald-200/60 shadow-xs">
+                      <div className="inline-flex items-center gap-1 px-2.5 py-0.5 mt-1 bg-emerald-50 text-emerald-800 rounded-full text-[11px] font-semibold border border-emerald-200/60 shadow-xs">
                         <CreditCard className="w-3 h-3" />
                         EMI starts {u.emi}
                       </div>
@@ -638,7 +701,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                   </div>
 
                   {/* Spec grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3.5 my-2 bg-[#f9f9ff] rounded-xl px-4 border border-[#e7eeff] text-center sm:text-left">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 py-2.5 my-0 bg-[#f9f9ff] rounded-xl px-3.5 border border-[#e7eeff] text-center sm:text-left">
                     {u.specs.map((s) => {
                       const Icon = specIconByLabel[s.label] || Monitor;
                       return (
@@ -664,12 +727,12 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                   </div>
 
                   {/* Tracks + CTAs */}
-                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pt-3">
+                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 pt-2">
                     <div className="flex flex-wrap items-center gap-1.5">
                       <span className="text-[11px] text-[#74777e] uppercase font-semibold mr-1">
                         Popular Tracks:
                       </span>
-                      {u.tracks.map((t) => (
+                      {u.tracks.slice(0, 4).map((t) => (
                         <span
                           key={t}
                           onClick={(e) => e.stopPropagation()}
@@ -678,11 +741,19 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           {t}
                         </span>
                       ))}
+                      {u.tracks.length > 4 && (
+                        <span
+                          onClick={(e) => e.stopPropagation()}
+                          className="px-3 py-1 bg-[#f0f3ff] border border-[#d5e3ff] rounded-full text-xs font-semibold text-[#115eaf] cursor-pointer"
+                        >
+                          +{u.tracks.length - 4} more
+                        </span>
+                      )}
                     </div>
 
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto lg:shrink-0">
                       <label 
-                        className="flex items-center gap-1.5 text-[13px] font-medium text-[#43474d] cursor-pointer mr-2 select-none hover:text-[#000f22]"
+                        className="flex items-center gap-1.5 text-[13px] font-medium text-[#43474d] cursor-pointer sm:mr-2 select-none hover:text-[#000f22] py-1.5 min-h-[40px]"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <input
@@ -698,7 +769,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           e.stopPropagation();
                           onOpenBrochure();
                         }}
-                        className="px-3.5 py-2 rounded-xl bg-[#f0f3ff] hover:bg-[#dee8ff] text-[#000f22] text-xs font-semibold border border-[#d5e3ff] transition-colors flex items-center gap-1"
+                        className="px-3.5 py-1.5 rounded-xl bg-[#f0f3ff] hover:bg-[#dee8ff] text-[#000f22] text-xs font-semibold border border-[#d5e3ff] transition-colors flex items-center gap-1 min-h-[40px]"
                       >
                         <Download className="w-4 h-4" />
                         <span>Brochure</span>
@@ -708,7 +779,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           e.stopPropagation();
                           onOpenApply();
                         }}
-                        className="px-4 py-2 rounded-xl bg-[#115eaf] hover:bg-[#004689] text-white text-xs font-semibold transition-all shadow-sm active:scale-95 flex items-center gap-1"
+                        className="px-4 py-1.5 rounded-xl bg-[#115eaf] hover:bg-[#004689] text-white text-xs font-semibold transition-all shadow-sm active:scale-95 flex items-center gap-1 min-h-[40px]"
                       >
                         <span>Apply Now</span>
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -721,25 +792,27 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
 
             {/* Pagination */}
             <div className="flex items-center justify-between pt-6 border-t border-[#e7eeff]">
-              <button className="px-4 py-2 rounded-lg bg-white border border-[#d5e3ff] text-[#43474d] hover:text-[#000f22] text-xs font-medium flex items-center gap-1 transition-colors">
+              <button className="px-3 sm:px-4 py-2 rounded-lg bg-white border border-[#d5e3ff] text-[#43474d] hover:text-[#000f22] text-xs font-medium flex items-center gap-1 transition-colors min-h-[44px] shrink-0">
                 <ChevronLeft className="w-4 h-4" />
-                <span>Previous</span>
+                <span className="hidden sm:inline">Previous</span>
+                <span className="sm:hidden">Prev</span>
               </button>
-              <div className="flex items-center gap-1">
-                <button className="w-9 h-9 rounded-lg bg-[#115eaf] text-white text-xs font-semibold">1</button>
-                <button className="w-9 h-9 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
+              <div className="flex items-center gap-1 mx-2">
+                <button className="w-9 h-9 shrink-0 rounded-lg bg-[#115eaf] text-white text-xs font-semibold">1</button>
+                <button className="w-9 h-9 shrink-0 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
                   2
                 </button>
-                <button className="w-9 h-9 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
+                <button className="w-9 h-9 shrink-0 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
                   3
                 </button>
-                <span className="px-2 text-[#74777e]">...</span>
-                <button className="w-9 h-9 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
+                <span className="px-1 sm:px-2 text-[#74777e]">...</span>
+                <button className="w-9 h-9 shrink-0 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
                   8
                 </button>
               </div>
-              <button className="px-4 py-2 rounded-lg bg-white border border-[#d5e3ff] text-[#115eaf] text-xs font-medium flex items-center gap-1 hover:bg-[#f0f3ff] transition-colors">
-                <span>Next</span>
+              <button className="px-3 sm:px-4 py-2 rounded-lg bg-white border border-[#d5e3ff] text-[#115eaf] text-xs font-medium flex items-center gap-1 hover:bg-[#f0f3ff] transition-colors min-h-[44px] shrink-0">
+                <span className="hidden sm:inline">Next</span>
+                <span className="sm:hidden">Next</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -769,62 +842,61 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
             </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
-            {DEGREEFYD_LPU_API.onlineUniversities.slice(0, 3).map((u) => (
-              <div
-                key={`matrix-${u.id}`}
-                className="rounded-xl p-4 bg-[#f9f9ff] border border-[#e7eeff] hover:border-[#d5e3ff] transition-all"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-white border border-[#d5e3ff] flex items-center justify-center shrink-0">
-                    {u.isLpu ? (
-                      <img
-                        src={DEGREEFYD_LPU_API.hero.logoImage}
-                        alt="LPU Logo"
-                        className="w-9 h-9 object-contain"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = 'none';
-                        }}
-                      />
-                    ) : (
-                      <span className="text-xs font-bold text-[#115eaf]">{u.short}</span>
-                    )}
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-[#000f22] leading-snug">
+          {compareList.length === 0 ? (
+            <div className="mt-4 rounded-lg border border-dashed border-[#c4c6ce] p-8 text-center">
+              <p className="text-sm font-semibold text-[#000f22]">No universities selected yet</p>
+              <p className="text-[13px] text-[#43474d] font-normal mt-1">
+                Tick <span className="font-semibold text-[#115eaf]">Compare</span> on up to 3
+                university cards above to build your side-by-side matrix.
+              </p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto border border-[#c4c6ce] rounded-lg mt-4">
+            <table className="w-full text-left border-collapse text-[13px] min-w-[560px]">
+              <thead>
+                <tr className="bg-[#f0f4f8] text-[#000f22] border-b border-[#c4c6ce] font-semibold">
+                  <th className="p-3">Comparison Parameter</th>
+                  {compareList.map((u) => (
+                    <th key={`th-${u.id}`} className="p-3 text-[#115eaf]">
                       {u.name.split(' (')[0]}
-                    </h3>
-                    <span className="text-[11px] text-[#115eaf] font-semibold">{u.naac}</span>
-                  </div>
-                </div>
-                <div className="space-y-2 text-xs border-t border-[#e7eeff] pt-3">
-                  <div className="flex justify-between">
-                    <span className="text-[#74777e]">Total Fee:</span>
-                    <span className="font-semibold text-[#000f22]">{u.feeLabel}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-[#74777e]">Monthly EMI:</span>
-                    <span className="font-semibold text-emerald-700">{u.emi}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-[#74777e]">Exam Mode:</span>
-                    <span className="font-medium text-[#000f22]">{u.specs[0].value}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-[#74777e]">Location:</span>
-                    <span className="font-medium text-[#000f22]">{u.location}</span>
-                  </div>
-                </div>
-                <button
-                  onClick={() => onOpenApply()}
-                  className="w-full mt-3 py-1.5 px-3 rounded-lg bg-white hover:bg-[#115eaf] hover:text-white text-[#115eaf] text-xs font-semibold border border-[#d5e3ff] transition-colors flex items-center justify-center gap-1"
-                >
-                  <span>View {u.short} Details</span>
-                  <ArrowRight className="w-3 h-3" />
-                </button>
-              </div>
-            ))}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-[#c4c6ce]/60 font-normal">
+                {COMPARE_MATRIX_ROWS.map((row) => (
+                  <tr key={row.param} className="hover:bg-slate-50/50">
+                    <td className="p-3 font-medium text-[#111c2d]">{row.param}</td>
+                    {compareList.map((u) => {
+                      const cell = row.getCell(u);
+                      return (
+                        <td key={`td-${u.id}`} className={`p-3 ${cell.tone || 'text-[#43474d] font-medium'}`}>
+                          {cell.badge ? (
+                            <span className="bg-amber-100 text-amber-900 px-2 py-0.5 rounded text-[11px] font-bold">
+                              {cell.text}
+                            </span>
+                          ) : cell.tone === 'text-emerald-700 font-semibold' || cell.tone === 'text-emerald-700' ? (
+                            <span className="inline-flex items-center gap-1">
+                              <CheckCircle className="w-4 h-4" />
+                              {cell.text}
+                            </span>
+                          ) : (
+                            cell.text
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+          )}
+          {compareList.length > 0 && (
+            <p className="text-[12px] text-[#74777e] font-normal pt-2.5">
+              Tick <span className="font-semibold text-[#115eaf]">Compare</span> on any university card above to add it to this matrix (up to 3).
+            </p>
+          )}
         </div>
       </section>
 
@@ -939,39 +1011,45 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
         </div>
       </section>
 
-      {/* ================= FLOATING COMPARE DOCK ================= */}
-      {compared.length > 0 && (
-        <div className="fixed bottom-16 md:bottom-4 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-4xl bg-[#0b2540] text-white rounded-xl shadow-2xl p-3 md:p-4 border border-[#314865] flex items-center justify-between transition-all duration-300">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-[#115eaf] text-white flex items-center justify-center">
-              <ArrowLeftRight className="w-4 h-4" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-bold">University Comparison Tray</span>
-                <span className="bg-amber-400 text-[#2f1500] font-bold text-[11px] px-2 py-0.5 rounded-full">
-                  {compared.length} Selected
-                </span>
-              </div>
-              <span className="text-xs font-normal text-[#b1c8eb] hidden sm:block">
-                Select up to 3 universities to compare approvals, fees, and semesters
-                side-by-side.
+      {/* ================= MOBILE FULL-SCREEN FILTER OVERLAY ================= */}
+      {filtersOpen && (
+        <div className="fixed inset-0 z-[60] bg-white flex flex-col lg:hidden">
+          {/* Header */}
+          <div className="flex items-center justify-between px-4 py-3 border-b border-[#e7eeff] shrink-0">
+            <div className="flex items-center gap-2">
+              <SlidersHorizontal className="w-4 h-4 text-[#115eaf]" />
+              <span className="text-sm font-bold text-[#000f22]">Filters</span>
+              <span className="bg-[#f0f3ff] text-[#115eaf] text-[11px] font-bold px-2 py-0.5 rounded-full">
+                5 Active
               </span>
             </div>
-          </div>
-          <div className="flex items-center gap-2">
             <button
-              onClick={() => setCompared([])}
-              className="text-xs text-[#c4c6ce] hover:text-white underline px-2 hidden sm:inline"
+              onClick={() => setFiltersOpen(false)}
+              aria-label="Close filters"
+              className="p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-[#43474d] hover:text-[#000f22]"
             >
-              Clear
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Scrollable filter content */}
+          <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-2">
+            {filterBody}
+          </div>
+
+          {/* Footer */}
+          <div className="shrink-0 border-t border-[#e7eeff] p-4 flex items-center gap-3 bg-white">
+            <button
+              onClick={resetFilters}
+              className="px-4 py-3 rounded-xl border border-[#d5e3ff] text-[#115eaf] text-sm font-semibold hover:bg-[#f0f3ff] transition-colors min-h-[44px]"
+            >
+              Reset
             </button>
             <button
-              onClick={onOpenHelpDesk}
-              className="px-4 py-2 bg-[#115eaf] hover:bg-[#dee8ff] hover:text-[#004689] text-white text-xs font-semibold rounded-lg shadow-sm transition-all active:scale-95 flex items-center gap-1"
+              onClick={() => setFiltersOpen(false)}
+              className="flex-1 py-3 rounded-xl bg-[#115eaf] hover:bg-[#004689] text-white text-sm font-semibold transition-all shadow-sm active:scale-95 min-h-[44px]"
             >
-              <span>Compare Now</span>
-              <ExternalLink className="w-3 h-3" />
+              Show Results
             </button>
           </div>
         </div>

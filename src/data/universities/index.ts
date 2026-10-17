@@ -31,6 +31,7 @@ const SLUG_MAP: Record<string, string> = {
   'cu-online': 'cu-online',
   'chandigarh-university': 'cu-online',
   'chandigarh-university-online': 'cu-online',
+  'chandigarh-university-distance': 'cu-online',
   // Manipal
   manipal: 'manipal-online',
   'manipal-online': 'manipal-online',

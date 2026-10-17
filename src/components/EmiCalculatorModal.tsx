@@ -58,7 +58,7 @@ export const EmiCalculatorModal: React.FC<EmiCalculatorModalProps> = ({
           </div>
           <button 
             onClick={onClose}
-            className="p-2 text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
+            className="p-2 min-h-[44px] text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -75,7 +75,7 @@ export const EmiCalculatorModal: React.FC<EmiCalculatorModalProps> = ({
               id={programSelectId}
               value={selectedCourseId}
               onChange={(e) => setSelectedCourseId(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-[#c4c6ce] text-sm font-semibold text-[#000f22] bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all cursor-pointer"
+              className="w-full px-4 py-3 rounded-xl border border-[#c4c6ce] text-base sm:text-sm font-semibold text-[#000f22] bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all cursor-pointer"
             >
               {COURSES_DATA.map((course) => (
                 <option key={course.id} value={course.id}>
@@ -86,7 +86,7 @@ export const EmiCalculatorModal: React.FC<EmiCalculatorModalProps> = ({
           </div>
 
           {/* Early Bird Grant Toggle */}
-          <div className="p-4 rounded-xl bg-[#e7eeff]/60 border border-[#b1c8eb] flex items-center justify-between gap-4">
+          <div className="p-4 rounded-xl bg-[#e7eeff]/60 border border-[#b1c8eb] flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <input
                 type="checkbox"
@@ -114,7 +114,7 @@ export const EmiCalculatorModal: React.FC<EmiCalculatorModalProps> = ({
             <label className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-2">
               Select Repayment Tenure (Months)
             </label>
-            <div className="grid grid-cols-4 gap-2 sm:gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
               {[6, 12, 18, 24].map((t) => (
                 <button
                   key={t}
@@ -153,7 +153,7 @@ export const EmiCalculatorModal: React.FC<EmiCalculatorModalProps> = ({
               step={2000}
               value={downPayment}
               onChange={(e) => setDownPayment(Number(e.target.value))}
-              className="w-full h-2 bg-[#e7eeff] rounded-lg appearance-none cursor-pointer accent-[#115eaf]"
+              className="w-full h-2 max-md:h-3 bg-[#e7eeff] rounded-lg appearance-none cursor-pointer accent-[#115eaf]"
             />
             <div className="flex justify-between text-[11px] text-[#74777e] mt-1">
               <span>₹0 (Zero Down Payment)</span>
@@ -179,7 +179,7 @@ export const EmiCalculatorModal: React.FC<EmiCalculatorModalProps> = ({
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-2 text-xs text-[#d8e3fb]">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs text-[#d8e3fb]">
               <div>
                 <span className="text-[#768dad] block">Standard Fee:</span>
                 <span className="font-semibold line-through text-[#768dad]">
@@ -214,7 +214,7 @@ export const EmiCalculatorModal: React.FC<EmiCalculatorModalProps> = ({
         <div className="p-6 border-t border-[#e7eeff] bg-[#f9f9ff] flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
             onClick={onClose}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-[#c4c6ce] text-[#000f22] font-semibold text-sm hover:bg-white transition-colors"
+            className="w-full sm:w-auto px-5 py-2.5 min-h-[44px] rounded-xl border border-[#c4c6ce] text-[#000f22] font-semibold text-sm hover:bg-white transition-colors"
           >
             Close
           </button>

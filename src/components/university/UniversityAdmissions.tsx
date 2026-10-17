@@ -12,7 +12,7 @@ export const UniversityAdmissions: React.FC<UniversityAdmissionsProps> = ({
   onOpenApply,
 }) => {
   return (
-    <section id="admissions" className="scroll-mt-32 space-y-6">
+    <section id="admissions" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
       {/* Heading */}
       <div>
         <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight leading-snug">
@@ -58,7 +58,7 @@ export const UniversityAdmissions: React.FC<UniversityAdmissionsProps> = ({
             <h3 className="text-base sm:text-lg font-semibold text-slate-900">
               Program Eligibility & Selection Criteria
             </h3>
-            <span className="text-xs text-slate-500 font-medium hidden sm:inline">
+            <span className="text-xs text-slate-500 font-medium sm:hidden">
               Scroll horizontally if table overflows
             </span>
           </div>

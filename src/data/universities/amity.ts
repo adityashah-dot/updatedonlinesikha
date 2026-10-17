@@ -12,14 +12,17 @@ export const AMITY_UNIVERSITY_DATA: UniversityData = {
   officialWebsite: 'amityonline.com',
   rating: '4.7',
   reviewsCount: 2350,
-  nirfRanking: '32',
+  nirfRanking: '22',
   naacGrade: 'NAAC A+ Grade',
   approvals: ['UGC-DEB', 'AICTE', 'WES (USA & Canada)', 'QS Ranked #1 in India', 'AIU', 'QAA (UK)'],
   verifiedYear: '2026',
-  logoImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBogd-HH3wbYS_BEwn8GjcylpXajy4iKY2EsFruzyPSEQadgg2jLTMxzX8FC_-q6YRfTG8vTdxbBwb4SeQ4MgWR1gcPRgdF3MeHjQJkcNZi8_TDrMmWf70ocsjMbILMnzz_7qMQpR737IVk6K_-_pA9HvHBPf6VubWZD9-QigSOFnN2v4GzQ7Vc4oGSZnyQ5EiQDKuYolAo7WanMn7FyVUv_ChFrU35pvoVRytRfKobmTax-bdDlW_0HLGCxAXROBPaxxI',
-  backgroundImage: '/images/campusamity.png',
+  logoImage:
+    'https://images.DegreeFYD.com/colleges/6812/amity_university_online_courses_and_admission_2025_logo.webp',
+  backgroundImage:
+    'https://images.DegreeFYD.com/colleges/6812/amity_university_online_courses_and_admission_2025_image.webp',
   brochureUrl: 'https://images.degreefyd.com//amity-online-brochure.pdf',
-  sampleDegreeImage: '/images/sampleamity.png',
+  sampleDegreeImage:
+    'https://images.DegreeFYD.com/colleges/6812/sampleDegree/amity_university_online_courses_and_admission_2025_sampledegree.webp',
 
   quickStats: {
     feeRange: '₹50,000 – ₹2,50,000',
@@ -43,7 +46,7 @@ export const AMITY_UNIVERSITY_DATA: UniversityData = {
       { label: 'Institution Type', value: 'Private UGC-DEB Entitled', category: 'Institution' },
       { label: 'Campus Headquarters', value: 'Sector 125, Noida, Uttar Pradesh', category: 'Institution' },
       { label: 'Accreditation', value: 'NAAC A+ Grade (High CGPA)', category: 'Accreditations' },
-      { label: 'Global Ranking', value: 'QS Online MBA Top 10 Asia-Pacific · NIRF #32', category: 'Accreditations' },
+      { label: 'Global Ranking', value: 'QS Online MBA Top 10 Asia-Pacific · NIRF #22', category: 'Accreditations' },
       { label: 'Global Recognition', value: 'WES (USA & Canada), QAA (UK)', category: 'Accreditations' },
       { label: 'Examination Format', value: '100% Home Online Proctored', category: 'Evaluation' },
       { label: 'Active Learners', value: '1,60,000+ Students Worldwide', category: 'Academic' },

@@ -137,9 +137,24 @@ async function startServer() {
     app.use(vite.middlewares);
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Online Siksha server listening on http://0.0.0.0:${PORT}`);
-  });
+  const listenOnPort = (port: number, retriesLeft = 10) => {
+    const server = app.listen(port, '0.0.0.0', () => {
+      console.log(`Online Siksha server listening on http://0.0.0.0:${port}`);
+    });
+
+    server.on('error', (error: NodeJS.ErrnoException) => {
+      if (error.code === 'EADDRINUSE' && retriesLeft > 0) {
+        console.warn(`Port ${port} is busy. Retrying on port ${port + 1}...`);
+        server.close(() => listenOnPort(port + 1, retriesLeft - 1));
+        return;
+      }
+
+      console.error('Unable to start server:', error);
+      process.exit(1);
+    });
+  };
+
+  listenOnPort(PORT);
 }
 
 startServer();

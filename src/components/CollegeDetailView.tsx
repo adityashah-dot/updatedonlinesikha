@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Download, Calculator, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { OverviewView } from './OverviewView';
 import { AdmissionView } from './AdmissionView';
@@ -19,7 +19,12 @@ import { UniversityLms } from './university/UniversityLms';
 import { UniversityDates } from './university/UniversityDates';
 import { UniversityFaq } from './university/UniversityFaq';
 import { UniversityRelated } from './university/UniversityRelated';
-import { UniversityCounsellingCard } from './university/UniversityCounsellingCard';
+import { CuOverviewView } from './CuOverviewView';
+import { AmityOverviewView } from './AmityOverviewView';
+import { AmityAdmissionView } from './AmityAdmissionView';
+import { AmityCoursesView } from './AmityCoursesView';
+import { AmityScholarshipsView } from './AmityScholarshipsView';
+import { BlogsSection } from './BlogsSection';
 import type { Course } from '../types';
 
 type LpuSection = 'overview' | 'courses' | 'admission' | 'scholarships' | 'lms';
@@ -33,7 +38,7 @@ interface CollegeDetailViewProps {
   onOpenLms: () => void;
 }
 
-// Slugs that have a full profile page
+  // Slugs that have a full profile page
 const SLUG_ALIASES: Record<string, string> = {
   lpu: 'lpu-online',
   'lpu-online': 'lpu-online',
@@ -44,6 +49,8 @@ const SLUG_ALIASES: Record<string, string> = {
   cu: 'cu-online',
   'cu-online': 'cu-online',
   'chandigarh-university': 'cu-online',
+  'chandigarh-university-distance': 'cu-online',
+  'chandigarh-university-online': 'cu-online',
   manipal: 'manipal-online',
   'manipal-online': 'manipal-online',
   'online-manipal': 'manipal-online',
@@ -202,9 +209,69 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
     );
   }
 
+  // If viewing Amity Online: render the dedicated LPU-style 4-page views
+  const isAmity = collegeId === 'amity-online' || collegeId === 'amity';
+  if (isAmity) {
+    return (
+      <div className="min-h-screen bg-[#f9f9ff]">
+        {lpuSection === 'overview' && (
+          <AmityOverviewView
+            universityNavigation={universityNavigation}
+            onOpenApply={onOpenApply}
+            onOpenBrochure={() => onOpenBrochure()}
+            onOpenHelpDesk={onOpenHelpDesk}
+          />
+        )}
+
+        {lpuSection === 'courses' && (
+          <AmityCoursesView
+            universityNavigation={universityNavigation}
+            onOpenApply={onOpenApply}
+            onOpenBrochure={() => onOpenBrochure()}
+            onOpenEmi={() => onOpenEmi()}
+            onOpenHelpDesk={onOpenHelpDesk}
+          />
+        )}
+
+        {lpuSection === 'admission' && (
+          <AmityAdmissionView
+            universityNavigation={universityNavigation}
+            onOpenApply={onOpenApply}
+            onOpenBrochure={() => onOpenBrochure()}
+            onOpenHelpDesk={onOpenHelpDesk}
+          />
+        )}
+
+        {lpuSection === 'scholarships' && (
+          <AmityScholarshipsView
+            universityNavigation={universityNavigation}
+            onOpenApply={onOpenApply}
+            onOpenBrochure={() => onOpenBrochure()}
+            onOpenHelpDesk={onOpenHelpDesk}
+          />
+        )}
+      </div>
+    );
+  }
+
   // If viewing any other college (Amity, CU, Manipal, Jain, UPES):
   // Render the exact same 4-page layout structure (Overview, Courses, Admission, Scholarships)
   if (universityData) {
+    // CU uses the dedicated LPU-style overview page (breadcrumb + hero + TOC + full sections)
+    const isCu = collegeId === 'cu-online' || collegeId === 'cu';
+    if (isCu && lpuSection === 'overview') {
+      return (
+        <div className="min-h-screen bg-[#f9f9ff]">
+          <CuOverviewView
+            universityNavigation={universityNavigation}
+            onOpenApply={onOpenApply}
+            onOpenBrochure={() => onOpenBrochure()}
+            onOpenHelpDesk={onOpenHelpDesk}
+          />
+        </div>
+      );
+    }
+
     return (
       <div className="min-h-screen bg-[#f9f9ff]">
         {/* Top Hero Banner */}
@@ -286,11 +353,59 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
                   )}
                 </motion.div>
               </AnimatePresence>
+
+              {/* CU: blogs section at the end of every tab */}
+              {isCu && (
+                <div className="section-container mt-6">
+                  <BlogsSection onOpenHelpDesk={onOpenHelpDesk} />
+                </div>
+              )}
             </main>
 
             {/* Sidebar */}
-            <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-32">
-              <UniversityCounsellingCard university={universityData} />
+            <aside className="lg:col-span-4 space-y-3 lg:sticky lg:top-24">
+              <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs space-y-3">
+                <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
+                  Direct Candidate Assistance
+                </h4>
+                <div className="space-y-2">
+                  <button
+                    type="button"
+                    onClick={() => onOpenBrochure()}
+                    className="w-full py-2.5 px-3.5 text-xs font-semibold text-slate-700 hover:text-blue-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors flex items-center justify-between"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Download className="w-4 h-4 text-slate-500" />
+                      <span>Download Official Brochure</span>
+                    </span>
+                    <span className="text-[11px] text-slate-400">PDF</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => onOpenEmi()}
+                    className="w-full py-2.5 px-3.5 text-xs font-semibold text-slate-700 hover:text-blue-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors flex items-center justify-between"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Calculator className="w-4 h-4 text-slate-500" />
+                      <span>Check Monthly EMI Plans</span>
+                    </span>
+                    <span className="text-[11px] text-emerald-600 font-bold">0% Interest</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={onOpenHelpDesk}
+                    className="w-full py-2.5 px-3.5 text-xs font-semibold text-slate-700 hover:text-blue-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition-colors flex items-center justify-between"
+                  >
+                    <span className="flex items-center gap-2">
+                      <HelpCircle className="w-4 h-4 text-slate-500" />
+                      <span>Admission Help Desk</span>
+                    </span>
+                    <span className="text-[11px] text-blue-600 font-bold">Toll Free</span>
+                  </button>
+                </div>
+              </div>
             </aside>
           </div>
         </div>
