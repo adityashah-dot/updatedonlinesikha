@@ -531,8 +531,8 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
       </section>
 
       {/* ================= MAIN: FILTERS + LISTING ================= */}
-      <main className="uv-listing max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-8 bg-[#f3f6fb] rounded-t-[18px] sm:rounded-t-[28px]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <main className="uv-listing max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-8 bg-[#f3f6fb] rounded-t-[18px] sm:rounded-t-[28px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* LEFT SIDEBAR FILTERS */}
           <aside className="lg:col-span-3 bg-white rounded-2xl border border-[#d5e3ff] p-5 shadow-xs sticky top-20 hidden lg:block">
             <div className="flex items-center justify-between pb-4 border-b border-[#e7eeff]">
@@ -554,11 +554,11 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
           </aside>
 
           {/* RIGHT LISTINGS */}
-          <section className="lg:col-span-9 space-y-3 sm:space-y-5" id="university-listings-container">
+          <section className="lg:col-span-9 space-y-2.5 sm:space-y-5" id="university-listings-container">
             {/* Toolbar */}
             <div>
             {/* Toolbar - mobile */}
-            <div className="md:hidden bg-white border border-[#dfe6ec] rounded-xl p-2.5">
+            <div className="md:hidden bg-white border border-[#dfe6ec] rounded-xl p-2">
               <div className="flex items-center gap-2">
                 <button
                   type="button"
@@ -614,7 +614,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                 </div>
               </div>
 
-              <div className="flex gap-2 mt-2.5 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+              <div className="flex gap-2 mt-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                 {TOOLBAR_QUICK_CHIPS.map((chip) => {
                   const on = quickChips.includes(chip);
                   return (
@@ -714,7 +714,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                 <article
                   key={u.id}
                   onClick={() => navigate(`/universities/${u.id}`)}
-                  className="bg-white rounded-2xl border border-[#d5e3ff] p-3 sm:p-4 md:p-5 shadow-xs hover:shadow-xl hover:border-[#115eaf] transition-all duration-300 relative flex flex-col cursor-pointer"
+                  className="bg-white rounded-2xl border border-[#d5e3ff] p-2.5 sm:p-4 md:p-5 shadow-xs hover:shadow-xl hover:border-[#115eaf] transition-all duration-300 relative flex flex-col cursor-pointer"
                 >
                   {/* ===== Mobile card ===== */}
                   {!isDesktop && (
@@ -769,7 +769,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                     </div>
 
                     {/* Accreditations chips */}
-                    <div className="flex gap-1.5 overflow-x-auto mt-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                    <div className="flex gap-1.5 overflow-x-auto mt-2.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                       <span className="flex-none flex items-center h-6 px-2.5 rounded-full bg-amber-50 text-amber-900 border border-amber-200/60 text-[11px] font-medium whitespace-nowrap">
                         {u.naac}
                       </span>
@@ -784,10 +784,10 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                     </div>
 
                     {/* Ranking */}
-                    <p className="text-[12px] font-medium text-[#B45309] mt-2.5">{u.rankNote}</p>
+                    <p className="text-[12px] font-medium text-[#B45309] mt-2">{u.rankNote}</p>
 
                     {/* Fee box */}
-                    <div className="bg-[#f9f9ff] border border-[#e7eeff] rounded-lg px-3 py-2.5 mt-3 flex items-center justify-between gap-2 flex-wrap">
+                    <div className="bg-[#f9f9ff] border border-[#e7eeff] rounded-lg px-3 py-2.5 mt-2.5 flex items-center justify-between gap-2 flex-wrap">
                       <div>
                         <span className="block text-[12px] text-[#74777e] font-normal">Total fee</span>
                         <span className="text-xl font-semibold text-[#000f22]">
@@ -800,7 +800,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                     </div>
 
                     {/* Facts */}
-                    <div className="grid grid-cols-3 gap-2 mt-3">
+                    <div className="grid grid-cols-3 gap-2 mt-2.5">
                       {u.specs.slice(0, 3).map((s) => (
                         <div key={s.label} className="min-w-0">
                           <span className="block text-[11px] text-[#74777e]">{s.label}</span>
@@ -816,7 +816,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                     </div>
 
                     {/* Popular tracks */}
-                    <div className="flex gap-2 mt-3 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                    <div className="flex gap-2 mt-2.5 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                       {u.tracks.map((t) => (
                         <span
                           key={t}
@@ -828,7 +828,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                     </div>
 
                     {/* Actions */}
-                    <div className="flex gap-2.5 mt-3.5">
+                    <div className="flex gap-2 mt-2.5">
                       <button
                         type="button"
                         onClick={(e) => {
