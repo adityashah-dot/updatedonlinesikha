@@ -209,15 +209,8 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
       {/* Header Container */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-1.5">
-            <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#115eaf] dark:text-blue-400">
-              <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              VERIFIED GRADUATE OUTCOMES &amp; EXPERIENCES
-            </span>
-          </div>
-
           <h2 className="text-2xl sm:text-3xl font-bold text-[#000f22] dark:text-slate-100 tracking-tight">
-            Real Stories, Real Career Transitions
+            What Our Students are Saying About us
           </h2>
           <p className="text-xs sm:text-sm text-[#43474d] dark:text-slate-400 mt-1 max-w-2xl font-normal leading-relaxed">
             See how working professionals and fresh graduates across India earned UGC-entitled degrees, achieved promotions, and transitioned into top MNCs without leaving their jobs.
@@ -225,13 +218,13 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
         </div>
 
         {/* Controls: Category Filter + Navigation Buttons */}
-        <div className="flex flex-wrap items-center gap-2 shrink-0">
+        <div className="flex flex-wrap items-center gap-2 min-w-0 max-w-full md:justify-end">
           {/* Segmented Category Buttons */}
           <div className="inline-flex items-center p-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 max-w-full overflow-x-auto scrollbar-none" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             <button
               type="button"
               onClick={() => setActiveCategory('all')}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[36px] ${
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] ${
                 activeCategory === 'all'
                   ? 'bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold'
                   : 'text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
@@ -242,7 +235,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             <button
               type="button"
               onClick={() => setActiveCategory('management')}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[36px] ${
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] ${
                 activeCategory === 'management'
                   ? 'bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold'
                   : 'text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
@@ -253,7 +246,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             <button
               type="button"
               onClick={() => setActiveCategory('tech')}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[36px] ${
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] ${
                 activeCategory === 'tech'
                   ? 'bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold'
                   : 'text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
@@ -264,7 +257,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             <button
               type="button"
               onClick={() => setActiveCategory('commerce')}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[36px] ${
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] ${
                 activeCategory === 'commerce'
                   ? 'bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold'
                   : 'text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
@@ -279,7 +272,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             <button
               type="button"
               onClick={() => setIsPlaying(!isPlaying)}
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#121c2e] text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer shadow-2xs"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#121c2e] text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer shadow-2xs"
               title={isPlaying ? 'Pause slideshow' : 'Auto-play reviews'}
               aria-label={isPlaying ? 'Pause slideshow' : 'Auto-play reviews'}
             >
@@ -289,7 +282,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             <button
               type="button"
               onClick={handlePrev}
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#121c2e] text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer shadow-2xs"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#121c2e] text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer shadow-2xs"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -298,7 +291,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             <button
               type="button"
               onClick={handleNext}
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#121c2e] text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer shadow-2xs"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#121c2e] text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer shadow-2xs"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-4 h-4" />
@@ -356,19 +349,13 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
               <div>
                 <div className="flex items-start justify-between gap-3 mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="relative">
+                    <div className="relative shrink-0 rounded-full overflow-hidden ring-1 ring-slate-200 dark:ring-slate-700 shadow-md bg-slate-100 dark:bg-slate-800">
                       <img
                         src={item.avatarUrl}
                         alt={item.name}
-                        className="w-13 h-13 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-md ring-1 ring-slate-200 dark:ring-slate-700"
+                        className="w-13 h-13 object-cover aspect-square rounded-full border-2 border-white dark:border-slate-800"
                         loading="lazy"
                       />
-                      <span
-                        className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center text-white ring-2 ring-white dark:ring-slate-900"
-                        title="UGC-DEB Verified Alum"
-                      >
-                        <CheckCircle2 className="w-3.5 h-3.5" />
-                      </span>
                     </div>
 
                     <div>
@@ -456,13 +443,17 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             key={idx}
             type="button"
             onClick={() => scrollToIndex(idx)}
-            className={`h-2 rounded-full transition-all cursor-pointer ${
-              activeIndex === idx
-                ? 'w-7 bg-[#115eaf] dark:bg-blue-400'
-                : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'
-            }`}
+            className="w-6 h-6 flex items-center justify-center rounded-full cursor-pointer"
             aria-label={`Jump to review ${idx + 1}`}
-          />
+          >
+            <span
+              className={`block h-2 rounded-full transition-all ${
+                activeIndex === idx
+                  ? 'w-7 bg-[#115eaf] dark:bg-blue-400'
+                  : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'
+              }`}
+            />
+          </button>
         ))}
       </div>
 
@@ -497,29 +488,31 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
       {/* Full Story Modal */}
       {selectedStory && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn"
           onClick={() => setSelectedStory(null)}
         >
           <div
-            className="w-full max-w-lg bg-white dark:bg-[#121c2e] rounded-2xl border border-slate-200 dark:border-[#24344d] shadow-2xl overflow-hidden p-6 space-y-4"
+            className="w-full max-w-[760px] bg-white dark:bg-[#121c2e] rounded-2xl border border-slate-200 dark:border-[#24344d] shadow-2xl overflow-hidden p-4 sm:p-5 space-y-3"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3">
-                <img
-                  src={selectedStory.avatarUrl}
-                  alt={selectedStory.name}
-                  className="w-14 h-14 rounded-full object-cover border-2 border-[#115eaf]"
-                />
-                <div>
-                  <h3 className="text-base font-bold text-[#000f22] dark:text-white">
+                <div className="relative shrink-0 rounded-full overflow-hidden border-2 border-[#115eaf] bg-slate-100 shadow-sm">
+                  <img
+                    src={selectedStory.avatarUrl}
+                    alt={selectedStory.name}
+                    className="w-12 h-12 sm:w-14 sm:h-14 object-cover aspect-square rounded-full"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-xl sm:text-[1.7rem] font-bold text-[#000f22] dark:text-white leading-[1.1] tracking-[-0.02em]">
                     {selectedStory.name}
                   </h3>
-                  <p className="text-xs text-[#115eaf] dark:text-blue-400 font-semibold">
+                  <p className="text-[11px] sm:text-xs text-[#115eaf] dark:text-blue-400 font-semibold leading-snug">
                     {selectedStory.currentRole} · {selectedStory.company}
                   </p>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
+                  <p className="text-[10.5px] text-slate-500 dark:text-slate-400 leading-snug">
                     {selectedStory.university} ({selectedStory.batch})
                   </p>
                 </div>
@@ -536,20 +529,20 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             </div>
 
             {/* Key Outcomes Box */}
-            <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/80 dark:border-slate-700/80 flex items-center justify-between text-xs">
+            <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/80 dark:border-slate-700/80 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               <div>
-                <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase font-semibold">
+                <span className="text-slate-500 dark:text-slate-400 block text-[9px] uppercase font-semibold tracking-[0.12em]">
                   Primary Outcome
                 </span>
-                <span className="font-bold text-emerald-700 dark:text-emerald-400 text-sm">
+                <span className="font-bold text-emerald-700 dark:text-emerald-400 text-[1.25rem] sm:text-[1.4rem] leading-none tracking-[-0.03em]">
                   {selectedStory.highlightMetric}
                 </span>
               </div>
-              <div className="text-right">
-                <span className="text-slate-500 dark:text-slate-400 block text-[10px] uppercase font-semibold">
+              <div className="text-left sm:text-right">
+                <span className="text-slate-500 dark:text-slate-400 block text-[9px] uppercase font-semibold tracking-[0.12em]">
                   Statutory Status
                 </span>
-                <span className="inline-flex items-center gap-1 font-semibold text-slate-800 dark:text-slate-200">
+                <span className="inline-flex items-center gap-1 font-semibold text-slate-800 dark:text-slate-200 text-xs sm:text-sm">
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
                   UGC-DEB Entitled Degree
                 </span>
@@ -557,24 +550,24 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             </div>
 
             {/* Detailed Story Narrative */}
-            <div className="space-y-2">
-              <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider">
+            <div className="space-y-2.5">
+              <h4 className="text-[0.7rem] sm:text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-[0.12em]">
                 Full Journey &amp; Preparation Experience
               </h4>
-              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
                 {selectedStory.fullStory}
               </p>
-              <blockquote className="p-3 rounded-lg bg-blue-50/70 dark:bg-blue-950/40 border-l-4 border-[#115eaf] text-xs text-slate-700 dark:text-slate-300 italic">
+              <blockquote className="p-3 rounded-lg bg-blue-50/70 dark:bg-blue-950/40 border-l-4 border-[#115eaf] text-sm sm:text-base text-slate-700 dark:text-slate-300 italic leading-relaxed">
                 "{selectedStory.quote}"
               </blockquote>
             </div>
 
             {/* Modal Actions */}
-            <div className="pt-2 flex items-center justify-end gap-2 border-t border-slate-100 dark:border-slate-800">
+            <div className="pt-2 flex items-center justify-between gap-2 border-t border-slate-100 dark:border-slate-800">
               <button
                 type="button"
                 onClick={() => setSelectedStory(null)}
-                className="px-3.5 py-1.5 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                className="px-3 py-2 text-sm font-medium rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
               >
                 Close
               </button>
@@ -585,7 +578,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
                     setSelectedStory(null);
                     onOpenCounseling();
                   }}
-                  className="px-4 py-1.5 text-xs font-semibold rounded-lg bg-[#115eaf] text-white hover:bg-[#084a8c] transition-colors cursor-pointer shadow-xs"
+                  className="px-4 py-2 text-sm font-semibold rounded-lg bg-[#115eaf] text-white hover:bg-[#084a8c] transition-colors cursor-pointer shadow-xs"
                 >
                   Explore Similar Programs
                 </button>

@@ -707,11 +707,15 @@ export const TopCollegesByLocation: React.FC<TopCollegesByLocationProps> = ({ on
                 key={i}
                 type="button"
                 onClick={() => setActivePage(i)}
-                className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                  safePage === i ? 'w-8 bg-[#115eaf]' : 'w-6 bg-slate-300'
-                }`}
+                className="w-6 h-6 flex items-center justify-center rounded-full cursor-pointer"
                 aria-label={`Page ${i + 1}`}
-              />
+              >
+                <span
+                  className={`block h-1.5 rounded-full transition-all ${
+                    safePage === i ? 'w-8 bg-[#115eaf]' : 'w-6 bg-slate-300'
+                  }`}
+                />
+              </button>
             ))}
           </div>
         )}

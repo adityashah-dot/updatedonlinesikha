@@ -10,7 +10,7 @@ import {
   Users,
 } from 'lucide-react';
 import { TableOfContents } from './TableOfContents';
-import { BlogsSection } from './BlogsSection';
+import { BlogsListSection } from './BlogsListSection';
 import { AMITY_PAGE_CONTENT as AMITY } from '../data/universities/amityContent';
 
 interface AmityScholarshipsViewProps {
@@ -157,7 +157,7 @@ export const AmityScholarshipsView: React.FC<AmityScholarshipsViewProps> = ({
               <span className="block text-sm font-bold text-[#B45309] font-sans">Free</span>
               <span className="text-[10px] text-[#74777e]">AONSAT Registration</span>
             </div>
-            <div className="flex items-center gap-3 ml-auto">
+            <div className="flex items-center gap-3 md:ml-auto">
               <button
                 onClick={() => onOpenBrochure()}
                 className="px-5 py-2.5 rounded-xl bg-white text-[#115eaf] border border-[#115eaf] text-xs sm:text-sm font-bold hover:bg-[#f0f3ff] active:scale-95 transition-all flex items-center justify-center gap-2"
@@ -524,9 +524,9 @@ export const AmityScholarshipsView: React.FC<AmityScholarshipsViewProps> = ({
           </section>
 
           {/* 10. Blogs */}
-          <BlogsSection
+          <BlogsListSection
             onOpenHelpDesk={onOpenHelpDesk}
-            description={AMITY.blogsIntro}
+            sectionId="blogs"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
           />
         </div>

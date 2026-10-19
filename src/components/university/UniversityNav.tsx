@@ -44,7 +44,7 @@ export const UniversityNav: React.FC<UniversityNavProps> = ({
                   key={section.id}
                   type="button"
                   onClick={() => onSelectSection(section.id)}
-                  className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded-md whitespace-nowrap transition-colors shrink-0 ${
+                  className={`px-3 py-1.5 min-h-[44px] text-xs sm:text-sm font-medium rounded-md whitespace-nowrap transition-colors shrink-0 ${
                     isActive
                       ? 'bg-blue-50 text-blue-800 font-semibold border border-blue-200/80'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80'
@@ -61,7 +61,7 @@ export const UniversityNav: React.FC<UniversityNavProps> = ({
             <button
               type="button"
               onClick={onOpenApply}
-              className="px-3.5 py-1.5 text-xs font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-md transition-colors whitespace-nowrap shadow-xs"
+              className="px-3.5 py-1.5 min-h-[44px] text-xs font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded-md transition-colors whitespace-nowrap shadow-xs"
             >
               Apply Online
             </button>

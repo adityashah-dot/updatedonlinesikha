@@ -1,0 +1,972 @@
+{
+ "lpu-overview": {
+  "390": [
+   {
+    "sel": "DIV.flex",
+    "sw": 609,
+    "cw": 358,
+    "sh": 64,
+    "ch": 64,
+    "text": "grid_view\nOverview\nmenu_book\nC"
+   },
+   {
+    "sel": "DIV.relative",
+    "sw": 2615,
+    "cw": 326,
+    "sh": 64,
+    "ch": 64,
+    "text": ""
+   },
+   {
+    "sel": "DIV.campus-marquee",
+    "sw": 2336,
+    "cw": 324,
+    "sh": 257,
+    "ch": 257,
+    "text": "Lovely Professional University"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 180,
+    "cw": 180,
+    "sh": 111,
+    "ch": 66,
+    "text": "Top Online MBA Universities wi"
+   }
+  ],
+  "1366": [
+   {
+    "sel": "DIV.relative",
+    "sw": 2518,
+    "cw": 1170,
+    "sh": 64,
+    "ch": 64,
+    "text": ""
+   },
+   {
+    "sel": "DIV.campus-marquee",
+    "sw": 2688,
+    "cw": 1168,
+    "sh": 282,
+    "ch": 282,
+    "text": "Lovely Professional University"
+   }
+  ]
+ },
+ "lpu-admission": {
+  "390": [
+   {
+    "sel": "DIV.flex",
+    "sw": 609,
+    "cw": 358,
+    "sh": 64,
+    "ch": 64,
+    "text": "grid_view\nOverview\nmenu_book\nC"
+   },
+   {
+    "sel": "DIV.overflow-x-auto",
+    "sw": 377,
+    "cw": 324,
+    "sh": 457,
+    "ch": 457,
+    "text": "Event\tImportant Date\tStatus\n\nO"
+   },
+   {
+    "sel": "DIV.overflow-x-auto",
+    "sw": 418,
+    "cw": 324,
+    "sh": 539,
+    "ch": 539,
+    "text": "Course\tEligibility\tSelection P"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 180,
+    "cw": 180,
+    "sh": 111,
+    "ch": 66,
+    "text": "Top Online MBA Universities wi"
+   }
+  ],
+  "1366": []
+ },
+ "lpu-courses": {
+  "390": [
+   {
+    "sel": "SECTION.content-block",
+    "sw": 486,
+    "cw": 390,
+    "sh": 1010,
+    "ch": 1010,
+    "text": "LPU Online Courses and Fees 20"
+   },
+   {
+    "sel": "DIV.rounded-xl",
+    "sw": 364,
+    "cw": 324,
+    "sh": 336,
+    "ch": 296,
+    "text": "Admissions Open\nRegistration D"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 609,
+    "cw": 358,
+    "sh": 64,
+    "ch": 64,
+    "text": "grid_view\nOverview\nmenu_book\nC"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 539,
+    "cw": 326,
+    "sh": 38,
+    "ch": 36,
+    "text": "All Courses (11)\nUndergraduate"
+   },
+   {
+    "sel": "DIV.overflow-x-auto",
+    "sw": 440,
+    "cw": 356,
+    "sh": 488,
+    "ch": 488,
+    "text": "Course Name\tDuration\tPer Sem F"
+   },
+   {
+    "sel": "DIV.overflow-x-auto",
+    "sw": 443,
+    "cw": 356,
+    "sh": 557,
+    "ch": 557,
+    "text": "Course Name\tDuration\tPer Sem F"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 292,
+    "cw": 292,
+    "sh": 45,
+    "ch": 22,
+    "text": "Online Master of Business Admi"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 292,
+    "cw": 292,
+    "sh": 108,
+    "ch": 36,
+    "text": "A 2-year UGC-entitled MBA for "
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 292,
+    "cw": 292,
+    "sh": 45,
+    "ch": 22,
+    "text": "Online Master of Computer Appl"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 292,
+    "cw": 292,
+    "sh": 90,
+    "ch": 36,
+    "text": "A 2-year AICTE-approved MCA pr"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 292,
+    "cw": 292,
+    "sh": 45,
+    "ch": 22,
+    "text": "Online Bachelor of Computer Ap"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 292,
+    "cw": 292,
+    "sh": 72,
+    "ch": 36,
+    "text": "A 3-year foundational IT degre"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 292,
+    "cw": 292,
+    "sh": 45,
+    "ch": 22,
+    "text": "Online Bachelor of Business Ad"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 292,
+    "cw": 292,
+    "sh": 90,
+    "ch": 36,
+    "text": "A practical 3-year undergradua"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 292,
+    "cw": 292,
+    "sh": 45,
+    "ch": 22,
+    "text": "Online Bachelor of Commerce (B"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 292,
+    "cw": 292,
+    "sh": 90,
+    "ch": 36,
+    "text": "A 3-year commerce program cove"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 292,
+    "cw": 292,
+    "sh": 72,
+    "ch": 36,
+    "text": "A flexible 3-year humanities d"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 292,
+    "cw": 292,
+    "sh": 45,
+    "ch": 22,
+    "text": "Online Master of Commerce (M.C"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 292,
+    "cw": 292,
+    "sh": 90,
+    "ch": 36,
+    "text": "A 2-year postgraduate commerce"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 292,
+    "cw": 292,
+    "sh": 45,
+    "ch": 22,
+    "text": "Online Master of Science (M.Sc"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 292,
+    "cw": 292,
+    "sh": 90,
+    "ch": 36,
+    "text": "A rigorous 2-year master’s pro"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 292,
+    "cw": 292,
+    "sh": 45,
+    "ch": 22,
+    "text": "Online Master of Science (M.Sc"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 292,
+    "cw": 292,
+    "sh": 72,
+    "ch": 36,
+    "text": "A 2-year postgraduate program "
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 292,
+    "cw": 292,
+    "sh": 72,
+    "ch": 36,
+    "text": "A 2-year master’s degree in En"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 292,
+    "cw": 292,
+    "sh": 45,
+    "ch": 22,
+    "text": "Online Diploma (Business Admin"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 292,
+    "cw": 292,
+    "sh": 72,
+    "ch": 36,
+    "text": "A fast-track 1-year university"
+   },
+   {
+    "sel": "DIV.overflow-x-auto",
+    "sw": 320,
+    "cw": 314,
+    "sh": 469,
+    "ch": 469,
+    "text": "Event\tDetails\tTentative Date\nA"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 212,
+    "cw": 212,
+    "sh": 89,
+    "ch": 66,
+    "text": "Top Online MBA Universities wi"
+   }
+  ],
+  "1366": [
+   {
+    "sel": "SECTION.content-block",
+    "sw": 1462,
+    "cw": 1366,
+    "sh": 480,
+    "ch": 368,
+    "text": "LPU Online Courses and Fees 20"
+   },
+   {
+    "sel": "DIV.rounded-xl",
+    "sw": 427,
+    "cw": 387,
+    "sh": 366,
+    "ch": 326,
+    "text": "Admissions Open\nRegistration D"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 353,
+    "cw": 353,
+    "sh": 41,
+    "ch": 21,
+    "text": "Online Master of Business Admi"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 353,
+    "cw": 353,
+    "sh": 98,
+    "ch": 39,
+    "text": "A 2-year UGC-entitled MBA for "
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 353,
+    "cw": 353,
+    "sh": 41,
+    "ch": 21,
+    "text": "Online Master of Computer Appl"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 353,
+    "cw": 353,
+    "sh": 78,
+    "ch": 39,
+    "text": "A 2-year AICTE-approved MCA pr"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 353,
+    "cw": 353,
+    "sh": 41,
+    "ch": 21,
+    "text": "Online Bachelor of Computer Ap"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 353,
+    "cw": 353,
+    "sh": 59,
+    "ch": 39,
+    "text": "A 3-year foundational IT degre"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 353,
+    "cw": 353,
+    "sh": 41,
+    "ch": 21,
+    "text": "Online Bachelor of Business Ad"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 353,
+    "cw": 353,
+    "sh": 78,
+    "ch": 39,
+    "text": "A practical 3-year undergradua"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 353,
+    "cw": 353,
+    "sh": 78,
+    "ch": 39,
+    "text": "A 3-year commerce program cove"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 353,
+    "cw": 353,
+    "sh": 78,
+    "ch": 39,
+    "text": "A flexible 3-year humanities d"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 353,
+    "cw": 353,
+    "sh": 78,
+    "ch": 39,
+    "text": "A 2-year postgraduate commerce"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 353,
+    "cw": 353,
+    "sh": 78,
+    "ch": 39,
+    "text": "A rigorous 2-year master’s pro"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 353,
+    "cw": 353,
+    "sh": 59,
+    "ch": 39,
+    "text": "A 2-year postgraduate program "
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 353,
+    "cw": 353,
+    "sh": 78,
+    "ch": 39,
+    "text": "A 2-year master’s degree in En"
+   },
+   {
+    "sel": "P.text-[11px]",
+    "sw": 353,
+    "cw": 353,
+    "sh": 59,
+    "ch": 39,
+    "text": "A fast-track 1-year university"
+   }
+  ]
+ },
+ "lpu-scholarship": {
+  "390": [
+   {
+    "sel": "DIV.flex",
+    "sw": 609,
+    "cw": 358,
+    "sh": 64,
+    "ch": 64,
+    "text": "grid_view\nOverview\nmenu_book\nC"
+   }
+  ],
+  "1366": []
+ },
+ "university-listing": {
+  "390": [
+   {
+    "sel": "SECTION.uv-hero",
+    "sw": 438,
+    "cw": 390,
+    "sh": 509,
+    "ch": 509,
+    "text": "Accredited by UGC, AICTE & NAA"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 1004,
+    "cw": 261,
+    "sh": 36,
+    "ch": 36,
+    "text": "NAAC A++ Only\nUGC-DEB 100% Ent"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 425,
+    "cw": 336,
+    "sh": 37,
+    "ch": 32,
+    "text": "100% Entitled\nNAAC A++\nEMI Ava"
+   },
+   {
+    "sel": "H2.text-[17px]",
+    "sw": 224,
+    "cw": 224,
+    "sh": 160,
+    "ch": 63,
+    "text": "Lovely Professional University"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 396,
+    "cw": 332,
+    "sh": 24,
+    "ch": 24,
+    "text": "NAAC A++ (3.68/4)\nUGC-DEB Enti"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 533,
+    "cw": 332,
+    "sh": 29,
+    "ch": 29,
+    "text": "Online MBA (12 Electives)\nOnli"
+   },
+   {
+    "sel": "H2.text-[17px]",
+    "sw": 224,
+    "cw": 224,
+    "sh": 65,
+    "ch": 63,
+    "text": "Chandigarh University Online"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 394,
+    "cw": 332,
+    "sh": 29,
+    "ch": 29,
+    "text": "Online MBA\nOnline MCA\nOnline B"
+   },
+   {
+    "sel": "H2.text-[17px]",
+    "sw": 224,
+    "cw": 224,
+    "sh": 65,
+    "ch": 63,
+    "text": "Amity University Online"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 407,
+    "cw": 332,
+    "sh": 24,
+    "ch": 24,
+    "text": "NAAC A+ Grade\nUGC-DEB Entitled"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 869,
+    "cw": 332,
+    "sh": 29,
+    "ch": 29,
+    "text": "Online MBA (14 Specializations"
+   },
+   {
+    "sel": "H2.text-[17px]",
+    "sw": 224,
+    "cw": 224,
+    "sh": 128,
+    "ch": 63,
+    "text": "Manipal University Jaipur (Onl"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 578,
+    "cw": 332,
+    "sh": 24,
+    "ch": 24,
+    "text": "NAAC A++ (3.59 CGPA)\nUGC-DEB E"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 483,
+    "cw": 332,
+    "sh": 29,
+    "ch": 29,
+    "text": "Online MBA (BFSI, HR, IT)\nOnli"
+   },
+   {
+    "sel": "H2.text-[17px]",
+    "sw": 224,
+    "cw": 224,
+    "sh": 96,
+    "ch": 63,
+    "text": "Jain (Deemed-to-be) University"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 454,
+    "cw": 332,
+    "sh": 24,
+    "ch": 24,
+    "text": "NAAC A++ (3.71)\nUGC-DEB Approv"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 657,
+    "cw": 332,
+    "sh": 29,
+    "ch": 29,
+    "text": "MBA in Digital Business\nMCA in"
+   },
+   {
+    "sel": "H2.text-[17px]",
+    "sw": 224,
+    "cw": 224,
+    "sh": 128,
+    "ch": 63,
+    "text": "UPES Online (University of Pet"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 448,
+    "cw": 332,
+    "sh": 24,
+    "ch": 24,
+    "text": "NAAC A Grade\nUGC-DEB Entitled\n"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 629,
+    "cw": 332,
+    "sh": 29,
+    "ch": 29,
+    "text": "MBA in Oil & Gas Management\nMB"
+   },
+   {
+    "sel": "DIV.overflow-x-auto",
+    "sw": 560,
+    "cw": 314,
+    "sh": 469,
+    "ch": 469,
+    "text": "Comparison Parameter\tLovely Pr"
+   }
+  ],
+  "1366": [
+   {
+    "sel": "SECTION.uv-hero",
+    "sw": 1414,
+    "cw": 1366,
+    "sh": 449,
+    "ch": 449,
+    "text": "Accredited by UGC, AICTE & NAA"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 1004,
+    "cw": 783,
+    "sh": 36,
+    "ch": 36,
+    "text": "NAAC A++ Only\nUGC-DEB 100% Ent"
+   },
+   {
+    "sel": "DIV.w-[72px]",
+    "sw": 66,
+    "cw": 54,
+    "sh": 54,
+    "ch": 54,
+    "text": "MANIPAL\nONLINE"
+   }
+  ]
+ },
+ "home": {
+  "390": [
+   {
+    "sel": "SECTION.relative",
+    "sw": 438,
+    "cw": 390,
+    "sh": 890,
+    "ch": 890,
+    "text": "UGC-DEB • NAAC A++ Approved\nDi"
+   },
+   {
+    "sel": "LABEL.block",
+    "sw": 165,
+    "cw": 165,
+    "sh": 14,
+    "ch": 12,
+    "text": "SELECT DEGREE PROGRAM"
+   },
+   {
+    "sel": "LABEL.block",
+    "sw": 145,
+    "cw": 145,
+    "sh": 14,
+    "ch": 12,
+    "text": "BUDGET PER SEMESTER"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 1184,
+    "cw": 358,
+    "sh": 373,
+    "ch": 373,
+    "text": "Lovely Professional University"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 507,
+    "cw": 332,
+    "sh": 34,
+    "ch": 34,
+    "text": "All India\nDelhi/NCR\nHyderabad\n"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 817,
+    "cw": 358,
+    "sh": 36,
+    "ch": 36,
+    "text": "All India\nDelhi/NCR\nHyderabad\n"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 186,
+    "cw": 186,
+    "sh": 58,
+    "ch": 19,
+    "text": "NIT Kurukshetra - National Ins"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 186,
+    "cw": 186,
+    "sh": 58,
+    "ch": 19,
+    "text": "NIFTEM - National Institute of"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 186,
+    "cw": 186,
+    "sh": 39,
+    "ch": 19,
+    "text": "Amity University, Gurugram"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 186,
+    "cw": 186,
+    "sh": 58,
+    "ch": 19,
+    "text": "Maharishi Markandeshwar Univer"
+   },
+   {
+    "sel": "H3.text-sm",
+    "sw": 186,
+    "cw": 186,
+    "sh": 58,
+    "ch": 19,
+    "text": "Manav Rachna International Ins"
+   },
+   {
+    "sel": "DIV.inline-flex",
+    "sw": 607,
+    "cw": 356,
+    "sh": 52,
+    "ch": 52,
+    "text": "All Programs\nManagement (MBA/B"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 1564,
+    "cw": 358,
+    "sh": 420,
+    "ch": 420,
+    "text": "Pooja Sharma\n\nSenior Business "
+   },
+   {
+    "sel": "P.relative",
+    "sw": 258,
+    "cw": 258,
+    "sh": 205,
+    "ch": 91,
+    "text": "\"Balancing a demanding 9-to-6 "
+   },
+   {
+    "sel": "P.relative",
+    "sw": 258,
+    "cw": 258,
+    "sh": 182,
+    "ch": 91,
+    "text": "\"Having a BCA left me stalled "
+   },
+   {
+    "sel": "P.relative",
+    "sw": 258,
+    "cw": 258,
+    "sh": 182,
+    "ch": 91,
+    "text": "\"The virtual campus drives wer"
+   },
+   {
+    "sel": "P.relative",
+    "sw": 258,
+    "cw": 258,
+    "sh": 205,
+    "ch": 91,
+    "text": "\"Manipal Online provided free "
+   },
+   {
+    "sel": "P.relative",
+    "sw": 258,
+    "cw": 258,
+    "sh": 182,
+    "ch": 91,
+    "text": "\"I wanted to clear global cert"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 972,
+    "cw": 324,
+    "sh": 190,
+    "ch": 190,
+    "text": "Amity University Online\nNoida,"
+   },
+   {
+    "sel": "SPAN.truncate",
+    "sw": 123,
+    "cw": 109,
+    "sh": 19,
+    "ch": 19,
+    "text": "Noida, Uttar Pradesh"
+   },
+   {
+    "sel": "SPAN.truncate",
+    "sw": 130,
+    "cw": 109,
+    "sh": 19,
+    "ch": 19,
+    "text": "Bangalore, Karnataka"
+   },
+   {
+    "sel": "SPAN.truncate",
+    "sw": 123,
+    "cw": 109,
+    "sh": 19,
+    "ch": 19,
+    "text": "Noida, Uttar Pradesh"
+   },
+   {
+    "sel": "SECTION#counselling.relative",
+    "sw": 486,
+    "cw": 390,
+    "sh": 696,
+    "ch": 616,
+    "text": "FREE 1-ON-1 ACADEMIC ADVISORY\n"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 314,
+    "cw": 314,
+    "sh": 48,
+    "ch": 46,
+    "text": "+91"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 804,
+    "cw": 358,
+    "sh": 52,
+    "ch": 52,
+    "text": "All Questions\nUGC & Legal Vali"
+   }
+  ],
+  "1366": [
+   {
+    "sel": "SECTION.relative",
+    "sw": 1278,
+    "cw": 1230,
+    "sh": 589,
+    "ch": 589,
+    "text": "UGC-DEB • AICTE • NAAC A++ ACC"
+   },
+   {
+    "sel": "LABEL.block",
+    "sw": 165,
+    "cw": 165,
+    "sh": 14,
+    "ch": 12,
+    "text": "SELECT DEGREE PROGRAM"
+   },
+   {
+    "sel": "LABEL.block",
+    "sw": 145,
+    "cw": 145,
+    "sh": 14,
+    "ch": 12,
+    "text": "BUDGET PER SEMESTER"
+   },
+   {
+    "sel": "DIV.snap-start",
+    "sw": 419,
+    "cw": 379,
+    "sh": 241,
+    "ch": 241,
+    "text": "RECOMMENDATION\nWhat is your lo"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 1930,
+    "cw": 1232,
+    "sh": 417,
+    "ch": 417,
+    "text": "Pooja Sharma\n\nSenior Business "
+   },
+   {
+    "sel": "P.relative",
+    "sw": 320,
+    "cw": 320,
+    "sh": 182,
+    "ch": 91,
+    "text": "\"Balancing a demanding 9-to-6 "
+   },
+   {
+    "sel": "P.relative",
+    "sw": 320,
+    "cw": 320,
+    "sh": 159,
+    "ch": 91,
+    "text": "\"Having a BCA left me stalled "
+   },
+   {
+    "sel": "P.relative",
+    "sw": 320,
+    "cw": 320,
+    "sh": 159,
+    "ch": 91,
+    "text": "\"The virtual campus drives wer"
+   },
+   {
+    "sel": "P.relative",
+    "sw": 320,
+    "cw": 320,
+    "sh": 159,
+    "ch": 91,
+    "text": "\"Manipal Online provided free "
+   },
+   {
+    "sel": "P.relative",
+    "sw": 320,
+    "cw": 320,
+    "sh": 137,
+    "ch": 91,
+    "text": "\"I wanted to clear global cert"
+   },
+   {
+    "sel": "DIV.flex",
+    "sw": 1458,
+    "cw": 486,
+    "sh": 172,
+    "ch": 172,
+    "text": "Amity University Online\nNoida,"
+   },
+   {
+    "sel": "SECTION#counselling.relative",
+    "sw": 1326,
+    "cw": 1230,
+    "sh": 611,
+    "ch": 531,
+    "text": "FREE 1-ON-1 ACADEMIC ADVISORY\n"
+   }
+  ]
+ }
+}

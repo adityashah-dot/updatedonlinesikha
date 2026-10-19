@@ -24,7 +24,7 @@ import { AmityOverviewView } from './AmityOverviewView';
 import { AmityAdmissionView } from './AmityAdmissionView';
 import { AmityCoursesView } from './AmityCoursesView';
 import { AmityScholarshipsView } from './AmityScholarshipsView';
-import { BlogsSection } from './BlogsSection';
+import { BlogsListSection } from './BlogsListSection';
 import type { Course } from '../types';
 
 type LpuSection = 'overview' | 'courses' | 'admission' | 'scholarships' | 'lms';
@@ -138,7 +138,7 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab.id)}
-                className={`shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
+                className={`shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 min-h-[44px] rounded-lg text-xs sm:text-sm font-medium transition-colors ${
                   isActive
                     ? 'bg-[#115eaf] text-white font-semibold shadow-xs'
                     : 'text-[#43474d] hover:bg-[#f0f3ff] hover:text-[#115eaf]'
@@ -151,7 +151,7 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
           })}
           <button
             onClick={() => handleTabClick('lms')}
-            className="shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors text-[#43474d] hover:bg-[#f0f3ff] hover:text-[#115eaf]"
+            className="shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 min-h-[44px] rounded-lg text-xs sm:text-sm font-medium transition-colors text-[#43474d] hover:bg-[#f0f3ff] hover:text-[#115eaf]"
           >
             <span className="material-symbols-outlined text-[16px] sm:text-[18px] leading-none">devices</span>
             <span>LMS Portal</span>
@@ -165,7 +165,7 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
   const isLpu = collegeId === 'lpu-online' || collegeId === 'lpu';
   if (isLpu) {
     return (
-      <div>
+      <div className="uni-detail">
         {lpuSection === 'overview' && (
           <OverviewView
             onSelectCourse={onSelectCourse}
@@ -213,7 +213,7 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
   const isAmity = collegeId === 'amity-online' || collegeId === 'amity';
   if (isAmity) {
     return (
-      <div className="min-h-screen bg-[#f9f9ff]">
+      <div className="uni-detail min-h-screen bg-[#f9f9ff]">
         {lpuSection === 'overview' && (
           <AmityOverviewView
             universityNavigation={universityNavigation}
@@ -261,7 +261,7 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
     const isCu = collegeId === 'cu-online' || collegeId === 'cu';
     if (isCu && lpuSection === 'overview') {
       return (
-        <div className="min-h-screen bg-[#f9f9ff]">
+        <div className="uni-detail min-h-screen bg-[#f9f9ff]">
           <CuOverviewView
             universityNavigation={universityNavigation}
             onOpenApply={onOpenApply}
@@ -273,7 +273,7 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
     }
 
     return (
-      <div className="min-h-screen bg-[#f9f9ff]">
+      <div className="uni-detail min-h-screen bg-[#f9f9ff]">
         {/* Top Hero Banner */}
         <UniversityHero
           university={universityData}
@@ -357,7 +357,10 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
               {/* CU: blogs section at the end of every tab */}
               {isCu && (
                 <div className="section-container mt-6">
-                  <BlogsSection onOpenHelpDesk={onOpenHelpDesk} />
+                  <BlogsListSection
+                    onOpenHelpDesk={onOpenHelpDesk}
+                    className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+                  />
                 </div>
               )}
             </main>

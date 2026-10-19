@@ -1,0 +1,254 @@
+{
+ "lpu-overview": {
+  "320": {
+   "cw": 320,
+   "bw": 332,
+   "overflowPx": 12
+  },
+  "360": {
+   "cw": 360,
+   "bw": 372,
+   "overflowPx": 12
+  },
+  "390": {
+   "cw": 390,
+   "bw": 402,
+   "overflowPx": 12
+  },
+  "430": {
+   "cw": 430,
+   "bw": 442,
+   "overflowPx": 12
+  },
+  "768": {
+   "cw": 768,
+   "bw": 780,
+   "overflowPx": 12
+  },
+  "1024": {
+   "cw": 1024,
+   "bw": 1024,
+   "overflowPx": 0
+  },
+  "1366": {
+   "cw": 1366,
+   "bw": 1366,
+   "overflowPx": 0
+  },
+  "1920": {
+   "cw": 1920,
+   "bw": 1920,
+   "overflowPx": 0
+  }
+ },
+ "lpu-admission": {
+  "320": {
+   "cw": 320,
+   "bw": 320,
+   "overflowPx": 0
+  },
+  "360": {
+   "cw": 360,
+   "bw": 360,
+   "overflowPx": 0
+  },
+  "390": {
+   "cw": 390,
+   "bw": 390,
+   "overflowPx": 0
+  },
+  "430": {
+   "cw": 430,
+   "bw": 430,
+   "overflowPx": 0
+  },
+  "768": {
+   "cw": 768,
+   "bw": 768,
+   "overflowPx": 0
+  },
+  "1024": {
+   "cw": 1024,
+   "bw": 1024,
+   "overflowPx": 0
+  },
+  "1366": {
+   "cw": 1366,
+   "bw": 1366,
+   "overflowPx": 0
+  },
+  "1920": {
+   "cw": 1920,
+   "bw": 1920,
+   "overflowPx": 0
+  }
+ },
+ "lpu-courses": {
+  "320": {
+   "cw": 320,
+   "bw": 320,
+   "overflowPx": 0
+  },
+  "360": {
+   "cw": 360,
+   "bw": 360,
+   "overflowPx": 0
+  },
+  "390": {
+   "cw": 390,
+   "bw": 390,
+   "overflowPx": 0
+  },
+  "430": {
+   "cw": 430,
+   "bw": 430,
+   "overflowPx": 0
+  },
+  "768": {
+   "cw": 768,
+   "bw": 768,
+   "overflowPx": 0
+  },
+  "1024": {
+   "cw": 1024,
+   "bw": 1024,
+   "overflowPx": 0
+  },
+  "1366": {
+   "cw": 1366,
+   "bw": 1366,
+   "overflowPx": 0
+  },
+  "1920": {
+   "cw": 1920,
+   "bw": 1920,
+   "overflowPx": 0
+  }
+ },
+ "lpu-scholarship": {
+  "320": {
+   "cw": 320,
+   "bw": 320,
+   "overflowPx": 0
+  },
+  "360": {
+   "cw": 360,
+   "bw": 360,
+   "overflowPx": 0
+  },
+  "390": {
+   "cw": 390,
+   "bw": 390,
+   "overflowPx": 0
+  },
+  "430": {
+   "cw": 430,
+   "bw": 430,
+   "overflowPx": 0
+  },
+  "768": {
+   "cw": 768,
+   "bw": 768,
+   "overflowPx": 0
+  },
+  "1024": {
+   "cw": 1024,
+   "bw": 1024,
+   "overflowPx": 0
+  },
+  "1366": {
+   "cw": 1366,
+   "bw": 1366,
+   "overflowPx": 0
+  },
+  "1920": {
+   "cw": 1920,
+   "bw": 1920,
+   "overflowPx": 0
+  }
+ },
+ "university-listing": {
+  "320": {
+   "cw": 320,
+   "bw": 320,
+   "overflowPx": 0
+  },
+  "360": {
+   "cw": 360,
+   "bw": 360,
+   "overflowPx": 0
+  },
+  "390": {
+   "cw": 390,
+   "bw": 390,
+   "overflowPx": 0
+  },
+  "430": {
+   "cw": 430,
+   "bw": 430,
+   "overflowPx": 0
+  },
+  "768": {
+   "cw": 768,
+   "bw": 768,
+   "overflowPx": 0
+  },
+  "1024": {
+   "cw": 1024,
+   "bw": 1024,
+   "overflowPx": 0
+  },
+  "1366": {
+   "cw": 1366,
+   "bw": 1366,
+   "overflowPx": 0
+  },
+  "1920": {
+   "cw": 1920,
+   "bw": 1920,
+   "overflowPx": 0
+  }
+ },
+ "home": {
+  "320": {
+   "cw": 320,
+   "bw": 320,
+   "overflowPx": 0
+  },
+  "360": {
+   "cw": 360,
+   "bw": 360,
+   "overflowPx": 0
+  },
+  "390": {
+   "cw": 390,
+   "bw": 390,
+   "overflowPx": 0
+  },
+  "430": {
+   "cw": 430,
+   "bw": 430,
+   "overflowPx": 0
+  },
+  "768": {
+   "cw": 768,
+   "bw": 768,
+   "overflowPx": 0
+  },
+  "1024": {
+   "cw": 1024,
+   "bw": 1024,
+   "overflowPx": 0
+  },
+  "1366": {
+   "cw": 1366,
+   "bw": 1366,
+   "overflowPx": 0
+  },
+  "1920": {
+   "cw": 1920,
+   "bw": 1920,
+   "overflowPx": 0
+  }
+ }
+}

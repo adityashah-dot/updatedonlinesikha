@@ -1,0 +1,7148 @@
+{
+ "lpu-overview": {
+  "390": {
+   "tested": 80,
+   "under44": 80,
+   "effFail": 80,
+   "items": [
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "Brochure",
+     "w": 123,
+     "h": 38,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-6.py-2.5",
+     "text": "Apply Now",
+     "w": 138,
+     "h": 36,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "grid_view Overview",
+     "w": 113,
+     "h": 36,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "menu_book Courses",
+     "w": 107,
+     "h": 36,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "school Admission",
+     "w": 120,
+     "h": 36,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "workspace_premium Scholarships",
+     "w": 135,
+     "h": 36,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "devices LMS Portal",
+     "w": 118,
+     "h": 36,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Latest News & Updates",
+     "w": 238,
+     "h": 23,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Admission Highlights 20",
+     "w": 259,
+     "h": 23,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Courses and Fees 2026",
+     "w": 237,
+     "h": 23,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Popular Programmes",
+     "w": 224,
+     "h": 23,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Admission Process 2026",
+     "w": 244,
+     "h": 23,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Rankings & Accreditatio",
+     "w": 258,
+     "h": 23,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.text-xs",
+     "text": "View more",
+     "w": 86,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2",
+     "text": "Download Factsheet",
+     "w": 177,
+     "h": 34,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "All",
+     "w": 42,
+     "h": 30,
+     "hits": 1,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "Institution",
+     "w": 90,
+     "h": 30,
+     "hits": 1,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "Academic",
+     "w": 89,
+     "h": 30,
+     "hits": 0,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "Accreditations",
+     "w": 117,
+     "h": 30,
+     "hits": 1,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "Technology",
+     "w": 98,
+     "h": 30,
+     "hits": 0,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "Evaluation",
+     "w": 92,
+     "h": 30,
+     "hits": 0,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "Info",
+     "w": 50,
+     "h": 30,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Show More Highlights",
+     "w": 326,
+     "h": 34,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2.5",
+     "text": "Download Brochure",
+     "w": 176,
+     "h": 38,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "Apply Now",
+     "w": 126,
+     "h": 36,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online BA",
+     "w": 57,
+     "h": 16,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online BBA",
+     "w": 64,
+     "h": 16,
+     "hits": 1,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online BCA",
+     "w": 66,
+     "h": 16,
+     "hits": 1,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online M.Com",
+     "w": 84,
+     "h": 16,
+     "hits": 1,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online MA",
+     "w": 60,
+     "h": 16,
+     "hits": 1,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online MBA",
+     "w": 67,
+     "h": 16,
+     "hits": 1,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online MCA",
+     "w": 69,
+     "h": 16,
+     "hits": 1,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online MSc",
+     "w": 66,
+     "h": 16,
+     "hits": 1,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online Diploma",
+     "w": 92,
+     "h": 16,
+     "hits": 1,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "ROI Calculator",
+     "w": 131,
+     "h": 38,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "View Fee Structure",
+     "w": 175,
+     "h": 38,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Brochure",
+     "w": 146,
+     "h": 28,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Apply Now",
+     "w": 146,
+     "h": 28,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Brochure",
+     "w": 146,
+     "h": 28,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Apply Now",
+     "w": 146,
+     "h": 28,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Brochure",
+     "w": 146,
+     "h": 28,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Apply Now",
+     "w": 146,
+     "h": 28,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Brochure",
+     "w": 146,
+     "h": 28,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Apply Now",
+     "w": 146,
+     "h": 28,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Brochure",
+     "w": 146,
+     "h": 28,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Apply Now",
+     "w": 146,
+     "h": 28,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Brochure",
+     "w": 146,
+     "h": 28,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Apply Now",
+     "w": 146,
+     "h": 28,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.px-3.5.py-2",
+     "text": "View Full-Size Certificate",
+     "w": 326,
+     "h": 34,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2",
+     "text": "Apply for Degree Enrollment",
+     "w": 199,
+     "h": 32,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.5.py-2",
+     "text": "Verify Legal Equivalence",
+     "w": 176,
+     "h": 34,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1",
+     "text": "All",
+     "w": 48,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1",
+     "text": "Online MBA",
+     "w": 102,
+     "h": 36,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1",
+     "text": "Online MCA",
+     "w": 104,
+     "h": 36,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1",
+     "text": "Online BBA & BCA",
+     "w": 140,
+     "h": 36,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1",
+     "text": "Online M.Com",
+     "w": 119,
+     "h": 36,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "Apply Now 2026",
+     "w": 138,
+     "h": 36,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2.5",
+     "text": "Talk to Counselor",
+     "w": 141,
+     "h": 38,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.px-4",
+     "text": "Is LPU Online degree valid in Indi",
+     "w": 324,
+     "h": 40,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.px-4",
+     "text": "How are LPU online classes conduct",
+     "w": 324,
+     "h": 40,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.px-4",
+     "text": "Is LPU Online admission open for 2",
+     "w": 324,
+     "h": 40,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.px-4",
+     "text": "Is DEB ID required for LPU Online ",
+     "w": 324,
+     "h": 40,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.px-4",
+     "text": "What is the duration of LPU Online",
+     "w": 324,
+     "h": 40,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.px-4",
+     "text": "How are exams conducted in LPU Onl",
+     "w": 324,
+     "h": 40,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.px-4",
+     "text": "What is the fee for LPU Online MBA",
+     "w": 324,
+     "h": 40,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.px-4",
+     "text": "Which is better LPU Online or Amit",
+     "w": 324,
+     "h": 40,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.w-6",
+     "text": "✕",
+     "w": 24,
+     "h": 24,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Submit",
+     "w": 254,
+     "h": 35,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MBA",
+     "w": 91,
+     "h": 16,
+     "hits": 1,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MCA",
+     "w": 92,
+     "h": 16,
+     "hits": 1,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BCA",
+     "w": 89,
+     "h": 16,
+     "hits": 1,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BBA",
+     "w": 88,
+     "h": 16,
+     "hits": 1,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "M.Sc Mathematics",
+     "w": 110,
+     "h": 16,
+     "hits": 1,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Online BA (Humanities)",
+     "w": 139,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Fee Refund Policy",
+     "w": 104,
+     "h": 16,
+     "hits": 1,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "EMI Calculator Tool",
+     "w": 114,
+     "h": 16,
+     "hits": 1,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Scholarship Criteria",
+     "w": 117,
+     "h": 16,
+     "hits": 1,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Top Online Universities",
+     "w": 134,
+     "h": 16,
+     "hits": 1,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "UGC & AICTE Approvals",
+     "w": 139,
+     "h": 16,
+     "hits": 1,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Student Grievances",
+     "w": 118,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    }
+   ]
+  },
+  "1366": {
+   "tested": 80,
+   "under44": 80,
+   "effFail": 80,
+   "items": [
+    {
+     "s": "button.flex.items-center",
+     "text": "Universities",
+     "w": 83,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Degree Explorer",
+     "w": 110,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Compare Matrix",
+     "w": 114,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Scholarships 2026 NEW",
+     "w": 172,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "Brochure",
+     "w": 132,
+     "h": 42,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-6.py-2.5",
+     "text": "Apply Now",
+     "w": 149,
+     "h": 40,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "grid_view Overview",
+     "w": 122,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "menu_book Courses",
+     "w": 115,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "school Admission",
+     "w": 131,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "workspace_premium Scholarships",
+     "w": 147,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "devices LMS Portal",
+     "w": 128,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Latest News & Updates",
+     "w": 246,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Admission Highlights 20",
+     "w": 268,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Courses and Fees 2026",
+     "w": 246,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Popular Programmes",
+     "w": 232,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Eligibility & Selection",
+     "w": 321,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Admission Process 2026",
+     "w": 252,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Rankings & Accreditatio",
+     "w": 268,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.text-xs",
+     "text": "View more",
+     "w": 96,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2",
+     "text": "Download Factsheet",
+     "w": 177,
+     "h": 34,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "All",
+     "w": 42,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "Institution",
+     "w": 90,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "Academic",
+     "w": 89,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "Accreditations",
+     "w": 117,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "Technology",
+     "w": 98,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "Evaluation",
+     "w": 92,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3",
+     "text": "Info",
+     "w": 50,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Show More Highlights",
+     "w": 1170,
+     "h": 34,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2.5",
+     "text": "Download Brochure",
+     "w": 176,
+     "h": 38,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "Apply Now",
+     "w": 126,
+     "h": 38,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online BA",
+     "w": 62,
+     "h": 17,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online BBA",
+     "w": 70,
+     "h": 17,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online BCA",
+     "w": 72,
+     "h": 17,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online M.Com",
+     "w": 90,
+     "h": 17,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online MA",
+     "w": 65,
+     "h": 17,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online MBA",
+     "w": 73,
+     "h": 17,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online MCA",
+     "w": 75,
+     "h": 17,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online MSc",
+     "w": 72,
+     "h": 17,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.text-left",
+     "text": "Online Diploma",
+     "w": 100,
+     "h": 17,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "ROI Calculator",
+     "w": 131,
+     "h": 38,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "View Fee Structure",
+     "w": 175,
+     "h": 38,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Brochure",
+     "w": 175,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Apply Now",
+     "w": 175,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Brochure",
+     "w": 175,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Apply Now",
+     "w": 175,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Brochure",
+     "w": 175,
+     "h": 28,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Apply Now",
+     "w": 175,
+     "h": 28,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Brochure",
+     "w": 175,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Apply Now",
+     "w": 175,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Brochure",
+     "w": 175,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Apply Now",
+     "w": 175,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Brochure",
+     "w": 175,
+     "h": 28,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-7.px-1.5",
+     "text": "Apply Now",
+     "w": 175,
+     "h": 28,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.px-3.5.py-2",
+     "text": "View Full-Size Certificate",
+     "w": 197,
+     "h": 34,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2",
+     "text": "Apply for Degree Enrollment",
+     "w": 199,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.5.py-2",
+     "text": "Verify Legal Equivalence",
+     "w": 176,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1",
+     "text": "All",
+     "w": 39,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1",
+     "text": "Online MBA",
+     "w": 89,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1",
+     "text": "Online MCA",
+     "w": 90,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1",
+     "text": "Online BBA & BCA",
+     "w": 123,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1",
+     "text": "Online M.Com",
+     "w": 103,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "Apply Now 2026",
+     "w": 138,
+     "h": 36,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2.5",
+     "text": "Talk to Counselor",
+     "w": 141,
+     "h": 38,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.w-6",
+     "text": "✕",
+     "w": 24,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "input.w-full.px-3",
+     "text": "",
+     "w": 254,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "input.w-full.px-3",
+     "text": "",
+     "w": 254,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "select.w-full.px-3",
+     "text": "Online Master of Business Administ",
+     "w": 254,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Submit",
+     "w": 254,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MBA",
+     "w": 106,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MCA",
+     "w": 108,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BCA",
+     "w": 104,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BBA",
+     "w": 102,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "M.Sc Mathematics",
+     "w": 128,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Online BA (Humanities)",
+     "w": 162,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Fee Refund Policy",
+     "w": 121,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "EMI Calculator Tool",
+     "w": 132,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Scholarship Criteria",
+     "w": 137,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Top Online Universities",
+     "w": 157,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "UGC & AICTE Approvals",
+     "w": 162,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Student Grievances",
+     "w": 137,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    }
+   ]
+  }
+ },
+ "lpu-admission": {
+  "390": {
+   "tested": 30,
+   "under44": 30,
+   "effFail": 30,
+   "items": [
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Apply Now →",
+     "w": 122,
+     "h": 42,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Download Brochure",
+     "w": 189,
+     "h": 42,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "grid_view Overview",
+     "w": 113,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "menu_book Courses",
+     "w": 107,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "school Admission",
+     "w": 120,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "workspace_premium Scholarships",
+     "w": 135,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "devices LMS Portal",
+     "w": 118,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Admission Highlights 20",
+     "w": 263,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Admission Important Dat",
+     "w": 304,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Admission Process 2026",
+     "w": 244,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Application Process 202",
+     "w": 251,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.text-xs",
+     "text": "View more",
+     "w": 98,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.text-xs.font-bold",
+     "text": "Need Free Eligibility Assessment?",
+     "w": 326,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.flex",
+     "text": "Show All 10 Programs",
+     "w": 163,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Start Application",
+     "w": 326,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.bg-[#115eaf]",
+     "text": "Talk to Expert Counselor",
+     "w": 246,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.h-10",
+     "text": "Download Brochure",
+     "w": 258,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.h-10",
+     "text": "Add College to Compare",
+     "w": 258,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MBA",
+     "w": 91,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MCA",
+     "w": 92,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BCA",
+     "w": 89,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BBA",
+     "w": 88,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "M.Sc Mathematics",
+     "w": 110,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Online BA (Humanities)",
+     "w": 151,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Fee Refund Policy",
+     "w": 104,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "EMI Calculator Tool",
+     "w": 114,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Scholarship Criteria",
+     "w": 117,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Top Online Universities",
+     "w": 134,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "UGC & AICTE Approvals",
+     "w": 139,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Student Grievances",
+     "w": 130,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    }
+   ]
+  },
+  "1366": {
+   "tested": 39,
+   "under44": 39,
+   "effFail": 39,
+   "items": [
+    {
+     "s": "button.flex.items-center",
+     "text": "Universities",
+     "w": 81,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Degree Explorer",
+     "w": 110,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Compare Matrix",
+     "w": 114,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Scholarships 2026 NEW",
+     "w": 172,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Apply Now →",
+     "w": 130,
+     "h": 42,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Download Brochure",
+     "w": 197,
+     "h": 42,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "grid_view Overview",
+     "w": 122,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "menu_book Courses",
+     "w": 115,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "school Admission",
+     "w": 131,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "workspace_premium Scholarships",
+     "w": 147,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "devices LMS Portal",
+     "w": 128,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Admission Highlights 20",
+     "w": 272,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Admission Important Dat",
+     "w": 315,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Eligibility & Selection",
+     "w": 321,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Admission Process 2026",
+     "w": 252,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Application Process 202",
+     "w": 260,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Documents Required for ",
+     "w": 333,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.text-xs",
+     "text": "View more",
+     "w": 96,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.text-xs.font-bold",
+     "text": "Need Free Eligibility Assessment?",
+     "w": 214,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.flex",
+     "text": "Show All 10 Programs",
+     "w": 151,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Start Application",
+     "w": 157,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "input.w-full.h-10",
+     "text": "",
+     "w": 307,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "input.w-full.h-10",
+     "text": "",
+     "w": 307,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "select.w-full.h-10",
+     "text": "Online Master of Business Administ",
+     "w": 307,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.bg-[#115eaf]",
+     "text": "Talk to Expert Counselor",
+     "w": 307,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.h-10",
+     "text": "Download Brochure",
+     "w": 495,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.h-10",
+     "text": "Add College to Compare",
+     "w": 495,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MBA",
+     "w": 106,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MCA",
+     "w": 108,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BCA",
+     "w": 104,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BBA",
+     "w": 102,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "M.Sc Mathematics",
+     "w": 128,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Online BA (Humanities)",
+     "w": 162,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Fee Refund Policy",
+     "w": 121,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "EMI Calculator Tool",
+     "w": 132,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Scholarship Criteria",
+     "w": 137,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Top Online Universities",
+     "w": 157,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "UGC & AICTE Approvals",
+     "w": 162,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Student Grievances",
+     "w": 137,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    }
+   ]
+  }
+ },
+ "lpu-courses": {
+  "390": {
+   "tested": 48,
+   "under44": 43,
+   "effFail": 43,
+   "items": [
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "Apply Online",
+     "w": 139,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2.5",
+     "text": "Download Complete Fee Brochure",
+     "w": 263,
+     "h": 38,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3.5",
+     "text": "Talk to an Academic Counselor",
+     "w": 249,
+     "h": 48,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2.5",
+     "text": "Apply Now",
+     "w": 292,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "grid_view Overview",
+     "w": 113,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "menu_book Courses",
+     "w": 107,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "school Admission",
+     "w": 120,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "workspace_premium Scholarships",
+     "w": 135,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "devices LMS Portal",
+     "w": 118,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Degree Programs Catalog",
+     "w": 259,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Admission Dates & Deadl",
+     "w": 280,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "How You Study (LPU e-Connect Platf",
+     "w": 287,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Student Reviews & Ratin",
+     "w": 260,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "Frequently Asked Questions",
+     "w": 193,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.text-xs",
+     "text": "View more",
+     "w": 98,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-4",
+     "text": "All Courses (11)",
+     "w": 135,
+     "h": 44,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-4",
+     "text": "Undergraduate (UG)",
+     "w": 170,
+     "h": 44,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-4",
+     "text": "Postgraduate (PG)",
+     "w": 158,
+     "h": 44,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-4",
+     "text": "Diploma",
+     "w": 95,
+     "h": 44,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.whitespace-nowrap.px-6",
+     "text": "Calculate Monthly EMI",
+     "w": 203,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 56,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 56,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 56,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 56,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.text-[#115eaf].font-semibold",
+     "text": "Apply for UG Programs →",
+     "w": 152,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 56,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 56,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 56,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 56,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 56,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.text-[#115eaf].font-semibold",
+     "text": "Apply for PG Programs →",
+     "w": 150,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.5.py-1.5",
+     "text": "Explore Diplomas",
+     "w": 135,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "View Admission Portal",
+     "w": 316,
+     "h": 38,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.font-semibold.text-[#115eaf]",
+     "text": "LPU Online admission",
+     "w": 130,
+     "h": 18,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "Book Free Counseling Call",
+     "w": 198,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2.5",
+     "text": "Call Helpline: 1800-889-4422",
+     "w": 227,
+     "h": 38,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MBA",
+     "w": 91,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MCA",
+     "w": 92,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BCA",
+     "w": 89,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BBA",
+     "w": 88,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "M.Sc Mathematics",
+     "w": 110,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Online BA (Humanities)",
+     "w": 151,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Fee Refund Policy",
+     "w": 104,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "EMI Calculator Tool",
+     "w": 114,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Scholarship Criteria",
+     "w": 117,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Top Online Universities",
+     "w": 134,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "UGC & AICTE Approvals",
+     "w": 139,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Student Grievances",
+     "w": 130,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    }
+   ]
+  },
+  "1366": {
+   "tested": 76,
+   "under44": 76,
+   "effFail": 76,
+   "items": [
+    {
+     "s": "button.flex.items-center",
+     "text": "Universities",
+     "w": 81,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Degree Explorer",
+     "w": 112,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Compare Matrix",
+     "w": 114,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Scholarships 2026 NEW",
+     "w": 172,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "Apply Online",
+     "w": 152,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2.5",
+     "text": "Download Complete Fee Brochure",
+     "w": 297,
+     "h": 42,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-3.5",
+     "text": "Talk to an Academic Counselor",
+     "w": 268,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2.5",
+     "text": "Apply Now",
+     "w": 347,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "grid_view Overview",
+     "w": 122,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "menu_book Courses",
+     "w": 115,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "school Admission",
+     "w": 131,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "workspace_premium Scholarships",
+     "w": 147,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "devices LMS Portal",
+     "w": 128,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Fee Structure 2026 (Sem",
+     "w": 357,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Degree Programs Catalog",
+     "w": 268,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Admission Dates & Deadl",
+     "w": 290,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "How You Study (LPU e-Connect Platf",
+     "w": 297,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Student Reviews & Ratin",
+     "w": 269,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "Frequently Asked Questions",
+     "w": 200,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.text-xs",
+     "text": "View more",
+     "w": 96,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-4",
+     "text": "All Courses (11)",
+     "w": 138,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-4",
+     "text": "Undergraduate (UG)",
+     "w": 178,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-4",
+     "text": "Postgraduate (PG)",
+     "w": 165,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.px-4",
+     "text": "Diploma",
+     "w": 92,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "input.w-full.h-10",
+     "text": "Search courses by degree name or s",
+     "w": 256,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "select.w-full.h-10",
+     "text": "Sort: Popularity Fee: Low to High ",
+     "w": 157,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 44,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 44,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 44,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 44,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.text-[#115eaf].font-semibold",
+     "text": "Apply for UG Programs →",
+     "w": 152,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 44,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 44,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 44,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 44,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-hit.inline-flex",
+     "text": "View",
+     "w": 44,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.text-[#115eaf].font-semibold",
+     "text": "Apply for PG Programs →",
+     "w": 150,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.5.py-1.5",
+     "text": "Explore Diplomas",
+     "w": 135,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "View Details",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "Syllabus",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "View Details",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "Syllabus",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "View Details",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "Syllabus",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "View Details",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "Syllabus",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "View Details",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "Syllabus",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "View Details",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "Syllabus",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "View Details",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "Syllabus",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "View Details",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "Syllabus",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "View Details",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "Syllabus",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "View Details",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "Syllabus",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "View Details",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-1.5",
+     "text": "Syllabus",
+     "w": 173,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "View Admission Portal",
+     "w": 216,
+     "h": 42,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.font-semibold.text-[#115eaf]",
+     "text": "LPU Online admission",
+     "w": 152,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-5.py-2.5",
+     "text": "Book Free Counseling Call",
+     "w": 224,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2.5",
+     "text": "Call Helpline: 1800-889-4422",
+     "w": 256,
+     "h": 42,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MBA",
+     "w": 106,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MCA",
+     "w": 108,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BCA",
+     "w": 104,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BBA",
+     "w": 102,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "M.Sc Mathematics",
+     "w": 128,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Online BA (Humanities)",
+     "w": 162,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Fee Refund Policy",
+     "w": 121,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "EMI Calculator Tool",
+     "w": 132,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Scholarship Criteria",
+     "w": 137,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Top Online Universities",
+     "w": 157,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "UGC & AICTE Approvals",
+     "w": 162,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Student Grievances",
+     "w": 137,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    }
+   ]
+  }
+ },
+ "lpu-scholarship": {
+  "390": {
+   "tested": 23,
+   "under44": 20,
+   "effFail": 20,
+   "items": [
+    {
+     "s": "button.shrink-0.flex",
+     "text": "grid_view Overview",
+     "w": 113,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "menu_book Courses",
+     "w": 107,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "school Admission",
+     "w": 120,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "workspace_premium Scholarships",
+     "w": 135,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "devices LMS Portal",
+     "w": 118,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Scholarships Overview 2",
+     "w": 274,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "Interactive Tuition Fee & Savings ",
+     "w": 302,
+     "h": 23,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "input.rounded.text-[#115eaf]",
+     "text": "",
+     "w": 326,
+     "h": 74,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.tap-chip.p-3"
+    },
+    {
+     "s": "input.rounded.text-[#115eaf]",
+     "text": "",
+     "w": 326,
+     "h": 74,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.tap-chip.p-3"
+    },
+    {
+     "s": "input.rounded.text-[#115eaf]",
+     "text": "",
+     "w": 326,
+     "h": 74,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.tap-chip.p-3"
+    },
+    {
+     "s": "button.w-full.py-3",
+     "text": "Claim 20% Scholarship",
+     "w": 294,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MBA",
+     "w": 91,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MCA",
+     "w": 92,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BCA",
+     "w": 89,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BBA",
+     "w": 88,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "M.Sc Mathematics",
+     "w": 110,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Online BA (Humanities)",
+     "w": 151,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Fee Refund Policy",
+     "w": 104,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "EMI Calculator Tool",
+     "w": 114,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Scholarship Criteria",
+     "w": 117,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Top Online Universities",
+     "w": 134,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "UGC & AICTE Approvals",
+     "w": 139,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Student Grievances",
+     "w": 130,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    }
+   ]
+  },
+  "1366": {
+   "tested": 30,
+   "under44": 30,
+   "effFail": 30,
+   "items": [
+    {
+     "s": "button.flex.items-center",
+     "text": "Universities",
+     "w": 81,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Degree Explorer",
+     "w": 110,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Compare Matrix",
+     "w": 114,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Scholarships 2026 NEW",
+     "w": 173,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "grid_view Overview",
+     "w": 122,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "menu_book Courses",
+     "w": 115,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "school Admission",
+     "w": 131,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "workspace_premium Scholarships",
+     "w": 147,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.flex",
+     "text": "devices LMS Portal",
+     "w": 128,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Scholarships Overview 2",
+     "w": 284,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "Interactive Tuition Fee & Savings ",
+     "w": 313,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "a.text-sm.sm:text-[14.5px]",
+     "text": "LPU Online Scholarship Schemes & C",
+     "w": 345,
+     "h": 24,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "select.w-full.px-4",
+     "text": "Online Master of Business Administ",
+     "w": 681,
+     "h": 42,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "input.w-full.h-2",
+     "text": "",
+     "w": 681,
+     "h": 8,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "input.rounded.text-[#115eaf]",
+     "text": "",
+     "w": 219,
+     "h": 42,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.tap-chip.p-3"
+    },
+    {
+     "s": "input.rounded.text-[#115eaf]",
+     "text": "",
+     "w": 219,
+     "h": 42,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.tap-chip.p-3"
+    },
+    {
+     "s": "input.rounded.text-[#115eaf]",
+     "text": "",
+     "w": 219,
+     "h": 42,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.tap-chip.p-3"
+    },
+    {
+     "s": "button.w-full.py-3",
+     "text": "Claim 20% Scholarship",
+     "w": 411,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MBA",
+     "w": 106,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MCA",
+     "w": 108,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BCA",
+     "w": 104,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BBA",
+     "w": 102,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "M.Sc Mathematics",
+     "w": 128,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Online BA (Humanities)",
+     "w": 162,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Fee Refund Policy",
+     "w": 121,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "EMI Calculator Tool",
+     "w": 132,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Scholarship Criteria",
+     "w": 137,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Top Online Universities",
+     "w": 157,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "UGC & AICTE Approvals",
+     "w": 162,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Student Grievances",
+     "w": 137,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    }
+   ]
+  }
+ },
+ "university-listing": {
+  "390": {
+   "tested": 39,
+   "under44": 29,
+   "effFail": 29,
+   "items": [
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "NAAC A++ Only",
+     "w": 130,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "UGC-DEB 100% Entitled",
+     "w": 169,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Fees under ₹1 Lakh",
+     "w": 148,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Online MBA Top Picks",
+     "w": 161,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "100% Placement Support",
+     "w": 180,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Zero Cost EMI",
+     "w": 119,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.flex-none",
+     "text": "100% Entitled",
+     "w": 119,
+     "h": 44,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.flex-none",
+     "text": "NAAC A++",
+     "w": 105,
+     "h": 44,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.flex-none",
+     "text": "EMI Available",
+     "w": 122,
+     "h": 44,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.tap-chip.flex-none",
+     "text": "UGC-DEB",
+     "w": 98,
+     "h": 44,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "input.w-5.h-5",
+     "text": "Add Lovely Professional University",
+     "w": 44,
+     "h": 44,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.absolute.top-1"
+    },
+    {
+     "s": "input.w-5.h-5",
+     "text": "Add Chandigarh University Online t",
+     "w": 44,
+     "h": 44,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.absolute.top-1"
+    },
+    {
+     "s": "input.w-5.h-5",
+     "text": "Add Amity University Online to com",
+     "w": 44,
+     "h": 44,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.absolute.top-1"
+    },
+    {
+     "s": "input.w-5.h-5",
+     "text": "Add Manipal University Jaipur (Onl",
+     "w": 44,
+     "h": 44,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.absolute.top-1"
+    },
+    {
+     "s": "input.w-5.h-5",
+     "text": "Add Jain (Deemed-to-be) University",
+     "w": 44,
+     "h": 44,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.absolute.top-1"
+    },
+    {
+     "s": "input.w-5.h-5",
+     "text": "Add UPES Online (University of Pet",
+     "w": 44,
+     "h": 44,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.absolute.top-1"
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "1",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "2",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "3",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "8",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Degree Advisory",
+     "w": 150,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Explore 24+ Universities",
+     "w": 274,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Explore 18+ Universities",
+     "w": 274,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Explore 20+ Universities",
+     "w": 274,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Explore 16+ Universities",
+     "w": 274,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Explore 12+ Universities",
+     "w": 274,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Explore 15+ Universities",
+     "w": 274,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MBA",
+     "w": 91,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MCA",
+     "w": 92,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BCA",
+     "w": 89,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BBA",
+     "w": 88,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "M.Sc Mathematics",
+     "w": 110,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Online BA (Humanities)",
+     "w": 151,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Fee Refund Policy",
+     "w": 104,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "EMI Calculator Tool",
+     "w": 114,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Scholarship Criteria",
+     "w": 117,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Top Online Universities",
+     "w": 134,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "UGC & AICTE Approvals",
+     "w": 139,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Student Grievances",
+     "w": 130,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    }
+   ]
+  },
+  "1366": {
+   "tested": 58,
+   "under44": 57,
+   "effFail": 57,
+   "items": [
+    {
+     "s": "button.flex.items-center",
+     "text": "Universities",
+     "w": 83,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Degree Explorer",
+     "w": 110,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Compare Matrix",
+     "w": 114,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Scholarships 2026 NEW",
+     "w": 172,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "NAAC A++ Only",
+     "w": 130,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "UGC-DEB 100% Entitled",
+     "w": 169,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Fees under ₹1 Lakh",
+     "w": 148,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Online MBA Top Picks",
+     "w": 161,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "100% Placement Support",
+     "w": 180,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Zero Cost EMI",
+     "w": 119,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.text-[#115eaf].text-xs",
+     "text": "Reset",
+     "w": 34,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 50,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 29,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 29,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 29,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 29,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 29,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 29,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 29,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 29,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 29,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 238,
+     "h": 29,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "select.h-full.w-full",
+     "text": "NIRF Ranking (Top First) Fee: Low ",
+     "w": 140,
+     "h": 11,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 84,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 84,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 84,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 84,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 84,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "input.w-4.h-4",
+     "text": "",
+     "w": 84,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": "label.flex.items-center"
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "1",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "2",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "3",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "8",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Degree Advisory",
+     "w": 150,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Explore 24+ Universities",
+     "w": 333,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Explore 18+ Universities",
+     "w": 333,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Explore 20+ Universities",
+     "w": 333,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Explore 16+ Universities",
+     "w": 333,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Explore 12+ Universities",
+     "w": 333,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Explore 15+ Universities",
+     "w": 333,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MBA",
+     "w": 106,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MCA",
+     "w": 108,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BCA",
+     "w": 104,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BBA",
+     "w": 102,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "M.Sc Mathematics",
+     "w": 128,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Online BA (Humanities)",
+     "w": 162,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Fee Refund Policy",
+     "w": 121,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "EMI Calculator Tool",
+     "w": 132,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Scholarship Criteria",
+     "w": 137,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Top Online Universities",
+     "w": 157,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "UGC & AICTE Approvals",
+     "w": 162,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Student Grievances",
+     "w": 137,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    }
+   ]
+  }
+ },
+ "home": {
+  "390": {
+   "tested": 89,
+   "under44": 89,
+   "effFail": 89,
+   "items": [
+    {
+     "s": "button.cursor-pointer.bg-white",
+     "text": "NAAC A++ Only",
+     "w": 116,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.cursor-pointer.bg-white",
+     "text": "Under ₹1 Lakh Total",
+     "w": 137,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.cursor-pointer.bg-white",
+     "text": "Zero-Cost EMI",
+     "w": 106,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.cursor-pointer.bg-white",
+     "text": "100% Online Exam",
+     "w": 129,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-2.5.py-1.5",
+     "text": "Master's (PG)",
+     "w": 95,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-2.5.py-1.5",
+     "text": "Bachelor's (UG)",
+     "w": 107,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-2.5.py-1.5",
+     "text": "Executive Tracks",
+     "w": 113,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.text-[12px].font-semibold",
+     "text": "View All 50+ Universities",
+     "w": 168,
+     "h": 19,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex-none.h-[26px]",
+     "text": "All Unis",
+     "w": 74,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex-none.h-[26px]",
+     "text": "NAAC A++",
+     "w": 92,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex-none.h-[26px]",
+     "text": "NAAC A+",
+     "w": 83,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.md:hidden.fixed",
+     "text": "↑",
+     "w": 36,
+     "h": 36,
+     "hits": 0,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.shrink-0.h-10",
+     "text": "Save",
+     "w": 79,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-8.shrink-0",
+     "text": "All India",
+     "w": 70,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-8.shrink-0",
+     "text": "Delhi/NCR",
+     "w": 81,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-8.shrink-0",
+     "text": "Hyderabad",
+     "w": 88,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-8.shrink-0",
+     "text": "Bangalore",
+     "w": 83,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-8.shrink-0",
+     "text": "Pune",
+     "w": 54,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-8.shrink-0",
+     "text": "Chennai",
+     "w": 73,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "All India",
+     "w": 86,
+     "h": 33,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "Delhi/NCR",
+     "w": 96,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "Hyderabad",
+     "w": 102,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "Bangalore",
+     "w": 97,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "Pune",
+     "w": 64,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "Chennai",
+     "w": 85,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "Mumbai (All)",
+     "w": 114,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "Bookmark college",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "Download brochure",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "Bookmark college",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "Download brochure",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "Bookmark college",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "Download brochure",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "Bookmark college",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "Download brochure",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "Bookmark college",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-9.h-9",
+     "text": "Download brochure",
+     "w": 36,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-1.5.rounded-full",
+     "text": "Page 1",
+     "w": 32,
+     "h": 6,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-1.5.rounded-full",
+     "text": "Page 2",
+     "w": 24,
+     "h": 6,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-1.5.rounded-full",
+     "text": "Page 3",
+     "w": 24,
+     "h": 6,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-1.5.rounded-full",
+     "text": "Page 4",
+     "w": 24,
+     "h": 6,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-1.5.rounded-full",
+     "text": "Page 5",
+     "w": 24,
+     "h": 6,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "All Programs",
+     "w": 102,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Management (MBA/BBA)",
+     "w": 177,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Technology (MCA/BCA)",
+     "w": 169,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Commerce (M.Com)",
+     "w": 150,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.p-2.rounded-xl",
+     "text": "Auto-play reviews",
+     "w": 32,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.p-2.rounded-xl",
+     "text": "Previous testimonial",
+     "w": 34,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.p-2.rounded-xl",
+     "text": "Next testimonial",
+     "w": 34,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Read Full Journey",
+     "w": 121,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "342",
+     "w": 62,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Read Full Journey",
+     "w": 121,
+     "h": 16,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "289",
+     "w": 62,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Read Full Journey",
+     "w": 121,
+     "h": 16,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "198",
+     "w": 59,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Read Full Journey",
+     "w": 121,
+     "h": 16,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "215",
+     "w": 58,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Read Full Journey",
+     "w": 121,
+     "h": 16,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "174",
+     "w": 58,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-2.rounded-full",
+     "text": "Jump to review 1",
+     "w": 28,
+     "h": 8,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-2.rounded-full",
+     "text": "Jump to review 2",
+     "w": 8,
+     "h": 8,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-2.rounded-full",
+     "text": "Jump to review 3",
+     "w": 8,
+     "h": 8,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-2.rounded-full",
+     "text": "Jump to review 4",
+     "w": 8,
+     "h": 8,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-2.rounded-full",
+     "text": "Jump to review 5",
+     "w": 8,
+     "h": 8,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.sm:w-auto",
+     "text": "Talk to an Academic Advisor",
+     "w": 324,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Compare",
+     "w": 127,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-[7px].h-[7px]",
+     "text": "Pair 1",
+     "w": 7,
+     "h": 7,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-[7px].h-[7px]",
+     "text": "Pair 2",
+     "w": 7,
+     "h": 7,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-[7px].h-[7px]",
+     "text": "Pair 3",
+     "w": 7,
+     "h": 7,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.mx-auto",
+     "text": "Compare More",
+     "w": 148,
+     "h": 38,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.text-xs.font-semibold",
+     "text": "Have another question? Speak to an",
+     "w": 283,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "All Questions",
+     "w": 104,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "UGC & Legal Validity",
+     "w": 147,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Exams & LMS",
+     "w": 102,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Fees & 0% EMI",
+     "w": 107,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Eligibility & Admissions",
+     "w": 162,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Placements & Career",
+     "w": 152,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2",
+     "text": "Ask an Expert Now",
+     "w": 143,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MBA",
+     "w": 91,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MCA",
+     "w": 92,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BCA",
+     "w": 89,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BBA",
+     "w": 88,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "M.Sc Mathematics",
+     "w": 110,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Online BA (Humanities)",
+     "w": 151,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Fee Refund Policy",
+     "w": 104,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "EMI Calculator Tool",
+     "w": 114,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Scholarship Criteria",
+     "w": 117,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Top Online Universities",
+     "w": 134,
+     "h": 16,
+     "hits": 2,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "UGC & AICTE Approvals",
+     "w": 139,
+     "h": 16,
+     "hits": 3,
+     "after": true,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Student Grievances",
+     "w": 130,
+     "h": 28,
+     "hits": 4,
+     "after": true,
+     "afterOK": true,
+     "host": null
+    }
+   ]
+  },
+  "1366": {
+   "tested": 113,
+   "under44": 113,
+   "effFail": 113,
+   "items": [
+    {
+     "s": "button.flex.items-center",
+     "text": "Universities",
+     "w": 81,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Degree Explorer",
+     "w": 110,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Compare Matrix",
+     "w": 114,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Scholarships 2026 NEW",
+     "w": 172,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "select#select-degree.w-full.bg-transparent",
+     "text": "Online MBA (Master of Business) On",
+     "w": 245,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "select#select-budget.w-full.bg-transparent",
+     "text": "Any Budget (₹12,000 - ₹50,000) Und",
+     "w": 245,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.cursor-pointer.bg-white",
+     "text": "NAAC A++ Only",
+     "w": 116,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.cursor-pointer.bg-white",
+     "text": "Under ₹1 Lakh Total",
+     "w": 137,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.cursor-pointer.bg-white",
+     "text": "Zero-Cost EMI",
+     "w": 106,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.cursor-pointer.bg-white",
+     "text": "100% Online Exam",
+     "w": 129,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-2.5.py-1.5",
+     "text": "Master's (PG)",
+     "w": 95,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-2.5.py-1.5",
+     "text": "Bachelor's (UG)",
+     "w": 107,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-2.5.py-1.5",
+     "text": "Executive Tracks",
+     "w": 113,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Explore 28 Unis",
+     "w": 115,
+     "h": 31,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Explore 22 Unis",
+     "w": 114,
+     "h": 31,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Explore 19 Unis",
+     "w": 112,
+     "h": 31,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Explore 17 Unis",
+     "w": 111,
+     "h": 31,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Explore 15 Unis",
+     "w": 112,
+     "h": 31,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Explore 14 Unis",
+     "w": 112,
+     "h": 31,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.text-[12px].font-semibold",
+     "text": "View All 50+ Universities",
+     "w": 168,
+     "h": 19,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "View Details & Apply",
+     "w": 250,
+     "h": 35,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Download Brochure",
+     "w": 250,
+     "h": 37,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "View Details & Apply",
+     "w": 250,
+     "h": 35,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Download Brochure",
+     "w": 250,
+     "h": 37,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "View Details & Apply",
+     "w": 250,
+     "h": 35,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Download Brochure",
+     "w": 250,
+     "h": 37,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "View Details & Apply",
+     "w": 250,
+     "h": 35,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.py-2",
+     "text": "Download Brochure",
+     "w": 250,
+     "h": 37,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "select#select-location-filter.w-full.pl-9",
+     "text": "📍 All India (All Cities) Delhi / ",
+     "w": 288,
+     "h": 42,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "All India",
+     "w": 94,
+     "h": 37,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "Delhi/NCR",
+     "w": 106,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "Hyderabad",
+     "w": 114,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "Bangalore",
+     "w": 107,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "Pune",
+     "w": 69,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "Chennai",
+     "w": 94,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-1.5",
+     "text": "Mumbai (All)",
+     "w": 127,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.p-2.sm:p-2.5",
+     "text": "Bookmark college",
+     "w": 38,
+     "h": 38,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex-1.py-2",
+     "text": "Download Brochure",
+     "w": 293,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "All India",
+     "w": 74,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Delhi/NCR",
+     "w": 86,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Hyderabad",
+     "w": 94,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Bangalore",
+     "w": 89,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Pune",
+     "w": 56,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Chennai",
+     "w": 77,
+     "h": 30,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.sm:px-5",
+     "text": "Save to profile",
+     "w": 160,
+     "h": 40,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.p-2.sm:p-2.5",
+     "text": "Bookmark college",
+     "w": 38,
+     "h": 38,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex-1.py-2",
+     "text": "Download Brochure",
+     "w": 293,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.p-2.sm:p-2.5",
+     "text": "Bookmark college",
+     "w": 38,
+     "h": 38,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex-1.py-2",
+     "text": "Download Brochure",
+     "w": 293,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.p-2.sm:p-2.5",
+     "text": "Bookmark college",
+     "w": 38,
+     "h": 38,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex-1.py-2",
+     "text": "Download Brochure",
+     "w": 293,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.p-2.sm:p-2.5",
+     "text": "Bookmark college",
+     "w": 38,
+     "h": 38,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex-1.py-2",
+     "text": "Download Brochure",
+     "w": 293,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hidden.lg:flex",
+     "text": "Next location",
+     "w": 40,
+     "h": 40,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-1.5.rounded-full",
+     "text": "Page 1",
+     "w": 32,
+     "h": 6,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-1.5.rounded-full",
+     "text": "Page 2",
+     "w": 24,
+     "h": 6,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "All Programs",
+     "w": 102,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Management (MBA/BBA)",
+     "w": 177,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Technology (MCA/BCA)",
+     "w": 169,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Commerce (M.Com)",
+     "w": 150,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.p-2.rounded-xl",
+     "text": "Auto-play reviews",
+     "w": 32,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.p-2.rounded-xl",
+     "text": "Previous testimonial",
+     "w": 34,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.p-2.rounded-xl",
+     "text": "Next testimonial",
+     "w": 34,
+     "h": 34,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Read Full Journey",
+     "w": 121,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "342",
+     "w": 62,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Read Full Journey",
+     "w": 121,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "289",
+     "w": 62,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Read Full Journey",
+     "w": 121,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "198",
+     "w": 59,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Read Full Journey",
+     "w": 121,
+     "h": 16,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "215",
+     "w": 58,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "Read Full Journey",
+     "w": 121,
+     "h": 16,
+     "hits": 2,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.inline-flex.items-center",
+     "text": "174",
+     "w": 58,
+     "h": 26,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-2.rounded-full",
+     "text": "Jump to review 1",
+     "w": 28,
+     "h": 8,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-2.rounded-full",
+     "text": "Jump to review 2",
+     "w": 8,
+     "h": 8,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-2.rounded-full",
+     "text": "Jump to review 3",
+     "w": 8,
+     "h": 8,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-2.rounded-full",
+     "text": "Jump to review 4",
+     "w": 8,
+     "h": 8,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.h-2.rounded-full",
+     "text": "Jump to review 5",
+     "w": 8,
+     "h": 8,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.sm:w-auto",
+     "text": "Talk to an Academic Advisor",
+     "w": 222,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.flex.items-center",
+     "text": "Compare",
+     "w": 127,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-[7px].h-[7px]",
+     "text": "Pair 1",
+     "w": 7,
+     "h": 7,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-[7px].h-[7px]",
+     "text": "Pair 2",
+     "w": 7,
+     "h": 7,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-[7px].h-[7px]",
+     "text": "Pair 3",
+     "w": 7,
+     "h": 7,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.block.mx-auto",
+     "text": "Compare More",
+     "w": 148,
+     "h": 38,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "input.w-full.border-0",
+     "text": "",
+     "w": 351,
+     "h": 42,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.text-xs.font-semibold",
+     "text": "Have another question? Speak to an",
+     "w": 283,
+     "h": 16,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "All Questions",
+     "w": 104,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "UGC & Legal Validity",
+     "w": 147,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Exams & LMS",
+     "w": 102,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Fees & 0% EMI",
+     "w": 107,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Eligibility & Admissions",
+     "w": 162,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-3.py-1.5",
+     "text": "Placements & Career",
+     "w": 152,
+     "h": 28,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.text-left",
+     "text": "1 Are online degrees recognized by",
+     "w": 1174,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.text-left",
+     "text": "2 Are online degrees from Indian u",
+     "w": 1174,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.text-left",
+     "text": "3 How are semester examinations co",
+     "w": 1174,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.text-left",
+     "text": "4 How do 0% interest monthly EMI f",
+     "w": 1174,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.text-left",
+     "text": "5 What is the eligibility criteria",
+     "w": 1174,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.text-left",
+     "text": "6 Do I ever need to visit the phys",
+     "w": 1174,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.text-left",
+     "text": "7 What placement assistance and ca",
+     "w": 1174,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.w-full.text-left",
+     "text": "8 Does the degree certificate stat",
+     "w": 1174,
+     "h": 36,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.px-4.py-2",
+     "text": "Ask an Expert Now",
+     "w": 143,
+     "h": 32,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MBA",
+     "w": 106,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online MCA",
+     "w": 108,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BCA",
+     "w": 104,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "LPU Online BBA",
+     "w": 102,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "M.Sc Mathematics",
+     "w": 128,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Online BA (Humanities)",
+     "w": 162,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Fee Refund Policy",
+     "w": 121,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "EMI Calculator Tool",
+     "w": 132,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Scholarship Criteria",
+     "w": 137,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Top Online Universities",
+     "w": 157,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "UGC & AICTE Approvals",
+     "w": 162,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    },
+    {
+     "s": "button.hover:text-white.hover:underline",
+     "text": "Student Grievances",
+     "w": 137,
+     "h": 20,
+     "hits": 4,
+     "after": false,
+     "afterOK": false,
+     "host": null
+    }
+   ]
+  }
+ }
+}

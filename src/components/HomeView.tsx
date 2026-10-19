@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Search,
@@ -17,6 +17,8 @@ import { HomeFaq } from './HomeFaq';
 import { TopCollegesByLocation } from './TopCollegesByLocation';
 import { StudentTestimonials } from './StudentTestimonials';
 import { PopularCoursesMobile } from './PopularCoursesMobile';
+import { CompareCollegesCarousel } from './CompareCollegesCarousel';
+import { BlogsListSection } from './BlogsListSection';
 
 interface HomeViewProps {
   onOpenApply: (courseId?: string) => void;
@@ -175,6 +177,8 @@ const FEATURED_UNIS = [
   },
 ];
 
+const UNI_CHIPS = ['All Unis', 'NAAC A++', 'NAAC A+'];
+
 export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk }) => {
   const navigate = useNavigate();
   const [degreeTab, setDegreeTab] = useState<(typeof DEGREE_CATEGORIES)[number]>("Master's (PG)");
@@ -182,6 +186,20 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
   const [selectedBudget, setSelectedBudget] = useState('Any Budget (₹12,000 - ₹50,000)');
   const [lead, setLead] = useState({ phone: '', email: '', degree: 'Online MBA' });
   const [leadSubmitted, setLeadSubmitted] = useState(false);
+  const [uniChip, setUniChip] = useState(UNI_CHIPS[0]);
+  const uniRowRef = useRef<HTMLDivElement>(null);
+
+  const filteredFeaturedUnis =
+    uniChip === 'NAAC A++'
+      ? FEATURED_UNIS.filter((u) => u.naac.includes('A++'))
+      : uniChip === 'NAAC A+'
+        ? FEATURED_UNIS.filter((u) => !u.naac.includes('A++'))
+        : FEATURED_UNIS;
+
+  const selectUniChip = (chip: string) => {
+    setUniChip(chip);
+    uniRowRef.current?.scrollTo({ left: 0 });
+  };
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -205,11 +223,12 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
         <div className="absolute -right-12 bottom-0 h-48 w-48 rounded-full bg-[#2dd4bf]/10 blur-3xl" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#e2e8f0] text-[#1f2937] text-[11px] font-semibold tracking-wide shadow-sm">
-            <ShieldCheck className="w-4 h-4 text-[#115eaf]" />
-            UGC-DEB • AICTE • NAAC A++ ACCREDITED UNIVERSITIES
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#e2e8f0] text-[#1f2937] text-[11px] font-semibold tracking-wide shadow-sm text-center">
+            <ShieldCheck className="w-4 h-4 text-[#115eaf] shrink-0" />
+            <span className="sm:hidden">UGC-DEB • NAAC A++ Approved</span>
+            <span className="hidden sm:inline">UGC-DEB • AICTE • NAAC A++ ACCREDITED UNIVERSITIES</span>
           </div>
-          <h1 className="text-3xl md:text-5xl font-extrabold font-sans tracking-tight leading-tight">
+          <h1 className="text-[26px] sm:text-3xl md:text-5xl font-extrabold font-sans tracking-tight leading-[1.25] sm:leading-tight">
             <span className="block text-[#000f22]">Discover, Compare &amp; Enroll in</span>
             <span className="block bg-gradient-to-r from-[#115eaf] via-[#2563eb] to-[#0d9488] bg-clip-text text-transparent">
               India's Top Online Universities
@@ -225,7 +244,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
               onSubmit={handleExploreSubmit}
             >
               {/* Select Degree Dropdown */}
-              <div className="md:col-span-4 h-[60px] sm:h-[62px] relative bg-white hover:bg-[#f8faff] focus-within:bg-white rounded-xl border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/15 transition-all px-3.5 py-2 flex flex-col justify-center shadow-xs">
+              <div className="md:col-span-4 min-h-[60px] sm:min-h-[62px] relative bg-white hover:bg-[#f8faff] focus-within:bg-white rounded-xl border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/15 transition-all px-3.5 py-2 flex flex-col justify-center shadow-xs">
                 <div className="flex items-center gap-1.5 mb-1 leading-none">
                   <GraduationCap className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
                   <label htmlFor="select-degree" className="block text-[11px] font-semibold text-[#43474d] uppercase tracking-wider cursor-pointer truncate">
@@ -252,7 +271,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
               </div>
 
               {/* Budget Per Semester Dropdown */}
-              <div className="md:col-span-4 h-[60px] sm:h-[62px] relative bg-white hover:bg-[#f8faff] focus-within:bg-white rounded-xl border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/15 transition-all px-3.5 py-2 flex flex-col justify-center shadow-xs">
+              <div className="md:col-span-4 min-h-[60px] sm:min-h-[62px] relative bg-white hover:bg-[#f8faff] focus-within:bg-white rounded-xl border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/15 transition-all px-3.5 py-2 flex flex-col justify-center shadow-xs">
                 <div className="flex items-center gap-1.5 mb-1 leading-none">
                   <Wallet className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
                   <label htmlFor="select-budget" className="block text-[11px] font-semibold text-[#43474d] uppercase tracking-wider cursor-pointer truncate">
@@ -278,7 +297,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
               </div>
 
               {/* Explore Button */}
-              <div className="md:col-span-4 h-[60px] sm:h-[62px]">
+              <div className="md:col-span-4 min-h-[60px] sm:min-h-[62px]">
                 <button
                   type="submit"
                   className="w-full h-full rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.99] shadow-md hover:shadow-lg cursor-pointer px-4"
@@ -325,18 +344,18 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
       <section id="degrees" className="bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-[17px]">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center pb-4 border-b border-[#c4c6ce]/40 gap-3">
           <div>
-            <h2 className="text-2xl font-bold text-[#000f22]">Popular Online Degree Programs</h2>
+            <h2 className="text-[20px] sm:text-2xl font-bold text-[#000f22]">Popular Online Degree Programs</h2>
             <p className="text-[13px] text-[#43474d] font-normal mt-0.5">
               Approved under UGC Section 22 with equivalence to conventional regular degrees.
             </p>
           </div>
-          <div className="inline-flex flex-wrap p-1 bg-[#f0f4f8] rounded-lg border border-[#c4c6ce]/50 text-[12px] font-semibold">
+          <div className="inline-flex flex-nowrap max-w-full overflow-x-auto p-1 bg-[#f0f4f8] rounded-lg border border-[#c4c6ce]/50 text-[11px] font-semibold [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
             {DEGREE_CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 type="button"
                 onClick={() => setDegreeTab(cat)}
-                className={`px-3 py-1.5 rounded-md transition-colors ${
+                className={`px-2.5 py-1.5 rounded-md whitespace-nowrap shrink-0 transition-colors ${
                   degreeTab === cat ? 'bg-[#115eaf] text-white shadow-sm' : 'text-[#43474d] hover:text-[#111c2d]'
                 }`}
               >
@@ -397,11 +416,8 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
           <div>
             <div className="flex items-center gap-2">
               <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#115eaf]" />
-              <h2 className="text-2xl font-bold text-[#000f22]">Featured NAAC A++ / A+ Online Universities</h2>
+              <h2 className="text-[17px] sm:text-2xl font-bold text-[#000f22] whitespace-nowrap">Explore Some Popular Universities</h2>
             </div>
-            <p className="text-[13px] text-[#43474d] font-normal mt-0.5">
-              Strictly ranked and entitled under UGC ODL &amp; Online Regulations.
-            </p>
           </div>
           <button
             type="button"
@@ -412,7 +428,78 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[17px] mt-[17px]">
+        {/* Mobile only — chip filters + horizontal snap carousel */}
+        <div className="md:hidden mt-[17px]">
+          <div className="flex gap-2 overflow-x-auto pb-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            {UNI_CHIPS.map((chip) => (
+              <button
+                key={chip}
+                type="button"
+                onClick={() => selectUniChip(chip)}
+                className={`flex-none h-[26px] px-3.5 rounded-[14px] border bg-white text-[12px] cursor-pointer transition-colors ${
+                  uniChip === chip
+                    ? 'border-[#115eaf] text-[#115eaf] font-semibold'
+                    : 'border-[#c4c6ce] text-[#43474d]'
+                }`}
+              >
+                {chip}
+              </button>
+            ))}
+          </div>
+
+          <div
+            ref={uniRowRef}
+            className="flex gap-2 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
+            {filteredFeaturedUnis.map((u) => (
+              <article
+                key={u.id}
+                className="flex-none w-[290px] snap-start border border-[#c4c6ce] rounded-[4px] p-3 bg-white flex flex-col"
+              >
+                <h3 className="text-[15px] font-bold leading-[1.35] text-[#000f22] line-clamp-2 mb-2.5">
+                  {u.name}
+                </h3>
+                <span className="block text-[12px] text-[#74777e] mb-2.5">{u.short}</span>
+                <div className="flex items-center justify-between gap-2 mb-2.5">
+                  <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                    {u.naac}
+                  </span>
+                  <span className="text-[11px] font-medium text-slate-500">{u.rank}</span>
+                </div>
+                <div className="space-y-1.5 text-[12px] bg-[#f0f4f8]/50 p-2.5 rounded border border-[#c4c6ce]/30 mb-3">
+                  {u.rows.map((r) => (
+                    <div key={r.label} className="flex justify-between gap-2">
+                      <span className="text-[#43474d]">{r.label}</span>
+                      <span className={`text-right ${r.tone || 'font-medium text-[#000f22]'}`}>
+                        {r.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-auto space-y-2">
+                  <button
+                    type="button"
+                    onClick={() => navigate(`/universities/${u.id}`)}
+                    className="w-full py-2 min-h-[44px] rounded-md bg-[#115eaf] text-white text-[12px] font-semibold hover:bg-[#084a8c] transition-colors"
+                  >
+                    View Details &amp; Apply
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onOpenHelpDesk}
+                    className="w-full py-2 min-h-[44px] rounded-md border border-[#74777e] text-[12px] font-medium text-[#43474d] hover:bg-slate-50 flex items-center justify-center gap-1"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    Download Brochure
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop — original grid */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-[17px] mt-[17px]">
           {FEATURED_UNIS.map((u) => (
             <div
               key={u.id}
@@ -447,7 +534,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
                 <button
                   type="button"
                   onClick={onOpenHelpDesk}
-                  className="w-full py-1.5 rounded-md border border-[#74777e] text-[12px] font-medium text-[#43474d] hover:bg-slate-50 flex items-center justify-center gap-1"
+                  className="w-full py-2 min-h-[44px] md:min-h-0 rounded-md border border-[#74777e] text-[12px] font-medium text-[#43474d] hover:bg-slate-50 flex items-center justify-center gap-1"
                 >
                   <Download className="w-3.5 h-3.5" />
                   Download Brochure
@@ -456,6 +543,16 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
             </div>
           ))}
         </div>
+
+        {/* Mobile only — back to top */}
+        <button
+          type="button"
+          aria-label="Back to top"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="md:hidden fixed right-2.5 bottom-[calc(144px+env(safe-area-inset-bottom))] w-11 h-11 flex items-center justify-center border border-[#c4c6ce] rounded-full bg-white cursor-pointer text-[16px] leading-none text-[#000f22] shadow-[0_1px_4px_rgba(0,0,0,0.15)] z-40"
+        >
+          &uarr;
+        </button>
       </section>
 
       {/* Top Colleges by Location */}
@@ -463,6 +560,9 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
 
       {/* Student Testimonials & Social Proof */}
       <StudentTestimonials onOpenCounseling={onOpenHelpDesk} />
+
+      {/* Compare Colleges */}
+      <CompareCollegesCarousel />
 
       {/* Counselling Section */}
       <section
@@ -481,7 +581,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
               FREE 1-ON-1 ACADEMIC ADVISORY
             </div>
 
-            <div className="space-y-2">
+            <div className="hidden md:block space-y-2">
               <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-white tracking-tight leading-tight">
                 Confused Between 50+ Universities? Speak with an Unbiased Academic Expert
               </h2>
@@ -491,7 +591,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
             </div>
 
             {/* Trust Checkpoints */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs sm:text-[13px] text-slate-200">
+            <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs sm:text-[13px] text-slate-200">
               <span className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>100% Free &amp; Unbiased Counseling</span>
@@ -538,7 +638,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
                   <label className="block text-[11px] font-semibold text-[#43474d] uppercase tracking-wider mb-1">
                     Mobile Number (WhatsApp Enabled)
                   </label>
-                  <div className="flex h-10 sm:h-11 rounded-lg border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/20 overflow-hidden transition-all bg-white">
+                  <div className="flex h-12 sm:h-11 rounded-lg border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/20 overflow-hidden transition-all bg-white">
                     <span className="bg-[#f0f4f8] text-[#000f22] px-3 text-xs font-semibold border-r border-[#c4c6ce] flex items-center shrink-0">
                       +91
                     </span>
@@ -558,7 +658,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
                     Email Address
                   </label>
                   <input
-                    className="w-full h-10 sm:h-11 rounded-lg border border-[#c4c6ce] px-3 text-base sm:text-sm text-[#000f22] placeholder:text-[#74777e] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all"
+                    className="w-full h-12 sm:h-11 rounded-lg border border-[#c4c6ce] px-3 text-base sm:text-sm text-[#000f22] placeholder:text-[#74777e] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all"
                     placeholder="name@example.com"
                     required
                     type="email"
@@ -572,7 +672,7 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
                     Program You're Exploring
                   </label>
                   <select
-                    className="w-full h-10 sm:h-11 rounded-lg border border-[#c4c6ce] px-3 text-base sm:text-sm text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all cursor-pointer"
+                    className="w-full h-12 sm:h-11 rounded-lg border border-[#c4c6ce] px-3 text-base sm:text-sm text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all cursor-pointer"
                     value={lead.degree}
                     onChange={(e) => setLead({ ...lead, degree: e.target.value })}
                   >
@@ -622,6 +722,9 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
 
       {/* Frequently Asked Questions (Accordion) */}
       <HomeFaq onOpenHelpDesk={onOpenHelpDesk} />
+
+      {/* Blogs */}
+      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} />
     </div>
   );
 };

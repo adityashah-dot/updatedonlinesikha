@@ -1,0 +1,1365 @@
+{
+ "lpu-overview": {
+  "390": {
+   "fields": [
+    {
+     "tag": "INPUT",
+     "type": "text",
+     "h": 49,
+     "w": 326,
+     "fs": "16px",
+     "ph": "Search college...",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "tel",
+     "h": 48,
+     "w": 254,
+     "fs": "12px",
+     "ph": "Phone Number (+91)",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "email",
+     "h": 48,
+     "w": 254,
+     "fs": "12px",
+     "ph": "Email Address",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 48,
+     "w": 254,
+     "fs": "12px",
+     "ph": "",
+     "label": ""
+    }
+   ],
+   "headingOrder": [
+    "H1:Lovely Professional University Onl",
+    "H2:Table of contents",
+    "H2:LPU Online Latest News and Updates",
+    "H2:LPU Online Highlights 2026",
+    "H2:LPU Online Courses and Fees 2026",
+    "H2:LPU Online Popular Programmes",
+    "H3:Online MBA",
+    "H4:SPECIALISATIONS",
+    "H3:Online MCA",
+    "H4:SPECIALISATIONS",
+    "H3:Online BCA",
+    "H4:SPECIALISATIONS",
+    "H3:Online BBA",
+    "H4:SPECIALISATIONS",
+    "H3:Online BA",
+    "H4:SPECIALISATIONS",
+    "H3:Online M.Com",
+    "H4:SPECIALISATIONS",
+    "H2:LPU Online Eligibility and Selecti",
+    "H2:LPU Online Admission Process 2026",
+    "H3:Online Registration",
+    "H3:Application Form Submission",
+    "H3:Document Upload",
+    "H3:Eligibility Verification",
+    "H3:Fee Payment and Admission Confirma",
+    "H2:LPU Online Rankings and Accreditat",
+    "H2:LPU Online Examination Pattern",
+    "H3:Semester-Based Structure",
+    "H3:Continuous Internal Assessment",
+    "H3:End-Semester Online Examination",
+    "H3:Result Declaration",
+    "H2:LPU Online Placements",
+    "H2:LPU Online Campus",
+    "H2:LPU Online Sample Degree",
+    "H2:LPU Online Reviews",
+    "H4:Join 25,000+ ambitious working pro",
+    "H3:Frequently Asked Questions (LPU On",
+    "H2:Compare Colleges with LPU Online",
+    "H3:Lovely Professional University Onl",
+    "H3:Add College",
+    "H2:Blogs",
+    "H3:Top Online MBA Universities with N",
+    "H3:Popular Online MBA Universities in",
+    "H3:Best Colleges Accepting CUET 2026",
+    "H3:Get Free Counselling"
+   ],
+   "fixedOverlaps": [
+    "BUTTON(30,op1) x BUTTON(40,op1) 44x44px"
+   ],
+   "lastSectionBottom": 16661,
+   "docHeight": 17899
+  },
+  "1366": {
+   "fields": [
+    {
+     "tag": "INPUT",
+     "type": "text",
+     "h": 46,
+     "w": 1170,
+     "fs": "14px",
+     "ph": "Search college...",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "tel",
+     "h": 36,
+     "w": 254,
+     "fs": "11px",
+     "ph": "Phone Number (+91)",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "email",
+     "h": 36,
+     "w": 254,
+     "fs": "11px",
+     "ph": "Email Address",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 36,
+     "w": 254,
+     "fs": "11px",
+     "ph": "",
+     "label": ""
+    }
+   ],
+   "headingOrder": [
+    "H1:Lovely Professional University Onl",
+    "H2:Table of contents",
+    "H2:LPU Online Latest News and Updates",
+    "H2:LPU Online Highlights 2026",
+    "H2:LPU Online Courses and Fees 2026",
+    "H2:LPU Online Popular Programmes",
+    "H3:Online MBA",
+    "H4:SPECIALISATIONS",
+    "H3:Online MCA",
+    "H4:SPECIALISATIONS",
+    "H3:Online BCA",
+    "H4:SPECIALISATIONS",
+    "H3:Online BBA",
+    "H4:SPECIALISATIONS",
+    "H3:Online BA",
+    "H4:SPECIALISATIONS",
+    "H3:Online M.Com",
+    "H4:SPECIALISATIONS",
+    "H2:LPU Online Eligibility and Selecti",
+    "H2:LPU Online Admission Process 2026",
+    "H3:Online Registration",
+    "H3:Application Form Submission",
+    "H3:Document Upload",
+    "H3:Eligibility Verification",
+    "H3:Fee Payment and Admission Confirma",
+    "H2:LPU Online Rankings and Accreditat",
+    "H2:LPU Online Examination Pattern",
+    "H3:Semester-Based Structure",
+    "H3:Continuous Internal Assessment",
+    "H3:End-Semester Online Examination",
+    "H3:Result Declaration",
+    "H2:LPU Online Placements",
+    "H2:LPU Online Campus",
+    "H2:LPU Online Sample Degree",
+    "H2:LPU Online Reviews",
+    "H4:Join 25,000+ ambitious working pro",
+    "H3:Frequently Asked Questions (LPU On",
+    "H2:Compare Colleges with LPU Online",
+    "H3:Lovely Professional University Onl",
+    "H3:Add College",
+    "H2:Blogs",
+    "H3:Top Online MBA Universities with N",
+    "H3:Popular Online MBA Universities in",
+    "H3:Best Colleges Accepting CUET 2026",
+    "H3:Get Free Counselling"
+   ],
+   "fixedOverlaps": [
+    "BUTTON(30,op1) x BUTTON(40,op1) 36x44px"
+   ],
+   "lastSectionBottom": 9560,
+   "docHeight": 10005
+  }
+ },
+ "lpu-admission": {
+  "390": {
+   "fields": [
+    {
+     "tag": "INPUT",
+     "type": "text",
+     "h": 48,
+     "w": 246,
+     "fs": "16px",
+     "ph": "Full Name",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "tel",
+     "h": 48,
+     "w": 246,
+     "fs": "16px",
+     "ph": "Mobile Number (+91)",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 48,
+     "w": 246,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    }
+   ],
+   "headingOrder": [
+    "H1:LPU Online Admission Highlights 20",
+    "H2:Table of contents",
+    "H2:LPU Online Admission Important Dat",
+    "H2:LPU Online Eligibility & Selection",
+    "H2:LPU Online Admission Process 2026",
+    "H3:Online Registration",
+    "H3:Application Form Submission",
+    "H3:Document Upload",
+    "H3:Eligibility Verification",
+    "H3:Fee Payment and Admission Confirma",
+    "H2:LPU Online Application Process 202",
+    "H3:Online Registration",
+    "H3:Select Degree & Fill Form",
+    "H3:Upload Documents & DEB ID",
+    "H3:Fee Payment & Confirmation",
+    "H2:LPU Online Examination Pattern",
+    "H3:Semester-Based Structure",
+    "H3:Continuous Internal Assessment",
+    "H3:End-Semester Online Examination",
+    "H3:Result Declaration",
+    "H2:LPU Online Documents Required for ",
+    "H2:LPU Online Scholarship 2026",
+    "H2:Have Questions About Document Elig",
+    "H3:Request Instant Callback",
+    "H2:LPU Online Student Reviews",
+    "H2:Blogs",
+    "H3:Top Online MBA Universities with N",
+    "H3:Popular Online MBA Universities in",
+    "H3:Best Colleges Accepting CUET 2026",
+    "H2:Compare",
+    "H3:Lovely Professional University Onl",
+    "H3:Add Comparison College",
+    "H4:POPULAR DEGREES",
+    "H4:ADMISSIONS DESK",
+    "H4:SUPPORT DESK"
+   ],
+   "fixedOverlaps": [],
+   "lastSectionBottom": 10298,
+   "docHeight": 11562
+  },
+  "1366": {
+   "fields": [
+    {
+     "tag": "INPUT",
+     "type": "text",
+     "h": 40,
+     "w": 307,
+     "fs": "12px",
+     "ph": "Full Name",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "tel",
+     "h": 40,
+     "w": 307,
+     "fs": "12px",
+     "ph": "Mobile Number (+91)",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 40,
+     "w": 307,
+     "fs": "12px",
+     "ph": "",
+     "label": ""
+    }
+   ],
+   "headingOrder": [
+    "H1:LPU Online Admission Highlights 20",
+    "H2:Table of contents",
+    "H2:LPU Online Admission Important Dat",
+    "H2:LPU Online Eligibility & Selection",
+    "H2:LPU Online Admission Process 2026",
+    "H3:Online Registration",
+    "H3:Application Form Submission",
+    "H3:Document Upload",
+    "H3:Eligibility Verification",
+    "H3:Fee Payment and Admission Confirma",
+    "H2:LPU Online Application Process 202",
+    "H3:Online Registration",
+    "H3:Select Degree & Fill Form",
+    "H3:Upload Documents & DEB ID",
+    "H3:Fee Payment & Confirmation",
+    "H2:LPU Online Examination Pattern",
+    "H3:Semester-Based Structure",
+    "H3:Continuous Internal Assessment",
+    "H3:End-Semester Online Examination",
+    "H3:Result Declaration",
+    "H2:LPU Online Documents Required for ",
+    "H2:LPU Online Scholarship 2026",
+    "H2:Have Questions About Document Elig",
+    "H3:Request Instant Callback",
+    "H2:LPU Online Student Reviews",
+    "H2:Blogs",
+    "H3:Top Online MBA Universities with N",
+    "H3:Popular Online MBA Universities in",
+    "H3:Best Colleges Accepting CUET 2026",
+    "H2:Compare",
+    "H3:Lovely Professional University Onl",
+    "H3:Add Comparison College",
+    "H4:POPULAR DEGREES",
+    "H4:ADMISSIONS DESK",
+    "H4:SUPPORT DESK"
+   ],
+   "fixedOverlaps": [],
+   "lastSectionBottom": 5601,
+   "docHeight": 6094
+  }
+ },
+ "lpu-courses": {
+  "390": {
+   "fields": [
+    {
+     "tag": "INPUT",
+     "type": "text",
+     "h": 48,
+     "w": 174,
+     "fs": "16px",
+     "ph": "Search by degree name or subject...",
+     "label": "Search courses by degree name or subject"
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 48,
+     "w": 140,
+     "fs": "16px",
+     "ph": "",
+     "label": "Sort courses"
+    }
+   ],
+   "headingOrder": [
+    "H1:LPU Online Courses and Fees 2026",
+    "H2:Table of contents",
+    "H2:LPU Online Fee Structure 2026 (Sem",
+    "H3:Undergraduate (UG) Programs",
+    "H3:Postgraduate (PG) Programs",
+    "H4:Interested in a Shorter Program? C",
+    "H2:LPU Online All Courses",
+    "H3:Online Master of Business Administ",
+    "H3:Online Master of Computer Applicat",
+    "H3:Online Bachelor of Computer Applic",
+    "H3:Online Bachelor of Business Admini",
+    "H3:Online Bachelor of Commerce (B.Com",
+    "H3:Online Bachelor of Arts (BA)",
+    "H3:Online Master of Commerce (M.Com)",
+    "H3:Online Master of Science (M.Sc Mat",
+    "H3:Online Master of Science (M.Sc Eco",
+    "H3:Online Master of Arts (MA)",
+    "H3:Online Diploma (Business Administr",
+    "H2:LPU Online Admission Dates 2026",
+    "H2:How You Study: The LPU e-Connect P",
+    "H3:Live & Recorded Classes",
+    "H3:Digital Study Materials",
+    "H3:LPU e-Connect App",
+    "H3:Placement & Career Support",
+    "H2:LPU Online Reviews",
+    "H2:Frequently Asked Questions (LPU On",
+    "H2:Blogs",
+    "H3:Top Online MBA Universities with N",
+    "H3:Popular Online MBA Universities in",
+    "H3:Best Colleges Accepting CUET 2026",
+    "H3:Have Questions About Courses, Elig",
+    "H4:POPULAR DEGREES",
+    "H4:ADMISSIONS DESK",
+    "H4:SUPPORT DESK"
+   ],
+   "fixedOverlaps": [],
+   "lastSectionBottom": 11075,
+   "docHeight": 12299
+  },
+  "1366": {
+   "fields": [
+    {
+     "tag": "INPUT",
+     "type": "text",
+     "h": 40,
+     "w": 256,
+     "fs": "14px",
+     "ph": "Search by degree name or subject...",
+     "label": "Search courses by degree name or subject"
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 40,
+     "w": 157,
+     "fs": "14px",
+     "ph": "",
+     "label": "Sort courses"
+    }
+   ],
+   "headingOrder": [
+    "H1:LPU Online Courses and Fees 2026",
+    "H2:Table of contents",
+    "H2:LPU Online Fee Structure 2026 (Sem",
+    "H3:Undergraduate (UG) Programs",
+    "H3:Postgraduate (PG) Programs",
+    "H4:Interested in a Shorter Program? C",
+    "H2:LPU Online All Courses",
+    "H3:Online Master of Business Administ",
+    "H3:Online Master of Computer Applicat",
+    "H3:Online Bachelor of Computer Applic",
+    "H3:Online Bachelor of Business Admini",
+    "H3:Online Bachelor of Commerce (B.Com",
+    "H3:Online Bachelor of Arts (BA)",
+    "H3:Online Master of Commerce (M.Com)",
+    "H3:Online Master of Science (M.Sc Mat",
+    "H3:Online Master of Science (M.Sc Eco",
+    "H3:Online Master of Arts (MA)",
+    "H3:Online Diploma (Business Administr",
+    "H2:LPU Online Admission Dates 2026",
+    "H2:How You Study: The LPU e-Connect P",
+    "H3:Live & Recorded Classes",
+    "H3:Digital Study Materials",
+    "H3:LPU e-Connect App",
+    "H3:Placement & Career Support",
+    "H2:LPU Online Reviews",
+    "H2:Frequently Asked Questions (LPU On",
+    "H2:Blogs",
+    "H3:Top Online MBA Universities with N",
+    "H3:Popular Online MBA Universities in",
+    "H3:Best Colleges Accepting CUET 2026",
+    "H3:Have Questions About Courses, Elig",
+    "H4:POPULAR DEGREES",
+    "H4:ADMISSIONS DESK",
+    "H4:SUPPORT DESK"
+   ],
+   "fixedOverlaps": [],
+   "lastSectionBottom": 6046,
+   "docHeight": 6477
+  }
+ },
+ "lpu-scholarship": {
+  "390": {
+   "fields": [
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 48,
+     "w": 326,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "range",
+     "h": 48,
+     "w": 326,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 48,
+     "w": 13,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 48,
+     "w": 13,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 48,
+     "w": 13,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    }
+   ],
+   "headingOrder": [
+    "H1:Scholarships & Fee Discounts",
+    "H2:Table of contents",
+    "H3:Calculate Your Net Tuition Fee & S",
+    "H3:Early Bird 20% Grant",
+    "H3:Academic Excellence",
+    "H3:Jai Jawan Defense Scheme",
+    "H3:Single Girl Child Scheme",
+    "H3:LPU Alumni Concession",
+    "H3:Corporate Employee Rebate",
+    "H4:POPULAR DEGREES",
+    "H4:ADMISSIONS DESK",
+    "H4:SUPPORT DESK"
+   ],
+   "fixedOverlaps": [],
+   "lastSectionBottom": 3261,
+   "docHeight": 4525
+  },
+  "1366": {
+   "fields": [
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 42,
+     "w": 681,
+     "fs": "14px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "range",
+     "h": 8,
+     "w": 681,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 13,
+     "w": 13,
+     "fs": "12px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 13,
+     "w": 13,
+     "fs": "12px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 13,
+     "w": 13,
+     "fs": "12px",
+     "ph": "",
+     "label": ""
+    }
+   ],
+   "headingOrder": [
+    "H1:Scholarships & Fee Discounts",
+    "H2:Table of contents",
+    "H3:Calculate Your Net Tuition Fee & S",
+    "H3:Early Bird 20% Grant",
+    "H3:Academic Excellence",
+    "H3:Jai Jawan Defense Scheme",
+    "H3:Single Girl Child Scheme",
+    "H3:LPU Alumni Concession",
+    "H3:Corporate Employee Rebate",
+    "H4:POPULAR DEGREES",
+    "H4:ADMISSIONS DESK",
+    "H4:SUPPORT DESK"
+   ],
+   "fixedOverlaps": [],
+   "lastSectionBottom": 1452,
+   "docHeight": 1923
+  }
+ },
+ "university-listing": {
+  "390": {
+   "fields": [
+    {
+     "tag": "INPUT",
+     "type": "text",
+     "h": 48,
+     "w": 332,
+     "fs": "15px",
+     "ph": "Search university or degree",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 48,
+     "w": 332,
+     "fs": "15px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "radio",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "radio",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "radio",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "radio",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 44,
+     "w": 143,
+     "fs": "13px",
+     "ph": "",
+     "label": "Sort by"
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 0,
+     "w": 0,
+     "fs": "11px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 20,
+     "w": 20,
+     "fs": "16px",
+     "ph": "",
+     "label": "Add Lovely Professional University (LPU Online) to compare"
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "13px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 20,
+     "w": 20,
+     "fs": "16px",
+     "ph": "",
+     "label": "Add Chandigarh University Online to compare"
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "13px",
+     "ph": "",
+     "label": ""
+    }
+   ],
+   "headingOrder": [
+    "H1:Explore Top UGC-DEB Approved Onlin",
+    "H2:Degree Level",
+    "H2:Approvals & Accreditations",
+    "H2:Total Course Fee",
+    "H2:Examination Mode",
+    "H2:Payment Flexibility",
+    "H3:Confused about approvals?",
+    "H2:Lovely Professional University (LP",
+    "H2:Lovely Professional University (LP",
+    "H2:Chandigarh University Online",
+    "H2:Chandigarh University Online",
+    "H2:Amity University Online",
+    "H2:Amity University Online",
+    "H2:Manipal University Jaipur (Online ",
+    "H2:Manipal University Jaipur (Online ",
+    "H2:Jain (Deemed-to-be) University Onl",
+    "H2:Jain (Deemed-to-be) University Onl",
+    "H2:UPES Online (University of Petrole",
+    "H2:UPES Online (University of Petrole",
+    "H2:Side-by-Side Comparison: Top Onlin",
+    "H2:Explore Top Online Degrees & Speci",
+    "H3:Online MBA",
+    "H3:Online MCA",
+    "H3:Online BBA",
+    "H3:Online BCA",
+    "H3:Online M.Com",
+    "H3:Online MA",
+    "H2:How to Verify Online Degree Entitl",
+    "H3:UGC-DEB Entitlement",
+    "H3:NAAC Grading Significance",
+    "H3:WES & Global Acceptance",
+    "H2:Blogs",
+    "H3:Top Online MBA Universities with N",
+    "H3:Popular Online MBA Universities in",
+    "H3:Best Colleges Accepting CUET 2026",
+    "H4:POPULAR DEGREES",
+    "H4:ADMISSIONS DESK",
+    "H4:SUPPORT DESK"
+   ],
+   "fixedOverlaps": [],
+   "lastSectionBottom": 8410,
+   "docHeight": 9634
+  },
+  "1366": {
+   "fields": [
+    {
+     "tag": "INPUT",
+     "type": "text",
+     "h": 48,
+     "w": 421,
+     "fs": "14px",
+     "ph": "Search university or degree",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 48,
+     "w": 277,
+     "fs": "14px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "radio",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "radio",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "radio",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "radio",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 0,
+     "w": 0,
+     "fs": "13px",
+     "ph": "",
+     "label": "Sort by"
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 11,
+     "w": 140,
+     "fs": "11px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": "Add Lovely Professional University (LPU Online) to compare"
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "13px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 0,
+     "w": 0,
+     "fs": "16px",
+     "ph": "",
+     "label": "Add Chandigarh University Online to compare"
+    },
+    {
+     "tag": "INPUT",
+     "type": "checkbox",
+     "h": 16,
+     "w": 16,
+     "fs": "13px",
+     "ph": "",
+     "label": ""
+    }
+   ],
+   "headingOrder": [
+    "H1:Explore Top UGC-DEB Approved Onlin",
+    "H2:DEGREE LEVEL",
+    "H2:APPROVALS & ACCREDITATIONS",
+    "H2:TOTAL COURSE FEE",
+    "H2:EXAMINATION MODE",
+    "H2:PAYMENT FLEXIBILITY",
+    "H3:Confused about approvals?",
+    "H2:Lovely Professional University (LP",
+    "H2:Lovely Professional University (LP",
+    "H2:Chandigarh University Online",
+    "H2:Chandigarh University Online",
+    "H2:Amity University Online",
+    "H2:Amity University Online",
+    "H2:Manipal University Jaipur (Online ",
+    "H2:Manipal University Jaipur (Online ",
+    "H2:Jain (Deemed-to-be) University Onl",
+    "H2:Jain (Deemed-to-be) University Onl",
+    "H2:UPES Online (University of Petrole",
+    "H2:UPES Online (University of Petrole",
+    "H2:Side-by-Side Comparison: Top Onlin",
+    "H2:Explore Top Online Degrees & Speci",
+    "H3:Online MBA",
+    "H3:Online MCA",
+    "H3:Online BBA",
+    "H3:Online BCA",
+    "H3:Online M.Com",
+    "H3:Online MA",
+    "H2:How to Verify Online Degree Entitl",
+    "H3:UGC-DEB Entitlement",
+    "H3:NAAC Grading Significance",
+    "H3:WES & Global Acceptance",
+    "H2:Blogs",
+    "H3:Top Online MBA Universities with N",
+    "H3:Popular Online MBA Universities in",
+    "H3:Best Colleges Accepting CUET 2026",
+    "H4:POPULAR DEGREES",
+    "H4:ADMISSIONS DESK",
+    "H4:SUPPORT DESK"
+   ],
+   "fixedOverlaps": [],
+   "lastSectionBottom": 4945,
+   "docHeight": 5440
+  }
+ },
+ "home": {
+  "390": {
+   "fields": [
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 24,
+     "w": 294,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 24,
+     "w": 294,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 34,
+     "w": 358,
+     "fs": "12px",
+     "ph": "",
+     "label": "Select Location filter"
+    },
+    {
+     "tag": "INPUT",
+     "type": "tel",
+     "h": 46,
+     "w": 269,
+     "fs": "16px",
+     "ph": "98765 43210",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "email",
+     "h": 48,
+     "w": 316,
+     "fs": "16px",
+     "ph": "name@example.com",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 48,
+     "w": 316,
+     "fs": "16px",
+     "ph": "",
+     "label": ""
+    }
+   ],
+   "headingOrder": [
+    "H1:Discover, Compare & Enroll in\nIndi",
+    "H2:Explore some Popular Courses",
+    "H3:Online B.Com",
+    "H3:Online MCA",
+    "H3:Online BBA",
+    "H3:Online BA.JMC",
+    "H3:Online MBA",
+    "H3:Online M.Sc",
+    "H3:Online Global MBA",
+    "H3:Online BA",
+    "H3:Online BCA",
+    "H3:Online M.Com",
+    "H3:Executive MBA",
+    "H3:Online PGDM",
+    "H3:Online MA",
+    "H3:Online BBA + MBA",
+    "H2:Popular Online Degree Programs",
+    "H3:Online MBA",
+    "H3:Online MCA",
+    "H3:Online BBA",
+    "H3:Online BCA",
+    "H3:Online B.Com / M.Com",
+    "H3:Online BA / MA",
+    "H2:Explore Some Popular Universities",
+    "H3:Lovely Professional University",
+    "H3:Amity University",
+    "H3:Chandigarh University",
+    "H3:Manipal University Jaipur",
+    "H3:Lovely Professional University",
+    "H3:Amity University",
+    "H3:Chandigarh University",
+    "H3:Manipal University Jaipur",
+    "H2:Top Colleges by location",
+    "H3:NIT Kurukshetra - National Institu",
+    "H3:NIFTEM - National Institute of Foo",
+    "H3:Amity University, Gurugram",
+    "H3:Maharishi Markandeshwar University",
+    "H3:Manav Rachna International Institu",
+    "H3:NIT Kurukshetra - National Institu",
+    "H3:What is your location preference?",
+    "H3:NIFTEM - National Institute of Foo",
+    "H3:Amity University, Gurugram",
+    "H3:Maharishi Markandeshwar University",
+    "H3:Manav Rachna International Institu",
+    "H2:What Our Students are Saying About"
+   ],
+   "fixedOverlaps": [
+    "BUTTON(30,op1) x NAV(40,op1) 36x36px"
+   ],
+   "lastSectionBottom": 9010,
+   "docHeight": 10234
+  },
+  "1366": {
+   "fields": [
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 20,
+     "w": 245,
+     "fs": "14px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 20,
+     "w": 245,
+     "fs": "14px",
+     "ph": "",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 42,
+     "w": 288,
+     "fs": "14px",
+     "ph": "",
+     "label": "Select Location filter"
+    },
+    {
+     "tag": "INPUT",
+     "type": "tel",
+     "h": 42,
+     "w": 351,
+     "fs": "14px",
+     "ph": "98765 43210",
+     "label": ""
+    },
+    {
+     "tag": "INPUT",
+     "type": "email",
+     "h": 44,
+     "w": 398,
+     "fs": "14px",
+     "ph": "name@example.com",
+     "label": ""
+    },
+    {
+     "tag": "SELECT",
+     "type": "select-one",
+     "h": 44,
+     "w": 398,
+     "fs": "14px",
+     "ph": "",
+     "label": ""
+    }
+   ],
+   "headingOrder": [
+    "H1:Discover, Compare & Enroll in\nIndi",
+    "H2:Explore some Popular Courses",
+    "H3:Online B.Com",
+    "H3:Online MCA",
+    "H3:Online BBA",
+    "H3:Online BA.JMC",
+    "H3:Online MBA",
+    "H3:Online M.Sc",
+    "H3:Online Global MBA",
+    "H3:Online BA",
+    "H3:Online BCA",
+    "H3:Online M.Com",
+    "H3:Executive MBA",
+    "H3:Online PGDM",
+    "H3:Online MA",
+    "H3:Online BBA + MBA",
+    "H2:Popular Online Degree Programs",
+    "H3:Online MBA",
+    "H3:Online MCA",
+    "H3:Online BBA",
+    "H3:Online BCA",
+    "H3:Online B.Com / M.Com",
+    "H3:Online BA / MA",
+    "H2:Explore Some Popular Universities",
+    "H3:Lovely Professional University",
+    "H3:Amity University",
+    "H3:Chandigarh University",
+    "H3:Manipal University Jaipur",
+    "H3:Lovely Professional University",
+    "H3:Amity University",
+    "H3:Chandigarh University",
+    "H3:Manipal University Jaipur",
+    "H2:Top Colleges by location",
+    "H3:NIT Kurukshetra - National Institu",
+    "H3:NIFTEM - National Institute of Foo",
+    "H3:Amity University, Gurugram",
+    "H3:Maharishi Markandeshwar University",
+    "H3:Manav Rachna International Institu",
+    "H3:NIT Kurukshetra - National Institu",
+    "H3:What is your location preference?",
+    "H3:NIFTEM - National Institute of Foo",
+    "H3:Amity University, Gurugram",
+    "H3:Maharishi Markandeshwar University",
+    "H3:Manav Rachna International Institu",
+    "H2:What Our Students are Saying About"
+   ],
+   "fixedOverlaps": [],
+   "lastSectionBottom": 5837,
+   "docHeight": 6288
+  }
+ },
+ "reducedMotion": {
+  "reduced": true,
+  "marquees": [],
+  "infiniteAnimations": [
+   "SPAN.w-1.5 h-1.5 rounded-full bg-em anim=pulse dur=2s",
+   "SPAN.w-1.5 h-1.5 rounded-full bg-em anim=pulse dur=2s",
+   "SPAN.animate-ping absolute inline-f anim=ping dur=1s"
+  ]
+ }
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Course } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
 import { DEGREEFYD_LPU_API } from '../data/apiData';
+import { BlogsListSection } from './BlogsListSection';
 import { 
   CheckCircle,
   ChevronRight,
@@ -293,7 +294,7 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
             <div className="flex justify-center mt-3">
               <button
                 onClick={() => setShowAllEligibility(!showAllEligibility)}
-                className="flex items-center gap-1.5 text-xs font-bold text-[#115eaf] hover:underline cursor-pointer"
+                className="tap-hit flex items-center gap-1.5 text-xs font-bold text-[#115eaf] hover:underline cursor-pointer"
               >
                 {showAllEligibility
                   ? 'Show Less'
@@ -658,12 +659,12 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
                     </span>
                   </div>
                   <p className="text-xs text-[#2d3137] italic leading-relaxed">
-                    "{t.review}"
+                    "{t.text}"
                   </p>
                 </div>
                 <div className="border-t border-[#e7eeff] pt-2.5 flex items-center justify-between">
                   <div>
-                    <span className="block font-bold text-xs text-[#000f22]">{t.name}</span>
+                    <span className="block font-bold text-xs text-[#000f22]">{t.studentName}</span>
                     <span className="block text-[10px] text-[#74777e]">{t.course} · Batch {t.batch}</span>
                   </div>
                 </div>
@@ -673,61 +674,10 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
         </section>
 
         {/* 9. BLOGS */}
-        <section id="blogs" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[110px]">
-          <div className="flex items-end justify-between gap-3 flex-wrap border-b border-[#e7eeff] pb-4">
-            <div>
-              <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                Blogs
-              </h2>
-              <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal max-w-[850px]">
-                {DEGREEFYD_LPU_API.blogs.description}
-              </p>
-            </div>
-            <button
-              onClick={() => onOpenHelpDesk()}
-              className="h-10 px-4 inline-flex items-center gap-2 rounded-xl border border-[#0b2540] text-[#0b2540] text-xs font-bold hover:bg-[#0b2540] hover:text-white transition-all shrink-0 cursor-pointer"
-            >
-              View All Blogs
-              <span className="text-[#115eaf] text-sm">→</span>
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-[18px]">
-            {DEGREEFYD_LPU_API.blogs.posts.slice(0, 3).map((post, i) => (
-              <article
-                key={i}
-                className="overflow-hidden bg-white border border-[#e7eeff] rounded-2xl hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
-              >
-                <div className="relative h-40 overflow-hidden bg-[#f0f3ff]">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <span className="absolute left-3 top-3 px-2 py-1 rounded-full bg-[#115eaf] text-white text-[10px] font-bold">
-                    {post.category}
-                  </span>
-                </div>
-                <div className="p-4 flex-1 flex flex-col justify-between space-y-2">
-                  <div>
-                    <span className="text-[10px] text-[#74777e]">{post.date}</span>
-                    <h3 className="font-bold text-xs sm:text-sm text-[#000f22] line-clamp-2 mt-1">
-                      {post.title}
-                    </h3>
-                  </div>
-                  <button
-                    onClick={() => onOpenHelpDesk()}
-                    className="text-xs font-bold text-[#115eaf] hover:underline flex items-center gap-1 mt-2 cursor-pointer"
-                  >
-                    Read Article
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+        <BlogsListSection
+          onOpenHelpDesk={onOpenHelpDesk}
+          className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[110px]"
+        />
 
         {/* 10. COMPARE */}
         <section id="compare" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[110px]">

@@ -3,6 +3,7 @@ import { Course, CourseCategory } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
 import { INSTITUTION_HIGHLIGHTS, PLACEMENT_STATS } from '../data/institutionalData';
 import { DEGREEFYD_LPU_API } from '../data/apiData';
+import { BlogsListSection } from './BlogsListSection';
 import { 
   CheckCircle, 
   Search, 
@@ -156,7 +157,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                 </button>
                 <button
                   onClick={onOpenHelpDesk}
-                  className="px-3.5 py-2.5 rounded-xl text-[#115eaf] hover:bg-[#dee8ff] text-xs sm:text-sm font-medium transition-colors flex items-center gap-1.5"
+                  className="tap-chip px-3.5 py-2.5 rounded-xl text-[#115eaf] hover:bg-[#dee8ff] text-xs sm:text-sm font-medium transition-colors flex items-center gap-1.5"
                 >
                   <PhoneCall className="w-4 h-4" />
                   <span>Talk to an Academic Counselor</span>
@@ -292,7 +293,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
             <button
               onClick={() => setSelectedCategory('all')}
               aria-pressed={selectedCategory === 'all'}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
+              className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
                 selectedCategory === 'all'
                   ? 'bg-[#0b2540] text-white'
                   : 'bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]'
@@ -303,7 +304,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
             <button
               onClick={() => setSelectedCategory('ug')}
               aria-pressed={selectedCategory === 'ug'}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
+              className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
                 selectedCategory === 'ug'
                   ? 'bg-[#0b2540] text-white'
                   : 'bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]'
@@ -314,7 +315,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
             <button
               onClick={() => setSelectedCategory('pg')}
               aria-pressed={selectedCategory === 'pg'}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
+              className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
                 selectedCategory === 'pg'
                   ? 'bg-[#0b2540] text-white'
                   : 'bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]'
@@ -325,7 +326,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
             <button
               onClick={() => setSelectedCategory('diploma')}
               aria-pressed={selectedCategory === 'diploma'}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
+              className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
                 selectedCategory === 'diploma'
                   ? 'bg-[#0b2540] text-white'
                   : 'bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]'
@@ -449,7 +450,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                         <td className="py-2.5 px-5 text-right">
                           <button
                             onClick={() => onSelectCourse(c)}
-                            className="inline-flex items-center text-[#115eaf] font-medium text-xs hover:underline"
+                            className="tap-hit inline-flex items-center text-[#115eaf] font-medium text-xs hover:underline"
                           >
                             <span>View</span>
                             <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
@@ -510,7 +511,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                         <td className="py-2.5 px-5 text-right">
                           <button
                             onClick={() => onSelectCourse(c)}
-                            className="inline-flex items-center text-[#115eaf] font-medium text-xs hover:underline"
+                            className="tap-hit inline-flex items-center text-[#115eaf] font-medium text-xs hover:underline"
                           >
                             <span>View</span>
                             <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
@@ -897,102 +898,10 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* Blogs */}
-      <section id="blogs" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
-        <div className="flex items-end justify-between gap-3 flex-wrap">
-          <div>
-            <h2 className="section-title mt-2 text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              Latest <span className="text-[#115eaf]">Blogs</span>
-            </h2>
-            <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal max-w-[850px]">
-              {DEGREEFYD_LPU_API.blogs.description}
-            </p>
-          </div>
-          <button
-            onClick={() => onOpenHelpDesk()}
-            className="h-11 px-5 inline-flex items-center gap-2.5 rounded-xl border border-[#0b2540] text-[#0b2540] text-sm font-bold hover:bg-[#0b2540] hover:text-white transition-all shrink-0"
-          >
-            View All Blogs
-            <span className="text-[#115eaf] text-lg leading-none">→</span>
-          </button>
-        </div>
-
-        <div className="flex items-center gap-3 mt-[18px]">
-          <button
-            onClick={() => setBlogIndex((i) => Math.max(0, i - 1))}
-            disabled={blogIndex === 0}
-            aria-label="Previous blogs"
-            className="shrink-0 w-[42px] h-[42px] rounded-full border border-[#d5e3ff] bg-white text-[#000f22] text-lg flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white disabled:opacity-35 disabled:cursor-default transition-all"
-          >
-            ←
-          </button>
-
-          <div className="w-full overflow-hidden">
-            <div
-              className="flex"
-              style={{
-                gap: '22px',
-                transform: `translateX(-${blogIndex * (100 / blogVisible)}%)`,
-                transition: 'transform .45s cubic-bezier(.4,0,.2,1)'
-              }}
-            >
-              {DEGREEFYD_LPU_API.blogs.posts.map((post, i) => (
-                <article
-                  key={i}
-                  className="min-w-0 overflow-hidden bg-white border border-[#e7eeff] rounded-2xl hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
-                  style={{ flex: `0 0 calc((100% - ${(blogVisible - 1) * 22}px) / ${blogVisible})` }}
-                >
-                  <a href="#" className="relative block h-[185px] overflow-hidden bg-[#f0f3ff]">
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
-                    <span className="absolute left-3.5 top-3.5 px-2.5 py-1.5 rounded-[20px] bg-[#115eaf] text-white text-[11px] font-bold leading-none">
-                      {post.category}
-                    </span>
-                  </a>
-                  <div className="p-[18px]">
-                    <h3 className="text-[#000f22] text-lg leading-snug font-bold font-sans">{post.title}</h3>
-                    <p className="mt-[7.5px] mb-4 text-sm text-[#43474d] leading-relaxed font-normal">{post.excerpt}</p>
-                    <div className="flex items-center justify-between gap-3.5">
-                      <span className="flex items-center gap-1.5 text-[13px] text-[#43474d] font-normal">
-                        <Clock className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
-                        {post.date}
-                      </span>
-                      <a href="#" className="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#115eaf] hover:text-[#004689] transition-colors">
-                        Read More
-                        <span className="text-lg leading-none hover:translate-x-1 transition-transform">→</span>
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <button
-            onClick={() => setBlogIndex((i) => Math.min(Math.max(0, DEGREEFYD_LPU_API.blogs.posts.length - blogVisible), i + 1))}
-            disabled={blogIndex >= DEGREEFYD_LPU_API.blogs.posts.length - blogVisible}
-            aria-label="Next blogs"
-            className="shrink-0 w-[42px] h-[42px] rounded-full border border-[#d5e3ff] bg-white text-[#000f22] text-lg flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white disabled:opacity-35 disabled:cursor-default transition-all"
-          >
-            →
-          </button>
-        </div>
-
-        <div className="flex justify-center items-center gap-[7px]">
-          {Array.from({ length: Math.max(0, DEGREEFYD_LPU_API.blogs.posts.length - blogVisible) + 1 }).map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setBlogIndex(i)}
-              aria-label={`Go to blog slide ${i + 1}`}
-              className={`h-[7px] rounded-[10px] border-none cursor-pointer transition-all ${
-                i === blogIndex ? 'w-[23px] bg-[#115eaf]' : 'w-[7px] bg-[#d5e3ff]'
-              }`}
-            />
-          ))}
-        </div>
-      </section>
+      <BlogsListSection
+        onOpenHelpDesk={onOpenHelpDesk}
+        className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs max-w-7xl mx-auto"
+      />
 
       {/* COUNSELOR CTA STRIP */}
       <section id="counselor-helpline" className="content-block bg-[#0b2540] text-white scroll-mt-[100px]">

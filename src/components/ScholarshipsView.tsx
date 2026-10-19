@@ -167,38 +167,38 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
                   Special Welfare Categories
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                  <label className={`p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
+                  <label className={`tap-chip min-h-[44px] p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
                     isDefense ? 'border-[#115eaf] bg-[#f0f3ff]' : 'border-[#e7eeff]'
                   }`}>
                     <input
                       type="checkbox"
                       checked={isDefense}
                       onChange={(e) => setIsDefense(e.target.checked)}
-                      className="rounded text-[#115eaf]"
+                      className="shrink-0 w-5 h-5 rounded text-[#115eaf]"
                     />
                     <span className="font-normal text-[#000f22]">Defense / Paramilitary</span>
                   </label>
 
-                  <label className={`p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
+                  <label className={`tap-chip min-h-[44px] p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
                     isSingleGirl ? 'border-[#115eaf] bg-[#f0f3ff]' : 'border-[#e7eeff]'
                   }`}>
                     <input
                       type="checkbox"
                       checked={isSingleGirl}
                       onChange={(e) => setIsSingleGirl(e.target.checked)}
-                      className="rounded text-[#115eaf]"
+                      className="shrink-0 w-5 h-5 rounded text-[#115eaf]"
                     />
                     <span className="font-normal text-[#000f22]">Single Girl Child</span>
                   </label>
 
-                  <label className={`p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
+                  <label className={`tap-chip min-h-[44px] p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
                     isAlumni ? 'border-[#115eaf] bg-[#f0f3ff]' : 'border-[#e7eeff]'
                   }`}>
                     <input
                       type="checkbox"
                       checked={isAlumni}
                       onChange={(e) => setIsAlumni(e.target.checked)}
-                      className="rounded text-[#115eaf]"
+                      className="shrink-0 w-5 h-5 rounded text-[#115eaf]"
                     />
                     <span className="font-normal text-[#000f22]">LPU Alumni / Sibling</span>
                   </label>

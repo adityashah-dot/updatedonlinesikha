@@ -19,7 +19,7 @@ import {
 import { TableOfContents } from './TableOfContents';
 import { ProgrammeCardsSection, ProgrammeCardData } from './ProgrammeCardsSection';
 import { AdmissionFlowSteps } from './AdmissionFlowSteps';
-import { BlogsSection } from './BlogsSection';
+import { BlogsListSection } from './BlogsListSection';
 import { CompareCollegesSection } from './CompareCollegesSection';
 import { AMITY_PAGE_CONTENT as AMITY } from '../data/universities/amityContent';
 import { AMITY_UNIVERSITY_DATA } from '../data/universities/amity';
@@ -147,7 +147,7 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
       {/* HERO — LPU college-hero layout */}
       <section className="bg-white text-[#000f22] border-b border-[#e7eeff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
-          <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5">
+          <div className="flex flex-row items-start gap-3 sm:gap-5">
             <img
               src={AMITY.logoImage}
               alt={`${AMITY.shortName} Logo`}
@@ -178,7 +178,7 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-4 items-start mt-4">
-            <div className="lg:col-span-7 space-y-3">
+            <div className="order-2 lg:order-none lg:col-span-7 space-y-3">
               <p className="section-description text-xs sm:text-sm text-[#43474d] font-normal flex items-center gap-1.5 flex-wrap">
                 <MapPin className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
                 {AMITY.location} · {AMITY.type} · Est. {AMITY.established} ·{' '}
@@ -192,7 +192,7 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
               </p>
             </div>
 
-            <div className="lg:col-span-5 lg:mr-[50px]">
+            <div className="order-1 lg:order-none lg:col-span-5 lg:mr-[50px]">
               <div className="rounded-2xl overflow-hidden border border-[#e7eeff] shadow-xs bg-[#f9f9ff]">
                 <img
                   src={AMITY.heroImage}
@@ -227,7 +227,7 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
               </span>
               <span className="text-[10px] text-[#74777e]">Placement Rate</span>
             </div>
-            <div className="flex items-center gap-3 ml-auto">
+            <div className="flex items-center gap-3 md:ml-auto">
               <button
                 onClick={() => onOpenBrochure()}
                 className="px-5 py-2.5 rounded-xl bg-white text-[#115eaf] border border-[#115eaf] text-xs sm:text-sm font-bold hover:bg-[#f0f3ff] active:scale-95 transition-all flex items-center justify-center gap-2"
@@ -1046,9 +1046,9 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
           </section>
 
           {/* 15. Blogs */}
-          <BlogsSection
+          <BlogsListSection
             onOpenHelpDesk={onOpenHelpDesk}
-            description={AMITY.blogsIntro}
+            sectionId="blogs"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
           />
 
