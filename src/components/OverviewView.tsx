@@ -4,6 +4,7 @@ import { COURSES_DATA } from '../data/coursesData';
 import { PLACEMENT_STATS } from '../data/institutionalData';
 import { DEGREEFYD_LPU_API } from '../data/apiData';
 import { ProgrammeCardsSection, ProgrammeCardData } from './ProgrammeCardsSection';
+import { BlogsListSection } from './BlogsListSection';
 import { INDIAN_STATES, INDIAN_STATES_CITIES } from '../data/indianLocations';
 import {
   CheckCircle,
@@ -105,6 +106,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
     city: ''
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [counselPanelOpen, setCounselPanelOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [activeSection, setActiveSection] = useState<string>('latest-news');
@@ -396,7 +398,17 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
 
   const handleCounselingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    const errors: Record<string, string> = {};
+    if (!counselingForm.phone || !/^\d{10}$/.test(counselingForm.phone.replace(/\D/g, ''))) {
+      errors.phone = 'Enter a valid 10-digit phone number';
+    }
+    if (!counselingForm.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(counselingForm.email)) {
+      errors.email = 'Enter a valid email address';
+    }
+    setFormErrors(errors);
+    if (Object.keys(errors).length === 0) {
+      setFormSubmitted(true);
+    }
   };
 
   return (
@@ -421,7 +433,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
 
           {/* College Header: Logo + Title + Meta + Badges */}
-          <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5">
+          <div className="flex flex-row items-start gap-3 sm:gap-5">
             <img
               src={DEGREEFYD_LPU_API.hero.logoImage}
               alt="LPU Logo"
@@ -443,7 +455,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
 
           {/* Body: location + text left; image top-aligned to location line */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-4 items-start mt-4">
-            <div className="lg:col-span-7 space-y-3">
+            <div className="order-2 lg:order-none lg:col-span-7 space-y-3">
               <p className="section-description text-xs sm:text-sm text-[#43474d] font-normal flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
                 {DEGREEFYD_LPU_API.location} · Private · Est. {DEGREEFYD_LPU_API.established} ·{' '}
@@ -461,7 +473,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
             </div>
 
             {/* Right: Campus Image — top aligned with location line; 50px to Free Apply */}
-            <div className="lg:col-span-5 lg:mr-[50px]">
+            <div className="order-1 lg:order-none lg:col-span-5 lg:mr-[50px]">
               <div className="rounded-2xl overflow-hidden border border-[#e7eeff] shadow-xs bg-[#f9f9ff]">
                 <img
                   src={DEGREEFYD_LPU_API.hero.backgroundImage}
@@ -491,7 +503,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
               <span className="block text-sm font-bold text-[#B45309] font-sans">90%</span>
               <span className="text-[10px] text-[#74777e]">Placement Rate</span>
             </div>
-            <div className="flex items-center gap-3 ml-auto">
+            <div className="flex items-center gap-3 md:ml-auto">
               <button
                 onClick={() => onOpenBrochure()}
                 className="px-5 py-2.5 rounded-xl bg-white text-[#115eaf] border border-[#115eaf] text-xs sm:text-sm font-bold hover:bg-[#f0f3ff] active:scale-95 transition-all flex items-center justify-center gap-2"
@@ -549,7 +561,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
                 </div>
                 <button
                   onClick={() => onOpenBrochure()}
-                  className="px-4 py-2 bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all flex items-center gap-1.5 shadow-xs"
+                  className="px-4 py-2 min-h-[44px] bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all flex items-center gap-1.5 shadow-xs"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download Factsheet</span>
@@ -566,7 +578,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
                   <button
                     key={cat}
                     onClick={() => setSelectedHighlightCategory(cat)}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
+                    className={`tap-chip min-h-[44px] px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                       selectedHighlightCategory === cat
                         ? 'bg-[#115eaf] text-white border-[#115eaf]'
                         : 'bg-[#f0f3ff] text-[#43474d] border-[#e7eeff] hover:border-[#115eaf]'
@@ -614,7 +626,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
                 return filtered.length > 8 && (
                 <button
                   onClick={() => setHighlightsExpanded(!highlightsExpanded)}
-                  className="w-full py-2 bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] rounded-xl text-xs font-bold hover:bg-[#e7eeff] transition-all mt-[18px]"
+                  className="w-full min-h-[44px] py-2 bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] rounded-xl text-xs font-bold hover:bg-[#e7eeff] transition-all mt-[18px]"
                 >
                   {highlightsExpanded ? 'Show Less' : 'Show More Highlights'}
                 </button>
@@ -902,7 +914,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
                   }
                   .admission-flow-badge {
                     height: 30px;
-                    font-size: 11px;
+                    font-size: 12px;
                   }
                   .admission-flow-body h3 {
                     font-size: 16px;
@@ -1215,7 +1227,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
                 }
                 .campus-marquee-item figcaption {
                   padding: 10px 12px;
-                  font-size: 11px;
+                  font-size: 12px;
                   color: #43474d;
                   background: white;
                   border-top: 1px solid #e7eeff;
@@ -1470,9 +1482,9 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
               {/* Review Callout Action Box */}
               <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#f0f3ff] via-white to-[#f0f3ff] border border-[#d5e3ff] flex flex-col sm:flex-row items-center justify-between gap-3 mt-[18px]">
                 <div className="space-y-1 text-center sm:text-left">
-                  <h4 className="font-bold text-sm text-[#000f22] font-sans">
+                  <h3 className="font-bold text-sm text-[#000f22] font-sans">
                     Join 25,000+ ambitious working professionals at LPU Online
-                  </h4>
+                  </h3>
                   <p className="text-xs text-[#43474d]">
                     Admissions for Spring 2026 intake are currently open. Book a 1-on-1 counseling session with our admissions team.
                   </p>
@@ -1609,104 +1621,10 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
             </section>
 
             {/* Blogs */}
-            <section id="blogs" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
-              <div className="flex items-end justify-between gap-3 flex-wrap">
-                <div>
-                  <h2 className="section-title mt-2 text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                    Latest <span className="text-[#115eaf]">Blogs</span>
-                  </h2>
-                  <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal max-w-[850px]">
-                    {DEGREEFYD_LPU_API.blogs.description}
-                  </p>
-                </div>
-                <button
-                  onClick={() => onOpenHelpDesk()}
-                  className="h-11 px-5 inline-flex items-center gap-2.5 rounded-xl border border-[#0b2540] text-[#0b2540] text-sm font-bold hover:bg-[#0b2540] hover:text-white transition-all shrink-0"
-                >
-                  View All Blogs
-                  <span className="text-[#115eaf] text-lg leading-none">→</span>
-                </button>
-              </div>
-
-              {/* Slider */}
-              <div className="flex items-center gap-3 mt-[18px]">
-                <button
-                  onClick={() => setBlogIndex((i) => Math.max(0, i - 1))}
-                  disabled={blogIndex === 0}
-                  aria-label="Previous blogs"
-                  className="shrink-0 w-[42px] h-[42px] rounded-full border border-[#d5e3ff] bg-white text-[#000f22] text-lg flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white disabled:opacity-35 disabled:cursor-default transition-all"
-                >
-                  ←
-                </button>
-
-                <div className="w-full overflow-hidden">
-                  <div
-                    className="flex"
-                    style={{
-                      gap: '22px',
-                      transform: `translateX(-${blogIndex * (100 / blogVisible)}%)`,
-                      transition: 'transform .45s cubic-bezier(.4,0,.2,1)'
-                    }}
-                  >
-                    {DEGREEFYD_LPU_API.blogs.posts.map((post, i) => (
-                      <article
-                        key={i}
-                        className="min-w-0 overflow-hidden bg-white border border-[#e7eeff] rounded-2xl hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
-                        style={{ flex: `0 0 calc((100% - ${(blogVisible - 1) * 22}px) / ${blogVisible})` }}
-                      >
-                        <a href="#" className="relative block h-[185px] overflow-hidden bg-[#f0f3ff]">
-                          <img
-                            src={post.image}
-                            alt={post.title}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                          />
-                          <span className="absolute left-3.5 top-3.5 px-2.5 py-1.5 rounded-[20px] bg-[#115eaf] text-white text-[11px] font-bold leading-none">
-                            {post.category}
-                          </span>
-                        </a>
-                        <div className="p-[18px]">
-                          <h3 className="text-[#000f22] text-lg leading-snug font-bold font-sans">{post.title}</h3>
-                          <p className="mt-[7.5px] mb-4 text-sm text-[#43474d] leading-relaxed font-normal">{post.excerpt}</p>
-                          <div className="flex items-center justify-between gap-3.5">
-                            <span className="flex items-center gap-1.5 text-[13px] text-[#43474d] font-normal">
-                              <Clock className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
-                              {post.date}
-                            </span>
-                            <a href="#" className="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#115eaf] hover:text-[#004689] transition-colors">
-                              Read More
-                              <span className="text-lg leading-none hover:translate-x-1 transition-transform">→</span>
-                            </a>
-                          </div>
-                        </div>
-                      </article>
-                    ))}
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => setBlogIndex((i) => Math.min(Math.max(0, DEGREEFYD_LPU_API.blogs.posts.length - blogVisible), i + 1))}
-                  disabled={blogIndex >= DEGREEFYD_LPU_API.blogs.posts.length - blogVisible}
-                  aria-label="Next blogs"
-                  className="shrink-0 w-[42px] h-[42px] rounded-full border border-[#d5e3ff] bg-white text-[#000f22] text-lg flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white disabled:opacity-35 disabled:cursor-default transition-all"
-                >
-                  →
-                </button>
-              </div>
-
-              {/* Dots */}
-              <div className="flex justify-center items-center gap-[7px]">
-                {Array.from({ length: Math.max(0, DEGREEFYD_LPU_API.blogs.posts.length - blogVisible) + 1 }).map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setBlogIndex(i)}
-                    aria-label={`Go to blog slide ${i + 1}`}
-                    className={`h-[7px] rounded-[10px] border-none cursor-pointer transition-all ${
-                      i === blogIndex ? 'w-[23px] bg-[#115eaf]' : 'w-[7px] bg-[#d5e3ff]'
-                    }`}
-                  />
-                ))}
-              </div>
-            </section>
+            <BlogsListSection
+              onOpenHelpDesk={onOpenHelpDesk}
+              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+            />
 
         </div>
       </div>
@@ -1714,7 +1632,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
       {/* Floating TOC Toggle Button */}
       <button
         onClick={() => setTocOpen(!tocOpen)}
-        className="fixed bottom-20 left-4 z-30 w-11 h-11 rounded-full bg-[#0b2540] text-white shadow-lg flex items-center justify-center hover:bg-[#115eaf] transition-colors md:bottom-6"
+        className="fixed bottom-36 left-4 z-30 w-11 h-11 rounded-full bg-[#0b2540] text-white shadow-lg flex items-center justify-center hover:bg-[#115eaf] transition-colors md:bottom-6"
         aria-label="Toggle Table of Contents"
       >
         <FileText className="w-5 h-5" />
@@ -1812,7 +1730,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
           </div>
           <button
             onClick={() => setCounselPanelOpen(false)}
-            className="w-6 h-6 rounded-md bg-[#f0f3ff] text-[#43474d] flex items-center justify-center hover:bg-[#e7eeff] transition-colors text-[10px] font-bold"
+              className="tap-hit w-11 h-11 rounded-md bg-[#f0f3ff] text-[#43474d] flex items-center justify-center hover:bg-[#e7eeff] transition-colors text-[10px] font-bold"
           >
             ✕
           </button>
@@ -1820,24 +1738,38 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
 
         <div className="p-4">
           {!formSubmitted ? (
-            <form onSubmit={handleCounselingSubmit} className="space-y-2.5">
-              <input
-                type="tel"
-                required
-                pattern="[0-9]{10}"
-                value={counselingForm.phone}
-                onChange={(e) => setCounselingForm({ ...counselingForm, phone: e.target.value })}
-                placeholder="Phone Number (+91)"
-                className="w-full px-3 py-2 rounded-lg border border-[#c4c6ce] text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none"
-              />
-              <input
-                type="email"
-                required
-                value={counselingForm.email}
-                onChange={(e) => setCounselingForm({ ...counselingForm, email: e.target.value })}
-                placeholder="Email Address"
-                className="w-full px-3 py-2 rounded-lg border border-[#c4c6ce] text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none"
-              />
+            <form onSubmit={handleCounselingSubmit} className="space-y-2.5" noValidate>
+              <div>
+                <input
+                  type="tel"
+                  required
+                  pattern="[0-9]{10}"
+                  value={counselingForm.phone}
+                  onChange={(e) => { setCounselingForm({ ...counselingForm, phone: e.target.value }); if (formErrors.phone) setFormErrors({...formErrors, phone: ''}); }}
+                  placeholder="Phone Number (+91)"
+                  className={`w-full px-3 py-2 rounded-lg border text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none ${formErrors.phone ? 'border-red-500' : 'border-[#c4c6ce]'}`}
+                  aria-invalid={formErrors.phone ? 'true' : 'false'}
+                  aria-describedby={formErrors.phone ? 'phone-error' : undefined}
+                />
+                {formErrors.phone && (
+                  <p id="phone-error" role="alert" aria-live="polite" className="mt-1 text-[11px] text-red-600">{formErrors.phone}</p>
+                )}
+              </div>
+              <div>
+                <input
+                  type="email"
+                  required
+                  value={counselingForm.email}
+                  onChange={(e) => { setCounselingForm({ ...counselingForm, email: e.target.value }); if (formErrors.email) setFormErrors({...formErrors, email: ''}); }}
+                  placeholder="Email Address"
+                  className={`w-full px-3 py-2 rounded-lg border text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none ${formErrors.email ? 'border-red-500' : 'border-[#c4c6ce]'}`}
+                  aria-invalid={formErrors.email ? 'true' : 'false'}
+                  aria-describedby={formErrors.email ? 'email-error' : undefined}
+                />
+                {formErrors.email && (
+                  <p id="email-error" role="alert" aria-live="polite" className="mt-1 text-[11px] text-red-600">{formErrors.email}</p>
+                )}
+              </div>
               <select
                 value={counselingForm.course}
                 onChange={(e) => setCounselingForm({ ...counselingForm, course: e.target.value })}
@@ -1849,7 +1781,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
               </select>
               <button
                 type="submit"
-                className="w-full py-2 bg-[#115eaf] text-white rounded-lg text-[11px] font-bold shadow-sm hover:bg-[#004689] active:scale-95 transition-all"
+                className="w-full py-2 min-h-[44px] bg-[#115eaf] text-white rounded-lg text-[11px] font-bold shadow-sm hover:bg-[#004689] active:scale-95 transition-all"
               >
                 Submit
               </button>

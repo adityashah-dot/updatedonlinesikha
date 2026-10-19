@@ -1,0 +1,2525 @@
+
+==================== lpu-overview ====================
+
+--- lpu-overview @320  doc=320x20440 client=320 inner=320 bodyScroll=380 mainW=320 sections=16 h1=1
+ h1: ["Lovely Professional University Online"]
+ overflow(60):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=380 w=181
+    BUTTON.inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px]  right=330 w=74
+    BUTTON.lg:hidden p-2 min-h-[44px] min-w-[44px] rounded-lg text-[#43 right=380 w=44
+    svg. right=370 w=24
+    path. right=366 w=16
+    path. right=366 w=16
+    path. right=366 w=16
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=364 w=120
+ smallTargets(77):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."px-5 py-2.5 rounded-xl bg-white text-[#115eaf" "Brochure" 123x38
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 113x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "menu_book
+Courses" 107x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "school
+Admission" 120x36
+ centeredText(6):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+    SPAN."" "Download Factsheet"
+    SPAN."" "Apply for Degree Enrollment"
+ smallText<12(42):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."block text-[9px] leading-tight f" 9px "Duration"
+    SPAN."block text-[9px] leading-tight f" 9px "Total Fee"
+    SPAN."block text-[9px] leading-tight f" 9px "Mode"
+    SPAN."block text-[9px] leading-tight f" 9px "Duration"
+ images total=35 noAlt=3 broken=11
+   broken: http://localhost:3001/images/campusviewlpu.jpeg
+   broken: http://localhost:3001/images/campusarealpu.jpeg
+   broken: http://localhost:3001/images/campusviewlpu.jpeg
+   broken: http://localhost:3001/images/campusarealpu.jpeg
+   broken: http://localhost:3001/images/campusviewlpu.jpeg
+ btnNoName(0): []
+ fixed(5):
+    BUTTON."fixed bottom-20 left-4 z-30 w-11 h-11 rounded-full" top=516 left=16 44x44
+    DIV."fixed right-0 top-1/2 -translate-y-1/2 z-50 flex i" top=172 left=48 272x296
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=581 left=0 320x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=517 left=145 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=512 left=16 48x48
+ consoleErrors(3): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). ","Failed to load resource: the server responded with a status of 404 (Not Found)"]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(15):
+    bg-white text-[#000f22] border-b b -> bg-white rounded-2xl border border: 71px
+    bg-white rounded-2xl border border -> latest-news: 16px
+    latest-news -> highlights: 16px
+    highlights -> courses-fees: 16px
+    courses-fees -> popular-programmes: 16px
+    popular-programmes -> eligibility-criteria: 16px
+    eligibility-criteria -> admission-process: 16px
+    admission-process -> rankings: 16px
+    rankings -> examination-pattern: 16px
+    examination-pattern -> placements: 16px
+    placements -> campus: 16px
+    campus -> sample-degree: 16px
+
+--- lpu-overview @360  doc=360x18513 client=360 inner=360 bodyScroll=380 mainW=360 sections=16 h1=1
+ h1: ["Lovely Professional University Online"]
+ overflow(60):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=380 w=181
+    BUTTON.lg:hidden p-2 min-h-[44px] min-w-[44px] rounded-lg text-[#43 right=380 w=44
+    svg. right=370 w=24
+    path. right=366 w=16
+    path. right=366 w=16
+    path. right=366 w=16
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=364 w=120
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=503 w=135
+ smallTargets(86):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."px-5 py-2.5 rounded-xl bg-white text-[#115eaf" "Brochure" 123x38
+    BUTTON."px-6 py-2.5 rounded-xl bg-[#115eaf] text-whit" "Apply Now" 138x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 113x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "menu_book
+Courses" 107x36
+ centeredText(6):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+    SPAN."" "Download Factsheet"
+    SPAN."" "Apply for Degree Enrollment"
+ smallText<12(42):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."block text-[9px] leading-tight f" 9px "Duration"
+    SPAN."block text-[9px] leading-tight f" 9px "Total Fee"
+    SPAN."block text-[9px] leading-tight f" 9px "Mode"
+    SPAN."block text-[9px] leading-tight f" 9px "Duration"
+ images total=35 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(5):
+    BUTTON."fixed bottom-20 left-4 z-30 w-11 h-11 rounded-full" top=676 left=16 44x44
+    DIV."fixed right-0 top-1/2 -translate-y-1/2 z-50 flex i" top=252 left=72 288x296
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=741 left=0 360x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=677 left=185 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=672 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(15):
+    bg-white text-[#000f22] border-b b -> bg-white rounded-2xl border border: 71px
+    bg-white rounded-2xl border border -> latest-news: 16px
+    latest-news -> highlights: 16px
+    highlights -> courses-fees: 16px
+    courses-fees -> popular-programmes: 16px
+    popular-programmes -> eligibility-criteria: 16px
+    eligibility-criteria -> admission-process: 16px
+    admission-process -> rankings: 16px
+    rankings -> examination-pattern: 16px
+    examination-pattern -> placements: 16px
+    placements -> campus: 16px
+    campus -> sample-degree: 16px
+
+--- lpu-overview @390  doc=390x17899 client=390 inner=390 bodyScroll=390 mainW=390 sections=16 h1=1
+ h1: ["Lovely Professional University Online"]
+ overflow(60):
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=503 w=135
+    SPAN.material-symbols-outlined text-[16px] sm:text-[18px] leading right=406 w=24
+    SPAN. right=489 w=77
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=625 w=118
+    SPAN.material-symbols-outlined text-[16px] sm:text-[18px] leading right=545 w=24
+    SPAN. right=611 w=60
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=463 w=125
+    IMG.max-h-[34px] max-w-[100px] object-contain right=431 w=60
+ smallTargets(90):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."px-5 py-2.5 rounded-xl bg-white text-[#115eaf" "Brochure" 123x38
+    BUTTON."px-6 py-2.5 rounded-xl bg-[#115eaf] text-whit" "Apply Now" 138x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 113x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "menu_book
+Courses" 107x36
+ centeredText(6):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+    SPAN."" "Download Factsheet"
+    SPAN."" "Apply for Degree Enrollment"
+ smallText<12(42):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."block text-[9px] leading-tight f" 9px "Duration"
+    SPAN."block text-[9px] leading-tight f" 9px "Total Fee"
+    SPAN."block text-[9px] leading-tight f" 9px "Mode"
+    SPAN."block text-[9px] leading-tight f" 9px "Duration"
+ images total=35 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(5):
+    BUTTON."fixed bottom-20 left-4 z-30 w-11 h-11 rounded-full" top=720 left=16 44x44
+    DIV."fixed right-0 top-1/2 -translate-y-1/2 z-50 flex i" top=274 left=102 288x296
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=785 left=0 390x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=721 left=215 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=716 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(15):
+    bg-white text-[#000f22] border-b b -> bg-white rounded-2xl border border: 71px
+    bg-white rounded-2xl border border -> latest-news: 16px
+    latest-news -> highlights: 16px
+    highlights -> courses-fees: 16px
+    courses-fees -> popular-programmes: 16px
+    popular-programmes -> eligibility-criteria: 16px
+    eligibility-criteria -> admission-process: 16px
+    admission-process -> rankings: 16px
+    rankings -> examination-pattern: 16px
+    examination-pattern -> placements: 16px
+    placements -> campus: 16px
+    campus -> sample-degree: 16px
+
+--- lpu-overview @430  doc=430x16710 client=430 inner=430 bodyScroll=430 mainW=430 sections=16 h1=1
+ h1: ["Lovely Professional University Online"]
+ overflow(58):
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=503 w=135
+    SPAN. right=489 w=77
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=625 w=118
+    SPAN.material-symbols-outlined text-[16px] sm:text-[18px] leading right=545 w=24
+    SPAN. right=611 w=60
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=452 w=125
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=601 w=125
+    IMG.max-h-[34px] max-w-[100px] object-contain right=568 w=58
+ smallTargets(94):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."px-5 py-2.5 rounded-xl bg-white text-[#115eaf" "Brochure" 123x38
+    BUTTON."px-6 py-2.5 rounded-xl bg-[#115eaf] text-whit" "Apply Now" 138x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 113x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "menu_book
+Courses" 107x36
+ centeredText(6):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+    SPAN."" "Download Factsheet"
+    SPAN."" "Apply for Degree Enrollment"
+ smallText<12(42):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."block text-[9px] leading-tight f" 9px "Duration"
+    SPAN."block text-[9px] leading-tight f" 9px "Total Fee"
+    SPAN."block text-[9px] leading-tight f" 9px "Mode"
+    SPAN."block text-[9px] leading-tight f" 9px "Duration"
+ images total=35 noAlt=3 broken=11
+   broken: http://localhost:3001/images/campusviewlpu.jpeg
+   broken: http://localhost:3001/images/campusarealpu.jpeg
+   broken: http://localhost:3001/images/campusviewlpu.jpeg
+   broken: http://localhost:3001/images/campusarealpu.jpeg
+   broken: http://localhost:3001/images/campusviewlpu.jpeg
+ btnNoName(0): []
+ fixed(5):
+    BUTTON."fixed bottom-20 left-4 z-30 w-11 h-11 rounded-full" top=808 left=16 44x44
+    DIV."fixed right-0 top-1/2 -translate-y-1/2 z-50 flex i" top=318 left=142 288x296
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=873 left=0 430x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=809 left=255 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=804 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(15):
+    bg-white text-[#000f22] border-b b -> bg-white rounded-2xl border border: 71px
+    bg-white rounded-2xl border border -> latest-news: 16px
+    latest-news -> highlights: 16px
+    highlights -> courses-fees: 16px
+    courses-fees -> popular-programmes: 16px
+    popular-programmes -> eligibility-criteria: 16px
+    eligibility-criteria -> admission-process: 16px
+    admission-process -> rankings: 16px
+    rankings -> examination-pattern: 16px
+    examination-pattern -> placements: 16px
+    placements -> campus: 16px
+    campus -> sample-degree: 16px
+
+--- lpu-overview @768  doc=768x11883 client=768 inner=768 bodyScroll=768 mainW=768 sections=16 h1=1
+ h1: ["Lovely Professional University Online"]
+ overflow(36):
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=793 w=125
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=942 w=125
+    IMG.max-h-[34px] max-w-[100px] object-contain right=910 w=62
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=1091 w=125
+    IMG.max-h-[34px] max-w-[100px] object-contain right=1059 w=61
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=1240 w=125
+    IMG.max-h-[34px] max-w-[100px] object-contain right=1216 w=77
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=1389 w=125
+ smallTargets(80):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x30
+    BUTTON."px-5 py-2.5 rounded-xl bg-white text-[#115eaf" "Brochure" 132x42
+    BUTTON."px-6 py-2.5 rounded-xl bg-[#115eaf] text-whit" "Apply Now" 149x40
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 122x36
+ centeredText(16):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."block text-sm font-bold text-[" "₹46K – ₹1.86L"
+    SPAN."text-[10px] text-[#74777e]" "Semester-based"
+    SPAN."text-[10px] text-[#74777e]" "Placement Rate"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "#31 NIRF Rank"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "NAAC A++"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "UGC-DEB"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "AICTE"
+ images total=35 noAlt=3 broken=11
+   broken: http://localhost:3001/images/campusviewlpu.jpeg
+   broken: http://localhost:3001/images/campusarealpu.jpeg
+   broken: http://localhost:3001/images/campusviewlpu.jpeg
+   broken: http://localhost:3001/images/campusarealpu.jpeg
+   broken: http://localhost:3001/images/campusviewlpu.jpeg
+ btnNoName(0): []
+ fixed(4):
+    BUTTON."fixed bottom-20 left-4 z-30 w-11 h-11 rounded-full" top=956 left=16 44x44
+    DIV."fixed right-0 top-1/2 -translate-y-1/2 z-50 flex i" top=383 left=480 288x257
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=942 left=565 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=944 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(15):
+    bg-white text-[#000f22] border-b b -> bg-white rounded-2xl border border: 71px
+    bg-white rounded-2xl border border -> latest-news: 22px
+    latest-news -> highlights: 22px
+    highlights -> courses-fees: 22px
+    courses-fees -> popular-programmes: 22px
+    popular-programmes -> eligibility-criteria: 22px
+    eligibility-criteria -> admission-process: 22px
+    admission-process -> rankings: 22px
+    rankings -> examination-pattern: 22px
+    examination-pattern -> placements: 22px
+    placements -> campus: 22px
+    campus -> sample-degree: 22px
+
+--- lpu-overview @1024  doc=1160x10391 client=1024 inner=1024 bodyScroll=1160 mainW=1024 sections=16 h1=1
+ h1: ["Lovely Professional University Online"]
+ overflow(38):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=1160 w=361
+    BUTTON.hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded right=1078 w=149
+    SPAN. right=1052 w=113
+    svg. right=1068 w=12
+    path. right=1066 w=7
+    path. right=1066 w=4
+    BUTTON.inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px]  right=1160 w=74
+    svg. right=1111 w=14
+ smallTargets(84):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 83x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(16):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."block text-sm font-bold text-[" "₹46K – ₹1.86L"
+    SPAN."text-[10px] text-[#74777e]" "Semester-based"
+    SPAN."text-[10px] text-[#74777e]" "Placement Rate"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "#31 NIRF Rank"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "NAAC A++"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "UGC-DEB"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "AICTE"
+ images total=35 noAlt=3 broken=0
+ btnNoName(0): []
+ fixed(4):
+    BUTTON."fixed bottom-20 left-4 z-30 w-11 h-11 rounded-full" top=700 left=16 44x44
+    DIV."fixed right-0 top-1/2 -translate-y-1/2 z-50 flex i" top=255 left=688 336x257
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=686 left=821 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=688 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(15):
+    bg-white text-[#000f22] border-b b -> bg-white rounded-2xl border border: 71px
+    bg-white rounded-2xl border border -> latest-news: 22px
+    latest-news -> highlights: 22px
+    highlights -> courses-fees: 22px
+    courses-fees -> popular-programmes: 22px
+    popular-programmes -> eligibility-criteria: 22px
+    eligibility-criteria -> admission-process: 22px
+    admission-process -> rankings: 22px
+    rankings -> examination-pattern: 22px
+    examination-pattern -> placements: 22px
+    placements -> campus: 22px
+    campus -> sample-degree: 22px
+
+--- lpu-overview @1366  doc=1366x10005 client=1366 inner=1366 bodyScroll=1366 mainW=1366 sections=16 h1=1
+ h1: ["Lovely Professional University Online"]
+ overflow(31):
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=1459 w=125
+    IMG.max-h-[34px] max-w-[100px] object-contain right=1436 w=77
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=1608 w=125
+    IMG.max-h-[34px] max-w-[100px] object-contain right=1577 w=62
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=1757 w=125
+    IMG.max-h-[34px] max-w-[100px] object-contain right=1726 w=62
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=1906 w=125
+    IMG.max-h-[34px] max-w-[100px] object-contain right=1874 w=60
+ smallTargets(84):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 83x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(16):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."block text-sm font-bold text-[" "₹46K – ₹1.86L"
+    SPAN."text-[10px] text-[#74777e]" "Semester-based"
+    SPAN."text-[10px] text-[#74777e]" "Placement Rate"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "#31 NIRF Rank"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "NAAC A++"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "UGC-DEB"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "AICTE"
+ images total=35 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(4):
+    BUTTON."fixed bottom-20 left-4 z-30 w-11 h-11 rounded-full" top=700 left=16 44x44
+    DIV."fixed right-0 top-1/2 -translate-y-1/2 z-50 flex i" top=255 left=1030 336x257
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=686 left=1163 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=688 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(15):
+    bg-white text-[#000f22] border-b b -> bg-white rounded-2xl border border: 71px
+    bg-white rounded-2xl border border -> latest-news: 22px
+    latest-news -> highlights: 22px
+    highlights -> courses-fees: 22px
+    courses-fees -> popular-programmes: 22px
+    popular-programmes -> eligibility-criteria: 22px
+    eligibility-criteria -> admission-process: 22px
+    admission-process -> rankings: 22px
+    rankings -> examination-pattern: 22px
+    examination-pattern -> placements: 22px
+    placements -> campus: 22px
+    campus -> sample-degree: 22px
+
+--- lpu-overview @1920  doc=1920x10005 client=1920 inner=1920 bodyScroll=1920 mainW=1920 sections=16 h1=1
+ h1: ["Lovely Professional University Online"]
+ overflow(24):
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=1989 w=125
+    IMG.max-h-[34px] max-w-[100px] object-contain right=1957 w=62
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=2138 w=125
+    IMG.max-h-[34px] max-w-[100px] object-contain right=2105 w=60
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=2287 w=125
+    IMG.max-h-[34px] max-w-[100px] object-contain right=2253 w=58
+    DIV.flex items-center justify-center h-16 min-w-[125px] px-3.5 b right=2436 w=125
+    IMG.max-h-[34px] max-w-[100px] object-contain right=2404 w=63
+ smallTargets(84):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 83x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(16):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."block text-sm font-bold text-[" "₹46K – ₹1.86L"
+    SPAN."text-[10px] text-[#74777e]" "Semester-based"
+    SPAN."text-[10px] text-[#74777e]" "Placement Rate"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "#31 NIRF Rank"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "NAAC A++"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "UGC-DEB"
+    SPAN."px-2.5 py-1 rounded-full bg-[#f0" 11px "AICTE"
+ images total=35 noAlt=3 broken=11
+   broken: http://localhost:3001/images/campusviewlpu.jpeg
+   broken: http://localhost:3001/images/campusarealpu.jpeg
+   broken: http://localhost:3001/images/campusviewlpu.jpeg
+   broken: http://localhost:3001/images/campusarealpu.jpeg
+   broken: http://localhost:3001/images/campusviewlpu.jpeg
+ btnNoName(0): []
+ fixed(4):
+    BUTTON."fixed bottom-20 left-4 z-30 w-11 h-11 rounded-full" top=1012 left=16 44x44
+    DIV."fixed right-0 top-1/2 -translate-y-1/2 z-50 flex i" top=411 left=1584 336x257
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=998 left=1717 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=1000 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(15):
+    bg-white text-[#000f22] border-b b -> bg-white rounded-2xl border border: 71px
+    bg-white rounded-2xl border border -> latest-news: 22px
+    latest-news -> highlights: 22px
+    highlights -> courses-fees: 22px
+    courses-fees -> popular-programmes: 22px
+    popular-programmes -> eligibility-criteria: 22px
+    eligibility-criteria -> admission-process: 22px
+    admission-process -> rankings: 22px
+    rankings -> examination-pattern: 22px
+    examination-pattern -> placements: 22px
+    placements -> campus: 22px
+    campus -> sample-degree: 22px
+
+==================== lpu-admission ====================
+
+--- lpu-admission @320  doc=320x13101 client=320 inner=320 bodyScroll=380 mainW=320 sections=13 h1=1
+ h1: ["LPU Online Admission Highlights 2026"]
+ overflow(60):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=380 w=181
+    BUTTON.inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px]  right=330 w=74
+    BUTTON.lg:hidden p-2 min-h-[44px] min-w-[44px] rounded-lg text-[#43 right=380 w=44
+    svg. right=370 w=24
+    path. right=366 w=16
+    path. right=366 w=16
+    path. right=366 w=16
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=364 w=120
+ smallTargets(36):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."inline-flex items-center justify-center gap-2" "Apply Now
+→" 122x42
+    BUTTON."inline-flex items-center justify-center gap-2" "Download Brochure" 189x42
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 113x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "menu_book
+Courses" 107x36
+ centeredText(6):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+    SPAN."" "Need Free Eligibility Assessment?"
+    SPAN."" "Talk to Expert Counselor"
+ smallText<12(6):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[9px] text-[#43474d] font-b" 9px "Admission Satisfaction"
+    SPAN."text-[9px] text-[#43474d] font-b" 9px "Overall Rating"
+    SPAN."block text-[10px] text-[#555960]" 10px "100% Free Advice"
+    SPAN."pointer-events-none absolute lef" 11px "Admissions Desk AI"
+ images total=7 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=581 left=0 320x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=517 left=145 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=512 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(12):
+    admission-highlights -> bg-white rounded-2xl border border: 67px
+    bg-white rounded-2xl border border -> admission-dates: 0px
+    admission-dates -> eligibility-criteria: 0px
+    eligibility-criteria -> admission-process: 0px
+    admission-process -> application-process: 0px
+    application-process -> examination-pattern: 0px
+    examination-pattern -> documents-required: 0px
+    documents-required -> scholarship-schemes: 0px
+    scholarship-schemes -> counseling-callback: 0px
+    counseling-callback -> student-reviews: 0px
+    student-reviews -> blogs: 0px
+    blogs -> compare: 0px
+
+--- lpu-admission @360  doc=360x11985 client=360 inner=360 bodyScroll=380 mainW=360 sections=13 h1=1
+ h1: ["LPU Online Admission Highlights 2026"]
+ overflow(60):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=380 w=181
+    BUTTON.lg:hidden p-2 min-h-[44px] min-w-[44px] rounded-lg text-[#43 right=380 w=44
+    svg. right=370 w=24
+    path. right=366 w=16
+    path. right=366 w=16
+    path. right=366 w=16
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=364 w=120
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=503 w=135
+ smallTargets(39):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."inline-flex items-center justify-center gap-2" "Apply Now
+→" 122x42
+    BUTTON."inline-flex items-center justify-center gap-2" "Download Brochure" 189x42
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 113x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "menu_book
+Courses" 107x36
+ centeredText(6):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+    SPAN."" "Need Free Eligibility Assessment?"
+    SPAN."" "Talk to Expert Counselor"
+ smallText<12(6):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[9px] text-[#43474d] font-b" 9px "Admission Satisfaction"
+    SPAN."text-[9px] text-[#43474d] font-b" 9px "Overall Rating"
+    SPAN."block text-[10px] text-[#555960]" 10px "100% Free Advice"
+    SPAN."pointer-events-none absolute lef" 11px "Admissions Desk AI"
+ images total=7 noAlt=3 broken=0
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=741 left=0 360x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=677 left=185 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=672 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(12):
+    admission-highlights -> bg-white rounded-2xl border border: 67px
+    bg-white rounded-2xl border border -> admission-dates: 0px
+    admission-dates -> eligibility-criteria: 0px
+    eligibility-criteria -> admission-process: 0px
+    admission-process -> application-process: 0px
+    application-process -> examination-pattern: 0px
+    examination-pattern -> documents-required: 0px
+    documents-required -> scholarship-schemes: 0px
+    scholarship-schemes -> counseling-callback: 0px
+    counseling-callback -> student-reviews: 0px
+    student-reviews -> blogs: 0px
+    blogs -> compare: 0px
+
+--- lpu-admission @390  doc=390x11562 client=390 inner=390 bodyScroll=390 mainW=390 sections=13 h1=1
+ h1: ["LPU Online Admission Highlights 2026"]
+ overflow(49):
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=503 w=135
+    SPAN.material-symbols-outlined text-[16px] sm:text-[18px] leading right=406 w=24
+    SPAN. right=489 w=77
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=625 w=118
+    SPAN.material-symbols-outlined text-[16px] sm:text-[18px] leading right=545 w=24
+    SPAN. right=611 w=60
+    TABLE.w-full text-left border-collapse text-xs sm:text-sm right=410 w=377
+    THEAD. right=410 w=377
+ smallTargets(40):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."inline-flex items-center justify-center gap-2" "Apply Now
+→" 122x42
+    BUTTON."inline-flex items-center justify-center gap-2" "Download Brochure" 189x42
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 113x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "menu_book
+Courses" 107x36
+ centeredText(6):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+    SPAN."" "Need Free Eligibility Assessment?"
+    SPAN."" "Talk to Expert Counselor"
+ smallText<12(6):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[9px] text-[#43474d] font-b" 9px "Admission Satisfaction"
+    SPAN."text-[9px] text-[#43474d] font-b" 9px "Overall Rating"
+    SPAN."block text-[10px] text-[#555960]" 10px "100% Free Advice"
+    SPAN."pointer-events-none absolute lef" 11px "Admissions Desk AI"
+ images total=7 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=785 left=0 390x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=721 left=215 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=716 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(12):
+    admission-highlights -> bg-white rounded-2xl border border: 67px
+    bg-white rounded-2xl border border -> admission-dates: 0px
+    admission-dates -> eligibility-criteria: 0px
+    eligibility-criteria -> admission-process: 0px
+    admission-process -> application-process: 0px
+    application-process -> examination-pattern: 0px
+    examination-pattern -> documents-required: 0px
+    documents-required -> scholarship-schemes: 0px
+    scholarship-schemes -> counseling-callback: 0px
+    counseling-callback -> student-reviews: 0px
+    student-reviews -> blogs: 0px
+    blogs -> compare: 0px
+
+--- lpu-admission @430  doc=430x11263 client=430 inner=430 bodyScroll=430 mainW=430 sections=13 h1=1
+ h1: ["LPU Online Admission Highlights 2026"]
+ overflow(30):
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=503 w=135
+    SPAN. right=489 w=77
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=625 w=118
+    SPAN.material-symbols-outlined text-[16px] sm:text-[18px] leading right=545 w=24
+    SPAN. right=611 w=60
+    TABLE.w-full text-left border-collapse text-xs sm:text-sm right=451 w=418
+    THEAD. right=451 w=418
+    TR.bg-[#0b2540] text-white right=451 w=418
+ smallTargets(42):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."inline-flex items-center justify-center gap-2" "Apply Now
+→" 122x42
+    BUTTON."inline-flex items-center justify-center gap-2" "Download Brochure" 189x42
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 113x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "menu_book
+Courses" 107x36
+ centeredText(6):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+    SPAN."" "Need Free Eligibility Assessment?"
+    SPAN."" "Talk to Expert Counselor"
+ smallText<12(6):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[9px] text-[#43474d] font-b" 9px "Admission Satisfaction"
+    SPAN."text-[9px] text-[#43474d] font-b" 9px "Overall Rating"
+    SPAN."block text-[10px] text-[#555960]" 10px "100% Free Advice"
+    SPAN."pointer-events-none absolute lef" 11px "Admissions Desk AI"
+ images total=7 noAlt=3 broken=0
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=873 left=0 430x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=809 left=255 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=804 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(12):
+    admission-highlights -> bg-white rounded-2xl border border: 67px
+    bg-white rounded-2xl border border -> admission-dates: 0px
+    admission-dates -> eligibility-criteria: 0px
+    eligibility-criteria -> admission-process: 0px
+    admission-process -> application-process: 0px
+    application-process -> examination-pattern: 0px
+    examination-pattern -> documents-required: 0px
+    documents-required -> scholarship-schemes: 0px
+    scholarship-schemes -> counseling-callback: 0px
+    counseling-callback -> student-reviews: 0px
+    student-reviews -> blogs: 0px
+    blogs -> compare: 0px
+
+--- lpu-admission @768  doc=768x8070 client=768 inner=768 bodyScroll=768 mainW=768 sections=13 h1=1
+ h1: ["LPU Online Admission Highlights 2026"]
+ overflow(0):
+ smallTargets(39):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x30
+    BUTTON."inline-flex items-center justify-center gap-2" "Apply Now
+→" 130x42
+    BUTTON."inline-flex items-center justify-center gap-2" "Download Brochure" 197x42
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 122x36
+ centeredText(11):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+    SPAN."" "Need Free Eligibility Assessment?"
+    SPAN."" "Talk to Expert Counselor"
+ smallText<12(46):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Admission Status"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Mode of Application"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Admission Criteria"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Registration Fee"
+ images total=7 noAlt=3 broken=0
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=942 left=565 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=944 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(12):
+    admission-highlights -> bg-white rounded-2xl border border: 77px
+    bg-white rounded-2xl border border -> admission-dates: 10px
+    admission-dates -> eligibility-criteria: 22px
+    eligibility-criteria -> admission-process: 22px
+    admission-process -> application-process: 22px
+    application-process -> examination-pattern: 22px
+    examination-pattern -> documents-required: 22px
+    documents-required -> scholarship-schemes: 22px
+    scholarship-schemes -> counseling-callback: 22px
+    counseling-callback -> student-reviews: 22px
+    student-reviews -> blogs: 22px
+    blogs -> compare: 22px
+
+--- lpu-admission @1024  doc=1158x6589 client=1024 inner=1024 bodyScroll=1158 mainW=1024 sections=13 h1=1
+ h1: ["LPU Online Admission Highlights 2026"]
+ overflow(13):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=1158 w=361
+    BUTTON.hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded right=1076 w=149
+    SPAN. right=1050 w=113
+    svg. right=1066 w=12
+    path. right=1064 w=7
+    path. right=1064 w=4
+    BUTTON.inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px]  right=1158 w=74
+    svg. right=1109 w=14
+ smallTargets(43):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 81x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(11):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+    SPAN."" "Need Free Eligibility Assessment?"
+    SPAN."" "Talk to Expert Counselor"
+ smallText<12(46):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Admission Status"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Mode of Application"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Admission Criteria"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Registration Fee"
+ images total=7 noAlt=3 broken=0
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=686 left=821 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=688 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(12):
+    admission-highlights -> bg-white rounded-2xl border border: 77px
+    bg-white rounded-2xl border border -> admission-dates: 10px
+    admission-dates -> eligibility-criteria: 22px
+    eligibility-criteria -> admission-process: 22px
+    admission-process -> application-process: 22px
+    application-process -> examination-pattern: 22px
+    examination-pattern -> documents-required: 22px
+    documents-required -> scholarship-schemes: 22px
+    scholarship-schemes -> counseling-callback: 22px
+    counseling-callback -> student-reviews: 22px
+    student-reviews -> blogs: 22px
+    blogs -> compare: 22px
+
+--- lpu-admission @1366  doc=1366x6094 client=1366 inner=1366 bodyScroll=1366 mainW=1366 sections=13 h1=1
+ h1: ["LPU Online Admission Highlights 2026"]
+ overflow(0):
+ smallTargets(43):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 81x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(11):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+    SPAN."" "Need Free Eligibility Assessment?"
+    SPAN."" "Talk to Expert Counselor"
+ smallText<12(46):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Admission Status"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Mode of Application"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Admission Criteria"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Registration Fee"
+ images total=7 noAlt=3 broken=0
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=686 left=1163 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=688 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(12):
+    admission-highlights -> bg-white rounded-2xl border border: 77px
+    bg-white rounded-2xl border border -> admission-dates: 10px
+    admission-dates -> eligibility-criteria: 22px
+    eligibility-criteria -> admission-process: 22px
+    admission-process -> application-process: 22px
+    application-process -> examination-pattern: 22px
+    examination-pattern -> documents-required: 22px
+    documents-required -> scholarship-schemes: 22px
+    scholarship-schemes -> counseling-callback: 22px
+    counseling-callback -> student-reviews: 22px
+    student-reviews -> blogs: 22px
+    blogs -> compare: 22px
+
+--- lpu-admission @1920  doc=1920x6096 client=1920 inner=1920 bodyScroll=1920 mainW=1920 sections=13 h1=1
+ h1: ["LPU Online Admission Highlights 2026"]
+ overflow(0):
+ smallTargets(43):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 81x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(11):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+    SPAN."" "Need Free Eligibility Assessment?"
+    SPAN."" "Talk to Expert Counselor"
+ smallText<12(46):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Admission Status"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Mode of Application"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Admission Criteria"
+    SPAN."block mb-1 text-[10px] leading-[" 10px "Registration Fee"
+ images total=7 noAlt=3 broken=1
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=998 left=1717 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=1000 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(12):
+    admission-highlights -> bg-white rounded-2xl border border: 77px
+    bg-white rounded-2xl border border -> admission-dates: 10px
+    admission-dates -> eligibility-criteria: 22px
+    eligibility-criteria -> admission-process: 22px
+    admission-process -> application-process: 22px
+    application-process -> examination-pattern: 22px
+    examination-pattern -> documents-required: 22px
+    documents-required -> scholarship-schemes: 22px
+    scholarship-schemes -> counseling-callback: 22px
+    counseling-callback -> student-reviews: 22px
+    student-reviews -> blogs: 22px
+    blogs -> compare: 22px
+
+==================== lpu-courses ====================
+
+--- lpu-courses @320  doc=320x13184 client=320 inner=320 bodyScroll=380 mainW=320 sections=12 h1=1
+ h1: ["LPU Online Courses and Fees 2026"]
+ overflow(60):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=380 w=181
+    BUTTON.inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px]  right=330 w=74
+    BUTTON.lg:hidden p-2 min-h-[44px] min-w-[44px] rounded-lg text-[#43 right=380 w=44
+    svg. right=370 w=24
+    path. right=366 w=16
+    path. right=366 w=16
+    path. right=366 w=16
+    DIV.absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#d5e3f right=416 w=384
+ smallTargets(53):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."px-5 py-2.5 rounded-xl bg-[#115eaf] text-whit" "Apply Online" 139x36
+    BUTTON."px-3.5 py-2.5 rounded-xl text-[#115eaf] hover" "Talk to an Academic Counse" 237x36
+    BUTTON."w-full py-2.5 rounded-lg bg-[#0b2540] text-wh" "Apply Now" 222x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 113x36
+ centeredText(8):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Download Complete Fee Brochure"
+    SPAN."" "Talk to an Academic Counselor"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+ smallText<12(5):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    DIV."absolute -top-2 right-3.5 bg-[#1" 9px "TOP PICK"
+    SPAN."block text-[10px] text-[#555960]" 10px "100% Free Advice"
+    SPAN."pointer-events-none absolute lef" 11px "Admissions Desk AI"
+ images total=5 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=581 left=0 320x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=517 left=145 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=512 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(11):
+    content-block relative bg-gradient -> bg-white rounded-2xl border border: 73px
+    bg-white rounded-2xl border border -> sticky top-20 z-30 bg-white/95 bac: 4px
+    sticky top-20 z-30 bg-white/95 bac -> page-section max-w-7xl mx-auto px-: 0px
+    page-section max-w-7xl mx-auto px- -> fee-structure: 0px
+    fee-structure -> all-courses: 0px
+    all-courses -> admission-dates: 0px
+    admission-dates -> learning-platform: 0px
+    learning-platform -> student-reviews: 0px
+    student-reviews -> faqs: 0px
+    faqs -> blogs: 0px
+    blogs -> counselor-helpline: 0px
+
+--- lpu-courses @360  doc=360x12469 client=360 inner=360 bodyScroll=380 mainW=360 sections=12 h1=1
+ h1: ["LPU Online Courses and Fees 2026"]
+ overflow(60):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=380 w=181
+    BUTTON.lg:hidden p-2 min-h-[44px] min-w-[44px] rounded-lg text-[#43 right=380 w=44
+    svg. right=370 w=24
+    path. right=366 w=16
+    path. right=366 w=16
+    path. right=366 w=16
+    DIV.absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#d5e3f right=456 w=384
+    DIV.absolute -right-10 -bottom-10 w-40 h-40 bg-[#d5e3ff]/50 roun right=367 w=160
+ smallTargets(56):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."px-5 py-2.5 rounded-xl bg-[#115eaf] text-whit" "Apply Online" 139x36
+    BUTTON."px-4 py-2.5 rounded-xl bg-white text-[#000f22" "Download Complete Fee Broc" 263x38
+    BUTTON."px-3.5 py-2.5 rounded-xl text-[#115eaf] hover" "Talk to an Academic Counse" 237x36
+    BUTTON."w-full py-2.5 rounded-lg bg-[#0b2540] text-wh" "Apply Now" 262x36
+ centeredText(8):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Download Complete Fee Brochure"
+    SPAN."" "Talk to an Academic Counselor"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+ smallText<12(5):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    DIV."absolute -top-2 right-3.5 bg-[#1" 9px "TOP PICK"
+    SPAN."block text-[10px] text-[#555960]" 10px "100% Free Advice"
+    SPAN."pointer-events-none absolute lef" 11px "Admissions Desk AI"
+ images total=5 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=741 left=0 360x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=677 left=185 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=672 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(11):
+    content-block relative bg-gradient -> bg-white rounded-2xl border border: 73px
+    bg-white rounded-2xl border border -> sticky top-20 z-30 bg-white/95 bac: 4px
+    sticky top-20 z-30 bg-white/95 bac -> page-section max-w-7xl mx-auto px-: 0px
+    page-section max-w-7xl mx-auto px- -> fee-structure: 0px
+    fee-structure -> all-courses: 0px
+    all-courses -> admission-dates: 0px
+    admission-dates -> learning-platform: 0px
+    learning-platform -> student-reviews: 0px
+    student-reviews -> faqs: 0px
+    faqs -> blogs: 0px
+    blogs -> counselor-helpline: 0px
+
+--- lpu-courses @390  doc=390x12299 client=390 inner=390 bodyScroll=390 mainW=390 sections=12 h1=1
+ h1: ["LPU Online Courses and Fees 2026"]
+ overflow(60):
+    DIV.absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#d5e3f right=486 w=384
+    DIV.absolute -right-10 -bottom-10 w-40 h-40 bg-[#d5e3ff]/50 roun right=397 w=160
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=503 w=135
+    SPAN.material-symbols-outlined text-[16px] sm:text-[18px] leading right=406 w=24
+    SPAN. right=489 w=77
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=625 w=118
+    SPAN.material-symbols-outlined text-[16px] sm:text-[18px] leading right=545 w=24
+    SPAN. right=611 w=60
+ smallTargets(58):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."px-5 py-2.5 rounded-xl bg-[#115eaf] text-whit" "Apply Online" 139x36
+    BUTTON."px-4 py-2.5 rounded-xl bg-white text-[#000f22" "Download Complete Fee Broc" 263x38
+    BUTTON."px-3.5 py-2.5 rounded-xl text-[#115eaf] hover" "Talk to an Academic Counse" 237x36
+    BUTTON."w-full py-2.5 rounded-lg bg-[#0b2540] text-wh" "Apply Now" 292x36
+ centeredText(8):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Download Complete Fee Brochure"
+    SPAN."" "Talk to an Academic Counselor"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+ smallText<12(5):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    DIV."absolute -top-2 right-3.5 bg-[#1" 9px "TOP PICK"
+    SPAN."block text-[10px] text-[#555960]" 10px "100% Free Advice"
+    SPAN."pointer-events-none absolute lef" 11px "Admissions Desk AI"
+ images total=5 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=785 left=0 390x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=721 left=215 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=716 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(11):
+    content-block relative bg-gradient -> bg-white rounded-2xl border border: 73px
+    bg-white rounded-2xl border border -> sticky top-20 z-30 bg-white/95 bac: 4px
+    sticky top-20 z-30 bg-white/95 bac -> page-section max-w-7xl mx-auto px-: 0px
+    page-section max-w-7xl mx-auto px- -> fee-structure: 0px
+    fee-structure -> all-courses: 0px
+    all-courses -> admission-dates: 0px
+    admission-dates -> learning-platform: 0px
+    learning-platform -> student-reviews: 0px
+    student-reviews -> faqs: 0px
+    faqs -> blogs: 0px
+    blogs -> counselor-helpline: 0px
+
+--- lpu-courses @430  doc=430x12036 client=430 inner=430 bodyScroll=430 mainW=430 sections=12 h1=1
+ h1: ["LPU Online Courses and Fees 2026"]
+ overflow(60):
+    DIV.absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#d5e3f right=526 w=384
+    DIV.absolute -right-10 -bottom-10 w-40 h-40 bg-[#d5e3ff]/50 roun right=437 w=160
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=503 w=135
+    SPAN. right=489 w=77
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=625 w=118
+    SPAN.material-symbols-outlined text-[16px] sm:text-[18px] leading right=545 w=24
+    SPAN. right=611 w=60
+    BUTTON.px-4 py-2 rounded-full text-xs sm:text-sm font-medium transi right=474 w=146
+ smallTargets(59):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."px-5 py-2.5 rounded-xl bg-[#115eaf] text-whit" "Apply Online" 139x36
+    BUTTON."px-4 py-2.5 rounded-xl bg-white text-[#000f22" "Download Complete Fee Broc" 263x38
+    BUTTON."px-3.5 py-2.5 rounded-xl text-[#115eaf] hover" "Talk to an Academic Counse" 237x36
+    BUTTON."w-full py-2.5 rounded-lg bg-[#0b2540] text-wh" "Apply Now" 332x36
+ centeredText(8):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Download Complete Fee Brochure"
+    SPAN."" "Talk to an Academic Counselor"
+    SPAN."material-symbols-outlined text" "workspace_premium"
+ smallText<12(5):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    DIV."absolute -top-2 right-3.5 bg-[#1" 9px "TOP PICK"
+    SPAN."block text-[10px] text-[#555960]" 10px "100% Free Advice"
+    SPAN."pointer-events-none absolute lef" 11px "Admissions Desk AI"
+ images total=5 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=873 left=0 430x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=809 left=255 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=804 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(11):
+    content-block relative bg-gradient -> bg-white rounded-2xl border border: 73px
+    bg-white rounded-2xl border border -> sticky top-20 z-30 bg-white/95 bac: 4px
+    sticky top-20 z-30 bg-white/95 bac -> page-section max-w-7xl mx-auto px-: 0px
+    page-section max-w-7xl mx-auto px- -> fee-structure: 0px
+    fee-structure -> all-courses: 0px
+    all-courses -> admission-dates: 0px
+    admission-dates -> learning-platform: 0px
+    learning-platform -> student-reviews: 0px
+    student-reviews -> faqs: 0px
+    faqs -> blogs: 0px
+    blogs -> counselor-helpline: 0px
+
+--- lpu-courses @768  doc=768x8212 client=768 inner=768 bodyScroll=768 mainW=768 sections=12 h1=1
+ h1: ["LPU Online Courses and Fees 2026"]
+ overflow(2):
+    DIV.absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#d5e3f right=864 w=384
+    DIV.absolute -right-10 -bottom-10 w-40 h-40 bg-[#d5e3ff]/50 roun right=783 w=160
+ smallTargets(75):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x30
+    BUTTON."px-5 py-2.5 rounded-xl bg-[#115eaf] text-whit" "Apply Online" 152x40
+    BUTTON."px-4 py-2.5 rounded-xl bg-white text-[#000f22" "Download Complete Fee Broc" 297x42
+    BUTTON."px-3.5 py-2.5 rounded-xl text-[#115eaf] hover" "Talk to an Academic Counse" 268x40
+ centeredText(9):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Download Complete Fee Brochure"
+    SPAN."" "Talk to an Academic Counselor"
+    P."text-center text-[10px] text-[" "Direct merit-based admission with online docu"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "Score 3.68 / 4.0"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "Exams & Classes from H"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "Semester tuition fee"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "UG, PG & Diploma Cours"
+ images total=5 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=942 left=565 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=944 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(11):
+    content-block relative bg-gradient -> bg-white rounded-2xl border border: 73px
+    bg-white rounded-2xl border border -> sticky top-20 z-30 bg-white/95 bac: 4px
+    sticky top-20 z-30 bg-white/95 bac -> page-section max-w-7xl mx-auto px-: 0px
+    page-section max-w-7xl mx-auto px- -> fee-structure: 22px
+    fee-structure -> all-courses: 0px
+    all-courses -> admission-dates: 0px
+    admission-dates -> learning-platform: 0px
+    learning-platform -> student-reviews: 0px
+    student-reviews -> faqs: 0px
+    faqs -> blogs: 0px
+    blogs -> counselor-helpline: 22px
+
+--- lpu-courses @1024  doc=1160x6743 client=1024 inner=1024 bodyScroll=1160 mainW=1024 sections=12 h1=1
+ h1: ["LPU Online Courses and Fees 2026"]
+ overflow(15):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=1160 w=361
+    BUTTON.hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded right=1078 w=149
+    SPAN. right=1052 w=113
+    svg. right=1068 w=12
+    path. right=1065 w=7
+    path. right=1065 w=4
+    BUTTON.inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px]  right=1160 w=74
+    svg. right=1111 w=14
+ smallTargets(80):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 81x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 112x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(9):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Download Complete Fee Brochure"
+    SPAN."" "Talk to an Academic Counselor"
+    P."text-center text-[10px] text-[" "Direct merit-based admission with online docu"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "Score 3.68 / 4.0"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "Exams & Classes from H"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "Semester tuition fee"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "UG, PG & Diploma Cours"
+ images total=5 noAlt=3 broken=0
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=686 left=821 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=688 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(11):
+    content-block relative bg-gradient -> bg-white rounded-2xl border border: 73px
+    bg-white rounded-2xl border border -> sticky top-20 z-30 bg-white/95 bac: 4px
+    sticky top-20 z-30 bg-white/95 bac -> page-section max-w-7xl mx-auto px-: 0px
+    page-section max-w-7xl mx-auto px- -> fee-structure: 22px
+    fee-structure -> all-courses: 0px
+    all-courses -> admission-dates: 0px
+    admission-dates -> learning-platform: 0px
+    learning-platform -> student-reviews: 0px
+    student-reviews -> faqs: 0px
+    faqs -> blogs: 0px
+    blogs -> counselor-helpline: 22px
+
+--- lpu-courses @1366  doc=1366x6477 client=1366 inner=1366 bodyScroll=1366 mainW=1366 sections=12 h1=1
+ h1: ["LPU Online Courses and Fees 2026"]
+ overflow(1):
+    DIV.absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#d5e3f right=1462 w=384
+ smallTargets(80):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 81x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 112x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(9):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Download Complete Fee Brochure"
+    SPAN."" "Talk to an Academic Counselor"
+    P."text-center text-[10px] text-[" "Direct merit-based admission with online docu"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "Score 3.68 / 4.0"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "Exams & Classes from H"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "Semester tuition fee"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "UG, PG & Diploma Cours"
+ images total=5 noAlt=3 broken=0
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=686 left=1163 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=688 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(11):
+    content-block relative bg-gradient -> bg-white rounded-2xl border border: 73px
+    bg-white rounded-2xl border border -> sticky top-20 z-30 bg-white/95 bac: 4px
+    sticky top-20 z-30 bg-white/95 bac -> page-section max-w-7xl mx-auto px-: 0px
+    page-section max-w-7xl mx-auto px- -> fee-structure: 22px
+    fee-structure -> all-courses: 0px
+    all-courses -> admission-dates: 0px
+    admission-dates -> learning-platform: 0px
+    learning-platform -> student-reviews: 0px
+    student-reviews -> faqs: 0px
+    faqs -> blogs: 0px
+    blogs -> counselor-helpline: 22px
+
+--- lpu-courses @1920  doc=1920x6477 client=1920 inner=1920 bodyScroll=1920 mainW=1920 sections=12 h1=1
+ h1: ["LPU Online Courses and Fees 2026"]
+ overflow(1):
+    DIV.absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#d5e3f right=2016 w=384
+ smallTargets(80):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 81x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 112x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(9):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Download Complete Fee Brochure"
+    SPAN."" "Talk to an Academic Counselor"
+    P."text-center text-[10px] text-[" "Direct merit-based admission with online docu"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "Score 3.68 / 4.0"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "Exams & Classes from H"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "Semester tuition fee"
+    DIV."text-[11px] text-[#43474d] mt-0." 11px "UG, PG & Diploma Cours"
+ images total=5 noAlt=3 broken=0
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=998 left=1717 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=1000 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(11):
+    content-block relative bg-gradient -> bg-white rounded-2xl border border: 73px
+    bg-white rounded-2xl border border -> sticky top-20 z-30 bg-white/95 bac: 4px
+    sticky top-20 z-30 bg-white/95 bac -> page-section max-w-7xl mx-auto px-: 0px
+    page-section max-w-7xl mx-auto px- -> fee-structure: 22px
+    fee-structure -> all-courses: 0px
+    all-courses -> admission-dates: 0px
+    admission-dates -> learning-platform: 0px
+    learning-platform -> student-reviews: 0px
+    student-reviews -> faqs: 0px
+    faqs -> blogs: 0px
+    blogs -> counselor-helpline: 22px
+
+==================== lpu-scholarship ====================
+
+--- lpu-scholarship @320  doc=320x4752 client=320 inner=320 bodyScroll=380 mainW=320 sections=3 h1=1
+ h1: ["Scholarships & Fee Discounts"]
+ overflow(29):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=380 w=181
+    BUTTON.inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px]  right=330 w=74
+    BUTTON.lg:hidden p-2 min-h-[44px] min-w-[44px] rounded-lg text-[#43 right=380 w=44
+    svg. right=370 w=24
+    path. right=366 w=16
+    path. right=366 w=16
+    path. right=366 w=16
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=364 w=120
+ smallTargets(30):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 113x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "menu_book
+Courses" 107x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "school
+Admission" 120x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "workspace_premium
+Scholars" 135x36
+ centeredText(8):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."inline-flex items-center gap-1" "Fee Waivers & Concessions 2026"
+    H1."section-title mt-3 text-3xl sm" "Scholarships & Fee Discounts"
+    P."section-description text-xs sm" "Check your eligibility for university fee con"
+ smallText<12(4):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."block text-[10px] text-[#555960]" 10px "100% Free Advice"
+    SPAN."pointer-events-none absolute lef" 11px "Admissions Desk AI"
+ images total=2 noAlt=0 broken=0
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=581 left=0 320x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=517 left=145 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=512 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(2):
+    bg-white rounded-2xl border border -> scholarship-calculator: 0px
+    scholarship-calculator -> scholarship-schemes: 0px
+
+--- lpu-scholarship @360  doc=360x4615 client=360 inner=360 bodyScroll=380 mainW=360 sections=3 h1=1
+ h1: ["Scholarships & Fee Discounts"]
+ overflow(26):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=380 w=181
+    BUTTON.lg:hidden p-2 min-h-[44px] min-w-[44px] rounded-lg text-[#43 right=380 w=44
+    svg. right=370 w=24
+    path. right=366 w=16
+    path. right=366 w=16
+    path. right=366 w=16
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=364 w=120
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=503 w=135
+ smallTargets(31):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 113x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "menu_book
+Courses" 107x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "school
+Admission" 120x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "workspace_premium
+Scholars" 135x36
+ centeredText(8):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."inline-flex items-center gap-1" "Fee Waivers & Concessions 2026"
+    H1."section-title mt-3 text-3xl sm" "Scholarships & Fee Discounts"
+    P."section-description text-xs sm" "Check your eligibility for university fee con"
+ smallText<12(4):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."block text-[10px] text-[#555960]" 10px "100% Free Advice"
+    SPAN."pointer-events-none absolute lef" 11px "Admissions Desk AI"
+ images total=2 noAlt=0 broken=0
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=741 left=0 360x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=677 left=185 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=672 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(2):
+    bg-white rounded-2xl border border -> scholarship-calculator: 0px
+    scholarship-calculator -> scholarship-schemes: 0px
+
+--- lpu-scholarship @390  doc=390x4525 client=390 inner=390 bodyScroll=390 mainW=390 sections=3 h1=1
+ h1: ["Scholarships & Fee Discounts"]
+ overflow(16):
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=503 w=135
+    SPAN.material-symbols-outlined text-[16px] sm:text-[18px] leading right=406 w=24
+    SPAN. right=489 w=77
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=625 w=118
+    SPAN.material-symbols-outlined text-[16px] sm:text-[18px] leading right=545 w=24
+    SPAN. right=611 w=60
+    BUTTON.flex flex-col items-center justify-center py-1 px-3 rounded- right=417 w=94
+    SPAN. right=405 w=70
+ smallTargets(32):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 113x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "menu_book
+Courses" 107x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "school
+Admission" 120x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "workspace_premium
+Scholars" 135x36
+ centeredText(8):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."inline-flex items-center gap-1" "Fee Waivers & Concessions 2026"
+    H1."section-title mt-3 text-3xl sm" "Scholarships & Fee Discounts"
+    P."section-description text-xs sm" "Check your eligibility for university fee con"
+ smallText<12(4):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."block text-[10px] text-[#555960]" 10px "100% Free Advice"
+    SPAN."pointer-events-none absolute lef" 11px "Admissions Desk AI"
+ images total=2 noAlt=0 broken=0
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=785 left=0 390x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=721 left=215 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=716 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(2):
+    bg-white rounded-2xl border border -> scholarship-calculator: 0px
+    scholarship-calculator -> scholarship-schemes: 0px
+
+--- lpu-scholarship @430  doc=430x4461 client=430 inner=430 bodyScroll=430 mainW=430 sections=3 h1=1
+ h1: ["Scholarships & Fee Discounts"]
+ overflow(13):
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=503 w=135
+    SPAN. right=489 w=77
+    BUTTON.shrink-0 flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg  right=625 w=118
+    SPAN.material-symbols-outlined text-[16px] sm:text-[18px] leading right=545 w=24
+    SPAN. right=611 w=60
+    BUTTON.flex flex-col items-center justify-center py-1 px-3 rounded- right=475 w=58
+    svg. right=454 w=16
+    path. right=451 w=11
+ smallTargets(33):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 113x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "menu_book
+Courses" 107x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "school
+Admission" 120x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "workspace_premium
+Scholars" 135x36
+ centeredText(8):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."inline-flex items-center gap-1" "Fee Waivers & Concessions 2026"
+    H1."section-title mt-3 text-3xl sm" "Scholarships & Fee Discounts"
+    P."section-description text-xs sm" "Check your eligibility for university fee con"
+ smallText<12(4):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."block text-[10px] text-[#555960]" 10px "100% Free Advice"
+    SPAN."pointer-events-none absolute lef" 11px "Admissions Desk AI"
+ images total=2 noAlt=0 broken=0
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=873 left=0 430x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=809 left=255 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=804 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(2):
+    bg-white rounded-2xl border border -> scholarship-calculator: 0px
+    scholarship-calculator -> scholarship-schemes: 0px
+
+--- lpu-scholarship @768  doc=768x2828 client=768 inner=768 bodyScroll=768 mainW=768 sections=3 h1=1
+ h1: ["Scholarships & Fee Discounts"]
+ overflow(0):
+ smallTargets(29):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x30
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "grid_view
+Overview" 122x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "menu_book
+Courses" 115x36
+    BUTTON."shrink-0 flex items-center gap-1.5 px-3.5 py-" "school
+Admission" 131x36
+ centeredText(8):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."inline-flex items-center gap-1" "Fee Waivers & Concessions 2026"
+    H1."section-title mt-3 text-3xl sm" "Scholarships & Fee Discounts"
+    P."section-description text-xs sm" "Check your eligibility for university fee con"
+ smallText<12(11):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[11px] font-bold text-[#b1c" 11px "ELIGIBLE TUITION WAIVE"
+    SPAN."px-2 py-0.5 rounded text-[10px] " 10px "Ongoing Batch"
+    SPAN."px-2 py-0.5 rounded text-[10px] " 10px "Academic Merit"
+    SPAN."px-2 py-0.5 rounded text-[10px] " 10px "Defense Personnel"
+ images total=2 noAlt=0 broken=0
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=942 left=565 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=944 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(2):
+    bg-white rounded-2xl border border -> scholarship-calculator: 10px
+    scholarship-calculator -> scholarship-schemes: 22px
+
+--- lpu-scholarship @1024  doc=1159x2018 client=1024 inner=1024 bodyScroll=1159 mainW=1024 sections=3 h1=1
+ h1: ["Scholarships & Fee Discounts"]
+ overflow(13):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=1159 w=361
+    BUTTON.hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded right=1078 w=149
+    SPAN. right=1052 w=113
+    svg. right=1068 w=12
+    path. right=1065 w=7
+    path. right=1065 w=4
+    BUTTON.inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px]  right=1159 w=74
+    svg. right=1111 w=14
+ smallTargets(33):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 81x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 173x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(8):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."inline-flex items-center gap-1" "Fee Waivers & Concessions 2026"
+    H1."section-title mt-3 text-3xl sm" "Scholarships & Fee Discounts"
+    P."section-description text-xs sm" "Check your eligibility for university fee con"
+ smallText<12(11):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[11px] font-bold text-[#b1c" 11px "ELIGIBLE TUITION WAIVE"
+    SPAN."px-2 py-0.5 rounded text-[10px] " 10px "Ongoing Batch"
+    SPAN."px-2 py-0.5 rounded text-[10px] " 10px "Academic Merit"
+    SPAN."px-2 py-0.5 rounded text-[10px] " 10px "Defense Personnel"
+ images total=2 noAlt=0 broken=0
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=686 left=821 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=688 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(2):
+    bg-white rounded-2xl border border -> scholarship-calculator: 10px
+    scholarship-calculator -> scholarship-schemes: 22px
+
+--- lpu-scholarship @1366  doc=1366x1923 client=1366 inner=1366 bodyScroll=1366 mainW=1366 sections=3 h1=1
+ h1: ["Scholarships & Fee Discounts"]
+ overflow(0):
+ smallTargets(33):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 81x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 173x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(8):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."inline-flex items-center gap-1" "Fee Waivers & Concessions 2026"
+    H1."section-title mt-3 text-3xl sm" "Scholarships & Fee Discounts"
+    P."section-description text-xs sm" "Check your eligibility for university fee con"
+ smallText<12(11):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[11px] font-bold text-[#b1c" 11px "ELIGIBLE TUITION WAIVE"
+    SPAN."px-2 py-0.5 rounded text-[10px] " 10px "Ongoing Batch"
+    SPAN."px-2 py-0.5 rounded text-[10px] " 10px "Academic Merit"
+    SPAN."px-2 py-0.5 rounded text-[10px] " 10px "Defense Personnel"
+ images total=2 noAlt=0 broken=0
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=686 left=1163 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=688 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(2):
+    bg-white rounded-2xl border border -> scholarship-calculator: 10px
+    scholarship-calculator -> scholarship-schemes: 22px
+
+--- lpu-scholarship @1920  doc=1920x1923 client=1920 inner=1920 bodyScroll=1920 mainW=1920 sections=3 h1=1
+ h1: ["Scholarships & Fee Discounts"]
+ overflow(0):
+ smallTargets(33):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 81x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 173x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(8):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."inline-flex items-center gap-1" "Fee Waivers & Concessions 2026"
+    H1."section-title mt-3 text-3xl sm" "Scholarships & Fee Discounts"
+    P."section-description text-xs sm" "Check your eligibility for university fee con"
+ smallText<12(11):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[11px] font-bold text-[#b1c" 11px "ELIGIBLE TUITION WAIVE"
+    SPAN."px-2 py-0.5 rounded text-[10px] " 10px "Ongoing Batch"
+    SPAN."px-2 py-0.5 rounded text-[10px] " 10px "Academic Merit"
+    SPAN."px-2 py-0.5 rounded text-[10px] " 10px "Defense Personnel"
+ images total=2 noAlt=0 broken=0
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=998 left=1717 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=1000 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(2):
+    bg-white rounded-2xl border border -> scholarship-calculator: 10px
+    scholarship-calculator -> scholarship-schemes: 22px
+
+==================== university-listing ====================
+
+--- university-listing @320  doc=320x10316 client=320 inner=320 bodyScroll=380 mainW=320 sections=6 h1=1
+ h1: ["Explore Top UGC-DEB Approved Online Universities in India"]
+ overflow(60):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=380 w=181
+    BUTTON.inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px]  right=330 w=74
+    BUTTON.lg:hidden p-2 min-h-[44px] min-w-[44px] rounded-lg text-[#43 right=380 w=44
+    svg. right=370 w=24
+    path. right=366 w=16
+    path. right=366 w=16
+    path. right=366 w=16
+    DIV.absolute -right-12 bottom-0 h-40 w-40 rounded-full bg-[#a7f3 right=368 w=160
+ smallTargets(47):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "NAAC A++ Only" 130x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "UGC-DEB 100% Entitled" 169x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "Fees under ₹1 Lakh" 148x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "Online MBA Top Picks" 161x36
+ centeredText(19):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Find Universities"
+    SPAN."" "NAAC A++ Only"
+    SPAN."" "UGC-DEB 100% Entitled"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[#115eaf] font-semibold" 11px "Accredited by UGC, AIC"
+    SPAN."text-[#c4c6ce] mx-2" 11px "|"
+    SPAN."text-[#115eaf] font-semibold" 11px "Session 2026-27 Open"
+    SPAN."text-[11px] text-[#74777e] upper" 11px "TRENDING:"
+ images total=11 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=581 left=0 320x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=517 left=145 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=512 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(5):
+    uv-hero relative overflow-hidden b -> university-listings-container: 16px
+    university-listings-container -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 12px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> blogs: 0px
+
+--- university-listing @360  doc=360x9786 client=360 inner=360 bodyScroll=380 mainW=360 sections=6 h1=1
+ h1: ["Explore Top UGC-DEB Approved Online Universities in India"]
+ overflow(60):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=380 w=181
+    BUTTON.lg:hidden p-2 min-h-[44px] min-w-[44px] rounded-lg text-[#43 right=380 w=44
+    svg. right=370 w=24
+    path. right=366 w=16
+    path. right=366 w=16
+    path. right=366 w=16
+    DIV.absolute -right-12 bottom-0 h-40 w-40 rounded-full bg-[#a7f3 right=408 w=160
+    BUTTON.inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] ro right=401 w=169
+ smallTargets(47):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "NAAC A++ Only" 130x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "UGC-DEB 100% Entitled" 169x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "Fees under ₹1 Lakh" 148x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "Online MBA Top Picks" 161x36
+ centeredText(19):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Find Universities"
+    SPAN."" "NAAC A++ Only"
+    SPAN."" "UGC-DEB 100% Entitled"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[#115eaf] font-semibold" 11px "Accredited by UGC, AIC"
+    SPAN."text-[#c4c6ce] mx-2" 11px "|"
+    SPAN."text-[#115eaf] font-semibold" 11px "Session 2026-27 Open"
+    SPAN."text-[11px] text-[#74777e] upper" 11px "TRENDING:"
+ images total=11 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=741 left=0 360x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=677 left=185 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=672 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(5):
+    uv-hero relative overflow-hidden b -> university-listings-container: 16px
+    university-listings-container -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 12px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> blogs: 0px
+
+--- university-listing @390  doc=390x9634 client=390 inner=390 bodyScroll=390 mainW=390 sections=6 h1=1
+ h1: ["Explore Top UGC-DEB Approved Online Universities in India"]
+ overflow(60):
+    DIV.absolute -right-12 bottom-0 h-40 w-40 rounded-full bg-[#a7f3 right=438 w=160
+    BUTTON.inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] ro right=401 w=169
+    BUTTON.inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] ro right=557 w=148
+    svg. right=436 w=14
+    path. right=433 w=7
+    path. right=433 w=7
+    path. right=431 w=5
+    path. right=428 w=2
+ smallTargets(47):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "NAAC A++ Only" 130x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "UGC-DEB 100% Entitled" 169x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "Fees under ₹1 Lakh" 148x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "Online MBA Top Picks" 161x36
+ centeredText(19):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Find Universities"
+    SPAN."" "NAAC A++ Only"
+    SPAN."" "UGC-DEB 100% Entitled"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[#115eaf] font-semibold" 11px "Accredited by UGC, AIC"
+    SPAN."text-[#c4c6ce] mx-2" 11px "|"
+    SPAN."text-[#115eaf] font-semibold" 11px "Session 2026-27 Open"
+    SPAN."text-[11px] text-[#74777e] upper" 11px "TRENDING:"
+ images total=11 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=785 left=0 390x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=721 left=215 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=716 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(5):
+    uv-hero relative overflow-hidden b -> university-listings-container: 16px
+    university-listings-container -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 12px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> blogs: 0px
+
+--- university-listing @430  doc=430x9360 client=430 inner=430 bodyScroll=430 mainW=430 sections=6 h1=1
+ h1: ["Explore Top UGC-DEB Approved Online Universities in India"]
+ overflow(60):
+    DIV.absolute -right-12 bottom-0 h-40 w-40 rounded-full bg-[#a7f3 right=478 w=160
+    BUTTON.inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] ro right=557 w=148
+    svg. right=436 w=14
+    path. right=433 w=7
+    path. right=433 w=7
+    SPAN. right=544 w=102
+    BUTTON.inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] ro right=726 w=161
+    svg. right=592 w=14
+ smallTargets(47):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "NAAC A++ Only" 130x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "UGC-DEB 100% Entitled" 169x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "Fees under ₹1 Lakh" 148x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "Online MBA Top Picks" 161x36
+ centeredText(19):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Find Universities"
+    SPAN."" "NAAC A++ Only"
+    SPAN."" "UGC-DEB 100% Entitled"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[#115eaf] font-semibold" 11px "Accredited by UGC, AIC"
+    SPAN."text-[#c4c6ce] mx-2" 11px "|"
+    SPAN."text-[#115eaf] font-semibold" 11px "Session 2026-27 Open"
+    SPAN."text-[11px] text-[#74777e] upper" 11px "TRENDING:"
+ images total=11 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(3):
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=873 left=0 430x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=809 left=255 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=804 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(5):
+    uv-hero relative overflow-hidden b -> university-listings-container: 16px
+    university-listings-container -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 12px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> blogs: 0px
+
+--- university-listing @768  doc=768x6920 client=768 inner=768 bodyScroll=768 mainW=768 sections=6 h1=1
+ h1: ["Explore Top UGC-DEB Approved Online Universities in India"]
+ overflow(11):
+    DIV.absolute -right-12 bottom-0 h-40 w-40 rounded-full bg-[#a7f3 right=816 w=160
+    BUTTON.inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] ro right=930 w=180
+    svg. right=777 w=14
+    path. right=772 w=5
+    rect. right=776 w=12
+    SPAN. right=917 w=134
+    BUTTON.inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] ro right=1057 w=119
+    svg. right=965 w=14
+ smallTargets(42):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x30
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "NAAC A++ Only" 130x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "UGC-DEB 100% Entitled" 169x36
+    BUTTON."inline-flex items-center gap-1.5 px-3 py-1.5 " "Fees under ₹1 Lakh" 148x36
+ centeredText(24):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."text-[#115eaf] font-semibold" "Accredited by UGC, AICTE & NAAC"
+    SPAN."text-[#115eaf] font-semibold" "Session 2026-27 Open"
+    H1."font-sans text-2xl sm:text-[32" "Explore Top UGC-DEB Approved Online Universit"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[#115eaf] font-semibold" 11px "Accredited by UGC, AIC"
+    SPAN."text-[#c4c6ce] mx-2" 11px "|"
+    SPAN."text-[#115eaf] font-semibold" 11px "Session 2026-27 Open"
+    SPAN."text-[11px] text-[#74777e] upper" 11px "TRENDING:"
+ images total=11 noAlt=3 broken=3
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=942 left=565 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=944 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(5):
+    uv-hero relative overflow-hidden b -> university-listings-container: 32px
+    university-listings-container -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 32px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> blogs: 32px
+
+--- university-listing @1024  doc=1160x6224 client=1024 inner=1024 bodyScroll=1160 mainW=1024 sections=6 h1=1
+ h1: ["Explore Top UGC-DEB Approved Online Universities in India"]
+ overflow(16):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=1160 w=361
+    BUTTON.hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded right=1078 w=149
+    SPAN. right=1052 w=113
+    svg. right=1068 w=12
+    path. right=1066 w=7
+    path. right=1066 w=4
+    BUTTON.inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px]  right=1160 w=74
+    svg. right=1111 w=14
+ smallTargets(64):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 83x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(24):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."text-[#115eaf] font-semibold" "Accredited by UGC, AICTE & NAAC"
+    SPAN."text-[#115eaf] font-semibold" "Session 2026-27 Open"
+    H1."font-sans text-2xl sm:text-[32" "Explore Top UGC-DEB Approved Online Universit"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[#115eaf] font-semibold" 11px "Accredited by UGC, AIC"
+    SPAN."text-[#c4c6ce] mx-2" 11px "|"
+    SPAN."text-[#115eaf] font-semibold" 11px "Session 2026-27 Open"
+    SPAN."text-[11px] text-[#74777e] upper" 11px "TRENDING:"
+ images total=11 noAlt=3 broken=0
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=686 left=821 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=688 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(5):
+    uv-hero relative overflow-hidden b -> university-listings-container: 32px
+    university-listings-container -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 32px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> blogs: 32px
+
+--- university-listing @1366  doc=1366x5440 client=1366 inner=1366 bodyScroll=1366 mainW=1366 sections=6 h1=1
+ h1: ["Explore Top UGC-DEB Approved Online Universities in India"]
+ overflow(1):
+    DIV.absolute -right-12 bottom-0 h-40 w-40 rounded-full bg-[#a7f3 right=1414 w=160
+ smallTargets(64):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 83x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(24):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."text-[#115eaf] font-semibold" "Accredited by UGC, AICTE & NAAC"
+    SPAN."text-[#115eaf] font-semibold" "Session 2026-27 Open"
+    H1."font-sans text-2xl sm:text-[32" "Explore Top UGC-DEB Approved Online Universit"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[#115eaf] font-semibold" 11px "Accredited by UGC, AIC"
+    SPAN."text-[#c4c6ce] mx-2" 11px "|"
+    SPAN."text-[#115eaf] font-semibold" 11px "Session 2026-27 Open"
+    SPAN."text-[11px] text-[#74777e] upper" 11px "TRENDING:"
+ images total=11 noAlt=3 broken=0
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=686 left=1163 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=688 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(5):
+    uv-hero relative overflow-hidden b -> university-listings-container: 32px
+    university-listings-container -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 32px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> blogs: 32px
+
+--- university-listing @1920  doc=1920x5440 client=1920 inner=1920 bodyScroll=1920 mainW=1920 sections=6 h1=1
+ h1: ["Explore Top UGC-DEB Approved Online Universities in India"]
+ overflow(1):
+    DIV.absolute -right-12 bottom-0 h-40 w-40 rounded-full bg-[#a7f3 right=1968 w=160
+ smallTargets(64):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 83x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(24):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."text-[#115eaf] font-semibold" "Accredited by UGC, AICTE & NAAC"
+    SPAN."text-[#115eaf] font-semibold" "Session 2026-27 Open"
+    H1."font-sans text-2xl sm:text-[32" "Explore Top UGC-DEB Approved Online Universit"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."text-[#115eaf] font-semibold" 11px "Accredited by UGC, AIC"
+    SPAN."text-[#c4c6ce] mx-2" 11px "|"
+    SPAN."text-[#115eaf] font-semibold" 11px "Session 2026-27 Open"
+    SPAN."text-[11px] text-[#74777e] upper" 11px "TRENDING:"
+ images total=11 noAlt=3 broken=0
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=998 left=1717 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=1000 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(5):
+    uv-hero relative overflow-hidden b -> university-listings-container: 32px
+    university-listings-container -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 32px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> max-w-7xl mx-auto px-4 sm:px-6 lg:: 0px
+    max-w-7xl mx-auto px-4 sm:px-6 lg: -> blogs: 32px
+
+==================== home ====================
+
+--- home @320  doc=320x11003 client=320 inner=320 bodyScroll=380 mainW=320 sections=10 h1=1
+ h1: ["Discover, Compare & Enroll in\nIndia's Top Online Universities"]
+ overflow(60):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=380 w=181
+    BUTTON.inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px]  right=330 w=74
+    BUTTON.lg:hidden p-2 min-h-[44px] min-w-[44px] rounded-lg text-[#43 right=380 w=44
+    svg. right=370 w=24
+    path. right=366 w=16
+    path. right=366 w=16
+    path. right=366 w=16
+    DIV.absolute -right-12 bottom-0 h-48 w-48 rounded-full bg-[#2dd4 right=368 w=192
+ smallTargets(100):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    SELECT."w-full bg-transparent border-0 p-0 pr-6 text-" "Online MBA (Master of Busi" 224x24
+    SELECT."w-full bg-transparent border-0 p-0 pr-6 text-" "Any Budget (₹12,000 - ₹50," 224x24
+    BUTTON."cursor-pointer bg-white px-2.5 py-1 rounded-l" "NAAC A++ Only" 116x26
+    BUTTON."cursor-pointer bg-white px-2.5 py-1 rounded-l" "Under ₹1 Lakh Total" 137x26
+ centeredText(19):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Explore 50+ Universities"
+    SPAN."" "View all courses"
+    SPAN."truncate" "Download Brochure"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."sm:hidden" 11px "UGC-DEB • NAAC A++ App"
+    SPAN."hidden sm:inline" 11px "UGC-DEB • AICTE • NAAC"
+    LABEL."block text-[11px] font-semibold " 11px "SELECT DEGREE PROGRAM"
+    LABEL."block text-[11px] font-semibold " 11px "BUDGET PER SEMESTER"
+ images total=14 noAlt=3 broken=8
+   broken: https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80
+ btnNoName(0): []
+ fixed(4):
+    BUTTON."md:hidden fixed right-2.5 bottom-5 w-9 h-9 border " top=584 left=274 36x36
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=581 left=0 320x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=517 left=145 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=512 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(9):
+    relative overflow-hidden rounded-2 -> md:hidden bg-white rounded-xl bord: 0px
+    md:hidden bg-white rounded-xl bord -> degrees: 0px
+    degrees -> universities: 0px
+    universities -> bg-white rounded-2xl border border: 0px
+    bg-white rounded-2xl border border -> testimonials: 0px
+    testimonials -> compare-colleges-carousel: 0px
+    compare-colleges-carousel -> counselling: 0px
+    counselling -> faqs: 0px
+    faqs -> blogs: 0px
+
+--- home @360  doc=360x10586 client=360 inner=360 bodyScroll=380 mainW=360 sections=10 h1=1
+ h1: ["Discover, Compare & Enroll in\nIndia's Top Online Universities"]
+ overflow(60):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=380 w=181
+    BUTTON.lg:hidden p-2 min-h-[44px] min-w-[44px] rounded-lg text-[#43 right=380 w=44
+    svg. right=370 w=24
+    path. right=366 w=16
+    path. right=366 w=16
+    path. right=366 w=16
+    DIV.absolute -right-12 bottom-0 h-48 w-48 rounded-full bg-[#2dd4 right=408 w=192
+    ARTICLE.flex-none w-[290px] snap-start border border-[#c4c6ce] round right=604 w=290
+ smallTargets(100):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    SELECT."w-full bg-transparent border-0 p-0 pr-6 text-" "Online MBA (Master of Busi" 264x24
+    SELECT."w-full bg-transparent border-0 p-0 pr-6 text-" "Any Budget (₹12,000 - ₹50," 264x24
+    BUTTON."cursor-pointer bg-white px-2.5 py-1 rounded-l" "NAAC A++ Only" 116x26
+    BUTTON."cursor-pointer bg-white px-2.5 py-1 rounded-l" "Under ₹1 Lakh Total" 137x26
+ centeredText(19):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Explore 50+ Universities"
+    SPAN."" "View all courses"
+    SPAN."truncate" "Download Brochure"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."sm:hidden" 11px "UGC-DEB • NAAC A++ App"
+    SPAN."hidden sm:inline" 11px "UGC-DEB • AICTE • NAAC"
+    LABEL."block text-[11px] font-semibold " 11px "SELECT DEGREE PROGRAM"
+    LABEL."block text-[11px] font-semibold " 11px "BUDGET PER SEMESTER"
+ images total=14 noAlt=3 broken=8
+   broken: https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80
+ btnNoName(0): []
+ fixed(4):
+    BUTTON."md:hidden fixed right-2.5 bottom-5 w-9 h-9 border " top=744 left=314 36x36
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=741 left=0 360x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=677 left=185 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=672 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(9):
+    relative overflow-hidden rounded-2 -> md:hidden bg-white rounded-xl bord: 0px
+    md:hidden bg-white rounded-xl bord -> degrees: 0px
+    degrees -> universities: 0px
+    universities -> bg-white rounded-2xl border border: 0px
+    bg-white rounded-2xl border border -> testimonials: 0px
+    testimonials -> compare-colleges-carousel: 0px
+    compare-colleges-carousel -> counselling: 0px
+    counselling -> faqs: 0px
+    faqs -> blogs: 0px
+
+--- home @390  doc=390x10234 client=390 inner=390 bodyScroll=390 mainW=390 sections=10 h1=1
+ h1: ["Discover, Compare & Enroll in\nIndia's Top Online Universities"]
+ overflow(60):
+    DIV.absolute -right-12 bottom-0 h-48 w-48 rounded-full bg-[#2dd4 right=438 w=192
+    ARTICLE.flex-none w-[290px] snap-start border border-[#c4c6ce] round right=604 w=290
+    H3.text-[15px] font-bold leading-[1.35] text-[#000f22] line-cla right=591 w=264
+    SPAN.block text-[12px] text-[#74777e] mb-2.5 right=591 w=264
+    DIV.flex items-center justify-between gap-2 mb-2.5 right=591 w=264
+    SPAN.px-2 py-0.5 rounded text-[11px] font-bold bg-amber-50 text-a right=395 w=68
+    SPAN.text-[11px] font-medium text-slate-500 right=591 w=63
+    DIV.space-y-1.5 text-[12px] bg-[#f0f4f8]/50 p-2.5 rounded border right=591 w=264
+ smallTargets(100):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    SELECT."w-full bg-transparent border-0 p-0 pr-6 text-" "Online MBA (Master of Busi" 294x24
+    SELECT."w-full bg-transparent border-0 p-0 pr-6 text-" "Any Budget (₹12,000 - ₹50," 294x24
+    BUTTON."cursor-pointer bg-white px-2.5 py-1 rounded-l" "NAAC A++ Only" 116x26
+    BUTTON."cursor-pointer bg-white px-2.5 py-1 rounded-l" "Under ₹1 Lakh Total" 137x26
+ centeredText(19):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Explore 50+ Universities"
+    SPAN."" "View all courses"
+    SPAN."truncate" "Download Brochure"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."sm:hidden" 11px "UGC-DEB • NAAC A++ App"
+    SPAN."hidden sm:inline" 11px "UGC-DEB • AICTE • NAAC"
+    LABEL."block text-[11px] font-semibold " 11px "SELECT DEGREE PROGRAM"
+    LABEL."block text-[11px] font-semibold " 11px "BUDGET PER SEMESTER"
+ images total=14 noAlt=3 broken=8
+   broken: https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80
+ btnNoName(0): []
+ fixed(4):
+    BUTTON."md:hidden fixed right-2.5 bottom-5 w-9 h-9 border " top=788 left=344 36x36
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=785 left=0 390x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=721 left=215 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=716 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(9):
+    relative overflow-hidden rounded-2 -> md:hidden bg-white rounded-xl bord: 0px
+    md:hidden bg-white rounded-xl bord -> degrees: 0px
+    degrees -> universities: 0px
+    universities -> bg-white rounded-2xl border border: 0px
+    bg-white rounded-2xl border border -> testimonials: 0px
+    testimonials -> compare-colleges-carousel: 0px
+    compare-colleges-carousel -> counselling: 0px
+    counselling -> faqs: 0px
+    faqs -> blogs: 0px
+
+--- home @430  doc=430x10208 client=430 inner=430 bodyScroll=430 mainW=430 sections=10 h1=1
+ h1: ["Discover, Compare & Enroll in\nIndia's Top Online Universities"]
+ overflow(60):
+    DIV.absolute -right-12 bottom-0 h-48 w-48 rounded-full bg-[#2dd4 right=478 w=192
+    ARTICLE.flex-none w-[290px] snap-start border border-[#c4c6ce] round right=604 w=290
+    H3.text-[15px] font-bold leading-[1.35] text-[#000f22] line-cla right=591 w=264
+    SPAN.block text-[12px] text-[#74777e] mb-2.5 right=591 w=264
+    DIV.flex items-center justify-between gap-2 mb-2.5 right=591 w=264
+    SPAN.text-[11px] font-medium text-slate-500 right=591 w=63
+    DIV.space-y-1.5 text-[12px] bg-[#f0f4f8]/50 p-2.5 rounded border right=591 w=264
+    DIV.flex justify-between gap-2 right=580 w=242
+ smallTargets(100):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "AI" 51x40
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x40
+    SELECT."w-full bg-transparent border-0 p-0 pr-6 text-" "Online MBA (Master of Busi" 334x24
+    SELECT."w-full bg-transparent border-0 p-0 pr-6 text-" "Any Budget (₹12,000 - ₹50," 334x24
+    BUTTON."cursor-pointer bg-white px-2.5 py-1 rounded-l" "NAAC A++ Only" 116x26
+    BUTTON."cursor-pointer bg-white px-2.5 py-1 rounded-l" "Under ₹1 Lakh Total" 137x26
+ centeredText(19):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."" "Explore 50+ Universities"
+    SPAN."" "View all courses"
+    SPAN."truncate" "Download Brochure"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."sm:hidden" 11px "UGC-DEB • NAAC A++ App"
+    SPAN."hidden sm:inline" 11px "UGC-DEB • AICTE • NAAC"
+    LABEL."block text-[11px] font-semibold " 11px "SELECT DEGREE PROGRAM"
+    LABEL."block text-[11px] font-semibold " 11px "BUDGET PER SEMESTER"
+ images total=14 noAlt=3 broken=8
+   broken: https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80
+ btnNoName(0): []
+ fixed(4):
+    BUTTON."md:hidden fixed right-2.5 bottom-5 w-9 h-9 border " top=876 left=384 36x36
+    NAV."md:hidden fixed bottom-0 left-0 w-full z-40 bg-whi" top=873 left=0 430x59
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=809 left=255 159x44
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=804 left=16 48x48
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(9):
+    relative overflow-hidden rounded-2 -> md:hidden bg-white rounded-xl bord: 0px
+    md:hidden bg-white rounded-xl bord -> degrees: 0px
+    degrees -> universities: 0px
+    universities -> bg-white rounded-2xl border border: 0px
+    bg-white rounded-2xl border border -> testimonials: 0px
+    testimonials -> compare-colleges-carousel: 0px
+    compare-colleges-carousel -> counselling: 0px
+    counselling -> faqs: 0px
+    faqs -> blogs: 0px
+
+--- home @768  doc=902x8526 client=768 inner=768 bodyScroll=902 mainW=768 sections=10 h1=1
+ h1: ["Discover, Compare & Enroll in\nIndia's Top Online Universities"]
+ overflow(60):
+    DIV.absolute -right-12 bottom-0 h-48 w-48 rounded-full bg-[#2dd4 right=791 w=192
+    BUTTON.px-2.5 py-1.5 rounded-md whitespace-nowrap shrink-0 transiti right=791 w=113
+    BUTTON.px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium whit right=806 w=127
+    DIV.max-lg:ml-0 text-xs text-[#74777e] font-medium whitespace-no right=933 w=118
+    DIV.flex flex-wrap items-center gap-2 shrink-0 right=902 w=729
+    DIV.inline-flex items-center p-1 bg-slate-100 dark:bg-slate-800/ right=782 w=609
+    BUTTON.px-3 py-1.5 text-xs font-medium rounded-lg transition-all cu right=777 w=150
+    DIV.flex items-center gap-1.5 right=902 w=112
+ smallTargets(100):
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Login" 74x30
+    SELECT."w-full bg-transparent border-0 p-0 pr-6 text-" "Online MBA (Master of Busi" 165x20
+    SELECT."w-full bg-transparent border-0 p-0 pr-6 text-" "Any Budget (₹12,000 - ₹50," 165x20
+    BUTTON."cursor-pointer bg-white px-2.5 py-1 rounded-l" "NAAC A++ Only" 116x26
+ centeredText(30):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."sm:hidden" "UGC-DEB • NAAC A++ Approved"
+    SPAN."hidden sm:inline" "UGC-DEB • AICTE • NAAC A++ ACCREDITED UNIVERS"
+    H1."text-[26px] sm:text-3xl md:tex" "Discover, Compare & Enroll in
+India's Top Onl"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."sm:hidden" 11px "UGC-DEB • NAAC A++ App"
+    SPAN."hidden sm:inline" 11px "UGC-DEB • AICTE • NAAC"
+    LABEL."block text-[11px] font-semibold " 11px "SELECT DEGREE PROGRAM"
+    LABEL."block text-[11px] font-semibold " 11px "BUDGET PER SEMESTER"
+ images total=14 noAlt=3 broken=8
+   broken: https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=942 left=565 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=944 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(9):
+    relative overflow-hidden rounded-2 -> md:hidden bg-white rounded-xl bord: -852px
+    md:hidden bg-white rounded-xl bord -> degrees: 872px
+    degrees -> universities: 20px
+    universities -> bg-white rounded-2xl border border: 20px
+    bg-white rounded-2xl border border -> testimonials: 20px
+    testimonials -> compare-colleges-carousel: 20px
+    compare-colleges-carousel -> counselling: 20px
+    counselling -> faqs: 20px
+    faqs -> blogs: 20px
+
+--- home @1024  doc=1158x6780 client=1024 inner=1024 bodyScroll=1158 mainW=1024 sections=10 h1=1
+ h1: ["Discover, Compare & Enroll in\nIndia's Top Online Universities"]
+ overflow(60):
+    DIV.flex items-center gap-1.5 sm:gap-2 shrink-0 right=1158 w=361
+    BUTTON.hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded right=1076 w=149
+    SPAN. right=1050 w=113
+    svg. right=1066 w=12
+    path. right=1064 w=7
+    path. right=1064 w=4
+    BUTTON.inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px]  right=1158 w=74
+    svg. right=1109 w=14
+ smallTargets(100):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 81x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(30):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."sm:hidden" "UGC-DEB • NAAC A++ Approved"
+    SPAN."hidden sm:inline" "UGC-DEB • AICTE • NAAC A++ ACCREDITED UNIVERS"
+    H1."text-[26px] sm:text-3xl md:tex" "Discover, Compare & Enroll in
+India's Top Onl"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."sm:hidden" 11px "UGC-DEB • NAAC A++ App"
+    SPAN."hidden sm:inline" 11px "UGC-DEB • AICTE • NAAC"
+    LABEL."block text-[11px] font-semibold " 11px "SELECT DEGREE PROGRAM"
+    LABEL."block text-[11px] font-semibold " 11px "BUDGET PER SEMESTER"
+ images total=14 noAlt=3 broken=2
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=686 left=821 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=688 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(9):
+    relative overflow-hidden rounded-2 -> md:hidden bg-white rounded-xl bord: -679px
+    md:hidden bg-white rounded-xl bord -> degrees: 699px
+    degrees -> universities: 20px
+    universities -> bg-white rounded-2xl border border: 20px
+    bg-white rounded-2xl border border -> testimonials: 20px
+    testimonials -> compare-colleges-carousel: 20px
+    compare-colleges-carousel -> counselling: 20px
+    counselling -> faqs: 20px
+    faqs -> blogs: 20px
+
+--- home @1366  doc=1366x6288 client=1366 inner=1366 bodyScroll=1366 mainW=1366 sections=10 h1=1
+ h1: ["Discover, Compare & Enroll in\nIndia's Top Online Universities"]
+ overflow(60):
+    DIV.shrink-0 w-[300px] sm:w-[350px] md:w-[370px] snap-start roun right=1607 w=370
+    DIV. right=1582 w=320
+    DIV.flex items-start justify-between gap-3 mb-4 right=1582 w=320
+    DIV.flex items-center gap-3 right=1451 w=189
+    DIV. right=1451 w=125
+    H3.text-sm sm:text-base font-bold text-[#000f22] dark:text-slat right=1451 w=125
+    P.text-xs text-[#115eaf] dark:text-blue-400 font-medium right=1451 w=125
+    P.text-[11px] text-[#74777e] dark:text-slate-400 right=1451 w=125
+ smallTargets(100):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 81x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(30):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."sm:hidden" "UGC-DEB • NAAC A++ Approved"
+    SPAN."hidden sm:inline" "UGC-DEB • AICTE • NAAC A++ ACCREDITED UNIVERS"
+    H1."text-[26px] sm:text-3xl md:tex" "Discover, Compare & Enroll in
+India's Top Onl"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."sm:hidden" 11px "UGC-DEB • NAAC A++ App"
+    SPAN."hidden sm:inline" 11px "UGC-DEB • AICTE • NAAC"
+    LABEL."block text-[11px] font-semibold " 11px "SELECT DEGREE PROGRAM"
+    LABEL."block text-[11px] font-semibold " 11px "BUDGET PER SEMESTER"
+ images total=14 noAlt=3 broken=7
+   broken: https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=686 left=1163 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=688 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(9):
+    relative overflow-hidden rounded-2 -> md:hidden bg-white rounded-xl bord: -679px
+    md:hidden bg-white rounded-xl bord -> degrees: 699px
+    degrees -> universities: 20px
+    universities -> bg-white rounded-2xl border border: 20px
+    bg-white rounded-2xl border border -> testimonials: 20px
+    testimonials -> compare-colleges-carousel: 20px
+    compare-colleges-carousel -> counselling: 20px
+    counselling -> faqs: 20px
+    faqs -> blogs: 20px
+
+--- home @1920  doc=1920x6288 client=1920 inner=1920 bodyScroll=1920 mainW=1920 sections=10 h1=1
+ h1: ["Discover, Compare & Enroll in\nIndia's Top Online Universities"]
+ overflow(54):
+    DIV.shrink-0 w-[300px] sm:w-[350px] md:w-[370px] snap-start roun right=2274 w=370
+    DIV. right=2249 w=320
+    DIV.flex items-start justify-between gap-3 mb-4 right=2249 w=320
+    DIV.flex items-center gap-3 right=2110 w=181
+    DIV.relative shrink-0 rounded-full overflow-hidden ring-1 ring-s right=1981 w=52
+    IMG.w-13 h-13 object-cover aspect-square rounded-full border-2 b right=1981 w=52
+    DIV. right=2110 w=117
+    H3.text-sm sm:text-base font-bold text-[#000f22] dark:text-slat right=2110 w=117
+ smallTargets(100):
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Universities" 81x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Degree Explorer" 110x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Compare Matrix" 114x28
+    BUTTON."flex items-center gap-1.5 font-medium transit" "Scholarships 2026
+NEW" 172x28
+    BUTTON."inline-flex items-center gap-1.5 px-2.5 py-1." "Ask AI Advisor" 122x28
+    BUTTON."hidden sm:inline-flex items-center gap-1 px-2" "Get Free Counselling" 149x26
+ centeredText(30):
+    SPAN."hidden sm:inline" "Ask AI Advisor"
+    SPAN."" "Get Free Counselling"
+    SPAN."sm:hidden" "UGC-DEB • NAAC A++ Approved"
+    SPAN."hidden sm:inline" "UGC-DEB • AICTE • NAAC A++ ACCREDITED UNIVERS"
+    H1."text-[26px] sm:text-3xl md:tex" "Discover, Compare & Enroll in
+India's Top Onl"
+ smallText<12(70):
+    SPAN."bg-amber-100 text-amber-800 text" 10px "NEW"
+    SPAN."" 11px "Get Free Counselling"
+    SPAN."sm:hidden" 11px "UGC-DEB • NAAC A++ App"
+    SPAN."hidden sm:inline" 11px "UGC-DEB • AICTE • NAAC"
+    LABEL."block text-[11px] font-semibold " 11px "SELECT DEGREE PROGRAM"
+    LABEL."block text-[11px] font-semibold " 11px "BUDGET PER SEMESTER"
+ images total=14 noAlt=3 broken=5
+   broken: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80
+   broken: https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80
+   broken: http://localhost:3001/images/mbaonline.png
+   broken: http://localhost:3001/images/mba02.png
+   broken: http://localhost:3001/images/cuet2026.png
+ btnNoName(0): []
+ fixed(2):
+    ASIDE."fixed bottom-20 md:bottom-6 right-4 md:right-6 z-4" top=998 left=1717 179x58
+    BUTTON."fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 " top=1000 left=24 56x56
+ consoleErrors(2): ["WebSocket connection to 'ws://localhost:24678/?token=00lyePLxogMg' failed: Error during WebSocket handshake: Unexpected response code: 400","[vite] failed to connect to websocket (Error: WebSocket closed without opened.). "]
+ pageErrors(1): ["Error: WebSocket closed without opened."]
+ failedReq(0): []
+ gaps(9):
+    relative overflow-hidden rounded-2 -> md:hidden bg-white rounded-xl bord: -679px
+    md:hidden bg-white rounded-xl bord -> degrees: 699px
+    degrees -> universities: 20px
+    universities -> bg-white rounded-2xl border border: 20px
+    bg-white rounded-2xl border border -> testimonials: 20px
+    testimonials -> compare-colleges-carousel: 20px
+    compare-colleges-carousel -> counselling: 20px
+    counselling -> faqs: 20px
+    faqs -> blogs: 20px
+
+########## FONT FAMILIES (390) ##########
+lpu-overview {"Poppins":487,"Material Symbols Outlined":5}
+  non-poppins entries: 1
+    Material Symbols Outlined | 24px | 400 x5
+lpu-admission {"Poppins":264,"Material Symbols Outlined":5}
+  non-poppins entries: 1
+    Material Symbols Outlined | 24px | 400 x5
+lpu-courses {"Poppins":366,"Material Symbols Outlined":5}
+  non-poppins entries: 1
+    Material Symbols Outlined | 24px | 400 x5
+lpu-scholarship {"Poppins":112,"Material Symbols Outlined":5}
+  non-poppins entries: 1
+    Material Symbols Outlined | 24px | 400 x5
+university-listing {"Poppins":550}
+  non-poppins entries: 0
+home {"Poppins":622}
+  non-poppins entries: 0

@@ -23,7 +23,7 @@ import { FloatingActions } from './components/FloatingActions';
 import { CounselorModal } from './components/CounselorModal';
 import { TrackApplicationModal } from './components/TrackApplicationModal';
 import { GeminiChatbot, ChatbotFloatingTrigger } from './components/chat/GeminiChatbot';
-import { BookOpen, GraduationCap, Home, FileText, Building2, Award } from 'lucide-react';
+import { Home, FileText, Building2, Award } from 'lucide-react';
 
 export default function App() {
   const location = useLocation();
@@ -48,10 +48,6 @@ export default function App() {
   };
 
   const activeTab: TabType = routeToTab(location.pathname, location.search);
-
-  // Courses & Admission only show in bottom dock when inside a university detail page
-  const isUniversityDetail =
-    location.pathname.startsWith('/universities/') && location.pathname !== '/universities';
 
   const scrollToHomeSection = (id: string) => {
     window.setTimeout(() => {
@@ -150,7 +146,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f9f9ff] text-[#111c2d] font-sans pb-16 md:pb-0 transition-colors duration-200">
+    <div className="min-h-screen flex flex-col bg-[#f9f9ff] text-[#111c2d] font-sans pb-[calc(96px+env(safe-area-inset-bottom))] md:pb-0 transition-colors duration-200">
       {/* Top Application Bar */}
       <Navbar
         activeTab={activeTab}
@@ -263,33 +259,21 @@ export default function App() {
       />
 
       {/* Mobile Sticky Bottom Navigation Dock */}
-      <nav className="md:hidden fixed bottom-0 left-0 w-full z-40 bg-white border-t border-[#e7eeff] px-3 py-2 flex items-center justify-around shadow-lg">
-        {isUniversityDetail && (
-          <button
-            onClick={() => {
-              setActiveTab('courses');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${
-              activeTab === 'courses' ? 'bg-[#e7eeff] text-[#115eaf]' : 'text-[#43474d]'
-            }`}
-          >
-            <BookOpen className="w-4 h-4 mb-0.5" />
-            <span>Courses</span>
-          </button>
-        )}
-
+      <nav
+        className="md:hidden fixed bottom-0 left-0 w-full z-40 bg-white border-t border-[#e7eeff] px-2 pt-2 grid grid-cols-4 gap-1 shadow-lg"
+        style={{ paddingBottom: 'calc(0.5rem + env(safe-area-inset-bottom))' }}
+      >
         <button
           onClick={() => {
             setActiveTab('home');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${
+          className={`flex flex-col items-center justify-center gap-0.5 min-h-[44px] py-1 rounded-xl text-[12px] font-semibold min-w-0 transition-all ${
             activeTab === 'home' ? 'bg-[#e7eeff] text-[#115eaf]' : 'text-[#43474d]'
           }`}
         >
-          <Home className="w-4 h-4 mb-0.5" />
-          <span>Home</span>
+          <Home className="w-5 h-5 shrink-0" />
+          <span className="w-full truncate text-center leading-tight">Home</span>
         </button>
 
         <button
@@ -297,48 +281,33 @@ export default function App() {
             setActiveTab('universities');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${
+          className={`flex flex-col items-center justify-center gap-0.5 min-h-[44px] py-1 rounded-xl text-[12px] font-semibold min-w-0 transition-all ${
             activeTab === 'universities' ? 'bg-[#e7eeff] text-[#115eaf]' : 'text-[#43474d]'
           }`}
         >
-          <Building2 className="w-4 h-4 mb-0.5" />
-          <span>Universities</span>
+          <Building2 className="w-5 h-5 shrink-0" />
+          <span className="w-full truncate text-center leading-tight">Universities</span>
         </button>
-
-        {isUniversityDetail && (
-          <button
-            onClick={() => {
-              setActiveTab('admission');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${
-              activeTab === 'admission' ? 'bg-[#e7eeff] text-[#115eaf]' : 'text-[#43474d]'
-            }`}
-          >
-            <GraduationCap className="w-4 h-4 mb-0.5" />
-            <span>Admission</span>
-          </button>
-        )}
 
         <button
           onClick={() => {
             setActiveTab('scholarships');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${
+          className={`flex flex-col items-center justify-center gap-0.5 min-h-[44px] py-1 rounded-xl text-[12px] font-semibold min-w-0 transition-all ${
             activeTab === 'scholarships' ? 'bg-[#e7eeff] text-[#115eaf]' : 'text-[#43474d]'
           }`}
         >
-          <Award className="w-4 h-4 mb-0.5" />
-          <span>Scholarship</span>
+          <Award className="w-5 h-5 shrink-0" />
+          <span className="w-full truncate text-center leading-tight">Scholarship</span>
         </button>
 
         <button
           onClick={() => handleOpenApply()}
-          className="flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-bold bg-[#115eaf] text-white shadow"
+          className="flex flex-col items-center justify-center gap-0.5 min-h-[44px] py-1 rounded-xl text-[12px] font-bold bg-[#115eaf] text-white shadow min-w-0"
         >
-          <FileText className="w-4 h-4 mb-0.5" />
-          <span>Apply</span>
+          <FileText className="w-5 h-5 shrink-0" />
+          <span className="w-full truncate text-center leading-tight">Apply</span>
         </button>
       </nav>
 

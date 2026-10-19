@@ -100,7 +100,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
           <button
             type="button"
             onClick={() => setIsExpanded(!isExpanded)}
-            className="text-xs sm:text-sm font-medium text-[#115eaf] hover:underline flex items-center gap-1.5 focus:outline-none cursor-pointer"
+            className="tap-hit min-h-[44px] flex items-center text-xs sm:text-sm font-medium text-[#115eaf] hover:underline gap-1.5 focus:outline-none cursor-pointer"
           >
             <span>{isExpanded ? 'View less' : 'View more'}</span>
             {isExpanded ? (

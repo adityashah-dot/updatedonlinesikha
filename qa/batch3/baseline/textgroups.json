@@ -1,0 +1,967 @@
+{
+ "lpu-overview": {
+  "390": [
+   {
+    "selector": "span.block.text-[9px].leading-tight",
+    "fs": "9px",
+    "count": 18,
+    "sample": "Duration"
+   },
+   {
+    "selector": "figcaption",
+    "fs": "11px",
+    "count": 8,
+    "sample": "Lovely Professional University campus vi"
+   },
+   {
+    "selector": "span",
+    "fs": "11px",
+    "count": 5,
+    "sample": "Step 01"
+   },
+   {
+    "selector": "span.inline-flex.items-center.gap-1",
+    "fs": "9px",
+    "count": 4,
+    "sample": "LMS Experience"
+   },
+   {
+    "selector": "span.text-[9px].text-[#43474d].font-bold",
+    "fs": "9px",
+    "count": 3,
+    "sample": "Completion Rate"
+   }
+  ],
+  "1366": [
+   {
+    "selector": "span.px-1.5.py-0.5.border",
+    "fs": "10px",
+    "count": 25,
+    "sample": "Finance"
+   },
+   {
+    "selector": "span.block.text-[9px].leading-tight",
+    "fs": "9px",
+    "count": 18,
+    "sample": "Duration"
+   },
+   {
+    "selector": "span.block.text-[11px].leading-tight",
+    "fs": "11px",
+    "count": 18,
+    "sample": "2 Years"
+   },
+   {
+    "selector": "button.h-7.px-1.5.rounded-md",
+    "fs": "10px",
+    "count": 12,
+    "sample": "Brochure"
+   },
+   {
+    "selector": "span.block.text-[10px].text-[#74777e]",
+    "fs": "10px",
+    "count": 9,
+    "sample": "2 specializations available"
+   },
+   {
+    "selector": "figcaption",
+    "fs": "11px",
+    "count": 8,
+    "sample": "Lovely Professional University campus vi"
+   },
+   {
+    "selector": "p.mt-0.5.text-[10px].font-normal",
+    "fs": "10px",
+    "count": 6,
+    "sample": "Master of Business Administration"
+   },
+   {
+    "selector": "h4.m-0.mb-1.5.text-[10px]",
+    "fs": "10px",
+    "count": 6,
+    "sample": "SPECIALISATIONS"
+   },
+   {
+    "selector": "span.px-3.py-1.5.rounded-lg",
+    "fs": "11px",
+    "count": 5,
+    "sample": "Sports"
+   },
+   {
+    "selector": "button.px-3.py-1.rounded-lg",
+    "fs": "11px",
+    "count": 5,
+    "sample": "All"
+   },
+   {
+    "selector": "span.inline-flex.items-center.gap-1",
+    "fs": "9px",
+    "count": 4,
+    "sample": "LMS Experience"
+   },
+   {
+    "selector": "span.text-[10px].text-[#74777e]",
+    "fs": "10px",
+    "count": 4,
+    "sample": "Fee Range"
+   },
+   {
+    "selector": "span.block.text-[10px].font-normal",
+    "fs": "10px",
+    "count": 4,
+    "sample": "PLACEMENT RATE"
+   },
+   {
+    "selector": "span.text-[10px].font-normal.text-[#000f22]",
+    "fs": "10px",
+    "count": 4,
+    "sample": "5.0"
+   },
+   {
+    "selector": "div.w-7.h-7.rounded-full",
+    "fs": "10px",
+    "count": 4,
+    "sample": "AS"
+   },
+   {
+    "selector": "span.px-2.5.py-1.rounded-full",
+    "fs": "11px",
+    "count": 4,
+    "sample": "#31 NIRF Rank"
+   },
+   {
+    "selector": "p.text-[11px].text-[#2d3137].leading-relaxed",
+    "fs": "11px",
+    "count": 4,
+    "sample": "\"The LMS platform was easy to use and he"
+   },
+   {
+    "selector": "span.font-normal.text-[11px].text-[#000f22]",
+    "fs": "11px",
+    "count": 4,
+    "sample": "Aman Singh"
+   },
+   {
+    "selector": "span.px-2.py-1.rounded-[7px]",
+    "fs": "11px",
+    "count": 4,
+    "sample": "NAAC A++"
+   },
+   {
+    "selector": "span.text-[9px].text-[#43474d].font-bold",
+    "fs": "9px",
+    "count": 3,
+    "sample": "Completion Rate"
+   },
+   {
+    "selector": "span.p-1.5.rounded-lg.bg-white/80",
+    "fs": "11px",
+    "count": 2,
+    "sample": "UPSC & PSC Eligible"
+   },
+   {
+    "selector": "span.bg-amber-100.text-amber-800.text-[10px]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "NEW"
+   },
+   {
+    "selector": "div.text-center.pt-1.5.text-[10px]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "Specimen UGC-Entitled Degree Format"
+   },
+   {
+    "selector": "button.tap-hit.w-6.h-6",
+    "fs": "10px",
+    "count": 1,
+    "sample": "✕"
+   },
+   {
+    "selector": "span.block.text-[10px].text-[#555960]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "100% Free Advice"
+   },
+   {
+    "selector": "span",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Get Free Counselling"
+   },
+   {
+    "selector": "p.text-[11px].text-[#74777e].font-normal",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Updated on 14 Sept 2026 · By Himanshi, C"
+   },
+   {
+    "selector": "span.text-[11px].text-[#74777e]",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Showing authentic verified reviews"
+   },
+   {
+    "selector": "span.inline-flex.mb-2.px-2",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Selected"
+   },
+   {
+    "selector": "button.w-full.py-2.bg-[#115eaf]",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Submit"
+   },
+   {
+    "selector": "span.pointer-events-none.absolute.left-full",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Admissions Desk AI"
+   }
+  ]
+ },
+ "lpu-admission": {
+  "390": [
+   {
+    "selector": "span.text-[9px].text-[#43474d].font-bold",
+    "fs": "9px",
+    "count": 2,
+    "sample": "Admission Satisfaction"
+   }
+  ],
+  "1366": [
+   {
+    "selector": "span.px-2.py-0.5.rounded",
+    "fs": "10px",
+    "count": 8,
+    "sample": "Mandatory"
+   },
+   {
+    "selector": "span.block.mb-1.text-[10px]",
+    "fs": "10px",
+    "count": 4,
+    "sample": "Admission Status"
+   },
+   {
+    "selector": "span.w-6.h-6.rounded-full",
+    "fs": "10px",
+    "count": 4,
+    "sample": "1"
+   },
+   {
+    "selector": "span.block.text-[11px].font-normal",
+    "fs": "11px",
+    "count": 4,
+    "sample": "2 Years / 4 Sems"
+   },
+   {
+    "selector": "span.text-[11px].font-normal.text-[#74777e]",
+    "fs": "11px",
+    "count": 4,
+    "sample": "/sem"
+   },
+   {
+    "selector": "p.text-[11px].text-[#43474d].leading-relaxed",
+    "fs": "11px",
+    "count": 4,
+    "sample": "Each programme follows a semester-based "
+   },
+   {
+    "selector": "span.block.mt-1.inline-block",
+    "fs": "10px",
+    "count": 3,
+    "sample": "Defense Welfare"
+   },
+   {
+    "selector": "span.text-[10px].font-bold.text-emerald-700",
+    "fs": "10px",
+    "count": 3,
+    "sample": "Verified Student"
+   },
+   {
+    "selector": "span.block.text-[10px].text-[#74777e]",
+    "fs": "10px",
+    "count": 3,
+    "sample": "· Batch"
+   },
+   {
+    "selector": "span.text-[9px].text-[#43474d].font-bold",
+    "fs": "9px",
+    "count": 2,
+    "sample": "Admission Satisfaction"
+   },
+   {
+    "selector": "span.bg-amber-100.text-amber-800.text-[10px]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "NEW"
+   },
+   {
+    "selector": "span.text-[10px].text-[#74777e].text-center",
+    "fs": "10px",
+    "count": 1,
+    "sample": "Average response time: < 15 minutes"
+   },
+   {
+    "selector": "span.block.text-[10px].text-[#555960]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "100% Free Advice"
+   },
+   {
+    "selector": "span",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Get Free Counselling"
+   },
+   {
+    "selector": "p.text-[11px].text-[#b1c8eb]",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Yes, DEB ID is required for LPU Online a"
+   },
+   {
+    "selector": "span.inline-flex.mb-2.px-2",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Selected College"
+   },
+   {
+    "selector": "span.pointer-events-none.absolute.left-full",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Admissions Desk AI"
+   }
+  ]
+ },
+ "lpu-courses": {
+  "390": [
+   {
+    "selector": "div.absolute.-top-2.right-3.5",
+    "fs": "9px",
+    "count": 1,
+    "sample": "TOP PICK"
+   }
+  ],
+  "1366": [
+   {
+    "selector": "span",
+    "fs": "11px",
+    "count": 23,
+    "sample": "Get Free Counselling"
+   },
+   {
+    "selector": "span.text-[10px].text-[#74777e].font-normal",
+    "fs": "10px",
+    "count": 22,
+    "sample": "TOTAL FEE"
+   },
+   {
+    "selector": "span.px-2.py-0.5.text-[10px]",
+    "fs": "10px",
+    "count": 11,
+    "sample": "PG Degree"
+   },
+   {
+    "selector": "button.w-full.py-1.5.px-2",
+    "fs": "11px",
+    "count": 11,
+    "sample": "View Details"
+   },
+   {
+    "selector": "span.block.text-[11px].font-normal",
+    "fs": "11px",
+    "count": 9,
+    "sample": "Online Bachelor of Business Administrati"
+   },
+   {
+    "selector": "div.text-[11px].text-[#43474d].mt-0.5",
+    "fs": "11px",
+    "count": 4,
+    "sample": "Score 3.68 / 4.0"
+   },
+   {
+    "selector": "div.text-[11px].text-[#74777e].font-medium",
+    "fs": "11px",
+    "count": 4,
+    "sample": "Online Student"
+   },
+   {
+    "selector": "span.text-[11px].text-[#43474d].block",
+    "fs": "11px",
+    "count": 3,
+    "sample": "Registration Deadline"
+   },
+   {
+    "selector": "div.absolute.-top-2.right-3.5",
+    "fs": "9px",
+    "count": 1,
+    "sample": "TOP PICK"
+   },
+   {
+    "selector": "span.bg-amber-100.text-amber-800.text-[10px]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "NEW"
+   },
+   {
+    "selector": "p.text-center.text-[10px].text-[#74777e]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "Direct merit-based admission with online"
+   },
+   {
+    "selector": "span.px-1.5.py-0.5.text-[10px]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "0% Interest"
+   },
+   {
+    "selector": "span.block.text-[10px].text-[#555960]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "100% Free Advice"
+   },
+   {
+    "selector": "p.text-[11px].text-[#43474d].mt-[7.5px]",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Eligible students can apply for up to a "
+   },
+   {
+    "selector": "strong.text-[#000f22].font-bold",
+    "fs": "11px",
+    "count": 1,
+    "sample": "20% Early Bird fee grant"
+   },
+   {
+    "selector": "strong.text-[#115eaf].font-bold",
+    "fs": "11px",
+    "count": 1,
+    "sample": "₹4,100/month"
+   },
+   {
+    "selector": "span.pointer-events-none.absolute.left-full",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Admissions Desk AI"
+   }
+  ]
+ },
+ "lpu-scholarship": {
+  "390": [],
+  "1366": [
+   {
+    "selector": "span.px-2.py-0.5.rounded",
+    "fs": "10px",
+    "count": 6,
+    "sample": "Ongoing Batch"
+   },
+   {
+    "selector": "span.bg-amber-100.text-amber-800.text-[10px]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "NEW"
+   },
+   {
+    "selector": "span.block.text-[10px].text-[#555960]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "100% Free Advice"
+   },
+   {
+    "selector": "span",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Get Free Counselling"
+   },
+   {
+    "selector": "span.text-[11px].font-bold.text-[#b1c8eb]",
+    "fs": "11px",
+    "count": 1,
+    "sample": "ELIGIBLE TUITION WAIVER"
+   },
+   {
+    "selector": "span.pointer-events-none.absolute.left-full",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Admissions Desk AI"
+   }
+  ]
+ },
+ "university-listing": {
+  "390": [
+   {
+    "selector": "span.px-2.py-0.5.bg-white",
+    "fs": "11px",
+    "count": 24,
+    "sample": "Finance"
+   },
+   {
+    "selector": "span.flex-none.flex.items-center",
+    "fs": "11px",
+    "count": 19,
+    "sample": "NAAC A++ (3.68/4)"
+   },
+   {
+    "selector": "span.block.text-[11px].text-[#74777e]",
+    "fs": "11px",
+    "count": 18,
+    "sample": "Exam Mode"
+   },
+   {
+    "selector": "span",
+    "fs": "11px",
+    "count": 6,
+    "sample": "NAAC A++ Only"
+   },
+   {
+    "selector": "span.text-[11px].font-medium.text-emerald-800",
+    "fs": "11px",
+    "count": 6,
+    "sample": "EMI from ₹5,833/month"
+   },
+   {
+    "selector": "span.px-2.5.py-0.5.rounded-full",
+    "fs": "11px",
+    "count": 6,
+    "sample": "POSTGRADUATE"
+   },
+   {
+    "selector": "span.text-[#115eaf].font-semibold",
+    "fs": "11px",
+    "count": 2,
+    "sample": "Accredited by UGC, AICTE & NAAC"
+   },
+   {
+    "selector": "span.bg-amber-100.text-amber-900.px-2",
+    "fs": "11px",
+    "count": 2,
+    "sample": "A++ (3.68/4)"
+   },
+   {
+    "selector": "span.text-[11px].text-[#115eaf].uppercase",
+    "fs": "11px",
+    "count": 2,
+    "sample": "HIGH-IMPACT ACADEMIC DEGREES"
+   },
+   {
+    "selector": "span.text-[#c4c6ce].mx-2",
+    "fs": "11px",
+    "count": 1,
+    "sample": "|"
+   },
+   {
+    "selector": "span.text-[11px].text-[#74777e].uppercase",
+    "fs": "11px",
+    "count": 1,
+    "sample": "TRENDING:"
+   }
+  ],
+  "1366": [
+   {
+    "selector": "span.text-[11px].text-[#74777e].font-semibold",
+    "fs": "11px",
+    "count": 24,
+    "sample": "EXAM MODE"
+   },
+   {
+    "selector": "span.px-2.py-0.5.bg-white",
+    "fs": "11px",
+    "count": 24,
+    "sample": "Finance"
+   },
+   {
+    "selector": "span.px-2.5.py-0.5.rounded-full",
+    "fs": "11px",
+    "count": 12,
+    "sample": "Verified 2026"
+   },
+   {
+    "selector": "span.px-2.5.py-1.bg-[#f0f3ff]",
+    "fs": "11px",
+    "count": 12,
+    "sample": "UGC-DEB Entitled"
+   },
+   {
+    "selector": "span",
+    "fs": "11px",
+    "count": 7,
+    "sample": "Get Free Counselling"
+   },
+   {
+    "selector": "span.text-[11px].text-[#74777e].uppercase",
+    "fs": "11px",
+    "count": 7,
+    "sample": "TRENDING:"
+   },
+   {
+    "selector": "span.text-[11px].font-semibold.text-[#74777e]",
+    "fs": "11px",
+    "count": 6,
+    "sample": "48"
+   },
+   {
+    "selector": "span.px-2.5.py-1.bg-amber-50",
+    "fs": "11px",
+    "count": 6,
+    "sample": "NAAC A++ (3.68/4)"
+   },
+   {
+    "selector": "span.block.text-[11px].text-[#74777e]",
+    "fs": "11px",
+    "count": 6,
+    "sample": "TOTAL PROGRAM FEE"
+   },
+   {
+    "selector": "div.inline-flex.items-center.gap-1",
+    "fs": "11px",
+    "count": 6,
+    "sample": "EMI starts ₹5,833/month"
+   },
+   {
+    "selector": "span.text-[9px].uppercase.tracking-wider",
+    "fs": "9px",
+    "count": 3,
+    "sample": "ONLINE"
+   },
+   {
+    "selector": "span.text-[#115eaf].font-semibold",
+    "fs": "11px",
+    "count": 2,
+    "sample": "Accredited by UGC, AICTE & NAAC"
+   },
+   {
+    "selector": "span.bg-amber-100.text-amber-900.px-2",
+    "fs": "11px",
+    "count": 2,
+    "sample": "A++ (3.68/4)"
+   },
+   {
+    "selector": "span.text-[11px].text-[#115eaf].uppercase",
+    "fs": "11px",
+    "count": 2,
+    "sample": "HIGH-IMPACT ACADEMIC DEGREES"
+   },
+   {
+    "selector": "span.bg-amber-100.text-amber-800.text-[10px]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "NEW"
+   },
+   {
+    "selector": "span.block.text-[10px].text-[#555960]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "100% Free Advice"
+   },
+   {
+    "selector": "span.text-[#c4c6ce].mx-2",
+    "fs": "11px",
+    "count": 1,
+    "sample": "|"
+   },
+   {
+    "selector": "span.bg-[#f0f3ff].text-[#115eaf].text-[11px]",
+    "fs": "11px",
+    "count": 1,
+    "sample": "5 Active"
+   },
+   {
+    "selector": "span.pointer-events-none.absolute.left-full",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Admissions Desk AI"
+   },
+   {
+    "selector": "span.hidden.lg:inline-flex.items-center",
+    "fs": "11.5px",
+    "count": 1,
+    "sample": "Filters"
+   },
+   {
+    "selector": "span.inline-flex.items-center.justify-center",
+    "fs": "11.5px",
+    "count": 1,
+    "sample": "100% Entitled"
+   }
+  ]
+ },
+ "home": {
+  "390": [
+   {
+    "selector": "span.px-2.py-0.5.rounded",
+    "fs": "11px",
+    "count": 10,
+    "sample": "2 Years • 4 Sems"
+   },
+   {
+    "selector": "span.mt-auto.inline-flex.items-center",
+    "fs": "11px",
+    "count": 9,
+    "sample": "3 Years"
+   },
+   {
+    "selector": "span.w-5.h-5.rounded-full",
+    "fs": "11px",
+    "count": 8,
+    "sample": "1"
+   },
+   {
+    "selector": "span.text-[11px].font-medium.px-2",
+    "fs": "11px",
+    "count": 6,
+    "sample": "High Placement Rate"
+   },
+   {
+    "selector": "span.text-[11px].text-[#43474d].block",
+    "fs": "11px",
+    "count": 6,
+    "sample": "Starts from"
+   },
+   {
+    "selector": "span.text-[11px].font-normal.text-[#43474d]",
+    "fs": "11px",
+    "count": 6,
+    "sample": "/ sem"
+   },
+   {
+    "selector": "button.h-8.shrink-0.px-3",
+    "fs": "11px",
+    "count": 6,
+    "sample": "All India"
+   },
+   {
+    "selector": "span.inline-flex.shrink-0.px-1.5",
+    "fs": "10px",
+    "count": 5,
+    "sample": "#85 NIRF"
+   },
+   {
+    "selector": "span.text-[10px].font-semibold.text-emerald-700",
+    "fs": "10px",
+    "count": 5,
+    "sample": "+85% Salary Hike"
+   },
+   {
+    "selector": "label.block.text-[11px].font-semibold",
+    "fs": "11px",
+    "count": 5,
+    "sample": "SELECT DEGREE PROGRAM"
+   },
+   {
+    "selector": "span.text-[11px].font-extrabold.text-[#115eaf]",
+    "fs": "11px",
+    "count": 5,
+    "sample": "NIT"
+   },
+   {
+    "selector": "span.truncate",
+    "fs": "11px",
+    "count": 5,
+    "sample": "Kurukshetra, Haryana"
+   },
+   {
+    "selector": "span.shrink-0.inline-flex.items-center",
+    "fs": "11px",
+    "count": 5,
+    "sample": "★ 4.1"
+   },
+   {
+    "selector": "span.text-slate-700.font-semibold",
+    "fs": "11px",
+    "count": 5,
+    "sample": "4.1"
+   },
+   {
+    "selector": "p.text-[11px].text-[#74777e].dark:text-slate-400",
+    "fs": "11px",
+    "count": 5,
+    "sample": "Deloitte India"
+   },
+   {
+    "selector": "span.text-[11px].font-medium.text-slate-500",
+    "fs": "11px",
+    "count": 4,
+    "sample": "NIRF #31"
+   },
+   {
+    "selector": "button.px-2.5.py-1.5.rounded-md",
+    "fs": "11px",
+    "count": 3,
+    "sample": "Master's (PG)"
+   },
+   {
+    "selector": "span.inline-flex.items-center.gap-1.5",
+    "fs": "10px",
+    "count": 1,
+    "sample": "Advisors Online"
+   },
+   {
+    "selector": "p.text-[10px].text-center.text-[#74777e]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "🔒 Strictly confidential. No marketing s"
+   },
+   {
+    "selector": "span.sm:hidden",
+    "fs": "11px",
+    "count": 1,
+    "sample": "UGC-DEB • NAAC A++ Approved"
+   },
+   {
+    "selector": "span",
+    "fs": "11px",
+    "count": 1,
+    "sample": "UGC-DEB entitled degrees from NAAC accre"
+   },
+   {
+    "selector": "span.text-[11px].font-bold.uppercase",
+    "fs": "11px",
+    "count": 1,
+    "sample": "LOCATION PREFERENCE"
+   },
+   {
+    "selector": "div.inline-flex.items-center.gap-2",
+    "fs": "11px",
+    "count": 1,
+    "sample": "FREE 1-ON-1 ACADEMIC ADVISORY"
+   },
+   {
+    "selector": "p.text-[11px].sm:text-xs.text-[#43474d]",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Our educational counselors offer unbiase"
+   }
+  ],
+  "1366": [
+   {
+    "selector": "span.px-2.py-0.5.rounded",
+    "fs": "11px",
+    "count": 10,
+    "sample": "2 Years • 4 Sems"
+   },
+   {
+    "selector": "span.block.text-[11px].font-medium",
+    "fs": "11px",
+    "count": 10,
+    "sample": "COURSES"
+   },
+   {
+    "selector": "span.w-5.h-5.rounded-full",
+    "fs": "11px",
+    "count": 8,
+    "sample": "1"
+   },
+   {
+    "selector": "span.text-[11px].font-medium.px-2",
+    "fs": "11px",
+    "count": 6,
+    "sample": "High Placement Rate"
+   },
+   {
+    "selector": "span.text-[11px].text-[#43474d].block",
+    "fs": "11px",
+    "count": 6,
+    "sample": "Starts from"
+   },
+   {
+    "selector": "span.text-[11px].font-normal.text-[#43474d]",
+    "fs": "11px",
+    "count": 6,
+    "sample": "/ sem"
+   },
+   {
+    "selector": "span.text-[10px].font-semibold.text-emerald-700",
+    "fs": "10px",
+    "count": 5,
+    "sample": "+85% Salary Hike"
+   },
+   {
+    "selector": "label.block.text-[11px].font-semibold",
+    "fs": "11px",
+    "count": 5,
+    "sample": "SELECT DEGREE PROGRAM"
+   },
+   {
+    "selector": "span.inline-flex.items-center.px-2",
+    "fs": "11px",
+    "count": 5,
+    "sample": "#85 NIRF"
+   },
+   {
+    "selector": "p.text-[11px].text-[#74777e].dark:text-slate-400",
+    "fs": "11px",
+    "count": 5,
+    "sample": "Deloitte India"
+   },
+   {
+    "selector": "span.text-[11px].font-medium.text-slate-500",
+    "fs": "11px",
+    "count": 4,
+    "sample": "NIRF #31"
+   },
+   {
+    "selector": "button.px-2.5.py-1.5.rounded-md",
+    "fs": "11px",
+    "count": 3,
+    "sample": "Master's (PG)"
+   },
+   {
+    "selector": "span.bg-amber-100.text-amber-800.text-[10px]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "NEW"
+   },
+   {
+    "selector": "span.inline-flex.items-center.gap-1.5",
+    "fs": "10px",
+    "count": 1,
+    "sample": "Advisors Online"
+   },
+   {
+    "selector": "p.text-[10px].text-center.text-[#74777e]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "🔒 Strictly confidential. No marketing s"
+   },
+   {
+    "selector": "span.block.text-[10px].text-[#555960]",
+    "fs": "10px",
+    "count": 1,
+    "sample": "100% Free Advice"
+   },
+   {
+    "selector": "span",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Get Free Counselling"
+   },
+   {
+    "selector": "span.hidden.sm:inline",
+    "fs": "11px",
+    "count": 1,
+    "sample": "UGC-DEB • AICTE • NAAC A++ ACCREDITED UN"
+   },
+   {
+    "selector": "span.text-[11px].font-bold.tracking-wider",
+    "fs": "11px",
+    "count": 1,
+    "sample": "RECOMMENDATION"
+   },
+   {
+    "selector": "div.inline-flex.items-center.gap-2",
+    "fs": "11px",
+    "count": 1,
+    "sample": "FREE 1-ON-1 ACADEMIC ADVISORY"
+   },
+   {
+    "selector": "span.pointer-events-none.absolute.left-full",
+    "fs": "11px",
+    "count": 1,
+    "sample": "Admissions Desk AI"
+   }
+  ]
+ }
+}

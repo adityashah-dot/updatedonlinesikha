@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import {
   Search,
   ArrowRight,
@@ -38,8 +39,13 @@ import {
   Briefcase,
   Fuel,
   Trophy,
+  Flame,
+  ScrollText,
+  IndianRupee,
+  GraduationCap,
 } from 'lucide-react';
 import { DEGREEFYD_LPU_API } from '../data/apiData';
+import { BlogsListSection } from './BlogsListSection';
 
 interface UniversitiesViewProps {
   onOpenApply: (courseId?: string) => void;
@@ -48,12 +54,12 @@ interface UniversitiesViewProps {
 }
 
 const TRENDING = [
-  { icon: '🔥', label: 'NAAC A++ Only', id: 'naac' },
-  { icon: '📜', label: 'UGC-DEB 100% Entitled', id: 'ugc' },
-  { icon: '💰', label: 'Fees under ₹1 Lakh', id: 'fees' },
-  { icon: '🎓', label: 'Online MBA Top Picks', id: 'mba' },
-  { icon: '💼', label: '100% Placement Support', id: 'placement' },
-  { icon: '💳', label: 'Zero Cost EMI', id: 'emi' },
+  { icon: Flame, label: 'NAAC A++ Only', id: 'naac' },
+  { icon: ScrollText, label: 'UGC-DEB 100% Entitled', id: 'ugc' },
+  { icon: IndianRupee, label: 'Fees under ₹1 Lakh', id: 'fees' },
+  { icon: GraduationCap, label: 'Online MBA Top Picks', id: 'mba' },
+  { icon: Briefcase, label: '100% Placement Support', id: 'placement' },
+  { icon: CreditCard, label: 'Zero Cost EMI', id: 'emi' },
 ];
 
 const DEGREE_FILTERS = [
@@ -61,6 +67,8 @@ const DEGREE_FILTERS = [
   'Undergraduate (BBA, BCA, BA)',
   'Executive & PG Diploma',
 ];
+
+const TOOLBAR_QUICK_CHIPS = ['100% Entitled', 'NAAC A++', 'EMI Available', 'UGC-DEB'];
 
 const APPROVAL_FILTERS = [
   { label: 'UGC-DEB Approved', count: 48, checked: true },
@@ -234,6 +242,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
   onOpenBrochure,
 }) => {
   const navigate = useNavigate();
+  const isDesktop = useMediaQuery('(min-width: 768px)');
   const [view, setView] = useState<'list' | 'grid'>('list');
   const [compared, setCompared] = useState<string[]>(['lpu-online', 'cu-online']);
   const [activeTrending, setActiveTrending] = useState<string | null>(null);
@@ -245,6 +254,13 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
   const [examChecked, setExamChecked] = useState<boolean[]>([true, false]);
   const [paymentChecked, setPaymentChecked] = useState<boolean[]>([true, true]);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const [quickChips, setQuickChips] = useState<string[]>([]);
+
+  const toggleQuickChip = (chip: string) => {
+    setQuickChips((prev) =>
+      prev.includes(chip) ? prev.filter((c) => c !== chip) : [...prev, chip]
+    );
+  };
 
   const resetFilters = () => {
     setDegreeChecked([true, true, false]);
@@ -418,12 +434,12 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
   return (
     <div className="pb-20 md:pb-8">
       {/* ================= HERO & DISCOVERY SEARCH BAR ================= */}
-      <section className="relative overflow-hidden border-b border-[#e7eeff] bg-[#f2f6fb] pt-8 pb-10 shadow-[0_18px_45px_rgba(15,23,42,0.02)]">
+      <section className="uv-hero relative overflow-hidden border-b border-[#e7eeff] bg-[#f2f6fb] pt-4 pb-5 sm:pt-8 sm:pb-10 shadow-[0_18px_45px_rgba(15,23,42,0.02)]">
         <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-r from-[#eaf3ff]/80 via-[#f3f8ff]/40 to-[#edfdf7]/50 blur-2xl" />
         <div className="absolute -left-12 top-10 h-36 w-36 rounded-full bg-[#93c5fd]/10 blur-3xl" />
         <div className="absolute -right-12 bottom-0 h-40 w-40 rounded-full bg-[#a7f3d0]/10 blur-3xl" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="uv-search-shell relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-7">
             <div className="mb-3 text-[11px] font-medium text-[#43474d]">
               <span className="text-[#115eaf] font-semibold">Accredited by UGC, AICTE &amp; NAAC</span>
@@ -440,14 +456,14 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
           </div>
 
           {/* Search Console */}
-          <div className="bg-white rounded-2xl p-4 md:p-5 border border-[#d5e3ff] shadow-lg max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
+          <div className="uv-search-card bg-white rounded-2xl p-4 md:p-5 border border-[#d5e3ff] shadow-lg max-w-4xl mx-auto">
+            <div className="uv-search-fields grid grid-cols-1 md:grid-cols-12 gap-3">
               <div className="md:col-span-6 relative flex items-center">
                 <Search className="absolute left-3.5 text-[#115eaf] w-5 h-5" />
                 <input
                   type="text"
-                  placeholder="Search university, degree (e.g. LPU, Amity, Online MBA)..."
-                  className="w-full pl-10 pr-4 py-3 bg-[#f9f9ff] rounded-xl border border-[#c4c6ce] text-[#000f22] placeholder:text-[#74777e] text-sm focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all font-normal"
+                  placeholder="Search university or degree"
+                  className="uv-field w-full pl-10 pr-4 py-3 min-h-[48px] bg-[#f9f9ff] rounded-xl border border-[#c4c6ce] text-[#000f22] placeholder:text-[#74777e] text-base sm:text-sm focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all font-normal"
                 />
               </div>
 
@@ -467,7 +483,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                     <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5" />
                   </svg>
                 </span>
-                <select className="w-full pl-10 pr-8 py-3 bg-[#f9f9ff] rounded-xl border border-[#c4c6ce] text-[#000f22] text-sm focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all appearance-none cursor-pointer font-normal">
+                <select className="uv-field w-full pl-10 pr-8 py-3 min-h-[48px] bg-[#f9f9ff] rounded-xl border border-[#c4c6ce] text-[#000f22] text-base sm:text-sm focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all appearance-none cursor-pointer font-normal">
                   <option value="all">All Degree Categories</option>
                   <option value="management">Management (MBA, BBA, Executive)</option>
                   <option value="technology">Technology &amp; IT (MCA, BCA, M.Sc)</option>
@@ -477,40 +493,45 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                 <ChevronDown className="absolute right-3 text-[#74777e] pointer-events-none w-4 h-4" />
               </div>
 
-              <div className="md:col-span-2">
-                <button className="w-full h-full py-3 px-4 bg-[#115eaf] hover:bg-[#004689] text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all">
-                  <span>Find Univs</span>
+              <div className="md:col-span-2 mt-[2px] md:mt-0">
+                <button className="uv-find-btn w-full h-full min-h-[48px] py-3 px-4 bg-[#115eaf] hover:bg-[#004689] text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all">
+                  <span>Find Universities</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
 
             {/* Trending pills */}
-            <div className="flex items-center gap-2 pt-3.5 mt-3 border-t border-[#e7eeff] overflow-x-auto hide-scrollbar">
-              <span className="text-[11px] text-[#74777e] uppercase font-semibold whitespace-nowrap">
+            <div className="uv-trending flex items-center gap-2 pt-3.5 mt-3.5 md:mt-3 border-t border-[#e7eeff]">
+              <span className="text-[11px] text-[#74777e] uppercase font-semibold whitespace-nowrap shrink-0">
                 Trending:
               </span>
-              {TRENDING.map((t) => (
-                <button
-                  key={t.id}
-                  onClick={() => setActiveTrending(activeTrending === t.id ? null : t.id)}
-                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] transition-colors whitespace-nowrap font-medium border ${
-                    activeTrending === t.id
-                      ? 'bg-[#115eaf] text-white border-[#115eaf]'
-                      : 'bg-white text-[#000f22] border-[#d5e3ff] hover:bg-[#f0f3ff] hover:border-[#115eaf]'
-                  }`}
-                >
-                  <span>{t.icon}</span>
-                  <span>{t.label}</span>
-                </button>
-              ))}
+              <div className="flex items-center gap-2 flex-1 min-w-0 overflow-x-auto hide-scrollbar">
+                {TRENDING.map((t) => {
+                  const Icon = t.icon;
+                  return (
+                    <button
+                      key={t.id}
+                      onClick={() => setActiveTrending(activeTrending === t.id ? null : t.id)}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] rounded-full text-[11px] transition-colors whitespace-nowrap shrink-0 font-medium border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-1 ${
+                        activeTrending === t.id
+                          ? 'bg-[#115eaf] text-white border-[#115eaf]'
+                          : 'bg-white text-[#000f22] border-[#d5e3ff] hover:bg-[#f0f3ff] hover:border-[#115eaf]'
+                      }`}
+                    >
+                      <Icon className="w-3.5 h-3.5 shrink-0" />
+                      <span>{t.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ================= MAIN: FILTERS + LISTING ================= */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-[#f3f6fb] rounded-t-[28px]">
+      <main className="uv-listing max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-8 bg-[#f3f6fb] rounded-t-[18px] sm:rounded-t-[28px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* LEFT SIDEBAR FILTERS */}
           <aside className="lg:col-span-3 bg-white rounded-2xl border border-[#d5e3ff] p-5 shadow-xs sticky top-20 hidden lg:block">
@@ -533,64 +554,152 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
           </aside>
 
           {/* RIGHT LISTINGS */}
-          <section className="lg:col-span-9 space-y-5" id="university-listings-container">
+          <section className="lg:col-span-9 space-y-3 sm:space-y-5" id="university-listings-container">
             {/* Toolbar */}
-            <div className="bg-white p-3.5 px-4 rounded-xl border border-[#d5e3ff] flex flex-wrap items-center justify-between gap-3 shadow-xs">
+            <div>
+            {/* Toolbar - mobile */}
+            <div className="md:hidden bg-white border border-[#dfe6ec] rounded-xl p-2.5">
               <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-[#000f22]">
-                  Showing {DEGREEFYD_LPU_API.onlineUniversities.length} Verified Universities
-                </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#c4c6ce]" />
-                <span className="text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-semibold">
-                  100% Entitled
-                </span>
-              </div>
-              <div className="flex items-center gap-3 ml-auto">
                 <button
+                  type="button"
                   onClick={() => setFiltersOpen(true)}
-                  className="lg:hidden inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#f0f3ff] hover:bg-[#dee8ff] text-[#115eaf] text-xs font-semibold border border-[#d5e3ff] transition-colors min-h-[44px]"
+                  aria-label="Open filters"
+                  className="shrink-0 h-11 px-3.5 inline-flex items-center gap-2 border border-[#dfe6ec] rounded-[10px] bg-white text-sm font-medium text-[#14171a] cursor-pointer"
                 >
-                  <SlidersHorizontal className="w-4 h-4" />
-                  <span>Filters</span>
+                  <SlidersHorizontal className="w-4 h-4 text-[#115eaf]" />
+                  <span>Filter</span>
+                  {quickChips.length > 0 && (
+                    <span className="min-w-[18px] h-[18px] px-1.5 rounded-full bg-[#115eaf] text-white text-[11px] flex items-center justify-center">
+                      {quickChips.length}
+                    </span>
+                  )}
                 </button>
-                <div className="flex items-center gap-2">
-                  <span className="text-[11px] text-[#74777e] font-medium hidden sm:inline">
-                    Sort By:
-                  </span>
-                  <select className="py-1.5 px-3 bg-white rounded-lg border border-[#c4c6ce] text-[#000f22] text-xs font-medium focus:ring-1 focus:ring-[#115eaf] cursor-pointer">
+
+                <div className="relative flex-1 min-w-0">
+                  <select
+                    aria-label="Sort by"
+                    className="w-full h-11 border border-[#dfe6ec] rounded-[10px] pl-3 pr-8 bg-white text-[13px] font-medium text-[#14171a] appearance-none cursor-pointer truncate focus:outline-none"
+                  >
                     <option>NIRF Ranking (Top First)</option>
                     <option>Fee: Low to High</option>
-                    <option>Student Rating</option>
-                    <option>Most Applied Programs</option>
+                    <option>Fee: High to Low</option>
+                    <option>Highest CTC</option>
                   </select>
+                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#74777e] pointer-events-none" />
                 </div>
-                <div className="flex items-center border border-[#c4c6ce] rounded-lg p-0.5 bg-[#f0f3ff]">
+
+                <div className="shrink-0 flex border border-[#dfe6ec] rounded-[10px] overflow-hidden">
                   <button
+                    type="button"
                     onClick={() => setView('list')}
-                    title="List View"
-                    aria-label="Switch to List View"
-                    className={`p-1.5 rounded-md transition-all duration-150 cursor-pointer flex items-center justify-center ${
-                      view === 'list'
-                        ? 'bg-[#115eaf] text-white shadow-xs'
-                        : 'text-[#74777e] hover:text-[#000f22] hover:bg-[#dee8ff]'
+                    aria-label="List view"
+                    aria-pressed={view === 'list'}
+                    className={`w-11 h-11 flex items-center justify-center cursor-pointer ${
+                      view === 'list' ? 'bg-[#115eaf] text-white' : 'bg-white text-[#74777e]'
                     }`}
                   >
                     <List className="w-4 h-4" />
                   </button>
                   <button
+                    type="button"
                     onClick={() => setView('grid')}
-                    title="Grid View"
-                    aria-label="Switch to Grid View"
-                    className={`p-1.5 rounded-md transition-all duration-150 cursor-pointer flex items-center justify-center ${
-                      view === 'grid'
-                        ? 'bg-[#115eaf] text-white shadow-xs'
-                        : 'text-[#74777e] hover:text-[#000f22] hover:bg-[#dee8ff]'
+                    aria-label="Grid view"
+                    aria-pressed={view === 'grid'}
+                    className={`w-11 h-11 flex items-center justify-center cursor-pointer ${
+                      view === 'grid' ? 'bg-[#115eaf] text-white' : 'bg-white text-[#74777e]'
                     }`}
                   >
                     <LayoutGrid className="w-4 h-4" />
                   </button>
                 </div>
               </div>
+
+              <div className="flex gap-2 mt-2.5 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                {TOOLBAR_QUICK_CHIPS.map((chip) => {
+                  const on = quickChips.includes(chip);
+                  return (
+                    <button
+                      key={chip}
+                      type="button"
+                      onClick={() => toggleQuickChip(chip)}
+                      aria-pressed={on}
+                      className={`tap-chip flex-none h-8 px-3.5 rounded-2xl border text-xs font-medium whitespace-nowrap cursor-pointer transition-colors ${
+                        on
+                          ? 'bg-emerald-50 border-emerald-600 text-emerald-700'
+                          : 'bg-white border-[#dfe6ec] text-[#14171a]'
+                      }`}
+                    >
+                      {chip}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Toolbar - desktop */}
+            <div className="hidden md:block">
+            <div className="bg-[#eff4fb] border border-[#dfe8ff] rounded-[16px] sm:rounded-[20px] p-2 shadow-[0_8px_24px_rgba(17,94,175,0.04)]">
+              <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)_auto] items-stretch gap-2">
+                <div className="h-[50px] rounded-[14px] border border-[#dfe8ff] bg-[#f7f9fd] flex items-center justify-center shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
+                  <button
+                    onClick={() => setFiltersOpen(true)}
+                    className="lg:hidden inline-flex items-center gap-1.5 font-semibold text-[11.5px] text-[#0f172a]"
+                  >
+                    <SlidersHorizontal className="w-3.5 h-3.5 text-[#115eaf]" />
+                    <span>Filters</span>
+                  </button>
+                  <span className="hidden lg:inline-flex items-center gap-1.5 font-semibold text-[11.5px] text-[#0f172a]">
+                    <SlidersHorizontal className="w-3.5 h-3.5 text-[#115eaf]" />
+                    Filters
+                  </span>
+                </div>
+
+                <div className="h-[50px] rounded-[14px] border border-[#dfe8ff] bg-[#edf7f2] flex items-center justify-center px-1.5 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]">
+                  <span className="inline-flex items-center justify-center rounded-[9px] border border-[#bfe7d5] bg-[#dff7eb] px-2 py-1 text-[11.5px] font-bold text-[#0f766e] tracking-tight leading-none shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]">
+                    100% Entitled
+                  </span>
+                </div>
+
+                <div className="h-[50px] rounded-[14px] border border-[#dfe8ff] bg-[#f7f9fd] flex items-center gap-1.5 px-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] overflow-hidden">
+                  <div className="flex-1 min-w-0">
+                    <select className="h-full w-full border-0 bg-transparent rounded-[10px] text-[#000f22] text-[11px] font-medium focus:outline-none focus:ring-0 cursor-pointer appearance-none px-1 leading-none">
+                      <option>NIRF Ranking (Top First)</option>
+                      <option>Fee: Low to High</option>
+                      <option>Student Rating</option>
+                      <option>Most Applied Programs</option>
+                    </select>
+                  </div>
+
+                  <div className="flex items-center border border-[#c9d9ff] rounded-[9px] p-0.5 bg-[#edf4ff] shrink-0 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
+                    <button
+                      onClick={() => setView('list')}
+                      title="List View"
+                      aria-label="Switch to List View"
+                      className={`w-11 h-11 rounded-[7px] transition-all duration-150 cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-1 ${
+                        view === 'list'
+                          ? 'bg-[#115eaf] text-white shadow-sm'
+                          : 'text-[#74777e] bg-transparent hover:bg-white'
+                      }`}
+                    >
+                      <List className="w-3.5 h-3.5" />
+                    </button>
+                    <button
+                      onClick={() => setView('grid')}
+                      title="Grid View"
+                      aria-label="Switch to Grid View"
+                      className={`w-11 h-11 rounded-[7px] transition-all duration-150 cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-1 ${
+                        view === 'grid'
+                          ? 'bg-[#115eaf] text-white shadow-sm'
+                          : 'text-[#74777e] bg-transparent hover:bg-white'
+                      }`}
+                    >
+                      <LayoutGrid className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
             </div>
 
             {/* University cards */}
@@ -605,17 +714,157 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                 <article
                   key={u.id}
                   onClick={() => navigate(`/universities/${u.id}`)}
-                  className="bg-white rounded-2xl border border-[#d5e3ff] p-4 md:p-5 shadow-xs hover:shadow-xl hover:border-[#115eaf] transition-all duration-300 relative flex flex-col cursor-pointer"
+                  className="bg-white rounded-2xl border border-[#d5e3ff] p-3 sm:p-4 md:p-5 shadow-xs hover:shadow-xl hover:border-[#115eaf] transition-all duration-300 relative flex flex-col cursor-pointer"
                 >
+                  {/* ===== Mobile card ===== */}
+                  {!isDesktop && (
+                  <div className="flex flex-col">
+                    <label
+                      className="absolute top-1 right-1 w-11 h-11 flex items-center justify-center cursor-pointer select-none"
+                      title="Compare"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <input
+                        type="checkbox"
+                        aria-label={`Add ${u.name} to compare`}
+                        checked={compared.includes(u.id)}
+                        onChange={() => toggleCompare(u.id)}
+                        className="w-5 h-5 rounded accent-[#115eaf] cursor-pointer"
+                      />
+                    </label>
+
+                    {/* Head: logo + name + location */}
+                    <div className="flex gap-3 pr-9">
+                      <div className="w-[60px] h-[60px] shrink-0 rounded-lg border border-[#e7eeff] bg-white flex items-center justify-center overflow-hidden">
+                        {u.logoImage ? (
+                          <img
+                            src={u.logoImage}
+                            alt={`${u.short} logo`}
+                            className="w-full h-full object-contain p-1"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).style.display = 'none';
+                            }}
+                          />
+                        ) : u.isLpu ? (
+                          <img
+                            src={DEGREEFYD_LPU_API.hero.logoImage}
+                            alt="LPU logo"
+                            className="w-full h-full object-contain p-1"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).style.display = 'none';
+                            }}
+                          />
+                        ) : (
+                          <span className="text-[13px] font-semibold text-[#115eaf]">{u.short}</span>
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <h2 className="text-[17px] font-semibold text-[#000f22] leading-[1.3] line-clamp-2" title={u.name}>
+                          {u.name}
+                        </h2>
+                        <p className="text-[12px] text-[#74777e] mt-[3px]">
+                          {u.location} &middot; Est. {u.established}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Accreditations chips */}
+                    <div className="flex gap-1.5 overflow-x-auto mt-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                      <span className="flex-none flex items-center h-6 px-2.5 rounded-full bg-amber-50 text-amber-900 border border-amber-200/60 text-[11px] font-medium whitespace-nowrap">
+                        {u.naac}
+                      </span>
+                      {u.approvals.map((a) => (
+                        <span
+                          key={a}
+                          className="flex-none flex items-center h-6 px-2.5 rounded-full bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] text-[11px] font-medium whitespace-nowrap"
+                        >
+                          {a}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Ranking */}
+                    <p className="text-[12px] font-medium text-[#B45309] mt-2.5">{u.rankNote}</p>
+
+                    {/* Fee box */}
+                    <div className="bg-[#f9f9ff] border border-[#e7eeff] rounded-lg px-3 py-2.5 mt-3 flex items-center justify-between gap-2 flex-wrap">
+                      <div>
+                        <span className="block text-[12px] text-[#74777e] font-normal">Total fee</span>
+                        <span className="text-xl font-semibold text-[#000f22]">
+                          {u.feeLabel} <span className="text-[12px] text-[#74777e] font-normal">onwards</span>
+                        </span>
+                      </div>
+                      <span className="text-[11px] font-medium text-emerald-800 bg-emerald-50 border border-emerald-200/60 rounded-full px-2.5 py-1">
+                        EMI from {u.emi}
+                      </span>
+                    </div>
+
+                    {/* Facts */}
+                    <div className="grid grid-cols-3 gap-2 mt-3">
+                      {u.specs.slice(0, 3).map((s) => (
+                        <div key={s.label} className="min-w-0">
+                          <span className="block text-[11px] text-[#74777e]">{s.label}</span>
+                          <span
+                            className={`text-[13px] font-semibold ${
+                              s.highlight ? 'text-emerald-700' : 'text-[#000f22]'
+                            }`}
+                          >
+                            {s.value}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Popular tracks */}
+                    <div className="flex gap-2 mt-3 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                      {u.tracks.map((t) => (
+                        <span
+                          key={t}
+                          className="flex-none border border-[#e7eeff] rounded-[14px] px-3 py-1 text-[12px] text-[#000f22] whitespace-nowrap"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex gap-2.5 mt-3.5">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onOpenBrochure();
+                        }}
+                        className="flex-1 h-11 rounded-lg bg-white border border-[#115eaf] text-[#115eaf] text-sm font-medium hover:bg-[#f0f3ff] transition-colors"
+                      >
+                        Brochure
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/universities/${u.id}`);
+                        }}
+                        className="flex-1 h-11 rounded-lg bg-[#115eaf] border border-[#115eaf] text-white text-sm font-medium hover:bg-[#084a8c] transition-colors"
+                      >
+                        View Details
+                      </button>
+                    </div>
+                  </div>
+                  )}
+
+                  {/* ===== Desktop card ===== */}
+                  {isDesktop && (
+                  <div className="flex flex-col flex-1">
                   {/* Top row: identity + fee */}
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 pb-2.5 border-b border-[#e7eeff]">
                     <div className="flex items-start gap-3">
-                      <div className="w-14 h-14 rounded-xl bg-[#f0f3ff] border border-[#d5e3ff] flex flex-col items-center justify-center shrink-0 shadow-xs overflow-hidden">
+                      <div className="w-[72px] h-[72px] sm:w-14 sm:h-14 rounded-xl bg-[#f0f3ff] border border-[#d5e3ff] flex flex-col items-center justify-center shrink-0 shadow-xs overflow-hidden">
                         {u.logoImage ? (
                           <img
                             src={u.logoImage}
                             alt={`${u.short} Logo`}
-                            className="w-12 h-12 object-contain rounded-lg bg-white p-0.5"
+                            className="w-16 h-16 sm:w-12 sm:h-12 object-contain rounded-lg bg-white p-0.5"
                             onError={(e) => {
                               (e.target as HTMLImageElement).style.display = 'none';
                             }}
@@ -624,7 +873,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           <img
                             src={DEGREEFYD_LPU_API.hero.logoImage}
                             alt="LPU Logo"
-                            className="w-12 h-12 object-contain rounded-lg bg-white p-0.5"
+                            className="w-16 h-16 sm:w-12 sm:h-12 object-contain rounded-lg bg-white p-0.5"
                             onError={(e) => {
                               (e.target as HTMLImageElement).style.display = 'none';
                             }}
@@ -753,7 +1002,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
 
                     <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto lg:shrink-0">
                       <label 
-                        className="flex items-center gap-1.5 text-[13px] font-medium text-[#43474d] cursor-pointer sm:mr-2 select-none hover:text-[#000f22] py-1.5 min-h-[40px]"
+                        className="flex items-center gap-1.5 text-[13px] font-medium text-[#43474d] cursor-pointer sm:mr-2 select-none hover:text-[#000f22] py-1.5 min-h-[44px]"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <input
@@ -769,7 +1018,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           e.stopPropagation();
                           onOpenBrochure();
                         }}
-                        className="px-3.5 py-1.5 rounded-xl bg-[#f0f3ff] hover:bg-[#dee8ff] text-[#000f22] text-xs font-semibold border border-[#d5e3ff] transition-colors flex items-center gap-1 min-h-[40px]"
+                        className="px-3.5 py-1.5 rounded-xl bg-[#f0f3ff] hover:bg-[#dee8ff] text-[#000f22] text-xs font-semibold border border-[#d5e3ff] transition-colors flex items-center gap-1 min-h-[44px]"
                       >
                         <Download className="w-4 h-4" />
                         <span>Brochure</span>
@@ -779,40 +1028,40 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           e.stopPropagation();
                           onOpenApply();
                         }}
-                        className="px-4 py-1.5 rounded-xl bg-[#115eaf] hover:bg-[#004689] text-white text-xs font-semibold transition-all shadow-sm active:scale-95 flex items-center gap-1 min-h-[40px]"
+                        className="px-4 py-1.5 rounded-xl bg-[#115eaf] hover:bg-[#004689] text-white text-xs font-semibold transition-all shadow-sm active:scale-95 flex items-center gap-1 min-h-[44px]"
                       >
                         <span>Apply Now</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   </div>
+                  </div>
+                  )}
                 </article>
               ))}
             </div>
 
             {/* Pagination */}
             <div className="flex items-center justify-between pt-6 border-t border-[#e7eeff]">
-              <button className="px-3 sm:px-4 py-2 rounded-lg bg-white border border-[#d5e3ff] text-[#43474d] hover:text-[#000f22] text-xs font-medium flex items-center gap-1 transition-colors min-h-[44px] shrink-0">
+              <button aria-label="Previous page" className="px-2 sm:px-4 py-2 rounded-lg bg-white border border-[#d5e3ff] text-[#43474d] hover:text-[#000f22] text-xs font-medium flex items-center justify-center gap-1 transition-colors min-h-[44px] min-w-[44px] shrink-0">
                 <ChevronLeft className="w-4 h-4" />
                 <span className="hidden sm:inline">Previous</span>
-                <span className="sm:hidden">Prev</span>
               </button>
-              <div className="flex items-center gap-1 mx-2">
-                <button className="w-9 h-9 shrink-0 rounded-lg bg-[#115eaf] text-white text-xs font-semibold">1</button>
-                <button className="w-9 h-9 shrink-0 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
+              <div className="flex items-center gap-0.5 sm:gap-1 mx-1 sm:mx-2">
+                <button className="w-11 h-11 md:w-9 md:h-9 shrink-0 rounded-lg bg-[#115eaf] text-white text-xs font-semibold">1</button>
+                <button className="w-11 h-11 md:w-9 md:h-9 shrink-0 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
                   2
                 </button>
-                <button className="w-9 h-9 shrink-0 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
+                <button className="w-11 h-11 md:w-9 md:h-9 shrink-0 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
                   3
                 </button>
-                <span className="px-1 sm:px-2 text-[#74777e]">...</span>
-                <button className="w-9 h-9 shrink-0 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
+                <span className="hidden sm:inline px-1 sm:px-2 text-[#74777e]">...</span>
+                <button className="w-11 h-11 md:w-9 md:h-9 shrink-0 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
                   8
                 </button>
               </div>
-              <button className="px-3 sm:px-4 py-2 rounded-lg bg-white border border-[#d5e3ff] text-[#115eaf] text-xs font-medium flex items-center gap-1 hover:bg-[#f0f3ff] transition-colors min-h-[44px] shrink-0">
+              <button aria-label="Next page" className="px-2 sm:px-4 py-2 rounded-lg bg-white border border-[#d5e3ff] text-[#115eaf] text-xs font-medium flex items-center justify-center gap-1 hover:bg-[#f0f3ff] transition-colors min-h-[44px] min-w-[44px] shrink-0">
                 <span className="hidden sm:inline">Next</span>
-                <span className="sm:hidden">Next</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -835,7 +1084,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
             </div>
             <button
               onClick={onOpenHelpDesk}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#115eaf] text-white text-xs font-semibold hover:bg-[#004689] shadow-sm transition-all active:scale-95 shrink-0 self-start md:self-auto"
+              className="inline-flex items-center gap-2 px-4 py-2 min-h-[44px] rounded-xl bg-[#115eaf] text-white text-xs font-semibold hover:bg-[#004689] shadow-sm transition-all active:scale-95 shrink-0 self-start md:self-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-1"
             >
               <span>Compare Full Details</span>
               <ExternalLink className="w-3.5 h-3.5" />
@@ -851,6 +1100,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
               </p>
             </div>
           ) : (
+            <>
             <div className="overflow-x-auto border border-[#c4c6ce] rounded-lg mt-4">
             <table className="w-full text-left border-collapse text-[13px] min-w-[560px]">
               <thead>
@@ -891,6 +1141,10 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
               </tbody>
             </table>
           </div>
+          <p className="md:hidden text-[12px] text-[#74777e] font-normal pt-2 flex items-center gap-1">
+            <span>Swipe the table horizontally to compare all columns →</span>
+          </p>
+            </>
           )}
           {compareList.length > 0 && (
             <p className="text-[12px] text-[#74777e] font-normal pt-2.5">
@@ -1010,6 +1264,12 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
           </div>
         </div>
       </section>
+
+      {/* ================= BLOGS ================= */}
+      <BlogsListSection
+        onOpenHelpDesk={onOpenHelpDesk}
+        className="max-w-7xl mx-auto my-8 bg-white rounded-2xl border border-[#d5e3ff] p-6 md:p-8 shadow-xs"
+      />
 
       {/* ================= MOBILE FULL-SCREEN FILTER OVERLAY ================= */}
       {filtersOpen && (

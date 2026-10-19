@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { TableOfContents } from './TableOfContents';
 import { ProgrammeCardsSection, ProgrammeCardData } from './ProgrammeCardsSection';
-import { BlogsSection } from './BlogsSection';
+import { BlogsListSection } from './BlogsListSection';
 import { CompareCollegesSection } from './CompareCollegesSection';
 import { AMITY_PAGE_CONTENT as AMITY } from '../data/universities/amityContent';
 import { AMITY_UNIVERSITY_DATA } from '../data/universities/amity';
@@ -572,9 +572,9 @@ export const AmityCoursesView: React.FC<AmityCoursesViewProps> = ({
           </section>
 
           {/* 9. Blogs */}
-          <BlogsSection
+          <BlogsListSection
             onOpenHelpDesk={onOpenHelpDesk}
-            description={AMITY.blogsIntro}
+            sectionId="blogs"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
           />
 

@@ -121,7 +121,7 @@ export const ProgrammeCardsSection: React.FC<ProgrammeCardsSectionProps> = ({
                       e.stopPropagation();
                       onOpenBrochure();
                     }}
-                    className="h-7 px-1.5 rounded-md text-[10px] font-semibold bg-white text-[#115eaf] border border-[#115eaf] hover:bg-[#f0f3ff] transition-colors flex items-center justify-center gap-1"
+                    className="min-h-[44px] px-1.5 rounded-md text-[10px] font-semibold bg-white text-[#115eaf] border border-[#115eaf] hover:bg-[#f0f3ff] transition-colors flex items-center justify-center gap-1"
                   >
                     <Download className="w-3 h-3" />
                     Brochure
@@ -134,7 +134,7 @@ export const ProgrammeCardsSection: React.FC<ProgrammeCardsSectionProps> = ({
                       e.stopPropagation();
                       onOpenApply();
                     }}
-                    className="h-7 px-1.5 rounded-md text-[10px] font-semibold bg-[#115eaf] text-white hover:bg-[#004689] transition-colors flex items-center justify-center gap-1 active:scale-95"
+                    className="min-h-[44px] px-1.5 rounded-md text-[10px] font-semibold bg-[#115eaf] text-white hover:bg-[#004689] transition-colors flex items-center justify-center gap-1 active:scale-95"
                   >
                     Apply Now
                     <ArrowRight className="w-2.5 h-2.5" />

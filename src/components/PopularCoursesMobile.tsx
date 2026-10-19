@@ -7,7 +7,6 @@ import {
   BookOpen,
   Clock,
   ChevronDown,
-  Laptop,
   GraduationCap,
 } from 'lucide-react';
 
@@ -64,7 +63,7 @@ export const PopularCoursesMobile: React.FC = () => {
       <button
         type="button"
         onClick={goCourses}
-        className="group w-full h-full flex flex-col items-center gap-2.5 p-3 bg-white rounded-[14px] border border-[#e3e8f2] shadow-[0_2px_8px_rgba(0,15,34,0.05)] transition-all duration-150 active:scale-[0.96] active:border-[#115eaf] focus-visible:outline-3 focus-visible:outline-[#115eaf] focus-visible:outline-offset-2 cursor-pointer"
+        className="group w-full h-full flex flex-col items-center gap-2.5 p-3 bg-white rounded-[14px] border border-[#e3e8f2] shadow-[0_2px_8px_rgba(0,15,34,0.05)] transition-all duration-300 active:scale-[0.96] active:border-[#115eaf] focus-visible:outline-3 focus-visible:outline-[#115eaf] focus-visible:outline-offset-2 cursor-pointer"
       >
         <CourseIconBox type={c.icon} tile={c.tile} />
         <h3 className="m-0 min-h-[2.7em] flex items-center justify-center text-center text-xs leading-[1.35] font-semibold text-[#000f22] break-words">
@@ -98,7 +97,7 @@ export const PopularCoursesMobile: React.FC = () => {
       >
         <span>{open ? 'Show less' : 'View all courses'}</span>
         <ChevronDown
-          className={`w-4 h-4 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
           strokeWidth={1.8}
         />
       </button>
@@ -106,7 +105,6 @@ export const PopularCoursesMobile: React.FC = () => {
       <div className="flex items-center justify-center gap-1.5 mt-4 text-[11px] text-[#74777e]">
         <GraduationCap className="w-3.5 h-3.5 text-[#115eaf]" />
         <span>UGC-DEB entitled degrees from NAAC accredited universities</span>
-        <Laptop className="w-3.5 h-3.5 text-[#115eaf]" />
       </div>
     </section>
   );
