@@ -525,8 +525,7 @@ export const AMITY_PAGE_CONTENT = {
     },
 
     applicationProcess: {
-      title: 'Amity University Online Application Process 2026',
-      intro:
+      title: 'Amity University Online Application Process 2026',      intro:
         'Amity Online application process is entirely web-based for the 2026 academic session. Candidates can apply from the comfort of their homes using any device. It is important to keep all digital copies of certificates ready before starting.',
       steps: [
         { title: 'Visit the Official Website', description: 'Go to the Amity Online website at amityonline.com.' },
@@ -536,6 +535,36 @@ export const AMITY_PAGE_CONTENT = {
         { title: 'Upload Documents', description: 'Attach clear scanned copies of all required certificates and ID proofs.' },
         { title: 'Pay the Application Fee', description: 'Submit the non-refundable application fee of ₹1,100 online.' },
         { title: 'Review & Submit', description: 'Candidates should review all details carefully and submit the application form.' },
+      ],
+    },
+
+    // PLACEHOLDER — replace with Amity Online's real examination pattern.
+    // See qa/PLACEHOLDER_CONTENT.md row AM-A-01.
+    examination: {
+      title: 'Amity University Online Examination Pattern',
+      intro:
+        'Amity University Online conducts semester-based examinations through a secure online proctored system. The evaluation combines continuous internal assessments with end-term examinations.',
+      steps: [
+        {
+          title: 'Continuous Internal Assessment (30%)',
+          description:
+            'Weekly quizzes, module assignments, case studies, discussions, and project work submitted through the Amigo LMS.',
+        },
+        {
+          title: 'End-Term Examination (70%)',
+          description:
+            'Conducted at the end of each semester in 100% remote proctored mode with AI anti-cheating and web camera monitoring.',
+        },
+        {
+          title: 'Examination Slots & Flexibility',
+          description:
+            'Weekend examination slots allow working professionals to balance professional schedules with their degree.',
+        },
+        {
+          title: 'Provisional & Final Transcripts',
+          description:
+            'Digital verified marksheets and degree certificates are issued upon semester clearance.',
+        },
       ],
     },
 

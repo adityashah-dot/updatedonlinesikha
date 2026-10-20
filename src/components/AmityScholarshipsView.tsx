@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   MapPin,
@@ -8,10 +8,20 @@ import {
   ChevronRight,
   CheckCircle2,
   Users,
+  Calculator,
 } from 'lucide-react';
 import { TableOfContents } from './TableOfContents';
 import { BlogsListSection } from './BlogsListSection';
 import { AMITY_PAGE_CONTENT as AMITY } from '../data/universities/amityContent';
+import { AMITY_UNIVERSITY_DATA } from '../data/universities/amity';
+import { AMITY_SCHOLARSHIP_RULES, AMITY_SCHOLARSHIP_PILLARS } from '../data/universities/amityScholarships';
+import { ScholarshipPillarsGrid } from './university/ScholarshipPillarsGrid';
+import { sectionTitle } from '../lib/sectionTitles';
+
+function parseFee(fee: string): number {
+  const n = Number(fee.replace(/[^\d]/g, ''));
+  return Number.isFinite(n) ? n : 0;
+}
 
 interface AmityScholarshipsViewProps {
   universityNavigation?: React.ReactNode;
@@ -23,15 +33,17 @@ interface AmityScholarshipsViewProps {
 const SP = AMITY.scholarshipPage;
 
 const TOC_ITEMS = [
-  { id: 'highlights', label: SP.highlights.title },
-  { id: 'types', label: SP.types.title },
-  { id: 'aonsat', label: SP.aonsat.title },
-  { id: 'courses-covered', label: SP.coursesCovered.title },
-  { id: 'benefits', label: SP.benefits.title },
-  { id: 'how-to-apply', label: SP.howToApply.title },
-  { id: 'documents', label: SP.documents.title },
-  { id: 'comparison', label: SP.comparison.title },
-  { id: 'scholarship-faqs', label: SP.faqHeading },
+  { id: 'scholarship-calculator', label: 'Tuition Fee & Savings Calculator' },
+  { id: 'scholarship-schemes', label: 'Scholarship Schemes & Concessions' },
+  { id: 'highlights', label: sectionTitle(AMITY.shortName, 'Scholarships Highlights') },
+  { id: 'types', label: sectionTitle(AMITY.shortName, 'Types of Scholarships') },
+  { id: 'aonsat', label: sectionTitle(AMITY.shortName, 'AONSAT Scholarship') },
+  { id: 'courses-covered', label: sectionTitle(AMITY.shortName, 'Courses Covered') },
+  { id: 'benefits', label: sectionTitle(AMITY.shortName, 'Benefits') },
+  { id: 'how-to-apply', label: sectionTitle(AMITY.shortName, 'How to Apply') },
+  { id: 'documents', label: sectionTitle(AMITY.shortName, 'Documents Required') },
+  { id: 'comparison', label: sectionTitle(AMITY.shortName, 'Scholarship vs AONSAT') },
+  { id: 'scholarship-faqs', label: sectionTitle(AMITY.shortName, 'Scholarship FAQs') },
   { id: 'blogs', label: 'Blogs' },
 ];
 
@@ -43,6 +55,26 @@ export const AmityScholarshipsView: React.FC<AmityScholarshipsViewProps> = ({
 }) => {
   const [activeSection, setActiveSection] = useState<string>(TOC_ITEMS[0].id);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  // --- Scholarship calculator (LPU-style) ---
+  const [calcCourseId, setCalcCourseId] = useState(AMITY_UNIVERSITY_DATA.courses[0]?.id || '');
+  const [calcMarks, setCalcMarks] = useState<number>(78);
+
+  const calcCourse = AMITY_UNIVERSITY_DATA.courses.find((c) => c.id === calcCourseId);
+  const calcBase = parseFee(calcCourse?.totalFee || '');
+  const calcRule = useMemo(() => {
+    let best: (typeof AMITY_SCHOLARSHIP_RULES)[number] | null = null;
+    for (const rule of AMITY_SCHOLARSHIP_RULES) {
+      const m = rule.condition?.match(/marks\s*>=\s*(\d+)/i);
+      if (m && calcMarks >= Number(m[1])) {
+        if (!best || rule.percent > best.percent) best = rule;
+      }
+    }
+    return best;
+  }, [calcMarks]);
+  const calcPercent = calcRule ? calcRule.percent : 0;
+  const calcSavings = Math.round((calcBase * calcPercent) / 100);
+  const calcLabel = calcRule ? calcRule.label : 'Standard Grant';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -192,13 +224,131 @@ export const AmityScholarshipsView: React.FC<AmityScholarshipsViewProps> = ({
             collapsedCount={6}
           />
 
-          {/* 1. Scholarship Highlights */}
+          {/* 0. Scholarship Calculator — matches LPU Scholarships tab */}
+          {AMITY_SCHOLARSHIP_RULES.length > 0 && (
+            <section
+              id="scholarship-calculator"
+              className="page-section card bg-white rounded-2xl border-2 border-[#115eaf]/30 shadow-lg scroll-mt-[130px]"
+            >
+              <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
+                <div className="w-full lg:w-3/5 space-y-5">
+                  <div className="flex items-center gap-2.5 pb-3 border-b border-[#e7eeff]">
+                    <Calculator className="w-5 h-5 text-[#115eaf]" />
+                    <h3 className="font-bold text-base text-[#000f22] font-sans">
+                      Calculate Your Net Tuition Fee &amp; Savings
+                    </h3>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-1.5">
+                      Select Program
+                    </label>
+                    <select
+                      value={calcCourseId}
+                      onChange={(e) => setCalcCourseId(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm font-semibold text-[#000f22] focus:border-[#115eaf] outline-none"
+                    >
+                      {AMITY_UNIVERSITY_DATA.courses.map((c) => (
+                        <option key={c.id} value={c.id}>
+                          {c.name} ({c.totalFee})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <div className="flex justify-between items-center mb-1 text-xs">
+                      <label className="font-bold text-[#000f22] uppercase tracking-wider">
+                        Qualifying Aggregate Marks: {calcMarks}%
+                      </label>
+                      <span className="text-[#115eaf] font-normal">{calcLabel}</span>
+                    </div>
+                    <input
+                      type="range"
+                      min={50}
+                      max={98}
+                      value={calcMarks}
+                      onChange={(e) => setCalcMarks(Number(e.target.value))}
+                      className="w-full h-2 bg-[#e7eeff] rounded-lg appearance-none cursor-pointer accent-[#115eaf]"
+                    />
+                  </div>
+
+                  <div>
+                    <span className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-2">
+                      Special Welfare Categories
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                      {AMITY_SCHOLARSHIP_RULES.filter((r) => r.condition).map((r) => (
+                        <label
+                          key={r.id}
+                          className="tap-chip min-h-[44px] p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all border-[#e7eeff]"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={Boolean(calcRule && calcRule.id === r.id)}
+                            readOnly
+                            className="shrink-0 w-5 h-5 rounded text-[#115eaf]"
+                          />
+                          <span className="font-normal text-[#000f22]">{r.label}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card w-full lg:w-2/5 rounded-2xl bg-gradient-to-br from-[#0b2540] to-[#000f22] text-white space-y-4 shadow-md">
+                  <div className="pb-3 border-b border-white/10">
+                    <span className="text-[11px] font-bold text-[#b1c8eb] uppercase tracking-wider block">
+                      Eligible Tuition Waiver
+                    </span>
+                    <div className="text-3xl sm:text-4xl font-extrabold text-white mt-1">
+                      {calcPercent}% Waiver
+                    </div>
+                    <p className="text-xs text-emerald-400 mt-[7.5px]">
+                      Total Fee Savings: ₹{calcSavings.toLocaleString('en-IN')}
+                    </p>
+                  </div>
+
+                  <div className="space-y-2 text-xs text-[#d8e3fb]">
+                    <div className="flex justify-between">
+                      <span className="text-[#768dad]">Standard Degree Fee:</span>
+                      <span className="line-through text-[#768dad]">₹{calcBase.toLocaleString('en-IN')}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Net Total Tuition:</span>
+                      <span className="font-bold text-white text-sm">
+                        ₹{(calcBase - calcSavings).toLocaleString('en-IN')}
+                      </span>
+                    </div>
+                    <div className="flex justify-between p-2 rounded-lg bg-white/10">
+                      <span className="font-bold">Net Per Semester:</span>
+                      <span className="font-extrabold text-[#70aaff]">
+                        ₹{Math.round((calcBase - calcSavings) / 4).toLocaleString('en-IN')}/sem
+                      </span>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => onOpenApply(calcCourseId)}
+                    className="w-full py-3 rounded-xl bg-[#115eaf] text-white text-xs font-bold shadow hover:bg-[#004689] active:scale-95 transition-all flex items-center justify-center gap-2"
+                  >
+                    <span>Claim {calcPercent}% Scholarship</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* 1. Scholarship Schemes & Concessions — LPU pillars grid */}
+          <ScholarshipPillarsGrid pillars={AMITY_SCHOLARSHIP_PILLARS} />
+
+          {/* 2. Scholarship Highlights */}
           <section
             id="highlights"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
-          >
-            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {SP.highlights.title}
+          >            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
+              {sectionTitle(AMITY.shortName, 'Scholarships Highlights')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {SP.highlights.intro}
@@ -229,7 +379,7 @@ export const AmityScholarshipsView: React.FC<AmityScholarshipsViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {SP.types.title}
+              {sectionTitle(AMITY.shortName, 'Types of Scholarships')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {SP.types.intro}
@@ -262,7 +412,7 @@ export const AmityScholarshipsView: React.FC<AmityScholarshipsViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {SP.aonsat.title}
+              {sectionTitle(AMITY.shortName, 'AONSAT Scholarship')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {SP.aonsat.intro}
@@ -295,7 +445,7 @@ export const AmityScholarshipsView: React.FC<AmityScholarshipsViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {SP.coursesCovered.title}
+              {sectionTitle(AMITY.shortName, 'Courses Covered')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {SP.coursesCovered.intro}
@@ -350,7 +500,7 @@ export const AmityScholarshipsView: React.FC<AmityScholarshipsViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {SP.benefits.title}
+              {sectionTitle(AMITY.shortName, 'Benefits')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {SP.benefits.intro}
@@ -381,7 +531,7 @@ export const AmityScholarshipsView: React.FC<AmityScholarshipsViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {SP.howToApply.title}
+              {sectionTitle(AMITY.shortName, 'How to Apply')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {SP.howToApply.intro}
@@ -412,7 +562,7 @@ export const AmityScholarshipsView: React.FC<AmityScholarshipsViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {SP.documents.title}
+              {sectionTitle(AMITY.shortName, 'Documents Required')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {SP.documents.intro}
@@ -443,7 +593,7 @@ export const AmityScholarshipsView: React.FC<AmityScholarshipsViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {SP.comparison.title}
+              {sectionTitle(AMITY.shortName, 'Scholarship vs AONSAT')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {SP.comparison.intro}
@@ -488,7 +638,7 @@ export const AmityScholarshipsView: React.FC<AmityScholarshipsViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {SP.faqHeading}
+              {sectionTitle(AMITY.shortName, 'Scholarship FAQs')}
             </h2>
             <div className="space-y-3 mt-[18px]">
               {SP.faqs.map((faq, idx) => {

@@ -15,6 +15,7 @@ import { AdmissionFlowSteps } from './AdmissionFlowSteps';
 import { BlogsListSection } from './BlogsListSection';
 import { CompareCollegesSection } from './CompareCollegesSection';
 import { AMITY_PAGE_CONTENT as AMITY } from '../data/universities/amityContent';
+import { sectionTitle } from '../lib/sectionTitles';
 import { AMITY_UNIVERSITY_DATA } from '../data/universities/amity';
 
 interface AmityAdmissionViewProps {
@@ -27,15 +28,16 @@ interface AmityAdmissionViewProps {
 const AP = AMITY.admissionPage;
 
 const TOC_ITEMS = [
-  { id: 'admission-highlights', label: AP.highlights.title },
-  { id: 'admission-dates', label: AP.dates.title },
-  { id: 'eligibility-criteria', label: AP.eligibility.title },
-  { id: 'admission-process', label: AP.admissionProcess.title },
-  { id: 'application-process', label: AP.applicationProcess.title },
-  { id: 'documents-required', label: AP.documents.title },
-  { id: 'scholarship-schemes', label: AP.scholarships.title },
-  { id: 'admission-faqs', label: AP.faqHeading },
-  { id: 'student-reviews', label: AP.testimonials.title },
+  { id: 'admission-highlights', label: sectionTitle(AMITY.shortName, 'Admission Highlights') },
+  { id: 'admission-dates', label: sectionTitle(AMITY.shortName, 'Admission Important Dates') },
+  { id: 'eligibility-criteria', label: sectionTitle(AMITY.shortName, 'Eligibility & Selection Criteria') },
+  { id: 'admission-process', label: sectionTitle(AMITY.shortName, 'Admission Process') },
+  { id: 'application-process', label: sectionTitle(AMITY.shortName, 'Application Process') },
+  { id: 'examination-pattern', label: sectionTitle(AMITY.shortName, 'Examination Pattern') },
+  { id: 'documents-required', label: sectionTitle(AMITY.shortName, 'Documents Required for Admission') },
+  { id: 'scholarship-schemes', label: sectionTitle(AMITY.shortName, 'Scholarship') },
+  { id: 'admission-faqs', label: sectionTitle(AMITY.shortName, 'Admission FAQs') },
+  { id: 'student-reviews', label: sectionTitle(AMITY.shortName, 'Student Reviews') },
   { id: 'blogs', label: 'Blogs' },
   { id: 'compare-colleges', label: 'Compare' },
 ];
@@ -185,7 +187,7 @@ export const AmityAdmissionView: React.FC<AmityAdmissionViewProps> = ({
           >
             <div className="flex items-center justify-between flex-wrap gap-3">
               <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                {AP.highlights.title}
+                {sectionTitle(AMITY.shortName, 'Admission Highlights')}
               </h2>
               <button
                 onClick={() => onOpenBrochure()}
@@ -224,8 +226,8 @@ export const AmityAdmissionView: React.FC<AmityAdmissionViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <div className="flex items-center justify-between flex-wrap gap-3">
-              <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                {AP.dates.title}
+              <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+                {sectionTitle(AMITY.shortName, 'Admission Important Dates')}
               </h2>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -268,7 +270,7 @@ export const AmityAdmissionView: React.FC<AmityAdmissionViewProps> = ({
           >
             <div className="flex items-center justify-between flex-wrap gap-3">
               <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                {AP.eligibility.title}
+                {sectionTitle(AMITY.shortName, 'Eligibility & Selection Criteria')}
               </h2>
               <button
                 onClick={onOpenHelpDesk}
@@ -319,7 +321,7 @@ export const AmityAdmissionView: React.FC<AmityAdmissionViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {AP.admissionProcess.title}
+              {sectionTitle(AMITY.shortName, 'Admission Process')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {AP.admissionProcess.intro}
@@ -334,7 +336,7 @@ export const AmityAdmissionView: React.FC<AmityAdmissionViewProps> = ({
           >
             <div className="flex items-center justify-between flex-wrap gap-3">
               <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                {AP.applicationProcess.title}
+                {sectionTitle(AMITY.shortName, 'Application Process')}
               </h2>
               <button
                 onClick={() => onOpenApply()}
@@ -367,13 +369,43 @@ export const AmityAdmissionView: React.FC<AmityAdmissionViewProps> = ({
             </div>
           </section>
 
-          {/* 6. Documents Required */}
+          {/* 6. Examination Pattern — matches LPU Admission tab */}
+          <section
+            id="examination-pattern"
+            className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
+          >
+            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              Amity University Online Examination Pattern
+            </h2>
+            <p className="section-description text-xs sm:text-sm text-[#43474d] leading-relaxed">
+              Amity University Online conducts semester-based examinations through a secure online proctored system. The
+              evaluation combines continuous internal assessments with end-term examinations.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-[18px]">
+              {(AP.examination?.steps ?? []).map((step, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-xl bg-[#f9f9ff] border border-[#e7eeff] flex gap-3 items-start"
+                >
+                  <span className="w-6 h-6 rounded-full bg-[#115eaf] text-white font-bold text-[10px] flex items-center justify-center shrink-0">
+                    {idx + 1}
+                  </span>
+                  <div>
+                    <h3 className="font-bold text-xs text-[#000f22]">{step.title}</h3>
+                    <p className="text-[11px] text-[#43474d] leading-relaxed mt-[7.5px]">{step.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 7. Documents Required */}
           <section
             id="documents-required"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {AP.documents.title}
+              {sectionTitle(AMITY.shortName, 'Documents Required for Admission')}
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mt-[18px]">
               {/* Dark guide card */}
@@ -433,8 +465,8 @@ export const AmityAdmissionView: React.FC<AmityAdmissionViewProps> = ({
             id="scholarship-schemes"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
-            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {AP.scholarships.title}
+            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              {sectionTitle(AMITY.shortName, 'Scholarship')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {AP.scholarships.intro}
@@ -469,8 +501,11 @@ export const AmityAdmissionView: React.FC<AmityAdmissionViewProps> = ({
             </ul>
           </section>
 
-          {/* 8. Admission Callback Banner */}
-          <section className="page-section rounded-2xl bg-[#0b2540] text-white shadow-xs overflow-hidden">
+          {/* 9. Admission Callback Banner — matches LPU counseling-callback */}
+          <section
+            id="counseling-callback"
+            className="page-section rounded-2xl bg-[#0b2540] text-white shadow-xs overflow-hidden scroll-mt-[130px]"
+          >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
               <div>
                 <h2 className="section-title text-2xl sm:text-3xl font-extrabold font-sans">
@@ -542,7 +577,7 @@ export const AmityAdmissionView: React.FC<AmityAdmissionViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {AP.faqHeading}
+              {sectionTitle(AMITY.shortName, 'Admission FAQs')}
             </h2>
             <div className="space-y-3 mt-[18px]">
               {AP.faqs.map((faq, idx) => {
@@ -584,7 +619,7 @@ export const AmityAdmissionView: React.FC<AmityAdmissionViewProps> = ({
           >
             <div className="flex items-center justify-between flex-wrap gap-3">
               <div>
-                <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
+                <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
                   {AP.testimonials.title}
                 </h2>
                 <p className="text-xs text-[#74777e] font-normal mt-1">

@@ -9,6 +9,7 @@ interface BlogsListSectionProps {
   title?: React.ReactNode;
   className?: string;
   sectionId?: string;
+  posts?: typeof DEGREEFYD_LPU_API.blogs.posts;
 }
 
 export const BlogsListSection: React.FC<BlogsListSectionProps> = ({
@@ -16,8 +17,9 @@ export const BlogsListSection: React.FC<BlogsListSectionProps> = ({
   title,
   className = 'bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-5 md:p-7',
   sectionId = 'blogs',
+  posts: passedPosts,
 }) => {
-  const posts = DEGREEFYD_LPU_API.blogs.posts;
+  const posts = passedPosts ?? DEGREEFYD_LPU_API.blogs.posts;
   const [shown, setShown] = useState(PAGE_SIZE);
 
   return (

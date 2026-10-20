@@ -10,7 +10,12 @@ import { DEGREEFYD_LPU_API } from '../data/apiData';
 import { getUniversityBySlug } from '../data/universities';
 import { UniversityHero } from './university/UniversityHero';
 import { UniversityOverview } from './university/UniversityOverview';
+import { UniversityPageCourses } from './university/UniversityPageCourses';
+import { UniversityPageAdmission } from './university/UniversityPageAdmission';
+import { UniversityPageScholarships } from './university/UniversityPageScholarships';
 import { UniversityCourses } from './university/UniversityCourses';
+import { CU_PAGE_CONTENT } from '../data/universities/cuContent';
+import { CU_SCHOLARSHIP_RULES, CU_SCHOLARSHIP_PILLARS } from '../data/universities/cuScholarships';
 import { UniversityAdmissions } from './university/UniversityAdmissions';
 import { UniversityFees } from './university/UniversityFees';
 import { UniversityPlacements } from './university/UniversityPlacements';
@@ -25,7 +30,10 @@ import { AmityAdmissionView } from './AmityAdmissionView';
 import { AmityCoursesView } from './AmityCoursesView';
 import { AmityScholarshipsView } from './AmityScholarshipsView';
 import { BlogsListSection } from './BlogsListSection';
+import { SEO } from '../components/SEO';
+import { COURSES_DATA } from '../data/coursesData';
 import type { Course } from '../types';
+import type { UniversityCourseItem } from '../types/university';
 
 type LpuSection = 'overview' | 'courses' | 'admission' | 'scholarships' | 'lms';
 
@@ -96,20 +104,26 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
 
   if (!college) {
     return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 bg-[#f9f9ff]">
-        <h1 className="text-8xl font-black text-[#115eaf]/20 mb-2 tracking-tighter">404</h1>
-        <h2 className="text-2xl sm:text-3xl font-bold text-[#000f22] mb-3">University Not Found</h2>
-        <p className="text-[#43474d] mb-8 max-w-md text-sm">
-          We couldn't find the online university you're looking for. It may have been removed or the link might be broken.
-        </p>
-        <Link
-          to="/universities"
-          className="px-6 py-3 bg-[#115eaf] text-white text-sm font-semibold rounded-xl hover:bg-[#004689] shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center gap-2"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Browse All Universities
-        </Link>
-      </div>
+      <>
+        <SEO
+          title="University Not Found | Online Siksha"
+          description="The university page you're looking for could not be found."
+        />
+        <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 bg-[#f9f9ff]">
+          <h1 className="text-8xl font-black text-[#115eaf]/20 mb-2 tracking-tighter">404</h1>
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#000f22] mb-3">University Not Found</h2>
+          <p className="text-[#43474d] mb-8 max-w-md text-sm">
+            We couldn't find the online university you're looking for. It may have been removed or the link might be broken.
+          </p>
+          <Link
+            to="/universities"
+            className="px-6 py-3 bg-[#115eaf] text-white text-sm font-semibold rounded-xl hover:bg-[#004689] shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center gap-2"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Browse All Universities
+          </Link>
+        </div>
+      </>
     );
   }
 
@@ -125,6 +139,38 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
       setSearchParams({ section: tab }, { replace: true });
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Adapter: UniversityCourseItem (light university data) -> Course (rich modal type)
+  const handleSelectUniversityCourse = (item: UniversityCourseItem) => {
+    const match = COURSES_DATA.find((c) => c.id === item.id);
+    if (match) {
+      onSelectCourse(match);
+      return;
+    }
+    const level = item.level === 'PG' ? 'pg' : item.level === 'UG' ? 'ug' : 'diploma';
+    onSelectCourse({
+      id: item.id,
+      code: item.code || item.name,
+      name: item.name,
+      shortDescription: item.description || '',
+      category: level,
+      level: item.level,
+      duration: item.duration,
+      semestersCount: 0,
+      perSemFee: 0,
+      totalFee: 0,
+      credits: 0,
+      eligibility: item.eligibility,
+      careerProspects: {
+        avgPackage: item.careerProspects?.avgPackage || '',
+        highestPackage: item.careerProspects?.highestPackage || '',
+        roles: item.careerProspects?.roles || [],
+      },
+      syllabus: (item.syllabus || []).map((s) => ({ ...s, credits: 0 })),
+      specializations: item.specializations,
+      brochurePdfName: '',
+    });
   };
 
   // Section navigation (Clean, sticky, lite border shade)
@@ -212,8 +258,20 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
   // If viewing Amity Online: render the dedicated LPU-style 4-page views
   const isAmity = collegeId === 'amity-online' || collegeId === 'amity';
   if (isAmity) {
+    const title = `Amity University Online - Courses, Fees & Admission 2026 | Online Siksha`;
+    const description =
+      lpuSection === 'courses'
+        ? 'Amity Online courses and fees 2026: MBA, MCA, BBA, BCA, B.Com, MA. Semester-wise fees, eligibility, specialisations and admission dates.'
+        : lpuSection === 'admission'
+        ? 'Amity Online admission 2026: important dates, eligibility criteria, step-by-step application process, documents required and scholarships.'
+        : lpuSection === 'scholarships'
+        ? 'Amity Online scholarships 2026: merit-based, defence, alumni, AONSAT and sports fee waivers, plus zero-cost EMI options.'
+        : 'Amity University Online UGC-entitled degrees: MBA, MCA, BBA, BCA, B.Com, MA. NAAC A+, NIRF #22. Fees, eligibility, admissions, placements.';
+
     return (
-      <div className="uni-detail min-h-screen bg-[#f9f9ff]">
+      <>
+        <SEO title={title} description={description} />
+        <div className="uni-detail min-h-screen bg-[#f9f9ff]">
         {lpuSection === 'overview' && (
           <AmityOverviewView
             universityNavigation={universityNavigation}
@@ -230,6 +288,7 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
             onOpenBrochure={() => onOpenBrochure()}
             onOpenEmi={() => onOpenEmi()}
             onOpenHelpDesk={onOpenHelpDesk}
+            onSelectCourse={onSelectCourse}
           />
         )}
 
@@ -250,7 +309,8 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
             onOpenHelpDesk={onOpenHelpDesk}
           />
         )}
-      </div>
+        </div>
+      </>
     );
   }
 
@@ -259,21 +319,105 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
   if (universityData) {
     // CU uses the dedicated LPU-style overview page (breadcrumb + hero + TOC + full sections)
     const isCu = collegeId === 'cu-online' || collegeId === 'cu';
+
+    const cuTitle =
+      lpuSection === 'courses'
+        ? 'CU Online Courses and Fees 2026 - Programs, Eligibility & Admission | Online Siksha'
+        : lpuSection === 'admission'
+        ? 'CU Online Admission 2026 - Process, Dates, Eligibility & Fees | Online Siksha'
+        : lpuSection === 'scholarships'
+        ? 'CU Online Scholarships 2026 - Fee Waivers, EMI & Concessions | Online Siksha'
+        : 'Chandigarh University Online - Courses, Fees & Admission 2026 | Online Siksha';
+    const cuDescription =
+      lpuSection === 'courses'
+        ? 'CU Online courses and fees 2026: MBA, MCA, BBA, BCA, M.Com, MA. Semester-wise fees, eligibility, specialisations and admission dates.'
+        : lpuSection === 'admission'
+        ? 'CU Online admission 2026: important dates, eligibility criteria, step-by-step application process, documents required and scholarships.'
+        : lpuSection === 'scholarships'
+        ? 'CU Online scholarships 2026: early bird, merit-based and defence fee concessions, plus zero-cost EMI options.'
+        : 'Chandigarh University Online UGC-entitled degrees: MBA, MCA, BBA, BCA, M.Com, MA. NAAC A+, NIRF #19. Fees, eligibility, admissions, placements.';
+
     if (isCu && lpuSection === 'overview') {
       return (
-        <div className="uni-detail min-h-screen bg-[#f9f9ff]">
-          <CuOverviewView
-            universityNavigation={universityNavigation}
-            onOpenApply={onOpenApply}
-            onOpenBrochure={() => onOpenBrochure()}
-            onOpenHelpDesk={onOpenHelpDesk}
-          />
-        </div>
+        <>
+          <SEO title={cuTitle} description={cuDescription} />
+          <div className="uni-detail min-h-screen bg-[#f9f9ff]">
+            <CuOverviewView
+              universityNavigation={universityNavigation}
+              onOpenApply={onOpenApply}
+              onOpenBrochure={() => onOpenBrochure()}
+              onOpenHelpDesk={onOpenHelpDesk}
+            />
+          </div>
+        </>
+      );
+    }
+
+    // CU Courses uses the shared LPU-structured template (own hero, no duplicate UniversityHero)
+    if (isCu && lpuSection === 'courses') {
+      return (
+        <>
+          <SEO title={cuTitle} description={cuDescription} />
+          <div className="uni-detail min-h-screen bg-[#f9f9ff]">
+            <UniversityPageCourses
+              university={universityData}
+              onSelectCourse={handleSelectUniversityCourse}
+              onOpenApply={onOpenApply}
+              onOpenBrochure={() => onOpenBrochure()}
+              onOpenEmi={onOpenEmi}
+              onOpenHelpDesk={onOpenHelpDesk}
+              universityNavigation={universityNavigation}
+            />
+          </div>
+        </>
+      );
+    }
+
+    // CU Admission uses the shared LPU-structured template
+    if (isCu && lpuSection === 'admission') {
+      return (
+        <>
+          <SEO title={cuTitle} description={cuDescription} />
+          <div className="uni-detail min-h-screen bg-[#f9f9ff]">
+            <UniversityPageAdmission
+              university={universityData}
+              onSelectCourse={handleSelectUniversityCourse}
+              onOpenApply={onOpenApply}
+              onOpenBrochure={() => onOpenBrochure()}
+              onOpenHelpDesk={onOpenHelpDesk}
+              universityNavigation={universityNavigation}
+              heroDescription={CU_PAGE_CONTENT.heroDescription}
+              statusStats={CU_PAGE_CONTENT.admission.statusStats}
+              applicationSteps={CU_PAGE_CONTENT.admission.applicationProcess.steps}
+            />
+          </div>
+        </>
+      );
+    }
+
+    // CU Scholarships uses the shared LPU-structured template
+    if (isCu && lpuSection === 'scholarships') {
+      return (
+        <>
+          <SEO title={cuTitle} description={cuDescription} />
+          <div className="uni-detail min-h-screen bg-[#f9f9ff]">
+            <UniversityPageScholarships
+              university={universityData}
+              onOpenApply={onOpenApply}
+              onOpenHelpDesk={onOpenHelpDesk}
+              universityNavigation={universityNavigation}
+              scholarshipRules={CU_SCHOLARSHIP_RULES}
+              pillars={CU_SCHOLARSHIP_PILLARS}
+            />
+          </div>
+        </>
       );
     }
 
     return (
-      <div className="uni-detail min-h-screen bg-[#f9f9ff]">
+      <>
+        {isCu && <SEO title={cuTitle} description={cuDescription} />}
+        <div className="uni-detail min-h-screen bg-[#f9f9ff]">
         {/* Top Hero Banner */}
         <UniversityHero
           university={universityData}
@@ -354,8 +498,8 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
                 </motion.div>
               </AnimatePresence>
 
-              {/* CU: blogs section at the end of every tab */}
-              {isCu && (
+              {/* CU: blogs section at the end of the admission & scholarships tabs */}
+              {isCu && (lpuSection === 'admission' || lpuSection === 'scholarships') && (
                 <div className="section-container mt-6">
                   <BlogsListSection
                     onOpenHelpDesk={onOpenHelpDesk}
@@ -412,7 +556,8 @@ export const CollegeDetailView: React.FC<CollegeDetailViewProps> = ({
             </aside>
           </div>
         </div>
-      </div>
+        </div>
+      </>
     );
   }
 

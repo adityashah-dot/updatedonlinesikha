@@ -23,6 +23,7 @@ import { FloatingActions } from './components/FloatingActions';
 import { CounselorModal } from './components/CounselorModal';
 import { TrackApplicationModal } from './components/TrackApplicationModal';
 import { GeminiChatbot, ChatbotFloatingTrigger } from './components/chat/GeminiChatbot';
+import { SEO } from './components/SEO';
 import { Home, FileText, Building2, Award } from 'lucide-react';
 
 export default function App() {
@@ -167,6 +168,10 @@ export default function App() {
               path="/"
               element={
                 <PageTransition>
+                  <SEO
+                    title="Online Siksha - Higher Education Gateway"
+                    description="Compare online universities, courses, fees, and admissions. UGC-entitled degrees from top Indian universities."
+                  />
                   <HomeView
                     onOpenApply={handleOpenApply}
                     onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
@@ -195,6 +200,10 @@ export default function App() {
               path="/universities"
               element={
                 <PageTransition>
+                  <SEO
+                    title="Online Universities - Compare & Apply | Online Siksha"
+                    description="Compare UGC-entitled online universities in India. Fees, courses, eligibility, placements, and admission details."
+                  />
                   <UniversitiesView
                     onOpenApply={() => handleOpenApply()}
                     onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
@@ -208,6 +217,10 @@ export default function App() {
               path="/courses"
               element={
                 <PageTransition>
+                  <SEO
+                    title="Online Courses & Fees - UGC Entitled Degrees | Online Siksha"
+                    description="Explore online degree courses from top UGC-entitled universities. Compare fees, eligibility, and specializations."
+                  />
                   <CoursesAndFeesView
                     onSelectCourse={handleOpenCourseDetail}
                     onOpenApply={handleOpenApply}
@@ -223,6 +236,10 @@ export default function App() {
               path="/admission"
               element={
                 <PageTransition>
+                  <SEO
+                    title="Online Admission 2026 - Process, Dates & Eligibility | Online Siksha"
+                    description="Complete guide to online university admissions 2026. Important dates, eligibility criteria, application process, and documents required."
+                  />
                   <AdmissionView
                     onSelectCourse={handleOpenCourseDetail}
                     onOpenApply={handleOpenApply}
@@ -238,6 +255,10 @@ export default function App() {
               path="/scholarships"
               element={
                 <PageTransition>
+                  <SEO
+                    title="Scholarships & Fee Concessions 2026 - Online Universities | Online Siksha"
+                    description="Scholarships, fee waivers, and EMI options for online degree programs. Merit, defense, alumni, and early bird concessions."
+                  />
                   <ScholarshipsView
                     onOpenApply={handleOpenApply}
                     onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}

@@ -339,6 +339,33 @@ export const CU_UNIVERSITY_DATA: UniversityData = {
   campusAndLms: {
     intro: 'CU Online programs are delivered through a digital learning platform and LMS, allowing students to study from anywhere.',
     lmsName: 'Digital Learning Platform (LMS)',
+    lmsPlatformTitle: 'How You Study: The CU Digital Learning Platform',
+    lmsPlatform: [
+      {
+        icon: 'video',
+        title: 'Recorded Video Lectures & E-Books',
+        desc: 'Revisit recorded lectures and download e-books for every module, with slides and revision notes archived for the full programme.',
+        meta: '24/7 LMS Access',
+      },
+      {
+        icon: 'book',
+        title: 'Assignments & Continuous Evaluation',
+        desc: 'Submit module-wise assignments and appear in continuous evaluation through the LMS, with progress tracked against each semester plan.',
+        meta: 'Continuous Assessment',
+      },
+      {
+        icon: 'smartphone',
+        title: 'Interactive Sessions with Faculty',
+        desc: 'Join live interactive online sessions with CU faculty for doubt solving, module discussions, and concept reinforcement.',
+        meta: 'Live Faculty Support',
+      },
+      {
+        icon: 'users',
+        title: 'Online Proctored Examinations',
+        desc: 'Appear for end-term examinations in online proctored mode from any location, with the full schedule and hall ticket published on the LMS.',
+        meta: 'Online Proctored',
+      },
+    ],
     lmsFeatures: [
       'Recorded video lectures and e-books',
       'Assignments and continuous evaluation',
@@ -428,6 +455,44 @@ export const CU_UNIVERSITY_DATA: UniversityData = {
       answer:
         'Students can apply by visiting the CU online website, filling out the online application form, uploading required documents, and paying the course fee.',
       category: 'Admission',
+    },
+  ],
+
+  testimonials: [
+    {
+      studentName: 'Aman Verma',
+      profession: 'Online BCA student',
+      text: 'The online classes were easy to follow and the study material was well organised. Having recorded lectures helped me revise topics at my own pace.',
+      rating: 4,
+      avatar: 'AV',
+    },
+    {
+      studentName: 'Neha Sharma',
+      profession: 'Working Professional',
+      text: 'I liked the flexibility of the programme, especially while managing work alongside studies. The LMS was simple to use and assignments were clearly scheduled.',
+      rating: 4,
+      avatar: 'NS',
+    },
+    {
+      studentName: 'Rohit Singh',
+      profession: 'Online Student',
+      text: 'The course structure was clear and exams were conducted smoothly in online mode. Regular assessments helped me stay consistent throughout the semester.',
+      rating: 4,
+      avatar: 'RS',
+    },
+    {
+      studentName: 'Pooja Malhotra',
+      profession: 'Online Student',
+      text: 'Faculty members were approachable during online sessions and doubt-solving support was available. Course content matched the programme requirements.',
+      rating: 4,
+      avatar: 'PM',
+    },
+    {
+      studentName: 'Kunal Mehta',
+      profession: 'Distance Learner',
+      text: 'CU Online worked well for me as a distance learner. The learning platform, digital resources, and exam process were manageable with proper planning.',
+      rating: 4,
+      avatar: 'KM',
     },
   ],
 

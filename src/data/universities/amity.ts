@@ -258,6 +258,33 @@ export const AMITY_UNIVERSITY_DATA: UniversityData = {
   campusAndLms: {
     intro: 'Amity Online delivers its programs through "Amigo", a state-of-the-art Learning Management System accessible on web browsers and mobile apps.',
     lmsName: 'Amigo Learning Platform',
+    lmsPlatformTitle: 'How You Study: The Amity Amigo Learning Platform',
+    lmsPlatform: [
+      {
+        icon: 'video',
+        title: 'Live Weekend Interactive Classes',
+        desc: 'Attend live weekend interactive sessions with eminent faculty and guest speakers, with lecture slides and class notes archived for revision.',
+        meta: '24/7 Portal Access',
+      },
+      {
+        icon: 'book',
+        title: 'HD Recorded Lectures & Transcripts',
+        desc: 'Revisit pre-recorded HD video lectures with searchable transcripts and bookmarks that let you jump straight to the topic you need.',
+        meta: 'Searchable Transcripts',
+      },
+      {
+        icon: 'smartphone',
+        title: 'Digital E-Library',
+        desc: 'Browse a digital e-library of 20,000+ academic journals and business cases curated for online programmes.',
+        meta: '20,000+ Journals',
+      },
+      {
+        icon: 'users',
+        title: 'Faculty Mentorship & Remote Exams',
+        desc: 'Ask questions on collaborative discussion boards and direct faculty mentorship channels, then appear for AI-assisted home-proctored remote examinations.',
+        meta: 'AI-Assisted Proctoring',
+      },
+    ],
     lmsFeatures: [
       'Live Weekend Interactive Classes with Eminent Faculty and Guest Speakers',
       'Pre-recorded HD Video Lectures with Searchable Transcripts and Bookmarks',

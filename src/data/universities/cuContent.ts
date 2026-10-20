@@ -201,6 +201,30 @@ export const CU_PAGE_CONTENT = {
     title: 'Chandigarh University Online Admission Process 2026',
     intro:
       'Chandigarh University Online admission process is fully online, quick and student-friendly. It is suitable for both fresh students and working professionals. The Chandigarh University online admission steps are as follows:',
+
+    // PLACEHOLDER — replace with real CU Online admission stats.
+    // See qa/PLACEHOLDER_CONTENT.md row CU-A-02.
+    statusStats: [
+      { label: 'Admission Status', value: 'Open for 2026' },
+      { label: 'Mode of Application', value: 'Online' },
+      { label: 'Admission Criteria', value: 'Merit-based' },
+      { label: 'Registration Fee', value: '₹1,000' },
+    ],
+
+    // PLACEHOLDER — replace with real CU Online application process.
+    // See qa/PLACEHOLDER_CONTENT.md row CU-A-03.
+    applicationProcess: {
+      title: 'Chandigarh University Online Application Process 2026',
+      intro:
+        'Step-by-step digital application guide for candidates applying at cuchl.in / the official CU Online portal.',
+      steps: [
+        { title: 'Online Registration', description: '[Application step description]' },
+        { title: 'Select Degree & Fill Form', description: '[Application step description]' },
+        { title: 'Upload Documents & DEB ID', description: '[Application step description]' },
+        { title: 'Fee Payment & Confirmation', description: '[Application step description]' },
+      ],
+    },
+
     steps: [
       {
         stepNumber: 1,

@@ -20,6 +20,7 @@ import { TableOfContents } from './TableOfContents';
 import { ProgrammeCardsSection, ProgrammeCardData } from './ProgrammeCardsSection';
 import { AdmissionFlowSteps } from './AdmissionFlowSteps';
 import { BlogsListSection } from './BlogsListSection';
+import { sectionTitle } from '../lib/sectionTitles';
 import { CU_PAGE_CONTENT as CU } from '../data/universities/cuContent';
 import { getRelatedUniversities } from '../data/universities';
 
@@ -31,23 +32,23 @@ interface CuOverviewViewProps {
 }
 
 const TOC_ITEMS = [
-  { id: 'latest-news', label: 'CU Online Latest News & Updates' },
+  { id: 'latest-news', label: sectionTitle(CU.shortName, 'Latest News & Updates') },
   { id: 'why-choose', label: 'Why Choose Chandigarh University Online?' },
-  { id: 'highlights', label: 'Chandigarh University Online Highlights 2026' },
-  { id: 'courses-fees', label: 'Chandigarh University Online Courses and Fees 2026' },
-  { id: 'popular-programmes', label: 'CU Online Popular Programmes' },
-  { id: 'eligibility', label: 'Eligibility and Selection Criteria' },
-  { id: 'admission-process', label: 'Chandigarh University Online Admission Process 2026' },
-  { id: 'rankings', label: 'Rankings' },
-  { id: 'placements', label: 'Placement Highlights' },
-  { id: 'scholarships', label: 'Scholarships' },
-  { id: 'campus', label: 'Campus' },
-  { id: 'examination-pattern', label: 'Examination Pattern' },
-  { id: 'sample-degree', label: 'Online Degree' },
-  { id: 'admission-deadline', label: 'Online Admission Dates' },
-  { id: 'reviews-section', label: 'Online Students Review & FAQs' },
-  { id: 'blogs', label: 'Blogs' },
+  { id: 'highlights', label: sectionTitle(CU.shortName, 'Highlights') },
+  { id: 'courses-fees', label: sectionTitle(CU.shortName, 'Courses and Fees') },
+  { id: 'popular-programmes', label: sectionTitle(CU.shortName, 'Popular Programmes') },
+  { id: 'eligibility-criteria', label: sectionTitle(CU.shortName, 'Eligibility and Selection Criteria') },
+  { id: 'admission-process', label: sectionTitle(CU.shortName, 'Admission Process') },
+  { id: 'rankings', label: sectionTitle(CU.shortName, 'Rankings and Accreditations') },
+  { id: 'examination-pattern', label: sectionTitle(CU.shortName, 'Examination Pattern') },
+  { id: 'placements', label: sectionTitle(CU.shortName, 'Placements') },
+  { id: 'scholarships', label: sectionTitle(CU.shortName, 'Scholarships') },
+  { id: 'campus', label: sectionTitle(CU.shortName, 'Campus') },
+  { id: 'sample-degree', label: sectionTitle(CU.shortName, 'Sample Degree') },
+  { id: 'admission-deadline', label: sectionTitle(CU.shortName, 'Admission Dates') },
+  { id: 'reviews-section', label: sectionTitle(CU.shortName, 'Reviews & FAQs') },
   { id: 'compare-colleges', label: 'Compare Colleges with CU Online' },
+  { id: 'blogs', label: 'Blogs' },
 ];
 
 const stripHtml = (html: string): string =>
@@ -270,7 +271,7 @@ export const CuOverviewView: React.FC<CuOverviewViewProps> = ({
             className="page-section card bg-[#f0f3ff] rounded-2xl border border-[#d5e3ff] scroll-mt-[130px]"
           >
             <h2 className="section-title text-lg sm:text-xl font-bold text-[#000f22] font-sans">
-              {CU.latestNews.title}
+              {sectionTitle(CU.shortName, 'Latest News and Updates')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {CU.latestNews.description}
@@ -328,7 +329,7 @@ export const CuOverviewView: React.FC<CuOverviewViewProps> = ({
           >
             <div className="flex items-center justify-between flex-wrap gap-3">
               <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                {CU.whyChoose.title}
+                {sectionTitle(CU.shortName, 'Highlights')}
               </h2>
               <button
                 onClick={() => onOpenBrochure()}
@@ -367,7 +368,7 @@ export const CuOverviewView: React.FC<CuOverviewViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-2xl font-bold text-[#000f22] font-sans">
-              Chandigarh University Online Courses and Fees 2026
+              {sectionTitle(CU.shortName, 'Courses and Fees')}
             </h2>
             <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal">
               {CU.coursesIntro}
@@ -433,11 +434,11 @@ export const CuOverviewView: React.FC<CuOverviewViewProps> = ({
 
           {/* 6. Eligibility and Selection Criteria */}
           <section
-            id="eligibility"
+            id="eligibility-criteria"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {CU.eligibility.title}
+              {sectionTitle(CU.shortName, 'Eligibility and Selection Criteria')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {CU.eligibility.intro}
@@ -470,7 +471,7 @@ export const CuOverviewView: React.FC<CuOverviewViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {CU.admission.title}
+              {sectionTitle(CU.shortName, 'Admission Process')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {CU.admission.intro}
@@ -510,8 +511,8 @@ export const CuOverviewView: React.FC<CuOverviewViewProps> = ({
             id="rankings"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
-            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {CU.rankings.title}
+            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              {sectionTitle(CU.shortName, 'Rankings and Accreditations')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {CU.rankings.intro}
@@ -563,11 +564,123 @@ export const CuOverviewView: React.FC<CuOverviewViewProps> = ({
 
           {/* 8. Placements */}
           <section
-            id="placements"
+            id="examination-pattern"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {CU.placements.title}
+              {sectionTitle(CU.shortName, 'Examination Pattern')}
+            </h2>
+            <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
+              {CU.examination.intro}
+            </p>
+            <style>{`
+              .cu-exam-step {
+                --cu-exam-badge-w: 78px;
+                position: relative;
+                display: grid;
+                grid-template-columns: calc(var(--cu-exam-badge-w) + 18px) minmax(0, 1fr);
+                padding-bottom: 30px;
+              }
+              .cu-exam-step:last-child {
+                padding-bottom: 0;
+              }
+              .cu-exam-step:not(:last-child)::before {
+                content: "";
+                position: absolute;
+                left: calc(var(--cu-exam-badge-w) / 2 - 5px);
+                top: 40px;
+                bottom: 6px;
+                width: 3px;
+                background: repeating-linear-gradient(180deg, #0b2540 0 4px, transparent 4px 9px);
+                animation: cu-exam-flow-down 0.9s linear infinite;
+              }
+              @keyframes cu-exam-flow-down {
+                from { background-position: 0 0; }
+                to { background-position: 0 9px; }
+              }
+              .cu-exam-badge {
+                width: var(--cu-exam-badge-w);
+                height: 34px;
+                display: grid;
+                place-items: center;
+                background: #0b2540;
+                color: #fff;
+                font-size: 13px;
+                font-weight: 600;
+                clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
+              }
+              .cu-exam-badge span {
+                padding-right: 6px;
+              }
+              .cu-exam-body h3 {
+                margin: 2px 0 3px;
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 1.35;
+                color: #000f22;
+              }
+              .cu-exam-body p {
+                margin: 0;
+                font-size: 15px;
+                line-height: 1.55;
+                color: #43474d;
+              }
+              .exam-step-reveal {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+              }
+              .exam-step-reveal.show {
+                opacity: 1;
+                transform: none;
+              }
+              @media (max-width: 640px) {
+                .cu-exam-step {
+                  --cu-exam-badge-w: 66px;
+                }
+                .cu-exam-badge {
+                  font-size: 12px;
+                }
+                .cu-exam-body h3 {
+                  font-size: 16px;
+                }
+                .cu-exam-body p {
+                  font-size: 14px;
+                }
+              }
+              @media (prefers-reduced-motion: reduce) {
+                .cu-exam-step::before,
+                .exam-step-reveal {
+                  animation: none !important;
+                  transition: none !important;
+                  opacity: 1 !important;
+                  transform: none !important;
+                }
+              }
+            `}</style>
+            <div className="mt-[18px]">
+              {CU.examination.steps.map((step, index) => (
+                <div key={step.title} className="cu-exam-step exam-step-reveal">
+                  <div>
+                    <div className="cu-exam-badge">
+                      <span>Step {String(index + 1).padStart(2, '0')}</span>
+                    </div>
+                  </div>
+                  <div className="cu-exam-body">
+                    <h3>{step.title}</h3>
+                    <p>{step.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+<section
+            id="placements"
+            className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
+          >
+            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              {sectionTitle(CU.shortName, 'Placements')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {CU.placements.intro}
@@ -651,7 +764,7 @@ export const CuOverviewView: React.FC<CuOverviewViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {CU.scholarships.title}
+              {sectionTitle(CU.shortName, 'Scholarships')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {CU.scholarships.intro}
@@ -685,7 +798,7 @@ export const CuOverviewView: React.FC<CuOverviewViewProps> = ({
           >
             <div>
               <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                {CU.campus.title}
+                {sectionTitle(CU.shortName, 'Campus')}
               </h2>
               <p className="section-description text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal">
                 {CU.campus.description}
@@ -796,125 +909,15 @@ export const CuOverviewView: React.FC<CuOverviewViewProps> = ({
           </section>
 
           {/* 11. Examination Pattern */}
-          <section
-            id="examination-pattern"
-            className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
-          >
-            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {CU.examination.title}
-            </h2>
-            <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
-              {CU.examination.intro}
-            </p>
-            <style>{`
-              .cu-exam-step {
-                --cu-exam-badge-w: 78px;
-                position: relative;
-                display: grid;
-                grid-template-columns: calc(var(--cu-exam-badge-w) + 18px) minmax(0, 1fr);
-                padding-bottom: 30px;
-              }
-              .cu-exam-step:last-child {
-                padding-bottom: 0;
-              }
-              .cu-exam-step:not(:last-child)::before {
-                content: "";
-                position: absolute;
-                left: calc(var(--cu-exam-badge-w) / 2 - 5px);
-                top: 40px;
-                bottom: 6px;
-                width: 3px;
-                background: repeating-linear-gradient(180deg, #0b2540 0 4px, transparent 4px 9px);
-                animation: cu-exam-flow-down 0.9s linear infinite;
-              }
-              @keyframes cu-exam-flow-down {
-                from { background-position: 0 0; }
-                to { background-position: 0 9px; }
-              }
-              .cu-exam-badge {
-                width: var(--cu-exam-badge-w);
-                height: 34px;
-                display: grid;
-                place-items: center;
-                background: #0b2540;
-                color: #fff;
-                font-size: 13px;
-                font-weight: 600;
-                clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
-              }
-              .cu-exam-badge span {
-                padding-right: 6px;
-              }
-              .cu-exam-body h3 {
-                margin: 2px 0 3px;
-                font-size: 18px;
-                font-weight: 600;
-                line-height: 1.35;
-                color: #000f22;
-              }
-              .cu-exam-body p {
-                margin: 0;
-                font-size: 15px;
-                line-height: 1.55;
-                color: #43474d;
-              }
-              .exam-step-reveal {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 0.6s ease, transform 0.6s ease;
-              }
-              .exam-step-reveal.show {
-                opacity: 1;
-                transform: none;
-              }
-              @media (max-width: 640px) {
-                .cu-exam-step {
-                  --cu-exam-badge-w: 66px;
-                }
-                .cu-exam-badge {
-                  font-size: 12px;
-                }
-                .cu-exam-body h3 {
-                  font-size: 16px;
-                }
-                .cu-exam-body p {
-                  font-size: 14px;
-                }
-              }
-              @media (prefers-reduced-motion: reduce) {
-                .cu-exam-step::before,
-                .exam-step-reveal {
-                  animation: none !important;
-                  transition: none !important;
-                  opacity: 1 !important;
-                  transform: none !important;
-                }
-              }
-            `}</style>
-            <div className="mt-[18px]">
-              {CU.examination.steps.map((step, index) => (
-                <div key={step.title} className="cu-exam-step exam-step-reveal">
-                  <div>
-                    <div className="cu-exam-badge">
-                      <span>Step {String(index + 1).padStart(2, '0')}</span>
-                    </div>
-                  </div>
-                  <div className="cu-exam-body">
-                    <h3>{step.title}</h3>
-                    <p>{step.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+          
 
           {/* 11. Sample Degree */}
           <section
             id="sample-degree"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
-            <h2 className="section-title text-lg sm:text-xl font-bold text-[#000f22] font-sans">
-              {CU.sampleDegree.title}
+            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
+              {sectionTitle(CU.shortName, 'Sample Degree')}
             </h2>
             <span className="block w-12 h-[4px] rounded-[4px] bg-[#115eaf] mt-1" />
             <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-4 sm:gap-5 items-center mt-3">
@@ -959,7 +962,7 @@ export const CuOverviewView: React.FC<CuOverviewViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {CU.admissionDeadline.title}
+              {sectionTitle(CU.shortName, 'Admission Dates')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {CU.admissionDeadline.description}
@@ -1007,8 +1010,8 @@ export const CuOverviewView: React.FC<CuOverviewViewProps> = ({
             id="reviews-section"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
-            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {CU.testimonials.title}
+            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              {sectionTitle(CU.shortName, 'Reviews')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-[18px]">
               {CU.testimonials.items.map((t) => (

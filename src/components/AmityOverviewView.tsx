@@ -22,6 +22,7 @@ import { AdmissionFlowSteps } from './AdmissionFlowSteps';
 import { BlogsListSection } from './BlogsListSection';
 import { CompareCollegesSection } from './CompareCollegesSection';
 import { AMITY_PAGE_CONTENT as AMITY } from '../data/universities/amityContent';
+import { sectionTitle } from '../lib/sectionTitles';
 import { AMITY_UNIVERSITY_DATA } from '../data/universities/amity';
 
 interface AmityOverviewViewProps {
@@ -32,22 +33,22 @@ interface AmityOverviewViewProps {
 }
 
 const TOC_ITEMS = [
-  { id: 'latest-news', label: AMITY.latestNews.title },
-  { id: 'highlights', label: 'Amity University Online Highlights 2026' },
-  { id: 'courses-fees', label: 'Amity University Online Courses and Fees 2026' },
-  { id: 'popular-programmes', label: 'Amity Online Popular Programmes' },
-  { id: 'eligibility', label: AMITY.eligibility.title },
-  { id: 'admission-process', label: AMITY.admission.title },
-  { id: 'admission-dates', label: AMITY.admissionDates.title },
-  { id: 'rankings', label: AMITY.rankings.title },
-  { id: 'placements', label: AMITY.placements.title },
-  { id: 'scholarships', label: AMITY.scholarships.title },
-  { id: 'campus', label: AMITY.gallery.title },
-  { id: 'examinations', label: AMITY.examinations.title },
-  { id: 'sample-degree', label: AMITY.sampleDegree.title },
-  { id: 'reviews-section', label: AMITY.testimonials.title },
-  { id: 'blogs', label: 'Blogs' },
+  { id: 'latest-news', label: sectionTitle(AMITY.shortName, 'Latest News & Updates') },
+  { id: 'highlights', label: sectionTitle(AMITY.shortName, 'Highlights') },
+  { id: 'courses-fees', label: sectionTitle(AMITY.shortName, 'Courses and Fees') },
+  { id: 'popular-programmes', label: sectionTitle(AMITY.shortName, 'Popular Programmes') },
+  { id: 'eligibility-criteria', label: sectionTitle(AMITY.shortName, 'Eligibility and Selection Criteria') },
+  { id: 'admission-process', label: sectionTitle(AMITY.shortName, 'Admission Process') },
+  { id: 'admission-dates', label: sectionTitle(AMITY.shortName, 'Admission Important Dates') },
+  { id: 'rankings', label: sectionTitle(AMITY.shortName, 'Rankings and Accreditations') },
+  { id: 'examination-pattern', label: sectionTitle(AMITY.shortName, 'Examination Pattern') },
+  { id: 'placements', label: sectionTitle(AMITY.shortName, 'Placements') },
+  { id: 'scholarships', label: sectionTitle(AMITY.shortName, 'Scholarships') },
+  { id: 'campus', label: sectionTitle(AMITY.shortName, 'Campus') },
+  { id: 'sample-degree', label: sectionTitle(AMITY.shortName, 'Sample Degree') },
+  { id: 'reviews-section', label: sectionTitle(AMITY.shortName, 'Reviews & FAQs') },
   { id: 'compare-colleges', label: 'Compare Colleges with Amity Online' },
+  { id: 'blogs', label: 'Blogs' },
 ];
 
 const stripHtml = (html: string): string =>
@@ -268,7 +269,7 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
             className="page-section card bg-[#f0f3ff] rounded-2xl border border-[#d5e3ff] scroll-mt-[130px]"
           >
             <h2 className="section-title text-lg sm:text-xl font-bold text-[#000f22] font-sans">
-              {AMITY.latestNews.title}
+              {sectionTitle(AMITY.shortName, 'Latest News and Updates')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {AMITY.latestNews.description}
@@ -347,7 +348,7 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-2xl font-bold text-[#000f22] font-sans">
-              Amity University Online Courses and Fees 2026
+              {sectionTitle(AMITY.shortName, 'Courses and Fees')}
             </h2>
             <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal">
               {AMITY.coursesIntro}
@@ -426,11 +427,11 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
 
           {/* 5. Eligibility and Selection Criteria */}
           <section
-            id="eligibility"
+            id="eligibility-criteria"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {AMITY.eligibility.title}
+              {sectionTitle(AMITY.shortName, 'Eligibility and Selection Criteria')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {AMITY.eligibility.intro}
@@ -461,7 +462,7 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {AMITY.admission.title}
+              {sectionTitle(AMITY.shortName, 'Admission Process')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {AMITY.admission.intro}
@@ -490,7 +491,7 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
           >
             <div className="flex items-center justify-between flex-wrap gap-3">
               <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                {AMITY.admissionDates.title}
+                {sectionTitle(AMITY.shortName, 'Admission Important Dates')}
               </h2>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -533,8 +534,8 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
             id="rankings"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
-            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {AMITY.rankings.title}
+            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              {sectionTitle(AMITY.shortName, 'Rankings and Accreditations')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {AMITY.rankings.intro}
@@ -580,11 +581,123 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
 
           {/* 9. Placements */}
           <section
-            id="placements"
+            id="examination-pattern"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {AMITY.placements.title}
+              {sectionTitle(AMITY.shortName, 'Examination Pattern')}
+            </h2>
+            <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
+              {AMITY.examinations.intro}
+            </p>
+            <style>{`
+              .am-exam-step {
+                --am-exam-badge-w: 78px;
+                position: relative;
+                display: grid;
+                grid-template-columns: calc(var(--am-exam-badge-w) + 18px) minmax(0, 1fr);
+                padding-bottom: 30px;
+              }
+              .am-exam-step:last-child {
+                padding-bottom: 0;
+              }
+              .am-exam-step:not(:last-child)::before {
+                content: "";
+                position: absolute;
+                left: calc(var(--am-exam-badge-w) / 2 - 5px);
+                top: 40px;
+                bottom: 6px;
+                width: 3px;
+                background: repeating-linear-gradient(180deg, #0b2540 0 4px, transparent 4px 9px);
+                animation: am-exam-flow-down 0.9s linear infinite;
+              }
+              @keyframes am-exam-flow-down {
+                from { background-position: 0 0; }
+                to { background-position: 0 9px; }
+              }
+              .am-exam-badge {
+                width: var(--am-exam-badge-w);
+                height: 34px;
+                display: grid;
+                place-items: center;
+                background: #0b2540;
+                color: #fff;
+                font-size: 13px;
+                font-weight: 600;
+                clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
+              }
+              .am-exam-badge span {
+                padding-right: 6px;
+              }
+              .am-exam-body h3 {
+                margin: 2px 0 3px;
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 1.35;
+                color: #000f22;
+              }
+              .am-exam-body p {
+                margin: 0;
+                font-size: 15px;
+                line-height: 1.55;
+                color: #43474d;
+              }
+              .am-exam-reveal {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+              }
+              .am-exam-reveal.show {
+                opacity: 1;
+                transform: none;
+              }
+              @media (max-width: 640px) {
+                .am-exam-step {
+                  --am-exam-badge-w: 66px;
+                }
+                .am-exam-badge {
+                  font-size: 12px;
+                }
+                .am-exam-body h3 {
+                  font-size: 16px;
+                }
+                .am-exam-body p {
+                  font-size: 14px;
+                }
+              }
+              @media (prefers-reduced-motion: reduce) {
+                .am-exam-step::before,
+                .am-exam-reveal {
+                  animation: none !important;
+                  transition: none !important;
+                  opacity: 1 !important;
+                  transform: none !important;
+                }
+              }
+            `}</style>
+            <div className="mt-[18px]">
+              {AMITY.examinations.steps.map((step, index) => (
+                <div key={step.title} className="am-exam-step am-exam-reveal">
+                  <div>
+                    <div className="am-exam-badge">
+                      <span>Step {String(index + 1).padStart(2, '0')}</span>
+                    </div>
+                  </div>
+                  <div className="am-exam-body">
+                    <h3>{step.title}</h3>
+                    <p>{step.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+<section
+            id="placements"
+            className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
+          >
+            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              {sectionTitle(AMITY.shortName, 'Placements')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {AMITY.placements.intro}
@@ -658,7 +771,7 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {AMITY.scholarships.title}
+              {sectionTitle(AMITY.shortName, 'Scholarships')}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
               {AMITY.scholarships.intro}
@@ -700,7 +813,7 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
           >
             <div>
               <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                {AMITY.gallery.title}
+                {sectionTitle(AMITY.shortName, 'Campus')}
               </h2>
               <p className="section-description text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal">
                 {AMITY.gallery.description}
@@ -812,125 +925,15 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
           </section>
 
           {/* 12. Examinations */}
-          <section
-            id="examinations"
-            className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
-          >
-            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {AMITY.examinations.title}
-            </h2>
-            <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
-              {AMITY.examinations.intro}
-            </p>
-            <style>{`
-              .am-exam-step {
-                --am-exam-badge-w: 78px;
-                position: relative;
-                display: grid;
-                grid-template-columns: calc(var(--am-exam-badge-w) + 18px) minmax(0, 1fr);
-                padding-bottom: 30px;
-              }
-              .am-exam-step:last-child {
-                padding-bottom: 0;
-              }
-              .am-exam-step:not(:last-child)::before {
-                content: "";
-                position: absolute;
-                left: calc(var(--am-exam-badge-w) / 2 - 5px);
-                top: 40px;
-                bottom: 6px;
-                width: 3px;
-                background: repeating-linear-gradient(180deg, #0b2540 0 4px, transparent 4px 9px);
-                animation: am-exam-flow-down 0.9s linear infinite;
-              }
-              @keyframes am-exam-flow-down {
-                from { background-position: 0 0; }
-                to { background-position: 0 9px; }
-              }
-              .am-exam-badge {
-                width: var(--am-exam-badge-w);
-                height: 34px;
-                display: grid;
-                place-items: center;
-                background: #0b2540;
-                color: #fff;
-                font-size: 13px;
-                font-weight: 600;
-                clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
-              }
-              .am-exam-badge span {
-                padding-right: 6px;
-              }
-              .am-exam-body h3 {
-                margin: 2px 0 3px;
-                font-size: 18px;
-                font-weight: 600;
-                line-height: 1.35;
-                color: #000f22;
-              }
-              .am-exam-body p {
-                margin: 0;
-                font-size: 15px;
-                line-height: 1.55;
-                color: #43474d;
-              }
-              .am-exam-reveal {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: opacity 0.6s ease, transform 0.6s ease;
-              }
-              .am-exam-reveal.show {
-                opacity: 1;
-                transform: none;
-              }
-              @media (max-width: 640px) {
-                .am-exam-step {
-                  --am-exam-badge-w: 66px;
-                }
-                .am-exam-badge {
-                  font-size: 12px;
-                }
-                .am-exam-body h3 {
-                  font-size: 16px;
-                }
-                .am-exam-body p {
-                  font-size: 14px;
-                }
-              }
-              @media (prefers-reduced-motion: reduce) {
-                .am-exam-step::before,
-                .am-exam-reveal {
-                  animation: none !important;
-                  transition: none !important;
-                  opacity: 1 !important;
-                  transform: none !important;
-                }
-              }
-            `}</style>
-            <div className="mt-[18px]">
-              {AMITY.examinations.steps.map((step, index) => (
-                <div key={step.title} className="am-exam-step am-exam-reveal">
-                  <div>
-                    <div className="am-exam-badge">
-                      <span>Step {String(index + 1).padStart(2, '0')}</span>
-                    </div>
-                  </div>
-                  <div className="am-exam-body">
-                    <h3>{step.title}</h3>
-                    <p>{step.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+          
 
           {/* 13. Sample Degree */}
           <section
             id="sample-degree"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
-            <h2 className="section-title text-lg sm:text-xl font-bold text-[#000f22] font-sans">
-              {AMITY.sampleDegree.title}
+            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
+              {sectionTitle(AMITY.shortName, 'Sample Degree')}
             </h2>
             <span className="block w-12 h-[4px] rounded-[4px] bg-[#115eaf] mt-1" />
             <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-4 sm:gap-5 items-center mt-3">
@@ -974,8 +977,8 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
             id="reviews-section"
             className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
           >
-            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-              {AMITY.testimonials.title}
+            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              {sectionTitle(AMITY.shortName, 'Reviews')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-[18px]">
               {AMITY.testimonials.items.map((t) => (
@@ -1045,14 +1048,7 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
             </div>
           </section>
 
-          {/* 15. Blogs */}
-          <BlogsListSection
-            onOpenHelpDesk={onOpenHelpDesk}
-            sectionId="blogs"
-            className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
-          />
-
-          {/* 16. Compare Colleges */}
+          {/* 15. Compare Colleges */}
           <CompareCollegesSection
             title="Compare Colleges with Amity Online"
             description={AMITY.compareIntro}
@@ -1062,6 +1058,13 @@ export const AmityOverviewView: React.FC<AmityOverviewViewProps> = ({
             tags={['UGC-DEB Entitled', 'NAAC A+', `NIRF #${AMITY.nirfRanking}`, '100% Online']}
             onOpenBrochure={() => onOpenBrochure()}
             onOpenHelpDesk={onOpenHelpDesk}
+          />
+
+          {/* 16. Blogs */}
+          <BlogsListSection
+            onOpenHelpDesk={onOpenHelpDesk}
+            sectionId="blogs"
+            className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
           />
         </div>
       </div>

@@ -190,16 +190,14 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
         {/* 2. LPU ONLINE ADMISSION IMPORTANT DATES 2026 */}
         <section id="admission-dates" className="page-section card bg-white border border-[#e7eeff] rounded-2xl shadow-xs scroll-mt-[110px]">
           <div id="important-dates" className="scroll-mt-[110px]" />
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 pb-4 border-b border-[#e7eeff]">
-            <div>
-              <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
-                LPU Online Admission Important Dates 2026
-              </h2>
-            </div>
-            <div className="flex items-center gap-2 text-xs font-semibold text-[#43474d]">
-              <span className="inline-block w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></span>
-              <span>Intake 2026 Active</span>
-            </div>
+          <div className="flex items-center justify-between flex-wrap gap-3">
+            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              LPU Online Admission Important Dates 2026
+            </h2>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Intake 2026 Active
+            </span>
           </div>
 
           <p className="section-description text-xs sm:text-sm text-[#43474d] leading-relaxed">
@@ -209,10 +207,9 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
           <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
             <table className="w-full text-left border-collapse text-xs sm:text-sm">
               <thead>
-                <tr className="bg-[#f0f3ff] text-[#000f22] font-bold">
-                  <th className="py-3 px-4 border-b border-[#e7eeff]">Event</th>
-                  <th className="py-3 px-4 border-b border-[#e7eeff]">Important Date</th>
-                  <th className="py-3 px-4 border-b border-[#e7eeff]">Status</th>
+                <tr className="bg-[#0b2540] text-white">
+                  <th className="py-3 px-4 font-bold">Event</th>
+                  <th className="py-3 px-4 font-bold">Important Date</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#e7eeff]">
@@ -223,17 +220,12 @@ export const AdmissionView: React.FC<AdmissionViewProps> = ({
                       <span>{item.event}</span>
                     </td>
                     <td className="py-3.5 px-4 text-[#43474d]">{item.date}</td>
-                    <td className="py-3.5 px-4">
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-normal bg-[#d5e3ff] text-[#004689]">
-                        {item.status}
-                      </span>
-                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="text-xs text-[#74777e] italic mt-[18px]">
+          <p className="text-[11px] text-[#74777e] italic mt-[18px]">
             Note: Dates are tentative and may be updated by the university. Please refer to the official website or speak to a counselor for the latest information.
           </p>
         </section>
