@@ -154,7 +154,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onSelectCourse, on
             <div className="space-y-3 text-xs sm:text-sm text-[#b1c8eb]">
               <p className="flex items-start gap-2.5">
                 <Mail className="w-4 h-4 mt-0.5 text-[#70aaff] shrink-0" />
-                <span className="min-w-0 [overflow-wrap:anywhere]">{INSTITUTION_HIGHLIGHTS.email}</span>
+                <span>{INSTITUTION_HIGHLIGHTS.email}</span>
               </p>
               <p className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 mt-0.5 text-[#70aaff] shrink-0" />
@@ -162,7 +162,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onSelectCourse, on
               </p>
               <p className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 mt-0.5 text-[#70aaff] shrink-0" />
-                <span className="min-w-0 break-words">{INSTITUTION_HIGHLIGHTS.address}</span>
+                <span>{INSTITUTION_HIGHLIGHTS.address}</span>
               </p>
             </div>
           </div>

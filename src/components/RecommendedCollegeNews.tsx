@@ -409,7 +409,7 @@ export const RecommendedCollegeNews: React.FC<RecommendedCollegeNewsProps> = ({ 
     <section className="bg-white rounded-2xl border border-[#c4c6ce]/60 shadow-sm p-4 sm:p-6 space-y-5 font-sans">
       {/* Toast Alert Notification */}
       {toastMessage && (
-        <div className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 bg-[#000f22] text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 text-xs sm:text-sm font-medium animate-fadeIn border border-white/10">
+        <div className="fixed bottom-6 right-6 z-50 bg-[#000f22] text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 text-xs sm:text-sm font-medium animate-fadeIn border border-white/10">
           <Check className="w-4 h-4 text-emerald-400 shrink-0" />
           <span>{toastMessage}</span>
         </div>
@@ -563,7 +563,7 @@ export const RecommendedCollegeNews: React.FC<RecommendedCollegeNewsProps> = ({ 
           <button
             type="button"
             onClick={() => showToast(`Showing ${bookmarkedIds.size} saved articles`)}
-            className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-50 border border-amber-300 text-amber-800 max-lg:ml-0 cursor-pointer shrink-0"
+            className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-50 border border-amber-300 text-amber-800 ml-auto cursor-pointer shrink-0"
           >
             <Bookmark className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
             <span>Saved ({bookmarkedIds.size})</span>
@@ -591,7 +591,7 @@ export const RecommendedCollegeNews: React.FC<RecommendedCollegeNewsProps> = ({ 
                     <div
                       key={article.id}
                       onClick={() => setSelectedArticle(article)}
-                      className="group flex-none w-[85vw] max-w-[285px] sm:max-w-none sm:w-[330px] md:w-[350px] snap-start bg-white rounded-2xl border border-[#c4c6ce]/75 hover:border-[#115eaf]/70 flex flex-col justify-between shadow-xs hover:shadow-xl hover:shadow-[#115eaf]/10 transform hover:-translate-y-1.5 transition-all duration-300 ease-out cursor-pointer overflow-hidden"
+                      className="group flex-none w-[285px] sm:w-[330px] md:w-[350px] snap-start bg-white rounded-2xl border border-[#c4c6ce]/75 hover:border-[#115eaf]/70 flex flex-col justify-between shadow-xs hover:shadow-xl hover:shadow-[#115eaf]/10 transform hover:-translate-y-1.5 transition-all duration-300 ease-out cursor-pointer overflow-hidden"
                     >
                       {/* Card Image Banner */}
                       <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-100">
@@ -605,7 +605,7 @@ export const RecommendedCollegeNews: React.FC<RecommendedCollegeNewsProps> = ({ 
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
                         {/* Floating Badges on Image */}
-                        <div className="absolute top-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2">
+                        <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
                           <span
                             className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-xs backdrop-blur-xs ${getCategoryBadgeColor(
                               article.category
@@ -769,7 +769,7 @@ export const RecommendedCollegeNews: React.FC<RecommendedCollegeNewsProps> = ({ 
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-                      <div className="absolute top-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2">
+                      <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
                         <span
                           className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-xs backdrop-blur-xs ${getCategoryBadgeColor(
                             article.category

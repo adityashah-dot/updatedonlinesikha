@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/GCV/Downloads/updatedonlinesiksha/app/[[...path]]/page.jsx"],"sourcesContent":["'use client';\n\nimport { BrowserRouter } from 'react-router-dom';\nimport App from '../../src/App.jsx';\nimport { ThemeProvider } from '../../src/context/ThemeContext.jsx';\n\nexport default function Page() {\n  return (\n    <BrowserRouter>\n      <ThemeProvider>\n        <App />\n      </ThemeProvider>\n    </BrowserRouter>\n  );\n}\n"],"names":["Page"],"mappings":";;;;;AAEA;AACA;AACA;AAJA;;;;;AAMe,SAASA;IACtB,qBACE,8OAAC,wKAAa;kBACZ,cAAA,8OAAC,gJAAa;sBACZ,cAAA,8OAAC,sHAAG;;;;;;;;;;;;;;;AAIZ"}}]
+}

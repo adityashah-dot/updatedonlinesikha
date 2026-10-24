@@ -3,8 +3,6 @@ import { Course } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
 import { PLACEMENT_STATS } from '../data/institutionalData';
 import { DEGREEFYD_LPU_API } from '../data/apiData';
-import { ProgrammeCardsSection, ProgrammeCardData } from './ProgrammeCardsSection';
-import { BlogsListSection } from './BlogsListSection';
 import { INDIAN_STATES, INDIAN_STATES_CITIES } from '../data/indianLocations';
 import {
   CheckCircle,
@@ -26,7 +24,6 @@ import {
   Clock,
   ArrowRight,
 } from 'lucide-react';
-import { TableOfContents } from './TableOfContents';
 
 const RECRUITER_LOGOS: { name: string; src: string }[] = [
   { name: 'Amazon', src: '/logos/amazon.jpg' },
@@ -38,25 +35,6 @@ const RECRUITER_LOGOS: { name: string; src: string }[] = [
   { name: 'Capgemini', src: '/logos/capgemini.png' },
   { name: 'Deloitte', src: '/logos/deloitte.jpg' },
   { name: 'Times Internet', src: '/logos/timesinternet.jpg' },
-];
-
-const CAMPUS_IMAGES = [
-  {
-    src: '/images/campusviewlpu.jpeg',
-    alt: 'Lovely Professional University campus view',
-  },
-  {
-    src: '/images/campusarealpu.jpeg',
-    alt: 'Lovely Professional University campus aerial view',
-  },
-  {
-    src: '/images/campusviewlpu.jpeg',
-    alt: 'Lovely Professional University campus view',
-  },
-  {
-    src: '/images/campusarealpu.jpeg',
-    alt: 'Lovely Professional University campus aerial view',
-  },
 ];
 
 const RecruiterScroll: React.FC = () => {
@@ -106,7 +84,6 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
     city: ''
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [counselPanelOpen, setCounselPanelOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [activeSection, setActiveSection] = useState<string>('latest-news');
@@ -118,90 +95,7 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
   const [blogIndex, setBlogIndex] = useState(0);
   const [blogVisible, setBlogVisible] = useState(3);
   const [openAdmissionStep, setOpenAdmissionStep] = useState<number>(0);
-  const [visibleAdmissionSteps, setVisibleAdmissionSteps] = useState<number[]>([]);
   const [examStep, setExamStep] = useState<number>(0);
-
-  const ADMISSION_FLOW_STEPS = [
-    {
-      title: 'Online Registration',
-      description:
-        'Visit the Lovely Professional University Online official portal and register using personal details such as name, email ID and mobile number. Login credentials are generated after successful registration.',
-    },
-    {
-      title: 'Application Form Submission',
-      description:
-        'Fill out the online application form by selecting the desired programme and entering personal and academic details.',
-    },
-    {
-      title: 'Document Upload',
-      description:
-        'Upload scanned copies of academic documents, identity proof, and photographs as part of the application process.',
-    },
-    {
-      title: 'Eligibility Verification',
-      description:
-        'The university verifies eligibility based on academic qualifications and programme guidelines.',
-    },
-    {
-      title: 'Fee Payment and Admission Confirmation',
-      description:
-        'Admission is confirmed after fee payment. Roll number and LMS login are issued to the student.',
-    },
-  ];
-
-  useEffect(() => {
-    const stepNodes = Array.from(document.querySelectorAll('.admission-flow-step')) as HTMLElement[];
-    if (!stepNodes.length) return;
-
-    if (!('IntersectionObserver' in window)) {
-      setVisibleAdmissionSteps(stepNodes.map((_, index) => index));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const index = Number((entry.target as HTMLElement).dataset.stepIndex ?? 0);
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              setVisibleAdmissionSteps((prev) => (prev.includes(index) ? prev : [...prev, index]));
-            }, index * 150);
-          }
-        });
-      },
-      { threshold: 0.35 }
-    );
-
-    stepNodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const revealNodes = Array.from(document.querySelectorAll('.exam-step-reveal')) as HTMLElement[];
-    if (!revealNodes.length) return;
-
-    if (!('IntersectionObserver' in window)) {
-      revealNodes.forEach((node) => node.classList.add('show'));
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add('show');
-            }, index * 120);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    revealNodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
-  }, []);
 
   const EXAM_STEPS = [
     {
@@ -244,111 +138,23 @@ export const OverviewView: React.FC<OverviewViewProps> = ({
     },
   ];
 
-  const LPU_POPULAR_PROGRAMMES: ProgrammeCardData[] = [
-  {
-    id: 'mba',
-    title: 'Online MBA',
-    subtitle: 'Master of Business Administration',
-    duration: '2 Years',
-    fee: '₹1,86,000',
-    mode: 'Online',
-    specialisations: [
-      'Finance',
-      'Marketing',
-      'Human Resource',
-      'Data Science',
-      'Business Analytics',
-      'Operations',
-      'International Business',
-      'Digital Marketing',
-      'IT',
-      'Retail',
-      'Supply Chain',
-      'Agri-Business',
-    ],
-  },
-  {
-    id: 'mca',
-    title: 'Online MCA',
-    subtitle: 'Master of Computer Applications',
-    duration: '2 Years',
-    fee: '₹1,40,000',
-    mode: 'Online',
-    specialisations: [
-      'Cloud Computing',
-      'AI & Machine Learning',
-      'Full Stack Development',
-      'Data Science',
-      'Cyber Security',
-      'Blockchain',
-      'AR/VR',
-    ],
-  },
-  {
-    id: 'bca',
-    title: 'Online BCA',
-    subtitle: 'Bachelor of Computer Applications',
-    duration: '3 Years',
-    fee: '₹1,59,000',
-    mode: 'Online',
-    specialisations: ['Cloud & DevOps', 'Data Analytics', 'AI & ML'],
-  },
-  {
-    id: 'bba',
-    title: 'Online BBA',
-    subtitle: 'Bachelor of Business Administration',
-    duration: '3 Years',
-    fee: '₹1,38,000',
-    mode: 'Online',
-    specialisations: ['General', 'Business Analytics'],
-  },
-  {
-    id: 'ba',
-    title: 'Online BA',
-    subtitle: 'Bachelor of Arts',
-    duration: '3 Years',
-    fee: '₹1,14,000',
-    mode: 'Online',
-    specialisations: [
-      'English',
-      'Political Science',
-      'Sociology',
-      'Psychology',
-      'History',
-      'Economics',
-      'Public Administration',
-      'Artificial Intelligence',
-    ],
-  },
-  {
-    id: 'mcom',
-    title: 'Online M.Com',
-    subtitle: 'Master of Commerce',
-    duration: '2 Years',
-    fee: '₹96,000',
-    mode: 'Online',
-    specialisations: ['Finance', 'Accounting & Taxation'],
-  },
-];
-
-const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations', 'Technology', 'Evaluation', 'Info'];
+  const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations', 'Technology', 'Evaluation', 'Info'];
 
   const TOC_ITEMS = [
-    { id: 'latest-news', label: 'LPU Online Latest News & Updates' },
-    { id: 'highlights', label: 'LPU Online Admission Highlights 2026' },
-    { id: 'courses-fees', label: 'LPU Online Courses and Fees 2026' },
-    { id: 'popular-programmes', label: 'LPU Online Popular Programmes' },
-    { id: 'eligibility-criteria', label: 'LPU Online Eligibility & Selection Criteria 2026' },
-    { id: 'admission-process', label: 'LPU Online Admission Process 2026' },
-    { id: 'rankings', label: 'LPU Online Rankings & Accreditations' },
-    { id: 'examination-pattern', label: 'LPU Online Examination Pattern' },
-    { id: 'placements', label: 'LPU Online Placements' },
-    { id: 'campus', label: 'LPU Online Campus' },
-    { id: 'sample-degree', label: 'LPU Online Sample Degree' },
-    { id: 'reviews-section', label: 'LPU Online Student Reviews & FAQs' },
-    { id: 'compare-colleges', label: 'Compare Colleges' },
-    { id: 'blogs', label: 'Blogs' },
-    { id: 'related-colleges', label: 'Related Colleges' },
+    { id: 'latest-news', label: '1. Latest News & Updates' },
+    { id: 'highlights', label: '2. Highlights 2026' },
+    { id: 'courses-fees', label: '3. LPU Online Courses and Fees 2026' },
+    { id: 'eligibility-criteria', label: '4. Eligibility & Selection' },
+    { id: 'admission-process', label: '5. Admission Process 2026' },
+    { id: 'rankings', label: '6. Rankings & Accreditations' },
+    { id: 'examination-pattern', label: '7. Examination Pattern' },
+    { id: 'placements', label: '8. Placements' },
+    { id: 'campus', label: '9. Campus' },
+    { id: 'sample-degree', label: '10. Sample Degree' },
+    { id: 'reviews-section', label: '11. Reviews & FAQs' },
+    { id: 'compare-colleges', label: '12. Compare Colleges' },
+    { id: 'blogs', label: '13. Blogs' },
+    { id: 'related-colleges', label: '14. Related Colleges' },
   ];
 
   // Dynamic scrollspy to highlight active section in TOC as user scrolls
@@ -398,17 +204,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
 
   const handleCounselingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const errors: Record<string, string> = {};
-    if (!counselingForm.phone || !/^\d{10}$/.test(counselingForm.phone.replace(/\D/g, ''))) {
-      errors.phone = 'Enter a valid 10-digit phone number';
-    }
-    if (!counselingForm.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(counselingForm.email)) {
-      errors.email = 'Enter a valid email address';
-    }
-    setFormErrors(errors);
-    if (Object.keys(errors).length === 0) {
-      setFormSubmitted(true);
-    }
+    setFormSubmitted(true);
   };
 
   return (
@@ -433,7 +229,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
 
           {/* College Header: Logo + Title + Meta + Badges */}
-          <div className="flex flex-row items-start gap-3 sm:gap-5">
+          <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5">
             <img
               src={DEGREEFYD_LPU_API.hero.logoImage}
               alt="LPU Logo"
@@ -455,7 +251,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
 
           {/* Body: location + text left; image top-aligned to location line */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-4 items-start mt-4">
-            <div className="order-2 lg:order-none lg:col-span-7 space-y-3">
+            <div className="lg:col-span-7 space-y-3">
               <p className="section-description text-xs sm:text-sm text-[#43474d] font-normal flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
                 {DEGREEFYD_LPU_API.location} · Private · Est. {DEGREEFYD_LPU_API.established} ·{' '}
@@ -473,7 +269,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
             </div>
 
             {/* Right: Campus Image — top aligned with location line; 50px to Free Apply */}
-            <div className="order-1 lg:order-none lg:col-span-5 lg:mr-[50px]">
+            <div className="lg:col-span-5 lg:mr-[50px]">
               <div className="rounded-2xl overflow-hidden border border-[#e7eeff] shadow-xs bg-[#f9f9ff]">
                 <img
                   src={DEGREEFYD_LPU_API.hero.backgroundImage}
@@ -503,7 +299,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
               <span className="block text-sm font-bold text-[#B45309] font-sans">90%</span>
               <span className="text-[10px] text-[#74777e]">Placement Rate</span>
             </div>
-            <div className="flex items-center gap-3 md:ml-auto">
+            <div className="flex items-center gap-3 ml-auto">
               <button
                 onClick={() => onOpenBrochure()}
                 className="px-5 py-2.5 rounded-xl bg-white text-[#115eaf] border border-[#115eaf] text-xs sm:text-sm font-bold hover:bg-[#f0f3ff] active:scale-95 transition-all flex items-center justify-center gap-2"
@@ -528,16 +324,6 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
       {/* MAIN CONTENT */}
       <div className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3">
         <div className="section-container">
-            {/* Table of Contents - Directly on the Page */}
-            <TableOfContents
-              title="Table of contents"
-              items={TOC_ITEMS}
-              activeId={activeSection}
-              onItemClick={(id) => setActiveSection(id)}
-              defaultExpanded={false}
-              collapsedCount={7}
-            />
-
             {/* 1. Latest News and Updates */}
             <section id="latest-news" className="page-section card bg-[#f0f3ff] rounded-2xl border border-[#d5e3ff] scroll-mt-[130px]">
               <h2 className="section-title text-lg sm:text-xl font-bold text-[#000f22] font-sans">
@@ -555,13 +341,16 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
             <section id="highlights" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div className="flex items-center justify-between flex-wrap gap-3">
                 <div>
+                  <span className="px-2.5 py-0.5 rounded bg-[#f0f3ff] text-[#115eaf] text-xs font-normal border border-[#d5e3ff]">
+                    Official Facts 2026
+                  </span>
                   <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
                     LPU Online Highlights 2026
                   </h2>
                 </div>
                 <button
                   onClick={() => onOpenBrochure()}
-                  className="px-4 py-2 min-h-[44px] bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all flex items-center gap-1.5 shadow-xs"
+                  className="px-4 py-2 bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all flex items-center gap-1.5 shadow-xs"
                 >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download Factsheet</span>
@@ -578,7 +367,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
                   <button
                     key={cat}
                     onClick={() => setSelectedHighlightCategory(cat)}
-                    className={`tap-chip min-h-[44px] px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
+                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
                       selectedHighlightCategory === cat
                         ? 'bg-[#115eaf] text-white border-[#115eaf]'
                         : 'bg-[#f0f3ff] text-[#43474d] border-[#e7eeff] hover:border-[#115eaf]'
@@ -626,7 +415,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
                 return filtered.length > 8 && (
                 <button
                   onClick={() => setHighlightsExpanded(!highlightsExpanded)}
-                  className="w-full min-h-[44px] py-2 bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] rounded-xl text-xs font-bold hover:bg-[#e7eeff] transition-all mt-[18px]"
+                  className="w-full py-2 bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] rounded-xl text-xs font-bold hover:bg-[#e7eeff] transition-all mt-[18px]"
                 >
                   {highlightsExpanded ? 'Show Less' : 'Show More Highlights'}
                 </button>
@@ -635,7 +424,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
 
               {/* CTA */}
               <div className="p-5 rounded-2xl bg-[#f0f3ff] border border-[#d5e3ff] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-[18px]">
-                <p className="text-sm font-semibold text-[#2d3137] leading-relaxed">
+                <p className="text-sm font-normal text-[#2d3137] leading-relaxed">
                   Unlock Full College Insights to Choose the Right Program for Your Future
                 </p>
                 <div className="flex flex-wrap gap-2.5">
@@ -745,19 +534,12 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
               </div>
             </section>
 
-            {/* 3b. Popular Programmes (Programme Cards) */}
-            <ProgrammeCardsSection
-              sectionId="popular-programmes"
-              title="LPU Online Popular Programmes"
-              description="Explore LPU Online’s most popular UG and PG programmes across Management, Computer Applications, Commerce, and Arts — built for working professionals."
-              programmes={LPU_POPULAR_PROGRAMMES}
-              onOpenBrochure={() => onOpenBrochure()}
-              onOpenApply={() => onOpenApply()}
-            />
-
-            {/* 4. Eligibility and Selection Criteria (From API) */}
+            {/* 3. Eligibility and Selection Criteria (From API) */}
             <section id="eligibility-criteria" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
+                <span className="px-2.5 py-0.5 rounded bg-[#f0f3ff] text-[#115eaf] text-xs font-normal border border-[#d5e3ff]">
+                  Admission Criteria
+                </span>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
                   LPU Online Eligibility and Selection Criteria
                 </h2>
@@ -804,9 +586,12 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
               </ul>
             </section>
 
-            {/* 5. Admission Process 2026 */}
+            {/* 5. Admission Process 2026 (Accordion) */}
             <section id="admission-process" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
+                <span className="px-2.5 py-0.5 rounded bg-[#f0f3ff] text-[#115eaf] text-xs font-normal border border-[#d5e3ff]">
+                  Admission Flow
+                </span>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
                   LPU Online Admission Process 2026
                 </h2>
@@ -819,153 +604,111 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
                 </p>
               </div>
 
-              <style>{`
-                .admission-flow-step {
-                  --admission-badge-w: 78px;
-                  display: grid;
-                  grid-template-columns: calc(var(--admission-badge-w) + 18px) minmax(0, 1fr);
-                  gap: 0.625rem;
-                }
-                .admission-flow-left {
-                  display: flex;
-                  flex-direction: column;
-                }
-                .admission-flow-badge {
-                  position: relative;
-                  width: var(--admission-badge-w);
-                  height: 34px;
-                  display: grid;
-                  place-items: center;
-                  background: #0b2540;
-                  color: #fff;
-                  font-size: 13px;
-                  font-weight: 600;
-                  clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
-                  letter-spacing: 0.02em;
-                }
-                .admission-flow-badge span {
-                  padding-right: 6px;
-                }
-                .admission-flow-conn {
-                  flex: 1;
-                  min-height: 42px;
-                  padding-right: 8px;
-                  margin-bottom: 4px;
-                  width: var(--admission-badge-w);
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  justify-content: space-evenly;
-                  opacity: 0;
-                }
-                .admission-flow-conn i {
-                  display: block;
-                  width: 9px;
-                  height: 9px;
-                  border-right: 2.5px solid #115eaf;
-                  border-bottom: 2.5px solid #115eaf;
-                  transform: rotate(45deg);
-                  opacity: 0.22;
-                }
-                .admission-flow-step:last-child .admission-flow-conn {
-                  display: none;
-                }
-                .admission-flow-body {
-                  padding: 2px 0 26px;
-                  opacity: 0;
-                  transform: translateY(14px);
-                }
-                .admission-flow-step.is-visible .admission-flow-badge {
-                  clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
-                  transition: clip-path 0.3s cubic-bezier(0.2, 0.9, 0.25, 1);
-                }
-                .admission-flow-step.is-visible .admission-flow-body {
-                  opacity: 1;
-                  transform: none;
-                  transition: opacity 0.3s ease 0.1s, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s;
-                }
-                .admission-flow-step.is-visible .admission-flow-conn {
-                  opacity: 1;
-                  transition: opacity 0.3s ease 0.35s;
-                }
-                .admission-flow-step.is-visible .admission-flow-conn i {
-                  animation: admission-wave 0.9s ease-in-out infinite;
-                }
-                .admission-flow-step.is-visible .admission-flow-conn i:nth-child(2) {
-                  animation-delay: 0.15s;
-                }
-                .admission-flow-step.is-visible .admission-flow-conn i:nth-child(3) {
-                  animation-delay: 0.3s;
-                }
-                @keyframes admission-wave {
-                  0%, 100% {
-                    opacity: 0.2;
-                    transform: rotate(45deg) translate(0, 0);
-                  }
-                  45% {
-                    opacity: 1;
-                    transform: rotate(45deg) translate(2px, 2px);
-                  }
-                }
-                @media (max-width: 640px) {
-                  .admission-flow-step {
-                    --admission-badge-w: 66px;
-                    gap: 0.5rem;
-                  }
-                  .admission-flow-badge {
-                    height: 30px;
-                    font-size: 12px;
-                  }
-                  .admission-flow-body h3 {
-                    font-size: 16px;
-                  }
-                  .admission-flow-body p {
-                    font-size: 14px;
-                  }
-                }
-                @media (prefers-reduced-motion: reduce) {
-                  .admission-flow-body,
-                  .admission-flow-conn,
-                  .admission-flow-badge {
-                    opacity: 1 !important;
-                    transform: none !important;
-                    transition: none !important;
-                  }
-                  .admission-flow-step.is-visible .admission-flow-conn i {
-                    animation: none !important;
-                  }
-                }
-              `}</style>
-
+              {/* Process List */}
               <div className="mt-[18px] flex flex-col gap-3">
-                {ADMISSION_FLOW_STEPS.map((step, i) => {
+                {[
+                  {
+                    title: 'Online Registration',
+                    description:
+                      'Visit the Lovely Professional University Online official portal and register using personal details such as name, email ID and mobile number. Login credentials are generated after successful registration.',
+                  },
+                  {
+                    title: 'Application Form Submission',
+                    description:
+                      'Fill out the online application form by selecting the desired programme and entering personal and academic details.',
+                  },
+                  {
+                    title: 'Document Upload',
+                    description:
+                      'Upload scanned copies of academic documents, identity proof, and photographs as part of the application process.',
+                  },
+                  {
+                    title: 'Eligibility Verification',
+                    description:
+                      'The university verifies eligibility based on academic qualifications and programme guidelines.',
+                  },
+                  {
+                    title: 'Fee Payment and Admission Confirmation',
+                    description:
+                      'Admission is confirmed after fee payment. Roll number and LMS login are issued to the student.',
+                  },
+                ].map((step, i) => {
+                  const isOpen = openAdmissionStep === i;
                   const stepNo = String(i + 1).padStart(2, '0');
-                  const isVisible = visibleAdmissionSteps.includes(i);
-
                   return (
                     <div
                       key={i}
-                      data-step-index={i}
-                      className={`admission-flow-step ${isVisible ? 'is-visible' : ''}`}
+                      className={`grid grid-cols-[52px_minmax(0,1fr)] sm:grid-cols-[78px_minmax(0,1fr)] gap-2.5 sm:gap-[18px] ${i < 4 ? 'relative' : ''}`}
                     >
-                      <div className="admission-flow-left">
-                        <div className="admission-flow-badge">
-                          <span>Step {stepNo}</span>
-                        </div>
-                        <div className="admission-flow-conn" aria-hidden="true">
-                          <i />
-                          <i />
-                          <i />
-                        </div>
+                      {/* Step number */}
+                      <div className="relative flex justify-center">
+                        {i < 4 && (
+                          <span
+                            aria-hidden="true"
+                            className={`absolute top-[52px] sm:top-[68px] bottom-[-12px] w-px ${isOpen ? 'bg-[#115eaf]/40' : 'bg-[#e7eeff]'}`}
+                          />
+                        )}
+                        <button
+                          type="button"
+                          aria-expanded={isOpen}
+                          aria-label={`Open Step ${stepNo}`}
+                          onClick={() => setOpenAdmissionStep(isOpen ? -1 : i)}
+                          className={`relative z-[2] w-[52px] h-[52px] sm:w-[68px] sm:h-[68px] rounded-[10px] sm:rounded-[12px] border text-[10px] sm:text-xs font-bold cursor-pointer transition-all duration-200 ${
+                            isOpen
+                              ? 'bg-[#115eaf] border-[#115eaf] text-white'
+                              : 'bg-white border-[#d5e3ff] text-[#43474d] hover:border-[#115eaf] hover:-translate-y-px'
+                          }`}
+                        >
+                          STEP {stepNo}
+                        </button>
                       </div>
 
-                      <div className="admission-flow-body">
-                        <h3 className="mb-1 text-[18px] font-semibold leading-[1.35] text-[#000f22] font-sans">
-                          {step.title}
-                        </h3>
-                        <p className="m-0 text-[15px] leading-[1.55] text-[#43474d] font-normal">
-                          {step.description}
-                        </p>
+                      {/* Content */}
+                      <div
+                        className={`rounded-[12px] border bg-white overflow-hidden transition-all duration-200 ${
+                          isOpen ? 'border-[#d5e3ff] shadow-[0_5px_18px_rgba(7,29,65,0.06)]' : 'border-[#e7eeff]'
+                        }`}
+                      >
+                        <button
+                          type="button"
+                          aria-expanded={isOpen}
+                          onClick={() => setOpenAdmissionStep(isOpen ? -1 : i)}
+                          className="w-full flex items-center justify-between gap-[15px] px-4 sm:px-5 py-[15px] sm:py-[18px] border-0 bg-transparent text-left cursor-pointer"
+                        >
+                          <span className="text-[16px] sm:text-[19px] leading-[1.35] font-medium text-[#000f22] font-sans">
+                            {step.title}
+                          </span>
+                          <span
+                            className={`shrink-0 w-[28px] h-[28px] sm:w-8 sm:h-8 flex items-center justify-center rounded-full border border-[#d5e3ff] bg-[#f0f3ff] text-[#115eaf] leading-none transition-all duration-200 ${
+                              isOpen ? 'rotate-180 bg-[#115eaf] border-[#115eaf] text-white' : 'hover:border-[#115eaf] hover:bg-white'
+                            }`}
+                            aria-hidden="true"
+                          >
+                            <svg
+                              width="14"
+                              height="14"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            >
+                              <path d="m6 9 6 6 6-6" />
+                            </svg>
+                          </span>
+                        </button>
+
+                        <div
+                          className="grid transition-[grid-template-rows] duration-300 ease-in-out"
+                          style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
+                        >
+                          <div className="overflow-hidden">
+                            <p className="px-4 sm:px-5 pb-[16px] sm:pb-[19px] text-[13px] sm:text-[15px] leading-[1.5] sm:leading-[1.55] text-[#43474d] font-normal">
+                              {step.description}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   );
@@ -1007,6 +750,9 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
             {/* 7. Examination Pattern (Interactive Module) */}
             <section id="examination-pattern" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
+                <span className="px-2.5 py-0.5 rounded bg-[#f0f3ff] text-[#115eaf] text-xs font-normal border border-[#d5e3ff]">
+                  Evaluation
+                </span>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
                   LPU Online Examination Pattern
                 </h2>
@@ -1018,106 +764,140 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
                 </p>
               </div>
 
-              <style>{`
-                .exam-step {
-                  --exam-badge-w: 78px;
-                  position: relative;
-                  display: grid;
-                  grid-template-columns: calc(var(--exam-badge-w) + 18px) minmax(0, 1fr);
-                  padding-bottom: 30px;
-                }
-                .exam-step:last-child {
-                  padding-bottom: 0;
-                }
-                .exam-step:not(:last-child)::before {
-                  content: "";
-                  position: absolute;
-                  left: calc(var(--exam-badge-w) / 2 - 5px);
-                  top: 40px;
-                  bottom: 6px;
-                  width: 3px;
-                  background: repeating-linear-gradient(180deg, #0b2540 0 4px, transparent 4px 9px);
-                  animation: exam-flow-down 0.9s linear infinite;
-                }
-                @keyframes exam-flow-down {
-                  from { background-position: 0 0; }
-                  to { background-position: 0 9px; }
-                }
-                .exam-badge {
-                  width: var(--exam-badge-w);
-                  height: 34px;
-                  display: grid;
-                  place-items: center;
-                  background: #0b2540;
-                  color: #fff;
-                  font-size: 13px;
-                  font-weight: 600;
-                  clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
-                }
-                .exam-badge span {
-                  padding-right: 6px;
-                }
-                .exam-body h3 {
-                  margin: 2px 0 3px;
-                  font-size: 18px;
-                  font-weight: 600;
-                  line-height: 1.35;
-                  color: #000f22;
-                }
-                .exam-body p {
-                  margin: 0;
-                  font-size: 15px;
-                  line-height: 1.55;
-                  color: #43474d;
-                }
-                .exam-step-reveal {
-                  opacity: 0;
-                  transform: translateY(20px);
-                  transition: opacity 0.6s ease, transform 0.6s ease;
-                }
-                .exam-step-reveal.show {
-                  opacity: 1;
-                  transform: none;
-                }
-                @media (max-width: 640px) {
-                  .exam-step {
-                    --exam-badge-w: 66px;
-                  }
-                  .exam-badge {
-                    font-size: 12px;
-                  }
-                  .exam-body h3 {
-                    font-size: 16px;
-                  }
-                  .exam-body p {
-                    font-size: 14px;
-                  }
-                }
-                @media (prefers-reduced-motion: reduce) {
-                  .exam-step::before,
-                  .exam-step-reveal {
-                    animation: none !important;
-                    transition: none !important;
-                    opacity: 1 !important;
-                    transform: none !important;
-                  }
-                }
-              `}</style>
+              <div className="mt-[18px] grid grid-cols-1 md:grid-cols-[250px_minmax(0,1fr)] border border-[#d5e3ff] rounded-[14px] overflow-hidden shadow-xs">
+                {/* Left nav */}
+                <div
+                  role="tablist"
+                  aria-label="Examination process"
+                  className="bg-gradient-to-b from-[#f0f3ff] to-[#f9f9ff] border-b md:border-b-0 md:border-r border-[#d5e3ff] p-2.5 grid grid-cols-2 md:grid-cols-1 gap-1"
+                >
+                  <div className="col-span-2 md:col-span-1 text-xs font-semibold text-[#43474d] px-2 pt-1.5 pb-2">
+                    Examination Process
+                  </div>
+                  {[
+                    { title: 'Semester-Based Structure', subtitle: 'Academic system' },
+                    { title: 'Continuous Internal Assessment', subtitle: 'During semester' },
+                    { title: 'End-Semester Online Examination', subtitle: 'End of semester' },
+                    { title: 'Result Declaration', subtitle: 'After evaluation' },
+                  ].map((step, i) => {
+                    const isActive = examStep === i;
+                    return (
+                      <button
+                        key={i}
+                        type="button"
+                        role="tab"
+                        aria-selected={isActive}
+                        onClick={() => setExamStep(i)}
+                        className={`flex items-center gap-2.5 w-full px-2 py-[9px] rounded-[9px] text-left cursor-pointer transition-all duration-200 ${
+                          isActive
+                            ? 'bg-white shadow-[0_2px_10px_rgba(17,94,175,0.18)] ring-1 ring-[#115eaf]/25'
+                            : 'bg-white/40 hover:bg-white/80 hover:shadow-sm'
+                        }`}
+                      >
+                        <span
+                          className={`flex-none w-[30px] h-[30px] grid place-items-center rounded-lg border text-xs font-semibold transition-colors duration-200 ${
+                            isActive
+                              ? 'bg-[#115eaf] border-[#115eaf] text-white shadow-[0_2px_6px_rgba(17,94,175,0.35)]'
+                              : 'bg-white/70 border-[#d5e3ff] text-[#43474d] group-hover:border-[#115eaf]'
+                          }`}
+                        >
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <span className="min-w-0">
+                          <span
+                            className={`block text-[13.5px] font-semibold leading-[1.3] truncate ${
+                              isActive ? 'text-[#115eaf]' : 'text-[#000f22]'
+                            }`}
+                          >
+                            {step.title}
+                          </span>
+                          <span className="block text-[11.5px] font-normal text-[#43474d] mt-px">{step.subtitle}</span>
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
 
-              <div className="mt-[18px]">
-                {EXAM_STEPS.map((step, index) => (
-                  <div key={step.title} className="exam-step exam-step-reveal">
-                    <div>
-                      <div className="exam-badge">
-                        <span>Step {String(index + 1).padStart(2, '0')}</span>
+                {/* Right content */}
+                <div className="flex flex-col p-[18px] sm:p-5 sm:px-7 bg-gradient-to-br from-white via-white to-[#f0f3ff]/40">
+                  <div className="flex justify-between gap-3 text-xs font-medium text-[#43474d] mb-3">
+                    <span>Examination Step</span>
+                    <span className="text-[#115eaf] font-semibold tabular-nums">
+                      {String(examStep + 1).padStart(2, '0')} / {String(EXAM_STEPS.length).padStart(2, '0')}
+                    </span>
+                  </div>
+
+                  <div className="flex-1" role="tabpanel" aria-live="polite">
+                    <h3 className="text-lg sm:text-[22px] font-semibold leading-[1.3] text-[#000f22] font-sans mb-2 flex items-center gap-2.5">
+                      <span className="w-1 self-stretch rounded-full bg-[#115eaf]/25" aria-hidden="true" />
+                      {EXAM_STEPS[examStep].title}
+                    </h3>
+                    <p className="text-[14px] sm:text-[15px] leading-[1.65] font-normal text-[#43474d]">
+                      {EXAM_STEPS[examStep].description}
+                    </p>
+
+                    <div className="mt-[18px] mb-2 text-[13px] font-semibold text-[#000f22] flex items-center gap-2">
+                      <span className="h-px w-5 bg-[#115eaf]/40" aria-hidden="true" />
+                      Key points
+                    </div>
+                    <ul className="list-none grid gap-2">
+                      {EXAM_STEPS[examStep].points.map((pt, i) => (
+                        <li
+                          key={i}
+                          className="relative pl-[26px] text-[14px] leading-[1.55] font-normal text-[#000f22] bg-[#f9f9ff]/60 border border-[#e7eeff] rounded-lg py-1.5 pr-2.5"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className="absolute left-0 top-[11px] w-4 h-4 rounded-full bg-[#115eaf]/15 border border-[#115eaf]/30 flex items-center justify-center"
+                          >
+                            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="M4.5 8.2l2.3 2.3 4.7-4.9"
+                                stroke="#115eaf"
+                                strokeWidth="1.8"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </span>
+                          {pt}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-4 mt-3.5 pt-3 border-t border-[#d5e3ff]">
+                    <div className="flex-1 max-w-[260px]">
+                      <div className="h-1.5 bg-[#e7eeff] rounded-full overflow-hidden">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-[#115eaf] to-[#004689] transition-[width] duration-300 ease-out shadow-[0_0_6px_rgba(17,94,175,0.45)]"
+                          style={{ width: `${((examStep + 1) / EXAM_STEPS.length) * 100}%` }}
+                        />
+                      </div>
+                      <div className="mt-[5px] text-[11.5px] font-normal text-[#43474d]">
+                        Step {examStep + 1} of {EXAM_STEPS.length}
                       </div>
                     </div>
-                    <div className="exam-body">
-                      <h3>{step.title}</h3>
-                      <p>{step.description}</p>
+                    <div className="flex gap-2">
+                      <button
+                        type="button"
+                        onClick={() => setExamStep((s) => Math.max(0, s - 1))}
+                        disabled={examStep === 0}
+                        className="min-w-[84px] px-3 py-[7px] border border-[#d5e3ff] rounded-lg bg-white text-xs font-medium text-[#000f22] cursor-pointer transition-all hover:border-[#115eaf] hover:bg-[#115eaf]/10 hover:text-[#004689] hover:shadow-xs disabled:opacity-45 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:shadow-none"
+                      >
+                        ← Previous
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setExamStep((s) => Math.min(EXAM_STEPS.length - 1, s + 1))}
+                        disabled={examStep === EXAM_STEPS.length - 1}
+                        className="min-w-[84px] px-3 py-[7px] border border-[#d5e3ff] rounded-lg bg-white text-xs font-medium text-[#000f22] cursor-pointer transition-all hover:border-[#115eaf] hover:bg-[#115eaf]/10 hover:text-[#004689] hover:shadow-xs disabled:opacity-45 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:shadow-none"
+                      >
+                        Next →
+                      </button>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
             </section>
 
@@ -1188,84 +968,29 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
               </div>
 
               {/* Campus Photos */}
-              <style>{`
-                .campus-marquee {
-                  overflow: hidden;
-                  position: relative;
-                  border-radius: 18px;
-                  border: 1px solid #e7eeff;
-                  background: #f0f3ff;
-                  margin-top: 18px;
-                  padding: 10px;
-                }
-                .campus-marquee-track {
-                  display: flex;
-                  align-items: stretch;
-                  gap: 14px;
-                  width: max-content;
-                  padding-right: 10px;
-                  animation: campus-marquee 24s linear infinite;
-                }
-                .campus-marquee-track:hover {
-                  animation-play-state: paused;
-                }
-                .campus-marquee-item {
-                  flex: 0 0 auto;
-                  width: min(320px, 72vw);
-                  background: #ffffff;
-                  overflow: hidden;
-                  border: 1px solid #e7eeff;
-                  border-radius: 18px;
-                  box-shadow: 0 10px 24px rgba(18, 37, 71, 0.08);
-                }
-                .campus-marquee-item img {
-                  display: block;
-                  width: 100%;
-                  height: 220px;
-                  object-fit: cover;
-                  border-radius: 18px 18px 0 0;
-                }
-                .campus-marquee-item figcaption {
-                  padding: 10px 12px;
-                  font-size: 12px;
-                  color: #43474d;
-                  background: white;
-                  border-top: 1px solid #e7eeff;
-                  border-radius: 0 0 18px 18px;
-                }
-                @keyframes campus-marquee {
-                  from {
-                    transform: translateX(0);
-                  }
-                  to {
-                    transform: translateX(-50%);
-                  }
-                }
-                @media (max-width: 640px) {
-                  .campus-marquee {
-                    padding: 8px;
-                  }
-                  .campus-marquee-track {
-                    gap: 10px;
-                  }
-                  .campus-marquee-item {
-                    width: min(280px, 80vw);
-                  }
-                  .campus-marquee-item img {
-                    height: 180px;
-                  }
-                }
-              `}</style>
-
-              <div className="campus-marquee">
-                <div className="campus-marquee-track">
-                  {[...CAMPUS_IMAGES, ...CAMPUS_IMAGES].map((image, index) => (
-                    <figure key={`${image.src}-${index}`} className="campus-marquee-item">
-                      <img src={image.src} alt={image.alt} loading="lazy" />
-                      <figcaption>{image.alt}</figcaption>
-                    </figure>
-                  ))}
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
+                <figure className="overflow-hidden rounded-xl border border-[#e7eeff] bg-[#f0f3ff]">
+                  <img
+                    src="/images/campusviewlpu.jpeg"
+                    alt="Lovely Professional University campus view"
+                    className="w-full h-44 sm:h-52 object-cover"
+                    loading="lazy"
+                  />
+                  <figcaption className="px-3 py-2 text-[11px] text-[#43474d] bg-white border-t border-[#e7eeff]">
+                    LPU Campus View — Phagwara, Punjab
+                  </figcaption>
+                </figure>
+                <figure className="overflow-hidden rounded-xl border border-[#e7eeff] bg-[#f0f3ff]">
+                  <img
+                    src="/images/campusarealpu.jpeg"
+                    alt="Lovely Professional University campus aerial view"
+                    className="w-full h-44 sm:h-52 object-cover"
+                    loading="lazy"
+                  />
+                  <figcaption className="px-3 py-2 text-[11px] text-[#43474d] bg-white border-t border-[#e7eeff]">
+                    LPU Campus Aerial View
+                  </figcaption>
+                </figure>
               </div>
 
               <div className="flex flex-wrap gap-2 pt-1 mt-[18px]">
@@ -1282,6 +1007,15 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
               {/* Top Heading Block (Placed at the top of section) */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#d5e3ff]/70">
                 <div>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[11px] font-normal flex items-center gap-1">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
+                      UGC-DEB Validated & Govt Approved
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded bg-white text-[#115eaf] text-[11px] font-normal border border-[#d5e3ff]">
+                      100% Equivalent
+                    </span>
+                  </div>
                   <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
                     LPU Online Sample Degree
                   </h2>
@@ -1316,7 +1050,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
                     </span>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-2.5">
+                  <div className="flex items-center gap-2.5">
                     <button
                       onClick={() => onOpenApply()}
                       className="px-4 py-2 bg-[#115eaf] text-white rounded-lg text-xs font-semibold shadow hover:bg-[#004689] active:scale-95 transition-all flex items-center gap-1.5"
@@ -1352,6 +1086,15 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
               {/* Header and Rating Summary Bar */}
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-[#e7eeff]">
                 <div>
+                  <div className="flex items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-normal flex items-center gap-1">
+                      <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                      4.8 / 5.0 Rating
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-normal">
+                      1,400+ Verified Submissions
+                    </span>
+                  </div>
                   <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans mt-2">
                     LPU Online Reviews
                   </h2>
@@ -1360,7 +1103,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
                   </p>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center gap-3 bg-[#f0f3ff] border border-[#d5e3ff] p-2.5 rounded-xl shrink-0 max-w-full">
+                <div className="flex items-center gap-3 bg-[#f0f3ff] border border-[#d5e3ff] p-2.5 rounded-xl shrink-0">
                   <div className="text-center">
                     <span className="block text-lg font-black text-[#115eaf]">94%</span>
                     <span className="text-[9px] text-[#43474d] font-bold">Completion Rate</span>
@@ -1385,7 +1128,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
                     <button
                       key={cat}
                       onClick={() => setSelectedReviewCategory(cat)}
-                      className={`px-3 py-1 rounded-lg font-bold transition-all text-[11px] max-md:min-h-[36px] max-md:px-4 ${
+                      className={`px-3 py-1 rounded-lg font-bold transition-all text-[11px] ${
                         selectedReviewCategory === cat
                           ? 'bg-[#115eaf] text-white shadow-xs'
                           : 'bg-[#f0f3ff] text-[#43474d] hover:bg-[#e0ecff] hover:text-[#000f22]'
@@ -1482,14 +1225,14 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
               {/* Review Callout Action Box */}
               <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#f0f3ff] via-white to-[#f0f3ff] border border-[#d5e3ff] flex flex-col sm:flex-row items-center justify-between gap-3 mt-[18px]">
                 <div className="space-y-1 text-center sm:text-left">
-                  <h3 className="font-bold text-sm text-[#000f22] font-sans">
+                  <h4 className="font-bold text-sm text-[#000f22] font-sans">
                     Join 25,000+ ambitious working professionals at LPU Online
-                  </h3>
+                  </h4>
                   <p className="text-xs text-[#43474d]">
                     Admissions for Spring 2026 intake are currently open. Book a 1-on-1 counseling session with our admissions team.
                   </p>
                 </div>
-                <div className="flex flex-wrap items-center justify-center gap-2.5">
+                <div className="flex items-center gap-2.5 shrink-0">
                   <button
                     onClick={() => onOpenApply()}
                     className="px-5 py-2.5 bg-[#115eaf] text-white rounded-xl text-xs font-bold shadow hover:bg-[#004689] active:scale-95 transition-all"
@@ -1621,18 +1364,129 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
             </section>
 
             {/* Blogs */}
-            <BlogsListSection
-              onOpenHelpDesk={onOpenHelpDesk}
-              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
-            />
+            <section id="blogs" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+              <div className="flex items-end justify-between gap-3 flex-wrap">
+                <div>
+                  <span className="inline-flex px-2.5 py-1 rounded-full bg-[#f0f3ff] text-[#115eaf] text-xs font-bold border border-[#d5e3ff]">
+                    {DEGREEFYD_LPU_API.blogs.label}
+                  </span>
+                  <h2 className="section-title mt-2 text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
+                    Latest <span className="text-[#115eaf]">Blogs</span>
+                  </h2>
+                  <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal max-w-[850px]">
+                    {DEGREEFYD_LPU_API.blogs.description}
+                  </p>
+                </div>
+                <button
+                  onClick={() => onOpenHelpDesk()}
+                  className="h-11 px-5 inline-flex items-center gap-2.5 rounded-xl border border-[#0b2540] text-[#0b2540] text-sm font-bold hover:bg-[#0b2540] hover:text-white transition-all shrink-0"
+                >
+                  View All Blogs
+                  <span className="text-[#115eaf] text-lg leading-none">→</span>
+                </button>
+              </div>
 
+              {/* Slider */}
+              <div className="flex items-center gap-3 mt-[18px]">
+                <button
+                  onClick={() => setBlogIndex((i) => Math.max(0, i - 1))}
+                  disabled={blogIndex === 0}
+                  aria-label="Previous blogs"
+                  className="shrink-0 w-[42px] h-[42px] rounded-full border border-[#d5e3ff] bg-white text-[#000f22] text-lg flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white disabled:opacity-35 disabled:cursor-default transition-all"
+                >
+                  ←
+                </button>
+
+                <div className="w-full overflow-hidden">
+                  <div
+                    className="flex"
+                    style={{
+                      gap: '22px',
+                      transform: `translateX(-${blogIndex * (100 / blogVisible)}%)`,
+                      transition: 'transform .45s cubic-bezier(.4,0,.2,1)'
+                    }}
+                  >
+                    {DEGREEFYD_LPU_API.blogs.posts.map((post, i) => (
+                      <article
+                        key={i}
+                        className="min-w-0 overflow-hidden bg-white border border-[#e7eeff] rounded-2xl hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
+                        style={{ flex: `0 0 calc((100% - ${(blogVisible - 1) * 22}px) / ${blogVisible})` }}
+                      >
+                        <a href="#" className="relative block h-[185px] overflow-hidden bg-[#f0f3ff]">
+                          <img
+                            src={post.image}
+                            alt={post.title}
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          />
+                          <span className="absolute left-3.5 top-3.5 px-2.5 py-1.5 rounded-[20px] bg-[#115eaf] text-white text-[11px] font-bold leading-none">
+                            {post.category}
+                          </span>
+                        </a>
+                        <div className="p-[18px]">
+                          <h3 className="text-[#000f22] text-lg leading-snug font-bold font-sans">{post.title}</h3>
+                          <p className="mt-[7.5px] mb-4 text-sm text-[#43474d] leading-relaxed font-normal">{post.excerpt}</p>
+                          <div className="flex items-center justify-between gap-3.5">
+                            <span className="flex items-center gap-1.5 text-[13px] text-[#43474d] font-normal">
+                              <Clock className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
+                              {post.date}
+                            </span>
+                            <a href="#" className="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#115eaf] hover:text-[#004689] transition-colors">
+                              Read More
+                              <span className="text-lg leading-none hover:translate-x-1 transition-transform">→</span>
+                            </a>
+                          </div>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => setBlogIndex((i) => Math.min(Math.max(0, DEGREEFYD_LPU_API.blogs.posts.length - blogVisible), i + 1))}
+                  disabled={blogIndex >= DEGREEFYD_LPU_API.blogs.posts.length - blogVisible}
+                  aria-label="Next blogs"
+                  className="shrink-0 w-[42px] h-[42px] rounded-full border border-[#d5e3ff] bg-white text-[#000f22] text-lg flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white disabled:opacity-35 disabled:cursor-default transition-all"
+                >
+                  →
+                </button>
+              </div>
+
+              {/* Dots */}
+              <div className="flex justify-center items-center gap-[7px]">
+                {Array.from({ length: Math.max(0, DEGREEFYD_LPU_API.blogs.posts.length - blogVisible) + 1 }).map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setBlogIndex(i)}
+                    aria-label={`Go to blog slide ${i + 1}`}
+                    className={`h-[7px] rounded-[10px] border-none cursor-pointer transition-all ${
+                      i === blogIndex ? 'w-[23px] bg-[#115eaf]' : 'w-[7px] bg-[#d5e3ff]'
+                    }`}
+                  />
+                ))}
+              </div>
+            </section>
+
+            {/* Related Colleges */}
+            <section id="related-colleges" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+              <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
+                Related Colleges
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-[18px]">
+                {DEGREEFYD_LPU_API.relatedColleges.map((college, i) => (
+                  <div key={i} className="p-4 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] hover:border-[#115eaf] transition-all cursor-pointer">
+                    <span className="font-bold text-xs text-[#000f22]">{college.name}</span>
+                    <span className="block text-[11px] text-[#74777e] mt-1">{college.location}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
         </div>
       </div>
 
       {/* Floating TOC Toggle Button */}
       <button
         onClick={() => setTocOpen(!tocOpen)}
-        className="fixed bottom-36 left-4 z-30 w-11 h-11 rounded-full bg-[#0b2540] text-white shadow-lg flex items-center justify-center hover:bg-[#115eaf] transition-colors md:bottom-6"
+        className="fixed bottom-20 left-4 z-30 w-11 h-11 rounded-full bg-[#0b2540] text-white shadow-lg flex items-center justify-center hover:bg-[#115eaf] transition-colors md:bottom-6"
         aria-label="Toggle Table of Contents"
       >
         <FileText className="w-5 h-5" />
@@ -1717,7 +1571,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
       <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex items-center">
         {/* Slide-up Panel */}
         <div
-          className={`w-72 max-w-[calc(100vw-48px)] bg-white border border-[#e7eeff] shadow-2xl rounded-2xl transition-all duration-300 ${
+          className={`w-72 bg-white border border-[#e7eeff] shadow-2xl rounded-2xl transition-all duration-300 ${
             counselPanelOpen ? 'opacity-100 translate-x-0 pointer-events-auto' : 'opacity-0 translate-x-3 pointer-events-none'
           }`}
         >
@@ -1730,7 +1584,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
           </div>
           <button
             onClick={() => setCounselPanelOpen(false)}
-              className="tap-hit w-11 h-11 rounded-md bg-[#f0f3ff] text-[#43474d] flex items-center justify-center hover:bg-[#e7eeff] transition-colors text-[10px] font-bold"
+            className="w-6 h-6 rounded-md bg-[#f0f3ff] text-[#43474d] flex items-center justify-center hover:bg-[#e7eeff] transition-colors text-[10px] font-bold"
           >
             ✕
           </button>
@@ -1738,38 +1592,24 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
 
         <div className="p-4">
           {!formSubmitted ? (
-            <form onSubmit={handleCounselingSubmit} className="space-y-2.5" noValidate>
-              <div>
-                <input
-                  type="tel"
-                  required
-                  pattern="[0-9]{10}"
-                  value={counselingForm.phone}
-                  onChange={(e) => { setCounselingForm({ ...counselingForm, phone: e.target.value }); if (formErrors.phone) setFormErrors({...formErrors, phone: ''}); }}
-                  placeholder="Phone Number (+91)"
-                  className={`w-full px-3 py-2 rounded-lg border text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none ${formErrors.phone ? 'border-red-500' : 'border-[#c4c6ce]'}`}
-                  aria-invalid={formErrors.phone ? 'true' : 'false'}
-                  aria-describedby={formErrors.phone ? 'phone-error' : undefined}
-                />
-                {formErrors.phone && (
-                  <p id="phone-error" role="alert" aria-live="polite" className="mt-1 text-[11px] text-red-600">{formErrors.phone}</p>
-                )}
-              </div>
-              <div>
-                <input
-                  type="email"
-                  required
-                  value={counselingForm.email}
-                  onChange={(e) => { setCounselingForm({ ...counselingForm, email: e.target.value }); if (formErrors.email) setFormErrors({...formErrors, email: ''}); }}
-                  placeholder="Email Address"
-                  className={`w-full px-3 py-2 rounded-lg border text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none ${formErrors.email ? 'border-red-500' : 'border-[#c4c6ce]'}`}
-                  aria-invalid={formErrors.email ? 'true' : 'false'}
-                  aria-describedby={formErrors.email ? 'email-error' : undefined}
-                />
-                {formErrors.email && (
-                  <p id="email-error" role="alert" aria-live="polite" className="mt-1 text-[11px] text-red-600">{formErrors.email}</p>
-                )}
-              </div>
+            <form onSubmit={handleCounselingSubmit} className="space-y-2.5">
+              <input
+                type="tel"
+                required
+                pattern="[0-9]{10}"
+                value={counselingForm.phone}
+                onChange={(e) => setCounselingForm({ ...counselingForm, phone: e.target.value })}
+                placeholder="Phone Number (+91)"
+                className="w-full px-3 py-2 rounded-lg border border-[#c4c6ce] text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none"
+              />
+              <input
+                type="email"
+                required
+                value={counselingForm.email}
+                onChange={(e) => setCounselingForm({ ...counselingForm, email: e.target.value })}
+                placeholder="Email Address"
+                className="w-full px-3 py-2 rounded-lg border border-[#c4c6ce] text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none"
+              />
               <select
                 value={counselingForm.course}
                 onChange={(e) => setCounselingForm({ ...counselingForm, course: e.target.value })}
@@ -1781,7 +1621,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
               </select>
               <button
                 type="submit"
-                className="w-full py-2 min-h-[44px] bg-[#115eaf] text-white rounded-lg text-[11px] font-bold shadow-sm hover:bg-[#004689] active:scale-95 transition-all"
+                className="w-full py-2 bg-[#115eaf] text-white rounded-lg text-[11px] font-bold shadow-sm hover:bg-[#004689] active:scale-95 transition-all"
               >
                 Submit
               </button>
@@ -1802,7 +1642,7 @@ const HIGHLIGHT_CATEGORIES = ['All', 'Institution', 'Academic', 'Accreditations'
       {/* Vertical Edge Tab — "Free Apply" */}
       <button
         onClick={() => setCounselPanelOpen(!counselPanelOpen)}
-        className="hidden lg:flex w-12 h-[200px] bg-[#115eaf] hover:bg-[#004689] rounded-l-2xl shadow-md items-center justify-center transition-colors"
+        className="w-12 h-[200px] bg-[#115eaf] hover:bg-[#004689] rounded-l-2xl shadow-md flex items-center justify-center transition-colors"
       >
         <span className="block text-white text-sm font-normal whitespace-nowrap -rotate-90">
           {counselPanelOpen ? 'Close' : 'Free Apply'}

@@ -79,37 +79,6 @@ export interface UniversityFaq {
   category?: string;
 }
 
-export interface UniversityTestimonial {
-  studentName: string;
-  profession?: string;
-  text: string;
-  rating?: number;
-  avatar?: string;
-  company?: string;
-  course?: string;
-  batch?: string;
-  location?: string;
-}
-
-/** Icon key for a "How You Study" platform row. */
-export type UniversityLmsPlatformIcon = 'video' | 'book' | 'smartphone' | 'users';
-
-/** One row of the "How You Study" platform list. */
-export interface UniversityLmsPlatformItem {
-  icon: UniversityLmsPlatformIcon;
-  title: string;
-  desc: string;
-  meta: string;
-}
-
-export interface UniversityBlogPost {
-  title: string;
-  excerpt: string;
-  category: string;
-  date: string;
-  image: string;
-}
-
 export interface UniversityData {
   id: string;
   slug: string;
@@ -186,10 +155,6 @@ export interface UniversityData {
     intro: string;
     lmsName: string;
     lmsFeatures: string[];
-    /** Structured LMS rows for the "How You Study" section (LPU structure). */
-    lmsPlatform?: UniversityLmsPlatformItem[];
-    /** Heading used for the "How You Study" section. */
-    lmsPlatformTitle?: string;
     examPattern: {
       title: string;
       description: string;
@@ -211,10 +176,6 @@ export interface UniversityData {
   };
 
   faqs: UniversityFaq[];
-
-  // Optional extras used by the shared template views
-  testimonials?: UniversityTestimonial[];
-  blogs?: { posts: UniversityBlogPost[] };
 
   relatedUniversityIds: string[];
 }

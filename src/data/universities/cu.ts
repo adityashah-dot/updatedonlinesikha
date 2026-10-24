@@ -3,498 +3,230 @@ import { UniversityData } from '../../types/university';
 export const CU_UNIVERSITY_DATA: UniversityData = {
   id: 'cu-online',
   slug: 'cu-online',
-  name: 'Chandigarh University Online',
+  name: 'Chandigarh University (CU Online)',
   shortName: 'CU Online',
-  tagline: 'UGC Entitled · NAAC A+ · NIRF #19 Online Degrees',
+  tagline: 'QS World Ranked · NAAC A+ Accredited Flexible Online Degrees',
   established: '2012',
   location: 'Mohali, Punjab',
-  type: 'Private',
-  officialWebsite: 'cuchd.in',
-  rating: '4.6',
-  reviewsCount: 1200,
-  nirfRanking: '19',
-  naacGrade: "NAAC A+ Grade",
-  approvals: ['UGC Entitled', 'NAAC A+', 'NIRF #19', 'A+ Grade'],
+  type: 'Private UGC-DEB Entitled',
+  officialWebsite: 'onlinecu.in',
+  rating: '4.5',
+  reviewsCount: 1180,
+  nirfRanking: '32',
+  naacGrade: 'NAAC A+ Accredited',
+  approvals: ['UGC-DEB', 'AICTE', 'NIRF #32', 'QS World Ranked', 'AIU', 'WES'],
   verifiedYear: '2026',
-  logoImage:
-    'https://images.DegreeFYD.com/colleges/9842/chandigarh_university_online_courses_and_admission_2025_logo.webp',
-  backgroundImage:
-    'https://images.DegreeFYD.com/colleges/9842/chandigarh_university_online_courses_and_admission_2025_image.webp',
+  logoImage: 'https://images.DegreeFYD.com/colleges/7190/lovely_professional_university_online_course_logo.webp',
+  backgroundImage: '/images/campusarealpu.jpeg',
   brochureUrl: 'https://images.degreefyd.com//cu-online-brochure.pdf',
-  sampleDegreeImage:
-    'https://images.DegreeFYD.com/colleges/9842/sampleDegree/chandigarh_university_online_courses_and_admission_2025_sampledegree.webp',
 
   quickStats: {
-    feeRange: '₹75,000 onwards',
+    feeRange: '₹90,000 – ₹1,50,000',
     duration: '2 – 3 Years',
-    mode: '100% Online',
-    placementRate: '80%',
-    highestPackage: '₹54.75 LPA',
+    mode: '100% Home Proctored Online',
+    placementRate: '88%',
+    highestPackage: '₹28 LPA',
     avgPackage: '₹4.8 LPA',
-    emiStarting: '₹3,750/mo',
+    emiStarting: '₹3,750/mo'
   },
 
   overview: {
     introParagraphs: [
-      'Chandigarh University Online (CU Online), founded in 2012 in Mohali, Punjab, is UGC Entitled, holds an A+ grade from NAAC, and received E-LEAD (e-Learning Excellence for Academic Digitalisation) recognition. The university is a member of ICAR, AUAP, IAU, ACU, IEEE, ASME, IUCEE, and ACS.',
-      'CU Online offers a diverse range of undergraduate and postgraduate programmes, delivering quality education beyond traditional classrooms for working professionals, learners in remote regions, homemakers, and students — without compromising their existing responsibilities.',
+      'Chandigarh University (CU Online) is recognized among India’s youngest and fastest-growing institutions to achieve NAAC A+ accreditation and premier positions in the QS World University Rankings. CU Online provides flexible, industry-oriented undergraduate and postgraduate programs.',
+      'The university leverages the world-renowned Blackboard LMS and Harvard ManageMentor content to deliver experiential learning, live weekend sessions, and industry capstone projects.',
+      'All online degrees are fully entitled by UGC-DEB, AICTE approved, and valid across all central/state government examinations and international credential evaluators.'
     ],
     highlightsTable: [
-      { label: 'University Name', value: 'Chandigarh University Online', category: 'Institution' },
+      { label: 'University Name', value: 'Chandigarh University', category: 'Institution' },
+      { label: 'Online Division', value: 'CU Online / Center for Distance and Online Learning', category: 'Institution' },
       { label: 'Establishment Year', value: '2012', category: 'Institution' },
-      { label: 'Ownership Type', value: 'Private', category: 'Institution' },
-      { label: 'Location', value: 'Mohali, Punjab', category: 'Institution' },
-      {
-        label: 'Approval',
-        value: 'UGC Entitled for Online Programmes',
-        category: 'Accreditations',
-      },
-      { label: 'NAAC Accreditation', value: 'A+', category: 'Accreditations' },
-      {
-        label: 'NIRF Ranking',
-        value: '#19 among all universities in India (NIRF)',
-        category: 'Accreditations',
-      },
-      { label: 'Mode of Learning', value: '100% Online', category: 'Academic' },
-      { label: 'Learning Platform', value: 'Digital LMS', category: 'Technology' },
-      { label: 'Placement Support', value: 'Available', category: 'Info' },
+      { label: 'Location', value: 'NH-95, Chandigarh-Ludhiana Highway, Mohali, Punjab', category: 'Institution' },
+      { label: 'Accreditation', value: 'NAAC A+ Grade', category: 'Accreditations' },
+      { label: 'NIRF Ranking', value: 'Ranked #32 Overall in India', category: 'Accreditations' },
+      { label: 'Global Standing', value: 'QS World University Ranked', category: 'Accreditations' },
+      { label: 'LMS Platform', value: 'Blackboard Ultra & CU Learn Mobile App', category: 'Technology' },
+      { label: 'Examination Mode', value: 'AI-Proctored Web Examinations', category: 'Evaluation' },
+      { label: 'Official Website', value: 'onlinecu.in', category: 'Info' }
     ],
-    highlightsSummary:
-      'Chandigarh University Online is UGC Entitled and NAAC A+ accredited, ranked #19 among all universities in India, offering 100% online UG and PG programmes with placement support.',
+    highlightsSummary: 'CU Online is entitled by the UGC to provide online degree courses in Management, Information Technology, Commerce, and Humanities.',
     latestNews: {
-      title: 'CU Online Latest News and Updates',
-      description:
-        'CU Online Admission 2026 is open for all its courses. Candidates must apply via the official website. Chandigarh University Online admissions will close on 15 March 2026 for the current batch. Students applying before the deadline can get up to 25% scholarship on selected online programs.',
-      date: 'Updated for 2026 Intake',
-    },
+      title: 'CU Online Admissions 2026 Active with Early Bird Grants',
+      description: 'Admissions open for MBA, MCA, BCA, BBA, and M.Com with up to 30% scholarship grants for eligible students.',
+      date: 'Updated for 2026 Intake'
+    }
   },
 
   courses: [
     {
-      id: 'cu-online-mba',
-      name: 'Online MBA',
+      id: 'cu-mba',
+      name: 'Online Master of Business Administration (MBA)',
       code: 'MBA',
       level: 'PG',
-      duration: '2 Years (4 Semesters)',
-      feePerSemester: '₹50,000',
-      totalFee: '₹2,00,000',
+      duration: '2 Years (4 Sems)',
+      feePerSemester: '₹37,500',
+      totalFee: '₹1,50,000',
       specializationsCount: 6,
-      specializations: [
-        'Finance',
-        'Marketing',
-        'Human Resource',
-        'Business Analytics',
-        'International Business',
-        'Operations',
-      ],
-      eligibility: "Bachelor's degree in any discipline",
-      description:
-        'Industry-focused MBA with flexible online learning, live sessions, and career support for working professionals.',
+      specializations: ['FinTech', 'Business Analytics', 'Digital Marketing', 'HR Management', 'Banking & Financial Markets', 'Logistics & Supply Chain'],
+      eligibility: 'Bachelor’s degree in any discipline with min 50% marks (45% for reserved category).',
+      description: 'Industry-integrated program featuring Harvard Business case studies, Bloomberg data analysis modules, and practical business simulations.',
       careerProspects: {
         avgPackage: '₹5.5 – ₹7.2 LPA',
-        highestPackage: '₹54.75 LPA',
-        roles: ['Business Analyst', 'Marketing Manager', 'HR Manager'],
-      },
+        highestPackage: '₹28 LPA',
+        roles: ['Financial Analyst', 'Marketing Strategist', 'Operations Manager', 'Business Consultant']
+      }
     },
     {
-      id: 'cu-online-mca',
-      name: 'Online MCA',
+      id: 'cu-mca',
+      name: 'Online Master of Computer Applications (MCA)',
       code: 'MCA',
       level: 'PG',
-      duration: '2 Years (4 Semesters)',
-      feePerSemester: '₹40,000',
-      totalFee: '₹1,60,000',
+      duration: '2 Years (4 Sems)',
+      feePerSemester: '₹33,750',
+      totalFee: '₹1,35,000',
       specializationsCount: 4,
-      specializations: [
-        'Cloud Computing',
-        'Data Science',
-        'Artificial Intelligence',
-        'Full-Stack Development',
-      ],
-      eligibility: "Bachelor's degree with Mathematics at 10+2 or graduation level",
-      description:
-        'Hands-on MCA programme with modern tech specialisations and practical project work for software careers.',
+      specializations: ['Cloud Computing', 'Data Science', 'Artificial Intelligence', 'Full-Stack Web Development'],
+      eligibility: 'BCA / B.Sc Computer Science / B.Tech or Bachelor degree with Mathematics at 10+2 level.',
+      description: 'Hands-on practical curriculum designed with top cloud partners and IT tech giants for high-demand software engineering careers.',
       careerProspects: {
         avgPackage: '₹5.0 – ₹6.8 LPA',
         highestPackage: '₹24 LPA',
-        roles: ['Cloud Architect', 'Data Scientist', 'Software Engineer'],
-      },
+        roles: ['Cloud Architect', 'Data Scientist', 'Senior Software Engineer']
+      }
     },
     {
-      id: 'cu-online-bba',
-      name: 'Online BBA',
+      id: 'cu-bba',
+      name: 'Online Bachelor of Business Administration (BBA)',
       code: 'BBA',
       level: 'UG',
-      duration: '3 Years (6 Semesters)',
-      feePerSemester: '₹33,334',
-      totalFee: '₹1,00,000',
+      duration: '3 Years (6 Sems)',
+      feePerSemester: '₹21,000',
+      totalFee: '₹1,26,000',
       specializationsCount: 4,
-      specializations: [
-        'General Management',
-        'Digital Marketing',
-        'Banking & Insurance',
-        'International Business',
-      ],
-      eligibility: 'Pass Class 12 from a recognized board',
-      description:
-        'Undergraduate business programme covering management foundations with flexible online delivery.',
+      specializations: ['Digital Marketing', 'Banking & Insurance', 'Human Resources', 'General Management'],
+      eligibility: 'Class 10+2 from a recognized educational board in any stream with minimum 50% marks.',
+      description: 'Undergraduate business program covering leadership, quantitative analysis, finance, and marketing foundations.',
       careerProspects: {
         avgPackage: '₹3.6 – ₹4.5 LPA',
         highestPackage: '₹9 LPA',
-        roles: ['Associate Consultant', 'Marketing Executive', 'Operations Analyst'],
-      },
+        roles: ['Associate Consultant', 'Marketing Executive', 'Operations Analyst']
+      }
     },
     {
-      id: 'cu-online-bca',
-      name: 'Online BCA',
+      id: 'cu-bca',
+      name: 'Online Bachelor of Computer Applications (BCA)',
       code: 'BCA',
       level: 'UG',
-      duration: '3 Years (6 Semesters)',
-      feePerSemester: '₹35,000',
-      totalFee: '₹1,05,000',
+      duration: '3 Years (6 Sems)',
+      feePerSemester: '₹22,500',
+      totalFee: '₹1,35,000',
       specializationsCount: 3,
-      specializations: ['Software Development', 'Data Analytics', 'Web Technologies'],
-      eligibility: 'Pass 10+2 from a recognized board',
-      description:
-        'Computer applications degree with programming, databases, and industry-relevant project work.',
+      specializations: ['Software Engineering', 'Data Analytics', 'Web Technologies'],
+      eligibility: 'Pass 10+2 with Mathematics/Computer Science/Information Practice with min 50% aggregate.',
+      description: 'Industry-driven software application program with practical programming exercises, database labs, and full-stack projects.',
       careerProspects: {
         avgPackage: '₹3.8 – ₹4.8 LPA',
         highestPackage: '₹11 LPA',
-        roles: ['Junior Developer', 'Frontend Engineer', 'Database Administrator'],
-      },
-    },
-    {
-      id: 'cu-online-mcom',
-      name: 'Online M.Com',
-      code: 'MCom',
-      level: 'PG',
-      duration: '2 Years (4 Semesters)',
-      feePerSemester: '₹30,000',
-      totalFee: '₹60,000',
-      specializationsCount: 2,
-      specializations: ['Finance', 'Accounting & Taxation'],
-      eligibility: "Bachelor's degree in Commerce or related field",
-      description:
-        'Commerce postgraduate programme focused on finance, accounting, and business compliance.',
-      careerProspects: {
-        avgPackage: '₹3.5 – ₹5.0 LPA',
-        highestPackage: '₹9 LPA',
-        roles: ['Accountant', 'Tax Analyst', 'Finance Executive'],
-      },
-    },
-    {
-      id: 'cu-online-ma',
-      name: 'Online MA',
-      code: 'MA',
-      level: 'PG',
-      duration: '2 Years (4 Semesters)',
-      feePerSemester: '₹25,000',
-      totalFee: '₹50,000',
-      specializationsCount: 4,
-      specializations: ['English', 'Political Science', 'Sociology', 'Psychology'],
-      eligibility: "Bachelor's degree in any discipline",
-      description:
-        'Arts postgraduate degree with flexible specialisations for educators, writers, and civil services aspirants.',
-      careerProspects: {
-        avgPackage: '₹3.0 – ₹4.5 LPA',
-        highestPackage: '₹7 LPA',
-        roles: ['Content Writer', 'HR Executive', 'Civil Services Aspirant'],
-      },
-    },
+        roles: ['Junior Developer', 'Frontend Engineer', 'Database Administrator']
+      }
+    }
   ],
 
   admissions: {
-    intro: 'Chandigarh University Online admission process is fully online, quick and student-friendly. It is suitable for both fresh students and working professionals. Admission is merit-based and depends on the academic performance in the qualifying examination.',
+    intro: 'CU Online facilitates an effortless 4-step digital admission process with live guidance from dedicated admissions advisors.',
     steps: [
-      {
-        stepNumber: 1,
-        title: 'Visit CU Online Website',
-        description:
-          'Visit the official website of Chandigarh University Online Learning and click on the “Apply Now” button to start the admission process.',
-      },
-      {
-        stepNumber: 2,
-        title: 'Register as a New User',
-        description:
-          'Under the “Register Today” section, enter all the required details. After successful registration, candidates will receive their login credentials via SMS or email.',
-      },
-      {
-        stepNumber: 3,
-        title: 'Log in to the Application Portal',
-        description:
-          'Use the provided User ID and password to log in to the applicant dashboard and access the online application form.',
-      },
-      {
-        stepNumber: 4,
-        title: 'Fill in Academic & Personal Details',
-        description:
-          'Complete the CU online application form by entering your academic qualifications, personal information, and programme preferences carefully.',
-      },
-      {
-        stepNumber: 5,
-        title: 'Upload Required Documents',
-        description:
-          'Upload scanned copies of all mandatory documents, including educational certificates, ID proof, and a recent passport-size coloured photograph, as per the given guidelines.',
-      },
-      {
-        stepNumber: 6,
-        title: 'Fee Payment and Admission Confirmation',
-        description:
-          'Once documents are verified, candidates must pay the admission or semester fee to confirm their seat. After confirmation, access to academic updates and course onboarding is provided.',
-      },
+      { stepNumber: 1, title: 'Student Profile Registration', description: 'Enter basic contact and academic profile details on the CU Online admission portal.' },
+      { stepNumber: 2, title: 'Document Verification', description: 'Upload digitized mark sheets, identity verification documents, and photographs.' },
+      { stepNumber: 3, title: 'Fee Payment & Grant Application', description: 'Pay semester fees with zero-cost EMI or apply for merit scholarships.' },
+      { stepNumber: 4, title: 'LMS Access & Onboarding', description: 'Receive Blackboard LMS login credentials and welcome pack.' }
     ],
     eligibilityMatrix: [
-      {
-        course: 'Online BBA / BCA',
-        eligibility: 'Pass Class 12 from a recognized board',
-        duration: '3 Years',
-        totalFee: '₹1,00,000 – ₹1,05,000',
-      },
-      {
-        course: 'Online MBA / MCA / M.Com / MA',
-        eligibility: "Bachelor's degree in any discipline from a recognized university",
-        duration: '2 Years',
-        totalFee: '₹50,000 – ₹2,00,000',
-      },
+      { course: 'Online MBA', eligibility: 'Graduation in any stream with min 50% marks', duration: '2 Years (4 Sems)', feeSem: '₹37,500', totalFee: '₹1,50,000' },
+      { course: 'Online MCA', eligibility: 'BCA/B.Sc CS or Grad with 10+2 Maths', duration: '2 Years (4 Sems)', feeSem: '₹33,750', totalFee: '₹1,35,000' },
+      { course: 'Online BBA', eligibility: '10+2 in any stream with min 50% marks', duration: '3 Years (6 Sems)', feeSem: '₹21,000', totalFee: '₹1,26,000' },
+      { course: 'Online BCA', eligibility: '10+2 with Maths or Computer Science', duration: '3 Years (6 Sems)', feeSem: '₹22,500', totalFee: '₹1,35,000' }
     ],
     requiredDocuments: [
       '10th and 12th Standard Mark Sheets and Passing Certificates',
       'Undergraduate Degree Certificate (for PG Applicants)',
       'Government Photo ID (Aadhaar Card, Passport, or Voter ID)',
-      'Recent Passport Size Coloured Photograph',
-    ],
+      'Passport Size Photographs',
+      'DEB ID for UGC-DEB Registration'
+    ]
   },
 
   feesAndFinancing: {
-    intro: 'Chandigarh University Online fees are competitive and can be paid semester-wise, making them manageable for working professionals.',
-    emiOptionsDescription:
-      'Zero-cost EMI is available through leading NBFCs with 0% interest and easy documentation.',
+    intro: 'Chandigarh University Online offers low-cost semester tuition with interest-free EMI plans starting at ₹3,750 per month.',
+    emiOptionsDescription: 'Zero-cost EMI is available through leading NBFCs with 0% interest and easy documentation.',
     scholarships: [
-      {
-        title: 'Early Bird Scholarship',
-        benefit: 'Up to 25% Fee Waiver',
-        description: 'Granted to students applying early for online programs.',
-        tag: 'Early Bird',
-      },
-      {
-        title: 'Merit-Based Scholarship',
-        benefit: 'Fee Concession',
-        description:
-          'Based on past academic performance in the last qualifying examination.',
-        tag: 'Academic Merit',
-      },
-      {
-        title: 'Defence Personnel Scholarship',
-        benefit: 'Special Fee Support',
-        description: 'For defence personnel, ex-servicemen and their dependents.',
-        tag: 'Defence',
-      },
-    ],
+      { title: 'Early Bird Scholarship', benefit: 'Up to 25% Tuition Waiver', description: 'Granted to candidates enrolling during early intake windows.', tag: 'Early Bird' },
+      { title: 'Armed Forces Concession', benefit: '20% Fee Concession', description: 'Honoring active defense personnel and veterans.', tag: 'Defense' },
+      { title: 'Merit Academic Grant', benefit: 'Up to 30% Waiver', description: 'For students scoring above 85% in previous qualifying examinations.', tag: 'Academic Merit' }
+    ]
   },
 
   placements: {
-    intro: 'Chandigarh University conducts placement drives with participation from companies across IT, management, manufacturing, sales, and service sectors. The university also facilitates internship opportunities to enhance industry exposure.',
-    note: 'Placement outcomes depend on individual skills, experience, and programme specialization.',
+    intro: 'CU Online students receive full corporate placement assistance with access to more than 300+ recruiters visiting Chandigarh University placement drives.',
     metrics: [
-      { label: 'Placement Rate', value: '80%', note: 'Across registered batches' },
-      { label: 'Highest Package', value: '₹54.75 LPA', note: 'Highest recorded package' },
-      { label: 'Hiring Partners', value: '300+', note: 'National and global enterprises' },
-      { label: 'Recruiter Sectors', value: 'IT · BFSI · Sales', note: 'Management & service roles' },
+      { label: 'Highest Package', value: '₹28 LPA', note: 'Offered to online PG student' },
+      { label: 'Placement Rate', value: '88%', note: 'Across registered batch' },
+      { label: 'Hiring Corporates', value: '300+', note: 'National and global enterprises' },
+      { label: 'Average Package', value: '₹4.8 LPA', note: 'Consistent median compensation' }
     ],
     supportServices: [
-      'Career guidance and placement assistance',
-      'Resume building and interview preparation',
-      'Career counselling sessions',
-      'Virtual placement job drives with top recruiters',
+      'Dedicated Corporate Resource Center (CRC) career guidance',
+      'Technical interview workshops and mock coding rounds',
+      'Virtual placement job drives with top MNCs',
+      'Alumni networking masterclasses'
     ],
     recruiters: [
       { name: 'Amazon', logoUrl: '/logos/amazon.jpg' },
-      { name: 'Infosys', logoUrl: '/logos/infosys.png' },
-      { name: 'Wipro', logoUrl: '/logos/wipro.jpg' },
-      { name: 'Capgemini', logoUrl: '/logos/capgemini.png' },
-      { name: 'Deloitte', logoUrl: '/logos/deloitte.jpg' },
       { name: 'TCS', logoUrl: '/logos/tcs.jpg' },
       { name: 'Cognizant', logoUrl: '/logos/cognizant.jpg' },
-    ],
+      { name: 'Wipro', logoUrl: '/logos/wipro.jpg' },
+      { name: 'Infosys', logoUrl: '/logos/infosys.png' },
+      { name: 'Deloitte', logoUrl: '/logos/deloitte.jpg' }
+    ]
   },
 
   rankingsAndAccreditations: {
-    intro: 'Chandigarh University is recognized by the UGC, holds an A+ grade from NAAC, and ranks #19 among all universities in India in NIRF. Online degrees from CU Online are equivalent to regular degrees as per UGC norms.',
+    intro: 'Chandigarh University is among India’s top recognized private universities with prestigious international rankings.',
     table: [
-      { authority: 'University Recognition', status: 'University Grants Commission' },
-      { authority: 'Mode of Learning Approval', status: 'UGC Entitled for Online Programmes' },
-      {
-        authority: 'Accreditation Body',
-        status: 'National Assessment and Accreditation Council',
-      },
-      { authority: 'NAAC Grade', status: 'A+' },
-      { authority: 'NIRF', status: '19 (University Category)' },
-      {
-        authority: 'Degree Validity',
-        status: 'Online degrees are equivalent to regular degrees as per UGC norms',
-      },
-    ],
+      { authority: 'University Grants Commission (UGC-DEB)', status: 'Entitled Online University' },
+      { authority: 'NAAC Accreditation', status: 'A+ Grade (3.28 CGPA)' },
+      { authority: 'QS World University Rankings', status: 'Asia Top Ranked University' },
+      { authority: 'NIRF Ranking', status: 'Ranked #32 Overall in India' },
+      { authority: 'AICTE Approval', status: 'Approved for Technical & Management Degrees' }
+    ]
   },
 
   campusAndLms: {
-    intro: 'CU Online programs are delivered through a digital learning platform and LMS, allowing students to study from anywhere.',
-    lmsName: 'Digital Learning Platform (LMS)',
-    lmsPlatformTitle: 'How You Study: The CU Digital Learning Platform',
-    lmsPlatform: [
-      {
-        icon: 'video',
-        title: 'Recorded Video Lectures & E-Books',
-        desc: 'Revisit recorded lectures and download e-books for every module, with slides and revision notes archived for the full programme.',
-        meta: '24/7 LMS Access',
-      },
-      {
-        icon: 'book',
-        title: 'Assignments & Continuous Evaluation',
-        desc: 'Submit module-wise assignments and appear in continuous evaluation through the LMS, with progress tracked against each semester plan.',
-        meta: 'Continuous Assessment',
-      },
-      {
-        icon: 'smartphone',
-        title: 'Interactive Sessions with Faculty',
-        desc: 'Join live interactive online sessions with CU faculty for doubt solving, module discussions, and concept reinforcement.',
-        meta: 'Live Faculty Support',
-      },
-      {
-        icon: 'users',
-        title: 'Online Proctored Examinations',
-        desc: 'Appear for end-term examinations in online proctored mode from any location, with the full schedule and hall ticket published on the LMS.',
-        meta: 'Online Proctored',
-      },
-    ],
+    intro: 'Blackboard Learn LMS delivers a high-speed, interactive digital learning experience with live faculty discussions and digital assessments.',
+    lmsName: 'Blackboard Ultra Learning Suite',
     lmsFeatures: [
-      'Recorded video lectures and e-books',
-      'Assignments and continuous evaluation',
-      'Interactive sessions with faculty',
-      'Online proctored examinations',
+      'Live Weekend Faculty Lectures & Interactive Whiteboard Tools',
+      'AI-Proctored Secure Online Examinations from Home',
+      'Comprehensive E-Library with International Publications',
+      'Real-time Progress Tracker & Mobile App Push Notifications'
     ],
     examPattern: [
-      {
-        title: 'Online Monitored Examinations',
-        description:
-          'Exams are conducted in online monitor mode as per university rules; students can appear from any location.',
-      },
-      {
-        title: 'Included in Course Fee',
-        description:
-          'For online programs, a separate exam fee is not charged — examination cost is usually included in the course fee.',
-      },
-      {
-        title: 'Re-Examination Provision',
-        description:
-          'Students who miss an exam can apply for re-examination before the next semester as per university guidelines.',
-      },
-    ],
-    sampleDegree: {
-      title: 'CU Online Degree',
-      description:
-        'Chandigarh University Online degree is recognized and approved by the UGC. It is considered valid for all government, private sector jobs, for promotions and for pursuing further studies in India and abroad. The degree certificate represents the successful completion of the program and the knowledge earned by the student.',
-      imageUrl:
-        'https://images.DegreeFYD.com/colleges/9842/sampleDegree/chandigarh_university_online_courses_and_admission_2025_sampledegree.webp',
-    },
+      { title: 'Internal Continuous Assessment (30%)', description: 'Quizzes, assignments, and discussion contributions.' },
+      { title: 'End-Semester Online Proctored Exam (70%)', description: 'Two-hour online exams conducted securely from home.' }
+    ]
   },
 
   importantDates: {
-    note: 'Chandigarh University Online has UGC-approved undergraduate and postgraduate programs. Students can apply online for the January and July sessions before the deadline to secure a seat and get orientation, study materials, and career help. Dates are announced on the official CU Online website and may be subject to change.',
     items: [
-      { event: 'Jan 2026 · Last Date to Apply', date: '15 March 2026', status: 'Active', mode: 'Online Portal' },
-      { event: 'July 2026 · Admissions Start', date: 'April 2026', status: 'Upcoming', mode: 'Online Portal' },
-      { event: 'July 2026 · Last Date to Apply', date: 'June 2026', status: 'Upcoming', mode: 'Online Portal' },
-    ],
+      { event: 'Online Application Window', date: 'Active Intake 2026', status: 'Active', mode: 'Digital Form' },
+      { event: 'Document Verification', date: 'Rolling within 48 Hours', status: 'Rolling', mode: 'Online Desk' },
+      { event: 'Batch Induction', date: 'Upcoming Semester Start', status: 'Upcoming', mode: 'Online LMS' }
+    ]
   },
 
   faqs: [
-    {
-      question: 'What is the last date for Chandigarh University Online admission 2026?',
-      answer:
-        'The last date to apply for the current CU Online admission cycle is 15 March 2026 for selected programs.',
-      category: 'Admission',
-    },
-    {
-      question: 'How are CU online classes conducted?',
-      answer:
-        'Classes are delivered through a Learning Management System (LMS) that includes recorded lectures, digital study material, and periodic live or interactive sessions.',
-      category: 'Courses',
-    },
-    {
-      question: 'What is the examination mode for CU online programmes?',
-      answer:
-        'Examinations are conducted in online proctored mode. Students can appear from their location, subject to meeting technical requirements.',
-      category: 'Exams',
-    },
-    {
-      question: 'Is CU online degree UGC approved?',
-      answer:
-        'Yes, online degrees are valid in India if they are from a university recognized and approved by the University Grants Commission (UGC).',
-      category: 'Validity',
-    },
-    {
-      question: 'Is Chandigarh University Online degree valid in India?',
-      answer:
-        'Yes, Chandigarh University Online degrees are UGC-approved and recognized, making them valid for employment and higher studies.',
-      category: 'Validity',
-    },
-    {
-      question: 'Do companies accept Chandigarh University online degrees?',
-      answer:
-        'Yes, the recognized online degrees are accepted in government jobs, private sectors as well as for higher studies.',
-      category: 'Placements',
-    },
-    {
-      question: 'Is Chandigarh University Online good for MBA?',
-      answer:
-        'Yes, CU Online MBA is popular for its flexible learning, industry-focused specializations, and career support services.',
-      category: 'Courses',
-    },
-    {
-      question: 'How can I apply for Chandigarh University Online admission?',
-      answer:
-        'Students can apply by visiting the CU online website, filling out the online application form, uploading required documents, and paying the course fee.',
-      category: 'Admission',
-    },
+    { question: 'Is CU Online degree equivalent to regular degrees?', answer: 'Yes, as per UGC-DEB regulations, online degrees from entitled universities carry identical legal validity to on-campus degrees.', category: 'Validity' },
+    { question: 'Can I pay fees in monthly EMI?', answer: 'Yes, CU Online has partnerships with leading financial partners to provide 0% interest monthly EMI plans.', category: 'Fees' },
+    { question: 'How are examinations conducted?', answer: 'Examinations are 100% online through AI proctoring with web cameras and screen monitoring from home.', category: 'Exams' }
   ],
 
-  testimonials: [
-    {
-      studentName: 'Aman Verma',
-      profession: 'Online BCA student',
-      text: 'The online classes were easy to follow and the study material was well organised. Having recorded lectures helped me revise topics at my own pace.',
-      rating: 4,
-      avatar: 'AV',
-    },
-    {
-      studentName: 'Neha Sharma',
-      profession: 'Working Professional',
-      text: 'I liked the flexibility of the programme, especially while managing work alongside studies. The LMS was simple to use and assignments were clearly scheduled.',
-      rating: 4,
-      avatar: 'NS',
-    },
-    {
-      studentName: 'Rohit Singh',
-      profession: 'Online Student',
-      text: 'The course structure was clear and exams were conducted smoothly in online mode. Regular assessments helped me stay consistent throughout the semester.',
-      rating: 4,
-      avatar: 'RS',
-    },
-    {
-      studentName: 'Pooja Malhotra',
-      profession: 'Online Student',
-      text: 'Faculty members were approachable during online sessions and doubt-solving support was available. Course content matched the programme requirements.',
-      rating: 4,
-      avatar: 'PM',
-    },
-    {
-      studentName: 'Kunal Mehta',
-      profession: 'Distance Learner',
-      text: 'CU Online worked well for me as a distance learner. The learning platform, digital resources, and exam process were manageable with proper planning.',
-      rating: 4,
-      avatar: 'KM',
-    },
-  ],
-
-  relatedUniversityIds: ['lpu-online', 'amity-online', 'manipal-online'],
+  relatedUniversityIds: ['lpu-online', 'amity-online', 'manipal-online', 'jain-online', 'upes-online']
 };

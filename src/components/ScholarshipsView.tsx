@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Course } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
 import { 
@@ -13,13 +13,6 @@ import {
   ChevronRight,
   UserCheck
 } from 'lucide-react';
-import { TableOfContents, TocItem } from './TableOfContents';
-
-const SCHOLARSHIPS_TOC_ITEMS: TocItem[] = [
-  { id: 'scholarship-overview', label: 'LPU Online Scholarships Overview 2026' },
-  { id: 'scholarship-calculator', label: 'Interactive Tuition Fee & Savings Calculator' },
-  { id: 'scholarship-schemes', label: 'LPU Online Scholarship Schemes & Concessions' },
-];
 
 interface ScholarshipsViewProps {
   onOpenApply: (courseId?: string) => void;
@@ -33,23 +26,6 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
   const [isDefense, setIsDefense] = useState(false);
   const [isSingleGirl, setIsSingleGirl] = useState(false);
   const [isAlumni, setIsAlumni] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>('scholarship-overview');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 160;
-      for (let i = SCHOLARSHIPS_TOC_ITEMS.length - 1; i >= 0; i--) {
-        const el = document.getElementById(SCHOLARSHIPS_TOC_ITEMS[i].id);
-        if (el && el.offsetTop <= scrollPosition) {
-          setActiveSection(SCHOLARSHIPS_TOC_ITEMS[i].id);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const selectedCourse = COURSES_DATA.find(c => c.id === calcCourseId) || COURSES_DATA[3];
 
@@ -80,7 +56,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
       {/* Breadcrumb */}
       <div className="bg-[#f0f3ff] border-b border-[#e7eeff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
-          <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-[#43474d] font-medium">
+          <nav className="flex items-center text-xs text-[#43474d] space-x-2 font-medium">
             <span className="hover:text-[#115eaf] cursor-pointer">Home</span>
             <ChevronRight className="w-3.5 h-3.5 text-[#74777e]" />
             <span className="hover:text-[#115eaf] cursor-pointer">Lovely Professional University Online</span>
@@ -90,9 +66,9 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
         </div>
       </div>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-[10px]">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
         {/* Header */}
-        <div id="scholarship-overview" className="page-section text-center max-w-3xl mx-auto scroll-mt-[100px]">
+        <div className="page-section text-center max-w-3xl mx-auto">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFBEB] text-[#92400E] border border-[#FDE68A] text-xs font-bold">
             <Sparkles className="w-3.5 h-3.5 text-[#D97706]" />
             Fee Waivers & Concessions 2026
@@ -107,16 +83,8 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
 
         {universityNavigation}
 
-        {/* Table of Contents - Directly on the Page */}
-        <TableOfContents
-          title="Table of contents"
-          items={SCHOLARSHIPS_TOC_ITEMS}
-          activeId={activeSection}
-          onItemClick={(id) => setActiveSection(id)}
-        />
-
         {/* INTERACTIVE SCHOLARSHIP CALCULATOR */}
-        <section id="scholarship-calculator" className="page-section card bg-white rounded-2xl border-2 border-[#115eaf]/30 shadow-lg scroll-mt-[100px]">
+        <section className="page-section card bg-white rounded-2xl border-2 border-[#115eaf]/30 shadow-lg">
           <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
             {/* Left Config Controls */}
             <div className="w-full lg:w-3/5 space-y-5">
@@ -134,7 +102,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
                 <select
                   value={calcCourseId}
                   onChange={(e) => setCalcCourseId(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm font-semibold text-[#000f22] focus:border-[#115eaf] outline-none"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-xs sm:text-sm font-semibold text-[#000f22] focus:border-[#115eaf] outline-none"
                 >
                   {COURSES_DATA.map(c => (
                     <option key={c.id} value={c.id}>{c.name} (₹{c.totalFee.toLocaleString('en-IN')})</option>
@@ -167,38 +135,38 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
                   Special Welfare Categories
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                  <label className={`tap-chip min-h-[44px] p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
+                  <label className={`p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
                     isDefense ? 'border-[#115eaf] bg-[#f0f3ff]' : 'border-[#e7eeff]'
                   }`}>
                     <input
                       type="checkbox"
                       checked={isDefense}
                       onChange={(e) => setIsDefense(e.target.checked)}
-                      className="shrink-0 w-5 h-5 rounded text-[#115eaf]"
+                      className="rounded text-[#115eaf]"
                     />
                     <span className="font-normal text-[#000f22]">Defense / Paramilitary</span>
                   </label>
 
-                  <label className={`tap-chip min-h-[44px] p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
+                  <label className={`p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
                     isSingleGirl ? 'border-[#115eaf] bg-[#f0f3ff]' : 'border-[#e7eeff]'
                   }`}>
                     <input
                       type="checkbox"
                       checked={isSingleGirl}
                       onChange={(e) => setIsSingleGirl(e.target.checked)}
-                      className="shrink-0 w-5 h-5 rounded text-[#115eaf]"
+                      className="rounded text-[#115eaf]"
                     />
                     <span className="font-normal text-[#000f22]">Single Girl Child</span>
                   </label>
 
-                  <label className={`tap-chip min-h-[44px] p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
+                  <label className={`p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all ${
                     isAlumni ? 'border-[#115eaf] bg-[#f0f3ff]' : 'border-[#e7eeff]'
                   }`}>
                     <input
                       type="checkbox"
                       checked={isAlumni}
                       onChange={(e) => setIsAlumni(e.target.checked)}
-                      className="shrink-0 w-5 h-5 rounded text-[#115eaf]"
+                      className="rounded text-[#115eaf]"
                     />
                     <span className="font-normal text-[#000f22]">LPU Alumni / Sibling</span>
                   </label>
@@ -247,7 +215,7 @@ export const ScholarshipsView: React.FC<ScholarshipsViewProps> = ({ onOpenApply,
         </section>
 
         {/* 6 SCHOLARSHIP PILLARS GRID */}
-        <section id="scholarship-schemes" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-mt-[100px]">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="card bg-white border border-[#e7eeff] rounded-2xl shadow-xs flex flex-col justify-between hover:border-[#115eaf] transition-all">
             <div>
               <div className="w-10 h-10 rounded-xl bg-[#FFFBEB] text-[#92400E] flex items-center justify-center mb-3">

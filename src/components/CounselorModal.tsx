@@ -21,7 +21,7 @@ export const CounselorModal: React.FC<CounselorModalProps> = ({ isOpen, onClose 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-        className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-[#e7eeff] overflow-hidden max-h-[92vh] overflow-y-auto relative"
+        className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-[#e7eeff] overflow-hidden relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -41,7 +41,7 @@ export const CounselorModal: React.FC<CounselorModalProps> = ({ isOpen, onClose 
           </div>
           <button
             onClick={onClose}
-            className="p-2 min-h-[44px] text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
+            className="p-2 text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -57,7 +57,7 @@ export const CounselorModal: React.FC<CounselorModalProps> = ({ isOpen, onClose 
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter your full name"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#d5e3ff] text-base sm:text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#d5e3ff] text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
                   required
                 />
               </div>
@@ -68,7 +68,7 @@ export const CounselorModal: React.FC<CounselorModalProps> = ({ isOpen, onClose 
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="Enter your phone number"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#d5e3ff] text-base sm:text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#d5e3ff] text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
                   required
                 />
               </div>
@@ -88,7 +88,7 @@ export const CounselorModal: React.FC<CounselorModalProps> = ({ isOpen, onClose 
               </p>
               <button
                 onClick={onClose}
-                className="mt-2 px-6 py-2.5 min-h-[44px] bg-[#115eaf] text-white rounded-xl text-sm font-semibold hover:bg-[#004689] transition-all"
+                className="mt-2 px-6 py-2.5 bg-[#115eaf] text-white rounded-xl text-sm font-semibold hover:bg-[#004689] transition-all"
               >
                 Close
               </button>

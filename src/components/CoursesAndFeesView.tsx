@@ -1,9 +1,8 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Course, CourseCategory } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
 import { INSTITUTION_HIGHLIGHTS, PLACEMENT_STATS } from '../data/institutionalData';
 import { DEGREEFYD_LPU_API } from '../data/apiData';
-import { BlogsListSection } from './BlogsListSection';
 import { 
   CheckCircle, 
   Search, 
@@ -26,18 +25,6 @@ import {
   Gift,
   Clock
 } from 'lucide-react';
-import { TableOfContents, TocItem } from './TableOfContents';
-
-const COURSES_TOC_ITEMS: TocItem[] = [
-  { id: 'fee-structure', label: 'LPU Online Fee Structure 2026 (Semester & Total)' },
-  { id: 'all-courses', label: 'LPU Online Degree Programs Catalog' },
-  { id: 'admission-dates', label: 'LPU Online Admission Dates & Deadlines' },
-  { id: 'learning-platform', label: 'How You Study (LPU e-Connect Platform)' },
-  { id: 'student-reviews', label: 'LPU Online Student Reviews & Ratings' },
-  { id: 'faqs', label: 'Frequently Asked Questions' },
-  { id: 'blogs', label: 'Blogs' },
-  { id: 'counselor-helpline', label: 'Academic Counseling & Helpline' },
-];
 
 interface CoursesAndFeesViewProps {
   onSelectCourse: (course: Course) => void;
@@ -60,25 +47,6 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [sortBy, setSortBy] = useState<'popularity' | 'fee-asc' | 'fee-desc' | 'duration'>('popularity');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-  const [blogIndex, setBlogIndex] = useState<number>(0);
-  const [activeSection, setActiveSection] = useState<string>('fee-structure');
-  const blogVisible = 3;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 160;
-      for (let i = COURSES_TOC_ITEMS.length - 1; i >= 0; i--) {
-        const el = document.getElementById(COURSES_TOC_ITEMS[i].id);
-        if (el && el.offsetTop <= scrollPosition) {
-          setActiveSection(COURSES_TOC_ITEMS[i].id);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   // Filter and sort courses
   const filteredCourses = useMemo(() => {
@@ -106,7 +74,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       {/* Breadcrumb Bar */}
       <div className="bg-white border-b border-[#e7eeff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-[#43474d] font-medium">
+          <nav className="flex items-center text-xs text-[#43474d] space-x-2 font-medium">
             <span className="hover:text-[#115eaf] cursor-pointer">Home</span>
             <ChevronRight className="w-3.5 h-3.5 text-[#74777e]" />
             <span className="hover:text-[#115eaf] cursor-pointer">Colleges</span>
@@ -157,7 +125,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                 </button>
                 <button
                   onClick={onOpenHelpDesk}
-                  className="tap-chip px-3.5 py-2.5 rounded-xl text-[#115eaf] hover:bg-[#dee8ff] text-xs sm:text-sm font-medium transition-colors flex items-center gap-1.5"
+                  className="px-3.5 py-2.5 rounded-xl text-[#115eaf] hover:bg-[#dee8ff] text-xs sm:text-sm font-medium transition-colors flex items-center gap-1.5"
                 >
                   <PhoneCall className="w-4 h-4" />
                   <span>Talk to an Academic Counselor</span>
@@ -275,16 +243,6 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
 
       {universityNavigation}
 
-      {/* Table of Contents - Directly on the Page */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-1">
-        <TableOfContents
-          title="Table of contents"
-          items={COURSES_TOC_ITEMS}
-          activeId={activeSection}
-          onItemClick={(id) => setActiveSection(id)}
-        />
-      </div>
-
       {/* INTERACTIVE FILTER STRIP & SEARCH */}
       <section className="sticky top-20 z-30 bg-white/95 backdrop-blur-md border-y border-[#e7eeff] shadow-xs py-3.5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -293,7 +251,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
             <button
               onClick={() => setSelectedCategory('all')}
               aria-pressed={selectedCategory === 'all'}
-              className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
+              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
                 selectedCategory === 'all'
                   ? 'bg-[#0b2540] text-white'
                   : 'bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]'
@@ -304,7 +262,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
             <button
               onClick={() => setSelectedCategory('ug')}
               aria-pressed={selectedCategory === 'ug'}
-              className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
+              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
                 selectedCategory === 'ug'
                   ? 'bg-[#0b2540] text-white'
                   : 'bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]'
@@ -315,7 +273,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
             <button
               onClick={() => setSelectedCategory('pg')}
               aria-pressed={selectedCategory === 'pg'}
-              className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
+              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
                 selectedCategory === 'pg'
                   ? 'bg-[#0b2540] text-white'
                   : 'bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]'
@@ -326,7 +284,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
             <button
               onClick={() => setSelectedCategory('diploma')}
               aria-pressed={selectedCategory === 'diploma'}
-              className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
+              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${
                 selectedCategory === 'diploma'
                   ? 'bg-[#0b2540] text-white'
                   : 'bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]'
@@ -346,7 +304,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by degree name or subject..."
                 aria-label="Search courses by degree name or subject"
-                className="w-full h-10 pl-9 pr-3 rounded-xl border border-[#c4c6ce] bg-white text-base sm:text-sm font-normal focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all outline-none"
+                className="w-full h-10 pl-9 pr-3 rounded-xl border border-[#c4c6ce] bg-white text-xs sm:text-sm font-normal focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all outline-none"
               />
             </div>
 
@@ -355,7 +313,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
                 aria-label="Sort courses"
-                className="w-full h-10 px-3 pr-8 rounded-xl border border-[#c4c6ce] bg-white text-base sm:text-sm font-normal text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none appearance-none cursor-pointer"
+                className="w-full h-10 px-3 pr-8 rounded-xl border border-[#c4c6ce] bg-white text-xs sm:text-sm font-normal text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none appearance-none cursor-pointer"
               >
                 <option value="popularity">Sort: Popularity</option>
                 <option value="fee-asc">Fee: Low to High</option>
@@ -400,9 +358,12 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* FEE TRANSPARENCY MATRIX (SIDE-BY-SIDE TABLES) */}
-      <section id="fee-structure" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
+      <section className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 gap-3">
           <div>
+            <span className="text-xs font-normal text-[#115eaf] uppercase tracking-wider block">
+              Fee Structure Matrix
+            </span>
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
               LPU Online Fee Structure 2026 (Semester & Total)
             </h2>
@@ -450,7 +411,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                         <td className="py-2.5 px-5 text-right">
                           <button
                             onClick={() => onSelectCourse(c)}
-                            className="tap-hit inline-flex items-center text-[#115eaf] font-medium text-xs hover:underline"
+                            className="inline-flex items-center text-[#115eaf] font-medium text-xs hover:underline"
                           >
                             <span>View</span>
                             <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
@@ -462,7 +423,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                 </table>
               </div>
             </div>
-            <div className="p-3.5 bg-[#f9f9ff] border-t border-[#e7eeff] flex flex-wrap items-center justify-between gap-2 text-xs text-[#43474d] font-normal">
+            <div className="p-3.5 bg-[#f9f9ff] border-t border-[#e7eeff] flex items-center justify-between text-xs text-[#43474d] font-normal">
               <span>Registration Fee: ₹600 (adjusted during enrollment)</span>
               <button
                 onClick={() => onOpenApply('bba')}
@@ -511,7 +472,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                         <td className="py-2.5 px-5 text-right">
                           <button
                             onClick={() => onSelectCourse(c)}
-                            className="tap-hit inline-flex items-center text-[#115eaf] font-medium text-xs hover:underline"
+                            className="inline-flex items-center text-[#115eaf] font-medium text-xs hover:underline"
                           >
                             <span>View</span>
                             <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
@@ -523,7 +484,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                 </table>
               </div>
             </div>
-            <div className="p-3.5 bg-[#f9f9ff] border-t border-[#e7eeff] flex flex-wrap items-center justify-between gap-2 text-xs text-[#43474d] font-normal">
+            <div className="p-3.5 bg-[#f9f9ff] border-t border-[#e7eeff] flex items-center justify-between text-xs text-[#43474d] font-normal">
               <span>Specializations selected during second semester</span>
               <button
                 onClick={() => onOpenApply('mba')}
@@ -563,11 +524,14 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* COMPREHENSIVE COURSES CATALOG (3x3 DESKTOP GRID) */}
-      <section id="all-courses" className="content-block bg-[#f0f3ff]/50 border-t border-[#e7eeff] scroll-mt-[100px]">
+      <section className="content-block bg-[#f0f3ff]/50 border-t border-[#e7eeff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-left max-w-3xl mb-[18px]">
+            <span className="text-xs font-normal text-[#115eaf] uppercase tracking-wider block">
+              Course Catalog
+            </span>
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
-              LPU Online All Courses
+              LPU Online Popular Programmes
             </h2>
             <p className="section-description text-xs sm:text-sm text-[#43474d] font-normal leading-relaxed text-left">
               LPU Online popular courses include a variety of UG, PG and other courses across various disciplines. LPU Online courses are designed to provide strong academic knowledge along with practical and industry-relevant skills. The courses offered by LPU Online cover various specialisations, helping students choose programmes suitable for their career goals.
@@ -660,13 +624,13 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
                     <div className="mt-3 grid grid-cols-2 gap-1.5 pt-1">
                       <button
                         onClick={() => onSelectCourse(course)}
-                        className="w-full py-1.5 px-2 min-h-[44px] md:min-h-0 rounded-lg bg-[#115eaf] text-white text-[11px] font-medium text-center hover:bg-[#004689] active:scale-95 transition-all shadow-xs flex items-center justify-center"
+                        className="w-full py-1.5 px-2 rounded-lg bg-[#115eaf] text-white text-[11px] font-medium text-center hover:bg-[#004689] active:scale-95 transition-all shadow-xs flex items-center justify-center"
                       >
                         View Details
                       </button>
                       <button
                         onClick={() => onOpenBrochure(course)}
-                        className="w-full py-1.5 px-2 min-h-[44px] md:min-h-0 rounded-lg bg-[#f0f3ff] text-[#001b3c] hover:bg-[#e7eeff] text-[11px] font-normal flex items-center justify-center gap-1 transition-colors border border-[#dce5fa]"
+                        className="w-full py-1.5 px-2 rounded-lg bg-[#f0f3ff] text-[#001b3c] hover:bg-[#e7eeff] text-[11px] font-normal flex items-center justify-center gap-1 transition-colors border border-[#dce5fa]"
                       >
                         <Download className="w-3 h-3 text-[#115eaf]" />
                         <span>Syllabus</span>
@@ -680,73 +644,12 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
         </div>
       </section>
 
-      {/* LPU ONLINE ADMISSION DATES 2026 */}
-      <section id="admission-dates" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
-        <div className="rounded-2xl border border-[#d5e3ff] bg-gradient-to-br from-[#f9fbff] via-[#f0f3ff] to-white shadow-sm overflow-hidden">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 px-5 sm:px-6 py-5 border-b border-[#dfe9ff]">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
-                LPU Online Admission Dates 2026
-              </h2>
-            </div>
-            <button
-              type="button"
-              onClick={() => onOpenApply()}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#115eaf] bg-white text-[#115eaf] text-xs sm:text-sm font-semibold hover:bg-[#eaf1ff] transition-colors"
-            >
-              <Calendar className="w-4 h-4" />
-              View Admission Portal
-            </button>
-          </div>
-
-          <div className="p-5 sm:p-6">
-            <p className="text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal">
-              <button
-                type="button"
-                onClick={() => onOpenApply()}
-                className="font-semibold text-[#115eaf] hover:underline"
-              >
-                LPU Online admission
-              </button>{' '}
-              starts early in the academic year. Candidates need to complete the online application form and upload required documents through the official admission portal. Check the table below for LPU online admission dates 2026:
-            </p>
-
-            <div className="mt-5 overflow-hidden rounded-xl border border-[#dfe9ff] bg-white">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse text-xs sm:text-sm">
-                  <thead>
-                    <tr className="bg-[#0b2540] text-white">
-                      <th className="py-3 px-4 font-bold">Event</th>
-                      <th className="py-3 px-4 font-bold">Details</th>
-                      <th className="py-3 px-4 font-bold">Tentative Date</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-[#e7eeff]">
-                    {[
-                      ['Application Form Release', 'Online Programs', 'January 2026'],
-                      ['Admission Registration Begins', 'UG / PG Courses', 'January – February 2026'],
-                      ['Last Date to Apply', 'Online Courses', 'July 2026'],
-                      ['Document Verification', 'Online', 'After Application'],
-                      ['Admission Confirmation', 'Selected Candidates', 'Within Few Days'],
-                      ['Academic Session Begins', 'Online Programs', 'August 2026']
-                    ].map(([event, details, date], idx) => (
-                      <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                        <td className="py-3.5 px-4 font-bold text-[#000f22]">{event}</td>
-                        <td className="py-3.5 px-4 text-[#43474d]">{details}</td>
-                        <td className="py-3.5 px-4 text-[#115eaf] font-semibold">{date}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* LPU E-CONNECT LEARNING ECOSYSTEM (HOW YOU STUDY) */}
-      <section id="learning-platform" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
+      <section className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-[18px]">
+          <span className="text-xs font-normal text-[#115eaf] uppercase tracking-wider block">
+            Learning Experience
+          </span>
           <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
             How You Study: The LPU e-Connect Platform
           </h2>
@@ -818,15 +721,15 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* TESTIMONIALS (STUDENT EXPERIENCES FROM API) */}
-      <section id="student-reviews" className="content-block bg-white border-y border-[#e7eeff] scroll-mt-[100px]">
+      <section className="content-block bg-white border-y border-[#e7eeff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-left mb-[18px]">
+            <span className="text-xs font-normal text-[#115eaf] uppercase tracking-wider block">
+              Student Feedback
+            </span>
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
-              LPU Online Reviews
+              What Students Say About Studying at LPU Online
             </h2>
-            <p className="section-description text-xs text-[#74777e] mt-1">
-              Authentic feedback from working executives, entrepreneurs, and graduates studying on LPU e-Connect
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
@@ -858,10 +761,13 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
       </section>
 
       {/* FAQS SECTION (ALL 12 AUTHENTIC FAQS FROM API) */}
-      <section id="faqs" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
+      <section className="content-block max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-left mb-[18px]">
+          <span className="text-xs font-normal text-[#115eaf] uppercase tracking-wider block">
+            Got Questions?
+          </span>
           <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
-            Frequently Asked Questions (LPU Online)
+            Frequently Asked Questions About Fees & Admissions
           </h2>
           <p className="section-description text-xs text-[#43474d] font-normal">
             Clear, honest answers regarding government approvals, examination procedure, and fee payments.
@@ -897,14 +803,8 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
         </div>
       </section>
 
-      {/* Blogs */}
-      <BlogsListSection
-        onOpenHelpDesk={onOpenHelpDesk}
-        className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs max-w-7xl mx-auto"
-      />
-
       {/* COUNSELOR CTA STRIP */}
-      <section id="counselor-helpline" className="content-block bg-[#0b2540] text-white scroll-mt-[100px]">
+      <section className="content-block bg-[#0b2540] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-5">
           <div>
             <h3 className="section-title text-lg sm:text-xl font-bold font-sans tracking-tight">
@@ -914,7 +814,7 @@ export const CoursesAndFeesView: React.FC<CoursesAndFeesViewProps> = ({
               Speak directly with an Online Siksha university advisor. We review your documents, help generate your DEB ID, and guide your admission at zero cost.
             </p>
           </div>
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="flex items-center gap-3">
             <button
               onClick={() => onOpenApply()}
               className="px-5 py-2.5 rounded-lg bg-[#115eaf] text-white text-xs sm:text-sm font-semibold shadow hover:bg-[#004689] active:scale-95 transition-all"

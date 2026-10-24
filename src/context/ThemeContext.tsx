@@ -12,9 +12,20 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Dark mode is disabled site-wide: always start in light mode, ignoring any
-  // previously saved preference or the OS colour-scheme setting.
-  const [theme, setThemeState] = useState<Theme>('light');
+  const [theme, setThemeState] = useState<Theme>(() => {
+    try {
+      const saved = localStorage.getItem('degreefyd-theme');
+      if (saved === 'light' || saved === 'dark') {
+        return saved;
+      }
+      if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+    } catch {
+      // Fallback if localStorage or matchMedia unavailable
+    }
+    return 'light';
+  });
 
   useEffect(() => {
     try {
