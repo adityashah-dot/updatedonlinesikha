@@ -706,6 +706,6 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
       {
     /* Blogs */
   }
-      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="relative left-1/2 w-[calc(100vw-2rem)] -translate-x-1/2 rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:w-[calc(100vw-3rem)] md:p-6" compact horizontal />
+      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="relative left-1/2 w-[calc(100vw-2rem)] -translate-x-1/2 rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:w-[calc(100vw-3rem)] md:p-6" compact horizontal showDescriptionOnMobile />
     </div>;
 };

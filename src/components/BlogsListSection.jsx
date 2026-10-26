@@ -9,7 +9,8 @@ export const BlogsListSection = ({
   sectionId = "blogs",
   posts: passedPosts,
   compact = false,
-  horizontal = false
+  horizontal = false,
+  showDescriptionOnMobile = false
 }) => {
   const posts = passedPosts ?? DEGREEFYD_LPU_API.blogs.posts;
   const [shown, setShown] = useState(PAGE_SIZE);
@@ -75,9 +76,14 @@ export const BlogsListSection = ({
     }}
   >
       <div className="mb-4 flex items-center justify-between gap-3 md:hidden">
-        <h2 className="text-2xl font-bold text-[#000f22] tracking-tight">
-          {title ?? "Latest Blogs"}
-        </h2>
+        <div>
+          <h2 className="text-2xl font-bold text-[#000f22] tracking-tight">
+            {title ?? "Latest Blogs"}
+          </h2>
+          {showDescriptionOnMobile && <p className="mt-1 text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal">
+            {DEGREEFYD_LPU_API.blogs.description}
+          </p>}
+        </div>
         {sliderControls}
       </div>
 
