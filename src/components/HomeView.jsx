@@ -192,7 +192,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
     e.preventDefault();
     navigate("/universities");
   };
-  return <div className="w-full mx-auto px-4 md:px-6 py-5 space-y-5">
+  return <div className="home-page w-full mx-auto px-4 md:px-6 py-5 space-y-5">
       {
     /* Hero */
   }
@@ -213,7 +213,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             Find government-recognized online degrees designed for working professionals with zero-cost EMI and 100% remote proctored exams.
           </p>
 
-          <div className="mt-5 box-border w-full max-w-[1120px] mx-auto bg-white rounded-2xl border border-[#d5e3ff] p-5 shadow-lg text-left">
+          <div className="mt-5 box-border w-full max-w-[1120px] mx-auto bg-white/85 rounded-2xl border border-[#d5e3ff] p-5 shadow-md text-left">
             <form
     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[minmax(0,340px)_minmax(0,330px)_minmax(0,340px)] lg:justify-center gap-3.5 items-stretch"
     onSubmit={handleExploreSubmit}
@@ -305,7 +305,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-[17px] pt-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-[17px]">
             {HERO_METRICS.map((m) => <div key={m.label} className="p-3 bg-[#f0f4f8]/60 rounded-lg border border-[#c4c6ce]/50 text-center">
                 <div className={`text-xl md:text-2xl font-bold ${m.tone || "text-[#000f22]"}`}>{m.value}</div>
                 <div className="text-[12px] text-[#43474d] font-normal">{m.label}</div>
@@ -544,12 +544,12 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
   }
       <section
     id="counselling"
-    className="relative isolate overflow-hidden rounded-[20px] bg-gradient-to-br from-[#eef6ff] via-[#f7fbff] to-white border border-[#d0e2fa] text-[#0b1d3a] shadow-sm p-4 sm:p-5 md:p-6"
+    className="relative isolate overflow-hidden rounded-[20px] bg-gradient-to-br from-[#eef6ff] via-[#f7fbff] to-white border border-[#d0e2fa] text-[#0b1d3a] shadow-sm p-3 sm:p-4"
   >
         {
     /* Subtle ambient lighting */
   }
-        <div className="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-5 lg:grid-cols-[minmax(0,1.08fr)_minmax(400px,0.92fr)] lg:gap-7">
+        <div className="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-3 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.92fr)] lg:gap-4">
           {
     /* Left Column: Copy & Trust Highlights */
   }
@@ -571,7 +571,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             {
     /* Trust Checkpoints */
   }
-            <div className="grid grid-cols-2 max-[380px]:grid-cols-1 gap-x-3 gap-y-3 mt-5 text-[11px] sm:text-xs text-[#0b1d3a]">
+            <div className="grid grid-cols-2 max-[380px]:grid-cols-1 gap-x-3 gap-y-3 mt-4 text-[11px] sm:text-xs text-[#0b1d3a]">
               <span className="flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>100% Free &amp; Unbiased Counseling</span>
@@ -594,9 +594,9 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
           {
     /* Right Column: Callback Request Card */
   }
-          <div className="w-full rounded-[18px] border border-white/90 bg-white/95 p-4 sm:p-5 text-[#111c2d] shadow-[0_10px_28px_rgba(27,65,112,0.08)]">
-            <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
-              <h3 className="text-lg sm:text-xl font-bold leading-tight tracking-[-0.5px] text-[#0b1d3a]">
+          <div className="w-full max-w-[460px] justify-self-end rounded-[18px] border border-white/90 bg-white/95 p-3 sm:p-4 text-[#111c2d] shadow-[0_10px_28px_rgba(27,65,112,0.08)]">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+              <h3 className="text-base sm:text-lg font-bold leading-tight tracking-[-0.5px] text-[#0b1d3a]">
                 Request Free Callback
               </h3>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-[11px] font-medium text-[#087955] bg-[#effdf6] rounded-full border border-[#a5f3d0]">
@@ -604,22 +604,22 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 Advisors Online
               </span>
             </div>
-            <p className="text-xs sm:text-sm text-[#6b7280] font-normal leading-relaxed mb-4">
+            <p className="text-xs text-[#6b7280] font-normal leading-relaxed mb-3">
               Connect with a verified academic advisor within 15 minutes.
             </p>
 
             {!leadSubmitted ? <form
-    className="space-y-3"
+    className="space-y-2"
     onSubmit={(e) => {
       e.preventDefault();
       setLeadSubmitted(true);
     }}
   >
                 <div>
-                  <label className="block text-[11px] font-semibold text-[#43474d] uppercase tracking-wider mb-1">
+                  <label className="block text-[10px] font-semibold text-[#43474d] uppercase tracking-wider mb-0.5">
                     Mobile Number (WhatsApp Enabled)
                   </label>
-                  <div className="flex h-11 rounded-[9px] border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/20 overflow-hidden transition-all bg-white">
+                  <div className="flex h-10 rounded-[9px] border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/20 overflow-hidden transition-all bg-white">
                     <span className="bg-[#f0f4f8] text-[#000f22] px-3 text-xs font-semibold border-r border-[#c4c6ce] flex items-center shrink-0">
                       +91
                     </span>
@@ -635,11 +635,11 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-semibold text-[#43474d] uppercase tracking-wider mb-1">
+                  <label className="block text-[10px] font-semibold text-[#43474d] uppercase tracking-wider mb-0.5">
                     Email Address
                   </label>
                   <input
-    className="w-full h-11 rounded-[9px] border border-[#c4c6ce] px-3 text-base sm:text-sm text-[#000f22] placeholder:text-[#74777e] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all"
+    className="w-full h-10 rounded-[9px] border border-[#c4c6ce] px-3 text-base sm:text-sm text-[#000f22] placeholder:text-[#74777e] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all"
     placeholder="name@example.com"
     required
     type="email"
@@ -649,11 +649,11 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-semibold text-[#43474d] uppercase tracking-wider mb-1">
+                  <label className="block text-[10px] font-semibold text-[#43474d] uppercase tracking-wider mb-0.5">
                     Program You're Exploring
                   </label>
                   <select
-    className="w-full h-11 rounded-[9px] border border-[#c4c6ce] px-3 text-base sm:text-sm text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all cursor-pointer"
+    className="w-full h-10 rounded-[9px] border border-[#c4c6ce] px-3 text-base sm:text-sm text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all cursor-pointer"
     value={lead.degree}
     onChange={(e) => setLead({ ...lead, degree: e.target.value })}
   >
@@ -668,7 +668,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 </div>
 
                 <button
-    className="w-full h-12 min-h-12 rounded-[9px] bg-[#1764c0] hover:bg-[#1054a5] text-white text-xs sm:text-sm font-medium transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 active:scale-[0.99] cursor-pointer"
+    className="w-full h-10 min-h-10 rounded-[9px] bg-[#1764c0] hover:bg-[#1054a5] text-white text-xs sm:text-sm font-medium transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 active:scale-[0.99] cursor-pointer"
     type="submit"
   >
                   <span>Connect with Academic Advisor</span>
@@ -706,6 +706,6 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
       {
     /* Blogs */
   }
-      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="relative left-1/2 w-screen -translate-x-1/2 bg-transparent px-3 md:px-4" compact horizontal />
+      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="relative left-1/2 w-[calc(100vw-2rem)] -translate-x-1/2 rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:w-[calc(100vw-3rem)] md:p-6" compact horizontal />
     </div>;
 };
