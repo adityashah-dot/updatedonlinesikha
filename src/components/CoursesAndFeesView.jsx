@@ -1,64 +1,999 @@
-import { useMemo, useState } from "react";
-import { COURSES_DATA } from "../data/coursesData";
-import { ArrowRight, Award, Calendar, CheckCircle, ChevronDown, ChevronRight, Clock3, CreditCard, Download, Laptop, PhoneCall, Search, ShieldCheck, Star } from "lucide-react";
-const FAQS = [
-  ["Is LPU Online degree valid?", "LPU Online programs are UGC-DEB entitled and can be used for higher education and employment purposes."],
-  ["What is the duration of LPU Online MBA?", "The Online MBA is a two-year postgraduate program divided into four semesters."],
-  ["Does LPU Online provide EMI options?", "Yes. Students can use semester-wise payment and available zero-cost EMI plans."],
-  ["How are LPU Online exams conducted?", "Assignments, internal assessments, and end-term examinations are conducted through the online learning platform."]
+﻿
+import { useState, useEffect, useMemo } from "react";
+import {
+  ArrowRight,
+  Award,
+  Calculator,
+  Calendar,
+  CheckCircle,
+  CreditCard,
+  Download,
+  Gift,
+  Laptop,
+  Layers,
+  PhoneCall,
+  Search,
+  Video,
+  BookOpen,
+  Smartphone,
+  Users,
+  Star,
+} from "lucide-react";
+import { FaqAccordion } from "./FaqAccordion";
+
+import CollegeTableOfContents from "./CollegeTableOfContents";
+import { useSiteActions } from "./shell/SiteActionsContext";
+import { CURRENT_YEAR } from "../constants/years";
+
+const PLATFORM_ICON = {
+  video: Video,
+  book: BookOpen,
+  smartphone: Smartphone,
+  users: Users,
+};
+
+const METRIC_ICON = {
+  rating: Award,
+  online: Laptop,
+  fee: CreditCard,
+  courses: Layers,
+};
+
+const SORT_OPTIONS = [
+  { value: "popularity", label: "Sort: Popularity" },
+  { value: "fee-asc", label: "Fee: Low to High" },
+  { value: "fee-desc", label: "Fee: High to Low" },
+  { value: "duration", label: "Duration" },
 ];
-export const CoursesAndFeesView = (props) => {
+
+const DEFAULT_FEE_NOTE = "Fees include exam charges, LMS access & digital material";
+
+function numericFee(value) {
+  if (typeof value === "number") return value;
+
+  const digits = String(value || "").replace(/[^\d.]/g, "");
+
+  return digits ? Number(digits) : 0;
+}
+
+function formatCourseFee(value) {
+  if (value == null || value === "") return "—";
+  const amount = numericFee(value);
+  return amount ? `₹${amount.toLocaleString("en-IN")}` : String(value);
+}
+
+function durationYears(value) {
+  const match = String(value || "").match(/([\d.]+)/);
+  return match ? Number(match[1]) : 0;
+}
+
+/**
+ * Reusable "Courses & Fees" template.
+ *
+ * Every value comes from the props (`college` + `coursesData`), which are
+ * built from the live CMS/API model in `services/coursesViewMapper.js`.
+ * Nothing in this component is college specific.
+ */
+export default function CoursesAndFeesView({
+  college = {},
+  coursesData = {},
+  overview = {},
+  universityNavigation,
+  onSelectCourse,
+  onOpenApply,
+  onOpenBrochure,
+  onOpenEmi,
+  onOpenHelpDesk,
+}) {
+  const siteActions = useSiteActions();
+
+  const apply = onOpenApply || siteActions.onOpenApply;
+  const brochure = onOpenBrochure || siteActions.onOpenBrochure;
+  const helpDesk = onOpenHelpDesk || siteActions.onOpenHelpDesk;
+  const emi = onOpenEmi || siteActions.onOpenEmi;
+
+  const [activeSection, setActiveSection] = useState("fee-structure");
+
+  /* FAQ accordion state lives inside the shared FaqAccordion component. */
+
+  const [searchQuery, setSearchQuery] = useState("");
   const [category, setCategory] = useState("all");
-  const [query, setQuery] = useState("");
-  const [sort, setSort] = useState("popular");
-  const [openFaq, setOpenFaq] = useState(0);
-  const { onSelectCourse, onOpenApply, onOpenBrochure, onOpenEmi, onOpenHelpDesk, universityNavigation } = props;
-  const courses = useMemo(() => {
-    const list = COURSES_DATA.filter((course) => {
-      const matchCategory = category === "all" || course.category === category;
-      const searchable = `${course.name} ${course.code} ${course.shortDescription}`.toLowerCase();
-      return matchCategory && searchable.includes(query.toLowerCase());
+  const [sortBy, setSortBy] = useState("popularity");
+  const [campusImageFailed, setCampusImageFailed] = useState(false);
+
+  const courses = coursesData.courses || [];
+  const categories = coursesData.courseCategories || [];
+  const tocItems = coursesData.toc || [];
+  const metrics = coursesData.metrics || [];
+  const admissionInfo = coursesData.admissionInfo || {};
+  const universityName =
+    overview.shortName || college.college?.shortName || college.name || "";
+  const learningPlatformName = String(coursesData.learningPlatform?.title || "")
+    .replace(/^How You Study\s*:?\s*(?:The\s+)?/i, "")
+    .trim() || (universityName ? `${universityName} Learning Platform` : "Learning Platform");
+
+  // Campus image of the hero slot. The API publishes it on the college
+  // record (`college_id.collegeImage`); when it is missing the slot falls
+  // back to a neutral placeholder instead of a broken image.
+  const campusImage =
+    college.college?.collegeImage || overview.hero?.backgroundImage || "";
+  const collegeName =
+    college.college?.name || college.name || college.title || overview.title || "";
+
+  const visibleCourses = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+
+    const filtered = courses.filter((course) => {
+      const matchesCategory = category === "all" || course.category === category;
+
+      const matchesSearch =
+        !query ||
+        String(course.name || "").toLowerCase().includes(query) ||
+        String(course.code || "").toLowerCase().includes(query) ||
+        String(course.shortDescription || "").toLowerCase().includes(query);
+
+      return matchesCategory && matchesSearch;
     });
-    return [...list].sort((a, b) => {
-      if (sort === "low") return a.totalFee - b.totalFee;
-      if (sort === "high") return b.totalFee - a.totalFee;
-      if (sort === "duration") return a.semestersCount - b.semestersCount;
-      const order = ["mba", "mca", "bca", "bba", "bcom", "ba", "mcom", "msc-math", "msc-eco", "ma", "diploma"];
-      return order.indexOf(a.id) - order.indexOf(b.id);
+
+    return [...filtered].sort((first, second) => {
+      if (sortBy === "fee-asc") {
+        return numericFee(first.totalFee) - numericFee(second.totalFee);
+      }
+
+      if (sortBy === "fee-desc") {
+        return numericFee(second.totalFee) - numericFee(first.totalFee);
+      }
+
+      if (sortBy === "duration") {
+        return durationYears(first.duration) - durationYears(second.duration);
+      }
+
+      return 0;
     });
-  }, [category, query, sort]);
-  const ug = COURSES_DATA.filter((course) => course.category === "ug");
-  const pg = COURSES_DATA.filter((course) => course.category === "pg");
-  return <div className="lpu-new-page bg-[#f6f9fd] text-[#071a33]">
-      <div className="border-b border-[#dce8f7] bg-white"><div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-4 py-3 text-xs text-[#61728a] sm:px-6 lg:px-8"><span>Home</span><ChevronRight size={14} /><span>Colleges</span><ChevronRight size={14} /><span>LPU Online</span><ChevronRight size={14} /><strong className="text-[#071a33]">Courses &amp; Fees</strong></div></div>
+  }, [courses, category, searchQuery, sortBy]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 160;
+
+      for (let i = tocItems.length - 1; i >= 0; i--) {
+        const el = document.getElementById(tocItems[i].id);
+
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(tocItems[i].id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [tocItems.length]);
+
+  const feeRows = courses;
+  const reviews = coursesData.reviews || [];
+  const faqs = coursesData.faqs || [];
+  const blogs = coursesData.blogs || [];
+  const learningRows = coursesData.learningPlatform?.items || [];
+  const admissionDates = coursesData.admissionDates || [];
+
+  const renderFeeTable = (rows, label, badge, subtitle, key) => (
+    <div key={key} className="bg-white rounded-xl border border-[#e7eeff] overflow-hidden flex flex-col justify-between">
+      <div>
+        <div className="px-5 py-3.5 bg-[#f0f3ff] border-b border-[#e7eeff] flex items-center justify-between">
+          <div>
+            <h3 className="font-semibold text-xs sm:text-sm text-[#000f22]">
+              {label}
+            </h3>
+            {subtitle ? (
+              <p className="mt-[7.5px] text-xs text-[#43474d] font-normal">
+                Standard Duration: {subtitle}
+              </p>
+            ) : null}
+          </div>
+          <span className="px-2 py-0.5 text-xs font-normal rounded-md bg-[#d3e4ff] text-[#011c37]">
+            {badge}
+          </span>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr className="border-b border-[#e7eeff] text-[#43474d] text-xs font-semibold bg-[#f9f9ff]">
+                <th className="py-3 px-4">Course Name</th>
+                <th className="py-3 px-4">Duration</th>
+                <th className="py-3 px-4">Per Sem Fee</th>
+                <th className="py-3 px-4">Total Fee</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, idx) => (
+                <tr
+                  key={`${row.code || row.name}-${idx}`}
+                  className="border-b border-[#e7eeff] last:border-b-0"
+                >
+                  <td className="py-3.5 px-4 text-[#000f22] font-normal align-top">
+                    {row.name}
+                    {row.specializations ? (
+                      <span className="block text-[10px] text-[#74777e] font-normal leading-tight">
+                        {row.specializations}
+                      </span>
+                    ) : null}
+                  </td>
+                  <td className="py-3.5 px-4 text-[#43474d] font-normal align-top whitespace-nowrap">
+                    {row.duration}
+                  </td>
+                  <td className="py-3.5 px-4 text-[#43474d] font-normal align-top whitespace-nowrap">
+                    {row.perSemFee || "—"}
+                  </td>
+                  <td className="py-3.5 px-4 text-[#115eaf] font-semibold align-top whitespace-nowrap">
+                    {row.avgFees || "—"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="px-3.5 py-1.5 bg-[#f9f9ff] border-t border-[#e7eeff] flex flex-wrap items-center justify-between gap-2 text-xs">
+        <span className="text-[#43474d] font-normal">
+          {coursesData.coursesFees?.feeNote || DEFAULT_FEE_NOTE}
+        </span>
+        <span className="px-2 py-0.5 rounded-[7px] bg-white border border-[#d5e3ff] text-[11px] font-normal text-[#43474d]">
+          Pay per semester
+        </span>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="space-y-0">
+      {/* Breadcrumb */}
+      <div className="bg-[#f0f3ff] border-b border-[#e7eeff]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+          <nav className="flex items-center text-xs text-[#43474d] space-x-2 font-medium">
+            <span className="hover:text-[#115eaf] cursor-pointer">Home</span>
+            <span className="text-[#74777e]">/</span>
+            <span className="hover:text-[#115eaf] cursor-pointer">Colleges</span>
+            <span className="text-[#74777e]">/</span>
+            <span className="hover:text-[#115eaf] cursor-pointer">
+              {college.name || college.title || overview.title}
+            </span>
+            <span className="text-[#74777e]">/</span>
+            <span className="text-[#000f22] font-bold">Courses &amp; Fees</span>
+          </nav>
+        </div>
+      </div>
+
+      <section className="content-block relative bg-gradient-to-b from-[#f0f3ff] via-[#f9f9ff] to-[#f9f9ff] overflow-hidden border-b border-[#e7eeff]/60">
+        <div className="absolute inset-0 pointer-events-none opacity-40">
+          <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#d5e3ff] blur-3xl" />
+          <div className="absolute -left-20 top-40 w-80 h-80 rounded-full bg-[#d8e3fb] blur-3xl" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <div className="lg:col-span-8 flex flex-col space-y-4">
+              <div>
+                <h1 className="section-title text-2xl sm:text-3xl lg:text-4xl font-bold text-[#000f22] tracking-tight font-sans leading-tight">
+                  {coursesData.coursesFees?.title || overview.title}
+                </h1>
+                {coursesData.coursesFees?.description ? (
+                  <p className="section-description text-xs sm:text-sm text-[#43474d] max-w-3xl leading-relaxed font-normal">
+                    {coursesData.coursesFees.description}
+                  </p>
+                ) : null}
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                <button
+                  type="button"
+                  onClick={() => apply?.()}
+                  className="px-5 py-2.5 rounded-xl bg-[#115eaf] text-white text-xs sm:text-sm font-semibold shadow hover:bg-[#004689] active:scale-95 transition-all flex items-center gap-2"
+                >
+                  <CheckCircle className="w-4 h-4" />
+                  <span>Apply Online</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => brochure?.()}
+                  className="px-4 py-2.5 rounded-xl bg-white text-[#000f22] border border-[#0b2540] text-xs sm:text-sm font-semibold hover:bg-[#f0f3ff] active:scale-95 transition-all shadow-xs flex items-center gap-2"
+                >
+                  <Download className="w-4 h-4 text-[#115eaf]" />
+                  <span>Download Complete Fee Brochure</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => helpDesk?.()}
+                  className="tap-chip px-3.5 py-2.5 rounded-xl text-[#115eaf] hover:bg-[#dee8ff] text-xs sm:text-sm font-medium transition-colors flex items-center gap-1.5"
+                >
+                  <PhoneCall className="w-4 h-4" />
+                  <span>Talk to an Academic Counselor</span>
+                </button>
+              </div>
+
+              {metrics.length > 0 ? (
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
+                  {metrics.map((metric) => {
+                    const Icon = METRIC_ICON[metric.icon] || Award;
+
+                    return (
+                      <div
+                        key={metric.label}
+                        className="p-4 rounded-xl bg-white border border-[#e7eeff] flex flex-col justify-between"
+                      >
+                        <div className="w-7 h-7 rounded-lg bg-[#d5e3ff] text-[#115eaf] flex items-center justify-center mb-1.5">
+                          <Icon className="w-3.5 h-3.5" />
+                        </div>
+                        <div>
+                          <div className="text-sm font-bold text-[#000f22] font-sans">
+                            {metric.value}
+                          </div>
+                          <div className="text-[11px] text-[#43474d] mt-0.5 font-normal">
+                            {metric.label}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : null}
+            </div>
+
+            <div className="lg:col-span-4 space-y-4">
+              {/* Campus image slot — shows the API image, else a placeholder */}
+              <div className="rounded-2xl overflow-hidden border border-[#e7eeff] shadow-xs bg-[#f9f9ff]">
+                {campusImage && !campusImageFailed ? (
+                  <img
+                    src={campusImage}
+                    alt={`${collegeName} Campus`}
+                    className="w-full h-48 sm:h-60 object-cover"
+                    loading="lazy"
+                    onError={() => setCampusImageFailed(true)}
+                  />
+                ) : (
+                  <div className="h-48 sm:h-60 w-full flex flex-col items-center justify-center gap-2 text-center px-6 bg-white">
+                    <span className="material-symbols-outlined text-[30px] leading-none text-[#115eaf]">
+                      image
+                    </span>
+                    <span className="text-xs sm:text-sm font-semibold text-[#000f22] font-sans">
+                      {collegeName}
+                    </span>
+                    <span className="text-[11px] font-normal text-[#74777e]">
+                      Campus image placeholder
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {admissionInfo.status || admissionInfo.deadline ? (
+                <div className="rounded-xl p-4 sm:p-5 bg-white border border-[#115eaf]/25 shadow-md relative overflow-hidden">
+                  <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-[#d5e3ff]/50 rounded-full blur-2xl pointer-events-none" />
+
+                  <div className="flex items-center justify-between pb-3 border-b border-[#e7eeff]">
+                    <div className="flex items-center gap-2">
+                      {admissionInfo.status ? (
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      ) : null}
+                      <span className="text-xs sm:text-sm font-normal text-[#000f22]">
+                        {admissionInfo.status}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 py-3.5 text-xs">
+                    {admissionInfo.deadline ? (
+                      <div className="flex items-start gap-2.5">
+                        <div className="w-7 h-7 rounded-full bg-[#f0f3ff] flex items-center justify-center shrink-0 text-[#115eaf]">
+                          <Calendar className="w-3.5 h-3.5" />
+                        </div>
+                        <div>
+                          <span className="text-[11px] text-[#43474d] block font-normal">
+                            Registration Deadline
+                          </span>
+                          <span className="text-xs sm:text-sm font-normal text-[#000f22]">
+                            {admissionInfo.deadline}
+                          </span>
+                        </div>
+                      </div>
+                    ) : null}
+
+                    {admissionInfo.grant ? (
+                      <div className="flex items-start gap-2.5">
+                        <div className="w-7 h-7 rounded-full bg-[#FFFBEB] flex items-center justify-center shrink-0 text-[#92400E]">
+                          <Award className="w-3.5 h-3.5 text-[#D97706]" />
+                        </div>
+                        <div>
+                          <span className="text-[11px] text-[#43474d] block font-normal">
+                            Tuition Fee Grant
+                          </span>
+                          <span className="text-xs sm:text-sm font-normal text-[#B45309]">
+                            {admissionInfo.grant}
+                          </span>
+                        </div>
+                      </div>
+                    ) : null}
+
+                    {admissionInfo.emi ? (
+                      <div className="flex items-start gap-2.5">
+                        <div className="w-7 h-7 rounded-full bg-[#f0f3ff] flex items-center justify-center shrink-0 text-[#115eaf]">
+                          <CreditCard className="w-3.5 h-3.5" />
+                        </div>
+                        <div>
+                          <span className="text-[11px] text-[#43474d] block font-normal">
+                            Monthly Payment Option
+                          </span>
+                          <span className="text-xs sm:text-sm font-normal text-[#000f22]">
+                            {admissionInfo.emi}
+                          </span>
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+
+                  <div className="pt-2 border-t border-[#e7eeff] flex flex-col gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => apply?.()}
+                      className="w-full py-2.5 rounded-lg bg-[#0b2540] text-white text-xs sm:text-sm font-semibold hover:bg-[#000f22] active:scale-95 transition-all flex items-center justify-center gap-2 shadow"
+                    >
+                      <span>Apply Now</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                    <p className="text-center text-[10px] text-[#74777e] font-normal">
+                      Direct merit-based admission with online document verification
+                    </p>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {universityNavigation}
 
-      <section className="relative overflow-hidden border-b border-[#cfe0f7] bg-gradient-to-br from-[#e8f2ff] via-white to-[#edf5ff]"><div className="pointer-events-none absolute -right-28 -top-28 h-96 w-96 rounded-full bg-[#bcd9ff] opacity-60 blur-3xl" /><div className="relative mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1.6fr_.8fr] lg:px-8 lg:py-14"><div><p className="mb-3 text-xs font-bold uppercase tracking-[.16em] text-[#1268d6]">Lovely Professional University</p><h1 className="max-w-3xl text-4xl font-black leading-[1.03] tracking-[-.04em] sm:text-5xl lg:text-6xl">LPU Online Courses &amp; Fees 2026</h1><p className="mt-5 max-w-2xl text-sm leading-7 text-[#61728a] sm:text-base">Compare LPU Online undergraduate and postgraduate programs, semester fees, eligibility, duration, specializations, and admission options.</p><div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap"><button onClick={() => onOpenApply()} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#1268d6] px-5 text-sm font-bold text-white hover:bg-[#084a9d]"><CheckCircle size={17} />Apply Online</button><button onClick={() => onOpenBrochure()} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#0b2540] bg-white px-5 text-sm font-bold hover:bg-[#eaf3ff]"><Download size={17} className="text-[#1268d6]" />Download Fee Brochure</button><button onClick={onOpenHelpDesk} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl px-3 text-sm font-semibold text-[#1268d6] hover:bg-[#dceaff]"><PhoneCall size={17} />Talk to a Counselor</button></div><div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4"><Metric icon={<Award size={16} />} value="NAAC A++" label="Accreditation" /><Metric icon={<Laptop size={16} />} value="100% Online" label="Classes & exams" /><Metric icon={<CreditCard size={16} />} value="From ₹18,666" label="Semester fee" /><Metric icon={<ShieldCheck size={16} />} value="10 Programs" label="UG, PG & diploma" /></div></div><div className="rounded-2xl border border-[#b8d2f4] bg-white p-5 shadow-xl sm:p-6"><div className="flex items-center gap-2 border-b border-[#dce8f7] pb-4 text-sm font-bold"><span className="h-2.5 w-2.5 animate-pulse rounded-full bg-emerald-500" />Admissions Open</div><div className="space-y-5 py-5"><InfoRow icon={<Calendar size={16} />} label="Registration Deadline" value="31st March 2026" /><InfoRow icon={<Award size={16} />} label="Tuition Fee Grant" value="Up to 20% Early Bird Concession" /><InfoRow icon={<CreditCard size={16} />} label="Monthly Payment Option" value="Zero-Cost EMI from ₹4,100/month" /></div><button onClick={() => onOpenApply()} className="flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#0b2540] text-sm font-bold text-white hover:bg-[#071a33]">Apply Now <ArrowRight size={16} /></button></div></div></section>
+      <div className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 pb-10">
+        <div className="section-container">
+          <CollegeTableOfContents
+            title="Table of contents"
+            items={tocItems}
+            activeId={activeSection}
+            onItemClick={(id) => setActiveSection(id)}
+            defaultExpanded={false}
+            collapsedCount={6}
+          />
 
-      <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8"><div className="rounded-2xl border border-[#dce8f7] bg-white p-5 shadow-sm"><h2 className="text-xl font-black sm:text-2xl">Explore LPU Online</h2><div className="mt-4 flex flex-wrap gap-2 text-xs font-semibold text-[#1268d6]">{["fee-structure", "all-courses", "admission-dates", "learning-platform", "student-reviews", "faqs"].map((id) => <a key={id} href={`#${id}`} className="rounded-lg border border-[#dce8f7] px-3 py-2 hover:bg-[#eaf3ff]">{id.replaceAll("-", " ")}</a>)}</div></div></section>
+          {/* 1. Fee Structure */}
+          {feeRows.length > 0 && (
+            <section
+              id="fee-structure"
+              className="content-block scroll-mt-[100px]"
+            >
+              <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 gap-3">
+                <div>
+                  <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
+                    {coursesData.coursesFees?.title}
+                  </h2>
+                </div>
+                <div className="flex items-center gap-1.5 text-xs text-[#43474d] font-normal">
+                  <CheckCircle className="w-4 h-4 text-emerald-600" />
+                  <span>Includes Exam Fees, LMS Access &amp; Digital Material</span>
+                </div>
+              </div>
 
-      <section className="sticky top-[58px] z-30 border-y border-[#dce8f7] bg-white/95 py-3 backdrop-blur-md"><div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8"><div className="flex gap-2 overflow-x-auto pb-1">{["all", "ug", "pg", "diploma"].map((item) => <button key={item} onClick={() => setCategory(item)} className={`whitespace-nowrap rounded-full px-4 py-2 text-xs font-bold ${category === item ? "bg-[#0b2540] text-white" : "bg-[#eaf3ff] text-[#61728a]"}`}>{item === "all" ? "All Courses" : item === "ug" ? "Undergraduate" : item === "pg" ? "Postgraduate" : "Diploma"}</button>)}</div><div className="flex gap-2"><label className="flex min-h-10 flex-1 items-center gap-2 rounded-xl border border-[#dce8f7] bg-white px-3 md:w-64 md:flex-none"><Search size={16} className="text-[#61728a]" /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search courses" className="min-w-0 flex-1 text-sm outline-none" /></label><select value={sort} onChange={(event) => setSort(event.target.value)} className="rounded-xl border border-[#dce8f7] bg-white px-3 text-xs font-semibold outline-none"><option value="popular">Popular</option><option value="low">Fee: Low to High</option><option value="high">Fee: High to Low</option><option value="duration">Duration</option></select></div></div></section>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {categories.map((entry) =>
+                  renderFeeTable(
+                    courses.filter((course) => course.category === entry.key),
+                    entry.title,
+                    entry.badge,
+                    coursesData.coursesFees?.durationLabel,
+                    entry.key
+                  )
+                )}
+              </div>
+            </section>
+          )}
 
-      <section id="fee-structure" className="mx-auto max-w-7xl scroll-mt-28 px-4 py-10 sm:px-6 lg:px-8"><SectionTitle title="LPU Online Fee Structure 2026" text="Semester-wise and total program fees with transparent course details." /><div className="grid gap-5 lg:grid-cols-2"><FeeTable title="Undergraduate Programs" subtitle="3 years / 6 semesters" courses={ug} onSelectCourse={onSelectCourse} /><FeeTable title="Postgraduate Programs" subtitle="2 years / 4 semesters" courses={pg} onSelectCourse={onSelectCourse} /></div><div className="mt-5 flex flex-col gap-4 rounded-2xl border border-[#cfe0f7] bg-[#eaf3ff] p-5 sm:flex-row sm:items-center sm:justify-between"><div><strong className="text-sm">Flexible zero-cost EMI options</strong><p className="mt-1 text-xs text-[#61728a]">Monthly plans start from ₹4,100 depending on the selected program.</p></div><button onClick={() => onOpenEmi()} className="rounded-xl bg-[#1268d6] px-5 py-3 text-xs font-bold text-white">Calculate EMI</button></div></section>
+          {/* EMI banner */}
+          <section className="content-block">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 p-5 rounded-2xl bg-gradient-to-r from-[#e7eeff] via-[#f0f3ff] to-[#d5e3ff] border border-[#115eaf]/30">
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-[11px] bg-[#115eaf] text-white flex items-center justify-center shrink-0">
+                  <CreditCard className="w-5 h-5" />
+                </div>
+                <div>
+                  <strong className="block text-sm font-bold text-[#000f22] font-sans">
+                    Flexible Fee Payment and Zero-Cost EMI
+                  </strong>
+                  <p className="mt-0.5 text-[11px] text-[#43474d] font-normal">
+                    Pay semester-wise and check your monthly plan before you
+                    apply.
+                  </p>
+                </div>
+              </div>
 
-      <section id="all-courses" className="scroll-mt-28 border-y border-[#dce8f7] bg-[#eef4fa]"><div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8"><SectionTitle title="LPU Online Degree Programs" text="Career-focused online degrees in management, technology, commerce, arts, and science." />{courses.length ? <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{courses.map((course) => <CourseCard key={course.id} course={course} onSelectCourse={onSelectCourse} onOpenApply={onOpenApply} />)}</div> : <div className="rounded-2xl border border-[#dce8f7] bg-white p-12 text-center"><Search className="mx-auto text-[#1268d6]" /><h3 className="mt-3 font-bold">No courses found</h3></div>}</div></section>
+              <button
+                type="button"
+                onClick={() => emi?.()}
+                className="px-5 py-3 rounded-xl bg-[#115eaf] text-white text-xs font-semibold hover:bg-[#004689] transition-colors flex items-center justify-center gap-2"
+              >
+                <Calculator className="w-4 h-4" />
+                Calculate EMI
+              </button>
+            </div>
+          </section>
 
-      <section id="admission-dates" className="mx-auto max-w-7xl scroll-mt-28 px-4 py-10 sm:px-6 lg:px-8"><SectionTitle title="LPU Online Admission Dates 2026" text="Important steps for the upcoming admission cycle." /><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4"><DateCard title="Registration" value="Open for 2026 intake" /><DateCard title="Verification" value="After submission" /><DateCard title="Fee Payment" value="After approval" /><DateCard title="Commencement" value="As scheduled" /></div></section>
+          {/* 2. All Courses */}
+          {courses.length > 0 && (
+            <section
+              id="all-courses"
+              className="content-block bg-[#f0f3ff]/50 border-t border-[#e7eeff] scroll-mt-[100px]"
+            >
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="text-left max-w-3xl mb-[18px]">
+                  <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
+                    {universityName ? `${universityName} All Courses` : "All Courses"}
+                  </h2>
+                  {coursesData.coursesFees?.description ? (
+                    <p className="section-description text-xs sm:text-sm text-[#43474d] font-normal leading-relaxed text-left">
+                      {coursesData.coursesFees.description}
+                    </p>
+                  ) : null}
+                </div>
 
-      <section id="learning-platform" className="scroll-mt-28 bg-[#0b2540] px-4 py-12 text-white sm:px-6 lg:px-8"><div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.3fr_.7fr] lg:items-center"><div><p className="text-xs font-bold uppercase tracking-[.16em] text-[#70aaff]">Digital learning experience</p><h2 className="mt-3 text-3xl font-black sm:text-4xl">Study through LPU e-Connect</h2><p className="mt-4 max-w-2xl text-sm leading-7 text-[#b8c9df]">Access live classes, recorded lectures, digital materials, assignments, examinations, and academic support through one online platform.</p><ul className="mt-5 grid gap-2 text-sm text-[#e8f1ff]"><li>✓ Live and recorded online classes</li><li>✓ Mobile-friendly student dashboard</li><li>✓ Digital assignments and assessments</li><li>✓ Online academic support</li></ul></div><div className="rounded-2xl border border-white/15 bg-white/10 p-8 text-center"><Laptop className="mx-auto text-[#70aaff]" size={42} /><h3 className="mt-5 text-xl font-bold">LPU e-Connect</h3><p className="mt-2 text-sm text-[#b8c9df]">Your complete online degree workspace.</p></div></div></section>
+                {/* Filters */}
+                <div className="flex flex-wrap items-center gap-2 mt-[18px]">
+                  <button
+                    type="button"
+                    onClick={() => setCategory("all")}
+                    aria-pressed={category === "all"}
+                    className={`tap-chip h-8 px-3.5 rounded-2xl border text-xs font-medium whitespace-nowrap cursor-pointer transition-colors ${
+                      category === "all"
+                        ? "bg-[#115eaf] border-[#115eaf] text-white"
+                        : "bg-white border-[#dfe6ec] text-[#43474d]"
+                    }`}
+                  >
+                    All Courses ({courses.length})
+                  </button>
 
-      <section id="student-reviews" className="mx-auto max-w-7xl scroll-mt-28 px-4 py-10 sm:px-6 lg:px-8"><SectionTitle title="LPU Online Student Reviews" text="What students appreciate about online learning at LPU." /><div className="grid gap-5 md:grid-cols-3"><Review name="Rahul Sharma" course="Online MBA" text="The flexible classes helped me continue my job while studying." /><Review name="Priya Verma" course="Online BCA" text="The portal is easy to use and recorded classes help with revision." /><Review name="Amit Kumar" course="Online MCA" text="The practical course structure and EMI option are useful." /></div></section>
+                  {categories.map((entry) => (
+                    <button
+                      key={entry.key}
+                      type="button"
+                      onClick={() => setCategory(entry.key)}
+                      aria-pressed={category === entry.key}
+                      className={`tap-chip h-8 px-3.5 rounded-2xl border text-xs font-medium whitespace-nowrap cursor-pointer transition-colors ${
+                        category === entry.key
+                          ? "bg-[#115eaf] border-[#115eaf] text-white"
+                          : "bg-white border-[#dfe6ec] text-[#43474d]"
+                      }`}
+                    >
+                      {entry.badge} ({entry.count})
+                    </button>
+                  ))}
 
-      <section id="faqs" className="mx-auto max-w-4xl scroll-mt-28 px-4 py-10 sm:px-6 lg:px-8"><SectionTitle title="Frequently Asked Questions" text="Common questions about LPU Online courses and fees." /><div className="space-y-3">{FAQS.map(([question, answer], index) => <div key={question} className="overflow-hidden rounded-2xl border border-[#dce8f7] bg-white"><button onClick={() => setOpenFaq(openFaq === index ? -1 : index)} className="flex min-h-14 w-full items-center justify-between gap-3 px-5 text-left text-sm font-bold"><span>{question}</span><ChevronDown size={18} className={openFaq === index ? "rotate-180 text-[#1268d6]" : "text-[#1268d6]"} /></button>{openFaq === index && <p className="px-5 pb-5 text-sm leading-6 text-[#61728a]">{answer}</p>}</div>)}</div></section>
+                  <div className="ml-auto flex items-center gap-2">
+                    <select
+                      value={sortBy}
+                      onChange={(event) => setSortBy(event.target.value)}
+                      aria-label="Sort programmes"
+                      className="h-8 px-2.5 rounded-2xl border border-[#dfe6ec] bg-white text-xs font-medium text-[#43474d] focus:outline-none focus:border-[#115eaf] cursor-pointer"
+                    >
+                      {SORT_OPTIONS.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
 
-      <section className="bg-gradient-to-r from-[#071a33] via-[#0b2540] to-[#1268d6] px-4 py-12 text-white sm:px-6 lg:px-8"><div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between"><div><p className="text-xs font-bold uppercase tracking-[.16em] text-[#9dc5ff]">Free academic guidance</p><h2 className="mt-2 text-3xl font-black">Need help choosing an LPU course?</h2><p className="mt-2 max-w-2xl text-sm text-[#b8c9df]">Speak with an advisor about eligibility, fees, specializations, scholarships, EMI, and admission.</p></div><div className="flex flex-col gap-2 sm:flex-row"><button onClick={() => onOpenApply()} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#1268d6] px-5 text-sm font-bold text-white">Apply Online <ArrowRight size={16} /></button><button onClick={onOpenHelpDesk} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-white px-5 text-sm font-bold text-[#071a33]"><PhoneCall size={16} />Talk to Counselor</button></div></div></section>
-    </div>;
-};
-const Metric = ({ icon, value, label }) => <div className="rounded-2xl border border-[#dce8f7] bg-white p-4 shadow-sm"><div className="mb-5 flex h-8 w-8 items-center justify-center rounded-lg bg-[#eaf3ff] text-[#1268d6]">{icon}</div><strong className="block text-sm">{value}</strong><span className="mt-1 block text-xs text-[#61728a]">{label}</span></div>;
-const InfoRow = ({ icon, label, value }) => <div className="flex gap-3"><div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#eaf3ff] text-[#1268d6]">{icon}</div><div><span className="block text-xs text-[#61728a]">{label}</span><strong className="mt-1 block text-sm">{value}</strong></div></div>;
-const SectionTitle = ({ title, text }) => <div className="mb-6"><h2 className="text-3xl font-black tracking-tight text-[#071a33]">{title}</h2><p className="mt-2 text-sm text-[#61728a]">{text}</p></div>;
-const FeeTable = ({ title, subtitle, courses, onSelectCourse }) => <div className="overflow-hidden rounded-2xl border border-[#dce8f7] bg-white shadow-sm"><div className="flex items-start justify-between gap-3 bg-[#0b2540] p-5 text-white"><div><h3 className="font-bold">{title}</h3><p className="mt-1 text-xs text-[#b8c9df]">{subtitle}</p></div><span className="rounded-full bg-white/10 px-2 py-1 text-[10px]">{courses.length} programs</span></div><div className="overflow-x-auto"><table className="min-w-[620px] w-full text-left text-xs"><thead><tr className="border-b border-[#dce8f7] bg-[#f6f9fd] text-[#61728a]"><th className="px-5 py-3">Program</th><th className="px-3 py-3">Duration</th><th className="px-3 py-3">Semester</th><th className="px-3 py-3">Total</th><th className="px-5 py-3">Action</th></tr></thead><tbody>{courses.map((course) => <tr key={course.id} className="border-b border-[#edf2f8] last:border-0 hover:bg-[#f6faff]"><td className="px-5 py-4"><strong className="block">{course.code}</strong><span className="mt-1 block text-[11px] text-[#61728a]">{course.name}</span></td><td className="px-3 py-4 text-[#61728a]">{course.duration}</td><td className="px-3 py-4">₹{course.perSemFee.toLocaleString("en-IN")}</td><td className="px-3 py-4 font-bold text-[#1268d6]">₹{course.totalFee.toLocaleString("en-IN")}</td><td className="px-5 py-4"><button onClick={() => onSelectCourse(course)} className="font-bold text-[#1268d6]">View</button></td></tr>)}</tbody></table></div></div>;
-const CourseCard = ({ course, onSelectCourse, onOpenApply }) => <article className="flex flex-col rounded-2xl border border-[#dce8f7] bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-xl"><div className="flex items-center justify-between"><span className="rounded-full bg-[#eaf3ff] px-2.5 py-1 text-[10px] font-bold text-[#1268d6]">{course.category === "pg" ? "POSTGRADUATE" : course.category === "ug" ? "UNDERGRADUATE" : "DIPLOMA"}</span><Star size={17} fill="#f59e0b" color="#f59e0b" /></div><h3 className="mt-5 text-lg font-black text-[#071a33]">{course.name}</h3><p className="mt-2 min-h-16 text-xs leading-6 text-[#61728a]">{course.shortDescription}</p><div className="mt-4 grid gap-2 border-y border-[#edf2f8] py-4 text-xs text-[#61728a]"><span className="flex items-center gap-2"><Clock3 size={15} className="text-[#1268d6]" />{course.duration}</span><span className="flex items-center gap-2"><CreditCard size={15} className="text-[#1268d6]" />₹{course.perSemFee.toLocaleString("en-IN")} per semester</span></div><div className="mt-4 flex flex-wrap gap-1.5">{(course.specializations ?? []).slice(0, 3).map((item) => <span key={item} className="rounded-md bg-[#f6f9fd] px-2 py-1 text-[10px] text-[#61728a]">{item}</span>)}</div><div className="mt-5 flex items-center justify-between gap-3"><strong className="text-lg text-[#1268d6]">₹{course.totalFee.toLocaleString("en-IN")}</strong><div className="flex gap-2"><button onClick={() => onSelectCourse(course)} className="rounded-lg border border-[#1268d6] px-3 py-2 text-xs font-bold text-[#1268d6]">Details</button><button onClick={() => onOpenApply(course.id)} className="rounded-lg bg-[#1268d6] px-3 py-2 text-xs font-bold text-white">Apply</button></div></div></article>;
-const DateCard = ({ title, value }) => <div className="rounded-2xl border border-[#dce8f7] bg-white p-5 shadow-sm"><Calendar size={19} className="text-[#1268d6]" /><strong className="mt-4 block text-sm">{title}</strong><span className="mt-1 block text-xs text-[#61728a]">{value}</span></div>;
-const Review = ({ name, course, text }) => <article className="rounded-2xl border border-[#dce8f7] bg-white p-5 shadow-sm"><div className="flex gap-1 text-[#f59e0b]">{[1, 2, 3, 4, 5].map((item) => <Star key={item} size={15} fill="currentColor" />)}</div><p className="mt-5 min-h-20 text-sm leading-6 text-[#61728a]">“{text}”</p><div className="mt-5 flex items-center gap-3"><div className="grid h-9 w-9 place-items-center rounded-full bg-[#1268d6] text-sm font-bold text-white">{name[0]}</div><div><strong className="block text-xs">{name}</strong><span className="block text-[11px] text-[#61728a]">{course}</span></div></div></article>;
-export default CoursesAndFeesView;
+                <div className="relative mt-[18px]">
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Search programmes"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] text-sm text-[#000f22] font-normal placeholder:text-[#74777e] focus:outline-none focus:border-[#115eaf] focus:bg-white transition-all"
+                  />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#74777e]" />
+                </div>
+
+                {visibleCourses.length === 0 ? (
+                  <div className="mt-[18px] rounded-xl border border-[#e7eeff] bg-white py-10 text-center">
+                    <Search className="mx-auto mb-2 h-8 w-8 text-[#74777e]" />
+                    <h3 className="text-sm font-semibold text-[#000f22]">No programs match your search</h3>
+                    <p className="mt-[7.5px] text-xs font-normal text-[#43474d]">
+                      Try another search or reset your selected filters.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setCategory("all");
+                        setSearchQuery("");
+                      }}
+                      className="mt-3 rounded-lg bg-[#115eaf] px-3.5 py-1.5 text-xs font-medium text-white"
+                    >
+                      Reset Filters
+                    </button>
+                  </div>
+                ) : (
+                  <div className="mt-[18px] grid grid-cols-1 gap-3.5 sm:gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    {visibleCourses.map((course, idx) => {
+                      const level = String(course.category || "").toLowerCase();
+                      const levelLabel = level === "pg" ? "PG" : level === "diploma" ? "Diploma" : "UG";
+                      const feePerSemester = course.perSemFee || "";
+                      const totalFee = course.totalFee ?? course.avgFees;
+                      const selectCourse = () => onSelectCourse?.({
+                        ...course,
+                        level: levelLabel.toUpperCase(),
+                        description: course.shortDescription || "",
+                      });
+
+                      return (
+                        <article
+                          key={`${course.code || course.name}-${idx}`}
+                          className="relative flex flex-col justify-between rounded-xl border border-[#e7eeff] bg-white p-4 shadow-xs transition-all duration-200 hover:border-[#115eaf]/60 hover:shadow-xs sm:p-5"
+                        >
+                          <div>
+                            <div className="mb-1.5 flex items-center justify-between gap-2">
+                              <span className={`rounded px-2 py-0.5 text-[10px] font-normal ${
+                                level === "pg"
+                                  ? "bg-[#d5e3ff] text-[#004689]"
+                                  : level === "diploma"
+                                    ? "bg-[#ffdcc3] text-[#6e3900]"
+                                    : "bg-[#e7eeff] text-[#011c37]"
+                              }`}>
+                                {levelLabel}
+                              </span>
+                              {course.duration ? (
+                                <span className="flex items-center gap-1 text-[11px] font-normal text-[#74777e]">
+                                  <Calendar className="h-3 w-3" />
+                                  {course.duration}
+                                </span>
+                              ) : null}
+                            </div>
+
+                            <button
+                              type="button"
+                              onClick={selectCourse}
+                              title={course.name}
+                              className="text-left text-sm font-semibold leading-snug text-[#000f22] transition-colors hover:text-[#115eaf] sm:text-[15px]"
+                            >
+                              {course.name}
+                            </button>
+                            {course.shortDescription ? (
+                              <p className="mt-[7.5px] line-clamp-2 text-[11px] font-normal leading-relaxed text-[#555960] sm:text-xs">
+                                {course.shortDescription}
+                              </p>
+                            ) : null}
+
+                            <div className="mt-2.5 flex items-baseline justify-between border-t border-[#f0f3ff] pt-2.5">
+                              <span className="text-[10px] font-normal uppercase tracking-wide text-[#74777e]">Total Fee</span>
+                              <div className="text-right">
+                                <span className="text-sm font-normal text-[#000f22] sm:text-[15px]">
+                                  {formatCourseFee(totalFee)}
+                                </span>
+                                {feePerSemester ? (
+                                  <span className="ml-1 text-[10px] text-[#74777e]">
+                                    ({formatCourseFee(feePerSemester)}/sem)
+                                  </span>
+                                ) : null}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="mt-3 grid grid-cols-2 gap-1.5 pt-1">
+                            <button
+                              type="button"
+                              onClick={selectCourse}
+                              className="flex min-h-[44px] w-full items-center justify-center rounded-lg bg-[#115eaf] px-2 py-1.5 text-center text-[11px] font-medium text-white shadow-xs transition-all hover:bg-[#004689] active:scale-95 md:min-h-0"
+                            >
+                              View Details
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => brochure?.(course)}
+                              className="flex min-h-[44px] w-full items-center justify-center gap-1 rounded-lg border border-[#dce5fa] bg-[#f0f3ff] px-2 py-1.5 text-[11px] font-normal text-[#001b3c] transition-colors hover:bg-[#e7eeff] md:min-h-0"
+                            >
+                              <Download className="h-3 w-3 text-[#115eaf]" />
+                              Syllabus
+                            </button>
+                          </div>
+                        </article>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
+
+          {/* 3. University Admission Dates */}
+          {admissionDates.length > 0 && (
+            <section
+              id="admission-dates"
+              className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 scroll-mt-[100px] border-y border-[#e7eeff] bg-[#f0f3ff]/60 py-5 sm:py-7"
+            >
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="overflow-hidden rounded-2xl border border-[#d5e3ff] bg-gradient-to-br from-[#f9fbff] via-[#f0f3ff] to-white shadow-sm">
+                <div className="flex flex-col gap-3 border-b border-[#dfe9ff] px-5 py-5 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
+                  <div>
+                    <h2 className="section-title text-xl sm:text-2xl font-bold tracking-tight text-[#000f22]">
+                      {universityName ? `${universityName} Admission Dates ${CURRENT_YEAR}` : `Admission Dates ${CURRENT_YEAR}`}
+                    </h2>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => apply?.()}
+                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#115eaf] bg-white px-4 py-2.5 text-xs font-semibold text-[#115eaf] transition-colors hover:bg-[#eaf1ff] sm:text-sm"
+                  >
+                    <Calendar className="h-4 w-4" />
+                    View Admission Portal
+                  </button>
+                </div>
+
+                <div className="p-5 sm:p-6">
+                  <p className="text-xs font-normal leading-relaxed text-[#43474d] sm:text-sm">
+                    <button
+                      type="button"
+                      onClick={() => apply?.()}
+                      className="font-semibold text-[#115eaf] hover:underline"
+                    >
+                      {universityName ? `${universityName} admission` : "University admission"}
+                    </button>{" "}
+                    applications are submitted online. Check the dates below and use the admission portal to begin your application.
+                  </p>
+
+                  <div className="mt-5 overflow-hidden rounded-xl border border-[#dfe9ff] bg-white">
+                    <div className="overflow-x-auto">
+                      <table className="w-full border-collapse text-left text-xs sm:text-sm">
+                        <thead>
+                          <tr className="bg-[#0b2540] text-white">
+                            <th className="px-4 py-3 font-bold">Event</th>
+                            <th className="px-4 py-3 font-bold">Details</th>
+                            <th className="px-4 py-3 font-bold">Tentative Date</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-[#e7eeff]">
+                          {admissionDates.map((item, idx) => (
+                            <tr key={`${item.title}-${idx}`} className="transition-colors hover:bg-[#f0f3ff]/60">
+                              <td className="px-4 py-3.5 font-bold text-[#000f22]">{item.title}</td>
+                              <td className="px-4 py-3.5 text-[#43474d]">{item.description || "—"}</td>
+                              <td className="whitespace-nowrap px-4 py-3.5 font-semibold text-[#115eaf]">{item.date || "—"}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* 4. Learning Platform */}
+          {learningRows.length > 0 && (
+            <section
+              id="learning-platform"
+              className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]"
+            >
+              <div className="mb-[18px]">
+                <h2 className="section-title text-xl sm:text-2xl font-bold tracking-tight text-[#000f22]">
+                  How You Study: The {learningPlatformName}
+                </h2>
+              </div>
+
+              <ul className="border-t border-[#e7eeff]">
+                {learningRows.map((item, idx) => {
+                  const Icon = PLATFORM_ICON[item.icon] || Video;
+
+                  return (
+                    <li
+                      key={idx}
+                      className="group grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] gap-x-4 sm:gap-x-6 gap-y-2 py-5 sm:py-6 border-b border-[#e7eeff]"
+                    >
+                      <div className="flex items-start gap-3">
+                        <span className="w-9 h-9 rounded-full bg-[#eef4ff] text-[#115eaf] flex items-center justify-center shrink-0 transition-colors group-hover:bg-[#115eaf] group-hover:text-white">
+                          <Icon className="w-4 h-4" />
+                        </span>
+                        <span className="text-[10px] font-normal text-[#c4c6ce] tabular-nums sm:hidden mt-2.5">
+                          {String(idx + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+
+                      <div className="min-w-0">
+                        <h3 className="text-sm font-semibold text-[#000f22] sm:text-base">
+                          {item.title}
+                        </h3>
+                        {item.description ? (
+                          <p className="text-xs text-[#43474d] mt-[7.5px] leading-relaxed font-normal max-w-2xl">
+                            {item.description}
+                          </p>
+                        ) : null}
+                      </div>
+
+                      {item.meta ? (
+                        <div className="col-start-2 sm:col-start-3 sm:row-start-1 sm:self-center flex items-center gap-2 text-xs font-medium text-[#115eaf] whitespace-nowrap">
+                          <span>{item.meta}</span>
+                          <span>
+                            <CheckCircle className="h-3.5 w-3.5 text-emerald-600" />
+                          </span>
+                        </div>
+                      ) : null}
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          )}
+
+          {/* 5. Student Reviews */}
+          {reviews.length > 0 && (
+            <section
+              id="student-reviews"
+              className="content-block bg-white border-y border-[#e7eeff] scroll-mt-[100px]"
+            >
+              <div className="w-full">
+                <div className="text-left mb-[18px]">
+                  <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
+                    {overview.reviewsMeta?.title ||
+                      (universityName
+                        ? `${universityName} Online Student Reviews & Ratings`
+                        : "Student Reviews")}
+                  </h2>
+                  <p className="section-description text-xs text-[#74777e] mt-1">
+                    Authentic feedback from working executives, entrepreneurs, and
+                    graduates
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+                  {reviews.slice(0, 6).map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-[#f9f9ff] p-4 rounded-xl border border-[#e7eeff] flex flex-col justify-between hover:border-[#115eaf] transition-all hover:shadow-sm"
+                    >
+                      <div>
+                        <div className="flex items-center text-amber-500 mb-2 gap-0.5">
+                          {[...Array(Math.max(0, Math.min(5, Math.round(Number(item.rating) || 0))))].map((_, i) => (
+                            <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                          ))}
+                        </div>
+                        <p className="text-xs text-[#43474d] italic leading-relaxed font-normal line-clamp-3">
+                          &quot;{item.review}&quot;
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2.5 mt-4 pt-3 border-t border-[#d5e3ff]">
+                        <div className="w-8 h-8 rounded-full bg-white text-[#115eaf] flex items-center justify-center font-bold text-xs shadow-sm border border-[#e7eeff] shrink-0">
+                          {item.avatar || (item.name || "S").charAt(0)}
+                        </div>
+                        <div className="min-w-0">
+                          <div className="font-bold text-xs text-[#000f22] truncate">
+                            {item.name}
+                          </div>
+                          <div className="text-[11px] text-[#74777e] font-medium truncate">
+                            {item.course || "Online Student"}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* 6. FAQs — shared accessible accordion */}
+          {faqs.length > 0 && (
+            <section
+              id="faqs"
+              className="content-block scroll-mt-[100px]"
+            >
+              <div className="text-left mb-[18px]">
+                <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
+                  FAQs
+                </h2>
+              </div>
+
+              <div className="space-y-2.5 [&>div]:bg-white [&>div]:rounded-xl [&>div]:shadow-xs">
+                <FaqAccordion
+                  items={faqs}
+                  variant="card"
+                  defaultOpenIndex={0}
+                />
+              </div>
+            </section>
+          )}
+
+          {/* 7. Blogs */}
+          {blogs.length > 0 && (
+            <section
+              id="blogs"
+              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+            >
+              <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
+                Blogs
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-[18px]">
+                {blogs.slice(0, 3).map((post, idx) => (
+                  <article
+                    key={idx}
+                    className="rounded-xl border border-[#e7eeff] overflow-hidden bg-white hover:border-[#115eaf] transition-all"
+                  >
+                    {post.image ? (
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-40 object-cover"
+                        loading="lazy"
+                      />
+                    ) : null}
+                    <div className="p-4">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#115eaf]">
+                        {post.category}
+                      </span>
+                      <h3 className="mt-1.5 text-sm font-medium text-[#115eaf] leading-relaxed">
+                        {post.title}
+                      </h3>
+                      {post.description ? (
+                        <p className="mt-2 text-xs text-[#43474d] leading-relaxed line-clamp-3">
+                          {post.description}
+                        </p>
+                      ) : null}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* 8. Counselor helpline */}
+          <section
+            id="counselor-helpline"
+            className="content-block bg-[#0b2540] text-white scroll-mt-[130px]"
+          >
+            <div className="w-full flex flex-col md:flex-row items-center justify-between gap-5">
+              <div>
+                <h3 className="section-title text-lg sm:text-xl font-bold font-sans tracking-tight">
+                  {coursesData.counselor?.title ||
+                    "Have Questions About Courses, Eligibility, or Fees?"}
+                </h3>
+                <p className="section-description text-xs sm:text-sm text-[#b1c8eb] font-normal">
+                  {coursesData.counselor?.description ||
+                    "Speak directly with an Online Siksha university advisor. We review your documents, help generate your DEB ID, and guide your admission at zero cost."}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => apply?.()}
+                  className="px-5 py-2.5 rounded-lg bg-[#115eaf] text-white text-xs sm:text-sm font-semibold shadow hover:bg-[#004689] active:scale-95 transition-all min-h-[44px]"
+                >
+                  Book Free Counseling Call
+                </button>
+                <button
+                  type="button"
+                  onClick={() => helpDesk?.()}
+                  className="px-4 py-2.5 rounded-lg border border-[#768dad]/40 text-white text-xs sm:text-sm font-medium hover:bg-white/10 transition-all flex items-center gap-1.5 min-h-[44px]"
+                >
+                  <PhoneCall className="w-4 h-4 text-[#70aaff]" />
+                  <span>Call Helpline: 1800-889-4422</span>
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  );
+}
+

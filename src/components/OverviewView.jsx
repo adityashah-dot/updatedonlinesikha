@@ -1,8 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
+import { Link } from "react-router-dom";
 import { COURSES_DATA } from "../data/coursesData";
-import { DEGREEFYD_LPU_API } from "../data/apiData";
+import { useSiteActions } from "./shell/SiteActionsContext";
+import CollegeTableOfContents from "./CollegeTableOfContents";
+import { AdmissionFlowSteps } from "./AdmissionFlowSteps";
+import { ExaminationPatternSteps } from "./ExaminationPatternSteps";
+import { FaqAccordion } from "./FaqAccordion";
 import { ProgrammeCardsSection } from "./ProgrammeCardsSection";
-import { BlogsListSection } from "./BlogsListSection";
+import ReadMoreText from "./ReadMoreText";
+import { CURRENT_YEAR } from "../constants/years";
+import { collegeSectionTitle } from "../lib/collegeTitle";
+
 import {
   CheckCircle,
   ChevronRight,
@@ -16,40 +24,12 @@ import {
   ExternalLink,
   ChevronDown,
   Search,
+  Clock,
   ArrowRight
 } from "lucide-react";
-import { TableOfContents } from "./TableOfContents";
-const RECRUITER_LOGOS = [
-  { name: "Amazon", src: "/logos/amazon.jpg" },
-  { name: "Cognizant", src: "/logos/cognizant.jpg" },
-  { name: "TCS", src: "/logos/tcs.jpg" },
-  { name: "Infosys", src: "/logos/infosys.png" },
-  { name: "Wipro", src: "/logos/wipro.jpg" },
-  { name: "Tech Mahindra", src: "/logos/techmahindra.jpg" },
-  { name: "Capgemini", src: "/logos/capgemini.png" },
-  { name: "Deloitte", src: "/logos/deloitte.jpg" },
-  { name: "Times Internet", src: "/logos/timesinternet.jpg" }
-];
-const CAMPUS_IMAGES = [
-  {
-    src: "/images/campusviewlpu.jpeg",
-    alt: "Lovely Professional University campus view"
-  },
-  {
-    src: "/images/campusarealpu.jpeg",
-    alt: "Lovely Professional University campus aerial view"
-  },
-  {
-    src: "/images/campusviewlpu.jpeg",
-    alt: "Lovely Professional University campus view"
-  },
-  {
-    src: "/images/campusarealpu.jpeg",
-    alt: "Lovely Professional University campus aerial view"
-  }
-];
-const RecruiterScroll = () => {
-  const doubled = [...RECRUITER_LOGOS, ...RECRUITER_LOGOS];
+const RecruiterScroll = ({ recruiters = [] }) => {
+  const doubled = [...recruiters, ...recruiters];
+  if (!recruiters.length) return null;
   return <div className="relative overflow-hidden">
       <div className="flex items-center gap-6 animate-[marquee_24s_linear_infinite] hover:[animation-play-state:paused]">
         {doubled.map((r, i) => <div
@@ -65,13 +45,36 @@ const RecruiterScroll = () => {
       </div>
     </div>;
 };
-export const OverviewView = ({
+const getCampusImageName = (altText, collegeData) => {
+  let name = String(altText || "").trim();
+  const prefixes = [collegeData?.title, collegeData?.shortTitle, collegeData?.shortName]
+    .filter(Boolean)
+    .flatMap((prefix) => [prefix, `${prefix} Online`, `${prefix} Distance Education`])
+    .sort((a, b) => b.length - a.length);
+
+  const matchingPrefix = prefixes.find((prefix) =>
+    name.toLowerCase().startsWith(`${prefix} `.toLowerCase())
+  );
+  if (matchingPrefix) name = name.slice(matchingPrefix.length);
+
+  return name
+    .replace(/^[\s:–—-]+/, "")
+    .replace(/^(?:online|distance education)\s+/i, "")
+    .trim() || "Campus";
+};
+const OverviewView = ({
+  collegeData,
   onSelectCourse,
-  onOpenApply,
-  onOpenBrochure,
-  onOpenHelpDesk,
+  onOpenApply: onOpenApplyProp,
+  onOpenBrochure: onOpenBrochureProp,
+  onOpenHelpDesk: onOpenHelpDeskProp,
   universityNavigation
 }) => {
+  const siteActions = useSiteActions();
+  const onOpenApply = onOpenApplyProp || siteActions.onOpenApply;
+  const onOpenBrochure = onOpenBrochureProp || siteActions.onOpenBrochure;
+  const onOpenHelpDesk = onOpenHelpDeskProp || siteActions.onOpenHelpDesk;
+  const onSelectCourseHandler = onSelectCourse || siteActions.onSelectCourse;
   const [counselingForm, setCounselingForm] = useState({
     name: "",
     phone: "",
@@ -83,228 +86,119 @@ export const OverviewView = ({
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formErrors, setFormErrors] = useState({});
   const [counselPanelOpen, setCounselPanelOpen] = useState(false);
-  const [openFaqIndex, setOpenFaqIndex] = useState(0);
   const [activeSection, setActiveSection] = useState("latest-news");
   const [selectedHighlightCategory, setSelectedHighlightCategory] = useState("All");
   const [selectedReviewCategory, setSelectedReviewCategory] = useState("All");
   const [tocOpen, setTocOpen] = useState(false);
   const [highlightsExpanded, setHighlightsExpanded] = useState(false);
   const [courseFeeSearch, setCourseFeeSearch] = useState("");
+  const [showAllFeeRows, setShowAllFeeRows] = useState(false);
   const [blogIndex, setBlogIndex] = useState(0);
   const [blogVisible, setBlogVisible] = useState(3);
-  const [openAdmissionStep, setOpenAdmissionStep] = useState(0);
-  const [visibleAdmissionSteps, setVisibleAdmissionSteps] = useState([]);
-  const [examStep, setExamStep] = useState(0);
-  const ADMISSION_FLOW_STEPS = [
-    {
-      title: "Online Registration",
-      description: "Visit the Lovely Professional University Online official portal and register using personal details such as name, email ID and mobile number. Login credentials are generated after successful registration."
-    },
-    {
-      title: "Application Form Submission",
-      description: "Fill out the online application form by selecting the desired programme and entering personal and academic details."
-    },
-    {
-      title: "Document Upload",
-      description: "Upload scanned copies of academic documents, identity proof, and photographs as part of the application process."
-    },
-    {
-      title: "Eligibility Verification",
-      description: "The university verifies eligibility based on academic qualifications and programme guidelines."
-    },
-    {
-      title: "Fee Payment and Admission Confirmation",
-      description: "Admission is confirmed after fee payment. Roll number and LMS login are issued to the student."
+  const campusMarqueeImages = (() => {
+    const images = (collegeData?.campus?.galleryImages || [])
+      .filter((item) => item?.imageUrl)
+      .map((item) => ({
+        imageUrl: item.imageUrl,
+        altText: item.altText || `${collegeData?.shortName || collegeData?.title} Campus View`,
+        name: getCampusImageName(item.altText || `${collegeData?.shortName || collegeData?.title} Campus View`, collegeData),
+      }));
+
+    if (!images.length && collegeData?.hero?.backgroundImage) {
+      images.push({
+        imageUrl: collegeData.hero.backgroundImage,
+        altText: `${collegeData?.shortName || collegeData?.title} Campus`,
+        name: "Campus",
+      });
     }
-  ];
-  useEffect(() => {
-    const stepNodes = Array.from(document.querySelectorAll(".admission-flow-step"));
-    if (!stepNodes.length) return;
-    if (!("IntersectionObserver" in window)) {
-      setVisibleAdmissionSteps(stepNodes.map((_, index) => index));
-      return;
+
+    return images.length ? [...images, ...images] : [];
+  })();
+  const EXAM_STEPS = collegeData?.examinationPattern?.steps?.length ? collegeData.examinationPattern.steps : [];
+  const ADMISSION_FLOW_STEPS = collegeData?.admission?.steps?.length ? collegeData.admission.steps : [];
+  const certificateImage = collegeData?.sampleDegree?.imageUrl || "";
+  const HIGHLIGHT_CATEGORIES = collegeData?.highlights?.categories?.length ? collegeData.highlights.categories : ["All"];
+  const REVIEW_CATEGORIES = ["All", ...(collegeData?.reviews?.map(r => r.course).filter(Boolean) ? [...new Set(collegeData.reviews.map(r => r.course).filter(Boolean))] : [])];
+  // Fee table rows of the "Courses and Fees" section. Only the first five
+  // degrees are shown; the rest stay collapsed behind the "Read more" button.
+  const FEE_ROWS_PREVIEW = 5;
+  const filteredFeeRows = (collegeData?.coursesFees?.table || []).filter((c) =>
+    String(c.degree || "").toLowerCase().includes(courseFeeSearch.toLowerCase())
+  );
+  const visibleFeeRows =
+    showAllFeeRows || courseFeeSearch
+      ? filteredFeeRows
+      : filteredFeeRows.slice(0, FEE_ROWS_PREVIEW);
+
+  // The table of contents comes from the CMS (`toc` of the page). When the
+  // CMS publishes none, the list is built from the sections this university
+  // actually renders — never from a fixed, another-university list.
+  const TOC_ITEMS = (() => {
+    if (collegeData?.toc?.length) return collegeData.toc;
+
+    const sections = [
+      ["latest-news", collegeData?.latestNews?.title],
+      ["highlights", collegeData?.highlights?.title],
+      ["courses-fees", collegeData?.coursesFees?.title],
+      ["popular-programmes", `${collegeData?.shortName || collegeData?.title || ""} Popular Programmes`.trim()],
+      ["eligibility-criteria", collegeData?.eligibility?.title],
+      [
+        "admission-process",
+        collegeData?.admission?.title || collegeSectionTitle(collegeData?.shortName || collegeData?.title, `Admission Process ${CURRENT_YEAR}`),
+        ADMISSION_FLOW_STEPS.length > 0,
+      ],
+      ["rankings", collegeData?.rankings?.title],
+      [
+        "examination-pattern",
+        collegeData?.examinationPattern?.title || collegeSectionTitle(collegeData?.shortName || collegeData?.title, "Examination Pattern"),
+        EXAM_STEPS.length > 0,
+      ],
+      ["placements", collegeData?.placements?.title],
+      ["campus", collegeData?.campus?.title],
+      ["sample-degree", collegeData?.sampleDegree?.title],
+      ["reviews-section", collegeData?.reviewsMeta?.title],
+      ["compare-colleges", collegeData?.compareSection?.title],
+      ["blogs", collegeData?.blogsMeta?.title],
+    ];
+
+    return sections
+      .filter(([, label, isVisible]) => Boolean(label) && isVisible !== false)
+      .map(([id, label], index) => ({ id, label, order: index }));
+  })();
+  const hasPerCourseSelection = Boolean(
+    collegeData?.eligibility?.items?.some((row) => row.selection)
+  );
+  // Review summary — every number comes from the API. A figure the CMS does
+  // not publish is not shown at all (no invented values).
+  const REVIEW_SUMMARY = (() => {
+    const reviews = collegeData?.reviews || [];
+    const scored = reviews
+      .map((review) => Number(review?.ratingValue))
+      .filter((value) => Number.isFinite(value) && value > 0);
+
+    const average = scored.length
+      ? scored.reduce((sum, value) => sum + value, 0) / scored.length
+      : 0;
+
+    const collegeRating = Number(collegeData?.rating);
+    const ratingValue = average || (Number.isFinite(collegeRating) ? collegeRating : 0);
+
+    const stats = [];
+
+    if (collegeData?.students != null && collegeData.students !== "") {
+      stats.push({
+        value: Number(collegeData.students).toLocaleString("en-IN"),
+        label: "Active Learners",
+        tone: "text-[#000f22]",
+      });
     }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const index = Number(entry.target.dataset.stepIndex ?? 0);
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              setVisibleAdmissionSteps((prev) => prev.includes(index) ? prev : [...prev, index]);
-            }, index * 150);
-          }
-        });
-      },
-      { threshold: 0.35 }
-    );
-    stepNodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
-  }, []);
-  useEffect(() => {
-    const revealNodes = Array.from(document.querySelectorAll(".exam-step-reveal"));
-    if (!revealNodes.length) return;
-    if (!("IntersectionObserver" in window)) {
-      revealNodes.forEach((node) => node.classList.add("show"));
-      return;
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add("show");
-            }, index * 120);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-    revealNodes.forEach((node) => observer.observe(node));
-    return () => observer.disconnect();
-  }, []);
-  const EXAM_STEPS = [
-    {
-      title: "Semester-Based Structure",
-      description: "Each programme follows a semester-based academic system.",
-      points: [
-        "The programme is divided into semesters.",
-        "Fees are paid semester-wise.",
-        "Every semester ends with an online examination."
-      ]
-    },
-    {
-      title: "Continuous Internal Assessment",
-      description: "Evaluation is carried out through assignments, quizzes, and academic activities during the semester.",
-      points: [
-        "Assignments are given during the semester.",
-        "Quizzes check your progress along the way.",
-        "Academic activities add to your internal assessment."
-      ]
-    },
-    {
-      title: "End-Semester Online Examination",
-      description: "Online monitoring examinations are conducted at the end of each semester.",
-      points: [
-        "The exam is conducted online with monitoring.",
-        "It takes place at the end of every semester.",
-        "It is taken through the digital learning platform."
-      ]
-    },
-    {
-      title: "Result Declaration",
-      description: "Final results are declared after evaluation. Students meeting the criteria progress to the next semester.",
-      points: [
-        "Results are declared after evaluation.",
-        "Evaluation includes internal assessment and the end-semester exam.",
-        "Students who meet the criteria move to the next semester."
-      ]
-    }
-  ];
-  const LPU_POPULAR_PROGRAMMES = [
-    {
-      id: "mba",
-      title: "Online MBA",
-      subtitle: "Master of Business Administration",
-      duration: "2 Years",
-      fee: "\u20B91,86,000",
-      mode: "Online",
-      specialisations: [
-        "Finance",
-        "Marketing",
-        "Human Resource",
-        "Data Science",
-        "Business Analytics",
-        "Operations",
-        "International Business",
-        "Digital Marketing",
-        "IT",
-        "Retail",
-        "Supply Chain",
-        "Agri-Business"
-      ]
-    },
-    {
-      id: "mca",
-      title: "Online MCA",
-      subtitle: "Master of Computer Applications",
-      duration: "2 Years",
-      fee: "\u20B91,40,000",
-      mode: "Online",
-      specialisations: [
-        "Cloud Computing",
-        "AI & Machine Learning",
-        "Full Stack Development",
-        "Data Science",
-        "Cyber Security",
-        "Blockchain",
-        "AR/VR"
-      ]
-    },
-    {
-      id: "bca",
-      title: "Online BCA",
-      subtitle: "Bachelor of Computer Applications",
-      duration: "3 Years",
-      fee: "\u20B91,59,000",
-      mode: "Online",
-      specialisations: ["Cloud & DevOps", "Data Analytics", "AI & ML"]
-    },
-    {
-      id: "bba",
-      title: "Online BBA",
-      subtitle: "Bachelor of Business Administration",
-      duration: "3 Years",
-      fee: "\u20B91,38,000",
-      mode: "Online",
-      specialisations: ["General", "Business Analytics"]
-    },
-    {
-      id: "ba",
-      title: "Online BA",
-      subtitle: "Bachelor of Arts",
-      duration: "3 Years",
-      fee: "\u20B91,14,000",
-      mode: "Online",
-      specialisations: [
-        "English",
-        "Political Science",
-        "Sociology",
-        "Psychology",
-        "History",
-        "Economics",
-        "Public Administration",
-        "Artificial Intelligence"
-      ]
-    },
-    {
-      id: "mcom",
-      title: "Online M.Com",
-      subtitle: "Master of Commerce",
-      duration: "2 Years",
-      fee: "\u20B996,000",
-      mode: "Online",
-      specialisations: ["Finance", "Accounting & Taxation"]
-    }
-  ];
-  const HIGHLIGHT_CATEGORIES = ["All", "Institution", "Academic", "Accreditations", "Technology", "Evaluation", "Info"];
-  const TOC_ITEMS = [
-    { id: "latest-news", label: "LPU Online Latest News & Updates" },
-    { id: "highlights", label: "LPU Online Admission Highlights 2026" },
-    { id: "courses-fees", label: "LPU Online Courses and Fees 2026" },
-    { id: "popular-programmes", label: "LPU Online Popular Programmes" },
-    { id: "eligibility-criteria", label: "LPU Online Eligibility & Selection Criteria 2026" },
-    { id: "admission-process", label: "LPU Online Admission Process 2026" },
-    { id: "rankings", label: "LPU Online Rankings & Accreditations" },
-    { id: "examination-pattern", label: "LPU Online Examination Pattern" },
-    { id: "placements", label: "LPU Online Placements" },
-    { id: "campus", label: "LPU Online Campus" },
-    { id: "sample-degree", label: "LPU Online Sample Degree" },
-    { id: "reviews-section", label: "LPU Online Student Reviews & FAQs" },
-    { id: "compare-colleges", label: "Compare Colleges" },
-    { id: "blogs", label: "Blogs" },
-    { id: "related-colleges", label: "Related Colleges" }
-  ];
+
+    return {
+      rating: ratingValue ? `${ratingValue.toFixed(1)} / 5.0 Rating` : "",
+      count: reviews.length ? `${reviews.length} Verified Reviews` : "",
+      stats,
+    };
+  })();
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 160;
@@ -328,7 +222,7 @@ export const OverviewView = ({
     const onResize = () => {
       const v = getVisible();
       setBlogVisible(v);
-      setBlogIndex((i) => Math.min(i, Math.max(0, DEGREEFYD_LPU_API.blogs.posts.length - v)));
+      setBlogIndex((i) => Math.min(i, Math.max(0, (collegeData?.blogs || []).length - v)));
     };
     onResize();
     window.addEventListener("resize", onResize);
@@ -346,32 +240,31 @@ export const OverviewView = ({
   };
   const handleCounselingSubmit = (e) => {
     e.preventDefault();
-    const errors = {};
-    if (!counselingForm.phone || !/^\d{10}$/.test(counselingForm.phone.replace(/\D/g, ""))) {
-      errors.phone = "Enter a valid 10-digit phone number";
-    }
-    if (!counselingForm.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(counselingForm.email)) {
-      errors.email = "Enter a valid email address";
-    }
-    setFormErrors(errors);
-    if (Object.keys(errors).length === 0) {
-      setFormSubmitted(true);
-    }
+    setFormSubmitted(true);
   };
+  const handleOverviewApply = () => {
+    setCounselPanelOpen(false);
+    onOpenApply?.();
+  };
+  const collegeOverviewHref = `/universities/${collegeData?.slug || ""}`;
   return <div className="space-y-0">
       {
     /* Breadcrumb Bar */
   }
       <div className="bg-[#f0f3ff] border-b border-[#e7eeff]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
-          <nav className="flex items-center text-xs text-[#43474d] space-x-2 font-medium">
-            <span className="hover:text-[#115eaf] cursor-pointer">Home</span>
-            <ChevronRight className="w-3.5 h-3.5 text-[#74777e]" />
-            <span className="hover:text-[#115eaf] cursor-pointer">Colleges</span>
-            <ChevronRight className="w-3.5 h-3.5 text-[#74777e]" />
-            <span className="hover:text-[#115eaf] cursor-pointer">Lovely Professional University Online</span>
-            <ChevronRight className="w-3.5 h-3.5 text-[#74777e]" />
-            <span className="text-[#000f22] font-bold">Overview</span>
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 overflow-x-auto whitespace-nowrap text-xs text-[#43474d] font-medium">
+            <Link to="/" className="shrink-0 hover:text-[#115eaf] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf]">Home</Link>
+            <ChevronRight aria-hidden="true" className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
+            <Link to="/universities" className="shrink-0 hover:text-[#115eaf] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf]">Colleges</Link>
+            <ChevronRight aria-hidden="true" className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
+            <Link to={collegeOverviewHref} className="shrink-0 hover:text-[#115eaf] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf]">
+              {collegeData?.title}
+            </Link>
+            <ChevronRight aria-hidden="true" className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
+            <Link to={collegeOverviewHref} aria-current="page" className="shrink-0 font-bold text-[#000f22] hover:text-[#115eaf] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf]">
+              {collegeData?.shortTitle || "Overview"}
+            </Link>
           </nav>
         </div>
       </div>
@@ -387,8 +280,8 @@ export const OverviewView = ({
   }
           <div className="flex flex-row items-start gap-3 sm:gap-5">
             <img
-    src={DEGREEFYD_LPU_API.hero.logoImage}
-    alt="LPU Logo"
+    src={collegeData?.hero?.logoImage}
+    alt={`${collegeData?.shortName || collegeData?.title || "College"} Logo`}
     className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-2xl bg-white border border-[#e7eeff] p-1.5 shadow-sm shrink-0"
     onError={(e) => {
       e.target.style.display = "none";
@@ -396,13 +289,13 @@ export const OverviewView = ({
   />
             <div className="min-w-0">
               <h1 className="section-title text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight font-sans text-[#000f22]">
-                {DEGREEFYD_LPU_API.title}
+                {collegeData?.title}
               </h1>
               <div className="flex flex-wrap items-center gap-2 mt-3">
-                <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">#31 NIRF Rank</span>
-                <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">NAAC A++</span>
-                <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">UGC-DEB</span>
-                <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">AICTE</span>
+                {collegeData?.nirfRanking && <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">#{collegeData.nirfRanking} NIRF Rank</span>}
+                {collegeData?.naac && <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">{collegeData.naac}</span>}
+                {collegeData?.approvals?.filter(a => /UGC/i.test(a)).slice(0, 1).map(a => <span key={a} className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">{a}</span>)}
+                {collegeData?.approvals?.filter(a => /AICTE/i.test(a)).slice(0, 1).map(a => <span key={a} className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">{a}</span>)}
               </div>
             </div>
           </div>
@@ -414,18 +307,31 @@ export const OverviewView = ({
             <div className="order-2 lg:order-none lg:col-span-7 space-y-3">
               <p className="section-description text-xs sm:text-sm text-[#43474d] font-normal flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
-                {DEGREEFYD_LPU_API.location} · Private · Est. {DEGREEFYD_LPU_API.established} ·{" "}
+                {collegeData?.location} · {collegeData?.collegeType || "University"} · Est. {collegeData?.established} ·{" "}
                 <span className="inline-flex items-center gap-0.5 font-bold text-[#B45309]">
                   <Star className="w-3 h-3 fill-[#D97706] text-[#D97706]" />
-                  {DEGREEFYD_LPU_API.rating}
+                  {collegeData?.rating}
                 </span>
               </p>
-              <p className="text-sm text-[#2d3137] leading-relaxed font-normal">
-                {DEGREEFYD_LPU_API.hero.description}
-              </p>
-              <p className="text-sm text-[#2d3137] leading-relaxed font-normal">
-                {DEGREEFYD_LPU_API.hero.heroSub}
-              </p>
+              <ReadMoreText fullText
+                text={collegeData?.hero?.description}
+                lines={4}
+                className="text-sm text-[#2d3137] leading-relaxed font-normal"
+              />
+              {collegeData?.hero?.heroSub &&
+                ![collegeData?.title, collegeData?.shortName]
+                  .filter(Boolean)
+                  .some(
+                    (name) =>
+                      name.trim().toLowerCase() ===
+                      collegeData.hero.heroSub.trim().toLowerCase()
+                  ) && (
+                  <ReadMoreText fullText
+                    text={collegeData.hero.heroSub}
+                    lines={3}
+                    className="text-sm text-[#2d3137] leading-relaxed font-normal"
+                  />
+                )}
             </div>
 
             {
@@ -434,8 +340,8 @@ export const OverviewView = ({
             <div className="order-1 lg:order-none lg:col-span-5 lg:mr-[50px]">
               <div className="rounded-2xl overflow-hidden border border-[#e7eeff] shadow-xs bg-[#f9f9ff]">
                 <img
-    src={DEGREEFYD_LPU_API.hero.backgroundImage}
-    alt="Lovely Professional University Campus"
+    src={collegeData?.hero?.backgroundImage}
+    alt={collegeData?.hero?.backgroundImage ? `${collegeData?.title} Campus` : `${collegeData?.title} Campus`}
     className="w-full h-48 sm:h-60 lg:h-64 object-cover"
     loading="lazy"
   />
@@ -448,19 +354,19 @@ export const OverviewView = ({
   }
           <div className="flex flex-wrap items-stretch gap-3 mt-5 lg:mr-[100px]">
             <div className="bg-[#f0f3ff] border border-[#e7eeff] px-4 py-2.5 rounded-xl text-center min-w-[110px]">
-              <span className="block text-sm font-bold text-[#000f22] font-sans">₹46K – ₹1.86L</span>
+              <span className="block text-sm font-bold text-[#000f22] font-sans">{collegeData?.feeRange || "—"}</span>
               <span className="text-[10px] text-[#74777e]">Fee Range</span>
             </div>
             <div className="bg-[#f0f3ff] border border-[#e7eeff] px-4 py-2.5 rounded-xl text-center min-w-[110px]">
-              <span className="block text-sm font-bold text-[#115eaf] font-sans">1 – 3 Years</span>
+              <span className="block text-sm font-bold text-[#115eaf] font-sans">{collegeData?.duration || "—"}</span>
               <span className="text-[10px] text-[#74777e]">Duration</span>
             </div>
             <div className="bg-[#f0f3ff] border border-[#e7eeff] px-4 py-2.5 rounded-xl text-center min-w-[110px]">
-              <span className="block text-sm font-bold text-[#000f22] font-sans">Online</span>
+              <span className="block text-sm font-bold text-[#000f22] font-sans">{collegeData?.collegeMode === "online" ? "Online" : collegeData?.collegeMode || "—"}</span>
               <span className="text-[10px] text-[#74777e]">Semester-based</span>
             </div>
             <div className="bg-[#f0f3ff] border border-[#e7eeff] px-4 py-2.5 rounded-xl text-center min-w-[110px]">
-              <span className="block text-sm font-bold text-[#B45309] font-sans">90%</span>
+              <span className="block text-sm font-bold text-[#B45309] font-sans">{collegeData?.placements?.stats?.placementRate || "—"}</span>
               <span className="text-[10px] text-[#74777e]">Placement Rate</span>
             </div>
             <div className="flex items-center gap-3 md:ml-auto">
@@ -472,7 +378,8 @@ export const OverviewView = ({
                 Brochure
               </button>
               <button
-    onClick={() => onOpenApply()}
+    type="button"
+    onClick={handleOverviewApply}
     className="px-6 py-2.5 rounded-xl bg-[#115eaf] text-white text-xs sm:text-sm font-bold shadow hover:bg-[#004689] active:scale-95 transition-all flex items-center justify-center gap-2"
   >
                 Apply Now
@@ -490,55 +397,61 @@ export const OverviewView = ({
   }
       <div className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3">
         <div className="section-container">
-            {
-    /* Table of Contents - Directly on the Page */
-  }
-            <TableOfContents
-    title="Table of contents"
-    items={TOC_ITEMS}
-    activeId={activeSection}
-    onItemClick={(id) => setActiveSection(id)}
-    defaultExpanded={false}
-    collapsedCount={7}
-  />
+            <CollegeTableOfContents
+              title="Table of contents"
+              items={TOC_ITEMS}
+              activeId={activeSection}
+              onItemClick={(id) => setActiveSection(id)}
+              defaultExpanded={false}
+              collapsedCount={7}
+            />
 
             {
     /* 1. Latest News and Updates */
   }
-            <section id="latest-news" className="page-section card bg-[#f0f3ff] rounded-2xl border border-[#d5e3ff] scroll-mt-[130px]">
+            {(collegeData?.latestNews) && (
+                <section id="latest-news" className="page-section card bg-[#f0f3ff] rounded-2xl border border-[#d5e3ff] scroll-mt-[130px]">
               <h2 className="section-title text-lg sm:text-xl font-bold text-[#000f22] font-sans">
-                {DEGREEFYD_LPU_API.latestNews.title}
+                {collegeData?.latestNews?.title}
               </h2>
-              <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
-                {DEGREEFYD_LPU_API.latestNews.description}
-              </p>
+              <ReadMoreText fullText
+                text={collegeData?.latestNews?.description}
+                lines={3}
+                wrapperClassName="mt-1"
+                className="text-sm text-[#2d3137] leading-relaxed font-normal"
+              />
               <p className="text-[11px] text-[#74777e] font-normal">
-                {DEGREEFYD_LPU_API.latestNews.date} · {DEGREEFYD_LPU_API.latestNews.author}
+                {collegeData?.latestNews?.date} · {collegeData?.latestNews?.author}
               </p>
             </section>
+              )}
 
             {
     /* 2. Highlights Table 2026 */
   }
-            <section id="highlights" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+            {(collegeData?.highlights) && (
+                <section id="highlights" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div className="flex items-center justify-between flex-wrap gap-3">
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
-                    LPU Online Highlights 2026
+                    {collegeData?.highlights?.title || `${collegeData?.shortName || collegeData?.title} Highlights`}
                   </h2>
                 </div>
                 <button
     onClick={() => onOpenBrochure()}
-    className="px-4 py-2 min-h-[44px] bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all flex items-center gap-1.5 shadow-xs"
+    className="px-4 py-2 bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all flex items-center gap-1.5 shadow-xs"
   >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download Factsheet</span>
                 </button>
               </div>
 
-              <p className="section-description mt-[18px] text-sm font-normal text-[#2d3137] leading-relaxed">
-                {DEGREEFYD_LPU_API.highlightsIntro}
-              </p>
+              <ReadMoreText fullText
+                text={collegeData?.highlights?.intro}
+                lines={3}
+                wrapperClassName="mt-[18px]"
+                className="text-sm font-normal text-[#2d3137] leading-relaxed"
+              />
 
               {
     /* Category Filter */
@@ -547,7 +460,7 @@ export const OverviewView = ({
                 {HIGHLIGHT_CATEGORIES.map((cat) => <button
     key={cat}
     onClick={() => setSelectedHighlightCategory(cat)}
-    className={`tap-chip min-h-[44px] px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${selectedHighlightCategory === cat ? "bg-[#115eaf] text-white border-[#115eaf]" : "bg-[#f0f3ff] text-[#43474d] border-[#e7eeff] hover:border-[#115eaf]"}`}
+    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${selectedHighlightCategory === cat ? "bg-[#115eaf] text-white border-[#115eaf]" : "bg-[#f0f3ff] text-[#43474d] border-[#e7eeff] hover:border-[#115eaf]"}`}
   >
                     {cat}
                   </button>)}
@@ -566,7 +479,7 @@ export const OverviewView = ({
                   </thead>
                   <tbody className="divide-y divide-[#e7eeff]">
                     {(() => {
-    const filtered = DEGREEFYD_LPU_API.highlightsTable.filter(
+    const filtered = collegeData?.highlights?.items.filter(
       (row) => selectedHighlightCategory === "All" || row.category === selectedHighlightCategory
     );
     const visible = highlightsExpanded ? filtered : filtered.slice(0, 8);
@@ -582,12 +495,12 @@ export const OverviewView = ({
               </div>
 
               {(() => {
-    const filtered = DEGREEFYD_LPU_API.highlightsTable.filter(
+    const filtered = collegeData?.highlights?.items.filter(
       (row) => selectedHighlightCategory === "All" || row.category === selectedHighlightCategory
     );
     return filtered.length > 8 && <button
       onClick={() => setHighlightsExpanded(!highlightsExpanded)}
-      className="w-full min-h-[44px] py-2 bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] rounded-xl text-xs font-bold hover:bg-[#e7eeff] transition-all mt-[18px]"
+      className="w-full py-2 bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] rounded-xl text-xs font-bold hover:bg-[#e7eeff] transition-all mt-[18px]"
     >
                   {highlightsExpanded ? "Show Less" : "Show More Highlights"}
                 </button>;
@@ -597,7 +510,7 @@ export const OverviewView = ({
     /* CTA */
   }
               <div className="p-5 rounded-2xl bg-[#f0f3ff] border border-[#d5e3ff] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-[18px]">
-                <p className="text-sm font-semibold text-[#2d3137] leading-relaxed">
+                <p className="text-sm font-normal text-[#2d3137] leading-relaxed">
                   Unlock Full College Insights to Choose the Right Program for Your Future
                 </p>
                 <div className="flex flex-wrap gap-2.5">
@@ -609,7 +522,8 @@ export const OverviewView = ({
                     Download Brochure
                   </button>
                   <button
-    onClick={() => onOpenApply()}
+    type="button"
+    onClick={handleOverviewApply}
     className="px-5 py-2.5 bg-[#115eaf] text-white rounded-xl text-xs font-bold hover:bg-[#004689] transition-all flex items-center gap-1.5 shadow-sm"
   >
                     <CheckCircle className="w-3.5 h-3.5" />
@@ -618,18 +532,23 @@ export const OverviewView = ({
                 </div>
               </div>
             </section>
+              )}
 
             {
     /* 3. Courses & Fees 2026 */
   }
-            <section id="courses-fees" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+            {(collegeData?.coursesFees) && (
+                <section id="courses-fees" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-2xl font-bold text-[#000f22] font-sans">
-                  LPU Online Courses and Fees 2026
+                  {collegeData?.coursesFees?.title || `${collegeData?.title} Courses and Fees`}
                 </h2>
-                <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal">
-                  {DEGREEFYD_LPU_API.coursesFees.intro}
-                </p>
+                <ReadMoreText fullText
+                  text={collegeData?.coursesFees?.intro}
+                  lines={3}
+                  wrapperClassName="mt-1"
+                  className="text-sm text-[#43474d] leading-relaxed font-normal"
+                />
               </div>
 
               {
@@ -640,7 +559,7 @@ export const OverviewView = ({
     type="text"
     value={courseFeeSearch}
     onChange={(e) => setCourseFeeSearch(e.target.value)}
-    placeholder={DEGREEFYD_LPU_API.coursesFees.searchPlaceholder}
+    placeholder={collegeData?.coursesFees?.searchPlaceholder}
     className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] text-sm text-[#000f22] font-normal placeholder:text-[#74777e] focus:outline-none focus:border-[#115eaf] focus:bg-white transition-all"
   />
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#74777e]" />
@@ -655,18 +574,17 @@ export const OverviewView = ({
                     <tr className="bg-[#0b2540] text-white">
                       <th className="py-2 px-3 font-bold">Degree</th>
                       <th className="py-2 px-3 font-bold">Duration</th>
-                      <th className="py-2 px-3 font-bold">Avg. Fees</th>
+                      <th className="py-2 px-3 font-bold">Sem Fees</th>
+                      <th className="py-2 px-3 font-bold">Total Fees</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#e7eeff]">
-                    {DEGREEFYD_LPU_API.coursesFees.table.filter(
-    (c) => c.degree.toLowerCase().includes(courseFeeSearch.toLowerCase())
-  ).map((c) => <tr key={c.degree} className="bg-white hover:bg-[#f9f9ff] transition-colors">
+                    {visibleFeeRows.map((c) => <tr key={c.degree} className="bg-white hover:bg-[#f9f9ff] transition-colors">
                           <td className="py-2 px-3 align-top">
                             <button
     onClick={() => {
       const course = COURSES_DATA.find((x) => x.id === c.courseId);
-      if (course) onSelectCourse(course);
+      if (course) onSelectCourseHandler(course);
     }}
     className="block text-left text-xs sm:text-[13px] font-normal text-[#115eaf] hover:text-[#004689] hover:underline transition-colors"
   >
@@ -675,430 +593,469 @@ export const OverviewView = ({
                             <span className="block text-[10px] text-[#74777e] font-normal leading-tight">{c.specializations}</span>
                           </td>
                           <td className="py-2 px-3 text-[#43474d] font-normal align-top whitespace-nowrap">{c.duration}</td>
-                          <td className="py-2 px-3 text-[#115eaf] font-normal align-top whitespace-nowrap">{c.avgFees}</td>
+                          <td className="py-2 px-3 text-[#115eaf] font-normal align-top whitespace-nowrap">{c.perSemFee || "—"}</td>
+                          <td className="py-2 px-3 text-[#115eaf] font-normal align-top whitespace-nowrap">{c.avgFees || "—"}</td>
                         </tr>)}
-                    {DEGREEFYD_LPU_API.coursesFees.table.filter(
-    (c) => c.degree.toLowerCase().includes(courseFeeSearch.toLowerCase())
-  ).length === 0 && <tr className="bg-white">
-                        <td colSpan={3} className="py-6 text-center text-xs text-[#74777e] font-normal">No programmes match your search.</td>
+                    {filteredFeeRows.length === 0 && <tr className="bg-white">
+                        <td colSpan={4} className="py-6 text-center text-xs text-[#74777e] font-normal">No programmes match your search.</td>
                       </tr>}
                   </tbody>
                 </table>
               </div>
 
               <p className="text-xs text-[#74777e] font-normal mt-[18px]">
-                {courseFeeSearch ? `Showing ${DEGREEFYD_LPU_API.coursesFees.table.filter((c) => c.degree.toLowerCase().includes(courseFeeSearch.toLowerCase())).length} out of ${DEGREEFYD_LPU_API.coursesFees.table.length} Degrees` : DEGREEFYD_LPU_API.coursesFees.showing}
+                {courseFeeSearch
+                  ? `Showing ${filteredFeeRows.length} out of ${filteredFeeRows.length} degrees`
+                  : `Showing ${visibleFeeRows.length} out of ${filteredFeeRows.length} degrees`}
               </p>
+
+              {
+    /* Read more — the remaining degrees stay collapsed until asked for */
+  }
+              {filteredFeeRows.length > FEE_ROWS_PREVIEW && !courseFeeSearch ? (
+                <button
+                  type="button"
+                  onClick={() => setShowAllFeeRows((value) => !value)}
+                  aria-expanded={showAllFeeRows}
+                  className="mt-3 px-4 py-2 rounded-lg bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-xs font-semibold hover:bg-[#e0ecff] transition-colors flex items-center gap-1.5 min-h-[44px]"
+                >
+                  <span>
+                    {showAllFeeRows
+                      ? "Show less"
+                      : `Read more (${filteredFeeRows.length - FEE_ROWS_PREVIEW} more degrees)`}
+                  </span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 transition-transform ${showAllFeeRows ? "rotate-180" : ""}`}
+                  />
+                </button>
+              ) : null}
 
               {
     /* Actions */
   }
               <div className="flex flex-wrap gap-3 mt-[18px]">
                 <button className="px-5 py-2.5 bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all">
-                  {DEGREEFYD_LPU_API.coursesFees.roiCalculator}
+                  {collegeData?.coursesFees?.roiCalculator}
                 </button>
                 <button
     onClick={() => onOpenBrochure()}
     className="px-5 py-2.5 bg-[#115eaf] text-white rounded-xl text-xs font-bold hover:bg-[#004689] transition-all flex items-center gap-1.5 shadow-sm"
   >
                   <Download className="w-3.5 h-3.5" />
-                  {DEGREEFYD_LPU_API.coursesFees.viewFeeStructure}
+                  {collegeData?.coursesFees?.viewFeeStructure}
                 </button>
               </div>
             </section>
+              )}
 
             {
-    /* 3b. Popular Programmes (Programme Cards) */
+    /* 2b. Popular Programmes (Programme Cards) */
   }
-            <ProgrammeCardsSection
-    sectionId="popular-programmes"
-    title="LPU Online Popular Programmes"
-    description="Explore LPU Online’s most popular UG and PG programmes across Management, Computer Applications, Commerce, and Arts — built for working professionals."
-    programmes={LPU_POPULAR_PROGRAMMES}
-    onOpenBrochure={() => onOpenBrochure()}
-    onOpenApply={() => onOpenApply()}
-  />
+            {(collegeData?.popularProgrammes?.length) && (
+              <ProgrammeCardsSection
+                sectionId="popular-programmes"
+                title={`${collegeData?.shortName || collegeData?.title} Popular Programmes`}
+                description={`Explore ${collegeData?.shortName || collegeData?.title}'s most popular UG and PG programmes, with duration, fees and specialisations for each.`}
+                programmes={(collegeData?.popularProgrammes || []).map((programme) => ({
+                  id: programme.courseId || programme.degree,
+                  title: programme.degree,
+                  subtitle: programme.specializations || programme.category || "",
+                  duration: programme.duration || "",
+                  fee: programme.avgFees || "",
+                  semesterFee: programme.perSemFee || "",
+                  description: programme.description || programme.shortDescription || "",
+                  mode: programme.mode || "",
+                  specialisations: programme.specialisations?.length
+                    ? programme.specialisations
+                    : programme.specializations
+                      ? [programme.specializations]
+                      : [],
+                }))}
+                onOpenBrochure={onOpenBrochure}
+                onOpenApply={onOpenApply}
+              />
+              )}
 
             {
-    /* 4. Eligibility and Selection Criteria (From API) */
+    /* 3. Eligibility and Selection Criteria (From API) */
   }
-            <section id="eligibility-criteria" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+            {(collegeData?.eligibility) && (
+                <section id="eligibility-criteria" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
-                  LPU Online Eligibility and Selection Criteria
+                  {collegeData?.eligibility?.title || `${collegeData?.shortName || collegeData?.title} Eligibility and Selection Criteria`}
                 </h2>
                 <span className="block w-16 h-[5px] rounded-[5px] bg-[#115eaf] mt-1" />
-                <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal">
-                  Lovely Professional University provides a range of online undergraduate and postgraduate programs. The
-                  eligibility criteria depend on the course level, and admission is generally based on academic
-                  qualifications and document verification. To be eligible for admission, candidates are required to fill
-                  out the online application form, upload the required documents, and pay the program fee. Check the below
-                  criteria for LPU online eligibility and selection:
-                </p>
+                <ReadMoreText fullText
+                  text={
+                    collegeData?.eligibility?.intro ||
+                    `${collegeData?.title} provides a range of online undergraduate and postgraduate programs. The eligibility criteria depend on the course level, and admission is generally based on academic qualifications and document verification. To be eligible for admission, candidates are required to fill out the online application form, upload the required documents, and pay the program fee. Check the below criteria for online eligibility and selection:`
+                  }
+                  lines={3}
+                  wrapperClassName="mt-1"
+                  className="text-sm text-[#43474d] leading-relaxed font-normal"
+                />
               </div>
+
+              {!hasPerCourseSelection && collegeData?.eligibility?.selectionProcess && (
+                <div className="mt-4 rounded-xl border border-[#d5e3ff] bg-[#f0f3ff] px-4 py-3">
+                  <h3 className="text-xs font-bold text-[#115eaf] mb-1">Selection Process</h3>
+                  <p className="m-0 text-sm text-[#43474d] leading-relaxed">
+                    {collegeData.eligibility.selectionProcess}
+                  </p>
+                </div>
+              )}
 
               {
     /* Column Header (desktop only) */
   }
               <div
     aria-hidden="true"
-    className="hidden md:grid grid-cols-[1.15fr_1.5fr_1fr] gap-x-8 px-3.5 py-2 border-b-2 border-[#000f22] text-xs font-bold text-[#43474d] mt-[18px]"
+    className={`hidden md:grid ${hasPerCourseSelection ? "grid-cols-[1.15fr_1.5fr_1fr]" : "grid-cols-[1fr_1.6fr]"} gap-x-8 px-3.5 py-2 border-b-2 border-[#000f22] text-xs font-bold text-[#43474d] mt-[18px]`}
   >
                 <span>Course</span>
                 <span>Eligibility</span>
-                <span>Selection Process</span>
+                {hasPerCourseSelection && <span>Selection Process</span>}
               </div>
 
               {
     /* Criteria List */
   }
               <ul className="list-none">
-                {DEGREEFYD_LPU_API.eligibilityMatrix.map((row, i) => <li
+                {collegeData?.eligibility?.items.map((row, i) => <li
     key={i}
-    className="grid grid-cols-1 md:grid-cols-[1.15fr_1.5fr_1fr] gap-x-8 gap-y-1 items-center px-3.5 py-[11px] border-b border-[#e7eeff] border-l-[3px] border-l-transparent hover:bg-[#f9f9ff] hover:border-l-[#115eaf] transition-colors"
+    className={`grid grid-cols-1 ${hasPerCourseSelection ? "md:grid-cols-[1.15fr_1.5fr_1fr]" : "md:grid-cols-[1fr_1.6fr]"} gap-x-8 gap-y-1 items-center px-3.5 py-[11px] border-b border-[#e7eeff] border-l-[3px] border-l-transparent hover:bg-[#f9f9ff] hover:border-l-[#115eaf] transition-colors`}
   >
                     <div className="text-[14.5px] font-medium leading-[1.35] text-[#000f22]">{row.course}</div>
 
                     <div className="text-[13.5px] leading-[1.45] text-[#43474d]">
                       <span className="md:hidden block text-xs font-semibold text-[#74777e] mb-0.5">Eligibility</span>
-                      {row.eligibility}
+                      <ReadMoreText fullText
+                        text={row.eligibility}
+                        lines={3}
+                        className="text-[13.5px] leading-[1.45] text-[#43474d]"
+                      />
                     </div>
 
-                    <div className="md:justify-self-start text-xs font-normal leading-[1.35] text-[#115eaf] bg-[#f0f3ff] border border-[#d5e3ff] px-2.5 py-[3px] rounded-[6px]">
+                    {hasPerCourseSelection && <div className="md:justify-self-start text-xs font-normal leading-[1.35] text-[#115eaf] bg-[#f0f3ff] border border-[#d5e3ff] px-2.5 py-[3px] rounded-[6px]">
                       <span className="md:hidden block text-[10px] font-medium text-[#74777e] mb-0.5">Selection Process</span>
                       {row.selection}
-                    </div>
+                    </div>}
                   </li>)}
               </ul>
             </section>
+              )}
 
             {
-    /* 5. Admission Process 2026 */
+    /* 5. Admission Process 2026 (Accordion) */
   }
-            <section id="admission-process" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+                        {ADMISSION_FLOW_STEPS.length > 0 && (
+                <section id="admission-process" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
-                  LPU Online Admission Process 2026
+                  {collegeData?.admission?.title || collegeSectionTitle(collegeData?.shortName || collegeData?.title, `Admission Process ${CURRENT_YEAR}`)}
                 </h2>
                 <span className="block w-16 h-[5px] rounded-[5px] bg-[#115eaf] mt-1" />
-                <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal">
-                  Lovely Professional University Online follows a simple and transparent online university admission
-                  process. Admission to online degree courses is based on academic eligibility criteria specified for each
-                  programme. Candidates can apply for LPU online admission 2026 without visiting the campus. Check the
-                  below step-by-step Lovely Professional University Online admission process 2026:
-                </p>
+                <ReadMoreText fullText
+                  text={
+                    collegeData?.admission?.intro ||
+                    `${collegeData?.title} follows a simple and transparent online university admission process. Admission to online degree courses is based on academic eligibility criteria specified for each programme. Candidates can apply without visiting the campus. Check the below step-by-step admission process:`
+                  }
+                  lines={3}
+                  wrapperClassName="mt-1"
+                  className="text-sm text-[#43474d] leading-relaxed font-normal"
+                />
               </div>
 
               <style>{`
-                .admission-flow-step {
-                  --admission-badge-w: 78px;
-                  display: grid;
-                  grid-template-columns: calc(var(--admission-badge-w) + 18px) minmax(0, 1fr);
-                  gap: 0.625rem;
-                }
-                .admission-flow-left {
-                  display: flex;
-                  flex-direction: column;
-                }
-                .admission-flow-badge {
-                  position: relative;
-                  width: var(--admission-badge-w);
-                  height: 34px;
-                  display: grid;
-                  place-items: center;
-                  background: #0b2540;
-                  color: #fff;
-                  font-size: 13px;
-                  font-weight: 600;
-                  clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
-                  letter-spacing: 0.02em;
-                }
-                .admission-flow-badge span {
-                  padding-right: 6px;
-                }
-                .admission-flow-conn {
-                  flex: 1;
-                  min-height: 42px;
-                  padding-right: 8px;
-                  margin-bottom: 4px;
-                  width: var(--admission-badge-w);
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  justify-content: space-evenly;
-                  opacity: 0;
-                }
-                .admission-flow-conn i {
-                  display: block;
-                  width: 9px;
-                  height: 9px;
-                  border-right: 2.5px solid #115eaf;
-                  border-bottom: 2.5px solid #115eaf;
-                  transform: rotate(45deg);
-                  opacity: 0.22;
-                }
-                .admission-flow-step:last-child .admission-flow-conn {
-                  display: none;
-                }
-                .admission-flow-body {
-                  padding: 2px 0 26px;
-                  opacity: 0;
-                  transform: translateY(14px);
-                }
-                .admission-flow-step.is-visible .admission-flow-badge {
-                  clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
-                  transition: clip-path 0.3s cubic-bezier(0.2, 0.9, 0.25, 1);
-                }
-                .admission-flow-step.is-visible .admission-flow-body {
-                  opacity: 1;
-                  transform: none;
-                  transition: opacity 0.3s ease 0.1s, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s;
-                }
-                .admission-flow-step.is-visible .admission-flow-conn {
-                  opacity: 1;
-                  transition: opacity 0.3s ease 0.35s;
-                }
-                .admission-flow-step.is-visible .admission-flow-conn i {
-                  animation: admission-wave 0.9s ease-in-out infinite;
-                }
-                .admission-flow-step.is-visible .admission-flow-conn i:nth-child(2) {
-                  animation-delay: 0.15s;
-                }
-                .admission-flow-step.is-visible .admission-flow-conn i:nth-child(3) {
-                  animation-delay: 0.3s;
-                }
-                @keyframes admission-wave {
-                  0%, 100% {
-                    opacity: 0.2;
-                    transform: rotate(45deg) translate(0, 0);
-                  }
-                  45% {
-                    opacity: 1;
-                    transform: rotate(45deg) translate(2px, 2px);
-                  }
-                }
-                @media (max-width: 640px) {
-                  .admission-flow-step {
-                    --admission-badge-w: 66px;
-                    gap: 0.5rem;
-                  }
-                  .admission-flow-badge {
-                    height: 30px;
-                    font-size: 12px;
-                  }
-                  .admission-flow-body h3 {
-                    font-size: 16px;
-                  }
-                  .admission-flow-body p {
-                    font-size: 14px;
-                  }
-                }
-                @media (prefers-reduced-motion: reduce) {
-                  .admission-flow-body,
-                  .admission-flow-conn,
-                  .admission-flow-badge {
-                    opacity: 1 !important;
-                    transform: none !important;
-                    transition: none !important;
-                  }
-                  .admission-flow-step.is-visible .admission-flow-conn i {
-                    animation: none !important;
-                  }
-                }
-              `}</style>
+    .admission-flow-step {
+      --admission-badge-w: 78px;
+      display: grid;
+      grid-template-columns: calc(var(--admission-badge-w) + 18px) minmax(0, 1fr);
+      gap: 0.625rem;
+    }
+    .admission-flow-left {
+      display: flex;
+      flex-direction: column;
+    }
+    .admission-flow-badge {
+      position: relative;
+      width: var(--admission-badge-w);
+      height: 34px;
+      display: grid;
+      place-items: center;
+      background: #0b2540;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
+      letter-spacing: 0.02em;
+    }
+    .admission-flow-badge span {
+      padding-right: 6px;
+    }
+    .admission-flow-conn {
+      flex: 1;
+      min-height: 42px;
+      padding-right: 8px;
+      margin-bottom: 4px;
+      width: var(--admission-badge-w);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      opacity: 0;
+    }
+    .admission-flow-conn i {
+      display: block;
+      width: 9px;
+      height: 9px;
+      border-right: 2.5px solid #115eaf;
+      border-bottom: 2.5px solid #115eaf;
+      transform: rotate(45deg);
+      opacity: 0.22;
+    }
+    .admission-flow-step:last-child .admission-flow-conn {
+      display: none;
+    }
+    .admission-flow-body {
+      padding: 2px 0 26px;
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    .admission-flow-step.is-visible .admission-flow-badge {
+      clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
+      transition: clip-path 0.3s cubic-bezier(0.2, 0.9, 0.25, 1);
+    }
+    .admission-flow-step.is-visible .admission-flow-body {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.3s ease 0.1s, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s;
+    }
+    .admission-flow-step.is-visible .admission-flow-conn {
+      opacity: 1;
+      transition: opacity 0.3s ease 0.35s;
+    }
+    .admission-flow-step.is-visible .admission-flow-conn i {
+      animation: admission-wave 0.9s ease-in-out infinite;
+    }
+    .admission-flow-step.is-visible .admission-flow-conn i:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+    .admission-flow-step.is-visible .admission-flow-conn i:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    @keyframes admission-wave {
+      0%, 100% {
+        opacity: 0.2;
+        transform: rotate(45deg) translate(0, 0);
+      }
+      45% {
+        opacity: 1;
+        transform: rotate(45deg) translate(2px, 2px);
+      }
+    }
+    @media (max-width: 640px) {
+      .admission-flow-step {
+        --admission-badge-w: 66px;
+        gap: 0.5rem;
+      }
+      .admission-flow-badge {
+        height: 30px;
+        font-size: 12px;
+      }
+      .admission-flow-body h3 {
+        font-size: 16px;
+      }
+      .admission-flow-body p {
+        font-size: 14px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .admission-flow-body,
+      .admission-flow-conn,
+      .admission-flow-badge {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .admission-flow-step.is-visible .admission-flow-conn i {
+        animation: none !important;
+      }
+    }
+  `}</style>
 
-              <div className="mt-[18px] flex flex-col gap-3">
-                {ADMISSION_FLOW_STEPS.map((step, i) => {
-    const stepNo = String(i + 1).padStart(2, "0");
-    const isVisible = visibleAdmissionSteps.includes(i);
-    return <div
-      key={i}
-      data-step-index={i}
-      className={`admission-flow-step ${isVisible ? "is-visible" : ""}`}
-    >
-                      <div className="admission-flow-left">
-                        <div className="admission-flow-badge">
-                          <span>Step {stepNo}</span>
-                        </div>
-                        <div className="admission-flow-conn" aria-hidden="true">
-                          <i />
-                          <i />
-                          <i />
-                        </div>
-                      </div>
-
-                      <div className="admission-flow-body">
-                        <h3 className="mb-1 text-[18px] font-semibold leading-[1.35] text-[#000f22] font-sans">
-                          {step.title}
-                        </h3>
-                        <p className="m-0 text-[15px] leading-[1.55] text-[#43474d] font-normal">
-                          {step.description}
-                        </p>
-                      </div>
-                    </div>;
-  })}
-              </div>
+              <AdmissionFlowSteps steps={ADMISSION_FLOW_STEPS} />
             </section>
+          )}
 
             {
     /* 6. Rankings & Accreditations (From API) */
   }
-            <section id="rankings" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+            {(collegeData?.rankings) && (
+                <section id="rankings" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
-                <h2 className="section-title text-2xl font-extrabold text-[#000f22] font-sans">
-                  LPU Online Rankings and Accreditations
+                <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
+                  {collegeData?.rankings?.title || `${collegeData?.shortName || collegeData?.title} Rankings and Accreditations`}
                 </h2>
-                <p className="section-description text-xs text-[#43474d] leading-relaxed font-normal">
-                  {DEGREEFYD_LPU_API.rankingsAndAccreditations.intro}
-                </p>
+                <span className="block w-16 h-[5px] rounded-[5px] bg-[#115eaf] mt-1" />
+                <ReadMoreText fullText
+                  text={collegeData?.rankings?.intro}
+                  lines={3}
+                  wrapperClassName="mt-1"
+                  className="text-xs text-[#43474d] leading-relaxed font-normal"
+                />
               </div>
 
-              <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
+              {collegeData?.rankings?.table?.length > 0 && <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
                 <table className="w-full text-left border-collapse text-xs sm:text-sm">
                   <thead>
                     <tr className="bg-[#0b2540] text-white">
-                      <th className="py-3 px-5 font-bold">Authority / Body</th>
-                      <th className="py-3 px-5 font-bold">Recognition / Status</th>
+                      {(collegeData?.rankings?.columns?.length ? collegeData.rankings.columns : ["Authority / Body", "Recognition / Status"]).map((column, columnIndex) => (
+                        <th key={`${column}-${columnIndex}`} className="py-3 px-5 font-bold">{column}</th>
+                      ))}
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#e7eeff]">
-                    {DEGREEFYD_LPU_API.rankingsAndAccreditations.table.map((r, idx) => <tr key={idx} className={idx % 2 === 0 ? "bg-[#f0f3ff]" : ""}>
-                        <td className="py-3 px-5 font-normal text-[#000f22]">{r.authority}</td>
-                        <td className="py-3 px-5 text-[#43474d] font-normal">{r.status}</td>
+                    {collegeData?.rankings?.table.map((r, idx) => <tr key={idx} className={idx % 2 === 0 ? "bg-[#f0f3ff]" : ""}>
+                        {(collegeData?.rankings?.columns?.length ? r.values : [r.authority, r.status]).map((value, columnIndex) => (
+                          <td key={columnIndex} className={`py-3 px-5 font-normal ${columnIndex === 0 ? "text-[#000f22]" : "text-[#43474d]"}`}>{value}</td>
+                        ))}
                       </tr>)}
                   </tbody>
                 </table>
-              </div>
+              </div>}
             </section>
+              )}
 
             {
     /* 7. Examination Pattern (Interactive Module) */
   }
-            <section id="examination-pattern" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+            {EXAM_STEPS.length > 0 && (
+                <section id="examination-pattern" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
-                  LPU Online Examination Pattern
+                  {collegeData?.examinationPattern?.title || collegeSectionTitle(collegeData?.shortName || collegeData?.title, "Examination Pattern")}
                 </h2>
-                <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal">
-                  Lovely Professional University conducts examinations for its online courses through its digital learning
-                  platform. The evaluation system usually includes assignments, internal assessments, and end-term
-                  examinations to evaluate students' performance during the course. Check below the Lovely Professional
-                  University examination process:
-                </p>
+                <ReadMoreText fullText
+                  text={
+                    collegeData?.examinationPattern?.intro ||
+                    `${collegeData?.title} conducts examinations for its online courses through its digital learning platform. The evaluation system usually includes assignments, internal assessments, and end-term examinations to evaluate students' performance during the course. Check below the examination process:`
+                  }
+                  lines={3}
+                  wrapperClassName="mt-1"
+                  className="text-sm text-[#43474d] leading-relaxed font-normal"
+                />
               </div>
 
               <style>{`
-                .exam-step {
-                  --exam-badge-w: 78px;
-                  position: relative;
-                  display: grid;
-                  grid-template-columns: calc(var(--exam-badge-w) + 18px) minmax(0, 1fr);
-                  padding-bottom: 30px;
-                }
-                .exam-step:last-child {
-                  padding-bottom: 0;
-                }
-                .exam-step:not(:last-child)::before {
-                  content: "";
-                  position: absolute;
-                  left: calc(var(--exam-badge-w) / 2 - 5px);
-                  top: 40px;
-                  bottom: 6px;
-                  width: 3px;
-                  background: repeating-linear-gradient(180deg, #0b2540 0 4px, transparent 4px 9px);
-                  animation: exam-flow-down 0.9s linear infinite;
-                }
-                @keyframes exam-flow-down {
-                  from { background-position: 0 0; }
-                  to { background-position: 0 9px; }
-                }
-                .exam-badge {
-                  width: var(--exam-badge-w);
-                  height: 34px;
-                  display: grid;
-                  place-items: center;
-                  background: #0b2540;
-                  color: #fff;
-                  font-size: 13px;
-                  font-weight: 600;
-                  clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
-                }
-                .exam-badge span {
-                  padding-right: 6px;
-                }
-                .exam-body h3 {
-                  margin: 2px 0 3px;
-                  font-size: 18px;
-                  font-weight: 600;
-                  line-height: 1.35;
-                  color: #000f22;
-                }
-                .exam-body p {
-                  margin: 0;
-                  font-size: 15px;
-                  line-height: 1.55;
-                  color: #43474d;
-                }
-                .exam-step-reveal {
-                  opacity: 0;
-                  transform: translateY(20px);
-                  transition: opacity 0.6s ease, transform 0.6s ease;
-                }
-                .exam-step-reveal.show {
-                  opacity: 1;
-                  transform: none;
-                }
-                @media (max-width: 640px) {
-                  .exam-step {
-                    --exam-badge-w: 66px;
-                  }
-                  .exam-badge {
-                    font-size: 12px;
-                  }
-                  .exam-body h3 {
-                    font-size: 16px;
-                  }
-                  .exam-body p {
-                    font-size: 14px;
-                  }
-                }
-                @media (prefers-reduced-motion: reduce) {
-                  .exam-step::before,
-                  .exam-step-reveal {
-                    animation: none !important;
-                    transition: none !important;
-                    opacity: 1 !important;
-                    transform: none !important;
-                  }
-                }
-              `}</style>
+    .exam-step {
+      --exam-badge-w: 78px;
+      position: relative;
+      display: grid;
+      grid-template-columns: calc(var(--exam-badge-w) + 18px) minmax(0, 1fr);
+      padding-bottom: 30px;
+    }
+    .exam-step:last-child {
+      padding-bottom: 0;
+    }
+    .exam-step:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      left: calc(var(--exam-badge-w) / 2 - 5px);
+      top: 40px;
+      bottom: 6px;
+      width: 3px;
+      background: repeating-linear-gradient(180deg, #0b2540 0 4px, transparent 4px 9px);
+      animation: exam-flow-down 0.9s linear infinite;
+    }
+    @keyframes exam-flow-down {
+      from { background-position: 0 0; }
+      to { background-position: 0 9px; }
+    }
+    .exam-badge {
+      width: var(--exam-badge-w);
+      height: 34px;
+      display: grid;
+      place-items: center;
+      background: #0b2540;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      clip-path: polygon(0 0, 84% 0, 100% 50%, 84% 100%, 0 100%);
+    }
+    .exam-badge span {
+      padding-right: 6px;
+    }
+    .exam-body h3 {
+      margin: 2px 0 3px;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: #000f22;
+    }
+    .exam-body p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.55;
+      color: #43474d;
+    }
+    .exam-step-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .exam-step-reveal.show {
+      opacity: 1;
+      transform: none;
+    }
+    @media (max-width: 640px) {
+      .exam-step {
+        --exam-badge-w: 66px;
+      }
+      .exam-badge {
+        font-size: 12px;
+      }
+      .exam-body h3 {
+        font-size: 16px;
+      }
+      .exam-body p {
+        font-size: 14px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .exam-step::before,
+      .exam-step-reveal {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  `}</style>
 
-              <div className="mt-[18px]">
-                {EXAM_STEPS.map((step, index) => <div key={step.title} className="exam-step exam-step-reveal">
-                    <div>
-                      <div className="exam-badge">
-                        <span>Step {String(index + 1).padStart(2, "0")}</span>
-                      </div>
-                    </div>
-                    <div className="exam-body">
-                      <h3>{step.title}</h3>
-                      <p>{step.description}</p>
-                    </div>
-                  </div>)}
-              </div>
+              <ExaminationPatternSteps steps={EXAM_STEPS} />
             </section>
+          )}
 
             {
     /* 8. Placements & Salary Stats (From API) */
   }
-            <section id="placements" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+            {(collegeData?.placements) && (
+                <section id="placements" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-2xl font-extrabold text-[#000f22] font-sans">
-                  LPU Online Placements
+                  {collegeData?.placements?.title || `${collegeData?.shortName || collegeData?.title} Placements`}
                 </h2>
-                <p className="section-description text-xs text-[#43474d] leading-relaxed font-normal">
-                  {DEGREEFYD_LPU_API.placements.intro}
-                </p>
+                <ReadMoreText fullText
+                  text={
+                    collegeData?.placements?.intro ||
+                    `${collegeData?.title} offers placement assistance and career support services in online courses.`
+                  }
+                  lines={3}
+                  wrapperClassName="mt-1"
+                  className="text-xs text-[#43474d] leading-relaxed font-normal"
+                />
               </div>
 
               {
@@ -1106,39 +1063,44 @@ export const OverviewView = ({
   }
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-[18px]">
                 <div className="p-3.5 rounded-xl bg-[#f9f9ff] border border-[#e7eeff] text-center">
-                  <span className="block text-xl font-extrabold text-[#115eaf] font-sans leading-none">{DEGREEFYD_LPU_API.placements.stats.placementRate}</span>
+                  <span className="block text-xl font-extrabold text-[#115eaf] font-sans leading-none">{collegeData?.placements?.stats.placementRate}</span>
                   <span className="block text-[10px] font-normal text-[#43474d] uppercase tracking-wide mt-1.5">Placement Rate</span>
                 </div>
                 <div className="p-3.5 rounded-xl bg-[#f9f9ff] border border-[#e7eeff] text-center">
-                  <span className="block text-xl font-extrabold text-emerald-700 font-sans leading-none">{DEGREEFYD_LPU_API.placements.stats.highestPackage}</span>
+                  <span className="block text-xl font-extrabold text-emerald-700 font-sans leading-none">{collegeData?.placements?.stats.highestPackage}</span>
                   <span className="block text-[10px] font-normal text-[#43474d] uppercase tracking-wide mt-1.5">Highest Package</span>
                 </div>
                 <div className="p-3.5 rounded-xl bg-[#f9f9ff] border border-[#e7eeff] text-center">
-                  <span className="block text-xl font-extrabold text-[#000f22] font-sans leading-none">{DEGREEFYD_LPU_API.placements.stats.hiringPartners}</span>
+                  <span className="block text-xl font-extrabold text-[#000f22] font-sans leading-none">{collegeData?.placements?.stats.hiringPartners}</span>
                   <span className="block text-[10px] font-normal text-[#43474d] uppercase tracking-wide mt-1.5">Hiring Partners</span>
                 </div>
                 <div className="p-3.5 rounded-xl bg-[#f9f9ff] border border-[#e7eeff] text-center">
-                  <span className="block text-xl font-extrabold text-[#B45309] font-sans leading-none">{DEGREEFYD_LPU_API.placements.stats.internshipsCount}</span>
+                  <span className="block text-xl font-extrabold text-[#B45309] font-sans leading-none">{collegeData?.placements?.stats.internshipsCount}</span>
                   <span className="block text-[10px] font-normal text-[#43474d] uppercase tracking-wide mt-1.5">Internships</span>
                 </div>
               </div>
 
               <div className="mt-[18px]">
-                <RecruiterScroll />
+                <RecruiterScroll recruiters={collegeData?.placements?.recruiters || []} />
               </div>
             </section>
+              )}
 
             {
     /* 7. Campus */
   }
-            <section id="campus" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+            {(collegeData?.campus) && (
+                <section id="campus" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                  LPU Online Campus
+                  {collegeData?.campus?.title || `${collegeData?.shortName || collegeData?.title} Campus`}
                 </h2>
-                <p className="section-description text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal">
-                  {DEGREEFYD_LPU_API.campus.description}
-                </p>
+                <ReadMoreText fullText
+                  text={collegeData?.campus?.description}
+                  lines={3}
+                  wrapperClassName="mt-1"
+                  className="text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal"
+                />
               </div>
 
               <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
@@ -1150,7 +1112,7 @@ export const OverviewView = ({
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#e7eeff]">
-                    {DEGREEFYD_LPU_API.campus.travelTable.map((t, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
+                    {collegeData?.campus?.travelTable.map((t, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
                         <td className="py-3.5 px-4 font-normal text-[#000f22] align-top whitespace-nowrap">{t.mode}</td>
                         <td className="py-3.5 px-4 text-[#43474d] leading-relaxed font-normal">{t.detail}</td>
                       </tr>)}
@@ -1184,27 +1146,31 @@ export const OverviewView = ({
                 }
                 .campus-marquee-item {
                   flex: 0 0 auto;
-                  width: min(320px, 72vw);
+                  width: min(360px, 78vw);
                   background: #ffffff;
                   overflow: hidden;
                   border: 1px solid #e7eeff;
-                  border-radius: 18px;
-                  box-shadow: 0 10px 24px rgba(18, 37, 71, 0.08);
+                  border-radius: 20px;
+                  box-shadow: 0 12px 28px rgba(18, 37, 71, 0.12);
                 }
                 .campus-marquee-item img {
                   display: block;
                   width: 100%;
-                  height: 220px;
+                  height: 240px;
                   object-fit: cover;
-                  border-radius: 18px 18px 0 0;
+                  object-position: center;
+                  transition: transform 320ms ease;
+                }
+                .campus-marquee-item:hover img {
+                  transform: scale(1.04);
                 }
                 .campus-marquee-item figcaption {
-                  padding: 10px 12px;
-                  font-size: 12px;
+                  padding: 12px 14px;
+                  font-size: 13px;
+                  font-weight: 600;
                   color: #43474d;
                   background: white;
                   border-top: 1px solid #e7eeff;
-                  border-radius: 0 0 18px 18px;
                 }
                 @keyframes campus-marquee {
                   from {
@@ -1222,53 +1188,63 @@ export const OverviewView = ({
                     gap: 10px;
                   }
                   .campus-marquee-item {
-                    width: min(280px, 80vw);
+                    width: min(320px, 84vw);
                   }
                   .campus-marquee-item img {
-                    height: 180px;
+                    height: 210px;
                   }
                 }
               `}</style>
 
               <div className="campus-marquee">
                 <div className="campus-marquee-track">
-                  {[...CAMPUS_IMAGES, ...CAMPUS_IMAGES].map((image, index) => <figure key={`${image.src}-${index}`} className="campus-marquee-item">
-                      <img src={image.src} alt={image.alt} loading="lazy" />
-                      <figcaption>{image.alt}</figcaption>
-                    </figure>)}
+                  {campusMarqueeImages.map((image, index) => (
+                    <figure key={`${image.imageUrl}-${index}`} className="campus-marquee-item">
+                      <img src={image.imageUrl} alt={image.altText} loading="lazy" />
+                      <figcaption>{image.name}</figcaption>
+                    </figure>
+                  ))}
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2 pt-1 mt-[18px]">
-                {DEGREEFYD_LPU_API.campus.gallery.map((g, i) => <span key={i} className="px-3 py-1.5 rounded-lg bg-[#f0f3ff] border border-[#d5e3ff] text-[11px] font-normal text-[#115eaf]">
-                    {g}
-                  </span>)}
-              </div>
             </section>
+              )}
 
             {
     /* 8. UGC Sample Degree Section (From API) */
   }
-            <section id="sample-degree" className="page-section card bg-[#f0f3ff] rounded-2xl border border-[#d5e3ff]">
+            {(collegeData?.sampleDegree) && (
+                <section id="sample-degree" className="page-section card bg-[#f0f3ff] rounded-2xl border border-[#d5e3ff]">
               {
     /* Top Heading Block (Placed at the top of section) */
   }
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#d5e3ff]/70">
                 <div>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[11px] font-normal flex items-center gap-1">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
+                      UGC-DEB Validated & Govt Approved
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded bg-white text-[#115eaf] text-[11px] font-normal border border-[#d5e3ff]">
+                      100% Equivalent
+                    </span>
+                  </div>
                   <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                    LPU Online Sample Degree
+                    {collegeData?.sampleDegree?.title || `${collegeData?.shortName || collegeData?.title} Sample Degree`}
                   </h2>
                 </div>
 
-                <a
-    href={DEGREEFYD_LPU_API.sampleDegree.imageUrl}
-    target="_blank"
-    rel="noreferrer"
-    className="px-3.5 py-2 bg-white text-[#115eaf] border border-[#d5e3ff] rounded-xl text-xs font-semibold hover:bg-[#e0ecff] transition-all flex items-center gap-1.5 shrink-0 shadow-xs"
-  >
-                  <span>View Full-Size Certificate</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
+                {certificateImage ? (
+                  <a
+                    href={certificateImage}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-3.5 py-2 bg-white text-[#115eaf] border border-[#d5e3ff] rounded-xl text-xs font-semibold hover:bg-[#e0ecff] transition-all flex items-center gap-1.5 shrink-0 shadow-xs"
+                  >
+                    <span>View Full-Size Certificate</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                ) : null}
               </div>
 
               {
@@ -1276,9 +1252,11 @@ export const OverviewView = ({
   }
               <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start mt-[18px]">
                 <div className="md:col-span-7 space-y-3.5">
-                  <p className="text-xs sm:text-sm text-[#2d3137] leading-relaxed font-normal">
-                    {DEGREEFYD_LPU_API.sampleDegree.description}
-                  </p>
+                  <ReadMoreText fullText
+                    text={collegeData?.sampleDegree?.description}
+                    lines={3}
+                    className="text-xs sm:text-sm text-[#2d3137] leading-relaxed font-normal"
+                  />
                   
                   <div className="flex flex-wrap items-center gap-2 text-[11px] text-[#2d3137]">
                     <span className="p-1.5 rounded-lg bg-white/80 border border-[#d5e3ff] flex items-center gap-1.5">
@@ -1291,9 +1269,10 @@ export const OverviewView = ({
                     </span>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-2.5">
+                  <div className="flex items-center gap-2.5">
                     <button
-    onClick={() => onOpenApply()}
+    type="button"
+    onClick={handleOverviewApply}
     className="px-4 py-2 bg-[#115eaf] text-white rounded-lg text-xs font-semibold shadow hover:bg-[#004689] active:scale-95 transition-all flex items-center gap-1.5"
   >
                       <span>Apply for Degree Enrollment</span>
@@ -1309,11 +1288,28 @@ export const OverviewView = ({
 
                 <div className="md:col-span-5">
                   <div className="rounded-xl overflow-hidden border-2 border-white shadow-md bg-white p-2.5 group hover:shadow-lg transition-all">
-                    <img
-    src={DEGREEFYD_LPU_API.sampleDegree.imageUrl}
-    alt={DEGREEFYD_LPU_API.sampleDegree.altText}
-    className="w-full h-auto object-contain rounded group-hover:scale-102 transition-transform duration-300 max-h-64"
-  />
+                    {certificateImage ? (
+                      <img
+                        src={certificateImage}
+                        alt={collegeData?.sampleDegree?.altText}
+                        className="w-full h-auto object-contain rounded group-hover:scale-102 transition-transform duration-300 max-h-64"
+                        onError={(event) => {
+                          event.currentTarget.style.display = "none";
+                          event.currentTarget.parentElement
+                            ?.querySelector("[data-certificate-fallback]")
+                            ?.classList.remove("hidden");
+                        }}
+                      />
+                    ) : null}
+                    <div
+                      data-certificate-fallback
+                      className={`${certificateImage ? "hidden" : ""} flex min-h-[180px] flex-col items-center justify-center gap-2 rounded bg-[#f9f9ff] px-4 text-center`}
+                    >
+                      <FileText className="h-10 w-10 text-[#115eaf]" />
+                      <span className="text-xs font-medium text-[#74777e]">
+                        Certificate preview unavailable
+                      </span>
+                    </div>
                     <div className="text-center pt-1.5 text-[10px] text-[#74777e] font-normal">
                       Specimen UGC-Entitled Degree Format
                     </div>
@@ -1321,40 +1317,52 @@ export const OverviewView = ({
                 </div>
               </div>
             </section>
+              )}
 
 {
     /* 9. Verified Reviews & FAQs */
   }
-            <section id="reviews-section" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+            {((collegeData?.reviews?.length || collegeData?.faqs?.length)) && (
+                <section id="reviews-section" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               {
     /* Header and Rating Summary Bar */
   }
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-[#e7eeff]">
                 <div>
+                  <div className="flex items-center gap-2">
+                    {REVIEW_SUMMARY.rating && (
+                    <span className="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-xs font-normal flex items-center gap-1">
+                      <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                      {REVIEW_SUMMARY.rating}
+                    </span>
+                    )}
+                    {REVIEW_SUMMARY.count && (
+                    <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-normal">
+                      {REVIEW_SUMMARY.count}
+                    </span>
+                    )}
+                  </div>
                   <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans mt-2">
-                    LPU Online Reviews
+                    {collegeData?.reviewsMeta?.title || `${collegeData?.shortName || collegeData?.title} Reviews`}
                   </h2>
                   <p className="section-description text-xs text-[#74777e]">
-                    Authentic feedback from working executives, entrepreneurs, and graduates studying on LPU e-Connect
+                    {collegeData?.reviewsMeta?.subtitle || `Authentic feedback from students of ${collegeData?.shortName || collegeData?.title}`}
                   </p>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center gap-3 bg-[#f0f3ff] border border-[#d5e3ff] p-2.5 rounded-xl shrink-0 max-w-full">
-                  <div className="text-center">
-                    <span className="block text-lg font-black text-[#115eaf]">94%</span>
-                    <span className="text-[9px] text-[#43474d] font-bold">Completion Rate</span>
-                  </div>
-                  <div className="h-6 w-px bg-[#d5e3ff]" />
-                  <div className="text-center">
-                    <span className="block text-lg font-black text-[#000f22]">25,000+</span>
-                    <span className="text-[9px] text-[#43474d] font-bold">Active Learners</span>
-                  </div>
-                  <div className="h-6 w-px bg-[#d5e3ff]" />
-                  <div className="text-center">
-                    <span className="block text-lg font-black text-emerald-700">100%</span>
-                    <span className="text-[9px] text-[#43474d] font-bold">Verified Profiles</span>
-                  </div>
+                {REVIEW_SUMMARY.stats.length > 0 && (
+                <div className="flex items-center gap-3 bg-[#f0f3ff] border border-[#d5e3ff] p-2.5 rounded-xl shrink-0">
+                  {REVIEW_SUMMARY.stats.map((stat, index) => (
+                    <Fragment key={stat.label}>
+                      {index > 0 && <div className="h-6 w-px bg-[#d5e3ff]" />}
+                      <div className="text-center">
+                        <span className={`block text-lg font-black ${stat.tone}`}>{stat.value}</span>
+                        <span className="text-[9px] text-[#43474d] font-bold">{stat.label}</span>
+                      </div>
+                    </Fragment>
+                  ))}
                 </div>
+                )}
               </div>
 
               {
@@ -1362,7 +1370,7 @@ export const OverviewView = ({
   }
               <div className="flex flex-wrap items-center justify-between gap-2 mt-[18px]">
                 <div className="flex flex-wrap gap-1.5 text-xs">
-                  {["All", "Online MBA", "Online MCA", "Online BBA & BCA", "Online M.Com"].map((cat) => <button
+                  {REVIEW_CATEGORIES.map((cat) => <button
     key={cat}
     onClick={() => setSelectedReviewCategory(cat)}
     className={`px-3 py-1 rounded-lg font-bold transition-all text-[11px] max-md:min-h-[36px] max-md:px-4 ${selectedReviewCategory === cat ? "bg-[#115eaf] text-white shadow-xs" : "bg-[#f0f3ff] text-[#43474d] hover:bg-[#e0ecff] hover:text-[#000f22]"}`}
@@ -1380,13 +1388,9 @@ export const OverviewView = ({
     /* Modern Review Cards Grid */
   }
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-[18px]">
-                {DEGREEFYD_LPU_API.testimonials.filter((t) => {
+                {(collegeData?.reviews || []).filter((t) => {
     if (selectedReviewCategory === "All") return true;
-    if (selectedReviewCategory === "Online MBA") return t.course.includes("MBA");
-    if (selectedReviewCategory === "Online MCA") return t.course.includes("MCA");
-    if (selectedReviewCategory === "Online BBA & BCA") return t.course.includes("BBA") || t.course.includes("BCA");
-    if (selectedReviewCategory === "Online M.Com") return t.course.includes("M.Com");
-    return true;
+    return (t.course || "").toLowerCase().includes(selectedReviewCategory.toLowerCase());
   }).map((t, idx) => <div
     key={idx}
     className="bg-white rounded-xl border border-[#e7eeff] hover:border-[#115eaf]/70 hover:shadow-md transition-all p-3 flex flex-col justify-between gap-2.5 group relative"
@@ -1396,10 +1400,14 @@ export const OverviewView = ({
   }
                       <div className="space-y-1.5">
                         <div className="flex items-center justify-between gap-3">
-                          <div className="flex text-amber-400 gap-0.5 items-center">
-                            {[...Array(t.rating)].map((_, i) => <Star key={i} className="w-3 h-3 fill-current text-amber-400" />)}
-                            <span className="text-[10px] font-normal text-[#000f22] ml-1.5">5.0</span>
-                          </div>
+                          {Number(t.ratingValue) > 0 ? (
+                            <div className="flex text-amber-400 gap-0.5 items-center">
+                              {[...Array(Math.max(0, Math.min(5, Math.round(Number(t.rating) || 0))))].map((_, i) => <Star key={i} className="w-3 h-3 fill-current text-amber-400" />)}
+                              <span className="text-[10px] font-normal text-[#000f22] ml-1.5">{t.ratingLabel || t.ratingValue}</span>
+                            </div>
+                          ) : (
+                            <span aria-hidden="true" />
+                          )}
                           <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-normal bg-[#eef4ff] text-[#115eaf] border border-[#d5e3ff]">
                             <CheckCircle className="w-2.5 h-2.5 text-[#115eaf]" />
                             {t.tag || "Verified Learner"}
@@ -1422,9 +1430,12 @@ export const OverviewView = ({
     /* Review Content */
   }
                         <div className="relative pt-0.5">
-                          <p className="text-[11px] text-[#2d3137] leading-relaxed font-normal line-clamp-3">
-                            "{t.text}"
-                          </p>
+                          <ReadMoreText fullText
+                            text={`"${t.text}"`}
+                            lines={3}
+                            buttonClassName="text-xs"
+                            className="text-[11px] text-[#2d3137] leading-relaxed font-normal"
+                          />
                         </div>
                       </div>
 
@@ -1463,19 +1474,20 @@ export const OverviewView = ({
   }
               <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#f0f3ff] via-white to-[#f0f3ff] border border-[#d5e3ff] flex flex-col sm:flex-row items-center justify-between gap-3 mt-[18px]">
                 <div className="space-y-1 text-center sm:text-left">
-                  <h3 className="font-bold text-sm text-[#000f22] font-sans">
-                    Join 25,000+ ambitious working professionals at LPU Online
-                  </h3>
+                  <h4 className="font-bold text-sm text-[#000f22] font-sans">
+                    Join {collegeData?.students ? `${Number(collegeData.students).toLocaleString("en-IN")}+` : "thousands of"} ambitious working professionals at {collegeData?.shortName || collegeData?.title}
+                  </h4>
                   <p className="text-xs text-[#43474d]">
-                    Admissions for Spring 2026 intake are currently open. Book a 1-on-1 counseling session with our admissions team.
+                    Admissions are currently open. Book a 1-on-1 counseling session with our admissions team.
                   </p>
                 </div>
-                <div className="flex flex-wrap items-center justify-center gap-2.5">
+                <div className="flex items-center gap-2.5 shrink-0">
                   <button
-    onClick={() => onOpenApply()}
+    type="button"
+    onClick={handleOverviewApply}
     className="px-5 py-2.5 bg-[#115eaf] text-white rounded-xl text-xs font-bold shadow hover:bg-[#004689] active:scale-95 transition-all"
   >
-                    Apply Now 2026
+                    Apply Now {CURRENT_YEAR}
                   </button>
                   <button
     onClick={() => onOpenHelpDesk()}
@@ -1487,41 +1499,33 @@ export const OverviewView = ({
               </div>
 
               {
-    /* 12 FAQs directly from API */
+    /* 12 FAQs directly from API — shared accessible accordion */
   }
               <div className="pt-3 mt-[18px] border-t border-[#e7eeff]">
                 <h3 className="section-title text-xl font-bold text-[#000f22] font-sans">
-                  Frequently Asked Questions (LPU Online)
+                  {collegeData?.faqsMeta?.title || `Frequently Asked Questions (${collegeData?.shortName || collegeData?.title})`}
                 </h3>
-                <div className="space-y-[12px] mt-[18px]">
-                  {DEGREEFYD_LPU_API.faqs.map((faq, idx) => {
-    const isOpen = openFaqIndex === idx;
-    return <div key={idx} className="border border-[#e7eeff] rounded-xl overflow-hidden">
-                        <button
-      onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-      className="w-full px-4 py-3 text-left flex items-center justify-between font-medium text-xs sm:text-sm text-[#000f22] hover:text-[#115eaf] bg-white transition-colors"
-    >
-                          <span>{faq.question}</span>
-                          <ChevronDown className={`w-4 h-4 text-[#115eaf] shrink-0 ml-2 transition-transform ${isOpen ? "rotate-180" : ""}`} />
-                        </button>
-                        {isOpen && <div className="px-4 pb-3 text-xs text-[#43474d] bg-[#f9f9ff] border-t border-[#e7eeff] leading-relaxed">
-                            <p className="pt-3 font-normal">{faq.answer}</p>
-                          </div>}
-                      </div>;
-  })}
+                <div className="mt-[18px]">
+                  <FaqAccordion
+                    items={collegeData?.faqs || []}
+                    variant="card"
+                    defaultOpenIndex={0}
+                  />
                 </div>
               </div>
             </section>
+              )}
 
             {
     /* Compare Colleges */
   }
-            <section id="compare-colleges" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+            {(collegeData?.compareSection) && (
+                <section id="compare-colleges" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                {DEGREEFYD_LPU_API.compareSection.title}
+                {collegeData?.compareSection?.title}
               </h2>
               <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal">
-                {DEGREEFYD_LPU_API.compareSection.description}
+                {collegeData?.compareSection?.description}
               </p>
               {
     /* MAIN COMPARISON BOX */
@@ -1529,7 +1533,7 @@ export const OverviewView = ({
               <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_55px_minmax(0,1fr)] items-stretch gap-3 p-4 border border-[#e7eeff] rounded-2xl bg-white shadow-sm mt-[18px]">
 
                 {
-    /* LPU COLLEGE CARD */
+    /* COLLEGE CARD */
   }
                 <div className="min-h-[220px] rounded-xl border border-[#e7eeff] bg-[#f0f3ff] p-4 flex flex-col justify-between">
                   <div>
@@ -1540,8 +1544,8 @@ export const OverviewView = ({
                     <div className="flex gap-4 items-center">
                       <div className="w-[115px] h-[85px] shrink-0 rounded-lg border border-[#e7eeff] bg-white flex items-center justify-center overflow-hidden">
                         <img
-    src={DEGREEFYD_LPU_API.hero.logoImage}
-    alt="LPU Logo"
+    src={collegeData?.hero?.logoImage}
+    alt={`${collegeData?.shortName || collegeData?.title || "College"} Logo`}
     className="max-w-full max-h-full object-contain p-1.5"
     onError={(e) => {
       e.target.style.display = "none";
@@ -1550,17 +1554,17 @@ export const OverviewView = ({
                       </div>
                       <div>
                         <h3 className="mb-1.5 text-[19px] leading-tight font-extrabold text-[#000f22] font-sans">
-                          {DEGREEFYD_LPU_API.title}
+                          {collegeData?.title}
                         </h3>
                         <p className="mt-[7.5px] flex items-center gap-1.5 text-sm text-[#43474d]">
                           <MapPin className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
-                          Phagwara, Punjab
+                          {collegeData?.location}
                         </p>
                       </div>
                     </div>
 
                     <div className="flex flex-wrap gap-1.5 mt-3">
-                      {DEGREEFYD_LPU_API.approvals.slice(0, 4).map((tag) => <span key={tag} className="px-2 py-1 rounded-[7px] bg-white border border-[#d5e3ff] text-[11px] font-normal text-[#43474d]">
+                      {collegeData?.approvals.slice(0, 4).map((tag) => <span key={tag} className="px-2 py-1 rounded-[7px] bg-white border border-[#d5e3ff] text-[11px] font-normal text-[#43474d]">
                           {tag}
                         </span>)}
                     </div>
@@ -1608,24 +1612,119 @@ export const OverviewView = ({
                 </div>
               </div>
             </section>
+              )}
 
             {
     /* Blogs */
   }
-            <BlogsListSection
-    onOpenHelpDesk={onOpenHelpDesk}
-    className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
-  />
+            {(collegeData?.blogs?.length) && (
+                <section id="blogs" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+              <div className="flex items-end justify-between gap-3 flex-wrap">
+                <div>
+                  <h2 className="section-title mt-2 text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
+                    Latest Blogs
+                  </h2>
+                  <ReadMoreText fullText
+                    text={collegeData?.blogsMeta?.description}
+                    lines={2}
+                    wrapperClassName="mt-1 max-w-[850px]"
+                    className="text-sm text-[#43474d] leading-relaxed font-normal"
+                  />
+                </div>
+                <button
+    onClick={() => onOpenHelpDesk()}
+    className="h-11 px-5 inline-flex items-center gap-2.5 rounded-xl border border-[#0b2540] text-[#0b2540] text-sm font-bold hover:bg-[#0b2540] hover:text-white transition-all shrink-0"
+  >
+                  View All Blogs
+                  <span className="text-[#115eaf] text-lg leading-none">→</span>
+                </button>
+              </div>
 
+              {
+    /* Slider */
+  }
+              <div className="flex items-center gap-3 mt-[18px]">
+                <button
+    onClick={() => setBlogIndex((i) => Math.max(0, i - 1))}
+    disabled={blogIndex === 0}
+    aria-label="Previous blogs"
+    className="shrink-0 w-[42px] h-[42px] rounded-full border border-[#d5e3ff] bg-white text-[#000f22] text-lg flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white disabled:opacity-35 disabled:cursor-default transition-all"
+  >
+                  ←
+                </button>
+
+                <div className="w-full overflow-hidden">
+                  <div
+    className="flex"
+    style={{
+      gap: "22px",
+      transform: `translateX(-${blogIndex * (100 / blogVisible)}%)`,
+      transition: "transform .45s cubic-bezier(.4,0,.2,1)"
+    }}
+  >
+                    {(collegeData?.blogs || []).map((post, i) => <article
+    key={i}
+    className="flex min-w-0 flex-col overflow-hidden bg-white border border-[#e7eeff] rounded-2xl hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
+    style={{ flex: `0 0 calc((100% - ${(blogVisible - 1) * 22}px) / ${blogVisible})` }}
+  >
+                        <a href="#" className="relative block h-[145px] overflow-hidden bg-[#f0f3ff]">
+                          <img
+    src={post.image}
+    alt={post.title}
+    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+  />
+                          <span className="absolute left-3.5 top-3.5 px-2.5 py-1.5 rounded-[20px] bg-[#115eaf] text-white text-[11px] font-bold leading-none">
+                            {post.category}
+                          </span>
+                        </a>
+                        <div className="flex flex-1 flex-col p-[18px]">
+                          <h3 className="line-clamp-2 text-[#000f22] text-lg leading-snug font-bold font-sans">{post.title}</h3>
+                          {post.excerpt ? (
+                            <p className="mt-[7.5px] line-clamp-2 text-sm text-[#43474d] leading-relaxed font-normal">{post.excerpt}</p>
+                          ) : null}
+                          <div className="mt-auto flex items-center justify-start gap-3.5 pt-4">
+                            <span className="flex shrink-0 items-center gap-1.5 whitespace-nowrap text-[13px] text-[#43474d] font-normal">
+                              <Clock className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
+                              {post.date}
+                            </span>
+                          </div>
+                        </div>
+                      </article>)}
+                  </div>
+                </div>
+
+                <button
+    onClick={() => setBlogIndex((i) => Math.min(Math.max(0, (collegeData?.blogs || []).length - blogVisible), i + 1))}
+    disabled={blogIndex >= (collegeData?.blogs || []).length - blogVisible}
+    aria-label="Next blogs"
+    className="shrink-0 w-[42px] h-[42px] rounded-full border border-[#d5e3ff] bg-white text-[#000f22] text-lg flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white disabled:opacity-35 disabled:cursor-default transition-all"
+  >
+                  →
+                </button>
+              </div>
+
+              {
+    /* Dots */
+  }
+              <div className="flex justify-center items-center gap-[7px]">
+                {Array.from({ length: Math.max(0, (collegeData?.blogs || []).length - blogVisible) + 1 }).map((_, i) => <button
+    key={i}
+    onClick={() => setBlogIndex(i)}
+    aria-label={`Go to blog slide ${i + 1}`}
+    className={`h-[7px] rounded-[10px] border-none cursor-pointer transition-all ${i === blogIndex ? "w-[23px] bg-[#115eaf]" : "w-[7px] bg-[#d5e3ff]"}`}
+  />)}
+              </div>
+            </section>
+              )}
         </div>
       </div>
 
-      {
+            {
     /* Floating TOC Toggle Button */
   }
       <button
     onClick={() => setTocOpen(!tocOpen)}
-    className="fixed bottom-36 left-4 z-30 w-11 h-11 rounded-full bg-[#0b2540] text-white shadow-lg flex items-center justify-center hover:bg-[#115eaf] transition-colors md:bottom-6"
+    className="fixed bottom-6 left-4 z-30 hidden h-11 w-11 items-center justify-center rounded-full bg-[#0b2540] text-white shadow-lg transition-colors hover:bg-[#115eaf] md:flex"
     aria-label="Toggle Table of Contents"
   >
         <FileText className="w-5 h-5" />
@@ -1648,7 +1747,7 @@ export const OverviewView = ({
               {
     /* Header */
   }
-              <div className="flex items-center justify-between pb-3 border-b border-[#e7eeff]">
+              <div className="flex items-center justify-between pb-3.5 border-b border-[#e7eeff]">
                 <div className="flex items-center gap-2">
                   <FileText className="w-4 h-4 text-[#115eaf]" />
                   <h3 className="font-bold text-sm text-[#000f22]">Table of Contents</h3>
@@ -1717,7 +1816,7 @@ export const OverviewView = ({
   }
       {counselPanelOpen && <div className="fixed inset-0 z-40 bg-black/30" onClick={() => setCounselPanelOpen(false)} />}
 
-      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex items-center">
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex items-center pointer-events-none">
         {
     /* Slide-up Panel */
   }
@@ -1733,47 +1832,41 @@ export const OverviewView = ({
           </div>
           <button
     onClick={() => setCounselPanelOpen(false)}
-    className="tap-hit w-11 h-11 rounded-md bg-[#f0f3ff] text-[#43474d] flex items-center justify-center hover:bg-[#e7eeff] transition-colors text-[10px] font-bold"
+    className="w-6 h-6 rounded-md bg-[#f0f3ff] text-[#43474d] flex items-center justify-center hover:bg-[#e7eeff] transition-colors text-[10px] font-bold"
   >
             ✕
           </button>
         </div>
 
         <div className="p-4">
-          {!formSubmitted ? <form onSubmit={handleCounselingSubmit} className="space-y-2.5" noValidate>
-              <div>
-                <input
+          {!formSubmitted ? <form onSubmit={handleCounselingSubmit} className="space-y-2.5">
+              <input
     type="tel"
     required
     pattern="[0-9]{10}"
     value={counselingForm.phone}
-    onChange={(e) => {
-      setCounselingForm({ ...counselingForm, phone: e.target.value });
-      if (formErrors.phone) setFormErrors({ ...formErrors, phone: "" });
-    }}
+    onChange={(e) => { setCounselingForm({ ...counselingForm, phone: e.target.value }); if (formErrors.phone) setFormErrors({ ...formErrors, phone: "" }); }}
     placeholder="Phone Number (+91)"
     className={`w-full px-3 py-2 rounded-lg border text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none ${formErrors.phone ? "border-red-500" : "border-[#c4c6ce]"}`}
     aria-invalid={formErrors.phone ? "true" : "false"}
-    aria-describedby={formErrors.phone ? "phone-error" : void 0}
+    aria-describedby={formErrors.phone ? "phone-error" : undefined}
   />
-                {formErrors.phone && <p id="phone-error" role="alert" aria-live="polite" className="mt-1 text-[11px] text-red-600">{formErrors.phone}</p>}
-              </div>
-              <div>
-                <input
+              {formErrors.phone && (
+                <p id="phone-error" role="alert" aria-live="polite" className="mt-1 text-[11px] text-red-600">{formErrors.phone}</p>
+              )}
+              <input
     type="email"
     required
     value={counselingForm.email}
-    onChange={(e) => {
-      setCounselingForm({ ...counselingForm, email: e.target.value });
-      if (formErrors.email) setFormErrors({ ...formErrors, email: "" });
-    }}
+    onChange={(e) => { setCounselingForm({ ...counselingForm, email: e.target.value }); if (formErrors.email) setFormErrors({ ...formErrors, email: "" }); }}
     placeholder="Email Address"
     className={`w-full px-3 py-2 rounded-lg border text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none ${formErrors.email ? "border-red-500" : "border-[#c4c6ce]"}`}
     aria-invalid={formErrors.email ? "true" : "false"}
-    aria-describedby={formErrors.email ? "email-error" : void 0}
+    aria-describedby={formErrors.email ? "email-error" : undefined}
   />
-                {formErrors.email && <p id="email-error" role="alert" aria-live="polite" className="mt-1 text-[11px] text-red-600">{formErrors.email}</p>}
-              </div>
+              {formErrors.email && (
+                <p id="email-error" role="alert" aria-live="polite" className="mt-1 text-[11px] text-red-600">{formErrors.email}</p>
+              )}
               <select
     value={counselingForm.course}
     onChange={(e) => setCounselingForm({ ...counselingForm, course: e.target.value })}
@@ -1803,7 +1896,7 @@ export const OverviewView = ({
   }
       <button
     onClick={() => setCounselPanelOpen(!counselPanelOpen)}
-    className="hidden lg:flex w-12 h-[200px] bg-[#115eaf] hover:bg-[#004689] rounded-l-2xl shadow-md items-center justify-center transition-colors"
+    className="hidden h-[200px] w-12 items-center justify-center rounded-l-2xl bg-[#115eaf] shadow-md transition-colors hover:bg-[#004689] lg:flex"
   >
         <span className="block text-white text-sm font-normal whitespace-nowrap -rotate-90">
           {counselPanelOpen ? "Close" : "Free Apply"}
@@ -1812,3 +1905,8 @@ export const OverviewView = ({
       </div>
     </div>;
 };
+export {
+  OverviewView
+};
+export default OverviewView;
+

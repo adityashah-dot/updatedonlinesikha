@@ -49,6 +49,8 @@ const CU_PROGRAMME_CARDS = CU.courses.map((c) => ({
   subtitle: `${c.level === "PG" ? "Postgraduate" : "Undergraduate"} Programme`,
   duration: c.duration.replace(/\s*\(.*\)/, ""),
   fee: c.totalFee,
+  semesterFee: c.feePerSemester,
+  description: c.description,
   mode: "Online",
   specialisations: c.specializations
 }));
@@ -1144,6 +1146,7 @@ export const CuOverviewView = ({
     onOpenHelpDesk={onOpenHelpDesk}
     sectionId="blogs"
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+    compact
   />
         </div>
       </div>

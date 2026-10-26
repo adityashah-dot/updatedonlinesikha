@@ -38,6 +38,17 @@ export const UniversityPageAdmission = ({
   counselingTitle,
   counselingSubtitle
 }) => {
+  const admissions = university?.admissions || {};
+  const campusAndLms = university?.campusAndLms || {};
+  const feesAndFinancing = university?.feesAndFinancing || {};
+  const quickStats = university?.quickStats || {};
+  const importantDates = Array.isArray(university?.importantDates?.items) ? university.importantDates.items : [];
+  const examPattern = Array.isArray(campusAndLms.examPattern) ? campusAndLms.examPattern : [];
+  const scholarships = Array.isArray(feesAndFinancing.scholarships) ? feesAndFinancing.scholarships : [];
+  const eligibilityRows = Array.isArray(admissions.eligibilityMatrix) ? admissions.eligibilityMatrix : Array.isArray(admissions.eligibility) ? admissions.eligibility : [];
+  const admissionSteps = Array.isArray(admissions.steps) ? admissions.steps : [];
+  const documents = Array.isArray(admissions.requiredDocuments) ? admissions.requiredDocuments : Array.isArray(admissions.documents) ? admissions.documents : [];
+  const testimonials = Array.isArray(university?.testimonials) ? university.testimonials : [];
   const [showAllEligibility, setShowAllEligibility] = useState(false);
   const [activeSection, setActiveSection] = useState("admission-highlights");
   const [callbackName, setCallbackName] = useState("");
@@ -45,10 +56,10 @@ export const UniversityPageAdmission = ({
   const [callbackCourse, setCallbackCourse] = useState("");
   const [callbackSubmitted, setCallbackSubmitted] = useState(false);
   const hasApplicationProcess = Boolean(applicationSteps && applicationSteps.length > 0);
-  const hasExamPattern = university.campusAndLms.examPattern.length > 0;
-  const hasScholarships = university.feesAndFinancing.scholarships.length > 0;
-  const hasReviews = Boolean(university.testimonials && university.testimonials.length > 0);
-  const hasDocuments = Boolean(university.admissions.requiredDocuments && university.admissions.requiredDocuments.length > 0);
+  const hasExamPattern = examPattern.length > 0;
+  const hasScholarships = scholarships.length > 0;
+  const hasReviews = testimonials.length > 0;
+  const hasDocuments = documents.length > 0;
   const tocItems = ADMISSION_TOC_ITEMS.filter((item) => {
     if (item.id === "application-process") return hasApplicationProcess;
     if (item.id === "examination-pattern") return hasExamPattern;
@@ -71,13 +82,9 @@ export const UniversityPageAdmission = ({
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [tocItems.length]);
-  const eligibilityRows = university.admissions.eligibilityMatrix || [];
   const visibleEligibility = showAllEligibility ? eligibilityRows : eligibilityRows.slice(0, 4);
-  const admissionSteps = university.admissions.steps || [];
-  const dates = university.importantDates.items || [];
-  const documents = university.admissions.requiredDocuments || [];
-  const scholarships = university.feesAndFinancing.scholarships || [];
-  const reviews = university.testimonials || [];
+  const dates = importantDates;
+  const reviews = testimonials;
   const defaultStats = [
     { label: "Admission Status", value: "Open for 2026" },
     { label: "Mode of Application", value: "Online" },
@@ -354,11 +361,11 @@ export const UniversityPageAdmission = ({
             </div>
 
             <p className="section-description text-xs sm:text-sm text-[#43474d] leading-relaxed">
-              {university.campusAndLms.intro}
+              {campusAndLms.intro}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-[18px]">
-              {university.campusAndLms.examPattern.map((step, idx) => <div key={idx} className="p-4 rounded-xl bg-[#f9f9ff] border border-[#e7eeff] flex gap-3 items-start">
+              {examPattern.map((step, idx) => <div key={idx} className="p-4 rounded-xl bg-[#f9f9ff] border border-[#e7eeff] flex gap-3 items-start">
                   <span className="w-6 h-6 rounded-full bg-[#115eaf] text-white font-bold text-[10px] flex items-center justify-center shrink-0">
                     {idx + 1}
                   </span>
@@ -424,7 +431,7 @@ export const UniversityPageAdmission = ({
             </div>
 
             <p className="section-description text-xs sm:text-sm text-[#43474d] leading-relaxed">
-              {university.feesAndFinancing.intro}
+              {feesAndFinancing.intro}
             </p>
 
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
@@ -463,7 +470,7 @@ export const UniversityPageAdmission = ({
                 <PhoneCall className="w-3.5 h-3.5" />
                 1-on-1 Academic Counseling
               </span>
-              <h2 className="section-title text-2xl sm:text-3xl font-extrabold font-sans">
+              <h2 className="section-title text-2xl sm:text-3xl font-bold text-[#70aaff] font-sans">
                 {counselingTitle || "Have Questions About Document Eligibility or Grants?"}
               </h2>
               <p className="section-description text-xs sm:text-sm text-[#b1c8eb] max-w-2xl leading-relaxed">
@@ -542,7 +549,7 @@ export const UniversityPageAdmission = ({
 
               <div className="flex items-center gap-3 bg-[#f0f3ff] border border-[#d5e3ff] p-2.5 rounded-xl shrink-0">
                 <div className="text-center">
-                  <span className="block text-lg font-black text-[#115eaf]">{university.quickStats.placementRate}</span>
+                  <span className="block text-lg font-black text-[#115eaf]">{quickStats.placementRate}</span>
                   <span className="text-[9px] text-[#43474d] font-bold">Admission Satisfaction</span>
                 </div>
                 <div className="h-6 w-px bg-[#d5e3ff]" />
@@ -588,6 +595,7 @@ export const UniversityPageAdmission = ({
         <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[110px]"
+    compact
     posts={university.blogs && university.blogs.posts ? university.blogs.posts : SITE_BLOG_POSTS}
   />
 

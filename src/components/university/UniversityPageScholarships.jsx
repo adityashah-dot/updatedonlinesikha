@@ -323,6 +323,7 @@ export const UniversityPageScholarships = ({
         <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+    compact
     posts={university.blogs && university.blogs.posts ? university.blogs.posts : SITE_BLOG_POSTS}
   />
 

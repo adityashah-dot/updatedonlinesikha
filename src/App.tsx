@@ -8,9 +8,7 @@ import { Footer } from './components/Footer';
 import { PageTransition } from './components/PageTransition';
 import { HomeView } from './components/HomeView';
 import { CollegeDetailView } from './components/CollegeDetailView';
-import { CoursesAndFeesView } from './components/CoursesAndFeesView';
-import { AdmissionView } from './components/AdmissionView';
-import { ScholarshipsView } from './components/ScholarshipsView';
+import { UniversityDetailErrorBoundary } from './components/UniversityDetailErrorBoundary';
 import { UniversitiesView } from './components/UniversitiesView';
 import { CourseDetailModal } from './components/CourseDetailModal';
 import { EmiCalculatorModal } from './components/EmiCalculatorModal';
@@ -176,18 +174,20 @@ export default function App() {
             />
 
             <Route
-              path="/universities/:slug"
+              path="/universities/*"
               element={
-                <PageTransition>
-                  <CollegeDetailView
-                    onSelectCourse={handleOpenCourseDetail}
-                    onOpenApply={handleOpenApply}
-                    onOpenBrochure={handleOpenBrochure}
-                    onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
-                    onOpenEmi={handleOpenEmi}
-                    onOpenLms={() => setIsLmsModalOpen(true)}
-                  />
-                </PageTransition>
+                <UniversityDetailErrorBoundary>
+                  <PageTransition>
+                    <CollegeDetailView
+                      onSelectCourse={handleOpenCourseDetail}
+                      onOpenApply={handleOpenApply}
+                      onOpenBrochure={handleOpenBrochure}
+                      onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
+                      onOpenEmi={handleOpenEmi}
+                      onOpenLms={() => setIsLmsModalOpen(true)}
+                    />
+                  </PageTransition>
+                </UniversityDetailErrorBoundary>
               }
             />
 
@@ -206,44 +206,17 @@ export default function App() {
 
             <Route
               path="/courses"
-              element={
-                <PageTransition>
-                  <CoursesAndFeesView
-                    onSelectCourse={handleOpenCourseDetail}
-                    onOpenApply={handleOpenApply}
-                    onOpenBrochure={handleOpenBrochure}
-                    onOpenEmi={handleOpenEmi}
-                    onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
-                  />
-                </PageTransition>
-              }
+              element={<Navigate to="/universities" replace />}
             />
 
             <Route
               path="/admission"
-              element={
-                <PageTransition>
-                  <AdmissionView
-                    onSelectCourse={handleOpenCourseDetail}
-                    onOpenApply={handleOpenApply}
-                    onOpenBrochure={() => handleOpenBrochure()}
-                    onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
-                    onOpenEmi={() => handleOpenEmi()}
-                  />
-                </PageTransition>
-              }
+              element={<Navigate to="/universities" replace />}
             />
 
             <Route
               path="/scholarships"
-              element={
-                <PageTransition>
-                  <ScholarshipsView
-                    onOpenApply={handleOpenApply}
-                    onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
-                  />
-                </PageTransition>
-              }
+              element={<Navigate to="/universities" replace />}
             />
 
             <Route path="*" element={<Navigate to="/" replace />} />

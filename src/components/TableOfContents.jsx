@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { ChevronUp, ChevronDown } from "lucide-react";
 export const TableOfContents = ({
   title = "Table of contents",
@@ -10,6 +10,7 @@ export const TableOfContents = ({
   collapsedCount = 6
 }) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+  const listId = useId();
   const handleScrollTo = (e, id) => {
     e.preventDefault();
     if (onItemClick) {
@@ -48,7 +49,7 @@ export const TableOfContents = ({
       {
     /* List with solid right-pointing triangle and blue clickable links */
   }
-      <ul className="space-y-3">
+      <ul id={listId} className="space-y-3">
         {visibleItems.map((item) => {
     const isActive = activeId === item.id;
     return <li key={item.id} className="flex items-center gap-2.5">
@@ -77,6 +78,8 @@ export const TableOfContents = ({
           <button
     type="button"
     onClick={() => setIsExpanded(!isExpanded)}
+    aria-expanded={isExpanded}
+    aria-controls={listId}
     className="tap-hit min-h-[44px] flex items-center text-xs sm:text-sm font-medium text-[#115eaf] hover:underline gap-1.5 focus:outline-none cursor-pointer"
   >
             <span>{isExpanded ? "View less" : "View more"}</span>

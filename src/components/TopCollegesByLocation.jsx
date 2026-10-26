@@ -569,8 +569,8 @@ export const TopCollegesByLocation = ({ onOpenBrochure }) => {
     /* ================= MOBILE: compact college list ================= */
   }
       <div className="md:hidden">
-        {filteredColleges.length > 0 ? <div className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden divide-y divide-slate-100">
-            {pagedColleges.map((college) => <div key={college.id} className="flex items-center gap-3 p-3">
+        {filteredColleges.length > 0 ? <div className="space-y-4">
+            {pagedColleges.map((college) => <article key={college.id} className="flex items-center gap-3 rounded-xl border border-[#e4e7ec] bg-white p-5">
                 <div className="w-11 h-11 shrink-0 rounded-xl border border-blue-100 bg-gradient-to-br from-[#eff6ff] to-[#dbeafe] flex items-center justify-center">
                   <span className="text-[11px] font-extrabold text-[#115eaf] tracking-wider">
                     {college.logoLetter}
@@ -623,7 +623,7 @@ export const TopCollegesByLocation = ({ onOpenBrochure }) => {
                     </button>
                   </div>
                 </div>
-              </div>)}
+              </article>)}
           </div> : emptyState}
 
         {
@@ -654,7 +654,7 @@ export const TopCollegesByLocation = ({ onOpenBrochure }) => {
   }
             {filteredColleges.slice(0, 1).map((college) => <div
     key={college.id}
-    className="snap-start md:snap-auto bg-white rounded-2xl border border-slate-200/90 hover:border-[#115eaf]/60 transition-all duration-200 p-3 sm:p-4 flex flex-col justify-between shadow-2xs hover:shadow-md group"
+    className="snap-start md:snap-auto bg-white h-full rounded-xl border border-[#e4e7ec] hover:border-[#c7d7ee] transition-colors p-5 flex flex-col justify-between shadow-2xs group"
   >
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-1.5">
@@ -768,7 +768,7 @@ export const TopCollegesByLocation = ({ onOpenBrochure }) => {
   }
             {filteredColleges.slice(1, 5).map((college) => <div
     key={college.id}
-    className="snap-start md:snap-auto bg-white rounded-2xl border border-slate-200/90 hover:border-[#115eaf]/60 transition-all duration-200 p-3 sm:p-4 flex flex-col justify-between shadow-2xs hover:shadow-md group"
+    className="snap-start md:snap-auto bg-white h-full rounded-xl border border-[#e4e7ec] hover:border-[#c7d7ee] transition-colors p-5 flex flex-col justify-between shadow-2xs group"
   >
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-1.5">

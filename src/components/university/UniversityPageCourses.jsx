@@ -44,6 +44,10 @@ export const UniversityPageCourses = ({
   coursesExtra,
   counselingForm
 }) => {
+  const courses = Array.isArray(university?.courses) ? university.courses : [];
+  const campusAndLms = university?.campusAndLms || {};
+  const quickStats = university?.quickStats || {};
+  const importantDates = Array.isArray(university?.importantDates?.items) ? university.importantDates.items : [];
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("popularity");
@@ -64,7 +68,7 @@ export const UniversityPageCourses = ({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   const filteredCourses = useMemo(() => {
-    const list = university.courses.filter((course) => {
+    const list = courses.filter((course) => {
       const matchesCategory = selectedCategory === "all" || course.level === selectedCategory;
       const q = searchQuery.toLowerCase();
       const matchesSearch = !q || course.name.toLowerCase().includes(q) || (course.code || "").toLowerCase().includes(q) || course.specializations.some((s) => s.toLowerCase().includes(q));
@@ -74,28 +78,30 @@ export const UniversityPageCourses = ({
       return [...list].sort((a, b) => a.duration.localeCompare(b.duration));
     }
     return list;
-  }, [university.courses, selectedCategory, searchQuery, sortBy]);
-  const ugCourses = university.courses.filter((c) => c.level === "UG");
-  const pgCourses = university.courses.filter((c) => c.level === "PG");
-  const diplomaCourses = university.courses.filter((c) => c.level === "Diploma");
+  }, [courses, selectedCategory, searchQuery, sortBy]);
+  const ugCourses = courses.filter((c) => c.level === "UG");
+  const pgCourses = courses.filter((c) => c.level === "PG");
+  const diplomaCourses = courses.filter((c) => c.level === "Diploma");
   const hasUG = ugCourses.length > 0;
   const hasPG = pgCourses.length > 0;
-  const programmeCards = university.courses.slice(0, 6).map((c) => ({
+  const programmeCards = courses.slice(0, 6).map((c) => ({
     id: c.id,
     title: c.name,
     subtitle: c.level === "PG" ? "Postgraduate Programme" : c.level === "UG" ? "Undergraduate Programme" : "Diploma Programme",
     duration: c.duration,
     fee: c.totalFee,
+    semesterFee: c.perSemFee || c.feePerSemester,
+    description: c.description || c.shortDescription || "",
     mode: "Online",
     specialisations: c.specializations
   }));
   const heroMetrics = [
-    { value: university.naacGrade || "NAAC Accredited", label: "Accreditation Grade" },
+    { value: university.naacGrade || "Accreditation information unavailable", label: "Accreditation Grade" },
     { value: "100% Online", label: "Classes & Exams from Home" },
-    { value: university.quickStats.feeRange, label: "Total Course Fee" },
-    { value: `${university.courses.length} Programs`, label: "UG & PG Online Degrees" }
+    { value: quickStats.feeRange || "Fee information unavailable", label: "Total Course Fee" },
+    { value: `${courses.length} Programs`, label: "UG & PG Online Degrees" }
   ];
-  const emiStarting = university.quickStats.emiStarting || "";
+  const emiStarting = quickStats.emiStarting || "";
   const emiNumber = emiStarting ? emiStarting.replace("\u20B9", "").replace("/mo", "") : "";
   const tocItems = COURSES_TOC_ITEMS.filter((item) => {
     if (item.id === "blogs") return true;
@@ -105,7 +111,7 @@ export const UniversityPageCourses = ({
     return true;
   }).map((item) => {
     if (item.id === "learning-platform") {
-      const platform = university.campusAndLms.lmsPlatformTitle?.replace(/^How You Study: The /, "") || `${university.shortName} Learning Platform`;
+      const platform = campusAndLms.lmsPlatformTitle?.replace(/^How You Study: The /, "") || `${university.shortName} Learning Platform`;
       return { ...item, label: `How You Study (${platform})` };
     }
     if (item.id === "student-reviews") {
@@ -202,7 +208,7 @@ export const UniversityPageCourses = ({
                     <div>
                       <span className="text-[11px] text-[#43474d] block font-normal">Registration Deadline</span>
                       <span className="text-xs sm:text-sm font-normal text-[#000f22]">
-                        {university.importantDates.items[0] ? university.importantDates.items[0].date : "Check website"}
+                        {importantDates[0]?.date || ""}
                       </span>
                     </div>
                   </div>
@@ -507,7 +513,7 @@ export const UniversityPageCourses = ({
         </div>
       </section>
 
-      {university.importantDates.items.length > 0 && <section id="admission-dates" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
+      {importantDates.length > 0 && <section id="admission-dates" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
           <div className="rounded-2xl border border-[#d5e3ff] bg-gradient-to-br from-[#f9fbff] via-[#f0f3ff] to-white shadow-sm overflow-hidden">
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 px-5 sm:px-6 py-5 border-b border-[#dfe9ff]">
               <div>
@@ -549,7 +555,7 @@ export const UniversityPageCourses = ({
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-[#e7eeff]">
-                      {university.importantDates.items.map((item, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
+                      {importantDates.map((item, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
                           <td className="py-3.5 px-4 font-bold text-[#000f22]">{item.event}</td>
                           <td className="py-3.5 px-4 text-[#43474d]">{item.mode || "Online"}</td>
                           <td className="py-3.5 px-4 text-[#115eaf] font-semibold">{item.date}</td>
@@ -562,9 +568,9 @@ export const UniversityPageCourses = ({
           </div>
         </section>}
 
-      {university.campusAndLms.lmsPlatform && university.campusAndLms.lmsPlatform.length > 0 && <LmsPlatformSection
-    title={university.campusAndLms.lmsPlatformTitle || `How You Study: The ${university.shortName} Learning Platform`}
-    items={university.campusAndLms.lmsPlatform}
+      {Array.isArray(campusAndLms.lmsPlatform) && campusAndLms.lmsPlatform.length > 0 && <LmsPlatformSection
+    title={campusAndLms.lmsPlatformTitle || `How You Study: The ${university.shortName} Learning Platform`}
+    items={campusAndLms.lmsPlatform}
   />}
 
       {programmeCards.length > 0 && <ProgrammeCardsSection
@@ -578,7 +584,7 @@ export const UniversityPageCourses = ({
 
       {university.testimonials && university.testimonials.length > 0 && <StudentReviewsSection
     title={`${university.shortName} Reviews`}
-    description={`Authentic feedback from working executives, entrepreneurs, and graduates studying on ${university.campusAndLms.lmsName}`}
+    description={`Student feedback for ${university.shortName} online programs.`}
     testimonials={university.testimonials}
   />}
 
@@ -622,6 +628,7 @@ export const UniversityPageCourses = ({
       <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs max-w-7xl mx-auto"
+    compact
     posts={university.blogs && university.blogs.posts ? university.blogs.posts : SITE_BLOG_POSTS}
   />
 

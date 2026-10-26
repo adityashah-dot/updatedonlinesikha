@@ -663,6 +663,7 @@ export const AmityScholarshipsView = ({
     onOpenHelpDesk={onOpenHelpDesk}
     sectionId="blogs"
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+    compact
   />
         </div>
       </div>

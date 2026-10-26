@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from "react";
 import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
@@ -9,9 +9,6 @@ import { Footer } from "./components/Footer";
 import { PageTransition } from "./components/PageTransition";
 import { HomeView } from "./components/HomeView";
 import { CollegeDetailView } from "./components/CollegeDetailView";
-import { CoursesAndFeesView } from "./components/CoursesAndFeesView";
-import { AdmissionView } from "./components/AdmissionView";
-import { ScholarshipsView } from "./components/ScholarshipsView";
 import { UniversitiesView } from "./components/UniversitiesView";
 import { CourseDetailModal } from "./components/CourseDetailModal";
 import { EmiCalculatorModal } from "./components/EmiCalculatorModal";
@@ -176,6 +173,20 @@ export default function App() {
   />
 
             <Route
+    path="/universities/*"
+    element={<PageTransition>
+                  <CollegeDetailView
+      onSelectCourse={handleOpenCourseDetail}
+      onOpenApply={handleOpenApply}
+      onOpenBrochure={handleOpenBrochure}
+      onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
+      onOpenEmi={handleOpenEmi}
+      onOpenLms={() => setIsLmsModalOpen(true)}
+    />
+                </PageTransition>}
+  />
+
+            <Route
     path="/universities"
     element={<PageTransition>
                   <SEO
@@ -192,50 +203,17 @@ export default function App() {
 
             <Route
     path="/courses"
-    element={<PageTransition>
-                  <SEO
-      title="Online Courses & Fees - UGC Entitled Degrees | Online Siksha"
-      description="Explore online degree courses from top UGC-entitled universities. Compare fees, eligibility, and specializations."
-    />
-                  <CoursesAndFeesView
-      onSelectCourse={handleOpenCourseDetail}
-      onOpenApply={handleOpenApply}
-      onOpenBrochure={handleOpenBrochure}
-      onOpenEmi={handleOpenEmi}
-      onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
-    />
-                </PageTransition>}
+    element={<Navigate to="/universities" replace />}
   />
 
             <Route
     path="/admission"
-    element={<PageTransition>
-                  <SEO
-      title="Online Admission 2026 - Process, Dates & Eligibility | Online Siksha"
-      description="Complete guide to online university admissions 2026. Important dates, eligibility criteria, application process, and documents required."
-    />
-                  <AdmissionView
-      onSelectCourse={handleOpenCourseDetail}
-      onOpenApply={handleOpenApply}
-      onOpenBrochure={() => handleOpenBrochure()}
-      onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
-      onOpenEmi={() => handleOpenEmi()}
-    />
-                </PageTransition>}
+    element={<Navigate to="/universities" replace />}
   />
 
             <Route
     path="/scholarships"
-    element={<PageTransition>
-                  <SEO
-      title="Scholarships & Fee Concessions 2026 - Online Universities | Online Siksha"
-      description="Scholarships, fee waivers, and EMI options for online degree programs. Merit, defense, alumni, and early bird concessions."
-    />
-                  <ScholarshipsView
-      onOpenApply={handleOpenApply}
-      onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
-    />
-                </PageTransition>}
+    element={<Navigate to="/universities" replace />}
   />
 
             <Route path="*" element={<Navigate to="/" replace />} />
@@ -398,3 +376,4 @@ export default function App() {
   />
     </div>;
 }
+

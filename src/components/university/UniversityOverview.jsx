@@ -1,5 +1,8 @@
 import { ShieldCheck, CheckCircle2, BookOpen } from "lucide-react";
 export const UniversityOverview = ({ university }) => {
+  const overview = university?.overview || {};
+  const introParagraphs = Array.isArray(overview.introParagraphs) ? overview.introParagraphs : [];
+  const highlightsTable = Array.isArray(overview.highlightsTable) ? overview.highlightsTable : [];
   return <section id="overview" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
       {
     /* Editorial Title & Lead */
@@ -9,14 +12,14 @@ export const UniversityOverview = ({ university }) => {
           About {university.name}
         </h2>
         <div className="mt-2 space-y-2.5 text-[#43474d] text-sm sm:text-base leading-relaxed max-w-4xl">
-          {university.overview.introParagraphs.map((paragraph, idx) => <p key={idx}>{paragraph}</p>)}
+          {introParagraphs.map((paragraph, idx) => <p key={idx}>{paragraph}</p>)}
         </div>
       </div>
 
       {
     /* Latest News / Updates Banner (if present) */
   }
-      {university.overview.latestNews && <div className="p-4 sm:p-5 rounded-xl bg-[#f0f3ff] border border-[#d5e3ff] flex items-start gap-3">
+      {overview.latestNews && (overview.latestNews.title || overview.latestNews.description || overview.latestNews.date) && <div className="p-4 sm:p-5 rounded-xl bg-[#f0f3ff] border border-[#d5e3ff] flex items-start gap-3">
           <div className="p-2 rounded-lg bg-blue-100 text-blue-800 shrink-0 mt-0.5">
             <BookOpen className="w-4 h-4" />
           </div>
@@ -50,7 +53,7 @@ export const UniversityOverview = ({ university }) => {
 
         <div className="bg-white border border-[#e7eeff] rounded-xl overflow-hidden shadow-xs">
           <div className="divide-y divide-[#e7eeff]">
-            {university.overview.highlightsTable.map((item, idx) => <div
+            {highlightsTable.map((item, idx) => <div
     key={idx}
     className="grid grid-cols-1 sm:grid-cols-3 p-3.5 sm:px-6 hover:bg-[#f0f3ff]/60 transition-colors gap-1 sm:gap-4 items-baseline"
   >
@@ -64,8 +67,8 @@ export const UniversityOverview = ({ university }) => {
           </div>
         </div>
 
-        {university.overview.highlightsSummary && <p className="text-xs text-[#43474d] leading-normal">
-            {university.overview.highlightsSummary}
+        {overview.highlightsSummary && <p className="text-xs text-[#43474d] leading-normal">
+            {overview.highlightsSummary}
           </p>}
       </div>
 

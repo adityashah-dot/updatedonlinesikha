@@ -1,124 +1,143 @@
 import { ArrowRight, Download } from "lucide-react";
-const MAX_SPECS = 5;
+
+const MAX_SPECS = 3;
+
 export const ProgrammeCardsSection = ({
   sectionId,
   title,
   description,
-  programmes,
+  programmes = [],
   onOpenBrochure,
-  onOpenApply
-}) => {
-  return <section
+  onOpenApply,
+}) => (
+  <section
     id={sectionId}
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
-      <h2 className="section-title text-lg sm:text-xl font-bold text-[#000f22] font-sans">
-        {title}
-      </h2>
-      <span className="block w-12 h-[4px] rounded-[4px] bg-[#115eaf] mt-1" />
+    <h2 className="section-title text-lg sm:text-xl font-bold text-[#000f22] font-sans">
+      {title}
+    </h2>
+    <span className="block w-12 h-[4px] rounded-[4px] bg-[#115eaf] mt-1" />
+    {description ? (
       <p className="section-description text-[13px] text-[#43474d] leading-relaxed font-normal">
         {description}
       </p>
+    ) : null}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 mt-3">
-        {programmes.map((p) => {
-    const visibleSpecs = p.specialisations.slice(0, MAX_SPECS);
-    const extraCount = p.specialisations.length - MAX_SPECS;
-    return <article
-      key={p.id}
-      className="flex flex-col min-w-0 px-3 pb-2.5 border border-[#e7eeff] border-l-[3px] border-l-[#115eaf] rounded-[10px] bg-white shadow-xs hover:shadow-sm hover:border-l-[#004689] transition-all"
-    >
-              {
-      /* Title */
-    }
-              <div className="pt-2.5 pb-1.5 border-b border-[#e7eeff]">
-                <h3 className="text-[14px] leading-snug font-semibold text-[#000f22]">
-                  {p.title}
-                </h3>
-                <p className="mt-0.5 text-[10px] font-normal text-[#74777e] leading-tight">
-                  {p.subtitle}
-                </p>
+    <div className="grid grid-cols-1 items-start gap-3 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4 mt-3">
+      {programmes.map((programme) => {
+        const specialisations = Array.isArray(programme.specialisations)
+          ? programme.specialisations.filter(Boolean)
+          : [];
+        const visibleSpecs = specialisations.slice(0, MAX_SPECS);
+        const extraCount = Math.max(0, specialisations.length - MAX_SPECS);
+        const subtitle = programme.level || programme.subtitle;
+        const secondaryFee = programme.semesterFee || programme.mode;
+        const secondaryFeeLabel = programme.semesterFee ? "Per Semester" : "Mode";
+
+        return (
+          <article
+            key={programme.id || programme.title}
+            className="flex min-w-0 flex-col rounded-xl border border-[#e7eeff] border-l-[3px] border-l-[#115eaf] bg-white p-4 shadow-xs transition-colors hover:border-l-[#004689] sm:p-4"
+          >
+            <div className="mb-2 flex items-start justify-between gap-3">
+              <span className="inline-flex rounded-md bg-[#e7eeff] px-2 py-1 text-[10px] font-medium text-[#004689]">
+                {subtitle || "Online Programme"}
+              </span>
+              {programme.duration ? (
+                <span className="shrink-0 text-right text-[11px] leading-tight text-[#74777e]">
+                  {programme.duration}
+                  <span className="block text-[9px]">Duration</span>
+                </span>
+              ) : null}
+            </div>
+
+            <h3
+              className="line-clamp-2 text-sm font-semibold leading-snug text-[#000f22] font-sans"
+              title={programme.title || ""}
+            >
+              {programme.title}
+            </h3>
+
+            {programme.description ? (
+              <p className="mt-1.5 line-clamp-2 text-[11px] leading-relaxed text-[#555960] sm:text-xs">
+                {programme.description}
+              </p>
+            ) : null}
+
+            <div className="mt-3 grid grid-cols-2 gap-3 border-y border-[#f0f3ff] py-2.5">
+              <div className="min-w-0">
+                <span className="block break-words text-xs leading-4 font-medium text-[#000f22]">
+                  {programme.fee || "Fee not listed"}
+                </span>
+                <span className="block text-[9px] uppercase tracking-wide text-[#74777e]">
+                  Total Fee
+                </span>
               </div>
-
-              {
-      /* Facts */
-    }
-              <div className="grid grid-cols-3 py-2 border-b border-[#e7eeff]">
-                <div className="min-w-0 pr-1.5">
-                  <span className="block text-[11px] leading-tight font-medium text-[#000f22] truncate">
-                    {p.duration}
-                  </span>
-                  <span className="block text-[9px] leading-tight font-normal text-[#74777e]">
-                    Duration
-                  </span>
-                </div>
-                <div className="min-w-0 px-1.5 border-l border-[#e7eeff]">
-                  <span className="block text-[11px] leading-tight font-medium text-[#115eaf] truncate">
-                    {p.fee}
-                  </span>
-                  <span className="block text-[9px] leading-tight font-normal text-[#74777e]">
-                    Total Fee
-                  </span>
-                </div>
-                <div className="min-w-0 pl-1.5 border-l border-[#e7eeff]">
-                  <span className="block text-[11px] leading-tight font-medium text-[#000f22] truncate">
-                    {p.mode}
-                  </span>
-                  <span className="block text-[9px] leading-tight font-normal text-[#74777e]">
-                    Mode
-                  </span>
-                </div>
+              <div className="min-w-0 border-l border-[#e7eeff] pl-3">
+                <span className="block break-words text-xs leading-4 font-medium text-[#115eaf]">
+                  {secondaryFee || "Online"}
+                </span>
+                <span className="block text-[9px] uppercase tracking-wide text-[#74777e]">
+                  {secondaryFeeLabel}
+                </span>
               </div>
+            </div>
 
-              {
-      /* Specialisations */
-    }
-              <div className="py-2 flex-1">
-                <h4 className="m-0 mb-1.5 text-[10px] font-medium text-[#74777e] uppercase tracking-wide">
+            {visibleSpecs.length > 0 ? (
+              <div className="mt-2.5">
+                <h4 className="mb-1.5 text-[10px] font-medium uppercase tracking-wide text-[#74777e]">
                   Specialisations
                 </h4>
                 <div className="flex flex-wrap gap-1">
-                  {visibleSpecs.map((s) => <span
-      key={s}
-      className="px-1.5 py-0.5 border border-[#d5e3ff] rounded-[5px] bg-[#f0f3ff] text-[#43474d] text-[10px] leading-tight font-normal"
-    >
-                      {s}
-                    </span>)}
-                  {extraCount > 0 && <span className="px-1.5 py-0.5 border border-[#d5e3ff] rounded-[5px] bg-white text-[#115eaf] text-[10px] leading-tight font-semibold">
+                  {visibleSpecs.map((specialisation) => (
+                    <span
+                      key={specialisation}
+                      className="rounded-[5px] border border-[#d5e3ff] bg-[#f0f3ff] px-1.5 py-0.5 text-[10px] leading-tight text-[#43474d]"
+                    >
+                      {specialisation}
+                    </span>
+                  ))}
+                  {extraCount > 0 ? (
+                    <span className="rounded-[5px] border border-[#d5e3ff] px-1.5 py-0.5 text-[10px] leading-tight font-semibold text-[#115eaf]">
                       +{extraCount}
-                    </span>}
+                    </span>
+                  ) : null}
                 </div>
               </div>
+            ) : null}
 
-              {
-      /* Actions */
-    }
-              <div className="grid grid-cols-2 gap-1.5 pt-1 border-t border-[#e7eeff]">
-                {onOpenBrochure && <button
-      type="button"
-      onClick={(e) => {
-        e.stopPropagation();
-        onOpenBrochure();
-      }}
-      className="min-h-[44px] px-1.5 rounded-md text-[10px] font-semibold bg-white text-[#115eaf] border border-[#115eaf] hover:bg-[#f0f3ff] transition-colors flex items-center justify-center gap-1"
-    >
-                    <Download className="w-3 h-3" />
-                    Brochure
-                  </button>}
-                {onOpenApply && <button
-      type="button"
-      onClick={(e) => {
-        e.stopPropagation();
-        onOpenApply();
-      }}
-      className="min-h-[44px] px-1.5 rounded-md text-[10px] font-semibold bg-[#115eaf] text-white hover:bg-[#004689] transition-colors flex items-center justify-center gap-1 active:scale-95"
-    >
-                    Apply Now
-                    <ArrowRight className="w-2.5 h-2.5" />
-                  </button>}
+            {(onOpenBrochure || onOpenApply) ? (
+              <div className="mt-3 grid grid-cols-2 gap-1.5">
+                {onOpenBrochure ? (
+                  <button
+                    type="button"
+                    onClick={onOpenBrochure}
+                    className="min-h-10 rounded-lg border border-[#115eaf] bg-white px-2 text-[11px] font-semibold text-[#115eaf] transition-colors hover:bg-[#f0f3ff]"
+                  >
+                    <span className="flex items-center justify-center gap-1">
+                      <Download className="h-3 w-3" />
+                      Brochure
+                    </span>
+                  </button>
+                ) : null}
+                {onOpenApply ? (
+                  <button
+                    type="button"
+                    onClick={onOpenApply}
+                    className="min-h-10 rounded-lg bg-[#115eaf] px-2 text-[11px] font-semibold text-white transition-colors hover:bg-[#004689] active:scale-95"
+                  >
+                    <span className="flex items-center justify-center gap-1">
+                      Apply Now
+                      <ArrowRight className="h-3 w-3" />
+                    </span>
+                  </button>
+                ) : null}
               </div>
-            </article>;
-  })}
-      </div>
-    </section>;
-};
+            ) : null}
+          </article>
+        );
+      })}
+    </div>
+  </section>
+);

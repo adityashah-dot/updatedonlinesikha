@@ -9,12 +9,14 @@ import {
   Maximize2
 } from "lucide-react";
 const QUICK_TOPICS = [
-  { label: "Compare Fees", prompt: "Compare semester tuition fees and EMI options across top online universities" },
-  { label: "Online MBA", prompt: "What are the top universities, fees, and specializations for Online MBA?" },
-  { label: "Online MCA", prompt: "Tell me about Online MCA eligibility, fees, and top recruiters" },
-  { label: "UGC Validity", prompt: "Are UGC-DEB online degrees valid for government jobs and higher studies?" },
-  { label: "Scholarships", prompt: "What scholarships and early bird grants are available for students?" },
-  { label: "Eligibility", prompt: "What is the eligibility criteria and document checklist for admission?" }
+  { label: "Universities", prompt: "Which online universities are available?" },
+  { label: "Find a course", prompt: "Help me find a course based on my career goal" },
+  { label: "Affordable", prompt: "What are the most affordable online universities?" },
+  { label: "How to choose", prompt: "How do I choose the right online degree?" },
+  { label: "Admission steps", prompt: "What is the admission process for online courses?" },
+  { label: "Online MBA", prompt: "Which universities offer online MBA programs?" },
+  { label: "Before enrolling", prompt: "What should I check before enrolling in an online university?" },
+  { label: "Compare", prompt: "Can you compare two online universities?" }
 ];
 export const GeminiChatbot = ({
   isOpen,
@@ -108,6 +110,9 @@ export const GeminiChatbot = ({
         id: `assistant-${Date.now()}`,
         role: "assistant",
         text: data.text || "I apologize, could you please repeat your query?",
+        suggestions: Array.isArray(data.suggestions) ? data.suggestions.slice(0, 5) : [],
+        sources: Array.isArray(data.sources) ? data.sources.slice(0, 3) : [],
+        dataNote: data.dataNote || "",
         timestamp: (/* @__PURE__ */ new Date()).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
       };
       setMessages((prev) => [...prev, assistantMsg]);
@@ -116,9 +121,7 @@ export const GeminiChatbot = ({
       const errorMsg = {
         id: `assistant-err-${Date.now()}`,
         role: "assistant",
-        text: `I'm available to help verify **fee structures, eligibility requirements, and scholarships** across LPU, Amity, Chandigarh University, Manipal, Jain, and UPES.
-
-For direct guidance with university admissions counselors, you can also connect through our **Free Advisory Helpline**.`,
+        text: `I couldn't reach the admissions records service right now. Please try again in a moment.\n\nYou can still ask about **fee structures, eligibility requirements, and scholarships** across the listed online universities, or connect through our **Free Advisory Helpline**.`,
         timestamp: (/* @__PURE__ */ new Date()).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
       };
       setMessages((prev) => [...prev, errorMsg]);
@@ -271,17 +274,59 @@ For direct guidance with university admissions counselors, you can also connect 
               </div>
 
               <div
-      className={`max-w-[85%] break-words rounded-2xl ${isUser ? "bg-[#0b2540] text-white rounded-tr-xs px-4 py-3 shadow-xs font-sans text-xs sm:text-[13px] font-normal leading-relaxed" : "bg-white border border-[#e7eeff] text-[#1a222f] rounded-tl-xs p-4 sm:p-5 shadow-xs font-sans text-xs sm:text-[13px] leading-relaxed"}`}
+      className={`max-w-[85%] break-words ${isUser ? "" : "flex w-[85%] flex-col items-stretch"}`}
     >
-                {isUser ? <p className="my-0.5 text-white leading-relaxed font-sans">{msg.text}</p> : renderFormattedText(msg.text)}
+                <div
+      className={`break-words rounded-2xl ${isUser ? "bg-[#0b2540] text-white rounded-tr-xs px-4 py-3 shadow-xs font-sans text-xs sm:text-[13px] font-normal leading-relaxed" : "bg-white border border-[#e7eeff] text-[#1a222f] rounded-tl-xs p-4 sm:p-5 shadow-xs font-sans text-xs sm:text-[13px] leading-relaxed"}`}
+    >
+                  {isUser ? <p className="my-0.5 text-white leading-relaxed font-sans">{msg.text}</p> : renderFormattedText(msg.text)}
 
-                <span
+                  <span
       role="status"
       aria-live="polite"
       className={`block text-[10px] mt-2 font-normal font-sans ${isUser ? "text-slate-300 text-right" : "text-[#74777e]"}`}
     >
-                  {msg.timestamp}
-                </span>
+                    {msg.timestamp}
+                  </span>
+                </div>
+
+                {!isUser && (msg.dataNote || (msg.sources && msg.sources.length > 0) || (msg.suggestions && msg.suggestions.length > 0)) ? (
+                  <div className="mt-2 flex flex-col items-start gap-1.5">
+                    {msg.dataNote ? (
+                      <span className="text-[10px] italic text-[#74777e] font-sans">{msg.dataNote}</span>
+                    ) : null}
+                    {msg.sources && msg.sources.length > 0 ? (
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <span className="text-[10px] text-[#74777e] font-sans">Sources:</span>
+                        {msg.sources.map((url, sIdx) => (
+                          <a
+                            key={sIdx}
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="max-w-[180px] truncate text-[11px] font-semibold text-[#115eaf] hover:text-[#004689] hover:underline font-sans"
+                          >
+                            {url.replace(/^\/universities\//, "").replace(/-+/g, " ")}
+                          </a>
+                        ))}
+                      </div>
+                    ) : null}
+                    {msg.suggestions && msg.suggestions.length > 0 ? (
+                      <div className="flex flex-wrap items-center gap-2">
+                        {msg.suggestions.map((suggestion, sIdx) => (
+                          <button
+                            key={sIdx}
+                            type="button"
+                            onClick={() => sendMessage(suggestion)}
+                            className="px-3 py-1.5 bg-white hover:bg-[#eef4ff] text-[#004689] border border-[#d5e3ff] hover:border-[#115eaf] rounded-full text-xs font-semibold transition-colors cursor-pointer font-sans text-left"
+                          >
+                            {suggestion}
+                          </button>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                ) : null}
               </div>
             </div>;
   })}
@@ -361,7 +406,7 @@ export const ChatbotFloatingTrigger = ({ onClick }) => {
   return <button
     type="button"
     onClick={onClick}
-    className="fixed bottom-20 md:bottom-6 left-4 md:left-6 z-40 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#0b2540] hover:bg-[#115eaf] text-white shadow-xl shadow-slate-900/25 hover:shadow-2xl transition-all duration-200 flex items-center justify-center border-2 border-white active:scale-95 group font-sans cursor-pointer"
+    className="fixed bottom-[140px] right-4 md:bottom-[84px] md:right-6 z-40 h-14 w-14 rounded-full border border-white bg-[#0b2540] text-white shadow-xl shadow-slate-900/25 transition-all duration-200 flex items-center justify-center hover:bg-[#115eaf] hover:shadow-2xl active:scale-95 group font-sans cursor-pointer"
     aria-label="Open Admissions Desk AI Robot"
     title="Admissions Desk AI"
   >

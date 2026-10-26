@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ChevronDown, ShieldCheck, ArrowRight } from "lucide-react";
+import { ShieldCheck, ArrowRight } from "lucide-react";
+import { FaqAccordion } from "./FaqAccordion";
 const FAQ_ITEMS = [
   {
     category: "validity",
@@ -52,13 +53,9 @@ const CATEGORIES = [
 ];
 export const HomeFaq = ({ onOpenHelpDesk }) => {
   const [activeCategory, setActiveCategory] = useState("all");
-  const [openIndex, setOpenIndex] = useState(0);
   const filteredFaqs = FAQ_ITEMS.filter(
     (item) => activeCategory === "all" || item.category === activeCategory
   );
-  const toggleAccordion = (index) => {
-    setOpenIndex((prev) => prev === index ? null : index);
-  };
   return <section id="faqs" className="bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-5 md:p-7">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end pb-4 border-b border-[#c4c6ce]/40 gap-3">
         <div>
@@ -90,10 +87,7 @@ export const HomeFaq = ({ onOpenHelpDesk }) => {
         {CATEGORIES.map((cat) => <button
     key={cat.id}
     type="button"
-    onClick={() => {
-      setActiveCategory(cat.id);
-      setOpenIndex(0);
-    }}
+    onClick={() => setActiveCategory(cat.id)}
     className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap cursor-pointer ${activeCategory === cat.id ? "bg-[#115eaf] text-white font-semibold shadow-xs" : "bg-[#f0f4f8] text-[#43474d] hover:bg-[#e2e8f0] hover:text-[#000f22]"}`}
   >
             {cat.label}
@@ -101,39 +95,10 @@ export const HomeFaq = ({ onOpenHelpDesk }) => {
       </div>
 
       {
-    /* Accordion List */
+    /* Accordion List (shared accessible accordion) */
   }
-      <div className="divide-y divide-[#e7eeff] mt-2">
-        {filteredFaqs.map((faq, idx) => {
-    const isOpen = openIndex === idx;
-    return <div
-      key={idx}
-      className="py-3.5 transition-colors"
-    >
-              <button
-      type="button"
-      onClick={() => toggleAccordion(idx)}
-      aria-expanded={isOpen}
-      className="w-full text-left flex items-center justify-between gap-4 py-1 text-sm sm:text-[15px] font-semibold text-[#000f22] hover:text-[#115eaf] transition-colors cursor-pointer group"
-    >
-                <span className="flex items-center gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-[#f0f4f8] group-hover:bg-[#d5e3ff] text-[#115eaf] text-[11px] font-bold flex items-center justify-center shrink-0 transition-colors">
-                    {idx + 1}
-                  </span>
-                  <span>{faq.question}</span>
-                </span>
-                <span
-      className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180 bg-[#f0f4f8] text-[#115eaf]" : "text-[#74777e] group-hover:bg-[#f0f4f8]"}`}
-    >
-                  <ChevronDown className="w-4 h-4" />
-                </span>
-              </button>
-
-              {isOpen && <div className="mt-2 pl-7.5 pr-4 text-xs sm:text-[13px] text-[#43474d] leading-relaxed font-normal whitespace-pre-line animate-fade-in">
-                  {faq.answer}
-                </div>}
-            </div>;
-  })}
+      <div className="mt-2">
+        <FaqAccordion items={filteredFaqs} variant="list" defaultOpenIndex={0} key={activeCategory} />
       </div>
 
       {

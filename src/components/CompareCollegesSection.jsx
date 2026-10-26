@@ -36,14 +36,18 @@ export const CompareCollegesSection = ({
 
             <div className="flex gap-4 items-center">
               <div className="w-[115px] h-[85px] shrink-0 rounded-lg border border-[#e7eeff] bg-white flex items-center justify-center overflow-hidden">
-                <img
-    src={logo}
-    alt={`${name} Logo`}
-    className="max-w-full max-h-full object-contain p-1.5"
-    onError={(e) => {
-      e.target.style.display = "none";
-    }}
-  />
+                {logo ? <img
+                  src={logo}
+                  alt={`${name} Logo`}
+                  className="max-w-full max-h-full object-contain p-1.5"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                    e.currentTarget.nextElementSibling?.classList.remove("hidden");
+                  }}
+                /> : null}
+                <span className={`text-[17px] font-semibold text-[#115eaf] ${logo ? "hidden" : ""}`} aria-label={`${name} Logo`}>
+                  {String(name || "").split(/\s+/).map((part) => part[0]).join("").slice(0, 4)}
+                </span>
               </div>
               <div>
                 <h3 className="mb-1.5 text-[19px] leading-tight font-extrabold text-[#000f22] font-sans">
@@ -67,7 +71,7 @@ export const CompareCollegesSection = ({
           </div>
 
           <button
-    onClick={() => onOpenBrochure()}
+    onClick={() => onOpenBrochure?.()}
     className="w-full h-11 mt-4 flex items-center justify-center gap-2 rounded-lg border border-[#115eaf] bg-white text-[#115eaf] text-sm font-bold hover:bg-[#f0f3ff] transition-all"
   >
             <Download className="w-4 h-4" />
@@ -98,7 +102,7 @@ export const CompareCollegesSection = ({
             </p>
           </div>
           <button
-    onClick={() => onOpenHelpDesk()}
+    onClick={() => onOpenHelpDesk?.()}
     className="w-full h-11 mt-4 rounded-lg border-none bg-[#0b2540] text-white text-sm font-bold hover:bg-[#011c37] transition-all"
   >
             Add College

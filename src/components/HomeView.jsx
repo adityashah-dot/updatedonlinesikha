@@ -17,8 +17,8 @@ import { HomeFaq } from "./HomeFaq";
 import { TopCollegesByLocation } from "./TopCollegesByLocation";
 import { StudentTestimonials } from "./StudentTestimonials";
 import { PopularCoursesMobile } from "./PopularCoursesMobile";
-import { CompareCollegesCarousel } from "./CompareCollegesCarousel";
 import { BlogsListSection } from "./BlogsListSection";
+import { LpuCompareSection } from "./LpuCompareSection";
 const TRENDING_FILTERS = [
   "NAAC A++ Only",
   "Under \u20B91 Lakh Total",
@@ -192,7 +192,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
     e.preventDefault();
     navigate("/universities");
   };
-  return <div className="w-full max-w-[1280px] mx-auto px-4 md:px-6 py-5 space-y-5">
+  return <div className="w-full mx-auto px-4 md:px-6 py-5 space-y-5">
       {
     /* Hero */
   }
@@ -322,7 +322,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
       {
     /* Degree programs */
   }
-      <section id="degrees" className="bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-[17px]">
+      <section id="degrees" className="w-full bg-transparent p-0">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center pb-4 border-b border-[#c4c6ce]/40 gap-3">
           <div>
             <h2 className="text-[20px] sm:text-2xl font-bold text-[#000f22]">Popular Online Degree Programs</h2>
@@ -388,7 +388,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
       {
     /* Featured universities */
   }
-      <section id="universities" className="bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-[17px]">
+      <section id="universities" className="w-full bg-transparent p-0">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center pb-4 border-b border-[#c4c6ce]/40 gap-2">
           <div>
             <div className="flex items-center gap-2">
@@ -529,15 +529,15 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
   }
       <TopCollegesByLocation onOpenBrochure={onOpenHelpDesk} />
 
+      <LpuCompareSection
+        onOpenBrochure={onOpenHelpDesk}
+        onOpenHelpDesk={onOpenHelpDesk}
+      />
+
       {
     /* Student Testimonials & Social Proof */
   }
       <StudentTestimonials onOpenCounseling={onOpenHelpDesk} />
-
-      {
-    /* Compare Colleges */
-  }
-      <CompareCollegesCarousel />
 
       {
     /* Counselling Section */
@@ -549,9 +549,6 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         {
     /* Subtle ambient lighting */
   }
-        <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#b9daff]/30 blur-3xl pointer-events-none -z-10" />
-        <div className="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-[#b9daff]/20 blur-3xl pointer-events-none -z-10" />
-
         <div className="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-5 lg:grid-cols-[minmax(0,1.08fr)_minmax(400px,0.92fr)] lg:gap-7">
           {
     /* Left Column: Copy & Trust Highlights */
@@ -563,7 +560,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             </div>
 
             <div className="mt-4 space-y-2">
-              <h2 className="max-w-[680px] text-[clamp(26px,2.7vw,40px)] font-bold leading-[1.2] tracking-[-1px] text-[#0b1d3a]">
+              <h2 className="max-w-[680px] text-[clamp(22px,2.2vw,32px)] font-bold leading-[1.2] tracking-[-0.6px] text-[#0b1d3a]">
                 Confused Between 50+ Universities? Speak with an <span className="text-[#3478ed]">Unbiased Academic Expert</span>
               </h2>
               <p className="max-w-[660px] text-xs sm:text-sm text-[#657185] font-normal leading-[1.6]">
@@ -709,6 +706,6 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
       {
     /* Blogs */
   }
-      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} />
+      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="relative left-1/2 w-screen -translate-x-1/2 bg-transparent px-3 md:px-4" compact horizontal />
     </div>;
 };

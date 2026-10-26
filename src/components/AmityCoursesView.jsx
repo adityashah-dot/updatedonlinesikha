@@ -41,6 +41,8 @@ const AMITY_PROGRAMME_CARDS = AMITY_UNIVERSITY_DATA.courses.map((c) => ({
   subtitle: `${c.level === "PG" ? "Postgraduate" : "Undergraduate"} Programme`,
   duration: c.duration.replace(/\s*\(.*\)/, ""),
   fee: c.totalFee,
+  semesterFee: c.feePerSemester,
+  description: c.description,
   mode: "Online",
   specialisations: c.specializations
 }));
@@ -667,6 +669,7 @@ export const AmityCoursesView = ({
     onOpenHelpDesk={onOpenHelpDesk}
     sectionId="blogs"
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+    compact
   />
 
           {

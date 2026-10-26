@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 export const AdmissionFlowSteps = ({ steps }) => {
   const [visibleSteps, setVisibleSteps] = useState([]);
+  const flowRef = useRef(null);
   useEffect(() => {
     setVisibleSteps([]);
-    const stepNodes = Array.from(document.querySelectorAll(".admission-flow-step"));
+    const stepNodes = Array.from(flowRef.current?.querySelectorAll(".admission-flow-step") || []);
     if (!stepNodes.length) return;
     if (!("IntersectionObserver" in window)) {
       setVisibleSteps(stepNodes.map((_, index) => index));
@@ -21,11 +22,11 @@ export const AdmissionFlowSteps = ({ steps }) => {
           }
         });
       },
-      { threshold: 0.35 }
+      { threshold: 0.01, rootMargin: "0px 0px 10% 0px" }
     );
     stepNodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
-  }, [steps.length]);
+  }, [steps]);
   return <>
       <style>{`
         .admission-flow-step {
@@ -145,7 +146,7 @@ export const AdmissionFlowSteps = ({ steps }) => {
         }
       `}</style>
 
-      <div className="mt-[18px] flex flex-col gap-3">
+      <div ref={flowRef} className="mt-[18px] flex flex-col gap-3">
         {steps.map((step, i) => {
     const stepNo = String(i + 1).padStart(2, "0");
     const isVisible = visibleSteps.includes(i);

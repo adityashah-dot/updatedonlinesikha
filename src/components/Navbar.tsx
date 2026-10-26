@@ -51,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <img
             src="/logo.svg"
             alt="Online Siksha - Higher Education Gateway"
-            className="h-10 w-auto sm:h-11"
+            className="h-11 w-auto sm:h-12"
           />
         </div>
 

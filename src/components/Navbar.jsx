@@ -33,7 +33,7 @@ export const Navbar = ({
           <img
     src="/logo.svg"
     alt="Online Siksha - Higher Education Gateway"
-    className="h-10 w-auto max-w-[132px] object-contain object-left sm:h-11"
+    className="h-11 w-auto max-w-[160px] object-contain object-left sm:h-12 sm:max-w-[176px]"
   />
         </div>
 
