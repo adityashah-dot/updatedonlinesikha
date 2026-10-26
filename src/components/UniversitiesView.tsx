@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useMediaQuery } from '../hooks/useMediaQuery';
 import {
   Search,
   ArrowRight,
@@ -14,7 +13,7 @@ import {
   Video,
   TrendingUp,
   Download,
-  CheckCircle,
+  ArrowLeftRight,
   ChevronDown,
   ExternalLink,
   HelpCircle,
@@ -23,7 +22,6 @@ import {
   ChevronRight,
   List,
   LayoutGrid,
-  X,
   Award,
   Globe,
   ClipboardCheck,
@@ -39,13 +37,8 @@ import {
   Briefcase,
   Fuel,
   Trophy,
-  Flame,
-  ScrollText,
-  IndianRupee,
-  GraduationCap,
 } from 'lucide-react';
 import { DEGREEFYD_LPU_API } from '../data/apiData';
-import { BlogsListSection } from './BlogsListSection';
 
 interface UniversitiesViewProps {
   onOpenApply: (courseId?: string) => void;
@@ -54,12 +47,12 @@ interface UniversitiesViewProps {
 }
 
 const TRENDING = [
-  { icon: Flame, label: 'NAAC A++ Only', id: 'naac' },
-  { icon: ScrollText, label: 'UGC-DEB 100% Entitled', id: 'ugc' },
-  { icon: IndianRupee, label: 'Fees under ₹1 Lakh', id: 'fees' },
-  { icon: GraduationCap, label: 'Online MBA Top Picks', id: 'mba' },
-  { icon: Briefcase, label: '100% Placement Support', id: 'placement' },
-  { icon: CreditCard, label: 'Zero Cost EMI', id: 'emi' },
+  { icon: '🔥', label: 'NAAC A++ Only', id: 'naac' },
+  { icon: '📜', label: 'UGC-DEB 100% Entitled', id: 'ugc' },
+  { icon: '💰', label: 'Fees under ₹1 Lakh', id: 'fees' },
+  { icon: '🎓', label: 'Online MBA Top Picks', id: 'mba' },
+  { icon: '💼', label: '100% Placement Support', id: 'placement' },
+  { icon: '💳', label: 'Zero Cost EMI', id: 'emi' },
 ];
 
 const DEGREE_FILTERS = [
@@ -67,8 +60,6 @@ const DEGREE_FILTERS = [
   'Undergraduate (BBA, BCA, BA)',
   'Executive & PG Diploma',
 ];
-
-const TOOLBAR_QUICK_CHIPS = ['100% Entitled', 'NAAC A++', 'EMI Available', 'UGC-DEB'];
 
 const APPROVAL_FILTERS = [
   { label: 'UGC-DEB Approved', count: 48, checked: true },
@@ -88,45 +79,6 @@ const FEE_RANGES = [
 
 const EXAM_MODES = ['100% Online Proctored', 'Designated Center Based'];
 const PAYMENT_MODES = ['No-Cost Monthly EMI', 'Pay-Per-Semester Plan'];
-
-type MatrixUniversity = (typeof DEGREEFYD_LPU_API.onlineUniversities)[number];
-type MatrixCell = { text: string; tone?: string; badge?: boolean };
-
-const COMPARE_MATRIX_ROWS: { param: string; getCell: (u: MatrixUniversity) => MatrixCell }[] = [
-  {
-    param: 'UGC-DEB Statutory Entitlement',
-    getCell: (u) =>
-      u.approvals.some((a) => a.includes('UGC-DEB'))
-        ? { text: 'Category-1 Approved', tone: 'text-emerald-700 font-semibold' }
-        : { text: u.approvals[0], tone: 'text-emerald-700 font-semibold' },
-  },
-  {
-    param: 'NAAC Accreditation Grade',
-    getCell: (u) => ({ text: u.naac.replace('NAAC ', ''), badge: true }),
-  },
-  {
-    param: 'NIRF Ranking',
-    getCell: (u) => ({ text: u.rankNote }),
-  },
-  {
-    param: 'Total Program Fees',
-    getCell: (u) => ({ text: u.feeLabel, tone: 'font-bold text-[#000f22]' }),
-  },
-  {
-    param: 'Monthly 0-Cost EMI Option',
-    getCell: (u) => ({ text: u.emi, tone: 'text-emerald-700 font-semibold' }),
-  },
-  {
-    param: 'Examination Methodology',
-    getCell: (u) => ({
-      text: u.specs.find((s) => /exam/i.test(s.label))?.value || u.specs[0].value,
-    }),
-  },
-  {
-    param: 'Campus Location',
-    getCell: (u) => ({ text: u.location }),
-  },
-];
 
 const DEGREES = [
   {
@@ -242,7 +194,6 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
   onOpenBrochure,
 }) => {
   const navigate = useNavigate();
-  const isDesktop = useMediaQuery('(min-width: 768px)');
   const [view, setView] = useState<'list' | 'grid'>('list');
   const [compared, setCompared] = useState<string[]>(['lpu-online', 'cu-online']);
   const [activeTrending, setActiveTrending] = useState<string | null>(null);
@@ -253,22 +204,6 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
   const [feeRange, setFeeRange] = useState<number>(1);
   const [examChecked, setExamChecked] = useState<boolean[]>([true, false]);
   const [paymentChecked, setPaymentChecked] = useState<boolean[]>([true, true]);
-  const [filtersOpen, setFiltersOpen] = useState(false);
-  const [quickChips, setQuickChips] = useState<string[]>([]);
-
-  const toggleQuickChip = (chip: string) => {
-    setQuickChips((prev) =>
-      prev.includes(chip) ? prev.filter((c) => c !== chip) : [...prev, chip]
-    );
-  };
-
-  const resetFilters = () => {
-    setDegreeChecked([true, true, false]);
-    setApprovalChecked(APPROVAL_FILTERS.map((a) => a.checked));
-    setFeeRange(1);
-    setExamChecked([true, false]);
-    setPaymentChecked([true, true]);
-  };
 
   const toggleCompare = (id: string) => {
     setCompared((prev) => {
@@ -278,168 +213,11 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
     });
   };
 
-  const compareList = DEGREEFYD_LPU_API.onlineUniversities.filter((u) =>
-    compared.includes(u.id)
-  );
-
-  const filterBody = (
-    <>
-      <div className="pt-4 divide-y divide-[#e7eeff]">
-        {/* Degree Level */}
-        <div className="pb-5">
-          <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
-            <span>Degree Level</span>
-            <ChevronDown className="w-4 h-4 text-[#74777e]" />
-          </h2>
-          <div className="space-y-2.5">
-            {DEGREE_FILTERS.map((d, i) => (
-              <label key={d} className="flex items-center gap-2.5 cursor-pointer py-1">
-                <input
-                  type="checkbox"
-                  checked={degreeChecked[i]}
-                  onChange={() =>
-                    setDegreeChecked((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
-                  }
-                  className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
-                />
-                <span className="text-[13px] font-normal text-[#000f22]">{d}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Approvals */}
-        <div className="py-5">
-          <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
-            <span>Approvals &amp; Accreditations</span>
-            <ChevronDown className="w-4 h-4 text-[#74777e]" />
-          </h2>
-          <div className="space-y-2.5">
-            {APPROVAL_FILTERS.map((a, i) => (
-              <label key={a.label} className="flex items-center justify-between gap-2 cursor-pointer py-1">
-                <span className="flex items-center gap-2.5 min-w-0">
-                  <input
-                    type="checkbox"
-                    checked={approvalChecked[i]}
-                    onChange={() =>
-                      setApprovalChecked((prev) =>
-                        prev.map((v, idx) => (idx === i ? !v : v))
-                      )
-                    }
-                    className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce] shrink-0"
-                  />
-                  <span className="text-[13px] font-normal text-[#000f22]">{a.label}</span>
-                </span>
-                <span className="text-[11px] font-semibold text-[#74777e] bg-[#f0f3ff] px-2 py-0.5 rounded-full shrink-0">
-                  {a.count}
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Fee */}
-        <div className="py-5">
-          <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
-            <span>Total Course Fee</span>
-            <ChevronDown className="w-4 h-4 text-[#74777e]" />
-          </h2>
-          <div className="space-y-2">
-            {FEE_RANGES.map((f, i) => (
-              <label key={f} className="flex items-center gap-2.5 cursor-pointer py-1">
-                <input
-                  type="radio"
-                  name="fee_filter"
-                  checked={feeRange === i}
-                  onChange={() => setFeeRange(i)}
-                  className="w-4 h-4 text-[#115eaf] border-[#c4c6ce]"
-                />
-                <span className="text-[13px] font-normal text-[#000f22]">{f}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Exam Mode */}
-        <div className="py-5">
-          <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
-            <span>Examination Mode</span>
-            <ChevronDown className="w-4 h-4 text-[#74777e]" />
-          </h2>
-          <div className="space-y-2.5">
-            {EXAM_MODES.map((m, i) => (
-              <label key={m} className="flex items-center gap-2.5 cursor-pointer py-1">
-                <input
-                  type="checkbox"
-                  checked={examChecked[i]}
-                  onChange={() =>
-                    setExamChecked((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
-                  }
-                  className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
-                />
-                <span className="text-[13px] font-normal text-[#000f22]">{m}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Payment */}
-        <div className="pt-5">
-          <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
-            <span>Payment Flexibility</span>
-            <ChevronDown className="w-4 h-4 text-[#74777e]" />
-          </h2>
-          <div className="space-y-2.5">
-            {PAYMENT_MODES.map((m, i) => (
-              <label key={m} className="flex items-center gap-2.5 cursor-pointer py-1">
-                <input
-                  type="checkbox"
-                  checked={paymentChecked[i]}
-                  onChange={() =>
-                    setPaymentChecked((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
-                  }
-                  className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
-                />
-                <span className="text-[13px] font-normal text-[#000f22]">{m}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Sidebar promo */}
-      <div className="mt-6 p-4 rounded-xl bg-gradient-to-br from-[#f0f3ff] to-[#e7eeff] border border-[#d5e3ff] shadow-xs">
-        <div className="flex items-start gap-3">
-          <div className="w-9 h-9 rounded-xl bg-[#115eaf] text-white flex items-center justify-center shrink-0 shadow-xs">
-            <BadgeCheck className="w-5 h-5" />
-          </div>
-          <div>
-            <h3 className="text-sm font-bold text-[#000f22]">Confused about approvals?</h3>
-            <p className="text-xs font-normal text-[#43474d] mt-1 leading-snug">
-              Talk to an unbiased UGC counsellor to verify your degree validity and fee waivers.
-            </p>
-            <button
-              onClick={onOpenHelpDesk}
-              className="mt-2.5 text-xs font-semibold text-[#115eaf] hover:underline inline-flex items-center min-h-[44px]"
-            >
-              <span>Book 1-on-1 Call</span>
-              <ArrowRight className="w-3.5 h-3.5 ml-1" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-
   return (
     <div className="pb-20 md:pb-8">
       {/* ================= HERO & DISCOVERY SEARCH BAR ================= */}
-      <section className="uv-hero relative overflow-hidden border-b border-[#e7eeff] bg-[#f2f6fb] pt-4 pb-5 sm:pt-8 sm:pb-10 shadow-[0_18px_45px_rgba(15,23,42,0.02)]">
-        <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-r from-[#eaf3ff]/80 via-[#f3f8ff]/40 to-[#edfdf7]/50 blur-2xl" />
-        <div className="absolute -left-12 top-10 h-36 w-36 rounded-full bg-[#93c5fd]/10 blur-3xl" />
-        <div className="absolute -right-12 bottom-0 h-40 w-40 rounded-full bg-[#a7f3d0]/10 blur-3xl" />
-
-        <div className="uv-search-shell relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-gradient-to-b from-[#f0f3ff] via-white to-[#f9f9ff] border-b border-[#e7eeff] pt-8 pb-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-7">
             <div className="mb-3 text-[11px] font-medium text-[#43474d]">
               <span className="text-[#115eaf] font-semibold">Accredited by UGC, AICTE &amp; NAAC</span>
@@ -456,14 +234,14 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
           </div>
 
           {/* Search Console */}
-          <div className="uv-search-card bg-white rounded-2xl p-4 md:p-5 border border-[#d5e3ff] shadow-lg max-w-4xl mx-auto">
-            <div className="uv-search-fields grid grid-cols-1 md:grid-cols-12 gap-3">
+          <div className="bg-white rounded-2xl p-4 md:p-5 border border-[#d5e3ff] shadow-lg max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
               <div className="md:col-span-6 relative flex items-center">
                 <Search className="absolute left-3.5 text-[#115eaf] w-5 h-5" />
                 <input
                   type="text"
-                  placeholder="Search university or degree"
-                  className="uv-field w-full pl-10 pr-4 py-3 min-h-[48px] bg-[#f9f9ff] rounded-xl border border-[#c4c6ce] text-[#000f22] placeholder:text-[#74777e] text-base sm:text-sm focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all font-normal"
+                  placeholder="Search university, degree (e.g. LPU, Amity, Online MBA)..."
+                  className="w-full pl-10 pr-4 py-3 bg-[#f9f9ff] rounded-xl border border-[#c4c6ce] text-[#000f22] placeholder:text-[#74777e] text-sm focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all font-normal"
                 />
               </div>
 
@@ -483,7 +261,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                     <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5" />
                   </svg>
                 </span>
-                <select className="uv-field w-full pl-10 pr-8 py-3 min-h-[48px] bg-[#f9f9ff] rounded-xl border border-[#c4c6ce] text-[#000f22] text-base sm:text-sm focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all appearance-none cursor-pointer font-normal">
+                <select className="w-full pl-10 pr-8 py-3 bg-[#f9f9ff] rounded-xl border border-[#c4c6ce] text-[#000f22] text-sm focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all appearance-none cursor-pointer font-normal">
                   <option value="all">All Degree Categories</option>
                   <option value="management">Management (MBA, BBA, Executive)</option>
                   <option value="technology">Technology &amp; IT (MCA, BCA, M.Sc)</option>
@@ -493,46 +271,41 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                 <ChevronDown className="absolute right-3 text-[#74777e] pointer-events-none w-4 h-4" />
               </div>
 
-              <div className="md:col-span-2 mt-[2px] md:mt-0">
-                <button className="uv-find-btn w-full h-full min-h-[48px] py-3 px-4 bg-[#115eaf] hover:bg-[#004689] text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all">
-                  <span>Find Universities</span>
+              <div className="md:col-span-2">
+                <button className="w-full h-full py-3 px-4 bg-[#115eaf] hover:bg-[#004689] text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all">
+                  <span>Find Univs</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
             </div>
 
             {/* Trending pills */}
-            <div className="uv-trending flex items-center gap-2 pt-3.5 mt-3.5 md:mt-3 border-t border-[#e7eeff]">
-              <span className="text-[11px] text-[#74777e] uppercase font-semibold whitespace-nowrap shrink-0">
+            <div className="flex items-center gap-2 pt-3.5 mt-3 border-t border-[#e7eeff] overflow-x-auto hide-scrollbar">
+              <span className="text-[11px] text-[#74777e] uppercase font-semibold whitespace-nowrap">
                 Trending:
               </span>
-              <div className="flex items-center gap-2 flex-1 min-w-0 overflow-x-auto hide-scrollbar">
-                {TRENDING.map((t) => {
-                  const Icon = t.icon;
-                  return (
-                    <button
-                      key={t.id}
-                      onClick={() => setActiveTrending(activeTrending === t.id ? null : t.id)}
-                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] rounded-full text-[11px] transition-colors whitespace-nowrap shrink-0 font-medium border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-1 ${
-                        activeTrending === t.id
-                          ? 'bg-[#115eaf] text-white border-[#115eaf]'
-                          : 'bg-white text-[#000f22] border-[#d5e3ff] hover:bg-[#f0f3ff] hover:border-[#115eaf]'
-                      }`}
-                    >
-                      <Icon className="w-3.5 h-3.5 shrink-0" />
-                      <span>{t.label}</span>
-                    </button>
-                  );
-                })}
-              </div>
+              {TRENDING.map((t) => (
+                <button
+                  key={t.id}
+                  onClick={() => setActiveTrending(activeTrending === t.id ? null : t.id)}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] transition-colors whitespace-nowrap font-medium border ${
+                    activeTrending === t.id
+                      ? 'bg-[#115eaf] text-white border-[#115eaf]'
+                      : 'bg-white text-[#000f22] border-[#d5e3ff] hover:bg-[#f0f3ff] hover:border-[#115eaf]'
+                  }`}
+                >
+                  <span>{t.icon}</span>
+                  <span>{t.label}</span>
+                </button>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* ================= MAIN: FILTERS + LISTING ================= */}
-      <main className="uv-listing max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2 sm:py-8 bg-[#f3f6fb] rounded-t-[18px] sm:rounded-t-[28px]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* LEFT SIDEBAR FILTERS */}
           <aside className="lg:col-span-3 bg-white rounded-2xl border border-[#d5e3ff] p-5 shadow-xs sticky top-20 hidden lg:block">
             <div className="flex items-center justify-between pb-4 border-b border-[#e7eeff]">
@@ -544,162 +317,217 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                 </span>
               </div>
               <button
-                onClick={resetFilters}
+                onClick={() => {
+                  setDegreeChecked([true, true, false]);
+                  setApprovalChecked(APPROVAL_FILTERS.map((a) => a.checked));
+                  setFeeRange(1);
+                  setExamChecked([true, false]);
+                  setPaymentChecked([true, true]);
+                }}
                 className="text-[#115eaf] text-xs hover:underline font-semibold"
               >
                 Reset
               </button>
             </div>
-            {filterBody}
+
+            <div className="pt-4 divide-y divide-[#e7eeff]">
+              {/* Degree Level */}
+              <div className="pb-5">
+                <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
+                  <span>Degree Level</span>
+                  <ChevronDown className="w-4 h-4 text-[#74777e]" />
+                </h2>
+                <div className="space-y-2.5">
+                  {DEGREE_FILTERS.map((d, i) => (
+                    <label key={d} className="flex items-center gap-2.5 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={degreeChecked[i]}
+                        onChange={() =>
+                          setDegreeChecked((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
+                        }
+                        className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
+                      />
+                      <span className="text-[13px] font-normal text-[#000f22]">{d}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Approvals */}
+              <div className="py-5">
+                <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
+                  <span>Approvals &amp; Accreditations</span>
+                  <ChevronDown className="w-4 h-4 text-[#74777e]" />
+                </h2>
+                <div className="space-y-2.5">
+                  {APPROVAL_FILTERS.map((a, i) => (
+                    <label key={a.label} className="flex items-center justify-between cursor-pointer">
+                      <span className="flex items-center gap-2.5">
+                        <input
+                          type="checkbox"
+                          checked={approvalChecked[i]}
+                          onChange={() =>
+                            setApprovalChecked((prev) =>
+                              prev.map((v, idx) => (idx === i ? !v : v))
+                            )
+                          }
+                          className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
+                        />
+                        <span className="text-[13px] font-normal text-[#000f22]">{a.label}</span>
+                      </span>
+                      <span className="text-[11px] font-semibold text-[#74777e] bg-[#f0f3ff] px-2 py-0.5 rounded-full">
+                        {a.count}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Fee */}
+              <div className="py-5">
+                <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
+                  <span>Total Course Fee</span>
+                  <ChevronDown className="w-4 h-4 text-[#74777e]" />
+                </h2>
+                <div className="space-y-2">
+                  {FEE_RANGES.map((f, i) => (
+                    <label key={f} className="flex items-center gap-2.5 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="fee_filter"
+                        checked={feeRange === i}
+                        onChange={() => setFeeRange(i)}
+                        className="w-4 h-4 text-[#115eaf] border-[#c4c6ce]"
+                      />
+                      <span className="text-[13px] font-normal text-[#000f22]">{f}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Exam Mode */}
+              <div className="py-5">
+                <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
+                  <span>Examination Mode</span>
+                  <ChevronDown className="w-4 h-4 text-[#74777e]" />
+                </h2>
+                <div className="space-y-2.5">
+                  {EXAM_MODES.map((m, i) => (
+                    <label key={m} className="flex items-center gap-2.5 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={examChecked[i]}
+                        onChange={() =>
+                          setExamChecked((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
+                        }
+                        className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
+                      />
+                      <span className="text-[13px] font-normal text-[#000f22]">{m}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Payment */}
+              <div className="pt-5">
+                <h2 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-3 flex items-center justify-between">
+                  <span>Payment Flexibility</span>
+                  <ChevronDown className="w-4 h-4 text-[#74777e]" />
+                </h2>
+                <div className="space-y-2.5">
+                  {PAYMENT_MODES.map((m, i) => (
+                    <label key={m} className="flex items-center gap-2.5 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={paymentChecked[i]}
+                        onChange={() =>
+                          setPaymentChecked((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
+                        }
+                        className="w-4 h-4 rounded text-[#115eaf] border-[#c4c6ce]"
+                      />
+                      <span className="text-[13px] font-normal text-[#000f22]">{m}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Sidebar promo */}
+            <div className="mt-6 p-4 rounded-xl bg-gradient-to-br from-[#f0f3ff] to-[#e7eeff] border border-[#d5e3ff] shadow-xs">
+              <div className="flex items-start gap-3">
+                <div className="w-9 h-9 rounded-xl bg-[#115eaf] text-white flex items-center justify-center shrink-0 shadow-xs">
+                  <BadgeCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-[#000f22]">Confused about approvals?</h3>
+                  <p className="text-xs font-normal text-[#43474d] mt-1 leading-snug">
+                    Talk to an unbiased UGC counsellor to verify your degree validity and fee waivers.
+                  </p>
+                  <button
+                    onClick={onOpenHelpDesk}
+                    className="mt-2.5 text-xs font-semibold text-[#115eaf] hover:underline inline-flex items-center"
+                  >
+                    <span>Book 1-on-1 Call</span>
+                    <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                  </button>
+                </div>
+              </div>
+            </div>
           </aside>
 
           {/* RIGHT LISTINGS */}
-          <section className="lg:col-span-9 space-y-2.5 sm:space-y-5" id="university-listings-container">
+          <section className="lg:col-span-9 space-y-5" id="university-listings-container">
             {/* Toolbar */}
-            <div>
-            {/* Toolbar - mobile */}
-            <div className="md:hidden bg-white border border-[#dfe6ec] rounded-xl p-2">
+            <div className="bg-white p-3.5 px-4 rounded-xl border border-[#d5e3ff] flex flex-wrap items-center justify-between gap-3 shadow-xs">
               <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => setFiltersOpen(true)}
-                  aria-label="Open filters"
-                  className="shrink-0 h-11 px-3.5 inline-flex items-center gap-2 border border-[#dfe6ec] rounded-[10px] bg-white text-sm font-medium text-[#14171a] cursor-pointer"
-                >
-                  <SlidersHorizontal className="w-4 h-4 text-[#115eaf]" />
-                  <span>Filter</span>
-                  {quickChips.length > 0 && (
-                    <span className="min-w-[18px] h-[18px] px-1.5 rounded-full bg-[#115eaf] text-white text-[11px] flex items-center justify-center">
-                      {quickChips.length}
-                    </span>
-                  )}
-                </button>
-
-                <div className="relative flex-1 min-w-0">
-                  <select
-                    aria-label="Sort by"
-                    className="w-full h-11 border border-[#dfe6ec] rounded-[10px] pl-3 pr-8 bg-white text-[13px] font-medium text-[#14171a] appearance-none cursor-pointer truncate focus:outline-none"
-                  >
+                <span className="text-sm font-bold text-[#000f22]">
+                  Showing {DEGREEFYD_LPU_API.onlineUniversities.length} Verified Universities
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#c4c6ce]" />
+                <span className="text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-semibold">
+                  100% Entitled
+                </span>
+              </div>
+              <div className="flex items-center gap-3 ml-auto">
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] text-[#74777e] font-medium hidden sm:inline">
+                    Sort By:
+                  </span>
+                  <select className="py-1.5 px-3 bg-white rounded-lg border border-[#c4c6ce] text-[#000f22] text-xs font-medium focus:ring-1 focus:ring-[#115eaf] cursor-pointer">
                     <option>NIRF Ranking (Top First)</option>
                     <option>Fee: Low to High</option>
-                    <option>Fee: High to Low</option>
-                    <option>Highest CTC</option>
+                    <option>Student Rating</option>
+                    <option>Most Applied Programs</option>
                   </select>
-                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#74777e] pointer-events-none" />
                 </div>
-
-                <div className="shrink-0 flex border border-[#dfe6ec] rounded-[10px] overflow-hidden">
+                <div className="flex items-center border border-[#c4c6ce] rounded-lg p-0.5 bg-[#f0f3ff]">
                   <button
-                    type="button"
                     onClick={() => setView('list')}
-                    aria-label="List view"
-                    aria-pressed={view === 'list'}
-                    className={`w-11 h-11 flex items-center justify-center cursor-pointer ${
-                      view === 'list' ? 'bg-[#115eaf] text-white' : 'bg-white text-[#74777e]'
+                    title="List View"
+                    aria-label="Switch to List View"
+                    className={`p-1.5 rounded-md transition-all duration-150 cursor-pointer flex items-center justify-center ${
+                      view === 'list'
+                        ? 'bg-[#115eaf] text-white shadow-xs'
+                        : 'text-[#74777e] hover:text-[#000f22] hover:bg-[#dee8ff]'
                     }`}
                   >
                     <List className="w-4 h-4" />
                   </button>
                   <button
-                    type="button"
                     onClick={() => setView('grid')}
-                    aria-label="Grid view"
-                    aria-pressed={view === 'grid'}
-                    className={`w-11 h-11 flex items-center justify-center cursor-pointer ${
-                      view === 'grid' ? 'bg-[#115eaf] text-white' : 'bg-white text-[#74777e]'
+                    title="Grid View"
+                    aria-label="Switch to Grid View"
+                    className={`p-1.5 rounded-md transition-all duration-150 cursor-pointer flex items-center justify-center ${
+                      view === 'grid'
+                        ? 'bg-[#115eaf] text-white shadow-xs'
+                        : 'text-[#74777e] hover:text-[#000f22] hover:bg-[#dee8ff]'
                     }`}
                   >
                     <LayoutGrid className="w-4 h-4" />
                   </button>
                 </div>
               </div>
-
-              <div className="flex gap-2 mt-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-                {TOOLBAR_QUICK_CHIPS.map((chip) => {
-                  const on = quickChips.includes(chip);
-                  return (
-                    <button
-                      key={chip}
-                      type="button"
-                      onClick={() => toggleQuickChip(chip)}
-                      aria-pressed={on}
-                      className={`tap-chip flex-none h-8 px-3.5 rounded-2xl border text-xs font-medium whitespace-nowrap cursor-pointer transition-colors ${
-                        on
-                          ? 'bg-emerald-50 border-emerald-600 text-emerald-700'
-                          : 'bg-white border-[#dfe6ec] text-[#14171a]'
-                      }`}
-                    >
-                      {chip}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Toolbar - desktop */}
-            <div className="hidden md:block">
-            <div className="bg-[#eff4fb] border border-[#dfe8ff] rounded-[16px] sm:rounded-[20px] p-2 shadow-[0_8px_24px_rgba(17,94,175,0.04)]">
-              <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)_auto] items-stretch gap-2">
-                <div className="h-[50px] rounded-[14px] border border-[#dfe8ff] bg-[#f7f9fd] flex items-center justify-center shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
-                  <button
-                    onClick={() => setFiltersOpen(true)}
-                    className="lg:hidden inline-flex items-center gap-1.5 font-semibold text-[11.5px] text-[#0f172a]"
-                  >
-                    <SlidersHorizontal className="w-3.5 h-3.5 text-[#115eaf]" />
-                    <span>Filters</span>
-                  </button>
-                  <span className="hidden lg:inline-flex items-center gap-1.5 font-semibold text-[11.5px] text-[#0f172a]">
-                    <SlidersHorizontal className="w-3.5 h-3.5 text-[#115eaf]" />
-                    Filters
-                  </span>
-                </div>
-
-                <div className="h-[50px] rounded-[14px] border border-[#dfe8ff] bg-[#edf7f2] flex items-center justify-center px-1.5 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]">
-                  <span className="inline-flex items-center justify-center rounded-[9px] border border-[#bfe7d5] bg-[#dff7eb] px-2 py-1 text-[11.5px] font-bold text-[#0f766e] tracking-tight leading-none shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]">
-                    100% Entitled
-                  </span>
-                </div>
-
-                <div className="h-[50px] rounded-[14px] border border-[#dfe8ff] bg-[#f7f9fd] flex items-center gap-1.5 px-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] overflow-hidden">
-                  <div className="flex-1 min-w-0">
-                    <select className="h-full w-full border-0 bg-transparent rounded-[10px] text-[#000f22] text-[11px] font-medium focus:outline-none focus:ring-0 cursor-pointer appearance-none px-1 leading-none">
-                      <option>NIRF Ranking (Top First)</option>
-                      <option>Fee: Low to High</option>
-                      <option>Student Rating</option>
-                      <option>Most Applied Programs</option>
-                    </select>
-                  </div>
-
-                  <div className="flex items-center border border-[#c9d9ff] rounded-[9px] p-0.5 bg-[#edf4ff] shrink-0 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
-                    <button
-                      onClick={() => setView('list')}
-                      title="List View"
-                      aria-label="Switch to List View"
-                      className={`w-11 h-11 rounded-[7px] transition-all duration-150 cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-1 ${
-                        view === 'list'
-                          ? 'bg-[#115eaf] text-white shadow-sm'
-                          : 'text-[#74777e] bg-transparent hover:bg-white'
-                      }`}
-                    >
-                      <List className="w-3.5 h-3.5" />
-                    </button>
-                    <button
-                      onClick={() => setView('grid')}
-                      title="Grid View"
-                      aria-label="Switch to Grid View"
-                      className={`w-11 h-11 rounded-[7px] transition-all duration-150 cursor-pointer flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-1 ${
-                        view === 'grid'
-                          ? 'bg-[#115eaf] text-white shadow-sm'
-                          : 'text-[#74777e] bg-transparent hover:bg-white'
-                      }`}
-                    >
-                      <LayoutGrid className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div>
             </div>
 
             {/* University cards */}
@@ -714,157 +542,17 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                 <article
                   key={u.id}
                   onClick={() => navigate(`/universities/${u.id}`)}
-                  className="bg-white rounded-2xl border border-[#d5e3ff] p-2.5 sm:p-4 md:p-5 shadow-xs hover:shadow-xl hover:border-[#115eaf] transition-all duration-300 relative flex flex-col cursor-pointer"
+                  className="bg-white rounded-2xl border border-[#d5e3ff] p-5 md:p-6 shadow-xs hover:shadow-xl hover:border-[#115eaf] transition-all duration-300 relative flex flex-col cursor-pointer"
                 >
-                  {/* ===== Mobile card ===== */}
-                  {!isDesktop && (
-                  <div className="flex flex-col">
-                    <label
-                      className="absolute top-1 right-1 w-11 h-11 flex items-center justify-center cursor-pointer select-none"
-                      title="Compare"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <input
-                        type="checkbox"
-                        aria-label={`Add ${u.name} to compare`}
-                        checked={compared.includes(u.id)}
-                        onChange={() => toggleCompare(u.id)}
-                        className="w-5 h-5 rounded accent-[#115eaf] cursor-pointer"
-                      />
-                    </label>
-
-                    {/* Head: logo + name + location */}
-                    <div className="flex gap-3 pr-9">
-                      <div className="w-[60px] h-[60px] shrink-0 rounded-lg border border-[#e7eeff] bg-white flex items-center justify-center overflow-hidden">
-                        {u.logoImage ? (
-                          <img
-                            src={u.logoImage}
-                            alt={`${u.short} logo`}
-                            className="w-full h-full object-contain p-1"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).style.display = 'none';
-                            }}
-                          />
-                        ) : u.isLpu ? (
-                          <img
-                            src={DEGREEFYD_LPU_API.hero.logoImage}
-                            alt="LPU logo"
-                            className="w-full h-full object-contain p-1"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).style.display = 'none';
-                            }}
-                          />
-                        ) : (
-                          <span className="text-[13px] font-semibold text-[#115eaf]">{u.short}</span>
-                        )}
-                      </div>
-                      <div className="min-w-0">
-                        <h2 className="text-[17px] font-semibold text-[#000f22] leading-[1.3] line-clamp-2" title={u.name}>
-                          {u.name}
-                        </h2>
-                        <p className="text-[12px] text-[#74777e] mt-[3px]">
-                          {u.location} &middot; Est. {u.established}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Accreditations chips */}
-                    <div className="flex gap-1.5 overflow-x-auto mt-2.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-                      <span className="flex-none flex items-center h-6 px-2.5 rounded-full bg-amber-50 text-amber-900 border border-amber-200/60 text-[11px] font-medium whitespace-nowrap">
-                        {u.naac}
-                      </span>
-                      {u.approvals.map((a) => (
-                        <span
-                          key={a}
-                          className="flex-none flex items-center h-6 px-2.5 rounded-full bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] text-[11px] font-medium whitespace-nowrap"
-                        >
-                          {a}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Ranking */}
-                    <p className="text-[12px] font-medium text-[#B45309] mt-2">{u.rankNote}</p>
-
-                    {/* Fee box */}
-                    <div className="bg-[#f9f9ff] border border-[#e7eeff] rounded-lg px-3 py-2.5 mt-2.5 flex items-center justify-between gap-2 flex-wrap">
-                      <div>
-                        <span className="block text-[12px] text-[#74777e] font-normal">Total fee</span>
-                        <span className="text-xl font-semibold text-[#000f22]">
-                          {u.feeLabel} <span className="text-[12px] text-[#74777e] font-normal">onwards</span>
-                        </span>
-                      </div>
-                      <span className="text-[11px] font-medium text-emerald-800 bg-emerald-50 border border-emerald-200/60 rounded-full px-2.5 py-1">
-                        EMI from {u.emi}
-                      </span>
-                    </div>
-
-                    {/* Facts */}
-                    <div className="grid grid-cols-3 gap-2 mt-2.5">
-                      {u.specs.slice(0, 3).map((s) => (
-                        <div key={s.label} className="min-w-0">
-                          <span className="block text-[11px] text-[#74777e]">{s.label}</span>
-                          <span
-                            className={`text-[13px] font-semibold ${
-                              s.highlight ? 'text-emerald-700' : 'text-[#000f22]'
-                            }`}
-                          >
-                            {s.value}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Popular tracks */}
-                    <div className="flex gap-2 mt-2.5 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-                      {u.tracks.map((t) => (
-                        <span
-                          key={t}
-                          className="flex-none border border-[#e7eeff] rounded-[14px] px-3 py-1 text-[12px] text-[#000f22] whitespace-nowrap"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Actions */}
-                    <div className="flex gap-2 mt-2.5">
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onOpenBrochure();
-                        }}
-                        className="flex-1 h-11 rounded-lg bg-white border border-[#115eaf] text-[#115eaf] text-sm font-medium hover:bg-[#f0f3ff] transition-colors"
-                      >
-                        Brochure
-                      </button>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          navigate(`/universities/${u.id}`);
-                        }}
-                        className="flex-1 h-11 rounded-lg bg-[#115eaf] border border-[#115eaf] text-white text-sm font-medium hover:bg-[#084a8c] transition-colors"
-                      >
-                        View Details
-                      </button>
-                    </div>
-                  </div>
-                  )}
-
-                  {/* ===== Desktop card ===== */}
-                  {isDesktop && (
-                  <div className="flex flex-col flex-1">
                   {/* Top row: identity + fee */}
-                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 pb-2.5 border-b border-[#e7eeff]">
-                    <div className="flex items-start gap-3">
-                      <div className="w-[72px] h-[72px] sm:w-14 sm:h-14 rounded-xl bg-[#f0f3ff] border border-[#d5e3ff] flex flex-col items-center justify-center shrink-0 shadow-xs overflow-hidden">
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 pb-4 border-b border-[#e7eeff]">
+                    <div className="flex items-start gap-4">
+                      <div className="w-16 h-16 rounded-2xl bg-[#f0f3ff] border border-[#d5e3ff] flex flex-col items-center justify-center shrink-0 shadow-xs overflow-hidden">
                         {u.logoImage ? (
                           <img
                             src={u.logoImage}
                             alt={`${u.short} Logo`}
-                            className="w-16 h-16 sm:w-12 sm:h-12 object-contain rounded-lg bg-white p-0.5"
+                            className="w-14 h-14 object-contain rounded-lg bg-white p-1"
                             onError={(e) => {
                               (e.target as HTMLImageElement).style.display = 'none';
                             }}
@@ -873,7 +561,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           <img
                             src={DEGREEFYD_LPU_API.hero.logoImage}
                             alt="LPU Logo"
-                            className="w-16 h-16 sm:w-12 sm:h-12 object-contain rounded-lg bg-white p-0.5"
+                            className="w-14 h-14 object-contain rounded-lg bg-white p-1"
                             onError={(e) => {
                               (e.target as HTMLImageElement).style.display = 'none';
                             }}
@@ -892,11 +580,11 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
 
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2 mb-1">
-                          <h2 className="text-base sm:text-lg font-bold text-[#000f22] leading-snug line-clamp-2" title={u.name}>
+                          <h2 className="text-base sm:text-lg font-bold text-[#000f22] leading-snug">
                             {u.name}
                           </h2>
                           <span
-                            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold flex items-center gap-1 shrink-0 ${
+                            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold flex items-center gap-1 ${
                               toneMap[u.highlight.tone].badge
                             } ${toneMap[u.highlight.tone].text} ${toneMap[u.highlight.tone].border}`}
                           >
@@ -913,18 +601,18 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           <span>•</span>
                           <span>{u.established}</span>
                           <span>•</span>
-                          <span className="text-[#B45309] font-semibold line-clamp-1" title={u.rankNote}>{u.rankNote}</span>
+                          <span className="text-[#B45309] font-semibold">{u.rankNote}</span>
                         </p>
 
-                        <div className={`flex flex-wrap items-center ${u.isLpu || u.id === 'cu-online' ? 'gap-1.5' : 'gap-2'} mt-2`}>
-                          <span className="px-2.5 py-1 bg-amber-50 text-amber-900 border border-amber-200 rounded-lg text-[11px] font-semibold flex items-center gap-1 shadow-xs shrink-0">
+                        <div className={`flex flex-wrap items-center ${u.isLpu || u.id === 'cu-online' ? 'gap-1.5' : 'gap-2'} mt-2.5`}>
+                          <span className="px-2.5 py-1 bg-amber-50 text-amber-900 border border-amber-200 rounded-lg text-[11px] font-semibold flex items-center gap-1 shadow-xs">
                             <Star className="w-3 h-3 text-amber-600 fill-amber-500" />
                             {u.naac}
                           </span>
-                          {u.approvals.slice(0, 2).map((a) => (
+                          {u.approvals.map((a) => (
                             <span
                               key={a}
-                              className="px-2.5 py-1 bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] rounded-lg text-[11px] font-semibold shrink-0"
+                              className="px-2.5 py-1 bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] rounded-lg text-[11px] font-semibold"
                             >
                               {a}
                             </span>
@@ -934,7 +622,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                     </div>
 
                     {/* Fee box */}
-                    <div className="text-left md:text-right bg-[#f9f9ff] md:bg-transparent p-3 md:p-0 rounded-xl shrink-0 border md:border-0 border-[#e7eeff]">
+                    <div className="text-left md:text-right bg-[#f9f9ff] md:bg-transparent p-3.5 md:p-0 rounded-xl shrink-0 border md:border-0 border-[#e7eeff]">
                       <span className="block text-[11px] text-[#74777e] font-semibold uppercase">
                         Total Program Fee
                       </span>
@@ -942,7 +630,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                         {u.feeLabel}{' '}
                         <span className="text-xs text-[#43474d] font-normal">onwards</span>
                       </div>
-                      <div className="inline-flex items-center gap-1 px-2.5 py-0.5 mt-1 bg-emerald-50 text-emerald-800 rounded-full text-[11px] font-semibold border border-emerald-200/60 shadow-xs">
+                      <div className="inline-flex items-center gap-1 px-2.5 py-1 mt-1 bg-emerald-50 text-emerald-800 rounded-full text-[11px] font-semibold border border-emerald-200/60 shadow-xs">
                         <CreditCard className="w-3 h-3" />
                         EMI starts {u.emi}
                       </div>
@@ -950,7 +638,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                   </div>
 
                   {/* Spec grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 py-2.5 my-0 bg-[#f9f9ff] rounded-xl px-3.5 border border-[#e7eeff] text-center sm:text-left">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-3.5 my-2 bg-[#f9f9ff] rounded-xl px-4 border border-[#e7eeff] text-center sm:text-left">
                     {u.specs.map((s) => {
                       const Icon = specIconByLabel[s.label] || Monitor;
                       return (
@@ -976,12 +664,12 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                   </div>
 
                   {/* Tracks + CTAs */}
-                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2.5 pt-2">
+                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pt-3">
                     <div className="flex flex-wrap items-center gap-1.5">
                       <span className="text-[11px] text-[#74777e] uppercase font-semibold mr-1">
                         Popular Tracks:
                       </span>
-                      {u.tracks.slice(0, 4).map((t) => (
+                      {u.tracks.map((t) => (
                         <span
                           key={t}
                           onClick={(e) => e.stopPropagation()}
@@ -990,19 +678,11 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           {t}
                         </span>
                       ))}
-                      {u.tracks.length > 4 && (
-                        <span
-                          onClick={(e) => e.stopPropagation()}
-                          className="px-3 py-1 bg-[#f0f3ff] border border-[#d5e3ff] rounded-full text-xs font-semibold text-[#115eaf] cursor-pointer"
-                        >
-                          +{u.tracks.length - 4} more
-                        </span>
-                      )}
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto lg:shrink-0">
+                    <div className="flex items-center gap-2 shrink-0">
                       <label 
-                        className="flex items-center gap-1.5 text-[13px] font-medium text-[#43474d] cursor-pointer sm:mr-2 select-none hover:text-[#000f22] py-1.5 min-h-[44px]"
+                        className="flex items-center gap-1.5 text-[13px] font-medium text-[#43474d] cursor-pointer mr-2 select-none hover:text-[#000f22]"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <input
@@ -1018,7 +698,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           e.stopPropagation();
                           onOpenBrochure();
                         }}
-                        className="px-3.5 py-1.5 rounded-xl bg-[#f0f3ff] hover:bg-[#dee8ff] text-[#000f22] text-xs font-semibold border border-[#d5e3ff] transition-colors flex items-center gap-1 min-h-[44px]"
+                        className="px-3.5 py-2 rounded-xl bg-[#f0f3ff] hover:bg-[#dee8ff] text-[#000f22] text-xs font-semibold border border-[#d5e3ff] transition-colors flex items-center gap-1"
                       >
                         <Download className="w-4 h-4" />
                         <span>Brochure</span>
@@ -1028,40 +708,38 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           e.stopPropagation();
                           onOpenApply();
                         }}
-                        className="px-4 py-1.5 rounded-xl bg-[#115eaf] hover:bg-[#004689] text-white text-xs font-semibold transition-all shadow-sm active:scale-95 flex items-center gap-1 min-h-[44px]"
+                        className="px-4 py-2 rounded-xl bg-[#115eaf] hover:bg-[#004689] text-white text-xs font-semibold transition-all shadow-sm active:scale-95 flex items-center gap-1"
                       >
                         <span>Apply Now</span>
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   </div>
-                  </div>
-                  )}
                 </article>
               ))}
             </div>
 
             {/* Pagination */}
             <div className="flex items-center justify-between pt-6 border-t border-[#e7eeff]">
-              <button aria-label="Previous page" className="px-2 sm:px-4 py-2 rounded-lg bg-white border border-[#d5e3ff] text-[#43474d] hover:text-[#000f22] text-xs font-medium flex items-center justify-center gap-1 transition-colors min-h-[44px] min-w-[44px] shrink-0">
+              <button className="px-4 py-2 rounded-lg bg-white border border-[#d5e3ff] text-[#43474d] hover:text-[#000f22] text-xs font-medium flex items-center gap-1 transition-colors">
                 <ChevronLeft className="w-4 h-4" />
-                <span className="hidden sm:inline">Previous</span>
+                <span>Previous</span>
               </button>
-              <div className="flex items-center gap-0.5 sm:gap-1 mx-1 sm:mx-2">
-                <button className="w-11 h-11 md:w-9 md:h-9 shrink-0 rounded-lg bg-[#115eaf] text-white text-xs font-semibold">1</button>
-                <button className="w-11 h-11 md:w-9 md:h-9 shrink-0 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
+              <div className="flex items-center gap-1">
+                <button className="w-9 h-9 rounded-lg bg-[#115eaf] text-white text-xs font-semibold">1</button>
+                <button className="w-9 h-9 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
                   2
                 </button>
-                <button className="w-11 h-11 md:w-9 md:h-9 shrink-0 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
+                <button className="w-9 h-9 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
                   3
                 </button>
-                <span className="hidden sm:inline px-1 sm:px-2 text-[#74777e]">...</span>
-                <button className="w-11 h-11 md:w-9 md:h-9 shrink-0 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
+                <span className="px-2 text-[#74777e]">...</span>
+                <button className="w-9 h-9 rounded-lg hover:bg-[#f0f3ff] text-[#000f22] text-xs font-medium">
                   8
                 </button>
               </div>
-              <button aria-label="Next page" className="px-2 sm:px-4 py-2 rounded-lg bg-white border border-[#d5e3ff] text-[#115eaf] text-xs font-medium flex items-center justify-center gap-1 hover:bg-[#f0f3ff] transition-colors min-h-[44px] min-w-[44px] shrink-0">
-                <span className="hidden sm:inline">Next</span>
+              <button className="px-4 py-2 rounded-lg bg-white border border-[#d5e3ff] text-[#115eaf] text-xs font-medium flex items-center gap-1 hover:bg-[#f0f3ff] transition-colors">
+                <span>Next</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
@@ -1074,6 +752,10 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
         <div className="bg-white rounded-2xl border border-[#d5e3ff] p-5 md:p-6 shadow-xs">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#e7eeff]">
             <div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#f0f3ff] text-[#115eaf] text-[11px] font-semibold mb-1">
+                <ArrowLeftRight className="w-3.5 h-3.5" />
+                <span>Quick Decision Matrix</span>
+              </div>
               <h2 className="text-lg font-bold text-[#000f22]">
                 Side-by-Side Comparison: Top Online Universities
               </h2>
@@ -1084,73 +766,69 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
             </div>
             <button
               onClick={onOpenHelpDesk}
-              className="inline-flex items-center gap-2 px-4 py-2 min-h-[44px] rounded-xl bg-[#115eaf] text-white text-xs font-semibold hover:bg-[#004689] shadow-sm transition-all active:scale-95 shrink-0 self-start md:self-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-1"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#115eaf] text-white text-xs font-semibold hover:bg-[#004689] shadow-sm transition-all active:scale-95 shrink-0 self-start md:self-auto"
             >
               <span>Compare Full Details</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </button>
           </div>
 
-          {compareList.length === 0 ? (
-            <div className="mt-4 rounded-lg border border-dashed border-[#c4c6ce] p-8 text-center">
-              <p className="text-sm font-semibold text-[#000f22]">No universities selected yet</p>
-              <p className="text-[13px] text-[#43474d] font-normal mt-1">
-                Tick <span className="font-semibold text-[#115eaf]">Compare</span> on up to 3
-                university cards above to build your side-by-side matrix.
-              </p>
-            </div>
-          ) : (
-            <>
-            <div className="overflow-x-auto border border-[#c4c6ce] rounded-lg mt-4">
-            <table className="w-full text-left border-collapse text-[13px] min-w-[560px]">
-              <thead>
-                <tr className="bg-[#f0f4f8] text-[#000f22] border-b border-[#c4c6ce] font-semibold">
-                  <th className="p-3">Comparison Parameter</th>
-                  {compareList.map((u) => (
-                    <th key={`th-${u.id}`} className="p-3 text-[#115eaf]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
+            {DEGREEFYD_LPU_API.onlineUniversities.slice(0, 3).map((u) => (
+              <div
+                key={`matrix-${u.id}`}
+                className="rounded-xl p-4 bg-[#f9f9ff] border border-[#e7eeff] hover:border-[#d5e3ff] transition-all"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-lg bg-white border border-[#d5e3ff] flex items-center justify-center shrink-0">
+                    {u.isLpu ? (
+                      <img
+                        src={DEGREEFYD_LPU_API.hero.logoImage}
+                        alt="LPU Logo"
+                        className="w-9 h-9 object-contain"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = 'none';
+                        }}
+                      />
+                    ) : (
+                      <span className="text-xs font-bold text-[#115eaf]">{u.short}</span>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-[#000f22] leading-snug">
                       {u.name.split(' (')[0]}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#c4c6ce]/60 font-normal">
-                {COMPARE_MATRIX_ROWS.map((row) => (
-                  <tr key={row.param} className="hover:bg-slate-50/50">
-                    <td className="p-3 font-medium text-[#111c2d]">{row.param}</td>
-                    {compareList.map((u) => {
-                      const cell = row.getCell(u);
-                      return (
-                        <td key={`td-${u.id}`} className={`p-3 ${cell.tone || 'text-[#43474d] font-medium'}`}>
-                          {cell.badge ? (
-                            <span className="bg-amber-100 text-amber-900 px-2 py-0.5 rounded text-[11px] font-bold">
-                              {cell.text}
-                            </span>
-                          ) : cell.tone === 'text-emerald-700 font-semibold' || cell.tone === 'text-emerald-700' ? (
-                            <span className="inline-flex items-center gap-1">
-                              <CheckCircle className="w-4 h-4" />
-                              {cell.text}
-                            </span>
-                          ) : (
-                            cell.text
-                          )}
-                        </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    </h3>
+                    <span className="text-[11px] text-[#115eaf] font-semibold">{u.naac}</span>
+                  </div>
+                </div>
+                <div className="space-y-2 text-xs border-t border-[#e7eeff] pt-3">
+                  <div className="flex justify-between">
+                    <span className="text-[#74777e]">Total Fee:</span>
+                    <span className="font-semibold text-[#000f22]">{u.feeLabel}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[#74777e]">Monthly EMI:</span>
+                    <span className="font-semibold text-emerald-700">{u.emi}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[#74777e]">Exam Mode:</span>
+                    <span className="font-medium text-[#000f22]">{u.specs[0].value}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[#74777e]">Location:</span>
+                    <span className="font-medium text-[#000f22]">{u.location}</span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => onOpenApply()}
+                  className="w-full mt-3 py-1.5 px-3 rounded-lg bg-white hover:bg-[#115eaf] hover:text-white text-[#115eaf] text-xs font-semibold border border-[#d5e3ff] transition-colors flex items-center justify-center gap-1"
+                >
+                  <span>View {u.short} Details</span>
+                  <ArrowRight className="w-3 h-3" />
+                </button>
+              </div>
+            ))}
           </div>
-          <p className="md:hidden text-[12px] text-[#74777e] font-normal pt-2 flex items-center gap-1">
-            <span>Swipe the table horizontally to compare all columns →</span>
-          </p>
-            </>
-          )}
-          {compareList.length > 0 && (
-            <p className="text-[12px] text-[#74777e] font-normal pt-2.5">
-              Tick <span className="font-semibold text-[#115eaf]">Compare</span> on any university card above to add it to this matrix (up to 3).
-            </p>
-          )}
         </div>
       </section>
 
@@ -1265,51 +943,39 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
         </div>
       </section>
 
-      {/* ================= BLOGS ================= */}
-      <BlogsListSection
-        onOpenHelpDesk={onOpenHelpDesk}
-        className="max-w-7xl mx-auto my-8 bg-white rounded-2xl border border-[#d5e3ff] p-6 md:p-8 shadow-xs"
-      />
-
-      {/* ================= MOBILE FULL-SCREEN FILTER OVERLAY ================= */}
-      {filtersOpen && (
-        <div className="fixed inset-0 z-[60] bg-white flex flex-col lg:hidden">
-          {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-[#e7eeff] shrink-0">
-            <div className="flex items-center gap-2">
-              <SlidersHorizontal className="w-4 h-4 text-[#115eaf]" />
-              <span className="text-sm font-bold text-[#000f22]">Filters</span>
-              <span className="bg-[#f0f3ff] text-[#115eaf] text-[11px] font-bold px-2 py-0.5 rounded-full">
-                5 Active
+      {/* ================= FLOATING COMPARE DOCK ================= */}
+      {compared.length > 0 && (
+        <div className="fixed bottom-16 md:bottom-4 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-4xl bg-[#0b2540] text-white rounded-xl shadow-2xl p-3 md:p-4 border border-[#314865] flex items-center justify-between transition-all duration-300">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-lg bg-[#115eaf] text-white flex items-center justify-center">
+              <ArrowLeftRight className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-bold">University Comparison Tray</span>
+                <span className="bg-amber-400 text-[#2f1500] font-bold text-[11px] px-2 py-0.5 rounded-full">
+                  {compared.length} Selected
+                </span>
+              </div>
+              <span className="text-xs font-normal text-[#b1c8eb] hidden sm:block">
+                Select up to 3 universities to compare approvals, fees, and semesters
+                side-by-side.
               </span>
             </div>
-            <button
-              onClick={() => setFiltersOpen(false)}
-              aria-label="Close filters"
-              className="p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center text-[#43474d] hover:text-[#000f22]"
-            >
-              <X className="w-5 h-5" />
-            </button>
           </div>
-
-          {/* Scrollable filter content */}
-          <div className="flex-1 overflow-y-auto overscroll-contain px-4 py-2">
-            {filterBody}
-          </div>
-
-          {/* Footer */}
-          <div className="shrink-0 border-t border-[#e7eeff] p-4 flex items-center gap-3 bg-white">
+          <div className="flex items-center gap-2">
             <button
-              onClick={resetFilters}
-              className="px-4 py-3 rounded-xl border border-[#d5e3ff] text-[#115eaf] text-sm font-semibold hover:bg-[#f0f3ff] transition-colors min-h-[44px]"
+              onClick={() => setCompared([])}
+              className="text-xs text-[#c4c6ce] hover:text-white underline px-2 hidden sm:inline"
             >
-              Reset
+              Clear
             </button>
             <button
-              onClick={() => setFiltersOpen(false)}
-              className="flex-1 py-3 rounded-xl bg-[#115eaf] hover:bg-[#004689] text-white text-sm font-semibold transition-all shadow-sm active:scale-95 min-h-[44px]"
+              onClick={onOpenHelpDesk}
+              className="px-4 py-2 bg-[#115eaf] hover:bg-[#dee8ff] hover:text-[#004689] text-white text-xs font-semibold rounded-lg shadow-sm transition-all active:scale-95 flex items-center gap-1"
             >
-              Show Results
+              <span>Compare Now</span>
+              <ExternalLink className="w-3 h-3" />
             </button>
           </div>
         </div>

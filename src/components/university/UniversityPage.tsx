@@ -12,6 +12,7 @@ import { UniversityLms } from './UniversityLms';
 import { UniversityDates } from './UniversityDates';
 import { UniversityFaq } from './UniversityFaq';
 import { UniversityRelated } from './UniversityRelated';
+import { UniversityCounsellingCard } from './UniversityCounsellingCard';
 import { Download, Calculator, PhoneCall, HelpCircle, ShieldCheck } from 'lucide-react';
 import type { Course } from '../../types';
 
@@ -94,8 +95,8 @@ export const UniversityPage: React.FC<UniversityPageProps> = ({
       />
 
       {/* 3. Main Content Container (Two-column layout on large screens) */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 sm:py-7">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Main Primary Content Column (8 cols on lg) */}
           <main className="lg:col-span-8 space-y-12">
             <UniversityOverview university={university} />
@@ -138,9 +139,12 @@ export const UniversityPage: React.FC<UniversityPageProps> = ({
           </main>
 
           {/* Sticky Sidebar (4 cols on lg) */}
-          <aside className="lg:col-span-4 space-y-3 lg:sticky lg:top-24">
+          <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-32">
+            {/* Quick Counselling Lead Card */}
+            <UniversityCounsellingCard university={university} />
+
             {/* Quick Actions Card */}
-            <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs space-y-3">
+            <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-3">
               <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
                 Direct Candidate Assistance
               </h4>

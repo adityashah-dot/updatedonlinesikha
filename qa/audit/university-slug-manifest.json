@@ -1,0 +1,856 @@
+[
+  {
+    "universityName": "Integral University Online",
+    "slug": "integral-university-online",
+    "universityId": "6abcb8173eccc8e65a73d269",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/integral-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Datta Meghe Institute of Higher Education & Research Online University",
+    "slug": "dmiher-university-online",
+    "universityId": "6a9ef7f0e6a8b99bae96dd8b",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/dmiher-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Gokul Global University Online",
+    "slug": "gokul-global-university-online",
+    "universityId": "6a9ec0d3e6a8b99bae96937d",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/gokul-global-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "IIMT University Online",
+    "slug": "iimt-university-online",
+    "universityId": "6a9e7506e6a8b99bae96270d",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/iimt-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Desh Bhagat University Online",
+    "slug": "desh-bhagat-university-online",
+    "universityId": "6a9e649ee6a8b99bae960a4c",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/desh-bhagat-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Christ University Online",
+    "slug": "christ-university-online",
+    "universityId": "6a9ac3aee6a8b99bae91e611",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/christ-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Chhatrapati Shahu Ji Maharaj University Online",
+    "slug": "chhatrapati-shahu-ji-maharaj-university-online",
+    "universityId": "6a994e26e6a8b99bae8fc0f5",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/chhatrapati-shahu-ji-maharaj-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Assam down town University Online",
+    "slug": "assam-down-town-university-online",
+    "universityId": "6a981642e6a8b99bae8cfc3a",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/assam-down-town-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Aligarh Muslim University Online",
+    "slug": "amu-online",
+    "universityId": "6a97f0d2e6a8b99bae8cd729",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/amu-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Annamalai University Online",
+    "slug": "annamalai-university-online",
+    "universityId": "6a97eb99e6a8b99bae8cd0ba",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/annamalai-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Andhra University Online",
+    "slug": "andhra-university-online",
+    "universityId": "6a96d8cbe6a8b99bae8c0a3b",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/andhra-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Bharati Vidyapeeth University Online",
+    "slug": "bharati-vidyapeeth-university-online",
+    "universityId": "6a96b31ce6a8b99bae8becbf",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/bharati-vidyapeeth-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Alliance University Online",
+    "slug": "alliance-university-online",
+    "universityId": "6a96a813e6a8b99bae8bcfb3",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/alliance-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Kakatiya University- School of Distance Learning and Continuing Education",
+    "slug": "kakatiya-university-sdlce-school-of-distance-learning-and-continuing-education",
+    "universityId": "67fcf543fa3b3e36f2a64869",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/kakatiya-university-sdlce-school-of-distance-learning-and-continuing-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Galgotias University Online",
+    "slug": "galgotias-university-online",
+    "universityId": "691ec38956d7d185727551cb",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/galgotias-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "HNBG University Distance Education",
+    "slug": "hnbgu-hemvati-nandan-bahuguna-garhwal-university-distance-learning",
+    "universityId": "680356bf823fdda3e641d44d",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/hnbgu-hemvati-nandan-bahuguna-garhwal-university-distance-learning",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Gujarat Vidyapith – Distance Education",
+    "slug": "gujarat-vidyapith-distance-education",
+    "universityId": "68034725fd80202f8b5761be",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/gujarat-vidyapith-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "NIILM University – Distance Education",
+    "slug": "niilm-university-distance-education",
+    "universityId": "67ff71ba74779a803dc9459f",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/niilm-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Mizoram University Distance Education",
+    "slug": "mizoram-university-distance-education",
+    "universityId": "67fe3e50c2a511df63817a16",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/mizoram-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Apex University Distance Education",
+    "slug": "apex-university-distance-education",
+    "universityId": "6800983e5ccd4db9c82509c4",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/apex-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Mangalayatan University Distance and Online Program 2026",
+    "slug": "mangalayatan-university-distance-and-online-programs",
+    "universityId": "67fe1597fe1c0316ee293980",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/mangalayatan-university-distance-and-online-programs",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Amity University Online",
+    "slug": "amity-university-online",
+    "universityId": "67e3c8ae32cd88a7b2d5c7c6",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/amity-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Bharathidasan University Centre for Distance Education",
+    "slug": "bharathidasan-university-centre-for-distance-education",
+    "universityId": "67fcf3a0fa3b3e36f2a63c86",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/bharathidasan-university-centre-for-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Nalanda Open University Distance Education",
+    "slug": "nalanda-open-university",
+    "universityId": "680a0d1b00077c3e8e9156e0",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/nalanda-open-university",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Ganpat University – Distance Learning",
+    "slug": "ganpat-university-distance-learning",
+    "universityId": "6803340e1fdc78efce549bbb",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/ganpat-university-distance-learning",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Gandhi Institute of Technology and Management (GITAM) – Distance Learning",
+    "slug": "gandhi-institute-of-technology-and-management-gitam-distance-learning",
+    "universityId": "6800bdb6479a8ec3d4771d6a",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/gandhi-institute-of-technology-and-management-gitam-distance-learning",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Jadavpur University's Distance Education",
+    "slug": "jadavpur-universitys-distance-education",
+    "universityId": "6809fddf6b79d78058acb2d3",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/jadavpur-universitys-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Jain University (Deemed-to-be) – Online & Distance Learning",
+    "slug": "jain-university-deemed-to-be-online-and-distance-learning",
+    "universityId": "67fcfb2ffa3b3e36f2a6856d",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/jain-university-deemed-to-be-online-and-distance-learning",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "DAVV (Devi Ahilya Vishwavidyalaya) – Distance Education",
+    "slug": "davv-devi-ahilya-vishwavidyalaya-distance-education",
+    "universityId": "6800b6a5a52410c4bffa35cd",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/davv-devi-ahilya-vishwavidyalaya-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Venkateshwara Open University Distance Education",
+    "slug": "venkateshwara-open-university",
+    "universityId": "67ff85a26504daa5f412fc46",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/venkateshwara-open-university",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Symbiosis Centre for Distance Learning",
+    "slug": "symbiosis-centre-for-distance-learning",
+    "universityId": "67fca27cb1579c27b3965e90",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/symbiosis-centre-for-distance-learning",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Mahe Manipal University Online",
+    "slug": "mahe-manipal-university-online",
+    "universityId": "67e3b025416f3aba8b936dbf",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/mahe-manipal-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Uttarakhand Open University",
+    "slug": "uttarakhand-open-university-uou",
+    "universityId": "67ff6a1264595ebd030ced31",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/uttarakhand-open-university-uou",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Jaipur National University – Distance Education",
+    "slug": "jaipur-national-university-distance-education",
+    "universityId": "680a07bc9903b101a49b4730",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/jaipur-national-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Annamalai University Distance Education Courses 2025",
+    "slug": "annamalai-university-distance-education",
+    "universityId": "6800a17f76ee71da84f7fc5f",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/annamalai-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Datta Meghe Institute of Higher Education & Research – Distance Learning",
+    "slug": "datta-meghe-institute-of-higher-education-and-research-distance-learning",
+    "universityId": "67fcfa1afa3b3e36f2a678fe",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/datta-meghe-institute-of-higher-education-and-research-distance-learning",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Indira Gandhi National Tribal University",
+    "slug": "igntu-indira-gandhi-national-tribal-university-distance-education",
+    "universityId": "6805f9f6711a47e8558350f4",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/igntu-indira-gandhi-national-tribal-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Chaudhary Charan Singh University – Distance Learning",
+    "slug": "chaudhary-charan-singh-university-distance-learning",
+    "universityId": "6800b09e1ca8110dec9eb456",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/chaudhary-charan-singh-university-distance-learning",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "IASE Deemed University – Distance Education",
+    "slug": "iase-deemed-university-distance-education",
+    "universityId": "6805f17d4ef234a0a7338e20",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/iase-deemed-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Pt. Sundarlal Sharma Open University (PSSOU)",
+    "slug": "pt-sundarlal-sharma-open-university-pssou",
+    "universityId": "67fce2abdc86d1d916d24916",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/pt-sundarlal-sharma-open-university-pssou",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "University of Kerala – School of Distance Education",
+    "slug": "university-of-kerala-school-of-distance-education",
+    "universityId": "67fce9bf45e7bf121b10ccaa",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/university-of-kerala-school-of-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Yashwantrao Chavan Maharashtra Open University (YCMOU)",
+    "slug": "yashwantrao-chavan-maharashtra-open-university-ycmou",
+    "universityId": "67fcca2d28dde75f2b5c8e51",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/yashwantrao-chavan-maharashtra-open-university-ycmou",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Bharath Institute of Higher Education and Research – Distance Learning",
+    "slug": "bharath-institute-of-higher-education-and-research-distance-learning",
+    "universityId": "67ff60a8836257e438aa7b7d",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/bharath-institute-of-higher-education-and-research-distance-learning",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "GITAM University Distance Education",
+    "slug": "gitam-university-distance-education",
+    "universityId": "67ebc9b123279ee701afb2a3",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/gitam-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Swami Vivekanand Subharti University – Distance Education",
+    "slug": "swami-vivekanand-subharti-university-distance-education",
+    "universityId": "67fcf920fa3b3e36f2a66cab",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/swami-vivekanand-subharti-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Bharathiar University Distance Education",
+    "slug": "bharathiar-university-school-of-distance-education",
+    "universityId": "67fcba94c51c7a55c3b5820a",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/bharathiar-university-school-of-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Punjab Technical University Distance Education",
+    "slug": "punjab-technical-university-ptu-distance-education",
+    "universityId": "67fcc24aeffe494c181eb69f",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/punjab-technical-university-ptu-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Jammu University Distance Education",
+    "slug": "jammu-university-distance-education",
+    "universityId": "67ecc81ad1dc12f1d711da04",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/jammu-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Maharshi Dayanand University (MDU) – Directorate of Distance Education",
+    "slug": "maharshi-dayanand-university-mdu-directorate-of-distance-education",
+    "universityId": "67fcf6dafa3b3e36f2a65468",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/maharshi-dayanand-university-mdu-directorate-of-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Guru Jambheshwar University of Science and Technology – Directorate of Distance Education",
+    "slug": "guru-jambheshwar-university-of-science-and-technology-directorate-of-distance-education",
+    "universityId": "67fcf19cfa3b3e36f2a62ab3",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/guru-jambheshwar-university-of-science-and-technology-directorate-of-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Alagappa University's Directorate of Distance Education",
+    "slug": "alagappa-universitys-directorate-of-distance-education",
+    "universityId": "67fcb2afd21bda2e7209a8fb",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/alagappa-universitys-directorate-of-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "University School of Open Learning, Panjab University",
+    "slug": "panjab-university-distance-education",
+    "universityId": "67eccdba76a059652e6d253d",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/panjab-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Vardhman Mahaveer Open University",
+    "slug": "vardhman-mahaveer-open-university-vmou",
+    "universityId": "67fcce9128dde75f2b5c9ee7",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/vardhman-mahaveer-open-university-vmou",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Jain University Distance Education",
+    "slug": "jain-university-distance-education",
+    "universityId": "67ebe6924b28325e5361d27d",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/jain-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Kalyani University Distance Education",
+    "slug": "kalyani-university-distance-education",
+    "universityId": "67ebde99b505b21a7bbbb58f",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/kalyani-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "University of Kashmir Distance Education",
+    "slug": "university-of-kashmir-distance-education",
+    "universityId": "67ecda7feb23d67c1d661e95",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/university-of-kashmir-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Anna University Distance Education – Courses, Fees & Admission 2025",
+    "slug": "anna-university-distance-education",
+    "universityId": "67ece055d35e64b798d28432",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/anna-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Datta Meghe Institute of Higher Education & Research Online Courses",
+    "slug": "datta-meghe-institute-of-higher-education-and-research-online",
+    "universityId": "67e7be3bc6e7ca6c6fb0533d",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/datta-meghe-institute-of-higher-education-and-research-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "NDIM Institute Online",
+    "slug": "ndim-institute-online",
+    "universityId": "67e7a68cc6e7ca6c6fb0221d",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/ndim-institute-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Subharti University Distance Education",
+    "slug": "subharti-university-distance-education",
+    "universityId": "67ecd4cf5d039c51eace9933",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/subharti-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "University of Mysore Distance Education",
+    "slug": "university-of-mysore-distance-education",
+    "universityId": "67ebb7bc3bf2143ffc86b63e",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/university-of-mysore-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Dr. Babasaheb Ambedkar Open University Distance Education",
+    "slug": "dr-babasaheb-ambedkar-open-university",
+    "universityId": "67eba5be0db8e5b5bbb089fd",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/dr-babasaheb-ambedkar-open-university",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Chandigarh University Distance Education",
+    "slug": "chandigarh-university-distance",
+    "universityId": "67eb9fec4cfeec11d5546f8a",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/chandigarh-university-distance",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Periyar University Distance Education",
+    "slug": "periyar-university-distance-education",
+    "universityId": "67ebc01cbdd813beafcf0917",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/periyar-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Mumbai University Distance Education",
+    "slug": "mumbai-university-distance-education",
+    "universityId": "67ebd7b225f77130daa8796b",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/mumbai-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Kuvempu University – Directorate of Distance Education",
+    "slug": "kuvempu-university-directorate-of-distance-education",
+    "universityId": "67fcf829fa3b3e36f2a66074",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/kuvempu-university-directorate-of-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Madras University Distance Education",
+    "slug": "university-of-madras-institute-of-distance-education",
+    "universityId": "67fcab80a70f35ff430172e1",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/university-of-madras-institute-of-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Netaji Subhas Open University Distance Education",
+    "slug": "netaji-subhas-open-university",
+    "universityId": "67eb9a5a5b1d8cf31046e359",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/netaji-subhas-open-university",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "International University of Applied Sciences",
+    "slug": "iu-international-university-of-applied-sciences-online",
+    "universityId": "67e7b98cc6e7ca6c6fb0495a",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/iu-international-university-of-applied-sciences-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Welingkar Education Online",
+    "slug": "welingkar-education-online",
+    "universityId": "67e79862ab25ffbe361a75af",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/welingkar-education-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Lovely Professional University Distance Education",
+    "slug": "lpu-distance-education",
+    "universityId": "67eb773f4d2131a38588b38c",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/lpu-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Periyar University Online",
+    "slug": "periyar-university-online",
+    "universityId": "67e77dd794bdc6820eb8ba7c",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/periyar-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "KL University Online",
+    "slug": "koneru-lakshmaiah-education-foundation-university-online-kl-university-online",
+    "universityId": "67e7acbac6e7ca6c6fb032ce",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/koneru-lakshmaiah-education-foundation-university-online-kl-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Bangalore University Online",
+    "slug": "bangalore-university-online",
+    "universityId": "67e7b211c6e7ca6c6fb039ea",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/bangalore-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "IIM Raipur",
+    "slug": "iim-raipur",
+    "universityId": "67e6c02e6c1838f3732e9529",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/iim-raipur",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "ICFAI University Online Courses",
+    "slug": "ifcai-university-online",
+    "universityId": "67e7867f3c0f5118ce4449e6",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/ifcai-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Sikkim Manipal University Distance Education",
+    "slug": "sikkim-manipal-university-distance-education",
+    "universityId": "67eb8964206f042f1cfc3eff",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/sikkim-manipal-university-distance-education",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Amity School of Distance Education",
+    "slug": "amity-school-of-distance-learning",
+    "universityId": "67eb7f8b0df39edf55d67d91",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/amity-school-of-distance-learning",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Deakin University Online Courses",
+    "slug": "deakin-university-online",
+    "universityId": "67e792a11488844b16774a01",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/deakin-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Vellore Institute of Technology Online Courses 2025",
+    "slug": "vellore-institute-of-technology-online",
+    "universityId": "67e7a003ab25ffbe361a816b",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/vellore-institute-of-technology-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Shobhit University Online",
+    "slug": "shobhit-university-online",
+    "universityId": "67e64b3f639fb5437beac42d",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/shobhit-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Bharathidasan University Online Courses 2025",
+    "slug": "bharathidasan-university-online",
+    "universityId": "67e6f34f0e552cc5594c87b8",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/bharathidasan-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Symboisis Online",
+    "slug": "symboisis-online",
+    "universityId": "67e65e866ce4964fe4608930",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/symboisis-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "BIMTECH Online PGDM Courses & Admission 2025",
+    "slug": "bimtech-online",
+    "universityId": "67e66f1ccf6a31da03ee8886",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/bimtech-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "IIIT Bangalore Distance Education",
+    "slug": "iiit-bangalore",
+    "universityId": "67e687b120f5e45584bf2c11",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/iiit-bangalore",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "IIM Nagpur",
+    "slug": "iim-nagpur",
+    "universityId": "67e5538f4920aa2c39cafd0d",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/iim-nagpur",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "IIM Ahmedabad",
+    "slug": "iim-ahmedabad",
+    "universityId": "67e6b4b8d7494e20ae49f16c",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/iim-ahmedabad",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Dayananda Sagar University (DSU) Online",
+    "slug": "dayananda-sagar-university-dsu-online",
+    "universityId": "67e6770e1e533b49abdc957d",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/dayananda-sagar-university-dsu-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Yenepoya University Online",
+    "slug": "yenepoya-university-online",
+    "universityId": "67e6338796c665e44d42b182",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/yenepoya-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Shoolini University Online",
+    "slug": "shoolini-university-online",
+    "universityId": "67e544961ee2ab4da28cedd7",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/shoolini-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "University of Mysore Online | Karnataka State Open University Mysore",
+    "slug": "university-of-mysore-online",
+    "universityId": "67e65582639fb5437bead22c",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/university-of-mysore-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "IIM Rohtak",
+    "slug": "iim-rohtak",
+    "universityId": "67e6a5813c66ce12e4654863",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/iim-rohtak",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "IIM Kozhikode",
+    "slug": "iim-kozhikode",
+    "universityId": "67e6925eb506430715b8bc3b",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/iim-kozhikode",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "IIM Tirchy Distance Education",
+    "slug": "iim-tiruchirappalli",
+    "universityId": "67e6ad34a3f1c898827e97ec",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/iim-tiruchirappalli",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "JECRC University Online",
+    "slug": "jecrc-university-online",
+    "universityId": "67e667646348a5c87ecef184",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/jecrc-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "O.P. Jindal Global University",
+    "slug": "o-p-jindal-global-university",
+    "universityId": "67e69f07c2f1a3eb320cb5e7",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/o-p-jindal-global-university",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "SRM University Online",
+    "slug": "srm-university-online",
+    "universityId": "67e5334f2e75bb58d60bfda5",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/srm-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "UPES Online",
+    "slug": "upes-online",
+    "universityId": "67e4fa2d5184a499f94fd90e",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/upes-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Mody University Online 2025 –UG & PG Courses for Women",
+    "slug": "mody-university-online",
+    "universityId": "67e63ebb2719fe0faf8004b7",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/mody-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Kurukshetra University Online",
+    "slug": "kurukshetra-university-online",
+    "universityId": "67e4ec6ab9c815c3ed8e21ed",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/kurukshetra-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Manav Rachna University Online",
+    "slug": "manav-rachna-university-online",
+    "universityId": "67e62bec45e104b43dfce04c",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/manav-rachna-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Chitkara University Online Courses 2025",
+    "slug": "chitkara-university-online",
+    "universityId": "67e4e404be5463608d005eeb",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/chitkara-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "SPJIMR Online",
+    "slug": "spjimr-online",
+    "universityId": "67e54cb1af339e63d376ec04",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/spjimr-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Vignan University Online",
+    "slug": "vignan-university-online",
+    "universityId": "67e52901b574e4208249f8e6",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/vignan-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "K J Somaiya Institute of Management Online",
+    "slug": "k-j-somaiya-institute-of-management-online",
+    "universityId": "67e53a51d16a1c48784c5882",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/k-j-somaiya-institute-of-management-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Vivekanand Global University Online",
+    "slug": "vivekanand-global-university-online",
+    "universityId": "67e3f0db0e48cf1d545239ae",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/vivekanand-global-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "DY Patil University Online",
+    "slug": "dy-patil-university-online",
+    "universityId": "67e4dbf3b9904e75b2afd39b",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/dy-patil-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "GLA University Online Courses & Admission 2025",
+    "slug": "gla-university-online",
+    "universityId": "67e520b1bd4d943fc351d6fe",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/gla-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Sastra University Online",
+    "slug": "sastra-university-online",
+    "universityId": "67e5184075c2927b4ea45305",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/sastra-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Lovely Professional University Online",
+    "slug": "lovely-professional-university-online",
+    "universityId": "67e3e6e1d45f50f1b383e08e",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/lovely-professional-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Parul University Online",
+    "slug": "parul-university-online",
+    "universityId": "67e506b1f1492a314476c97d",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/parul-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Manipal University Online",
+    "slug": "manipal-university-online",
+    "universityId": "67e3d5f466e2ecfc7b22b574",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/manipal-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Uttaranchal University Online",
+    "slug": "uttaranchal-university-online",
+    "universityId": "67dc588ec378a2f4d9e73f21",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/uttaranchal-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Sharda University Online",
+    "slug": "sharda-university-online",
+    "universityId": "67e3cf3f66e2ecfc7b22ac6c",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/sharda-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Sikkim Manipal University Online Courses & Admission 2026",
+    "slug": "sikkim-manipal-university-online",
+    "universityId": "67e3deacbb9a5405375f5e45",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/sikkim-manipal-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Amrita University Online",
+    "slug": "amrita-university-online",
+    "universityId": "67e3ffac3a31c56ff8e0210e",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/amrita-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Chandigarh University Online",
+    "slug": "chandigarh-university-online",
+    "universityId": "67e3ecdf0e48cf1d545238b7",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/chandigarh-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "Jain University Online Courses",
+    "slug": "jain-university-online",
+    "universityId": "67e3996dbc31e632446ece46",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/jain-university-online",
+    "listingMode": "online"
+  },
+  {
+    "universityName": "UP Rajarshi Tandon Open University",
+    "slug": "up-rajarshi-tandon-open-university",
+    "universityId": "6a522a48eb945c4d2d786be8",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/up-rajarshi-tandon-open-university",
+    "listingMode": "distance"
+  },
+  {
+    "universityName": "Andhra University School of Distance Education",
+    "slug": "andhra-university-school-of-distance-education-aucoe",
+    "universityId": "6a522366eb945c4d2d785f4a",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/andhra-university-school-of-distance-education-aucoe",
+    "listingMode": "distance"
+  },
+  {
+    "universityName": "Dr. B.R. Ambedkar Open University",
+    "slug": "dr-b-r-ambedkar-open-university-braou-hyderabad",
+    "universityId": "6a4e5d22d96f1e6c5efe4446",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/dr-b-r-ambedkar-open-university-braou-hyderabad",
+    "listingMode": "distance"
+  },
+  {
+    "universityName": "Centre for Distance and Open Learning, Jamia Millia Islamia",
+    "slug": "centre-for-distance-and-open-learning-jamia-millia-islamia-jamia-nagar-delhi",
+    "universityId": "67e6eb6de1155375afe770c5",
+    "detailUrl": "https://api.degreefyd.com/api/b2c/website/colleges/centre-for-distance-and-open-learning-jamia-millia-islamia-jamia-nagar-delhi",
+    "listingMode": "distance"
+  }
+]

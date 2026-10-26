@@ -23,7 +23,7 @@ export const UniversityPlacements: React.FC<UniversityPlacementsProps> = ({ univ
         {university.placements.metrics.map((metric, idx) => (
           <div
             key={idx}
-            className="p-4 sm:p-6 bg-white border border-slate-200 rounded-xl shadow-xs"
+            className="p-5 sm:p-6 bg-white border border-slate-200 rounded-xl shadow-xs"
           >
             <span className="block text-xs font-medium text-slate-500">
               {metric.label}
@@ -64,7 +64,7 @@ export const UniversityPlacements: React.FC<UniversityPlacementsProps> = ({ univ
       {/* Top Recruiters Showcase */}
       {university.placements.recruiters && university.placements.recruiters.length > 0 && (
         <div className="space-y-4 pt-2">
-          <div className="flex flex-wrap items-center justify-between gap-1">
+          <div className="flex items-center justify-between">
             <h3 className="text-base font-semibold text-slate-900">
               Top Corporate Recruiting Partners
             </h3>

@@ -12,17 +12,14 @@ export const AMITY_UNIVERSITY_DATA: UniversityData = {
   officialWebsite: 'amityonline.com',
   rating: '4.7',
   reviewsCount: 2350,
-  nirfRanking: '22',
+  nirfRanking: '32',
   naacGrade: 'NAAC A+ Grade',
   approvals: ['UGC-DEB', 'AICTE', 'WES (USA & Canada)', 'QS Ranked #1 in India', 'AIU', 'QAA (UK)'],
   verifiedYear: '2026',
-  logoImage:
-    'https://images.DegreeFYD.com/colleges/6812/amity_university_online_courses_and_admission_2025_logo.webp',
-  backgroundImage:
-    'https://images.DegreeFYD.com/colleges/6812/amity_university_online_courses_and_admission_2025_image.webp',
+  logoImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBogd-HH3wbYS_BEwn8GjcylpXajy4iKY2EsFruzyPSEQadgg2jLTMxzX8FC_-q6YRfTG8vTdxbBwb4SeQ4MgWR1gcPRgdF3MeHjQJkcNZi8_TDrMmWf70ocsjMbILMnzz_7qMQpR737IVk6K_-_pA9HvHBPf6VubWZD9-QigSOFnN2v4GzQ7Vc4oGSZnyQ5EiQDKuYolAo7WanMn7FyVUv_ChFrU35pvoVRytRfKobmTax-bdDlW_0HLGCxAXROBPaxxI',
+  backgroundImage: '/images/campusamity.png',
   brochureUrl: 'https://images.degreefyd.com//amity-online-brochure.pdf',
-  sampleDegreeImage:
-    'https://images.DegreeFYD.com/colleges/6812/sampleDegree/amity_university_online_courses_and_admission_2025_sampledegree.webp',
+  sampleDegreeImage: '/images/sampleamity.png',
 
   quickStats: {
     feeRange: '₹50,000 – ₹2,50,000',
@@ -46,7 +43,7 @@ export const AMITY_UNIVERSITY_DATA: UniversityData = {
       { label: 'Institution Type', value: 'Private UGC-DEB Entitled', category: 'Institution' },
       { label: 'Campus Headquarters', value: 'Sector 125, Noida, Uttar Pradesh', category: 'Institution' },
       { label: 'Accreditation', value: 'NAAC A+ Grade (High CGPA)', category: 'Accreditations' },
-      { label: 'Global Ranking', value: 'QS Online MBA Top 10 Asia-Pacific · NIRF #22', category: 'Accreditations' },
+      { label: 'Global Ranking', value: 'QS Online MBA Top 10 Asia-Pacific · NIRF #32', category: 'Accreditations' },
       { label: 'Global Recognition', value: 'WES (USA & Canada), QAA (UK)', category: 'Accreditations' },
       { label: 'Examination Format', value: '100% Home Online Proctored', category: 'Evaluation' },
       { label: 'Active Learners', value: '1,60,000+ Students Worldwide', category: 'Academic' },
@@ -258,33 +255,6 @@ export const AMITY_UNIVERSITY_DATA: UniversityData = {
   campusAndLms: {
     intro: 'Amity Online delivers its programs through "Amigo", a state-of-the-art Learning Management System accessible on web browsers and mobile apps.',
     lmsName: 'Amigo Learning Platform',
-    lmsPlatformTitle: 'How You Study: The Amity Amigo Learning Platform',
-    lmsPlatform: [
-      {
-        icon: 'video',
-        title: 'Live Weekend Interactive Classes',
-        desc: 'Attend live weekend interactive sessions with eminent faculty and guest speakers, with lecture slides and class notes archived for revision.',
-        meta: '24/7 Portal Access',
-      },
-      {
-        icon: 'book',
-        title: 'HD Recorded Lectures & Transcripts',
-        desc: 'Revisit pre-recorded HD video lectures with searchable transcripts and bookmarks that let you jump straight to the topic you need.',
-        meta: 'Searchable Transcripts',
-      },
-      {
-        icon: 'smartphone',
-        title: 'Digital E-Library',
-        desc: 'Browse a digital e-library of 20,000+ academic journals and business cases curated for online programmes.',
-        meta: '20,000+ Journals',
-      },
-      {
-        icon: 'users',
-        title: 'Faculty Mentorship & Remote Exams',
-        desc: 'Ask questions on collaborative discussion boards and direct faculty mentorship channels, then appear for AI-assisted home-proctored remote examinations.',
-        meta: 'AI-Assisted Proctoring',
-      },
-    ],
     lmsFeatures: [
       'Live Weekend Interactive Classes with Eminent Faculty and Guest Speakers',
       'Pre-recorded HD Video Lectures with Searchable Transcripts and Bookmarks',

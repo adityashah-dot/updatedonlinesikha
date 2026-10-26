@@ -199,15 +199,15 @@ export const LoginModal: React.FC<LoginModalProps> = ({
       onClick={handleModalClose}
     >
       <div
-        className="relative w-full max-w-[395px] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden transform transition-all duration-300 animate-in fade-in zoom-in-95 max-h-[92vh] flex flex-col"
+        className="relative w-full max-w-[395px] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden transform transition-all duration-300 animate-in fade-in zoom-in-95"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header Background Banner */}
-        <div className="bg-gradient-to-r from-[#000f22] via-[#00224d] to-[#115eaf] px-5 pt-5 pb-4 text-white relative shrink-0">
+        <div className="bg-gradient-to-r from-[#000f22] via-[#00224d] to-[#115eaf] px-5 pt-5 pb-4 text-white relative">
           <button
             type="button"
             onClick={handleModalClose}
-            className="absolute top-3.5 right-3.5 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center -m-1.5 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            className="absolute top-3.5 right-3.5 p-1.5 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
             aria-label="Close login dialog"
           >
             <X className="w-4 h-4" />
@@ -231,14 +231,14 @@ export const LoginModal: React.FC<LoginModalProps> = ({
         </div>
 
         {/* Tab Switcher: Login vs Register */}
-        <div className="flex border-b border-slate-100 bg-slate-50/70 p-1 shrink-0">
+        <div className="flex border-b border-slate-100 bg-slate-50/70 p-1">
           <button
             type="button"
             onClick={() => {
               setActiveTab('login');
               setErrorMsg('');
             }}
-            className={`flex-1 py-2 min-h-[44px] text-xs font-semibold rounded-xl transition-all cursor-pointer ${
+            className={`flex-1 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
               activeTab === 'login'
                 ? 'bg-white text-[#115eaf] shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
@@ -252,7 +252,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
               setActiveTab('register');
               setErrorMsg('');
             }}
-            className={`flex-1 py-2 min-h-[44px] text-xs font-semibold rounded-xl transition-all cursor-pointer ${
+            className={`flex-1 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
               activeTab === 'register'
                 ? 'bg-white text-[#115eaf] shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
@@ -263,7 +263,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
         </div>
 
         {/* Body Container */}
-        <div className="p-4 sm:p-5 overflow-y-auto min-h-0">
+        <div className="p-4 sm:p-5">
           {/* Success Banner if Logged In */}
           {loggedInUser ? (
             <div className="text-center py-6 space-y-4 animate-fadeIn">
@@ -288,7 +288,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                 <button
                   type="button"
                   onClick={handleModalClose}
-                  className="w-full py-3 min-h-[44px] rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-semibold shadow-xs cursor-pointer transition-all"
+                  className="w-full py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-semibold shadow-xs cursor-pointer transition-all"
                 >
                   Continue to Portal
                 </button>
@@ -298,7 +298,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                     setLoggedInUser(null);
                     setSuccessMsg('');
                   }}
-                  className="text-xs text-slate-500 hover:text-rose-600 font-medium py-2 min-h-[44px] cursor-pointer transition-colors"
+                  className="text-xs text-slate-500 hover:text-rose-600 font-medium py-1 cursor-pointer transition-colors"
                 >
                   Sign Out
                 </button>
@@ -326,7 +326,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                         setOtpSent(false);
                         setErrorMsg('');
                       }}
-                      className={`pb-2 min-h-[44px] px-1 cursor-pointer transition-colors ${
+                      className={`pb-1 cursor-pointer transition-colors ${
                         loginMethod === 'password'
                           ? 'text-[#115eaf] font-bold border-b-2 border-[#115eaf]'
                           : 'text-slate-500 hover:text-slate-800'
@@ -341,7 +341,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                         setLoginMethod('otp');
                         setErrorMsg('');
                       }}
-                      className={`pb-2 min-h-[44px] px-1 cursor-pointer transition-colors ${
+                      className={`pb-1 cursor-pointer transition-colors ${
                         loginMethod === 'otp'
                           ? 'text-[#115eaf] font-bold border-b-2 border-[#115eaf]'
                           : 'text-slate-500 hover:text-slate-800'
@@ -368,7 +368,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                             value={emailOrPhone}
                             onChange={(e) => setEmailOrPhone(e.target.value)}
                             placeholder="aditya.shah@degreefyd.com"
-                            className="w-full pl-9 pr-3 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
+                            className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
                           />
                         </div>
                       </div>
@@ -399,7 +399,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Enter your account password"
-                            className="w-full pl-9 pr-10 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
+                            className="w-full pl-9 pr-10 py-2 text-xs sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
                           />
                           <button
                             type="button"
@@ -426,7 +426,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                       <button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full py-3 min-h-[44px] rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-base sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.99] shadow-xs cursor-pointer disabled:opacity-60"
+                        className="w-full py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.99] shadow-xs cursor-pointer disabled:opacity-60"
                       >
                         {isLoading ? (
                           <span>Verifying Credentials...</span>
@@ -459,18 +459,18 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                             value={emailOrPhone.replace(/^\+91\s?/, '')}
                             onChange={(e) => setEmailOrPhone(e.target.value)}
                             placeholder="98765 43210"
-                            className="w-full pl-16 pr-3 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
+                            className="w-full pl-16 pr-3 py-2 text-xs sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
                           />
                         </div>
                       </div>
 
                       {otpSent && (
                         <div className="space-y-2 pt-1 animate-fadeIn">
-                          <div className="flex items-center justify-between gap-2">
-                            <label className="text-xs font-medium text-slate-700 shrink-0">
+                          <div className="flex items-center justify-between">
+                            <label className="text-xs font-medium text-slate-700">
                               Enter 4-Digit OTP Code
                             </label>
-                            <span className="text-[11px] text-emerald-600 font-medium min-w-0 truncate">
+                            <span className="text-[11px] text-emerald-600 font-medium">
                               Sent to {emailOrPhone}
                             </span>
                           </div>
@@ -498,7 +498,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                                 setOtpCountdown(30);
                                 setErrorMsg('');
                               }}
-                              className="text-[#115eaf] hover:underline font-semibold cursor-pointer py-2 min-h-[44px] px-1"
+                              className="text-[#115eaf] hover:underline font-semibold cursor-pointer"
                             >
                               Resend OTP
                             </button>
@@ -509,7 +509,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                       <button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full py-3 min-h-[44px] rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-base sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.99] shadow-xs cursor-pointer disabled:opacity-60"
+                        className="w-full py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.99] shadow-xs cursor-pointer disabled:opacity-60"
                       >
                         {isLoading ? (
                           <span>Processing...</span>
@@ -545,7 +545,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                     type="button"
                     onClick={handleGoogleLogin}
                     disabled={isLoading}
-                    className="w-full py-3 min-h-[44px] px-4 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-base sm:text-sm font-semibold rounded-xl flex items-center justify-center gap-2.5 transition-all shadow-2xs cursor-pointer active:scale-[0.99]"
+                    className="w-full py-2.5 px-4 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-semibold rounded-xl flex items-center justify-center gap-2.5 transition-all shadow-2xs cursor-pointer active:scale-[0.99]"
                   >
                     <svg className="w-4 h-4" viewBox="0 0 24 24">
                       <path
@@ -583,7 +583,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                       value={regName}
                       onChange={(e) => setRegName(e.target.value)}
                       placeholder="e.g. Aditya Sharma"
-                      className="w-full px-3 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
+                      className="w-full px-3 py-2 text-xs sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
                     />
                   </div>
 
@@ -598,7 +598,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                         value={regEmail}
                         onChange={(e) => setRegEmail(e.target.value)}
                         placeholder="name@email.com"
-                        className="w-full px-3 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
+                        className="w-full px-3 py-2 text-xs sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
                       />
                     </div>
                     <div>
@@ -612,7 +612,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                         value={regPhone}
                         onChange={(e) => setRegPhone(e.target.value)}
                         placeholder="10-digit number"
-                        className="w-full px-3 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
+                        className="w-full px-3 py-2 text-xs sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
                       />
                     </div>
                   </div>
@@ -625,7 +625,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                       <select
                         value={regCourse}
                         onChange={(e) => setRegCourse(e.target.value)}
-                        className="w-full px-3 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900 cursor-pointer appearance-none"
+                        className="w-full px-3 py-2 text-xs sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900 cursor-pointer appearance-none"
                       >
                         <option value="Online MBA">Online MBA (Master of Business Admin)</option>
                         <option value="Online MCA">Online MCA (Master of Computer Apps)</option>
@@ -644,7 +644,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full py-3 min-h-[44px] rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-base sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.99] shadow-xs cursor-pointer disabled:opacity-60"
+                    className="w-full py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.99] shadow-xs cursor-pointer disabled:opacity-60"
                   >
                     {isLoading ? (
                       <span>Creating Registration...</span>

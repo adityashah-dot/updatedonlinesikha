@@ -8,7 +8,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(() => {
   return {
-    root: __dirname,
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
@@ -16,8 +15,6 @@ export default defineConfig(() => {
       },
     },
     build: {
-      outDir: 'dist',
-      emptyOutDir: true,
       // Silence Vite chunk-size warning (app is a single-page bundle)
       chunkSizeWarningLimit: 1200,
     },

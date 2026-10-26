@@ -41,7 +41,7 @@ export const UniversityCourses: React.FC<UniversityCoursesProps> = ({
   }, [university.courses, levelFilter, searchQuery]);
 
   return (
-    <section id="courses" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
+    <section id="courses" className="scroll-mt-32 space-y-6">
       {/* Header and Controls */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-3">
         <div>
@@ -58,7 +58,7 @@ export const UniversityCourses: React.FC<UniversityCoursesProps> = ({
           <button
             type="button"
             onClick={() => setLevelFilter('all')}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors ${
               levelFilter === 'all'
                 ? 'bg-white text-slate-900 shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
@@ -69,7 +69,7 @@ export const UniversityCourses: React.FC<UniversityCoursesProps> = ({
           <button
             type="button"
             onClick={() => setLevelFilter('PG')}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors ${
               levelFilter === 'PG'
                 ? 'bg-white text-slate-900 shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
@@ -80,7 +80,7 @@ export const UniversityCourses: React.FC<UniversityCoursesProps> = ({
           <button
             type="button"
             onClick={() => setLevelFilter('UG')}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors whitespace-nowrap shrink-0 ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-md transition-colors ${
               levelFilter === 'UG'
                 ? 'bg-white text-slate-900 shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'

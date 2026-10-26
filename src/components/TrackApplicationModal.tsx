@@ -20,7 +20,7 @@ export const TrackApplicationModal: React.FC<TrackApplicationModalProps> = ({ is
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-        className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-[#e7eeff] overflow-hidden max-h-[92vh] overflow-y-auto relative"
+        className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-[#e7eeff] overflow-hidden relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -40,7 +40,7 @@ export const TrackApplicationModal: React.FC<TrackApplicationModalProps> = ({ is
           </div>
           <button
             onClick={onClose}
-            className="p-2 min-h-[44px] text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
+            className="p-2 text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -56,7 +56,7 @@ export const TrackApplicationModal: React.FC<TrackApplicationModalProps> = ({ is
                   value={applicationId}
                   onChange={(e) => setApplicationId(e.target.value)}
                   placeholder="e.g. LPU-2026-00123"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#d5e3ff] text-base sm:text-sm focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none transition-all"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#d5e3ff] text-sm focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none transition-all"
                   required
                 />
               </div>
@@ -85,13 +85,13 @@ export const TrackApplicationModal: React.FC<TrackApplicationModalProps> = ({ is
               <div className="flex gap-3">
                 <button
                   onClick={() => setSearched(false)}
-                  className="flex-1 py-2.5 min-h-[44px] bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] rounded-xl text-sm font-semibold hover:bg-[#e0ecff] transition-all"
+                  className="flex-1 py-2.5 bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] rounded-xl text-sm font-semibold hover:bg-[#e0ecff] transition-all"
                 >
                   Track Another
                 </button>
                 <button
                   onClick={onClose}
-                  className="flex-1 py-2.5 min-h-[44px] bg-slate-900 text-white rounded-xl text-sm font-semibold hover:bg-slate-800 transition-all"
+                  className="flex-1 py-2.5 bg-slate-900 text-white rounded-xl text-sm font-semibold hover:bg-slate-800 transition-all"
                 >
                   Close
                 </button>

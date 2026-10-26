@@ -139,7 +139,7 @@ export const DEGREEFYD_LPU_API = {
   blogs: {
     title: "Latest Blogs",
     label: "Blogs",
-    description: "Stay informed and inspired with our blogs from DegreeFYD. Explore, whether you’re a student, working professional, or lifelong learner. DegreeFYD’s blog helps you make smarter decisions and stay ahead in your education journey.",
+    description: "Our blog provides detailed insight, expert tips and valuable information regarding educational and professional paths.",
     posts: [
       { title: "Top Online MBA Universities with NAAC A+ Accreditation in India 2026", excerpt: "Explore the best online MBA universities in India with NAAC A+ accreditation, key highlights, fees and career opportunities.", category: "Online MBA", date: "22 Sep 2026", image: "/images/mbaonline.png" },
       { title: "Popular Online MBA Universities in India 2026", excerpt: "Check the list of online MBA universities in India 2026, along with fees, programmes, eligibility and career opportunities.", category: "Online MBA", date: "13 Sep 2026", image: "/images/mba02.png" },
@@ -179,24 +179,23 @@ export const DEGREEFYD_LPU_API = {
     },
     {
       id: "cu-online",
-      name: "Chandigarh University Online",
+      name: "Chandigarh University (CU Online)",
       short: "CU",
       location: "Mohali, Punjab",
       established: "2012",
-      rankNote: "Ranked #19 by NIRF",
-      highlight: { text: "NAAC A+ Accredited", tone: "blue" as const },
+      rankNote: "Ranked #32 by NIRF 2024",
+      highlight: { text: "QS World Ranked", tone: "blue" as const },
       naac: "NAAC A+ Accredited",
-      approvals: ["UGC Entitled", "NAAC A+"],
-      feeLabel: "₹75,000 onwards",
+      approvals: ["UGC-DEB Entitled", "AICTE Approved"],
+      feeLabel: "₹1,35,000",
       emi: "₹4,500/month",
-      logoImage: "https://images.DegreeFYD.com/colleges/9842/chandigarh_university_online_courses_and_admission_2025_logo.webp",
       specs: [
-        { label: "Exam Mode", value: "Online Proctored" },
-        { label: "LMS Delivery", value: "Digital LMS + Live" },
+        { label: "Exam Mode", value: "Web-Proctored AI" },
+        { label: "LMS Delivery", value: "Blackboard App + Live" },
         { label: "Hiring Partners", value: "300+ Corporates" },
-        { label: "Scholarships", value: "Up to 25% Early Bird", highlight: true }
+        { label: "Scholarships", value: "Up to 30% Early Bird", highlight: true }
       ],
-      tracks: ["Online MBA", "Online MCA", "Online BBA", "Online BCA"]
+      tracks: ["Online MBA (FinTech/Analytics)", "Online MCA (Data Science)", "Online BBA", "Online M.Com"]
     },
     {
       id: "amity-online",
