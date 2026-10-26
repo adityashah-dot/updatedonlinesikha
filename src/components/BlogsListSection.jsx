@@ -1,7 +1,46 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Clock } from "lucide-react";
+import { Clock } from "lucide-react";
 import { DEGREEFYD_LPU_API } from "../data/apiData";
-const PAGE_SIZE = 3;
+import { getCollegeBlogs } from "../services/collegeApi";
+const PAGE_SIZE = 4;
+
+function readBlogImage(value) {
+  if (typeof value === "string") return value;
+  if (value && typeof value === "object") {
+    if (Array.isArray(value)) return readBlogImage(value[0]);
+    return value.url || value.src || value.path || "";
+  }
+  return "";
+}
+
+function mapBlogPosts(rows) {
+  return (Array.isArray(rows) ? rows : []).map((post) => ({
+    image: readBlogImage(post?.mainimage?.image || post?.mainimage || post?.image),
+    title: post?.title || "",
+    excerpt: post?.excerpt || post?.description || "",
+    category: post?.category || "Blog",
+    date: post?.createdAt ? new Date(post.createdAt).toLocaleDateString("en-IN") : "",
+    slug: post?.urlSlug || post?.slug || "",
+  })).filter((post) => post.title);
+}
+
+function fillBlogCarouselPosts(livePosts, fallbackPosts, minimum = 5) {
+  const posts = [...livePosts];
+  const keys = new Set(posts.flatMap((post) => [post.slug, post.title]
+    .filter(Boolean).map((value) => String(value).trim().toLowerCase())));
+
+  for (const post of fallbackPosts) {
+    if (posts.length >= minimum) break;
+    const postKeys = [post.slug, post.title]
+      .filter(Boolean).map((value) => String(value).trim().toLowerCase());
+    if (postKeys.some((key) => keys.has(key))) continue;
+    posts.push(post);
+    postKeys.forEach((key) => keys.add(key));
+  }
+
+  return posts;
+}
+
 export const BlogsListSection = ({
   onOpenHelpDesk,
   title,
@@ -9,27 +48,35 @@ export const BlogsListSection = ({
   sectionId = "blogs",
   posts: passedPosts,
   compact = false,
-  horizontal = false,
-  showDescriptionOnMobile = false
+  horizontal = true,
+  autoScroll = true,
+  showDescriptionOnMobile = false,
+  fetchLivePosts = false
 }) => {
-  const posts = passedPosts ?? DEGREEFYD_LPU_API.blogs.posts;
+  const [livePosts, setLivePosts] = useState(null);
+  const posts = passedPosts ?? livePosts ?? DEGREEFYD_LPU_API.blogs.posts;
   const [shown, setShown] = useState(PAGE_SIZE);
   const [isHovered, setIsHovered] = useState(false);
   const [hasFocus, setHasFocus] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(true);
   const sliderRef = useRef(null);
 
-  const scrollSlider = (direction) => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-    const card = slider.querySelector("article");
-    const gap = Number.parseFloat(window.getComputedStyle(slider).columnGap) || 12;
-    const step = (card?.getBoundingClientRect().width || slider.clientWidth) + gap;
-    const maxScroll = slider.scrollWidth - slider.clientWidth;
-    const next = slider.scrollLeft + step * direction;
-    const left = next > maxScroll - 2 ? 0 : next < 0 ? maxScroll : next;
-    slider.scrollTo({ left, behavior: reduceMotion ? "auto" : "smooth" });
-  };
+  useEffect(() => {
+    if (!fetchLivePosts || passedPosts != null) return;
+    let cancelled = false;
+    getCollegeBlogs("", {})
+      .then((rows) => {
+        const mapped = fillBlogCarouselPosts(
+          mapBlogPosts(rows),
+          DEGREEFYD_LPU_API.blogs.posts,
+        );
+        if (!cancelled && mapped.length) setLivePosts(mapped);
+      })
+      .catch(() => {
+        // Keep the checked-in posts visible when the live endpoint is unavailable.
+      });
+    return () => { cancelled = true; };
+  }, [fetchLivePosts, passedPosts]);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -40,7 +87,7 @@ export const BlogsListSection = ({
   }, []);
 
   useEffect(() => {
-    if (!horizontal || reduceMotion || isHovered || hasFocus || posts.length < 5) return;
+    if (!autoScroll || !horizontal || reduceMotion || isHovered || hasFocus || posts.length < 5 || window.matchMedia("(hover: none)").matches) return;
     const timer = window.setInterval(() => {
       const slider = sliderRef.current;
       if (!slider || slider.scrollWidth <= slider.clientWidth + 2) return;
@@ -52,18 +99,7 @@ export const BlogsListSection = ({
       slider.scrollTo({ left, behavior: "smooth" });
     }, 4200);
     return () => window.clearInterval(timer);
-  }, [horizontal, reduceMotion, isHovered, hasFocus, posts.length]);
-
-  const sliderControls = horizontal ? (
-    <div className="flex shrink-0 items-center gap-2">
-      <button type="button" aria-label="Previous blog" onClick={() => scrollSlider(-1)} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#d5e3ff] bg-white text-[#115eaf] shadow-sm transition hover:bg-[#f0f6ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf]">
-        <ChevronLeft className="h-4 w-4" />
-      </button>
-      <button type="button" aria-label="Next blog" onClick={() => scrollSlider(1)} className="flex h-9 w-9 items-center justify-center rounded-full border border-[#d5e3ff] bg-white text-[#115eaf] shadow-sm transition hover:bg-[#f0f6ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf]">
-        <ChevronRight className="h-4 w-4" />
-      </button>
-    </div>
-  ) : null;
+  }, [autoScroll, horizontal, reduceMotion, isHovered, hasFocus, posts.length]);
 
   return <section
     id={sectionId}
@@ -84,11 +120,13 @@ export const BlogsListSection = ({
             {DEGREEFYD_LPU_API.blogs.description}
           </p>}
         </div>
-        {sliderControls}
+        <button type="button" onClick={() => onOpenHelpDesk()} className="h-8 shrink-0 self-start rounded-xl border border-[#0b2540] px-2.5 text-[10px] font-bold text-[#0b2540] transition-all hover:bg-[#0b2540] hover:text-white cursor-pointer sm:h-10 sm:px-4 sm:text-xs">
+          View All Blogs
+        </button>
       </div>
 
-      <div className="hidden md:flex items-end justify-between gap-3 flex-wrap">
-        <div>
+      <div className="hidden md:grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
+        <div className="min-w-0">
           <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
             {title ?? <>
                 Latest Blogs
@@ -99,14 +137,12 @@ export const BlogsListSection = ({
           </p>
         </div>
         <div className="flex items-center gap-3">
-        {sliderControls}
         <button
     type="button"
     onClick={() => onOpenHelpDesk()}
-    className="h-10 px-4 inline-flex items-center gap-2 rounded-xl border border-[#0b2540] text-[#0b2540] text-xs font-bold hover:bg-[#0b2540] hover:text-white transition-all shrink-0 cursor-pointer"
+    className="h-8 px-2.5 inline-flex items-center justify-center rounded-xl border border-[#0b2540] text-[#0b2540] text-[10px] font-bold hover:bg-[#0b2540] hover:text-white transition-all shrink-0 cursor-pointer sm:h-10 sm:px-4 sm:text-xs"
   >
           View All Blogs
-          <span className="text-[#115eaf] text-sm">→</span>
         </button>
         </div>
       </div>
@@ -116,11 +152,11 @@ export const BlogsListSection = ({
         aria-label={horizontal ? "Latest blog posts carousel" : undefined}
         role={horizontal ? "region" : undefined}
         aria-roledescription={horizontal ? "carousel" : undefined}
-        className={`${horizontal ? "flex overflow-x-auto overscroll-x-contain snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" : "hidden md:grid grid-cols-1 md:grid-cols-3"} ${compact ? "gap-3 mt-3 pb-2" : "gap-4 mt-[18px]"}`}
+        className={`${horizontal ? "flex overflow-x-auto overscroll-x-contain snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden" : "hidden md:grid grid-cols-1 md:grid-cols-4"} ${compact ? "gap-3 mt-3 pb-2" : "gap-4 mt-[18px]"}`}
       >
         {posts.map((post, i) => <article
     key={`desktop-${i}`}
-    style={horizontal ? { flex: "0 0 max(220px, calc((100% - 36px) / 4))" } : undefined}
+    style={horizontal ? { flex: "0 0 max(140px, calc((100% - 36px) / 4))" } : undefined}
     className={`${horizontal ? "snap-start" : ""} group overflow-hidden bg-white border border-[#e7eeff] rounded-2xl hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between`}
   >
             <div className={`relative ${compact ? "h-28" : "h-40"} overflow-hidden bg-[#f0f3ff]`}>
@@ -147,7 +183,6 @@ export const BlogsListSection = ({
     className="text-xs font-bold text-[#115eaf] hover:underline flex items-center gap-1 mt-2 cursor-pointer"
   >
                 Read Article
-                <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </article>)}

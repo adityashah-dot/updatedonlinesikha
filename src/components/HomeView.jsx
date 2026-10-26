@@ -196,7 +196,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
       {
     /* Hero */
   }
-      <section className="relative left-1/2 -mt-5 w-screen -translate-x-1/2 overflow-hidden bg-[#f2f6fb] py-4 md:py-7">
+      <section className="relative left-1/2 -mt-5 w-[calc(100%+2rem)] -translate-x-1/2 overflow-hidden bg-[#f2f6fb] py-4 md:w-[calc(100%+3rem)] md:py-7">
         <div className="relative z-10 w-full max-w-[1120px] mx-auto text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#e2e8f0] text-[#1f2937] text-[11px] font-semibold tracking-wide shadow-sm text-center">
             <ShieldCheck className="w-4 h-4 text-[#115eaf] shrink-0" />
@@ -393,7 +393,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
           <div>
             <div className="flex items-center gap-2">
               <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#115eaf]" />
-              <h2 className="text-[17px] sm:text-2xl font-bold text-[#000f22] whitespace-nowrap">Explore Some Popular Universities</h2>
+              <h2 className="text-[17px] sm:text-2xl font-bold text-[#000f22] max-[380px]:whitespace-normal whitespace-nowrap">Explore Some Popular Universities</h2>
             </div>
           </div>
           <button
@@ -706,6 +706,6 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
       {
     /* Blogs */
   }
-      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="relative left-1/2 w-[calc(100vw-2rem)] -translate-x-1/2 rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:w-[calc(100vw-3rem)] md:p-6" compact horizontal showDescriptionOnMobile />
+      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="w-full rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:p-6" compact horizontal autoScroll showDescriptionOnMobile fetchLivePosts />
     </div>;
 };
