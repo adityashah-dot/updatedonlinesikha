@@ -718,7 +718,7 @@ export default function CoursesAndFeesView({
           {admissionDates.length > 0 && (
             <section
               id="admission-dates"
-              className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 scroll-mt-[100px] border-y border-[#e7eeff] bg-[#f0f3ff]/60 py-5 sm:py-7"
+              className="relative w-full max-w-full scroll-mt-[100px] border-y border-[#e7eeff] bg-[#f0f3ff]/60 py-5 sm:py-7"
             >
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="overflow-hidden rounded-2xl border border-[#d5e3ff] bg-gradient-to-br from-[#f9fbff] via-[#f0f3ff] to-white shadow-sm">

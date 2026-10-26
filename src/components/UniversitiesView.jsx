@@ -475,7 +475,7 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
       </section>
 
       {/* ================= MAIN: FILTERS + LISTING ================= */}
-      <main className="uv-listing max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-2 sm:pt-3 pb-0 bg-[#f3f6fb] rounded-t-[18px] sm:rounded-t-[28px]">
+      <main className="uv-listing max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-2 sm:pt-3 pb-0 bg-[#f3f6fb] rounded-t-[18px] sm:rounded-t-[28px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* LEFT SIDEBAR FILTERS */}
           <aside className="lg:col-span-3 bg-white rounded-2xl border border-[#d5e3ff] p-5 shadow-xs sticky top-20 hidden lg:block">

@@ -94,7 +94,7 @@ const OverviewView = ({
   const [courseFeeSearch, setCourseFeeSearch] = useState("");
   const [showAllFeeRows, setShowAllFeeRows] = useState(false);
   const [blogIndex, setBlogIndex] = useState(0);
-  const [blogVisible, setBlogVisible] = useState(3);
+  const [blogVisible, setBlogVisible] = useState(4);
   const campusMarqueeImages = (() => {
     const images = (collegeData?.campus?.galleryImages || [])
       .filter((item) => item?.imageUrl)
@@ -217,7 +217,7 @@ const OverviewView = ({
     const getVisible = () => {
       if (window.innerWidth <= 700) return 1;
       if (window.innerWidth <= 1050) return 2;
-      return 3;
+      return 4;
     };
     const onResize = () => {
       const v = getVisible();
