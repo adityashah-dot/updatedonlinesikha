@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { HomeFaq } from "./HomeFaq";
 import { TopCollegesByLocation } from "./TopCollegesByLocation";
+import HomeHero from "./HomeHero";
 import { StudentTestimonials } from "./StudentTestimonials";
 import { PopularCoursesMobile } from "./PopularCoursesMobile";
 import { BlogsListSection } from "./BlogsListSection";
@@ -243,127 +244,9 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
     setCompareColumns((prev) => prev.map((v, i) => (i === colIndex ? uniIndex : v)));
   };
   const filteredDegreePrograms = DEGREE_PROGRAMS.filter((p) => p.lv.includes(degreeLevel));
-  return <div className="home-page w-full mx-auto px-4 md:px-6 py-5 space-y-5">
-      {
-    /* Hero */
-  }
-      <section className="relative left-1/2 -mt-5 w-[calc(100%+2rem)] -translate-x-1/2 overflow-hidden bg-[#f2f6fb] py-4 md:w-[calc(100%+3rem)] md:py-7">
-        <div className="relative z-10 w-full max-w-[1120px] mx-auto text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#e2e8f0] text-[#1f2937] text-[11px] font-semibold tracking-wide shadow-sm text-center">
-            <ShieldCheck className="w-4 h-4 text-[#115eaf] shrink-0" />
-            <span className="sm:hidden">UGC-DEB • NAAC A++ Approved</span>
-            <span className="hidden sm:inline">UGC-DEB • AICTE • NAAC A++ ACCREDITED UNIVERSITIES</span>
-          </div>
-          <h1 className="text-[clamp(24px,6.5vw,32px)] sm:text-4xl lg:text-5xl font-extrabold font-sans tracking-[-0.02em] leading-[1.15]">
-            <span className="block text-[#000f22]">Discover, Compare &amp; Enroll in</span>
-            <span className="block bg-gradient-to-r from-[#115eaf] via-[#2563eb] to-[#0d9488] bg-clip-text text-transparent">
-              India's Top Online Universities
-            </span>
-          </h1>
-          <p className="text-[#475569] text-[15px] md:text-[16px] max-w-2xl mx-auto leading-relaxed">
-            Find government-recognized online degrees designed for working professionals with zero-cost EMI and 100% remote proctored exams.
-          </p>
-
-          <div className="mt-5 box-border w-full max-w-[1120px] mx-auto bg-white/85 rounded-2xl border border-[#d5e3ff] p-5 shadow-md text-left">
-            <form
-    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[minmax(0,340px)_minmax(0,330px)_minmax(0,340px)] lg:justify-center gap-3.5 items-stretch"
-    onSubmit={handleExploreSubmit}
-  >
-              {
-    /* Select Degree Dropdown */
-  }
-              <div className="min-h-16 relative bg-white hover:bg-[#f8faff] focus-within:bg-white rounded-xl border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/15 transition-all px-3 py-1.5 flex flex-col justify-center shadow-xs">
-                <div className="flex items-center gap-1.5 mb-0.5 leading-none">
-                  <GraduationCap className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
-                  <label htmlFor="select-degree" className="block text-[11px] font-semibold text-[#43474d] uppercase tracking-wider cursor-pointer truncate">
-                    Select Degree Program
-                  </label>
-                </div>
-                <div className="relative flex items-center">
-                  <select
-    id="select-degree"
-    value={selectedDegree}
-    onChange={(e) => setSelectedDegree(e.target.value)}
-    className="w-full bg-transparent border-0 p-0 pr-6 text-base sm:text-sm text-[#000f22] font-semibold focus:ring-0 cursor-pointer outline-none appearance-none truncate [background-image:none]"
-    style={{ backgroundImage: "none" }}
-  >
-                    <option value="Online MBA (Master of Business)">Online MBA (Master of Business)</option>
-                    <option value="Online MCA (Computer Applications)">Online MCA (Computer Applications)</option>
-                    <option value="Online BBA (Bachelor of Business)">Online BBA (Bachelor of Business)</option>
-                    <option value="Online BCA (Computer Science)">Online BCA (Computer Science)</option>
-                    <option value="Online M.Com / B.Com">Online M.Com / B.Com</option>
-                    <option value="Online MA / BA">Online MA / BA</option>
-                  </select>
-                  <ChevronDown className="w-4 h-4 text-[#74777e] pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 shrink-0" />
-                </div>
-              </div>
-
-              {
-    /* Budget Per Semester Dropdown */
-  }
-              <div className="min-h-16 relative bg-white hover:bg-[#f8faff] focus-within:bg-white rounded-xl border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/15 transition-all px-3 py-1.5 flex flex-col justify-center shadow-xs">
-                <div className="flex items-center gap-1.5 mb-0.5 leading-none">
-                  <Wallet className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
-                  <label htmlFor="select-budget" className="block text-[11px] font-semibold text-[#43474d] uppercase tracking-wider cursor-pointer truncate">
-                    Budget Per Semester
-                  </label>
-                </div>
-                <div className="relative flex items-center">
-                  <select
-    id="select-budget"
-    value={selectedBudget}
-    onChange={(e) => setSelectedBudget(e.target.value)}
-    className="w-full bg-transparent border-0 p-0 pr-6 text-base sm:text-sm text-[#000f22] font-semibold focus:ring-0 cursor-pointer outline-none appearance-none truncate [background-image:none]"
-    style={{ backgroundImage: "none" }}
-  >
-                    <option value="Any Budget (₹12,000 - ₹50,000)">Any Budget (₹12,000 - ₹50,000)</option>
-                    <option value="Under ₹15,000 / semester">Under ₹15,000 / semester</option>
-                    <option value="₹15,000 - ₹25,000 / semester">₹15,000 - ₹25,000 / semester</option>
-                    <option value="₹25,000 - ₹40,000 / semester">₹25,000 - ₹40,000 / semester</option>
-                    <option value="Premium Tier (&gt; ₹40,000 / sem)">Premium Tier (&gt; ₹40,000 / sem)</option>
-                  </select>
-                  <ChevronDown className="w-4 h-4 text-[#74777e] pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 shrink-0" />
-                </div>
-              </div>
-
-              {
-    /* Explore Button */
-  }
-              <div className="md:col-span-2 lg:col-span-1 min-h-16">
-                <button
-    type="submit"
-    className="w-full h-16 min-h-16 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.99] shadow-md hover:shadow-lg cursor-pointer px-4"
-  >
-                  <Search className="w-4 h-4 shrink-0" />
-                  <span>Explore 50+ Universities</span>
-                </button>
-              </div>
-            </form>
-
-            <div className="mt-3.5 pt-3.5 border-t border-[#d5e3ff]/70 flex flex-wrap items-center gap-2 text-[12px]">
-              <span className="text-[#43474d] font-medium mr-0.5 flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                Trending Filters:
-              </span>
-              {TRENDING_FILTERS.map((f) => <button
-    key={f}
-    type="button"
-    onClick={() => scrollTo("universities")}
-    className="cursor-pointer inline-flex items-center min-h-9 bg-white px-3 py-1.5 rounded-full border border-[#c4c6ce]/70 text-[#111c2d] hover:border-[#115eaf] hover:text-[#115eaf] transition-colors font-medium text-xs"
-  >
-                  {f}
-                </button>)}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-[17px]">
-            {HERO_METRICS.map((m) => <div key={m.label} className="p-3 bg-[#f0f4f8]/60 rounded-lg border border-[#c4c6ce]/50 text-center">
-                <div className={`text-xl md:text-2xl font-bold ${m.tone || "text-[#000f22]"}`}>{m.value}</div>
-                <div className="text-[12px] text-[#43474d] font-normal">{m.label}</div>
-              </div>)}
-          </div>
-        </div>
-      </section>
+  return (
+    <div className="home-page w-full mx-auto px-4 md:px-6 py-5 space-y-5">
+      <HomeHero />
 
       {
     /* Popular Courses — mobile only */
@@ -845,5 +728,6 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
     /* Blogs */
   }
       <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="w-full rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:p-6" compact horizontal autoScroll showDescriptionOnMobile fetchLivePosts />
-    </div>;
+    </div>
+  );
 };

@@ -16,6 +16,7 @@
     color: #1a222f;
     font-weight: 400;
     line-height: 1.6;
+    overflow-x: clip;
   }
   /* Page Headings: font-weight 700 */
   h1, .page-heading {

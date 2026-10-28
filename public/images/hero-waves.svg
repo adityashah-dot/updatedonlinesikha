@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1600" height="731" viewBox="0 0 1600 731" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="blobFade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="731">
+    <stop offset="0" stop-color="#DCE9FB"/>
+    <stop offset="0.45" stop-color="#CFE1FA"/>
+    <stop offset="0.65" stop-color="#F0F7FF"/>
+    <stop offset="1" stop-color="#F0F7FF"/>
+  </linearGradient>
+</defs>
+<g id="SVG" clip-path="url(#clip0_0_188)">
+<path id="Vector" d="M1464 0H1600V426C1470 566 1370 606 1210 644C1100 676 1036 519 853 617C555 791 199 728 0 510V387C211 588 388 628 620 580C869 528 1065 661 1264 430C1400 275 1352 162 1464 0Z" fill="url(#blobFade)"/>
+<path id="Vector_2" d="M0 600C253 774 428 755 677 689C956 611 1000 663 1158 689C1377 727 1444 585 1600 554V731H0V600Z" fill="#D9EAFF"/>
+<path id="Vector_3" d="M904 731C1053 691 1116 681 1233 706C1343 729 1477 691 1600 661V731H904Z" fill="#C4DFFF"/>
+</g>
+<defs>
+<clipPath id="clip0_0_188">
+<rect width="1600" height="731" fill="white"/>
+</clipPath>
+</defs>
+</svg>

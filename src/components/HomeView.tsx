@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import HomeHero from './HomeHero';
 import {
   Search,
   ShieldCheck,
@@ -7,29 +8,25 @@ import {
   Download,
   CheckCircle,
   ChevronRight,
+  ChevronDown,
   Headphones,
   GraduationCap,
-  Wallet,
-  ChevronDown,
+  Building2,
+  Award,
   Sparkles,
+  Laptop,
+  CreditCard,
+  CheckCircle2,
   Star,
+  Users,
 } from 'lucide-react';
-import { HomeFaq } from './HomeFaq';
-import { TopCollegesByLocation } from './TopCollegesByLocation';
-import { RecommendedCollegeNews } from './RecommendedCollegeNews';
-import { StudentTestimonials } from './StudentTestimonials';
 
 interface HomeViewProps {
   onOpenApply: (courseId?: string) => void;
   onOpenHelpDesk: () => void;
+  onOpenChat?: () => void;
+  onOpenCounselor?: () => void;
 }
-
-const TRENDING_FILTERS = [
-  'NAAC A++ Only',
-  'Under ₹1 Lakh Total',
-  'Zero-Cost EMI',
-  '100% Online Exam',
-];
 
 const HERO_METRICS = [
   { value: '50+', label: 'Entitled Universities' },
@@ -45,13 +42,16 @@ const DEGREE_CARDS = [
     title: 'Online MBA',
     subtitle: 'Master of Business Administration',
     duration: '2 Years • 4 Sems',
-    badge: 'High Placement Rate',
+    badge: '0% EMI Pre-Approved',
     badgeTone: 'text-emerald-700 bg-emerald-50 border-emerald-200',
-    rows: [
-      { label: 'Specializations:', value: '19+ (Data, Finance, Marketing, HR)' },
-      { label: 'Avg Career CTC:', value: '₹7.2 - 14.5 LPA', tone: 'text-[#115eaf] font-semibold' },
+    bullets: [
+      'UGC-DEB & AICTE Entitled Equivalence',
+      '0% Interest EMI starting ₹3,080/mo',
+      '100% Remote Proctored Exams from Home',
+      '19+ High-Growth Specializations',
     ],
     price: '₹18,500',
+    emi: '₹3,080/mo',
     explore: 'Explore 28 Unis',
   },
   {
@@ -59,64 +59,79 @@ const DEGREE_CARDS = [
     subtitle: 'Master of Computer Applications',
     duration: '2 Years • 4 Sems',
     badge: 'AI & Cloud Ready',
-    badgeTone: 'text-purple-700 bg-purple-50 border-purple-200',
-    rows: [
-      { label: 'Specializations:', value: 'AI, Cloud, Full-Stack, Cyber' },
-      { label: 'Avg Career CTC:', value: '₹6.5 - 16.0 LPA', tone: 'text-[#115eaf] font-semibold' },
+    badgeTone: 'text-blue-700 bg-blue-50 border-blue-200',
+    bullets: [
+      'UGC-DEB Approved Regular Equivalence',
+      '0% Interest EMI starting ₹3,660/mo',
+      'Cloud Sandbox & Virtual AI Labs',
+      'Remote Weekend Proctored Exams',
     ],
     price: '₹22,000',
+    emi: '₹3,660/mo',
     explore: 'Explore 22 Unis',
   },
   {
     title: 'Online BBA',
     subtitle: 'Bachelor of Business Administration',
     duration: '3 Years • 6 Sems',
-    badge: 'Entry Degree',
-    badgeTone: 'text-blue-700 bg-blue-50 border-blue-200',
-    rows: [
-      { label: 'Specializations:', value: 'Digital Marketing, Finance, HR' },
-      { label: 'Eligibility:', value: '10+2 with 50% Any Stream' },
+    badge: 'Top UG Program',
+    badgeTone: 'text-sky-700 bg-sky-50 border-sky-200',
+    bullets: [
+      'UGC Section 22 Entitled Degree',
+      '0% Interest EMI starting ₹2,330/mo',
+      'Digital Marketing & FinTech Tracks',
+      '10+2 Any Stream (50% Minimum)',
     ],
     price: '₹14,000',
+    emi: '₹2,330/mo',
     explore: 'Explore 19 Unis',
   },
   {
     title: 'Online BCA',
     subtitle: 'Bachelor of Computer Applications',
     duration: '3 Years • 6 Sems',
-    badge: 'Tech Career Starter',
+    badge: 'Tech Career Track',
     badgeTone: 'text-indigo-700 bg-indigo-50 border-indigo-200',
-    rows: [
-      { label: 'Core Tracks:', value: 'Full-Stack, Python, Cloud' },
-      { label: 'Practical Labs:', value: '100% Virtual Cloud Sandbox', tone: 'text-emerald-700 font-medium' },
+    bullets: [
+      'UGC Statutory Entitled Bachelors',
+      '0% Interest EMI starting ₹2,500/mo',
+      '100% Remote AI-Proctored Exams',
+      'Full-Stack Web & Python Labs',
     ],
     price: '₹15,000',
+    emi: '₹2,500/mo',
     explore: 'Explore 17 Unis',
   },
   {
     title: 'Online B.Com / M.Com',
     subtitle: 'Commerce & Corporate Finance',
-    duration: 'UG & PG Available',
-    badge: 'ACCA & US CMA Options',
+    duration: 'UG & PG Tracks Available',
+    badge: 'ACCA / US CMA Aligned',
     badgeTone: 'text-amber-800 bg-amber-50 border-amber-200',
-    rows: [
-      { label: 'Accounting Certs:', value: 'Integrated ACCA 9-Paper Exemption' },
-      { label: 'Govt Exam Validity:', value: '100% Valid (UPSC/Banking)', tone: 'text-emerald-700 font-medium' },
+    bullets: [
+      'UGC-DEB Recognized & Govt Valid',
+      '0% Interest EMI starting ₹2,000/mo',
+      'Valid for UPSC, Banking & SSC',
+      'ACCA 9-Paper Exemption Option',
     ],
     price: '₹12,000',
+    emi: '₹2,000/mo',
     explore: 'Explore 15 Unis',
   },
   {
     title: 'Online BA / MA',
-    subtitle: 'Humanities & Social Sciences',
-    duration: 'UG & PG Tracks',
-    badge: 'Affordable Fee',
+    subtitle: 'Liberal Arts & Public Policy',
+    duration: 'UG & PG Tracks Available',
+    badge: 'Most Affordable',
     badgeTone: 'text-slate-700 bg-slate-100 border-slate-300',
-    rows: [
-      { label: 'Disciplines:', value: 'Journalism, English, Public Policy' },
-      { label: 'Best For:', value: 'Civil Services Aspirants' },
+    bullets: [
+      'UGC-Entitled Regular Equivalence',
+      '0% Interest EMI starting ₹1,830/mo',
+      '100% Remote Proctored Exams',
+      'Ideal for Working Professionals & Civil Services',
     ],
     price: '₹11,000',
+    emi: '₹1,830/mo',
     explore: 'Explore 14 Unis',
   },
 ];
@@ -128,51 +143,59 @@ const FEATURED_UNIS = [
     short: 'LPU Online',
     naac: 'NAAC A++ (3.68 CGPA)',
     rank: 'NIRF #31',
-    rows: [
-      { label: 'Total Fees (2 Yrs):', value: '₹1,40,000' },
-      { label: 'EMI Starts:', value: '₹4,950/mo', tone: 'text-emerald-700 font-bold' },
-      { label: 'Exam Mode:', value: '100% Home AI Proctored' },
-      { label: 'Learning:', value: 'Live Lectures + LMS' },
+    bullets: [
+      'UGC Category-1 Autonomy Entitlement',
+      '0% Interest EMI from ₹4,950/month',
+      '100% Home AI-Proctored Examinations',
+      'Live Weekend Lectures + Mobile LMS',
     ],
+    totalFee: '₹1,40,000',
+    emi: '₹4,950/mo',
   },
   {
     id: 'amity-online',
     name: 'Amity University',
     short: 'Amity Online',
-    naac: 'NAAC A+',
-    rank: 'NIRF Top 35',
-    rows: [
-      { label: 'Total Fees (2 Yrs):', value: '₹1,65,000' },
-      { label: 'EMI Starts:', value: '₹5,833/mo', tone: 'text-emerald-700 font-bold' },
-      { label: 'Ranking:', value: 'QS Online MBA Top 10 Asia' },
-      { label: 'Campus LMS:', value: 'beSocial Academic App' },
+    naac: 'NAAC A+ Accredited',
+    rank: 'QS Asia Top 10',
+    bullets: [
+      'UGC-DEB & Global WES Recognized',
+      '0% Interest EMI from ₹5,833/month',
+      '100% Remote Proctored Exams',
+      'Dedicated Placement Assistance',
     ],
+    totalFee: '₹1,65,000',
+    emi: '₹5,833/mo',
   },
   {
     id: 'cu-online',
     name: 'Chandigarh University',
     short: 'CU Online',
-    naac: 'NAAC A+',
+    naac: 'NAAC A+ Accredited',
     rank: 'QS World Ranked',
-    rows: [
-      { label: 'Total Fees (2 Yrs):', value: '₹1,35,000' },
-      { label: 'EMI Starts:', value: '₹4,500/mo', tone: 'text-emerald-700 font-bold' },
-      { label: 'Special Inclusions:', value: 'Harvard Certifications' },
-      { label: 'Placement Drives:', value: '300+ Recruiters' },
+    bullets: [
+      'UGC-Entitled + Harvard Certifications',
+      '0% Interest EMI from ₹4,500/month',
+      'Flexible Weekend Proctored Exams',
+      '300+ Active Placement Recruiters',
     ],
+    totalFee: '₹1,35,000',
+    emi: '₹4,500/mo',
   },
   {
     id: 'manipal-online',
     name: 'Manipal University Jaipur',
     short: 'Online Manipal',
-    naac: 'NAAC A+ (3.59 CGPA)',
-    rank: 'Legacy 70+ Yrs',
-    rows: [
-      { label: 'Total Fees (2 Yrs):', value: '₹1,75,000' },
-      { label: 'EMI Starts:', value: '₹5,200/mo', tone: 'text-emerald-700 font-bold' },
-      { label: 'Content Partner:', value: 'Coursera Access' },
-      { label: 'Equivalence:', value: 'Global WES Recognized' },
+    naac: 'NAAC A++ (3.59 CGPA)',
+    rank: '70+ Yrs Academic Legacy',
+    bullets: [
+      'UGC Category-1 Autonomy Status',
+      '0% Interest EMI from ₹5,200/month',
+      'Coursera Certified Learning Content',
+      '100% Remote Web Proctored Exams',
     ],
+    totalFee: '₹1,75,000',
+    emi: '₹5,200/mo',
   },
 ];
 
@@ -194,7 +217,7 @@ const COMPARE_ROWS: { param: string; cells: CompareCell[] }[] = [
       { text: 'A++ (3.68 CGPA)', badge: true },
       { text: 'A+', badge: true },
       { text: 'A+', badge: true },
-      { text: 'A+ (3.59 CGPA)', badge: true },
+      { text: 'A++ (3.59 CGPA)', badge: true },
     ],
   },
   {
@@ -244,72 +267,19 @@ const COMPARE_ROWS: { param: string; cells: CompareCell[] }[] = [
   },
 ];
 
-type CompareUniversity = {
-  name: string;
-  fees: string;
-  approval: string;
-  emi: string;
-  duration: string;
-  exam: string;
-};
-
-const COMPARE_UNIVERSITIES: CompareUniversity[] = [
-  { name: 'LPU Online', fees: '₹1,40,000', approval: 'Category-1 Approved', emi: '₹4,950 / month', duration: '2 Years', exam: '100% Remote AI Web-Cam' },
-  { name: 'Amity Online', fees: '₹1,65,000', approval: 'Category-1 Approved', emi: '₹5,833 / month', duration: '2 Years', exam: '100% Remote Proctored' },
-  { name: 'CU Online', fees: '₹1,35,000', approval: 'Category-1 Approved', emi: '₹4,500 / month', duration: '2 Years', exam: 'Online LMS Exam' },
-  { name: 'Manipal Jaipur', fees: '₹1,75,000', approval: 'Category-1 Approved', emi: '₹5,200 / month', duration: '2 Years', exam: 'Remote Web Proctored' },
-];
-
-const COMPARE_CRITERIA: [string, keyof CompareUniversity][] = [
-  ['Total fees', 'fees'],
-  ['Approval', 'approval'],
-  ['EMI', 'emi'],
-  ['Duration', 'duration'],
-  ['Exam mode', 'exam'],
-];
-
-
-
-type DegreeProgram = {
-  lv: string[];
-  y: string;
-  n: string;
-  f: string;
-  sp: string;
-  tg: string;
-  ctc: string;
-  fee: string;
-  c: number;
-  lab: string;
-};
-
-const DEGREE_PROGRAMS: DegreeProgram[] = [
-  { lv: ['PG'], y: '2 Years · 4 Sems', n: 'Online MBA', f: 'Master of Business Administration', sp: '19+ (Data, Finance, Marketing, HR)', tg: 'High Placement Rate', ctc: '₹7.2 – 14.5 LPA', fee: '₹18,500', c: 28, lab: 'Specializations' },
-  { lv: ['PG'], y: '2 Years · 4 Sems', n: 'Online MCA', f: 'Master of Computer Applications', sp: 'AI, Cloud, Full-Stack, Cyber', tg: 'AI & Cloud Ready', ctc: '₹6.5 – 16.0 LPA', fee: '₹22,000', c: 22, lab: 'Specializations' },
-  { lv: ['UG'], y: '3 Years · 6 Sems', n: 'Online BBA', f: 'Bachelor of Business Administration', sp: 'Digital Marketing, Finance, HR', tg: 'Entry Degree', ctc: 'Eligibility: 10+2 with 50% any stream', fee: '₹14,000', c: 19, lab: 'Specializations' },
-  { lv: ['UG'], y: '3 Years · 6 Sems', n: 'Online BCA', f: 'Bachelor of Computer Applications', sp: 'Full-Stack, Python, Cloud', tg: 'Tech Career Starter', ctc: '100% virtual cloud sandbox labs', fee: '₹15,000', c: 17, lab: 'Core tracks' },
-  { lv: ['UG', 'PG'], y: 'UG & PG available', n: 'Online B.Com / M.Com', f: 'Commerce & Corporate Finance', sp: 'Integrated ACCA 9-paper exemption', tg: 'ACCA & US CMA options', ctc: 'Govt exam validity: UPSC/Banking', fee: '₹12,000', c: 15, lab: 'Accounting certs' },
-  { lv: ['UG', 'PG'], y: 'UG & PG tracks', n: 'Online BA / MA', f: 'Humanities & Social Sciences', sp: 'Journalism, English, Public Policy', tg: 'Affordable fee', ctc: 'Best for civil services aspirants', fee: '₹11,000', c: 14, lab: 'Disciplines' },
-  { lv: ['UG'], y: '4 Years · 8 Sems', n: 'Online B.Tech', f: 'Bachelor of Technology', sp: 'CSE, AI/ML, Data Science, Cyber', tg: 'Industry 4.0 Ready', ctc: 'Eligibility: 10+2 PCM 50%', fee: '₹25,000', c: 12, lab: 'Specializations' },
-  { lv: ['PG'], y: '2 Years · 4 Sems', n: 'Online M.Sc (Data Science)', f: 'Master of Science', sp: 'Machine Learning, Big Data, AI', tg: 'High Demand Skill', ctc: '₹8.0 – 18.0 LPA', fee: '₹24,000', c: 10, lab: 'Specializations' },
-  { lv: ['PG'], y: '2 Years · 4 Sems', n: 'Online MA (Psychology)', f: 'Master of Arts', sp: 'Clinical, Counseling, Organizational', tg: 'Growing Demand', ctc: '₹5.0 – 10.0 LPA', fee: '₹16,000', c: 8, lab: 'Disciplines' },
-  { lv: ['UG'], y: '3 Years · 6 Sems', n: 'Online B.Sc (IT)', f: 'Bachelor of Science (IT)', sp: 'Software, Networking, Cloud', tg: 'Tech Foundation', ctc: 'Eligibility: 10+2 any stream', fee: '₹13,000', c: 11, lab: 'Core tracks' },
-  { lv: ['EX'], y: '1 Year · 2 Sems', n: 'Executive MBA', f: 'Executive Master of Business Administration', sp: 'Leadership, Strategy, Finance', tg: 'For Working Professionals', ctc: '₹12.0 – 25.0 LPA', fee: '₹35,000', c: 6, lab: 'Specializations' },
-  { lv: ['EX'], y: '6 Months', n: 'PG Certificate (AI)', f: 'Post Graduate Certificate', sp: 'Generative AI, LLMs, MLOps', tg: 'Fast-Track Upskilling', ctc: 'Career switch ready', fee: '₹20,000', c: 5, lab: 'Modules' },
-  { lv: ['PG'], y: '2 Years · 4 Sems', n: 'Online M.Com', f: 'Master of Commerce', sp: 'Accounting, Taxation, Finance', tg: 'Commerce Advanced', ctc: '₹5.5 – 12.0 LPA', fee: '₹17,000', c: 9, lab: 'Specializations' },
-  { lv: ['UG'], y: '3 Years · 6 Sems', n: 'Online B.Com', f: 'Bachelor of Commerce', sp: 'Accounting, Economics, Business Law', tg: 'Commerce Foundation', ctc: 'Eligibility: 10+2 commerce', fee: '₹12,500', c: 13, lab: 'Core tracks' },
-];
-
-const DEGREE_LEVELS: [string, string][] = [["Master's (PG)", 'PG'], ["Bachelor's (UG)", 'UG'], ['Executive Tracks', 'EX']];
-
-export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk }) => {
+export const HomeView: React.FC<HomeViewProps> = ({
+  onOpenApply,
+  onOpenHelpDesk,
+  onOpenChat,
+  onOpenCounselor,
+}) => {
   const navigate = useNavigate();
-  const [selectedDegree, setSelectedDegree] = useState('Online MBA (Master of Business)');
-  const [selectedBudget, setSelectedBudget] = useState('Any Budget (₹12,000 - ₹50,000)');
+  const [degreeTab, setDegreeTab] = useState<(typeof DEGREE_CATEGORIES)[number]>("Master's (PG)");
   const [lead, setLead] = useState({ phone: '', email: '', degree: 'Online MBA' });
   const [leadSubmitted, setLeadSubmitted] = useState(false);
-  const [degreeLevel, setDegreeLevel] = useState('PG');
-  const [compareColumns, setCompareColumns] = useState<number[]>([0, 1]);
+  const [selectedDegree, setSelectedDegree] = useState('Online MBA (Master of Business)');
+  const [selectedBudget, setSelectedBudget] = useState('Any Budget (₹12,000 - ₹50,000)');
+  const [selectedMode, setSelectedMode] = useState('100% Home AI Proctored');
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -319,268 +289,148 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
     }
   };
 
-  const handleExploreSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    navigate('/universities');
-  };
-
-  const addCompareColumn = () => {
-    if (compareColumns.length >= 4) return;
-    const col = compareColumns.length;
-    const startIndex = col % COMPARE_UNIVERSITIES.length;
-    setCompareColumns((prev) => [...prev, startIndex]);
-  };
-
-  const changeCompareColumn = (colIndex: number, uniIndex: number) => {
-    setCompareColumns((prev) => prev.map((v, i) => (i === colIndex ? uniIndex : v)));
-  };
-
-  const filteredDegreePrograms = DEGREE_PROGRAMS.filter((p) => p.lv.includes(degreeLevel));
-
   return (
-    <div className="w-full max-w-[1280px] mx-auto px-4 md:px-6 py-5 space-y-5">
-      {/* Hero */}
-      <section className="bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-6 md:p-8">
-        <div className="max-w-4xl mx-auto text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-[11px] font-semibold tracking-wide">
-            <ShieldCheck className="w-4 h-4 text-amber-600" />
-            UGC-DEB • AICTE • NAAC A++ ACCREDITED UNIVERSITIES
+    <div className="w-full max-w-[1280px] mx-auto px-4 md:px-6 py-4 space-y-6">
+      <HomeHero />
+      {/* Degree programs */}
+      <section id="degrees" className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5 sm:p-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center pb-3 border-b border-slate-200/80 gap-3">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-bold text-[#000f22]">Popular Online Degree Programs</h2>
+            <p className="text-xs sm:text-[13px] text-[#43474d] font-normal mt-0.5">
+              UGC Section 22 Entitled degrees with 0% interest EMI tuition and 100% remote proctored exams.
+            </p>
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold font-sans text-[#000f22] tracking-tight leading-tight">
-            Discover, Compare &amp; Enroll in India's Top Online Universities
-          </h1>
-          <p className="text-[#43474d] text-[15px] md:text-[16px] max-w-2xl mx-auto leading-relaxed">
-            Find government-recognized online degrees designed for working professionals with zero-cost EMI and 100% remote proctored exams.
-          </p>
-
-          <div className="mt-6 bg-[#f8faff] rounded-2xl border border-[#d5e3ff] p-4 sm:p-5 shadow-sm text-left">
-            <form
-              className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-3.5 items-stretch"
-              onSubmit={handleExploreSubmit}
-            >
-              {/* Select Degree Dropdown */}
-              <div className="md:col-span-4 h-[60px] sm:h-[62px] relative bg-white hover:bg-[#f8faff] focus-within:bg-white rounded-xl border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/15 transition-all px-3.5 py-2 flex flex-col justify-center shadow-xs">
-                <div className="flex items-center gap-1.5 mb-1 leading-none">
-                  <GraduationCap className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
-                  <label htmlFor="select-degree" className="block text-[11px] font-semibold text-[#43474d] uppercase tracking-wider cursor-pointer truncate">
-                    Select Degree Program
-                  </label>
-                </div>
-                <div className="relative flex items-center">
-                  <select
-                    id="select-degree"
-                    value={selectedDegree}
-                    onChange={(e) => setSelectedDegree(e.target.value)}
-                    className="w-full bg-transparent border-0 p-0 pr-6 text-xs sm:text-sm text-[#000f22] font-semibold focus:ring-0 cursor-pointer outline-none appearance-none truncate [background-image:none]"
-                    style={{ backgroundImage: 'none' }}
-                  >
-                    <option value="Online MBA (Master of Business)">Online MBA (Master of Business)</option>
-                    <option value="Online MCA (Computer Applications)">Online MCA (Computer Applications)</option>
-                    <option value="Online BBA (Bachelor of Business)">Online BBA (Bachelor of Business)</option>
-                    <option value="Online BCA (Computer Science)">Online BCA (Computer Science)</option>
-                    <option value="Online M.Com / B.Com">Online M.Com / B.Com</option>
-                    <option value="Online MA / BA">Online MA / BA</option>
-                  </select>
-                  <ChevronDown className="w-4 h-4 text-[#74777e] pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 shrink-0" />
-                </div>
-              </div>
-
-              {/* Budget Per Semester Dropdown */}
-              <div className="md:col-span-4 h-[60px] sm:h-[62px] relative bg-white hover:bg-[#f8faff] focus-within:bg-white rounded-xl border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/15 transition-all px-3.5 py-2 flex flex-col justify-center shadow-xs">
-                <div className="flex items-center gap-1.5 mb-1 leading-none">
-                  <Wallet className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
-                  <label htmlFor="select-budget" className="block text-[11px] font-semibold text-[#43474d] uppercase tracking-wider cursor-pointer truncate">
-                    Budget Per Semester
-                  </label>
-                </div>
-                <div className="relative flex items-center">
-                  <select
-                    id="select-budget"
-                    value={selectedBudget}
-                    onChange={(e) => setSelectedBudget(e.target.value)}
-                    className="w-full bg-transparent border-0 p-0 pr-6 text-xs sm:text-sm text-[#000f22] font-semibold focus:ring-0 cursor-pointer outline-none appearance-none truncate [background-image:none]"
-                    style={{ backgroundImage: 'none' }}
-                  >
-                    <option value="Any Budget (₹12,000 - ₹50,000)">Any Budget (₹12,000 - ₹50,000)</option>
-                    <option value="Under ₹15,000 / semester">Under ₹15,000 / semester</option>
-                    <option value="₹15,000 - ₹25,000 / semester">₹15,000 - ₹25,000 / semester</option>
-                    <option value="₹25,000 - ₹40,000 / semester">₹25,000 - ₹40,000 / semester</option>
-                    <option value="Premium Tier (&gt; ₹40,000 / sem)">Premium Tier (&gt; ₹40,000 / sem)</option>
-                  </select>
-                  <ChevronDown className="w-4 h-4 text-[#74777e] pointer-events-none absolute right-0 top-1/2 -translate-y-1/2 shrink-0" />
-                </div>
-              </div>
-
-              {/* Explore Button */}
-              <div className="md:col-span-4 h-[60px] sm:h-[62px]">
-                <button
-                  type="submit"
-                  className="w-full h-full rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.99] shadow-md hover:shadow-lg cursor-pointer px-4"
-                >
-                  <Search className="w-4 h-4 shrink-0" />
-                  <span>Explore 50+ Universities</span>
-                </button>
-              </div>
-            </form>
-
-            <div className="mt-3.5 pt-3.5 border-t border-[#d5e3ff]/70 flex flex-wrap items-center gap-2 text-[12px]">
-              <span className="text-[#43474d] font-medium mr-1 flex items-center gap-1">
-                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                Trending Filters:
-              </span>
-              {TRENDING_FILTERS.map((f) => (
-                <button
-                  key={f}
-                  type="button"
-                  onClick={() => scrollTo('universities')}
-                  className="cursor-pointer bg-white px-2.5 py-1 rounded-lg border border-[#c4c6ce]/70 text-[#111c2d] hover:border-[#115eaf] hover:text-[#115eaf] transition-colors font-medium text-xs"
-                >
-                  {f}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-[17px] pt-4">
-            {HERO_METRICS.map((m) => (
-              <div key={m.label} className="p-3 bg-[#f0f4f8]/60 rounded-lg border border-[#c4c6ce]/50 text-center">
-                <div className={`text-xl md:text-2xl font-bold ${m.tone || 'text-[#000f22]'}`}>{m.value}</div>
-                <div className="text-[12px] text-[#43474d] font-normal">{m.label}</div>
-              </div>
+          <div className="inline-flex p-1 bg-[#f0f4f8] rounded-xl border border-[#c4c6ce]/50 text-[12px] font-semibold">
+            {DEGREE_CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setDegreeTab(cat)}
+                className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer ${
+                  degreeTab === cat ? 'bg-[#115eaf] text-white shadow-sm' : 'text-[#43474d] hover:text-[#111c2d]'
+                }`}
+              >
+                {cat}
+              </button>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* Degree programs */}
-      <section id="degrees" aria-labelledby="degrees-heading" className="bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-[17px]">
-        <div className="max-w-[1180px] mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 flex-wrap mb-7">
-            <div>
-              <p className="text-[11px] font-medium tracking-[0.12em] uppercase text-[#74777e]">Degrees</p>
-              <h2 id="degrees-heading" className="mt-2 text-xl sm:text-2xl font-bold leading-[1.15] tracking-[-0.025em] text-[#000f22]">Popular online <b className="font-semibold">degree programs</b></h2>
-              <p className="mt-2.5 text-[14px] text-[#43474d] max-w-[52ch]">Approved under UGC Section 22 with equivalence to conventional regular degrees.</p>
-            </div>
-            <div className="flex overflow-x-auto border-b border-[#c4c6ce]" role="tablist" aria-label="Level">
-              {DEGREE_LEVELS.map(([label, key]) => (
-                <button
-                  key={key}
-                  type="button"
-                  role="tab"
-                  aria-selected={degreeLevel === key}
-                  onClick={() => setDegreeLevel(key)}
-                  className={`whitespace-nowrap bg-transparent border-0 border-b-2 -mb-px px-4 py-2.5 min-h-[44px] text-[14px] font-medium cursor-pointer transition-colors ${
-                    degreeLevel === key ? 'text-[#115eaf] border-[#115eaf]' : 'text-[#43474d] border-transparent hover:text-[#000f22]'
-                  }`}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            {filteredDegreePrograms.length === 0 ? (
-              <p className="py-7 text-[14px] text-[#43474d]">No executive programs are listed yet. Connect this tab to your existing data.</p>
-            ) : (
-              filteredDegreePrograms.map((p, idx) => (
-                <div
-                  key={p.n + idx}
-                  className={`grid grid-cols-2 md:grid-cols-[96px_1.5fr_1.6fr_1.1fr_1fr_auto] gap-x-5 gap-y-2.5 md:gap-5 items-start py-2 md:py-[9.5px] md:pb-[7.1px] border-b border-[#c4c6ce] ${idx === 0 ? 'border-t-2 border-t-[#000f22]' : ''}`}
-                >
-                  <span className="col-span-2 md:col-span-1 order-first md:order-none text-[12px] text-[#43474d] font-medium leading-[1.5]">{p.y}</span>
-                  <div className="col-span-2 md:col-span-1">
-                    <h3 className="text-[18px] font-bold tracking-[-0.01em] leading-[1.3] text-[#000f22]">
-                      {p.n}
-                      <small className="block mt-0.5 text-[12.5px] font-normal text-[#43474d] tracking-normal">{p.f}</small>
-                    </h3>
-                    <span className="block mt-1.5 text-[12px] text-[#115eaf] font-medium">{p.tg}</span>
-                  </div>
-                  <div className="col-span-2 md:col-span-1 text-[13.5px] text-[#43474d] leading-[1.2]">
-                    <span className="block mb-0.5 text-[11px] font-medium uppercase tracking-wider text-[#43474d]">{p.lab}</span>
-                    {p.sp}
-                  </div>
-                  <div className="col-span-1 md:col-span-1 text-[12px] text-[#43474d] leading-[1.2]">
-                    <span className="block mb-0.5 text-[11px] font-medium uppercase tracking-wider text-[#43474d]">Career / eligibility</span>
-                    {p.ctc}
-                  </div>
-                  <div className="col-span-1 md:col-span-1 text-[12px] text-[#43474d] leading-[1.2]">
-                    Starts from
-                    <b className="block text-[20px] font-semibold text-[#000f22] tracking-[-0.02em] leading-[1.2]">{p.fee}</b>
-                    <span className="text-[11px]">per sem</span>
-                  </div>
-                  <a
-                    className="col-span-2 md:col-span-1 justify-self-start md:justify-self-center md:self-center inline-flex items-center justify-center bg-[#115eaf] text-white border-0 rounded-md px-5 py-2.5 min-h-[44px] text-[14px] font-medium no-underline cursor-pointer whitespace-nowrap hover:bg-[#084a8c] transition-colors"
-                    href="#"
-                  >
-                    Explore {p.c} Unis
-                  </a>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
+          {DEGREE_CARDS.map((card) => (
+            <div
+              key={card.title}
+              className="bg-white rounded-xl border border-slate-200 hover:border-[#115eaf] transition-all hover:shadow-md p-4 sm:p-5 flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex justify-between items-start mb-2.5 gap-2">
+                  <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-blue-50 text-blue-800 border border-blue-200">
+                    {card.duration}
+                  </span>
+                  <span className={`text-[11px] font-medium px-2 py-0.5 rounded border ${card.badgeTone}`}>
+                    {card.badge}
+                  </span>
                 </div>
-              ))
-            )}
-          </div>
+                <h3 className="text-base sm:text-lg font-bold text-[#000f22]">{card.title}</h3>
+                <p className="text-[12px] text-[#43474d] font-normal mt-0.5">{card.subtitle}</p>
 
-          <p className="mt-4 text-[11.5px] text-[#43474d]">Career CTC ranges are shown as published on the existing site. Add the source and year before launch.</p>
+                {/* Short Bulleted Highlights */}
+                <div className="mt-3 py-2.5 border-y border-slate-100 space-y-1.5 text-xs text-slate-700">
+                  {card.bullets.map((bullet, idx) => (
+                    <div key={idx} className="flex items-start gap-1.5">
+                      <CheckCircle className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${idx === 1 ? 'text-emerald-600' : 'text-[#115eaf]'}`} />
+                      <span className={idx === 1 ? 'font-semibold text-emerald-700' : 'text-slate-700'}>{bullet}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-4 pt-2 flex items-center justify-between">
+                <div>
+                  <span className="text-[11px] text-[#43474d] block">Tuition Starts From</span>
+                  <span className="text-[15px] font-bold text-[#000f22]">
+                    {card.price} <span className="text-[11px] font-normal text-[#43474d]">/ sem</span>
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => scrollTo('universities')}
+                  className="px-3.5 py-2 rounded-xl bg-[#115eaf] text-white text-[12px] font-semibold hover:bg-[#084a8c] transition-colors cursor-pointer shadow-2xs"
+                >
+                  {card.explore}
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Featured universities */}
-      <section id="universities" className="bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-[17px]">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center pb-4 border-b border-[#c4c6ce]/40 gap-2">
+      <section id="universities" className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5 sm:p-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center pb-3 border-b border-slate-200/80 gap-3">
           <div>
             <div className="flex items-center gap-2">
               <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#115eaf]" />
-              <h2 className="text-2xl font-bold text-[#000f22]">Featured NAAC A++ / A+ Online Universities</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-[#000f22]">Featured NAAC A++ / A+ Online Universities</h2>
             </div>
-            <p className="text-[13px] text-[#43474d] font-normal mt-0.5">
-              Strictly ranked and entitled under UGC ODL &amp; Online Regulations.
+            <p className="text-xs sm:text-[13px] text-[#43474d] font-normal mt-0.5">
+              Category-1 UGC-entitled institutions with 0% interest EMI options and proctored examinations.
             </p>
           </div>
           <button
             type="button"
             onClick={() => navigate('/universities')}
-            className="text-[12px] font-semibold text-[#115eaf] hover:underline flex items-center gap-1"
+            className="text-[12px] font-semibold text-[#115eaf] hover:underline flex items-center gap-1 cursor-pointer"
           >
             View All 50+ Universities
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[17px] mt-[17px]">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
           {FEATURED_UNIS.map((u) => (
             <div
               key={u.id}
-              className="bg-white rounded-lg border border-[#c4c6ce] hover:border-[#115eaf] transition-all hover:shadow-md p-[17px] flex flex-col justify-between"
+              className="bg-white rounded-xl border border-slate-200 hover:border-[#115eaf] transition-all hover:shadow-md p-4 sm:p-5 flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between mb-3 gap-2">
+                <div className="flex items-center justify-between mb-2.5 gap-2">
                   <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
                     {u.naac}
                   </span>
                   <span className="text-[11px] font-medium text-slate-500">{u.rank}</span>
                 </div>
-                <h3 className="text-lg font-bold text-[#000f22]">{u.name}</h3>
+                <h3 className="text-base font-bold text-[#000f22]">{u.name}</h3>
                 <p className="text-[12px] text-[#115eaf] font-medium mt-0.5">{u.short}</p>
-                <div className="mt-3 space-y-1.5 text-[12px] bg-[#f0f4f8]/50 p-2.5 rounded border border-[#c4c6ce]/30">
-                  {u.rows.map((r) => (
-                    <div key={r.label} className="flex justify-between gap-2">
-                      <span className="text-[#43474d]">{r.label}</span>
-                      <span className={`text-right ${r.tone || 'font-medium text-[#000f22]'}`}>{r.value}</span>
+
+                {/* Short Bulleted Highlights */}
+                <div className="mt-3 p-3 rounded-lg bg-slate-50 border border-slate-100 space-y-1.5 text-xs">
+                  {u.bullets.map((bullet, idx) => (
+                    <div key={idx} className="flex items-start gap-1.5">
+                      <CheckCircle className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${idx === 1 ? 'text-emerald-600' : 'text-[#115eaf]'}`} />
+                      <span className={idx === 1 ? 'font-semibold text-emerald-700' : 'text-slate-700'}>{bullet}</span>
                     </div>
                   ))}
                 </div>
               </div>
+
               <div className="mt-4 space-y-2">
+                <div className="flex items-center justify-between text-xs px-1">
+                  <span className="text-slate-500">Total Program Fee:</span>
+                  <span className="font-bold text-slate-900">{u.totalFee}</span>
+                </div>
                 <button
                   type="button"
                   onClick={() => navigate(`/universities/${u.id}`)}
-                  className="w-full py-2 rounded-md bg-[#115eaf] text-white text-[12px] font-semibold hover:bg-[#084a8c] transition-colors"
+                  className="w-full py-2 rounded-xl bg-[#115eaf] text-white text-[12px] font-semibold hover:bg-[#084a8c] transition-colors cursor-pointer shadow-2xs"
                 >
                   View Details &amp; Apply
                 </button>
                 <button
                   type="button"
                   onClick={onOpenHelpDesk}
-                  className="w-full py-1.5 rounded-md border border-[#74777e] text-[12px] font-medium text-[#43474d] hover:bg-slate-50 flex items-center justify-center gap-1"
+                  className="w-full py-1.5 rounded-xl border border-slate-300 text-[12px] font-medium text-slate-700 hover:bg-slate-50 flex items-center justify-center gap-1 cursor-pointer transition-colors"
                 >
                   <Download className="w-3.5 h-3.5" />
                   Download Brochure
@@ -591,164 +441,94 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
         </div>
       </section>
 
-      {/* Top Colleges by Location */}
-      <TopCollegesByLocation onOpenBrochure={onOpenHelpDesk} />
-
-      {/* Recommended College News */}
-      <RecommendedCollegeNews onOpenAdvisor={onOpenHelpDesk} />
-
-      {/* Student Testimonials & Social Proof */}
-      <StudentTestimonials onOpenCounseling={onOpenHelpDesk} />
-
       {/* Comparison matrix */}
-      <section id="compare" className="bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-[17px]">
-        <div className="grid grid-cols-1 md:grid-cols-[380px_1fr] gap-6 md:gap-12 items-start">
-          <div className="max-w-[420px]">
-            <p className="text-[11px] font-bold uppercase tracking-wider text-[#115eaf]">Compare</p>
-            <h2 style={{ fontSize: 'clamp(26px, 3vw, 32px)', fontWeight: 700 }} className="mt-2 leading-[1.1] tracking-[-0.02em] text-[#000f22]">Side by <b style={{ fontWeight: 600 }}>side</b></h2>
-            <p className="mt-2 text-[14px] md:text-[15px] leading-[1.5] text-[#43474d]">
-              Compare fees, approvals, EMI and exam formats in one place. Find the university that fits your budget and goals.
-            </p>
-            <div className="mt-4 space-y-3">
-              <div className="flex items-start gap-3">
-                <span className="shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#e7eeff] text-[#115eaf]">
-                  <Wallet className="w-4 h-4" />
-                </span>
-                <div>
-                  <h3 style={{ fontWeight: 600 }} className="text-[14px] md:text-[15px] leading-[1.3] text-[#000f22]">Compare total fees and EMI</h3>
-                  <p className="mt-1 text-[12px] md:text-[13px] leading-[1.5] text-[#43474d]">See complete fee structure and monthly EMI options at a glance.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#e7eeff] text-[#115eaf]">
-                  <ShieldCheck className="w-4 h-4" />
-                </span>
-                <div>
-                  <h3 style={{ fontWeight: 600 }} className="text-[14px] md:text-[15px] leading-[1.3] text-[#000f22]">Check university approvals</h3>
-                  <p className="mt-1 text-[12px] md:text-[13px] leading-[1.5] text-[#43474d]">Verify UGC, AICTE and other key recognitions easily.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#e7eeff] text-[#115eaf]">
-                  <GraduationCap className="w-4 h-4" />
-                </span>
-                <div>
-                  <h3 style={{ fontWeight: 600 }} className="text-[14px] md:text-[15px] leading-[1.3] text-[#000f22]">Understand exam modes and duration</h3>
-                  <p className="mt-1 text-[12px] md:text-[13px] leading-[1.5] text-[#43474d]">Compare how exams are conducted and program duration side by side.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <section id="compare" className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5 sm:p-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center pb-3 border-b border-slate-200/80 gap-2 mb-4">
           <div>
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse min-w-[600px] text-[16px]">
-                <thead>
-                  <tr>
-                    <th scope="col" className="text-left p-[13px] pl-0 align-top w-[140px] text-[#000f22] font-semibold text-[16px]">Criteria</th>
-                    {compareColumns.map((uniIdx, colIdx) => (
-                      <th key={colIdx} scope="col" className="text-left p-[13px] pl-0 align-top">
-                        <select
-                          aria-label={`University ${colIdx + 1}`}
-                          value={uniIdx}
-                          onChange={(e) => changeCompareColumn(colIdx, Number(e.target.value))}
-                          className="w-full min-h-[44px] rounded-md border border-[#c4c6ce] bg-white px-2 text-[16px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
-                        >
-                          {COMPARE_UNIVERSITIES.map((u, i) => (
-                            <option key={i} value={i}>{u.name}</option>
-                          ))}
-                        </select>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {COMPARE_CRITERIA.map(([label, key]) => (
-                    <tr key={label} className="border-t border-[#c4c6ce]/60">
-                      <th scope="row" className="text-left p-[13px] pl-0 align-top w-[140px] text-[#000f22] font-medium text-[16px]">{label}</th>
-                      {compareColumns.map((uniIdx, colIdx) => (
-                        <td key={colIdx} className="p-[13px] pl-0 align-top text-[#43474d]">
-                          {COMPARE_UNIVERSITIES[uniIdx][key]}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <button
-              type="button"
-              onClick={addCompareColumn}
-              disabled={compareColumns.length >= 4}
-              className="mt-3 inline-flex items-center gap-1 px-4 py-2 rounded-md border border-[#115eaf] text-[#115eaf] text-[13px] font-semibold hover:bg-[#f0f4f8] disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              + Add university
-            </button>
+            <h2 className="text-xl sm:text-2xl font-bold text-[#000f22]">Statutory Equivalence &amp; University Comparison Matrix</h2>
+            <p className="text-xs sm:text-[13px] text-[#43474d] font-normal mt-0.5">
+              Side-by-side comparison of UGC Category-1 approvals, 0% EMI monthly tuition, and proctored exam methodology.
+            </p>
           </div>
+          <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+            <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
+            <span>0% Interest EMI Verified</span>
+          </div>
+        </div>
+
+        <div className="overflow-x-auto border border-slate-200 rounded-xl">
+          <table className="w-full text-left border-collapse text-[13px]">
+            <thead>
+              <tr className="bg-[#f0f4f8] text-[#000f22] border-b border-slate-200 font-semibold">
+                <th className="p-3.5">Comparison Parameter</th>
+                <th className="p-3.5 text-[#115eaf]">LPU Online</th>
+                <th className="p-3.5 text-[#115eaf]">Amity Online</th>
+                <th className="p-3.5 text-[#115eaf]">CU Online</th>
+                <th className="p-3.5 text-[#115eaf]">Manipal Jaipur</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 font-normal">
+              {COMPARE_ROWS.map((row) => (
+                <tr key={row.param} className="hover:bg-slate-50/60 transition-colors">
+                  <td className="p-3.5 font-medium text-[#111c2d]">{row.param}</td>
+                  {row.cells.map((cell, i) => (
+                    <td key={i} className={`p-3.5 ${cell.tone || 'text-[#43474d] font-medium'}`}>
+                      {cell.badge ? (
+                        <span className="bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded-full text-[11px] font-bold border border-amber-200">
+                          {cell.text}
+                        </span>
+                      ) : cell.tone === 'text-emerald-700 font-semibold' || cell.tone === 'text-emerald-700' ? (
+                        <span className="inline-flex items-center gap-1.5 font-semibold text-emerald-700">
+                          <CheckCircle className="w-4 h-4 text-emerald-600" />
+                          {cell.text}
+                        </span>
+                      ) : (
+                        cell.text
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
 
-      {/* Counselling Section */}
-      <section
-        id="counselling"
-        className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#071d36] via-[#0d2a4d] to-[#143966] border border-[#1b4372]/80 text-white shadow-xl p-6 sm:p-8 md:p-10"
-      >
-        {/* Subtle ambient lighting */}
-        <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-[#115eaf]/25 blur-3xl pointer-events-none" />
-        <div className="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-emerald-500/15 blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-          {/* Left Column: Copy & Trust Highlights */}
-          <div className="lg:col-span-7 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-300 text-[11px] font-semibold tracking-wider">
-              <Headphones className="w-3.5 h-3.5 text-amber-400" />
-              FREE 1-ON-1 ACADEMIC ADVISORY
+      {/* Counselling */}
+      <section id="counselling" className="bg-[#0b2540] text-white rounded-2xl shadow-md p-5 sm:p-7">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <div className="lg:col-span-7 space-y-3.5">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 text-blue-200 border border-blue-400/30 text-[11px] font-semibold">
+              <Headphones className="w-3.5 h-3.5 text-blue-300" />
+              1-ON-1 EXPERT CAREER ADVICE
             </div>
-
-            <div className="space-y-2">
-              <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-bold text-white tracking-tight leading-tight">
-                Confused Between 50+ Universities? Speak with an Unbiased Academic Expert
-              </h2>
-              <p className="text-sm sm:text-[15px] text-slate-200 font-normal leading-relaxed max-w-xl">
-                Choosing the right online university impacts your career and finances for years. Our certified advisors provide objective comparisons across UGC-DEB entitlements, syllabus depth, recruiter networks, and genuine fee financing — 100% free with zero sales bias.
-              </p>
-            </div>
-
-            {/* Trust Checkpoints */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs sm:text-[13px] text-slate-200">
+            <h2 className="text-2xl md:text-3xl font-bold text-white leading-snug">
+              Confused Between 50+ Universities? Speak with an Unbiased Academic Expert
+            </h2>
+            <p className="text-sm text-slate-200 font-normal max-w-xl leading-relaxed">
+              Our educational counselors evaluate your profile, eligibility, and budget to match you with UGC-entitled programs with 0% interest EMI options. Free service with ₹0 processing charges.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs text-slate-200 font-medium">
               <span className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>100% Free &amp; Unbiased Counseling</span>
+                <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" /> Zero Processing Fee (₹0 Charges)
               </span>
               <span className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Official UGC-DEB &amp; NAAC Data</span>
+                <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" /> 0% Interest EMI Assistance
               </span>
               <span className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>0% Interest Monthly EMI Guidance</span>
+                <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" /> 100% UGC-DEB Entitled Universities
               </span>
               <span className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Zero Spam &amp; Complete Privacy</span>
+                <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" /> 15-Minute Callback Guarantee
               </span>
             </div>
           </div>
 
-          {/* Right Column: Callback Request Card */}
-          <div className="lg:col-span-5 bg-white text-[#111c2d] rounded-2xl p-5 sm:p-6 md:p-7 shadow-2xl border border-white/60">
-            <div className="flex items-center justify-between mb-1">
-              <h3 className="text-base sm:text-lg font-bold text-[#000f22] tracking-tight">
-                Request Free Callback
-              </h3>
-              <span className="inline-flex items-center gap-1.5 text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Advisors Online
-              </span>
-            </div>
-            <p className="text-xs text-[#555960] font-normal mb-4">
-              Connect with a verified academic advisor within 15 minutes.
+          <div className="lg:col-span-5 bg-white text-[#111c2d] rounded-xl p-5 sm:p-6 shadow-sm">
+            <h3 className="text-base font-bold text-[#000f22] mb-1">Request Free Call Back</h3>
+            <p className="text-xs text-[#43474d] font-normal mb-4">
+              Response guaranteed within 15 minutes during academic working hours.
             </p>
-
             {!leadSubmitted ? (
               <form
                 className="space-y-3.5"
@@ -758,15 +538,15 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
                 }}
               >
                 <div>
-                  <label className="block text-[11px] font-semibold text-[#43474d] uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
                     Mobile Number (WhatsApp Enabled)
                   </label>
-                  <div className="flex h-10 sm:h-11 rounded-lg border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/20 overflow-hidden transition-all bg-white">
-                    <span className="bg-[#f0f4f8] text-[#000f22] px-3 text-xs font-semibold border-r border-[#c4c6ce] flex items-center shrink-0">
+                  <div className="flex rounded-xl border border-slate-300 overflow-hidden focus-within:border-[#115eaf] focus-within:ring-1 focus-within:ring-[#115eaf]">
+                    <span className="bg-slate-100 text-slate-700 px-3 py-2 text-xs font-semibold border-r border-slate-300 flex items-center">
                       +91
                     </span>
                     <input
-                      className="w-full border-0 px-3 text-xs sm:text-sm text-[#000f22] placeholder:text-[#74777e] outline-none bg-white font-medium"
+                      className="w-full px-3 py-2 text-sm outline-none text-slate-900"
                       placeholder="98765 43210"
                       required
                       type="tel"
@@ -777,11 +557,11 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-semibold text-[#43474d] uppercase tracking-wider mb-1">
-                    Email Address
+                  <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+                    Your Email Address
                   </label>
                   <input
-                    className="w-full h-10 sm:h-11 rounded-lg border border-[#c4c6ce] px-3 text-xs sm:text-sm text-[#000f22] placeholder:text-[#74777e] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all"
+                    className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:border-[#115eaf] focus:ring-1 focus:ring-[#115eaf] outline-none text-slate-900"
                     placeholder="name@example.com"
                     required
                     type="email"
@@ -791,60 +571,45 @@ export const HomeView: React.FC<HomeViewProps> = ({ onOpenApply, onOpenHelpDesk 
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-semibold text-[#43474d] uppercase tracking-wider mb-1">
-                    Program You're Exploring
+                  <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
+                    Target Degree / Program
                   </label>
                   <select
-                    className="w-full h-10 sm:h-11 rounded-lg border border-[#c4c6ce] px-3 text-xs sm:text-sm text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all cursor-pointer"
+                    className="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:border-[#115eaf] focus:ring-1 focus:ring-[#115eaf] outline-none bg-white cursor-pointer text-slate-900"
                     value={lead.degree}
                     onChange={(e) => setLead({ ...lead, degree: e.target.value })}
                   >
-                    <option>Online MBA (Master of Business)</option>
-                    <option>Online MCA (Computer Applications)</option>
-                    <option>Online BBA (Bachelor of Business)</option>
-                    <option>Online BCA (Computer Applications)</option>
+                    <option>Online MBA</option>
+                    <option>Online MCA</option>
+                    <option>Online BBA / BCA</option>
                     <option>Online M.Com / B.Com</option>
-                    <option>Online MA / BA Programs</option>
-                    <option>Executive PG Diploma</option>
+                    <option>Executive Program</option>
                   </select>
                 </div>
 
                 <button
-                  className="w-full h-11 sm:h-12 rounded-lg bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 active:scale-[0.99] cursor-pointer"
+                  className="w-full py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-[13px] font-bold transition-all shadow-sm flex items-center justify-center gap-1.5 active:scale-[0.99] cursor-pointer"
                   type="submit"
                 >
-                  <span>Connect with Academic Advisor</span>
+                  Connect with Advisor
                   <ArrowRight className="w-4 h-4" />
                 </button>
-
-                <p className="text-[10px] text-center text-[#74777e] font-normal pt-1">
-                  🔒 Strictly confidential. No marketing spam guaranteed.
+                <p className="text-[10px] text-center text-slate-400 font-normal">
+                  By submitting, you consent to receive university admission details over WhatsApp/Call.
                 </p>
               </form>
             ) : (
-              <div className="text-center py-6 space-y-2">
-                <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center mx-auto">
-                  <CheckCircle className="w-6 h-6" />
-                </div>
-                <h3 className="text-base font-bold text-[#000f22]">Callback Request Confirmed!</h3>
-                <p className="text-xs text-[#555960] max-w-xs mx-auto">
-                  A senior academic counselor will call you within 15 minutes regarding <strong>{lead.degree}</strong>.
+              <div className="text-center py-6">
+                <CheckCircle className="w-10 h-10 text-emerald-600 mx-auto mb-2" />
+                <h3 className="text-sm font-bold text-slate-900 mb-1">Request Submitted</h3>
+                <p className="text-xs text-slate-600">
+                  An academic advisor will contact you shortly regarding {lead.degree}.
                 </p>
-                <button
-                  type="button"
-                  onClick={() => setLeadSubmitted(false)}
-                  className="text-xs font-semibold text-[#115eaf] hover:underline pt-2 inline-block cursor-pointer"
-                >
-                  Submit another inquiry
-                </button>
               </div>
             )}
           </div>
         </div>
       </section>
-
-      {/* Frequently Asked Questions (Accordion) */}
-      <HomeFaq onOpenHelpDesk={onOpenHelpDesk} />
     </div>
   );
 };
