@@ -960,7 +960,7 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
       <AcademicExpertCounselingSection id="university-listing-counselling" />
 
       {/* ================= BLOGS ================= */}
-        <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="bg-white rounded-2xl border border-[#d5e3ff] p-4 md:p-5 shadow-xs" posts={blogs.length ? blogs : undefined} compact />
+        <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="w-full rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:p-6" compact horizontal autoScroll showDescriptionOnMobile fetchLivePosts />
       </div>
 
       {/* ================= MOBILE FULL-SCREEN FILTER OVERLAY ================= */}

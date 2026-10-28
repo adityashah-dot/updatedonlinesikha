@@ -21,7 +21,7 @@ export const Navbar = ({
     setActiveTab(tab);
     setMobileMenuOpen(false);
   };
-  return <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-[#c4c6ce]/40 transition-colors duration-200">
+  return <header className="sticky top-0 z-40 bg-white transition-colors duration-200">
       <div className="max-w-[1280px] mx-auto px-4 md:px-8 h-[60px] flex items-center justify-between gap-4">
         {
     /* Brand */
@@ -60,14 +60,7 @@ export const Navbar = ({
     /* Action Cluster */
   }
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          {onOpenChat && <button
-    onClick={onOpenChat}
-    aria-label="Ask AI Advisor"
-    className="inline-flex items-center justify-center gap-1.5 px-2.5 py-1 min-h-[40px] min-w-[40px] rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-all duration-150 active:scale-95 shadow-xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-1"
-  >
-              <Sparkles className="w-4 h-4 text-blue-400" />
-              <span className="hidden sm:inline">Ask AI Advisor</span>
-            </button>}
+
 
           {
     /* Reduced size Get Free Counselling */

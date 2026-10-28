@@ -41,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-[#c4c6ce]/40 transition-colors duration-200">
+    <header className="sticky top-0 z-40 bg-white transition-colors duration-200">
       <div className="max-w-[1280px] mx-auto px-4 md:px-8 h-[68px] flex items-center justify-between gap-4">
         {/* Brand */}
         <div
@@ -85,16 +85,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Action Cluster */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          {onOpenChat && (
-            <button
-              onClick={onOpenChat}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-all duration-150 active:scale-95 shadow-xs cursor-pointer"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-              <span className="hidden sm:inline">Ask AI Advisor</span>
-              <span className="sm:hidden">AI</span>
-            </button>
-          )}
 
           {/* Reduced size Get Free Counselling */}
           <button

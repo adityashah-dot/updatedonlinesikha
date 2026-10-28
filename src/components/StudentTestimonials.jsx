@@ -324,7 +324,7 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
     const currentHelpful = item.helpfulCount + (isLiked ? 1 : 0);
     return <div
       key={item.id}
-      className={`shrink-0 w-[300px] sm:w-[350px] md:w-[370px] snap-start rounded-2xl bg-white dark:bg-[#121c2e] border border-slate-200/90 dark:border-[#24344d] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col p-4 sm:p-5 group relative ${activeIndex === idx ? "ring-2 ring-[#115eaf]/25 dark:ring-blue-500/30" : ""}`}
+      className={`shrink-0 w-[300px] sm:w-[350px] md:w-[370px] snap-start rounded-2xl bg-white dark:bg-[#121c2e] border border-slate-200/90 dark:border-[#24344d] shadow-sm hover:shadow-xl hover:border-2 hover:border-[#115eaf] hover:-translate-y-1.5 transition-all duration-300 flex flex-col p-4 sm:p-5 group relative ${activeIndex === idx ? "ring-2 ring-[#115eaf]/25 dark:ring-blue-500/30" : ""}`}
     >
               {
       /* Top Row: User Avatar & Course Info */
