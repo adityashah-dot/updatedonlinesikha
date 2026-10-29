@@ -1,14 +1,13 @@
-﻿'use client';
-
 import { useState } from "react";
 import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { COURSES_DATA } from "./data/coursesData";
-import { Navbar } from "./components/Navbar.jsx";
+import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { PageTransition } from "./components/PageTransition";
 import { HomeView } from "./components/HomeView";
 import { CollegeDetailView } from "./components/CollegeDetailView";
+import { UniversityDetailErrorBoundary } from "./components/UniversityDetailErrorBoundary";
 import { UniversitiesView } from "./components/UniversitiesView";
 import { CourseDetailModal } from "./components/CourseDetailModal";
 import { EmiCalculatorModal } from "./components/EmiCalculatorModal";
@@ -21,8 +20,7 @@ import { FloatingActions } from "./components/FloatingActions";
 import { CounselorModal } from "./components/CounselorModal";
 import { TrackApplicationModal } from "./components/TrackApplicationModal";
 import { GeminiChatbot, ChatbotFloatingTrigger } from "./components/chat/GeminiChatbot";
-import { SEO } from "./components/SEO";
-import { Home, FileText, Building2, Award } from "lucide-react";
+import { BookOpen, GraduationCap, Home, FileText, Building2, Award } from "lucide-react";
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -123,7 +121,7 @@ export default function App() {
     setChatInitialQuery(query);
     setIsChatOpen(true);
   };
-  return <div className="min-h-screen flex flex-col bg-[#f9f9ff] text-[#111c2d] font-sans pb-[calc(96px+env(safe-area-inset-bottom))] md:pb-0 transition-colors duration-200">
+  return <div className="min-h-screen flex flex-col bg-[#f9f9ff] text-[#111c2d] font-sans pb-16 md:pb-0 transition-colors duration-200">
       {
     /* Top Application Bar */
   }
@@ -147,10 +145,6 @@ export default function App() {
             <Route
     path="/"
     element={<PageTransition>
-                  <SEO
-      title="Online Siksha - Higher Education Gateway"
-      description="Compare online universities, courses, fees, and admissions. UGC-entitled degrees from top Indian universities."
-    />
                   <HomeView
       onOpenApply={handleOpenApply}
       onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
@@ -159,23 +153,10 @@ export default function App() {
   />
 
             <Route
-    path="/universities/:slug"
-    element={<PageTransition>
-                  <CollegeDetailView
-      onSelectCourse={handleOpenCourseDetail}
-      onOpenApply={handleOpenApply}
-      onOpenBrochure={handleOpenBrochure}
-      onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
-      onOpenEmi={handleOpenEmi}
-      onOpenLms={() => setIsLmsModalOpen(true)}
-    />
-                </PageTransition>}
-  />
-
-            <Route
     path="/universities/*"
-    element={<PageTransition>
-                  <CollegeDetailView
+    element={<UniversityDetailErrorBoundary>
+                  <PageTransition>
+                    <CollegeDetailView
       onSelectCourse={handleOpenCourseDetail}
       onOpenApply={handleOpenApply}
       onOpenBrochure={handleOpenBrochure}
@@ -183,16 +164,13 @@ export default function App() {
       onOpenEmi={handleOpenEmi}
       onOpenLms={() => setIsLmsModalOpen(true)}
     />
-                </PageTransition>}
+                  </PageTransition>
+                </UniversityDetailErrorBoundary>}
   />
 
             <Route
     path="/universities"
     element={<PageTransition>
-                  <SEO
-      title="Online Universities - Compare & Apply | Online Siksha"
-      description="Compare UGC-entitled online universities in India. Fees, courses, eligibility, placements, and admission details."
-    />
                   <UniversitiesView
       onOpenApply={() => handleOpenApply()}
       onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
@@ -233,19 +211,27 @@ export default function App() {
       {
     /* Mobile Sticky Bottom Navigation Dock */
   }
-      <nav
-    className="md:hidden fixed bottom-0 left-0 w-full z-40 bg-white border-t border-[#e7eeff] px-2 pt-2 grid grid-cols-4 gap-1 shadow-lg"
-    style={{ paddingBottom: "calc(0.5rem + env(safe-area-inset-bottom))" }}
+      <nav className="md:hidden fixed bottom-0 left-0 w-full z-40 bg-white border-t border-[#e7eeff] px-3 py-2 flex items-center justify-around shadow-lg">
+        <button
+    onClick={() => {
+      setActiveTab("courses");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }}
+    className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${activeTab === "courses" ? "bg-[#e7eeff] text-[#115eaf]" : "text-[#43474d]"}`}
   >
+          <BookOpen className="w-4 h-4 mb-0.5" />
+          <span>Courses</span>
+        </button>
+
         <button
     onClick={() => {
       setActiveTab("home");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }}
-    className={`flex flex-col items-center justify-center gap-0.5 min-h-[44px] py-1 rounded-xl text-[12px] font-semibold min-w-0 transition-all ${activeTab === "home" ? "bg-[#e7eeff] text-[#115eaf]" : "text-[#43474d]"}`}
+    className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${activeTab === "home" ? "bg-[#e7eeff] text-[#115eaf]" : "text-[#43474d]"}`}
   >
-          <Home className="w-5 h-5 shrink-0" />
-          <span className="w-full truncate text-center leading-tight">Home</span>
+          <Home className="w-4 h-4 mb-0.5" />
+          <span>Home</span>
         </button>
 
         <button
@@ -253,10 +239,21 @@ export default function App() {
       setActiveTab("universities");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }}
-    className={`flex flex-col items-center justify-center gap-0.5 min-h-[44px] py-1 rounded-xl text-[12px] font-semibold min-w-0 transition-all ${activeTab === "universities" ? "bg-[#e7eeff] text-[#115eaf]" : "text-[#43474d]"}`}
+    className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${activeTab === "universities" ? "bg-[#e7eeff] text-[#115eaf]" : "text-[#43474d]"}`}
   >
-          <Building2 className="w-5 h-5 shrink-0" />
-          <span className="w-full truncate text-center leading-tight">Universities</span>
+          <Building2 className="w-4 h-4 mb-0.5" />
+          <span>Universities</span>
+        </button>
+
+        <button
+    onClick={() => {
+      setActiveTab("admission");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }}
+    className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${activeTab === "admission" ? "bg-[#e7eeff] text-[#115eaf]" : "text-[#43474d]"}`}
+  >
+          <GraduationCap className="w-4 h-4 mb-0.5" />
+          <span>Admission</span>
         </button>
 
         <button
@@ -264,18 +261,18 @@ export default function App() {
       setActiveTab("scholarships");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }}
-    className={`flex flex-col items-center justify-center gap-0.5 min-h-[44px] py-1 rounded-xl text-[12px] font-semibold min-w-0 transition-all ${activeTab === "scholarships" ? "bg-[#e7eeff] text-[#115eaf]" : "text-[#43474d]"}`}
+    className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-semibold transition-all ${activeTab === "scholarships" ? "bg-[#e7eeff] text-[#115eaf]" : "text-[#43474d]"}`}
   >
-          <Award className="w-5 h-5 shrink-0" />
-          <span className="w-full truncate text-center leading-tight">Scholarship</span>
+          <Award className="w-4 h-4 mb-0.5" />
+          <span>Scholarship</span>
         </button>
 
         <button
     onClick={() => handleOpenApply()}
-    className="flex flex-col items-center justify-center gap-0.5 min-h-[44px] py-1 rounded-xl text-[12px] font-bold bg-[#115eaf] text-white shadow min-w-0"
+    className="flex flex-col items-center justify-center py-1 px-3 rounded-xl text-xs font-bold bg-[#115eaf] text-white shadow"
   >
-          <FileText className="w-5 h-5 shrink-0" />
-          <span className="w-full truncate text-center leading-tight">Apply</span>
+          <FileText className="w-4 h-4 mb-0.5" />
+          <span>Apply</span>
         </button>
       </nav>
 
@@ -376,4 +373,3 @@ export default function App() {
   />
     </div>;
 }
-
