@@ -23,7 +23,7 @@ export const UniversityHero = ({
     className="max-h-full max-w-full object-contain"
     referrerPolicy="no-referrer"
   /> : <GraduationCap className="w-12 h-12 text-blue-800" />;
-  const topBadges = <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#115eaf]">
+  const topBadges = <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#115eaf] whitespace-nowrap">
       <span className="inline-flex items-center gap-2 bg-[#f0f3ff] border border-[#d5e3ff] rounded-full px-2.5 py-1">
         <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
         Admissions Open {university.verifiedYear || "2026"}
@@ -157,7 +157,7 @@ export const UniversityHero = ({
           <div className="w-16 h-16 rounded-xl bg-white border border-[#e7eeff] shadow-sm p-2 flex items-center justify-center shrink-0">
             {logoImg}
           </div>
-          <h1 className="min-w-0 flex-1 m-0 text-[clamp(24px,6.5vw,32px)] font-extrabold tracking-[-0.02em] leading-[1.15] text-[#071a34]">
+          <h1 className="min-w-0 flex-1 m-0 text-[clamp(20px,5.5vw,26px)] font-bold tracking-[-0.02em] leading-[1.15] text-[#071a34] break-words">
             {university.name}
           </h1>
         </div>
@@ -189,7 +189,7 @@ export const UniversityHero = ({
 
                 <div className="min-w-0 flex-1 space-y-2.5">
                   {metaRow}
-                  <h1 className="m-0 text-[clamp(28px,3vw,42px)] font-extrabold tracking-[-0.03em] leading-[1.08] text-[#071a34]">
+                  <h1 className="m-0 text-[clamp(22px,2vw,28px)] font-semibold tracking-[-0.01em] leading-[1.15] text-[#071a34] max-w-[28ch]">
                     {university.name}
                   </h1>
                   {taglineEl}

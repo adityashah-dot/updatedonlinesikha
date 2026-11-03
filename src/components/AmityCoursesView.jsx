@@ -378,7 +378,7 @@ export const AmityCoursesView = ({
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
             <div className="flex items-center justify-between flex-wrap gap-3">
-              <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
                 {sectionTitle(AMITY.shortName, "Admission Dates")}
               </h2>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold">
@@ -668,8 +668,12 @@ export const AmityCoursesView = ({
           <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
     sectionId="blogs"
-    className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+    className="w-full rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:p-6"
     compact
+    horizontal
+    autoScroll
+    showDescriptionOnMobile
+    fetchLivePosts
   />
 
           {

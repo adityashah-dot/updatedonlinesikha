@@ -141,7 +141,7 @@ export const CuOverviewView = ({
     }}
   />
             <div className="min-w-0">
-              <h1 className="section-title text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight font-sans text-[#000f22]">
+              <h1 className="section-title text-2xl sm:text-3xl lg:text-3xl font-bold tracking-tight font-sans text-[#000f22] max-w-2xl leading-tight">
                 {CU.title}
               </h1>
               <div className="flex flex-wrap items-center gap-2 mt-3">
@@ -316,8 +316,8 @@ export const CuOverviewView = ({
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
             <div className="flex items-center justify-between flex-wrap gap-3">
-              <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                {sectionTitle(CU.shortName, "Highlights")}
+<h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans md:whitespace-nowrap">
+                 {sectionTitle(CU.shortName, "Highlights")}
               </h2>
               <button
     onClick={() => onOpenBrochure()}
@@ -501,7 +501,7 @@ export const CuOverviewView = ({
     id="rankings"
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
-            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
               {sectionTitle(CU.shortName, "Rankings and Accreditations")}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
@@ -665,7 +665,7 @@ export const CuOverviewView = ({
     id="placements"
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
-            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
               {sectionTitle(CU.shortName, "Placements")}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
@@ -982,7 +982,7 @@ export const CuOverviewView = ({
     id="reviews-section"
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
-            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
               {sectionTitle(CU.shortName, "Reviews")}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-[18px]">
@@ -1078,7 +1078,7 @@ export const CuOverviewView = ({
   />
                     </div>
                     <div>
-                      <h3 className="mb-1.5 text-[19px] leading-tight font-extrabold text-[#000f22] font-sans">
+                      <h3 className="mb-1.5 text-[19px] leading-tight font-bold text-[#000f22] font-sans">
                         {CU.title}
                       </h3>
                       <p className="mt-[7.5px] flex items-center gap-1.5 text-sm text-[#43474d]">
@@ -1124,7 +1124,7 @@ export const CuOverviewView = ({
                   +
                 </div>
                 <div>
-                  <h3 className="text-lg font-extrabold text-[#000f22] font-sans">Add College</h3>
+                  <h3 className="text-lg font-bold text-[#000f22] font-sans">Add College</h3>
                   <p className="mt-[7.5px] text-[13px] leading-relaxed text-[#43474d] font-normal">
                     Select another college to compare side by side.
                   </p>
@@ -1145,8 +1145,12 @@ export const CuOverviewView = ({
           <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
     sectionId="blogs"
-    className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+    className="w-full rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:p-6"
     compact
+    horizontal
+    autoScroll
+    showDescriptionOnMobile
+    fetchLivePosts
   />
         </div>
       </div>

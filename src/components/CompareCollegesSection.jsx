@@ -14,7 +14,7 @@ export const CompareCollegesSection = ({
     id={sectionId}
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
-      <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
+      <h2 className="section-title text-lg sm:text-xl font-bold text-[#000f22] font-sans">
         {title ?? "Compare"}
       </h2>
       <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal">
