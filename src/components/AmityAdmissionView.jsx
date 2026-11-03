@@ -217,7 +217,7 @@ export const AmityAdmissionView = ({
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
             <div className="flex items-center justify-between flex-wrap gap-3">
-              <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
                 {sectionTitle(AMITY.shortName, "Admission Important Dates")}
               </h2>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold">
@@ -363,7 +363,7 @@ export const AmityAdmissionView = ({
     id="examination-pattern"
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
-            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
               Amity University Online Examination Pattern
             </h2>
             <p className="section-description text-xs sm:text-sm text-[#43474d] leading-relaxed">
@@ -452,7 +452,7 @@ export const AmityAdmissionView = ({
     id="scholarship-schemes"
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
-            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
               {sectionTitle(AMITY.shortName, "Scholarship")}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
@@ -493,7 +493,7 @@ export const AmityAdmissionView = ({
   >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
               <div>
-                <h2 className="section-title text-2xl sm:text-3xl font-extrabold font-sans">
+                <h2 className="section-title text-2xl sm:text-3xl font-bold font-sans">
                   Not Sure Which Program Fits You?
                 </h2>
                 <p className="section-description text-xs sm:text-sm text-[#b1c8eb] max-w-2xl leading-relaxed mt-2">
@@ -600,7 +600,7 @@ export const AmityAdmissionView = ({
   >
             <div className="flex items-center justify-between flex-wrap gap-3">
               <div>
-                <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+                <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
                   {AP.testimonials.title}
                 </h2>
                 <p className="text-xs text-[#74777e] font-normal mt-1">
@@ -634,8 +634,12 @@ export const AmityAdmissionView = ({
           <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
     sectionId="blogs"
-    className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+    className="w-full rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:p-6"
     compact
+    horizontal
+    autoScroll
+    showDescriptionOnMobile
+    fetchLivePosts
   />
 
           {

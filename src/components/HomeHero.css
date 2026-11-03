@@ -9,7 +9,7 @@
 .hero-grid { position: relative; z-index: 3; width: 100%; max-width: 1600px; min-height: 300px; margin: 0 auto; display: grid; grid-template-columns: 1fr .92fr; padding: 48px clamp(24px, 5.5vw, 96px) 40px; box-sizing: border-box; }
 
 .hero-copy { z-index: 4; padding: 15px 0 40px 0; }
-.eyebrow { width: max-content; max-width: 100%; min-height: 39px; padding: 7px 16px; border-radius: 30px; display: flex; align-items: center; gap: 14px; background: #eaf4fe; color: #53637a; font-size: 15px; }
+.eyebrow { width: max-content; max-width: 100%; min-height: 32px; padding: 5px 12px; border-radius: 30px; display: flex; align-items: center; gap: 10px; background: #eaf4fe; color: #53637a; font-size: 12px; }
 .eyebrow i { color: #677785; font-style: normal; }
 .eyebrow .entitled { color: #258c54; }
 .status-dot { width: 12px; height: 12px; border-radius: 50%; background: #179657; box-shadow: 0 0 0 6px #fff; margin-right: 2px; }

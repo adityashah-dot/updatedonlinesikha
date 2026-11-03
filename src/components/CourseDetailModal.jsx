@@ -25,7 +25,7 @@ export const CourseDetailModal = ({
             <span className="px-2.5 py-1 rounded bg-[#e7eeff] text-[#115eaf] text-xs font-bold uppercase tracking-wider">
               {course.level}
             </span>
-            <h2 className="text-lg sm:text-xl font-bold text-[#000f22] font-sans truncate max-w-md sm:max-w-xl">
+            <h2 className="text-base sm:text-lg font-bold text-[#000f22] font-sans truncate max-w-md sm:max-w-xl">
               {course.name}
             </h2>
           </div>
@@ -50,7 +50,7 @@ export const CourseDetailModal = ({
   }
             <div className="lg:col-span-7 space-y-4">
               <div>
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-[#000f22] tracking-tight font-sans">
+                <h1 className="text-lg sm:text-xl font-bold text-[#000f22] tracking-tight font-sans max-w-2xl leading-tight">
                   {course.name}
                 </h1>
                 <p className="text-xs sm:text-sm text-[#115eaf] font-semibold mt-1 flex flex-wrap items-center gap-2">

@@ -22,7 +22,6 @@ import { CounselorModal } from "./components/CounselorModal";
 import { TrackApplicationModal } from "./components/TrackApplicationModal";
 import { GeminiChatbot, ChatbotFloatingTrigger } from "./components/chat/GeminiChatbot";
 import { SEO } from "./components/SEO";
-import { Home, FileText, Building2, Award } from "lucide-react";
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -231,57 +230,7 @@ export default function App() {
   />
 
       {
-    /* Mobile Sticky Bottom Navigation Dock */
-  }
-      <nav
-    className="md:hidden fixed bottom-0 left-0 w-full z-40 bg-white border-t border-[#e7eeff] px-2 pt-2 grid grid-cols-4 gap-1 shadow-lg"
-    style={{ paddingBottom: "calc(0.5rem + env(safe-area-inset-bottom))" }}
-  >
-        <button
-    onClick={() => {
-      setActiveTab("home");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }}
-    className={`flex flex-col items-center justify-center gap-0.5 min-h-[44px] py-1 rounded-xl text-[12px] font-semibold min-w-0 transition-all ${activeTab === "home" ? "bg-[#e7eeff] text-[#115eaf]" : "text-[#43474d]"}`}
-  >
-          <Home className="w-5 h-5 shrink-0" />
-          <span className="w-full truncate text-center leading-tight">Home</span>
-        </button>
-
-        <button
-    onClick={() => {
-      setActiveTab("universities");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }}
-    className={`flex flex-col items-center justify-center gap-0.5 min-h-[44px] py-1 rounded-xl text-[12px] font-semibold min-w-0 transition-all ${activeTab === "universities" ? "bg-[#e7eeff] text-[#115eaf]" : "text-[#43474d]"}`}
-  >
-          <Building2 className="w-5 h-5 shrink-0" />
-          <span className="w-full truncate text-center leading-tight">Universities</span>
-        </button>
-
-        <button
-    onClick={() => {
-      setActiveTab("scholarships");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }}
-    className={`flex flex-col items-center justify-center gap-0.5 min-h-[44px] py-1 rounded-xl text-[12px] font-semibold min-w-0 transition-all ${activeTab === "scholarships" ? "bg-[#e7eeff] text-[#115eaf]" : "text-[#43474d]"}`}
-  >
-          <Award className="w-5 h-5 shrink-0" />
-          <span className="w-full truncate text-center leading-tight">Scholarship</span>
-        </button>
-
-        <button
-    onClick={() => handleOpenApply()}
-    className="flex flex-col items-center justify-center gap-0.5 min-h-[44px] py-1 rounded-xl text-[12px] font-bold bg-[#115eaf] text-white shadow min-w-0"
-  >
-          <FileText className="w-5 h-5 shrink-0" />
-          <span className="w-full truncate text-center leading-tight">Apply</span>
-        </button>
-      </nav>
-
-      {
     /* Modals Container */
-  }
       <CourseDetailModal
     course={selectedCourseForDetail}
     isOpen={selectedCourseForDetail !== null}

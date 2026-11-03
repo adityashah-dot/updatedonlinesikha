@@ -18,7 +18,6 @@ import { HomeFaq } from "./HomeFaq";
 import { TopCollegesByLocation } from "./TopCollegesByLocation";
 import HomeHero from "./HomeHero";
 import { StudentTestimonials } from "./StudentTestimonials";
-import { PopularCoursesMobile } from "./PopularCoursesMobile";
 import { BlogsListSection } from "./BlogsListSection";
 
 const TRENDING_FILTERS = [
@@ -245,17 +244,77 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
   };
   const filteredDegreePrograms = DEGREE_PROGRAMS.filter((p) => p.lv.includes(degreeLevel));
   return (
-    <div className="home-page w-full mx-auto px-4 md:px-6 py-5 space-y-5">
+    <div className="home-page w-full mx-auto px-1 md:px-6 py-5 space-y-5">
       <HomeHero />
 
       {
     /* Popular Courses — mobile only */
   }
-      <PopularCoursesMobile />
+  {/* PopularCoursesMobile removed per request */}
 
       {
     /* Degree programs */
   }
+      {/* Mobile-only: Popular Online Degree Programs (new design) */}
+      <section id="degrees-mobile" className="md:hidden w-full">
+        <div className="px-1 py-4">
+          <p className="text-[11px] font-semibold tracking-[1.5px] text-slate-500 mb-1">DEGREES</p>
+          <h2 className="text-lg font-extrabold tracking-tight text-[#0b1d3a] mb-1 whitespace-nowrap">Popular online degree programs</h2>
+          <p className="text-[13px] text-slate-500 leading-snug mb-4">Approved under UGC Section 22 with equivalence to conventional regular degrees.</p>
+
+          <div className="flex gap-2 overflow-x-auto pb-2 mb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {['Master\'s (PG)', 'Bachelor\'s (UG)', 'Executive Tracks'].map((t, i) => (
+              <button key={t} type="button" className={`whitespace-nowrap px-3 py-1.5 text-[12px] font-semibold rounded-lg border-b-2 ${i === 0 ? 'text-[#0866d8] border-[#0866d8] bg-blue-50' : 'text-slate-500 border-transparent'}`}>{t}</button>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-3">
+            {[
+              { title: 'Online MBA', sub: 'Master of Business Administration', badge: 'High Placement Rate', dur: '2 Years · 4 Sems', spec: '19+ (Data, Finance, Marketing, HR)', career: '₹7.2 – 14.5 LPA', price: '₹18,500', explore: 'Explore 28 Unis' },
+              { title: 'Online MCA', sub: 'Master of Computer Applications', badge: 'AI & Cloud Ready', dur: '2 Years · 4 Sems', spec: 'AI, Cloud, Full-Stack, Cyber', career: '₹6.5 – 16.0 LPA', price: '₹22,000', explore: 'Explore 22 Unis' },
+              { title: 'Online B.Com / M.Com', sub: 'Commerce & Corporate Finance', badge: 'ACCA & US CMA options', dur: 'UG & PG available', spec: 'Integrated ACCA 9-paper exemption', career: 'Govt exam validity: UPSC/Banking', price: '₹12,000', explore: 'Explore 15 Unis' },
+              { title: 'Online BA / MA', sub: 'Humanities & Social Sciences', badge: 'Affordable fee', dur: 'UG & PG tracks', spec: 'Journalism, English, Public Policy', career: 'Best for civil services aspirants', price: '₹11,000', explore: 'Explore 14 Unis' },
+            ].map((c) => (
+              <div key={c.title} className="bg-white border border-slate-200 rounded-xl p-3 shadow-sm">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-[16px] font-bold text-[#102a55]">{c.title}</h3>
+                  <span className="text-[#1264c7] text-lg">›</span>
+                </div>
+                <p className="text-[12px] text-slate-500 mt-0.5">{c.sub}</p>
+                <span className="inline-flex items-center gap-1 bg-blue-50 text-[#0866d8] text-[10px] font-semibold px-2 py-0.5 rounded-full mt-1.5">{c.badge}</span>
+                <div className="grid grid-cols-2 gap-2 mt-2 mb-2">
+                  <div className="flex flex-col gap-1.5">
+                    <div className="flex items-start gap-1.5">
+                      <span className="text-[#0866d8] text-[13px] font-bold">▦</span>
+                      <span className="text-[11px] text-slate-600"><strong className="block text-slate-700 font-semibold">{c.dur}</strong></span>
+                    </div>
+                    <div className="flex items-start gap-1.5">
+                      <span className="text-[#0866d8] text-[13px] font-bold">◆</span>
+                      <span className="text-[11px] text-slate-600"><strong className="block text-slate-700 font-semibold">Specializations</strong>{c.spec}</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-1.5 border-l border-slate-200 pl-2">
+                    <div className="flex items-start gap-1.5">
+                      <span className="text-[#0866d8] text-[13px] font-bold">♙</span>
+                      <span className="text-[11px] text-slate-600"><strong className="block text-slate-700 font-semibold">Career / Eligibility</strong>{c.career}</span>
+                    </div>
+                    <div className="flex items-start gap-1.5">
+                      <span className="text-[#0866d8] text-[13px] font-bold">▤</span>
+                      <span className="text-[11px] text-slate-600"><strong className="block text-slate-700 font-semibold">Starts from</strong><span className="text-[15px] font-extrabold text-[#102a55]">{c.price}</span> <span className="text-[9px] text-slate-500">per sem</span></span>
+                    </div>
+                  </div>
+                </div>
+                <button onClick={() => navigate('/universities')} className="w-full py-2 rounded-lg bg-[#1264c7] text-white text-[11px] font-bold flex items-center justify-center gap-1.5 active:scale-[0.98]">
+                  {c.explore} <span>→</span>
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Desktop degrees section (unchanged) */}
+      <div className="hidden md:block">
       <section id="degrees" aria-labelledby="degrees-heading" className="w-full">
         <div className="max-w-[1180px] mx-auto px-5">
           <div className="hd flex flex-col md:flex-row md:items-end md:justify-between gap-5 flex-wrap mb-7">
@@ -324,6 +383,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
           <p className="nt mt-4 text-[11.5px] text-[#43474d]">Career CTC ranges are shown as published on the existing site. Add the source and year before launch.</p>
         </div>
       </section>
+      </div>
 
       {
     /* Featured universities */
