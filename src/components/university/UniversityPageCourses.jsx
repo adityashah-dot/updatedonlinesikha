@@ -144,7 +144,7 @@ export const UniversityPageCourses = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             <div className="lg:col-span-8 flex flex-col space-y-4">
               <div>
-                <h1 className="section-title text-2xl sm:text-3xl lg:text-4xl font-bold text-[#000f22] tracking-tight font-sans leading-tight">
+                <h1 className="uni-title text-[#000f22] tracking-tight font-sans leading-tight">
                   {sectionTitle(university.shortName, "Courses & Fees")}
                 </h1>
                 <p className="section-description text-xs sm:text-sm text-[#43474d] max-w-3xl leading-relaxed font-normal">

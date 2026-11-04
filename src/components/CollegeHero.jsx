@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 import { MapPin, Star, Download, ArrowRight } from "lucide-react";
 import { useSiteActions } from "./shell/SiteActionsContext";
 import ReadMoreText from "./ReadMoreText";
@@ -61,7 +61,7 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
           )}
 
           <div className="min-w-0">
-            <h1 className="section-title text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight font-sans text-[#000f22]">
+            <h1 className="section-title font-bold tracking-tight font-sans text-[#000f22]">
               {collegeTitle}
             </h1>
 

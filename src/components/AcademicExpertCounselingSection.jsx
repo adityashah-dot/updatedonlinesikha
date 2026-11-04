@@ -21,7 +21,7 @@ export function AcademicExpertCounselingSection({ id = "counselling" }) {
           </div>
 
           <div className="mt-4 space-y-2">
-            <h2 className="max-w-[680px] text-[clamp(22px,2.2vw,32px)] font-bold leading-[1.2] tracking-[-0.6px] text-[#0b1d3a]">
+            <h2 className="max-w-[680px] font-bold leading-[1.2] tracking-[-0.6px] text-[#0b1d3a]">
               Confused Between 50+ Universities? Speak with an <span className="text-[#3478ed]">Unbiased Academic Expert</span>
             </h2>
             <p className="max-w-[660px] text-xs font-normal leading-[1.6] text-[#657185] sm:text-sm">

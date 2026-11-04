@@ -129,7 +129,7 @@ export const AmityCoursesView = ({
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                   Admissions Open for 2026
                 </span>
-                <h1 className="section-title text-2xl sm:text-3xl lg:text-4xl font-bold text-[#000f22] tracking-tight font-sans leading-tight mt-3">
+                <h1 className="section-title font-bold text-[#000f22] tracking-tight font-sans leading-tight mt-3">
                   {CP.title}
                 </h1>
                 <p className="section-description text-xs sm:text-sm text-[#43474d] max-w-3xl leading-relaxed font-normal mt-2">

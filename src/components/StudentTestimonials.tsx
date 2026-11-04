@@ -1,9 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ReadMore from './ReadMore';
 import {
   Quote,
   Star,
-  ChevronLeft,
-  ChevronRight,
   ShieldCheck,
   TrendingUp,
   Award,
@@ -144,61 +143,17 @@ const TESTIMONIALS_DATA: Testimonial[] = [
 interface StudentTestimonialsProps {
   onOpenCounseling?: () => void;
 }
-
 export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpenCounseling }) => {
   const [activeCategory, setActiveCategory] = useState<'all' | 'management' | 'tech' | 'commerce'>('all');
-  const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [likedMap, setLikedMap] = useState<Record<string, boolean>>({});
   const [selectedStory, setSelectedStory] = useState<Testimonial | null>(null);
-
   const sliderRef = useRef<HTMLDivElement>(null);
 
   const filteredTestimonials = TESTIMONIALS_DATA.filter((t) => {
     if (activeCategory === 'all') return true;
     return t.category === activeCategory;
   });
-
-  // Reset active index when category changes
-  useEffect(() => {
-    setActiveIndex(0);
-    if (sliderRef.current) {
-      sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-    }
-  }, [activeCategory]);
-
-  // Autoplay functionality
-  useEffect(() => {
-    if (!isPlaying) return;
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % filteredTestimonials.length);
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [isPlaying, filteredTestimonials.length]);
-
-  // Scroll carousel to active index
-  const scrollToIndex = (index: number) => {
-    setActiveIndex(index);
-    if (sliderRef.current) {
-      const card = sliderRef.current.children[index] as HTMLElement;
-      if (card) {
-        sliderRef.current.scrollTo({
-          left: card.offsetLeft - sliderRef.current.offsetLeft,
-          behavior: 'smooth',
-        });
-      }
-    }
-  };
-
-  const handlePrev = () => {
-    const nextIdx = activeIndex === 0 ? filteredTestimonials.length - 1 : activeIndex - 1;
-    scrollToIndex(nextIdx);
-  };
-
-  const handleNext = () => {
-    const nextIdx = (activeIndex + 1) % filteredTestimonials.length;
-    scrollToIndex(nextIdx);
-  };
 
   const toggleLike = (id: string) => {
     setLikedMap((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -216,7 +171,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             </span>
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#000f22] dark:text-slate-100 tracking-tight">
+          <h2 className="font-bold text-[#000f22] dark:text-slate-100 tracking-tight">
             Real Stories, Real Career Transitions
           </h2>
           <p className="text-xs sm:text-sm text-[#43474d] dark:text-slate-400 mt-1 max-w-2xl font-normal leading-relaxed">
@@ -224,7 +179,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
           </p>
         </div>
 
-        {/* Controls: Category Filter + Navigation Buttons */}
+        {/* Controls: Category Filter */}
         <div className="flex flex-wrap items-center gap-2 shrink-0">
           {/* Segmented Category Buttons */}
           <div className="inline-flex items-center p-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700">
@@ -274,7 +229,7 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             </button>
           </div>
 
-          {/* Autoplay & Arrows */}
+          {/* Autoplay */}
           <div className="flex items-center gap-1.5">
             <button
               type="button"
@@ -284,24 +239,6 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
               aria-label={isPlaying ? 'Pause slideshow' : 'Auto-play reviews'}
             >
               {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />}
-            </button>
-
-            <button
-              type="button"
-              onClick={handlePrev}
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#121c2e] text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer shadow-2xs"
-              aria-label="Previous testimonial"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-
-            <button
-              type="button"
-              onClick={handleNext}
-              className="p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#121c2e] text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer shadow-2xs"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -335,23 +272,14 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
         </div>
       </div>
 
-      {/* Sliding Cards Carousel Track */}
-      <div
-        ref={sliderRef}
-        className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scrollbar-none scroll-smooth"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-      >
-        {filteredTestimonials.map((item, idx) => {
+      {/* Scroll-snap Testimonials Row */}
+      <div ref={sliderRef} className="testi-row pb-4 pt-1">
+        {filteredTestimonials.map((item) => {
           const isLiked = !!likedMap[item.id];
           const currentHelpful = item.helpfulCount + (isLiked ? 1 : 0);
 
           return (
-            <div
-              key={item.id}
-              className={`shrink-0 w-[300px] sm:w-[350px] md:w-[370px] snap-start rounded-2xl bg-white dark:bg-[#121c2e] border border-slate-200/90 dark:border-[#24344d] shadow-sm hover:shadow-xl hover:border-2 hover:border-[#115eaf] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between p-5 sm:p-6 group relative ${
-                activeIndex === idx ? 'ring-2 ring-[#115eaf]/25 dark:ring-blue-500/30' : ''
-              }`}
-            >
+            <div key={item.id} className="testi-card">
               {/* Top Row: User Avatar & Course Info */}
               <div>
                 <div className="flex items-start justify-between gap-3 mb-4">
@@ -372,13 +300,13 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
                     </div>
 
                     <div>
-                      <h3 className="text-sm sm:text-base font-bold text-[#000f22] dark:text-slate-100 tracking-tight leading-snug">
+                      <h3 className="text-sm sm:text-base font-bold text-[#000f22] dark:text-slate-100 tracking-tight leading-snug" title={item.name}>
                         {item.name}
                       </h3>
-                      <p className="text-xs text-[#115eaf] dark:text-blue-400 font-medium">
+                      <p className="text-xs text-[#115eaf] dark:text-blue-400 font-medium" title={item.currentRole}>
                         {item.currentRole}
                       </p>
-                      <p className="text-[11px] text-[#74777e] dark:text-slate-400">
+                      <p className="text-[11px] text-[#74777e] dark:text-slate-400" title={item.company}>
                         {item.company}
                       </p>
                     </div>
@@ -399,21 +327,23 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
 
                 {/* Course & University Metadata - Clean Unboxed Typography */}
                 <div className="flex flex-wrap items-center gap-1.5 text-xs text-[#555960] dark:text-slate-400 pb-3 mb-3 border-b border-slate-100 dark:border-slate-800/80">
-                  <span className="font-semibold text-slate-800 dark:text-slate-200">
+                  <span className="font-semibold text-slate-800 dark:text-slate-200" title={item.courseName}>
                     {item.courseName}
                   </span>
                   <span aria-hidden="true" className="text-slate-300 dark:text-slate-600">·</span>
-                  <span>{item.university}</span>
+                  <span title={item.university}>{item.university}</span>
                   <span aria-hidden="true" className="text-slate-300 dark:text-slate-600">·</span>
-                  <span className="text-slate-500">{item.batch}</span>
+                  <span className="text-slate-500" title={item.batch}>{item.batch}</span>
                 </div>
 
-                {/* Quote Block */}
+                {/* Quote Block - ReadMore */}
                 <div className="relative">
                   <Quote className="w-6 h-6 text-slate-200 dark:text-slate-700 absolute -top-1 -left-1 -z-0 opacity-70" />
-                  <p className="relative z-1 text-xs sm:text-[13px] text-[#2d3139] dark:text-slate-300 leading-relaxed italic line-clamp-4">
-                    "{item.quote}"
-                  </p>
+                  <ReadMore lines={3}>
+                    <p className="relative z-1 block text-xs sm:text-[13px] text-[#2d3139] dark:text-slate-300 leading-relaxed italic line-clamp-4">
+                      "{item.quote}"
+                    </p>
+                  </ReadMore>
                 </div>
               </div>
 
@@ -447,23 +377,6 @@ export const StudentTestimonials: React.FC<StudentTestimonialsProps> = ({ onOpen
             </div>
           );
         })}
-      </div>
-
-      {/* Pagination Dot Indicators */}
-      <div className="flex items-center justify-center gap-2 pt-1">
-        {filteredTestimonials.map((_, idx) => (
-          <button
-            key={idx}
-            type="button"
-            onClick={() => scrollToIndex(idx)}
-            className={`h-2 rounded-full transition-all cursor-pointer ${
-              activeIndex === idx
-                ? 'w-7 bg-[#115eaf] dark:bg-blue-400'
-                : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'
-            }`}
-            aria-label={`Jump to review ${idx + 1}`}
-          />
-        ))}
       </div>
 
       {/* Bottom Counselor Connect CTA Strip */}

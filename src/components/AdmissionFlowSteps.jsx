@@ -167,7 +167,7 @@ export const AdmissionFlowSteps = ({ steps }) => {
               </div>
 
               <div className="admission-flow-body">
-                <h3 className="mb-1 text-[18px] font-semibold leading-[1.35] text-[#000f22] font-sans">
+                <h3 className="mb-1 font-semibold leading-[1.35] text-[#000f22] font-sans">
                   {step.title}
                 </h3>
                 <p className="m-0 text-[15px] leading-[1.55] text-[#43474d] font-normal">

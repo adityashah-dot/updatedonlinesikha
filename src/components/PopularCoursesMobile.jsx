@@ -56,7 +56,7 @@ export const PopularCoursesMobile = () => {
       </button>
     </li>;
   return <section className="md:hidden bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-[17px]">
-      <h2 className="m-0 text-[21px] leading-[1.3] font-bold text-[#000f22]">
+      <h2 className="m-0 leading-[1.3] font-bold text-[#000f22]">
         Explore some Popular Courses
       </h2>
       <p className="mt-1 mb-4 text-xs text-[#43474d]">Choose a program that fits your goal</p>

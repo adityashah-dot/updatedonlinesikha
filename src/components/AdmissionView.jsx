@@ -712,7 +712,7 @@ export default function CollegeAdmission({
                         </div>
                       ) : null}
                       <div>
-                        <h3 className="mb-1.5 text-[19px] leading-tight font-bold text-[#000f22] font-sans">
+                        <h3 className="mb-1.5 leading-tight font-bold text-[#000f22] font-sans">
                           {compare.college?.name}
                         </h3>
                         {compare.college?.location ? (

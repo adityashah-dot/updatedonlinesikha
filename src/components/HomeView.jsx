@@ -1,12 +1,12 @@
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ViewAllButton from "./ViewAllButton";
 import {
   Search,
   ShieldCheck,
   ArrowRight,
   Download,
   CheckCircle,
-  ChevronRight,
   Headphones,
   GraduationCap,
   Wallet,
@@ -15,7 +15,6 @@ import {
   Star
 } from "lucide-react";
 import { HomeFaq } from "./HomeFaq";
-import { TopCollegesByLocation } from "./TopCollegesByLocation";
 import HomeHero from "./HomeHero";
 import { StudentTestimonials } from "./StudentTestimonials";
 import { PopularCoursesMobile } from "./PopularCoursesMobile";
@@ -245,7 +244,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
   };
   const filteredDegreePrograms = DEGREE_PROGRAMS.filter((p) => p.lv.includes(degreeLevel));
   return (
-    <div className="home-page w-full mx-auto px-4 md:px-6 py-5 space-y-5">
+    <div className="home-page w-full mx-auto px-4 md:px-6 py-5 flex flex-col gap-6 md:gap-10">
       <HomeHero />
 
       {
@@ -260,8 +259,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         <div className="max-w-[1180px] mx-auto px-5">
           <div className="hd flex flex-col md:flex-row md:items-end md:justify-between gap-5 flex-wrap mb-7">
             <div>
-              <p className="lb text-[11px] font-medium tracking-[0.12em] uppercase text-[#74777e]">Degrees</p>
-              <h2 id="degrees-heading" className="mt-2 text-xl sm:text-2xl font-bold leading-[1.15] tracking-[-0.025em] text-[#000f22]">Popular online <b className="font-semibold">degree programs</b></h2>
+              <h2 id="degrees-heading" className="text-xl sm:text-2xl font-bold leading-[1.15] tracking-[-0.025em] text-[#000f22]">Popular online degree programs</h2>
               <p className="s mt-2.5 text-[14px] text-[#43474d] max-w-[52ch]">Approved under UGC Section 22 with equivalence to conventional regular degrees.</p>
             </div>
             <div className="tabs flex overflow-x-auto border-b border-[#c4c6ce]" role="tablist" aria-label="Level">
@@ -291,7 +289,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 >
                   <span className="du col-span-2 md:col-span-1 order-first md:order-none text-[12px] text-[#43474d] font-medium leading-[1.5]">{p.y}</span>
                   <div className="col-span-2 md:col-span-1">
-                    <h3 className="text-[18px] font-bold tracking-[-0.01em] leading-[1.3] text-[#000f22]">
+                    <h3 className="font-bold tracking-[-0.01em] leading-[1.3] text-[#000f22]">
                       {p.n}
                       <small className="block mt-0.5 text-[12.5px] font-normal text-[#43474d] tracking-normal">{p.f}</small>
                     </h3>
@@ -333,17 +331,10 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
           <div>
             <div className="flex items-center gap-2">
               <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#115eaf]" />
-              <h2 className="text-[17px] sm:text-2xl font-bold text-[#000f22] max-[380px]:whitespace-normal whitespace-nowrap">Explore Some Popular Universities</h2>
+              <h2 className="sm:text-2xl font-bold text-[#000f22] max-[380px]:whitespace-normal whitespace-nowrap">Explore Some Popular Universities</h2>
             </div>
           </div>
-          <button
-    type="button"
-    onClick={() => navigate("/universities")}
-    className="text-[12px] font-semibold text-[#115eaf] hover:underline flex items-center gap-1"
-  >
-            View All 50+ Universities
-            <ChevronRight className="w-4 h-4" />
-          </button>
+          <ViewAllButton href="/universities" label="View All 50+ Universities" />
         </div>
         {
     /* Mobile only — chip filters + horizontal snap carousel */
@@ -368,7 +359,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
     key={u.id}
     className="flex-none w-[290px] snap-start border border-[#c4c6ce] rounded-[4px] p-3 bg-white flex flex-col"
   >
-                <h3 className="text-[15px] font-bold leading-[1.35] text-[#000f22] line-clamp-2 mb-2.5">
+                <h3 className="font-bold leading-[1.35] text-[#000f22] line-clamp-2 mb-2.5">
                   {u.name}
                 </h3>
                 <span className="block text-[12px] text-[#74777e] mb-2.5">{u.short}</span>
@@ -464,16 +455,11 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         </button>
       </section>
 
-      {
-    /* Top Colleges by Location */
-  }
-      <TopCollegesByLocation onOpenBrochure={onOpenHelpDesk} />
-
       <section id="compare" className="bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-[17px]">
         <div className="grid grid-cols-1 md:grid-cols-[380px_1fr] gap-6 md:gap-8 items-start">
           <div className="max-w-[420px]">
             <p className="text-[11px] font-bold uppercase tracking-wider text-[#115eaf]">Compare</p>
-            <h2 style={{ fontSize: "clamp(26px, 3vw, 32px)", fontWeight: 700 }} className="mt-2 leading-[1.1] tracking-[-0.02em] text-[#000f22]">Side by <b style={{ fontWeight: 600 }}>side</b></h2>
+            <h2 className="mt-2 leading-[1.1] tracking-[-0.02em] text-[#000f22]">Side by <b style={{ fontWeight: 600 }}>side</b></h2>
             <p className="mt-2 text-[14px] md:text-[15px] leading-[1.5] text-[#43474d]">
               Compare fees, approvals, EMI and exam formats in one place. Find the university that fits your budget and goals.
             </p>
@@ -483,7 +469,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                   <Wallet className="w-4 h-4" />
                 </span>
                 <div>
-                  <h3 style={{ fontWeight: 600 }} className="text-[14px] md:text-[15px] leading-[1.3] text-[#000f22]">Compare total fees and EMI</h3>
+                  <h3 className="leading-[1.3] text-[#000f22]">Compare total fees and EMI</h3>
                   <p className="mt-1 text-[12px] md:text-[13px] leading-[1.5] text-[#43474d]">See complete fee structure and monthly EMI options at a glance.</p>
                 </div>
               </div>
@@ -492,7 +478,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                   <ShieldCheck className="w-4 h-4" />
                 </span>
                 <div>
-                  <h3 style={{ fontWeight: 600 }} className="text-[14px] md:text-[15px] leading-[1.3] text-[#000f22]">Check university approvals</h3>
+                  <h3 className="leading-[1.3] text-[#000f22]">Check university approvals</h3>
                   <p className="mt-1 text-[12px] md:text-[13px] leading-[1.5] text-[#43474d]">Verify UGC, AICTE and other key recognitions easily.</p>
                 </div>
               </div>
@@ -501,7 +487,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                   <GraduationCap className="w-4 h-4" />
                 </span>
                 <div>
-                  <h3 style={{ fontWeight: 600 }} className="text-[14px] md:text-[15px] leading-[1.3] text-[#000f22]">Understand exam modes and duration</h3>
+                  <h3 className="leading-[1.3] text-[#000f22]">Understand exam modes and duration</h3>
                   <p className="mt-1 text-[12px] md:text-[13px] leading-[1.5] text-[#43474d]">Compare how exams are conducted and program duration side by side.</p>
                 </div>
               </div>
@@ -581,7 +567,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             </div>
 
             <div className="mt-4 space-y-2">
-              <h2 className="max-w-[680px] text-[clamp(22px,2.2vw,32px)] font-bold leading-[1.2] tracking-[-0.6px] text-[#0b1d3a]">
+              <h2 className="max-w-[680px] font-bold leading-[1.2] tracking-[-0.6px] text-[#0b1d3a]">
                 Confused Between 50+ Universities? Speak with an <span className="text-[#3478ed]">Unbiased Academic Expert</span>
               </h2>
               <p className="max-w-[660px] text-xs sm:text-sm text-[#657185] font-normal leading-[1.6]">

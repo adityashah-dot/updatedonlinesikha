@@ -108,7 +108,7 @@ export const UniversityHero: React.FC<UniversityHeroProps> = ({
                 </div>
 
                 {/* Primary University Name */}
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 text-balance leading-tight">
+                <h1 className="uni-title tracking-tight text-slate-900 text-balance leading-tight">
                   {university.name}
                 </h1>
 

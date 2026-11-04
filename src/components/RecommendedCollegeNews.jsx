@@ -588,7 +588,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
                           {
       /* Headline */
     }
-                          <h3 className="font-bold text-sm sm:text-[15px] text-[#000f22] group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2 mb-2">
+<h3 className="font-bold text-sm text-[#000f22] group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2 mb-2">
                             {article.title}
                           </h3>
 
@@ -738,7 +738,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
       }
                     <div className="p-4 flex-1 flex flex-col justify-between">
                       <div>
-                        <h3 className="font-bold text-sm sm:text-[15px] text-[#000f22] group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2 mb-2">
+                        <h3 className="font-bold text-sm text-[#000f22] group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2 mb-2">
                           {article.title}
                         </h3>
                         <p className="text-xs text-[#43474d] line-clamp-2 leading-relaxed mb-3 font-normal">

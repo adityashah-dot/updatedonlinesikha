@@ -11,7 +11,7 @@ const benefits = [
 
 export default function HomeHero() {
   return (
-    <section className="hero" id="degrees">
+    <section className="hero" id="hero">
       <img className="wave-background" src={asset('hero-waves.svg')} alt="" />
       <img className="accent-lines accent-tl" src={asset('SVG.svg')} alt="" />
 

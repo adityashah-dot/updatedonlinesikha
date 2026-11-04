@@ -116,7 +116,7 @@ export const UniversityPageAdmission = ({
               Admissions Open 2026
             </p>
 
-            <h1 className="m-0 mb-[10px] text-[clamp(28px,3vw,42px)] leading-[1.2] tracking-[-1.2px] font-bold text-[#071a34]">
+            <h1 className="m-0 mb-[10px] uni-title leading-[1.2] tracking-[-1.2px] text-[#071a34]">
               {sectionTitle(university.shortName, "Admission Highlights")}
             </h1>
 
@@ -184,7 +184,7 @@ export const UniversityPageAdmission = ({
         <section id="admission-dates" className="page-section card bg-white border border-[#e7eeff] rounded-2xl shadow-xs scroll-mt-[110px]">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 pb-4 border-b border-[#e7eeff]">
             <div>
-              <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              <h2 className="section-title text-xl sm:text-2xl font-semibold text-[#000f22] font-sans">
                 {sectionTitle(university.shortName, "Admission Important Dates")}
               </h2>
             </div>
@@ -355,7 +355,7 @@ export const UniversityPageAdmission = ({
   }
         {hasExamPattern && <section id="examination-pattern" className="page-section card bg-white border border-[#e7eeff] rounded-2xl shadow-xs scroll-mt-[110px]">
             <div>
-              <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              <h2 className="section-title text-xl sm:text-2xl font-semibold text-[#000f22] font-sans">
                 {sectionTitle(university.shortName, "Examination Pattern")}
               </h2>
             </div>
@@ -425,7 +425,7 @@ export const UniversityPageAdmission = ({
   }
         {hasScholarships && <section id="scholarship-schemes" className="page-section card bg-white border border-[#e7eeff] rounded-2xl shadow-xs scroll-mt-[110px]">
             <div>
-              <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+              <h2 className="section-title text-xl sm:text-2xl font-semibold text-[#000f22] font-sans">
                 {sectionTitle(university.shortName, "Scholarship")}
               </h2>
             </div>
@@ -470,7 +470,7 @@ export const UniversityPageAdmission = ({
                 <PhoneCall className="w-3.5 h-3.5" />
                 1-on-1 Academic Counseling
               </span>
-              <h2 className="section-title text-2xl sm:text-3xl font-bold text-[#70aaff] font-sans">
+              <h2 className="section-title font-bold text-[#70aaff] font-sans">
                 {counselingTitle || "Have Questions About Document Eligibility or Grants?"}
               </h2>
               <p className="section-description text-xs sm:text-sm text-[#b1c8eb] max-w-2xl leading-relaxed">
@@ -539,7 +539,7 @@ export const UniversityPageAdmission = ({
         {hasReviews && <section id="student-reviews" className="page-section card bg-white border border-[#e7eeff] rounded-2xl shadow-xs scroll-mt-[110px]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-[#e7eeff]">
               <div>
-                <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+                <h2 className="section-title text-xl sm:text-2xl font-semibold text-[#000f22] font-sans">
                   {sectionTitle(university.shortName, "Student Reviews")}
                 </h2>
                 <p className="section-description text-xs text-[#74777e]">
@@ -628,7 +628,7 @@ export const UniversityPageAdmission = ({
   />
                   </div>
                   <div>
-                    <h3 className="mb-1 text-base leading-tight font-extrabold text-[#000f22] font-sans">{university.name}</h3>
+                    <h3 className="mb-1 text-base leading-tight font-semibold text-[#000f22] font-sans">{university.name}</h3>
                     <p className="flex items-center gap-1.5 text-xs text-[#43474d]">
                       <MapPin className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
                       {university.location}
@@ -663,7 +663,7 @@ export const UniversityPageAdmission = ({
                 +
               </div>
               <div>
-                <h3 className="text-sm font-extrabold text-[#000f22] font-sans">Add Comparison College</h3>
+                <h3 className="text-sm font-semibold text-[#000f22] font-sans">Add Comparison College</h3>
                 <p className="mt-1 text-xs leading-relaxed text-[#43474d]">
                   Select another university to compare admission fees and eligibility.
                 </p>

@@ -658,7 +658,7 @@ export const TopCollegesByLocation = ({ onOpenBrochure }) => {
   >
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-1.5">
-                    <h3 className="text-sm sm:text-[15px] md:text-base font-bold text-slate-900 group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2">
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2">
                       {college.name}
                     </h3>
                     <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-xl border border-blue-100 p-1 flex items-center justify-center shrink-0 bg-gradient-to-br from-[#eff6ff] to-[#dbeafe] shadow-2xs">
@@ -772,7 +772,7 @@ export const TopCollegesByLocation = ({ onOpenBrochure }) => {
   >
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-1.5">
-                    <h3 className="text-sm sm:text-[15px] md:text-base font-bold text-slate-900 group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2">
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2">
                       {college.name}
                     </h3>
                     <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 rounded-xl border border-blue-100 p-1 flex items-center justify-center shrink-0 bg-gradient-to-br from-[#eff6ff] to-[#dbeafe] shadow-2xs">

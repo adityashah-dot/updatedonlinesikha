@@ -93,7 +93,7 @@ export const UniversityPageScholarships = ({
     }}
   />
             <div className="min-w-0">
-              <h1 className="section-title text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight font-sans text-[#000f22]">
+              <h1 className="uni-title tracking-tight font-sans text-[#000f22]">
                 {sectionTitle(university.shortName, "Scholarships")}
               </h1>
               <div className="flex flex-wrap items-center gap-2 mt-3">
@@ -195,7 +195,7 @@ export const UniversityPageScholarships = ({
             <Sparkles className="w-3.5 h-3.5 text-[#D97706]" />
             Fee Waivers &amp; Concessions 2026
           </span>
-          <h1 className="section-title mt-3 text-3xl sm:text-4xl font-bold text-[#000f22] tracking-tight font-sans">
+          <h1 className="text-[32px] font-semibold mt-3 text-[#000f22] tracking-tight font-sans">
             {sectionTitle(university.shortName, "Scholarships")}
           </h1>
           <p className="section-description text-xs sm:text-sm text-[#43474d] leading-relaxed">

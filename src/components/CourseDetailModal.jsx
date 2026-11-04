@@ -50,7 +50,7 @@ export const CourseDetailModal = ({
   }
             <div className="lg:col-span-7 space-y-4">
               <div>
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-[#000f22] tracking-tight font-sans">
+                <h1 className="font-extrabold text-[#000f22] tracking-tight font-sans">
                   {course.name}
                 </h1>
                 <p className="text-xs sm:text-sm text-[#115eaf] font-semibold mt-1 flex flex-wrap items-center gap-2">

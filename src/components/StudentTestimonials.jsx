@@ -1,17 +1,14 @@
+import ReadMore from "./ReadMore";
 import { useState, useRef, useEffect } from "react";
 import {
   Quote,
   Star,
-  ChevronLeft,
-  ChevronRight,
   ShieldCheck,
   TrendingUp,
   Award,
   ThumbsUp,
   GraduationCap,
   Briefcase,
-  Play,
-  Pause,
   ExternalLink,
   CheckCircle2,
   Sparkles
@@ -108,49 +105,9 @@ const TESTIMONIALS_DATA = [
     verifiedUgc: true,
     helpfulCount: 174
   }
-];
-const TruncatedText = ({ text, className, as: Tag = "span" }) => {
-  const textRef = useRef(null);
-  const [isTruncated, setIsTruncated] = useState(false);
-
-  useEffect(() => {
-    const element = textRef.current;
-    if (!element) return undefined;
-
-    const checkTruncation = () => {
-      setIsTruncated(
-        element.scrollWidth > element.clientWidth + 1 ||
-        element.scrollHeight > element.clientHeight + 1
-      );
-    };
-
-    checkTruncation();
-    const observer = typeof ResizeObserver !== "undefined" ? new ResizeObserver(checkTruncation) : null;
-    observer?.observe(element);
-    window.addEventListener("resize", checkTruncation);
-
-    return () => {
-      observer?.disconnect();
-      window.removeEventListener("resize", checkTruncation);
-    };
-  }, [text]);
-
-  return (
-    <Tag
-      ref={textRef}
-      className={className}
-      title={isTruncated ? text : undefined}
-      aria-label={isTruncated ? text : undefined}
-    >
-      {text}
-    </Tag>
-  );
-};
-
+ ];
 export const StudentTestimonials = ({ onOpenCounseling }) => {
   const [activeCategory, setActiveCategory] = useState("all");
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [likedMap, setLikedMap] = useState({});
   const [selectedStory, setSelectedStory] = useState(null);
   const sliderRef = useRef(null);
@@ -158,49 +115,16 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
     if (activeCategory === "all") return true;
     return t.category === activeCategory;
   });
-  useEffect(() => {
-    setActiveIndex(0);
-    if (sliderRef.current) {
-      sliderRef.current.scrollTo({ left: 0, behavior: "smooth" });
-    }
-  }, [activeCategory]);
-  useEffect(() => {
-    if (!isPlaying) return;
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % filteredTestimonials.length);
-    }, 4500);
-    return () => clearInterval(interval);
-  }, [isPlaying, filteredTestimonials.length]);
-  const scrollToIndex = (index) => {
-    setActiveIndex(index);
-    if (sliderRef.current) {
-      const card = sliderRef.current.children[index];
-      if (card) {
-        sliderRef.current.scrollTo({
-          left: card.offsetLeft - sliderRef.current.offsetLeft,
-          behavior: "smooth"
-        });
-      }
-    }
-  };
-  const handlePrev = () => {
-    const nextIdx = activeIndex === 0 ? filteredTestimonials.length - 1 : activeIndex - 1;
-    scrollToIndex(nextIdx);
-  };
-  const handleNext = () => {
-    const nextIdx = (activeIndex + 1) % filteredTestimonials.length;
-    scrollToIndex(nextIdx);
-  };
   const toggleLike = (id) => {
     setLikedMap((prev) => ({ ...prev, [id]: !prev[id] }));
   };
   return <section id="testimonials" className="space-y-6 pt-2">
       {
-    /* Header Container */
+    /* Header Container: Heading on left, Category Filters on right */
   }
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#000f22] dark:text-slate-100 tracking-tight">
+          <h2 className="font-bold text-[#000f22] dark:text-slate-100 tracking-tight">
             What Our Students are Saying About us
           </h2>
           <p className="text-xs sm:text-sm text-[#43474d] dark:text-slate-400 mt-1 max-w-2xl font-normal leading-relaxed">
@@ -209,73 +133,37 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
         </div>
 
         {
-    /* Controls: Category Filter + Navigation Buttons */
+    /* Controls: Category Filter on right side with reduced padding/size */
   }
-        <div className="flex flex-wrap items-center gap-2 min-w-0 max-w-full md:justify-end">
-          {
-    /* Segmented Category Buttons */
-  }
-          <div className="inline-flex items-center p-1 bg-slate-100 dark:bg-slate-800/80 rounded-xl border border-slate-200 dark:border-slate-700 max-w-full overflow-x-auto scrollbar-none" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+        <div className="flex items-center md:justify-end shrink-0">
+          <div className="inline-flex items-center p-0.5 sm:p-1 bg-slate-100 dark:bg-slate-800/80 rounded-lg sm:rounded-xl border border-slate-200 dark:border-slate-700 max-w-full overflow-x-auto scrollbar-none" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
             <button
     type="button"
     onClick={() => setActiveCategory("all")}
-    className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] ${activeCategory === "all" ? "bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold" : "text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
+    className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium rounded-md sm:rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[32px] ${activeCategory === "all" ? "bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold" : "text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
   >
               All Programs
             </button>
             <button
     type="button"
     onClick={() => setActiveCategory("management")}
-    className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] ${activeCategory === "management" ? "bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold" : "text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
+    className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium rounded-md sm:rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[32px] ${activeCategory === "management" ? "bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold" : "text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
   >
               Management (MBA/BBA)
             </button>
             <button
     type="button"
     onClick={() => setActiveCategory("tech")}
-    className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] ${activeCategory === "tech" ? "bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold" : "text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
+    className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium rounded-md sm:rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[32px] ${activeCategory === "tech" ? "bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold" : "text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
   >
               Technology (MCA/BCA)
             </button>
             <button
     type="button"
     onClick={() => setActiveCategory("commerce")}
-    className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[44px] ${activeCategory === "commerce" ? "bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold" : "text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
+    className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium rounded-md sm:rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[32px] ${activeCategory === "commerce" ? "bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold" : "text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
   >
               Commerce (M.Com)
-            </button>
-          </div>
-
-          {
-    /* Autoplay & Arrows */
-  }
-          <div className="flex items-center gap-1.5">
-            <button
-    type="button"
-    onClick={() => setIsPlaying(!isPlaying)}
-    className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#121c2e] text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer shadow-2xs"
-    title={isPlaying ? "Pause slideshow" : "Auto-play reviews"}
-    aria-label={isPlaying ? "Pause slideshow" : "Auto-play reviews"}
-  >
-              {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />}
-            </button>
-
-            <button
-    type="button"
-    onClick={handlePrev}
-    className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#121c2e] text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer shadow-2xs"
-    aria-label="Previous testimonial"
-  >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-
-            <button
-    type="button"
-    onClick={handleNext}
-    className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#121c2e] text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer shadow-2xs"
-    aria-label="Next testimonial"
-  >
-              <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -312,19 +200,18 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
       </div>
 
       {
-    /* Sliding Cards Carousel Track */
+    /* Scroll-snap Testimonials Row */
   }
       <div
     ref={sliderRef}
-    className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scrollbar-none scroll-smooth"
-    style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+    className="testi-row pb-4 pt-1"
   >
-        {filteredTestimonials.map((item, idx) => {
+        {filteredTestimonials.map((item) => {
     const isLiked = !!likedMap[item.id];
     const currentHelpful = item.helpfulCount + (isLiked ? 1 : 0);
     return <div
       key={item.id}
-      className={`shrink-0 w-[300px] sm:w-[350px] md:w-[370px] snap-start rounded-2xl bg-white dark:bg-[#121c2e] border border-slate-200/90 dark:border-[#24344d] shadow-sm hover:shadow-xl hover:border-2 hover:border-[#115eaf] hover:-translate-y-1.5 transition-all duration-300 flex flex-col p-4 sm:p-5 group relative ${activeIndex === idx ? "ring-2 ring-[#115eaf]/25 dark:ring-blue-500/30" : ""}`}
+      className="testi-card"
     >
               {
       /* Top Row: User Avatar & Course Info */
@@ -342,9 +229,15 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <TruncatedText as="h3" text={item.name} className="block truncate text-sm sm:text-base font-bold text-[#000f22] dark:text-slate-100 tracking-tight leading-snug" />
-                      <TruncatedText as="p" text={item.currentRole} className="block truncate text-xs text-[#115eaf] dark:text-blue-400 font-medium" />
-                      <TruncatedText as="p" text={item.company} className="block truncate text-[11px] text-[#74777e] dark:text-slate-400" />
+                      <h3 className="block truncate text-sm sm:text-base font-bold text-[#000f22] dark:text-slate-100 tracking-tight leading-snug" title={item.name}>
+                        {item.name}
+                      </h3>
+                      <p className="block truncate text-xs text-[#115eaf] dark:text-blue-400 font-medium" title={item.currentRole}>
+                        {item.currentRole}
+                      </p>
+                      <p className="block truncate text-[11px] text-[#74777e] dark:text-slate-400" title={item.company}>
+                        {item.company}
+                      </p>
                     </div>
                   </div>
 
@@ -362,22 +255,32 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
                 </div>
 
                 {
-      /* Course & University Metadata - Clean Unboxed Typography */
+      /* Course & University Metadata */
     }
                 <div className="flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-[#555960] dark:text-slate-400 pb-2.5 mb-2.5 border-b border-slate-100 dark:border-slate-800/80">
-                  <TruncatedText text={item.courseName} className="block max-w-full truncate font-semibold leading-snug text-slate-800 dark:text-slate-200" />
+                  <span className="block max-w-full truncate font-semibold leading-snug text-slate-800 dark:text-slate-200" title={item.courseName}>
+                    {item.courseName}
+                  </span>
                   <span aria-hidden="true" className="text-slate-300 dark:text-slate-600">·</span>
-                  <TruncatedText text={item.university} className="block max-w-[42%] truncate" />
+                  <span className="block max-w-[42%] truncate" title={item.university}>
+                    {item.university}
+                  </span>
                   <span aria-hidden="true" className="text-slate-300 dark:text-slate-600">·</span>
-                  <TruncatedText text={item.batch} className="block max-w-[24%] truncate text-slate-500" />
+                  <span className="block max-w-[24%] truncate text-slate-500" title={item.batch}>
+                    {item.batch}
+                  </span>
                 </div>
 
                 {
-      /* Quote Block */
+      /* Quote Block - ReadMore */
     }
                 <div className="relative">
                   <Quote className="w-6 h-6 text-slate-200 dark:text-slate-700 absolute -top-1 -left-1 -z-0 opacity-70" />
-                  <TruncatedText as="p" text={`"${item.quote}"`} className="relative z-1 min-h-[92px] px-1 text-sm sm:text-[14px] font-medium text-[#2d3139] dark:text-slate-300 leading-[1.65] line-clamp-4" />
+                  <ReadMore lines={3}>
+                    <p className="relative z-1 block text-sm sm:text-[14px] font-medium text-[#2d3139] dark:text-slate-300 leading-[1.65] line-clamp-4">
+                      "{item.quote}"
+                    </p>
+                  </ReadMore>
                 </div>
               </div>
 
@@ -408,23 +311,6 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
               </div>
             </div>;
   })}
-      </div>
-
-      {
-    /* Pagination Dot Indicators */
-  }
-      <div className="flex items-center justify-center gap-2 pt-1">
-        {filteredTestimonials.map((_, idx) => <button
-    key={idx}
-    type="button"
-    onClick={() => scrollToIndex(idx)}
-    className="w-6 h-6 flex items-center justify-center rounded-full cursor-pointer"
-    aria-label={`Jump to review ${idx + 1}`}
-  >
-            <span
-    className={`block h-2 rounded-full transition-all ${activeIndex === idx ? "w-7 bg-[#115eaf] dark:bg-blue-400" : "w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400"}`}
-  />
-          </button>)}
       </div>
 
       {
@@ -467,8 +353,8 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
     onClick={(e) => e.stopPropagation()}
   >
             {
-    /* Modal Header */
-  }
+      /* Modal Header */
+    }
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3">
                 <div className="relative shrink-0 rounded-full overflow-hidden border-2 border-[#115eaf] bg-slate-100 shadow-sm">
@@ -479,7 +365,7 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
   />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-xl sm:text-[1.7rem] font-bold text-[#000f22] dark:text-white leading-[1.1] tracking-[-0.02em]">
+                  <h3 className="text-xl font-bold text-[#000f22] dark:text-white leading-[1.1] tracking-[-0.02em]">
                     {selectedStory.name}
                   </h3>
                   <p className="text-[11px] sm:text-xs text-[#115eaf] dark:text-blue-400 font-semibold leading-snug">
@@ -502,8 +388,8 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
             </div>
 
             {
-    /* Key Outcomes Box */
-  }
+      /* Key Outcomes Box */
+    }
             <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200/80 dark:border-slate-700/80 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               <div>
                 <span className="text-slate-500 dark:text-slate-400 block text-[9px] uppercase font-semibold tracking-[0.12em]">
@@ -525,8 +411,8 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
             </div>
 
             {
-    /* Detailed Story Narrative */
-  }
+      /* Detailed Story Narrative */
+    }
             <div className="space-y-2.5">
               <h4 className="text-[0.7rem] sm:text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-[0.12em]">
                 Full Journey &amp; Preparation Experience
@@ -540,8 +426,8 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
             </div>
 
             {
-    /* Modal Actions */
-  }
+      /* Modal Actions */
+    }
             <div className="pt-2 flex items-center justify-between gap-2 border-t border-slate-100 dark:border-slate-800">
               <button
     type="button"
