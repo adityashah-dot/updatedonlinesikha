@@ -1,9 +1,11 @@
 import { Mail, Phone, MapPin, CheckCircle, ShieldCheck } from "lucide-react";
+import { Link } from "react-router-dom";
+import { moreMenu } from "../data/navMore";
 import { INSTITUTION_HIGHLIGHTS } from "../data/institutionalData";
 export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
   return <footer className="bg-[#000f22] text-[#d8e3fb] pt-16 pb-12 border-t border-[#0b2540]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[#314865]/40">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 pb-12 border-b border-[#314865]/40">
           {
     /* Brand Summary */
   }
@@ -178,6 +180,19 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
                 <span className="min-w-0 break-words">{INSTITUTION_HIGHLIGHTS.address}</span>
               </p>
             </div>
+          </div>
+          <div>
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">More</h4>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-[#b1c8eb]">
+              {moreMenu.map(({ label, href, icon: Icon }) => (
+                <li key={href}>
+                  <Link to={href} className="hover:text-white hover:underline transition-colors flex items-center gap-2">
+                    <Icon className="w-4 h-4" />
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 

@@ -209,7 +209,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
 
   const [selectedDegree, setSelectedDegree] = useState("Online MBA (Master of Business)");
   const [selectedBudget, setSelectedBudget] = useState("Any Budget (\u20B912,000 - \u20B950,000)");
-  const [lead, setLead] = useState({ phone: "", email: "", degree: "Online MBA" });
+  const [lead, setLead] = useState({ name: "", email: "", phone: "", degree: "Online MBA" });
   const [leadSubmitted, setLeadSubmitted] = useState(false);
   const [uniChip, setUniChip] = useState(UNI_CHIPS[0]);
   const [compareColumns, setCompareColumns] = useState([0, 1]);
@@ -318,8 +318,6 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
               ))
             )}
           </div>
-
-          <p className="nt mt-4 text-[11.5px] text-[#43474d]">Career CTC ranges are shown as published on the existing site. Add the source and year before launch.</p>
         </div>
       </section>
 
@@ -624,21 +622,16 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
   >
                 <div>
                   <label className="block text-[10px] font-semibold text-[#43474d] uppercase tracking-wider mb-0.5">
-                    Mobile Number (WhatsApp Enabled)
+                    Full Name
                   </label>
-                  <div className="flex h-10 rounded-[9px] border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/20 overflow-hidden transition-all bg-white">
-                    <span className="bg-[#f0f4f8] text-[#000f22] px-3 text-xs font-semibold border-r border-[#c4c6ce] flex items-center shrink-0">
-                      +91
-                    </span>
-                    <input
-    className="w-full border-0 px-3 text-base sm:text-sm text-[#000f22] placeholder:text-[#74777e] outline-none bg-white font-medium"
-    placeholder="98765 43210"
-    required
-    type="tel"
-    value={lead.phone}
-    onChange={(e) => setLead({ ...lead, phone: e.target.value })}
-  />
-                  </div>
+                  <input
+                    className="w-full h-9 rounded-[9px] border border-[#c4c6ce] px-3 text-sm text-[#000f22] placeholder:text-[#74777e] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all"
+                    placeholder="Enter your name"
+                    required
+                    type="text"
+                    value={lead.name}
+                    onChange={(e) => setLead({ ...lead, name: e.target.value })}
+                  />
                 </div>
 
                 <div>
@@ -646,13 +639,32 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                     Email Address
                   </label>
                   <input
-    className="w-full h-10 rounded-[9px] border border-[#c4c6ce] px-3 text-base sm:text-sm text-[#000f22] placeholder:text-[#74777e] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all"
-    placeholder="name@example.com"
-    required
-    type="email"
-    value={lead.email}
-    onChange={(e) => setLead({ ...lead, email: e.target.value })}
-  />
+                    className="w-full h-9 rounded-[9px] border border-[#c4c6ce] px-3 text-sm text-[#000f22] placeholder:text-[#74777e] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all"
+                    placeholder="name@example.com"
+                    required
+                    type="email"
+                    value={lead.email}
+                    onChange={(e) => setLead({ ...lead, email: e.target.value })}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[10px] font-semibold text-[#43474d] uppercase tracking-wider mb-0.5">
+                    Mobile Number (WhatsApp Enabled)
+                  </label>
+                  <div className="flex h-9 rounded-[9px] border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/20 overflow-hidden transition-all bg-white">
+                    <span className="bg-[#f0f4f8] text-[#000f22] px-2.5 text-xs font-semibold border-r border-[#c4c6ce] flex items-center shrink-0">
+                      +91
+                    </span>
+                    <input
+                      className="w-full border-0 px-3 text-sm text-[#000f22] placeholder:text-[#74777e] outline-none bg-white font-medium"
+                      placeholder="98765 43210"
+                      required
+                      type="tel"
+                      value={lead.phone}
+                      onChange={(e) => setLead({ ...lead, phone: e.target.value })}
+                    />
+                  </div>
                 </div>
 
                 <div>
@@ -660,7 +672,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                     Program You're Exploring
                   </label>
                   <select
-    className="w-full h-10 rounded-[9px] border border-[#c4c6ce] px-3 text-base sm:text-sm text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all cursor-pointer"
+    className="w-full h-9 rounded-[9px] border border-[#c4c6ce] px-3 text-base sm:text-sm text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all cursor-pointer"
     value={lead.degree}
     onChange={(e) => setLead({ ...lead, degree: e.target.value })}
   >
@@ -705,15 +717,11 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         </div>
       </section>
 
-      {
-    /* Frequently Asked Questions (Accordion) */
-  }
-      <HomeFaq onOpenHelpDesk={onOpenHelpDesk} />
-
-      {
-    /* Blogs */
-  }
+      {/* Blogs */}
       <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="w-full rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:p-6" compact horizontal autoScroll showDescriptionOnMobile fetchLivePosts />
+
+      {/* Frequently Asked Questions (Accordion) - Last Section */}
+      <HomeFaq onOpenHelpDesk={onOpenHelpDesk} />
     </div>
   );
 };

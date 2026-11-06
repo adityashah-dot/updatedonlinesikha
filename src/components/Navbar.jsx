@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { LogIn, User, Menu, X, ArrowRight, Sparkles } from "lucide-react";
+import MoreMenu from "./MoreMenu";
 const GLOBAL_LINKS = [
   { tab: "universities", label: "Universities" },
   { tab: "degrees", label: "Degree Explorer" },
-  { tab: "compare", label: "Compare Matrix" },
-  { tab: "scholarships", label: "Scholarships 2026", badge: "NEW" }
+  { tab: "compare", label: "Compare Matrix" }
 ];
 export const Navbar = ({
   activeTab,
@@ -40,7 +40,7 @@ export const Navbar = ({
         {
     /* Desktop Navigation Links */
   }
-        <nav className="hidden xl:flex items-center gap-6 xl:gap-8 text-[14px] shrink-0">
+        <nav className="hidden xl:flex items-center gap-6 xl:gap-8 text-[14px] shrink-0 ml-auto">
           {GLOBAL_LINKS.map((link) => {
     const isActive = activeTab === link.tab || link.tab === "universities" && activeTab === "overview" || link.tab === "degrees" && activeTab === "courses";
     return <button
@@ -54,6 +54,7 @@ export const Navbar = ({
                   </span>}
               </button>;
   })}
+          <MoreMenu />
         </nav>
 
         {
@@ -127,6 +128,7 @@ export const Navbar = ({
                 <ArrowRight className="w-4 h-4 text-slate-400" />
               </button>)}
           </div>
+          <MoreMenu />
 
           <div className="pt-3 border-t border-[#e7eeff] flex flex-col gap-2">
             <button

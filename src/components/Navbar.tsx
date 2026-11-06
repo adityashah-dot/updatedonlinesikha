@@ -19,7 +19,6 @@ const GLOBAL_LINKS: { tab: TabType; label: string; badge?: string }[] = [
   { tab: 'universities', label: 'Universities' },
   { tab: 'degrees', label: 'Degree Explorer' },
   { tab: 'compare', label: 'Compare Matrix' },
-  { tab: 'scholarships', label: 'Scholarships 2026', badge: 'NEW' },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({

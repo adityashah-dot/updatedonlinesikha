@@ -604,47 +604,44 @@ const OverviewView = ({
                 </table>
               </div>
 
-              <p className="text-xs text-[#74777e] font-normal mt-[18px]">
-                {courseFeeSearch
-                  ? `Showing ${filteredFeeRows.length} out of ${filteredFeeRows.length} degrees`
-                  : `Showing ${visibleFeeRows.length} out of ${filteredFeeRows.length} degrees`}
-              </p>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-[18px]">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <p className="text-xs text-[#74777e] font-normal m-0">
+                    {courseFeeSearch
+                      ? `Showing ${filteredFeeRows.length} out of ${filteredFeeRows.length} degrees`
+                      : `Showing ${visibleFeeRows.length} out of ${filteredFeeRows.length} degrees`}
+                  </p>
+                  {filteredFeeRows.length > FEE_ROWS_PREVIEW && !courseFeeSearch ? (
+                    <button
+                      type="button"
+                      onClick={() => setShowAllFeeRows((value) => !value)}
+                      aria-expanded={showAllFeeRows}
+                      className="px-3 py-1.5 rounded-lg bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-xs font-semibold hover:bg-[#e0ecff] transition-colors flex items-center gap-1.5"
+                    >
+                      <span>
+                        {showAllFeeRows
+                          ? "Show less"
+                          : `Read more (${filteredFeeRows.length - FEE_ROWS_PREVIEW} more)`}
+                      </span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 transition-transform ${showAllFeeRows ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                  ) : null}
+                </div>
 
-              {
-    /* Read more — the remaining degrees stay collapsed until asked for */
-  }
-              {filteredFeeRows.length > FEE_ROWS_PREVIEW && !courseFeeSearch ? (
-                <button
-                  type="button"
-                  onClick={() => setShowAllFeeRows((value) => !value)}
-                  aria-expanded={showAllFeeRows}
-                  className="mt-3 px-4 py-2 rounded-lg bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-xs font-semibold hover:bg-[#e0ecff] transition-colors flex items-center gap-1.5 min-h-[44px]"
-                >
-                  <span>
-                    {showAllFeeRows
-                      ? "Show less"
-                      : `Read more (${filteredFeeRows.length - FEE_ROWS_PREVIEW} more degrees)`}
-                  </span>
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform ${showAllFeeRows ? "rotate-180" : ""}`}
-                  />
-                </button>
-              ) : null}
-
-              {
-    /* Actions */
-  }
-              <div className="flex flex-wrap gap-3 mt-[18px]">
-                <button className="px-5 py-2.5 bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all">
-                  {collegeData?.coursesFees?.roiCalculator}
-                </button>
-                <button
-    onClick={() => onOpenBrochure()}
-    className="px-5 py-2.5 bg-[#115eaf] text-white rounded-xl text-xs font-bold hover:bg-[#004689] transition-all flex items-center gap-1.5 shadow-sm"
-  >
-                  <Download className="w-3.5 h-3.5" />
-                  {collegeData?.coursesFees?.viewFeeStructure}
-                </button>
+                <div className="flex flex-wrap items-center gap-3">
+                  <button className="px-5 py-2.5 bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all">
+                    {collegeData?.coursesFees?.roiCalculator}
+                  </button>
+                  <button
+                    onClick={() => onOpenBrochure()}
+                    className="px-5 py-2.5 bg-[#115eaf] text-white rounded-xl text-xs font-bold hover:bg-[#004689] transition-all flex items-center gap-1.5 shadow-sm"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    {collegeData?.coursesFees?.viewFeeStructure}
+                  </button>
+                </div>
               </div>
             </section>
               )}

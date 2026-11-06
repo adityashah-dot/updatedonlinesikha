@@ -588,6 +588,15 @@ export const UniversityPageCourses = ({
     testimonials={university.testimonials}
   />}
 
+      {coursesExtra}
+
+      <BlogsListSection
+    onOpenHelpDesk={onOpenHelpDesk}
+    className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs max-w-7xl mx-auto"
+    compact
+    posts={university.blogs && university.blogs.posts ? university.blogs.posts : SITE_BLOG_POSTS}
+  />
+
       {university.faqs && university.faqs.length > 0 && <section id="faqs" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
           <div className="text-left mb-[18px]">
             <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
@@ -622,15 +631,6 @@ export const UniversityPageCourses = ({
   })}
           </div>
         </section>}
-
-      {coursesExtra}
-
-      <BlogsListSection
-    onOpenHelpDesk={onOpenHelpDesk}
-    className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs max-w-7xl mx-auto"
-    compact
-    posts={university.blogs && university.blogs.posts ? university.blogs.posts : SITE_BLOG_POSTS}
-  />
 
       <section id="counselor-helpline" className="content-block bg-[#0b2540] text-white scroll-mt-[100px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-5">

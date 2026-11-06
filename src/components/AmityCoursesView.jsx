@@ -30,8 +30,8 @@ const TOC_ITEMS = [
   { id: "learning-platform", label: "How You Study (Amity Amigo Learning Platform)" },
   { id: "all-courses", label: sectionTitle(AMITY.shortName, "All Courses") },
   { id: "student-reviews", label: `${AMITY.shortName} Student Reviews & Ratings` },
-  { id: "faqs", label: sectionTitle(AMITY.shortName, "Courses FAQs") },
   { id: "blogs", label: "Blogs" },
+  { id: "faqs", label: sectionTitle(AMITY.shortName, "Courses FAQs") },
   { id: "compare-colleges", label: "Compare" },
   { id: "counselor-helpline", label: "Academic Counseling & Helpline" }
 ];

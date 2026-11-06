@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState } from "react";
 import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
@@ -8,6 +8,11 @@ import { Navbar } from "./components/Navbar.jsx";
 import { Footer } from "./components/Footer";
 import { PageTransition } from "./components/PageTransition";
 import { HomeView } from "./components/HomeView";
+import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
+import Exams from "./pages/Exams";
+import ExamDetail from "./pages/ExamDetail";
+import News from "./pages/News";
 import { CollegeDetailView } from "./components/CollegeDetailView";
 import { UniversitiesView } from "./components/UniversitiesView";
 import { CourseDetailModal } from "./components/CourseDetailModal";
@@ -22,7 +27,7 @@ import { CounselorModal } from "./components/CounselorModal";
 import { TrackApplicationModal } from "./components/TrackApplicationModal";
 import { GeminiChatbot, ChatbotFloatingTrigger } from "./components/chat/GeminiChatbot";
 import { SEO } from "./components/SEO";
-import { Home, FileText, Building2, Award } from "lucide-react";
+import { Home, FileText, Building2 } from "lucide-react";
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -216,6 +221,27 @@ export default function App() {
     element={<Navigate to="/universities" replace />}
   />
 
+            <Route
+    path="/blog"
+    element={<PageTransition><Blog /></PageTransition>}
+  />
+            <Route
+    path="/blog/:slug"
+    element={<PageTransition><BlogDetail onOpenCounseling={() => setIsCounselorModalOpen(true)} onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)} /></PageTransition>}
+  />
+            <Route
+    path="/exams"
+    element={<PageTransition><Exams /></PageTransition>}
+  />
+            <Route
+    path="/exams/:slug"
+    element={<PageTransition><ExamDetail /></PageTransition>}
+  />
+            <Route
+    path="/news"
+    element={<PageTransition><News /></PageTransition>}
+  />
+
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </AnimatePresence>
@@ -234,7 +260,7 @@ export default function App() {
     /* Mobile Sticky Bottom Navigation Dock */
   }
       <nav
-    className="md:hidden fixed bottom-0 left-0 w-full z-40 bg-white border-t border-[#e7eeff] px-2 pt-2 grid grid-cols-4 gap-1 shadow-lg"
+    className="md:hidden fixed bottom-0 left-0 w-full z-40 bg-white border-t border-[#e7eeff] px-2 pt-2 grid grid-cols-3 gap-1 shadow-lg"
     style={{ paddingBottom: "calc(0.5rem + env(safe-area-inset-bottom))" }}
   >
         <button
@@ -257,17 +283,6 @@ export default function App() {
   >
           <Building2 className="w-5 h-5 shrink-0" />
           <span className="w-full truncate text-center leading-tight">Universities</span>
-        </button>
-
-        <button
-    onClick={() => {
-      setActiveTab("scholarships");
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }}
-    className={`flex flex-col items-center justify-center gap-0.5 min-h-[44px] py-1 rounded-xl text-[12px] font-semibold min-w-0 transition-all ${activeTab === "scholarships" ? "bg-[#e7eeff] text-[#115eaf]" : "text-[#43474d]"}`}
-  >
-          <Award className="w-5 h-5 shrink-0" />
-          <span className="w-full truncate text-center leading-tight">Scholarship</span>
         </button>
 
         <button
