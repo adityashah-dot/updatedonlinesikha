@@ -15,6 +15,7 @@ import CourseDetail from "./pages/CourseDetail";
 import Exams from "./pages/Exams";
 import ExamDetail from "./pages/ExamDetail";
 import News from "./pages/News";
+import NewsDetail from "./pages/NewsDetail";
 import { CollegeDetailView } from "./components/CollegeDetailView";
 import { UniversitiesView } from "./components/UniversitiesView";
 import { CourseDetailModal } from "./components/CourseDetailModal";
@@ -246,7 +247,11 @@ export default function App() {
   />
             <Route
     path="/news"
-    element={<PageTransition><News /></PageTransition>}
+    element={<PageTransition><News onOpenCounseling={() => setIsCounselorModalOpen(true)} /></PageTransition>}
+  />
+            <Route
+    path="/news/:slug"
+    element={<PageTransition><NewsDetail onOpenCounseling={() => setIsCounselorModalOpen(true)} /></PageTransition>}
   />
 
             <Route path="*" element={<Navigate to="/" replace />} />
