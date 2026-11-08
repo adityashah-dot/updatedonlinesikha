@@ -5,10 +5,6 @@ const API_URL =
   (typeof process !== "undefined" ? process.env?.VITE_API_URL : undefined) ||
   "https://api.degreefyd.com/api/b2c";
 
-const API_TOKEN =
-  import.meta.env?.VITE_API_TOKEN ||
-  (typeof process !== "undefined" ? process.env?.VITE_API_TOKEN : undefined);
-
 const TONES = ["blue", "indigo", "emerald", "amber"];
 
 export const LEARNING_MODES = ["online", "distance"];
@@ -33,13 +29,7 @@ function modeLabel(mode) {
 }
 
 function buildHeaders() {
-  const headers = { Accept: "application/json" };
-
-  if (API_TOKEN) {
-    headers.Authorization = `Bearer ${API_TOKEN}`;
-  }
-
-  return headers;
+  return { Accept: "application/json" };
 }
 
 function readImage(value) {

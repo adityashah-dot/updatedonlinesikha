@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 import { useState, useEffect } from "react";
 import {
   Award,
@@ -185,7 +185,7 @@ export default function CollegeScholarships({
                 <Sparkles className="w-3.5 h-3.5 text-[#D97706]" />
                 Fee Waivers &amp; Concessions {CURRENT_YEAR}
               </span>
-              <h1 className="section-title mt-3 text-3xl sm:text-4xl font-bold text-[#000f22] tracking-tight font-sans">
+              <h1 className="section-title mt-3 font-bold text-[#000f22] tracking-tight font-sans">
                 {data.title || "Scholarships & Fee Discounts"}
               </h1>
               <p className="section-description text-xs sm:text-sm text-[#43474d] leading-relaxed">

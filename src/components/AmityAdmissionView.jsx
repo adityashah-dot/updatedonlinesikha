@@ -93,7 +93,7 @@ export const AmityAdmissionView = ({
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 Admissions Open 2026
               </span>
-              <h1 className="section-title text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight font-sans text-[#000f22]">
+              <h1 className="section-title font-bold tracking-tight font-sans text-[#000f22]">
                 {AP.title}
               </h1>
               <p className="section-description text-xs sm:text-sm text-[#43474d] font-normal flex items-center gap-1.5 flex-wrap">
@@ -493,7 +493,7 @@ export const AmityAdmissionView = ({
   >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
               <div>
-                <h2 className="section-title text-2xl sm:text-3xl font-bold font-sans">
+<h2 className="section-title text-2xl sm:text-3xl font-bold font-sans">
                   Not Sure Which Program Fits You?
                 </h2>
                 <p className="section-description text-xs sm:text-sm text-[#b1c8eb] max-w-2xl leading-relaxed mt-2">

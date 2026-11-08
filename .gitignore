@@ -6,3 +6,12 @@ coverage/
 *.log
 .env*
 !.env.example
+qa/.chrome-qa-profile*/
+
+# Temporary QA screenshots and intermediate debugging captures
+qa/**/temp/
+qa/**/*_temp.*
+qa/**/*_debug.*
+qa/**/*_current.*
+qa/**/*_view.png
+qa/**/*_card.png

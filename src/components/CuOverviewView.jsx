@@ -141,7 +141,7 @@ export const CuOverviewView = ({
     }}
   />
             <div className="min-w-0">
-              <h1 className="section-title text-2xl sm:text-3xl lg:text-3xl font-bold tracking-tight font-sans text-[#000f22] max-w-2xl leading-tight">
+<h1 className="section-title text-2xl sm:text-3xl lg:text-3xl font-bold tracking-tight font-sans text-[#000f22] max-w-2xl leading-tight">
                 {CU.title}
               </h1>
               <div className="flex flex-wrap items-center gap-2 mt-3">
@@ -1078,7 +1078,7 @@ export const CuOverviewView = ({
   />
                     </div>
                     <div>
-                      <h3 className="mb-1.5 text-[19px] leading-tight font-bold text-[#000f22] font-sans">
+<h3 className="mb-1.5 text-[19px] leading-tight font-bold text-[#000f22] font-sans">
                         {CU.title}
                       </h3>
                       <p className="mt-[7.5px] flex items-center gap-1.5 text-sm text-[#43474d]">

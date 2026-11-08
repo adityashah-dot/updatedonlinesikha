@@ -4,3 +4,4 @@ export * from "./overviewMapper";
 export * from "./collegeNavigation";
 export * from "./collegePageLoader";
 export * from "./apiAdapter";
+export * from "./courseApi";

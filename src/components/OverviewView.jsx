@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { COURSES_DATA } from "../data/coursesData";
 import { useSiteActions } from "./shell/SiteActionsContext";
 import CollegeTableOfContents from "./CollegeTableOfContents";
+import SectionHeader from "./SectionHeader";
 import { AdmissionFlowSteps } from "./AdmissionFlowSteps";
 import { ExaminationPatternSteps } from "./ExaminationPatternSteps";
 import { FaqAccordion } from "./FaqAccordion";
@@ -288,7 +289,7 @@ const OverviewView = ({
     }}
   />
             <div className="min-w-0">
-              <h1 className="section-title text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight font-sans text-[#000f22]">
+              <h1 className="uni-title tracking-tight font-sans text-[#000f22]">
                 {collegeData?.title}
               </h1>
               <div className="flex flex-wrap items-center gap-2 mt-3">
@@ -603,47 +604,44 @@ const OverviewView = ({
                 </table>
               </div>
 
-              <p className="text-xs text-[#74777e] font-normal mt-[18px]">
-                {courseFeeSearch
-                  ? `Showing ${filteredFeeRows.length} out of ${filteredFeeRows.length} degrees`
-                  : `Showing ${visibleFeeRows.length} out of ${filteredFeeRows.length} degrees`}
-              </p>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-[18px]">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <p className="text-xs text-[#74777e] font-normal m-0">
+                    {courseFeeSearch
+                      ? `Showing ${filteredFeeRows.length} out of ${filteredFeeRows.length} degrees`
+                      : `Showing ${visibleFeeRows.length} out of ${filteredFeeRows.length} degrees`}
+                  </p>
+                  {filteredFeeRows.length > FEE_ROWS_PREVIEW && !courseFeeSearch ? (
+                    <button
+                      type="button"
+                      onClick={() => setShowAllFeeRows((value) => !value)}
+                      aria-expanded={showAllFeeRows}
+                      className="px-3 py-1.5 rounded-lg bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-xs font-semibold hover:bg-[#e0ecff] transition-colors flex items-center gap-1.5"
+                    >
+                      <span>
+                        {showAllFeeRows
+                          ? "Show less"
+                          : `Read more (${filteredFeeRows.length - FEE_ROWS_PREVIEW} more)`}
+                      </span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 transition-transform ${showAllFeeRows ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                  ) : null}
+                </div>
 
-              {
-    /* Read more — the remaining degrees stay collapsed until asked for */
-  }
-              {filteredFeeRows.length > FEE_ROWS_PREVIEW && !courseFeeSearch ? (
-                <button
-                  type="button"
-                  onClick={() => setShowAllFeeRows((value) => !value)}
-                  aria-expanded={showAllFeeRows}
-                  className="mt-3 px-4 py-2 rounded-lg bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-xs font-semibold hover:bg-[#e0ecff] transition-colors flex items-center gap-1.5 min-h-[44px]"
-                >
-                  <span>
-                    {showAllFeeRows
-                      ? "Show less"
-                      : `Read more (${filteredFeeRows.length - FEE_ROWS_PREVIEW} more degrees)`}
-                  </span>
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform ${showAllFeeRows ? "rotate-180" : ""}`}
-                  />
-                </button>
-              ) : null}
-
-              {
-    /* Actions */
-  }
-              <div className="flex flex-wrap gap-3 mt-[18px]">
-                <button className="px-5 py-2.5 bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all">
-                  {collegeData?.coursesFees?.roiCalculator}
-                </button>
-                <button
-    onClick={() => onOpenBrochure()}
-    className="px-5 py-2.5 bg-[#115eaf] text-white rounded-xl text-xs font-bold hover:bg-[#004689] transition-all flex items-center gap-1.5 shadow-sm"
-  >
-                  <Download className="w-3.5 h-3.5" />
-                  {collegeData?.coursesFees?.viewFeeStructure}
-                </button>
+                <div className="flex flex-wrap items-center gap-3">
+                  <button className="px-5 py-2.5 bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all">
+                    {collegeData?.coursesFees?.roiCalculator}
+                  </button>
+                  <button
+                    onClick={() => onOpenBrochure()}
+                    className="px-5 py-2.5 bg-[#115eaf] text-white rounded-xl text-xs font-bold hover:bg-[#004689] transition-all flex items-center gap-1.5 shadow-sm"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    {collegeData?.coursesFees?.viewFeeStructure}
+                  </button>
+                </div>
               </div>
             </section>
               )}
@@ -1553,7 +1551,7 @@ const OverviewView = ({
   />
                       </div>
                       <div>
-                        <h3 className="mb-1.5 text-[19px] leading-tight font-extrabold text-[#000f22] font-sans">
+                        <h3 className="mb-1.5 leading-tight font-extrabold text-[#000f22] font-sans">
                           {collegeData?.title}
                         </h3>
                         <p className="mt-[7.5px] flex items-center gap-1.5 text-sm text-[#43474d]">
@@ -1620,24 +1618,7 @@ const OverviewView = ({
             {(collegeData?.blogs?.length) && (
                 <section id="blogs" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div className="flex items-end justify-between gap-3 flex-wrap">
-                <div>
-                  <h2 className="section-title mt-2 text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                    Latest Blogs
-                  </h2>
-                  <ReadMoreText fullText
-                    text={collegeData?.blogsMeta?.description}
-                    lines={2}
-                    wrapperClassName="mt-1 max-w-[850px]"
-                    className="text-sm text-[#43474d] leading-relaxed font-normal"
-                  />
-                </div>
-                <button
-    onClick={() => onOpenHelpDesk()}
-    className="h-11 px-5 inline-flex items-center gap-2.5 rounded-xl border border-[#0b2540] text-[#0b2540] text-sm font-bold hover:bg-[#0b2540] hover:text-white transition-all shrink-0"
-  >
-                  View All Blogs
-                  <span className="text-[#115eaf] text-lg leading-none">→</span>
-                </button>
+                <SectionHeader title="Latest Blogs" href="/blog" sub={collegeData?.blogsMeta?.description} />
               </div>
 
               {

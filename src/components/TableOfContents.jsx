@@ -1,5 +1,6 @@
 import { useId, useState } from "react";
-import { ChevronUp, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+
 export const TableOfContents = ({
   title = "Table of contents",
   items,
@@ -7,22 +8,25 @@ export const TableOfContents = ({
   onItemClick,
   className = "",
   defaultExpanded = false,
-  collapsedCount = 6
+  collapsedCount = 5,
 }) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const listId = useId();
+
   const handleScrollTo = (e, id) => {
     e.preventDefault();
-    if (onItemClick) {
-      onItemClick(id);
-    }
+    if (onItemClick) onItemClick(id);
+
     let element = document.getElementById(id);
     if (!element) {
-      if (id === "admission-highlights") element = document.getElementById("admission-overview") || document.getElementById("highlights");
+      if (id === "admission-highlights")
+        element = document.getElementById("admission-overview") || document.getElementById("highlights");
       if (id === "admission-dates") element = document.getElementById("important-dates");
-      if (id === "scholarship-schemes") element = document.getElementById("scholarships-schemes") || document.getElementById("scholarships");
+      if (id === "scholarship-schemes")
+        element = document.getElementById("scholarships-schemes") || document.getElementById("scholarships");
       if (id === "compare") element = document.getElementById("compare-colleges");
     }
+
     if (element) {
       const yOffset = -105;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
@@ -33,58 +37,52 @@ export const TableOfContents = ({
       }
     }
   };
+
   const visibleItems = isExpanded ? items : items.slice(0, collapsedCount);
   const showToggle = items.length > collapsedCount;
-  return <section
-    aria-label="Table of contents"
-    className={`bg-white rounded-2xl border border-[#e7eeff] p-5 sm:p-6 shadow-xs ${className}`}
-  >
-      {
-    /* Title matching screenshot */
-  }
-      <h2 className="text-xl sm:text-[22px] font-bold text-[#000f22] font-sans tracking-tight mb-4">
-        {title}
-      </h2>
 
-      {
-    /* List with solid right-pointing triangle and blue clickable links */
-  }
-      <ul id={listId} className="space-y-3">
+  return (
+    <section
+      aria-label="Table of contents"
+      className={`toc-card ${className}`}
+    >
+      <h2>{title}</h2>
+
+      <ul id={listId} className="toc-list">
         {visibleItems.map((item) => {
-    const isActive = activeId === item.id;
-    return <li key={item.id} className="flex items-center gap-2.5">
-              <svg
-      className="w-2.5 h-2.5 fill-[#1e293b] shrink-0"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-                <path d="M8 5v14l11-7z" />
-              </svg>
+          const isActive = activeId === item.id;
+
+          return (
+            <li key={item.id}>
               <a
-      href={`#${item.id}`}
-      onClick={(e) => handleScrollTo(e, item.id)}
-      className={`text-sm sm:text-[14.5px] leading-relaxed transition-colors cursor-pointer ${isActive ? "text-[#115eaf] font-medium underline" : "text-[#115eaf] hover:text-[#004689] hover:underline font-normal"}`}
-    >
+                href={`#${item.id}`}
+                onClick={(e) => handleScrollTo(e, item.id)}
+                className={isActive ? "is-active" : ""}
+              >
                 {item.label}
               </a>
-            </li>;
-  })}
+            </li>
+          );
+        })}
       </ul>
 
-      {
-    /* Horizontal divider and View more / View less button matching screenshot */
-  }
-      {showToggle && <div className="border-t border-[#e2e8f0] mt-5 pt-3.5">
+      {showToggle && (
+        <div className="toc-more">
           <button
-    type="button"
-    onClick={() => setIsExpanded(!isExpanded)}
-    aria-expanded={isExpanded}
-    aria-controls={listId}
-    className="tap-hit min-h-[44px] flex items-center text-xs sm:text-sm font-medium text-[#115eaf] hover:underline gap-1.5 focus:outline-none cursor-pointer"
-  >
+            type="button"
+            onClick={() => setIsExpanded(!isExpanded)}
+            aria-label={isExpanded ? "Collapse table of contents" : "Expand table of contents"}
+            aria-expanded={isExpanded}
+            aria-controls={listId}
+          >
             <span>{isExpanded ? "View less" : "View more"}</span>
-            {isExpanded ? <ChevronUp className="w-4 h-4 text-[#115eaf]" /> : <ChevronDown className="w-4 h-4 text-[#115eaf]" />}
+            <ChevronDown
+              strokeWidth={1.5}
+              style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }}
+            />
           </button>
-        </div>}
-    </section>;
+        </div>
+      )}
+    </section>
+  );
 };

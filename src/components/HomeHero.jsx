@@ -42,6 +42,7 @@ export default function HomeHero({ onOpenHelpDesk } = {}) {
         />
         <div className="absolute -left-40 bottom-20 w-60 h-60 border-[30px] border-emerald-100 rounded-full pointer-events-none opacity-50" />
 
+
         <main className="relative z-10 max-w-md mx-auto text-center px-4 pt-0">
           <motion.div
             initial={{ opacity: 0, y: -10 }}

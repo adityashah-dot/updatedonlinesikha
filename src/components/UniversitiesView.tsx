@@ -224,7 +224,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
               <span className="text-[#c4c6ce] mx-2">|</span>
               <span className="text-[#115eaf] font-semibold">Session 2026-27 Open</span>
             </div>
-            <h1 className="font-sans text-2xl sm:text-[32px] lg:text-[36px] font-bold text-[#000f22] tracking-tight leading-snug">
+            <h1 className="font-sans font-bold text-[#000f22] tracking-tight leading-snug">
               Explore Top UGC-DEB Approved Online Universities in India
             </h1>
             <p className="font-sans text-sm text-[#43474d] font-normal leading-relaxed mt-2.5 max-w-2xl mx-auto">
@@ -874,7 +874,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                       </span>
                       <span className="text-xs font-semibold text-emerald-700">{d.price}</span>
                     </div>
-                    <h3 className="text-[17px] font-bold text-[#000f22]">{d.title}</h3>
+                    <h3 className="font-bold text-[#000f22]">{d.title}</h3>
                     <p className="text-xs text-[#74777e] font-normal mt-0.5">{d.duration}</p>
                     <div className="flex flex-wrap gap-1.5 mt-3 mb-4">
                       {d.tracks.map((t) => (

@@ -93,10 +93,7 @@ function apiBase() {
 }
 
 function apiHeaders() {
-  const headers = { Accept: "application/json" };
-  const token = (process.env.VITE_API_TOKEN || "").trim();
-  if (token) headers.Authorization = `Bearer ${token}`;
-  return headers;
+  return { Accept: "application/json" };
 }
 
 async function fetchJson(url, options = {}, timeoutMs = FETCH_TIMEOUT_MS) {

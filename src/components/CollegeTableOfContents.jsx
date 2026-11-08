@@ -1,11 +1,6 @@
-﻿
-import { useId, useState } from "react";
-import { ChevronUp, ChevronDown } from "lucide-react";
+﻿import { useId, useState } from "react";
+import { ChevronDown } from "lucide-react";
 
-/**
- * Table of contents card — exact port of the reference project component
- * (src/components/TableOfContents.tsx).
- */
 export default function CollegeTableOfContents({
   title = "Table of contents",
   items = [],
@@ -13,7 +8,7 @@ export default function CollegeTableOfContents({
   onItemClick,
   className = "",
   defaultExpanded = false,
-  collapsedCount = 6,
+  collapsedCount = 5,
 }) {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
   const listId = useId();
@@ -57,25 +52,16 @@ export default function CollegeTableOfContents({
   return (
     <section
       aria-label="Table of contents"
-      className={`bg-white rounded-2xl border border-[#e7eeff] p-5 sm:p-6 shadow-xs ${className}`}
+      className={`toc-card ${className}`}
     >
-      <h2 className="text-xl sm:text-[22px] font-bold text-[#000f22] font-sans tracking-tight mb-3.5">
-        {title}
-      </h2>
+      <h2>{title}</h2>
 
-      <ul id={listId} className="space-y-3 overflow-x-auto">
+<ul id={listId} className="space-y-3 overflow-x-auto">
         {visibleItems.map((item) => {
           const isActive = activeId === item.id;
 
           return (
-            <li key={item.id} className="flex items-center gap-2.5">
-              <svg
-                className="w-2.5 h-2.5 fill-[#1e293b] shrink-0"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
+            <li key={item.id}>
               <a
                 href={`#${item.id}`}
                 onClick={(e) => handleScrollTo(e, item.id)}
@@ -84,6 +70,7 @@ export default function CollegeTableOfContents({
                     ? "text-[#115eaf] font-medium underline"
                     : "text-[#115eaf] hover:text-[#004689] hover:underline font-normal"
                 }`}
+
               >
                 {item.label}
               </a>
@@ -93,25 +80,22 @@ export default function CollegeTableOfContents({
       </ul>
 
       {showToggle && (
-        <div className="border-t border-[#e2e8f0] mt-5 pt-3.5">
+        <div className="toc-more">
           <button
             type="button"
             onClick={() => setIsExpanded(!isExpanded)}
             aria-label={isExpanded ? "Collapse table of contents" : "Expand table of contents"}
             aria-expanded={isExpanded}
             aria-controls={listId}
-            className="tap-hit min-h-[44px] flex items-center gap-1.5 text-xs sm:text-sm font-medium text-[#115eaf] hover:text-[#004689] hover:underline focus:outline-none cursor-pointer"
           >
             <span>{isExpanded ? "View less" : "View more"}</span>
-            {isExpanded ? (
-              <ChevronUp className="w-4 h-4" />
-            ) : (
-              <ChevronDown className="w-4 h-4" />
-            )}
+            <ChevronDown
+              strokeWidth={1.5}
+              style={{ transform: isExpanded ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }}
+            />
           </button>
         </div>
       )}
     </section>
   );
 }
-

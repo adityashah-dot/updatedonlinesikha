@@ -50,7 +50,7 @@ export const CompareCollegesSection = ({
                 </span>
               </div>
               <div>
-                <h3 className="mb-1.5 text-[19px] leading-tight font-extrabold text-[#000f22] font-sans">
+                <h3 className="mb-1.5 leading-tight font-extrabold text-[#000f22] font-sans">
                   {name}
                 </h3>
                 <p className="mt-[7.5px] flex items-center gap-1.5 text-sm text-[#43474d]">

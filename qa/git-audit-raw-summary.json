@@ -1,0 +1,297 @@
+{
+  "currentBranch": "feature-online-exam",
+  "totalCommitsOnHead": 27,
+  "headCommit": "68fa69f12dd0eaaddb4e901a5f21e7834861146f",
+  "headCommitSubject": "this is the course page with detail also",
+  "remoteTrackingBranch": "fatal: no upstream configured for branch 'feature-online-exam'",
+  "uncommittedCommitsOnCurrentBranch": "",
+  "counts": {
+    "totalTrackedFiles": 2357,
+    "totalStatusLines": 1185,
+    "stagedFilesCount": 1137,
+    "stagedChromeProfileCount": 529,
+    "stagedScreenshotsCount": 54,
+    "stagedQaScriptsAndReportsCount": 548,
+    "stagedSourceFilesCount": 6,
+    "unstagedModifiedCount": 57,
+    "untrackedFilesCount": 48,
+    "untrackedChromeProfileCount": 37,
+    "untrackedScreenshotsCount": 4,
+    "untrackedQaScriptsCount": 7,
+    "untrackedSourceFilesCount": 0
+  },
+  "lines": {
+    "stagedTotal": {
+      "added": 22115,
+      "removed": 62
+    },
+    "stagedSourceOnly": {
+      "added": 2187,
+      "removed": 62
+    },
+    "unstagedTotal": {
+      "added": 40,
+      "removed": 26
+    },
+    "unstagedSourceOnly": {
+      "added": 6,
+      "removed": 2
+    }
+  },
+  "stagedSourceFiles": [
+    {
+      "path": "src/components/blog/blog-detail.css",
+      "status": "M"
+    },
+    {
+      "path": "src/pages/ExamDetail.jsx",
+      "status": "M"
+    },
+    {
+      "path": "src/pages/Exams.jsx",
+      "status": "M"
+    },
+    {
+      "path": "src/services/courseApi.js",
+      "status": "M"
+    },
+    {
+      "path": "src/services/examApi.js",
+      "status": "A"
+    },
+    {
+      "path": "tsconfig.tsbuildinfo",
+      "status": "M"
+    }
+  ],
+  "unstagedModifiedFiles": [
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Cache/Cache_Data/data_0",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Cache/Cache_Data/data_1",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Cache/Cache_Data/data_2",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Cache/Cache_Data/data_3",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Cache/Cache_Data/f_000001",
+      "status": "D"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Code Cache/js/index-dir/the-real-index",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Extension State/LOG",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/GCM Store/Encryption/LOG",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/History",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/History-journal",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Local Extension Settings/ghbmnnjooekpmoecnnnilnnbdlolhkhi/LOG",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Local Storage/leveldb/LOG",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Network Action Predictor",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Network/Reporting and NEL",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Preferences",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Secure Preferences",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Service Worker/Database/LOG",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Service Worker/ScriptCache/67a473248953641b_0",
+      "status": "D"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Service Worker/ScriptCache/67a473248953641b_1",
+      "status": "D"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Service Worker/ScriptCache/index-dir/the-real-index",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Session Storage/LOG",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Site Characteristics Database/LOG",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Sync Data/LevelDB/LOG",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Top Sites",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/Web Data",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/WebStorage/QuotaManager",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/shared_proto_db/LOG",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Default/shared_proto_db/metadata/LOG",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Local State",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/Variations",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/VariationsSafeSeedV2",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/VariationsSeedV2",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/segmentation_platform/ukm_db",
+      "status": "M"
+    },
+    {
+      "path": "qa/.chrome-qa-profile-polish/segmentation_platform/ukm_db-wal",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/exams_listing_desktop-1440.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/exams_listing_laptop-1024.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/exams_listing_mobile-390.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/exams_listing_small-mobile-360.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/exams_listing_tablet-768.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/ips-exam_polish_desktop-1440.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/ips-exam_polish_laptop-1024.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/ips-exam_polish_mobile-390.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/ips-exam_polish_tablet-768.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/jee-main-exam_polish_desktop-1440.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/jee-main-exam_polish_laptop-1024.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/jee-main-exam_polish_mobile-390.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/jee-main-exam_polish_small-mobile-360.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/jee-main-exam_polish_tablet-768.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/toc_desktop_current.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/toc_mobile_current.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/upsc-cse-exam_polish_desktop-1440.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/upsc-cse-exam_polish_laptop-1024.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/upsc-cse-exam_polish_mobile-390.png",
+      "status": "M"
+    },
+    {
+      "path": "qa/detail_page_screenshots/upsc-cse-exam_polish_small-mobile-360.png",
+      "status": "M"
+    },
+    {
+      "path": "src/components/blog/blog-detail.css",
+      "status": "M"
+    },
+    {
+      "path": "src/pages/ExamDetail.jsx",
+      "status": "M"
+    },
+    {
+      "path": "tsconfig.tsbuildinfo",
+      "status": "M"
+    }
+  ]
+}

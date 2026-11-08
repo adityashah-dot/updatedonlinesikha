@@ -1,0 +1,542 @@
+[
+  {
+    "slug": "ips-exam",
+    "viewport": "desktop-1440",
+    "width": 1440,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "sticky",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 237,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 1434,
+      "innerWidth": 1440,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\ips-exam_desktop-1440.png"
+  },
+  {
+    "slug": "ips-exam",
+    "viewport": "laptop-1024",
+    "width": 1024,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "sticky",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 306,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 1018,
+      "innerWidth": 1024,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\ips-exam_laptop-1024.png"
+  },
+  {
+    "slug": "ips-exam",
+    "viewport": "tablet-768",
+    "width": 768,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "static",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 209,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\ips-exam_tablet-768.png"
+  },
+  {
+    "slug": "ips-exam",
+    "viewport": "mobile-390",
+    "width": 390,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "static",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 334,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\ips-exam_mobile-390.png"
+  },
+  {
+    "slug": "ips-exam",
+    "viewport": "small-mobile-360",
+    "width": 360,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "static",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 366,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\ips-exam_small-mobile-360.png"
+  },
+  {
+    "slug": "upsc-cse-exam",
+    "viewport": "desktop-1440",
+    "width": 1440,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "sticky",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 335,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 1434,
+      "innerWidth": 1440,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\upsc-cse-exam_desktop-1440.png"
+  },
+  {
+    "slug": "upsc-cse-exam",
+    "viewport": "laptop-1024",
+    "width": 1024,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "sticky",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 381,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 1018,
+      "innerWidth": 1024,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\upsc-cse-exam_laptop-1024.png"
+  },
+  {
+    "slug": "upsc-cse-exam",
+    "viewport": "tablet-768",
+    "width": 768,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "static",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 262,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\upsc-cse-exam_tablet-768.png"
+  },
+  {
+    "slug": "upsc-cse-exam",
+    "viewport": "mobile-390",
+    "width": 390,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "static",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 427,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\upsc-cse-exam_mobile-390.png"
+  },
+  {
+    "slug": "upsc-cse-exam",
+    "viewport": "small-mobile-360",
+    "width": 360,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "static",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 427,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\upsc-cse-exam_small-mobile-360.png"
+  },
+  {
+    "slug": "jee-main-exam",
+    "viewport": "desktop-1440",
+    "width": 1440,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "sticky",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 335,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 1434,
+      "innerWidth": 1440,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\jee-main-exam_desktop-1440.png"
+  },
+  {
+    "slug": "jee-main-exam",
+    "viewport": "laptop-1024",
+    "width": 1024,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "sticky",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 381,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 1018,
+      "innerWidth": 1024,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\jee-main-exam_laptop-1024.png"
+  },
+  {
+    "slug": "jee-main-exam",
+    "viewport": "tablet-768",
+    "width": 768,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "static",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 262,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\jee-main-exam_tablet-768.png"
+  },
+  {
+    "slug": "jee-main-exam",
+    "viewport": "mobile-390",
+    "width": 390,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "static",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 385,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\jee-main-exam_mobile-390.png"
+  },
+  {
+    "slug": "jee-main-exam",
+    "viewport": "small-mobile-360",
+    "width": 360,
+    "audit": {
+      "hasSide": true,
+      "sideDisplay": "flex",
+      "sidePosition": "static",
+      "hasToc": true,
+      "sidebarCardsCount": 4,
+      "sidebarHeadings": [
+        "Related Exams3 curated",
+        "Popular ExamsNational",
+        "Explore More",
+        "Free Counselling"
+      ],
+      "hasMidBanner": true,
+      "hasBottomBanner": true,
+      "heroLeftHeight": 385,
+      "heroCardHeight": 40,
+      "typography": {
+        "h1Color": "rgb(0, 15, 34)",
+        "h2Color": "rgb(11, 29, 58)",
+        "h3Color": "rgb(11, 53, 88)",
+        "pColor": "rgb(55, 65, 81)",
+        "pLineHeight": "25.2px",
+        "thBg": null,
+        "thColor": null
+      },
+      "tableFound": true,
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasOverflow": false
+    },
+    "screenshot": "C:\\Users\\GCV\\Downloads\\updatedonlinesiksha\\qa\\detail_page_screenshots\\jee-main-exam_small-mobile-360.png"
+  }
+]

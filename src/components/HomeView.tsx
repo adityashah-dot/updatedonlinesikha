@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import HomeHero from './HomeHero';
+import ViewAllButton from './ViewAllButton';
+import SectionHeader from './SectionHeader';
+import UniversityCard from './UniversityCard';
+import DegreePrograms from './DegreePrograms';
 import {
   Search,
   ShieldCheck,
   ArrowRight,
-  Download,
   CheckCircle,
-  ChevronRight,
   ChevronDown,
   Headphones,
-  GraduationCap,
   Building2,
   Award,
   Sparkles,
@@ -33,107 +34,6 @@ const HERO_METRICS = [
   { value: '180+', label: 'Recognized Degrees' },
   { value: '5,00,000+', label: 'Students Guided', tone: 'text-[#115eaf]' },
   { value: '100%', label: 'Zero-Cost EMI Options', tone: 'text-emerald-700' },
-];
-
-const DEGREE_CATEGORIES = ["Master's (PG)", "Bachelor's (UG)", 'Executive Tracks'] as const;
-
-const DEGREE_CARDS = [
-  {
-    title: 'Online MBA',
-    subtitle: 'Master of Business Administration',
-    duration: '2 Years • 4 Sems',
-    badge: '0% EMI Pre-Approved',
-    badgeTone: 'text-emerald-700 bg-emerald-50 border-emerald-200',
-    bullets: [
-      'UGC-DEB & AICTE Entitled Equivalence',
-      '0% Interest EMI starting ₹3,080/mo',
-      '100% Remote Proctored Exams from Home',
-      '19+ High-Growth Specializations',
-    ],
-    price: '₹18,500',
-    emi: '₹3,080/mo',
-    explore: 'Explore 28 Unis',
-  },
-  {
-    title: 'Online MCA',
-    subtitle: 'Master of Computer Applications',
-    duration: '2 Years • 4 Sems',
-    badge: 'AI & Cloud Ready',
-    badgeTone: 'text-blue-700 bg-blue-50 border-blue-200',
-    bullets: [
-      'UGC-DEB Approved Regular Equivalence',
-      '0% Interest EMI starting ₹3,660/mo',
-      'Cloud Sandbox & Virtual AI Labs',
-      'Remote Weekend Proctored Exams',
-    ],
-    price: '₹22,000',
-    emi: '₹3,660/mo',
-    explore: 'Explore 22 Unis',
-  },
-  {
-    title: 'Online BBA',
-    subtitle: 'Bachelor of Business Administration',
-    duration: '3 Years • 6 Sems',
-    badge: 'Top UG Program',
-    badgeTone: 'text-sky-700 bg-sky-50 border-sky-200',
-    bullets: [
-      'UGC Section 22 Entitled Degree',
-      '0% Interest EMI starting ₹2,330/mo',
-      'Digital Marketing & FinTech Tracks',
-      '10+2 Any Stream (50% Minimum)',
-    ],
-    price: '₹14,000',
-    emi: '₹2,330/mo',
-    explore: 'Explore 19 Unis',
-  },
-  {
-    title: 'Online BCA',
-    subtitle: 'Bachelor of Computer Applications',
-    duration: '3 Years • 6 Sems',
-    badge: 'Tech Career Track',
-    badgeTone: 'text-indigo-700 bg-indigo-50 border-indigo-200',
-    bullets: [
-      'UGC Statutory Entitled Bachelors',
-      '0% Interest EMI starting ₹2,500/mo',
-      '100% Remote AI-Proctored Exams',
-      'Full-Stack Web & Python Labs',
-    ],
-    price: '₹15,000',
-    emi: '₹2,500/mo',
-    explore: 'Explore 17 Unis',
-  },
-  {
-    title: 'Online B.Com / M.Com',
-    subtitle: 'Commerce & Corporate Finance',
-    duration: 'UG & PG Tracks Available',
-    badge: 'ACCA / US CMA Aligned',
-    badgeTone: 'text-amber-800 bg-amber-50 border-amber-200',
-    bullets: [
-      'UGC-DEB Recognized & Govt Valid',
-      '0% Interest EMI starting ₹2,000/mo',
-      'Valid for UPSC, Banking & SSC',
-      'ACCA 9-Paper Exemption Option',
-    ],
-    price: '₹12,000',
-    emi: '₹2,000/mo',
-    explore: 'Explore 15 Unis',
-  },
-  {
-    title: 'Online BA / MA',
-    subtitle: 'Liberal Arts & Public Policy',
-    duration: 'UG & PG Tracks Available',
-    badge: 'Most Affordable',
-    badgeTone: 'text-slate-700 bg-slate-100 border-slate-300',
-    bullets: [
-      'UGC-Entitled Regular Equivalence',
-      '0% Interest EMI starting ₹1,830/mo',
-      '100% Remote Proctored Exams',
-      'Ideal for Working Professionals & Civil Services',
-    ],
-    price: '₹11,000',
-    emi: '₹1,830/mo',
-    explore: 'Explore 14 Unis',
-  },
 ];
 
 const FEATURED_UNIS = [
@@ -273,176 +173,66 @@ export const HomeView: React.FC<HomeViewProps> = ({
   onOpenChat,
   onOpenCounselor,
 }) => {
-  const navigate = useNavigate();
-  const [degreeTab, setDegreeTab] = useState<(typeof DEGREE_CATEGORIES)[number]>("Master's (PG)");
   const [lead, setLead] = useState({ phone: '', email: '', degree: 'Online MBA' });
   const [leadSubmitted, setLeadSubmitted] = useState(false);
   const [selectedDegree, setSelectedDegree] = useState('Online MBA (Master of Business)');
   const [selectedBudget, setSelectedBudget] = useState('Any Budget (₹12,000 - ₹50,000)');
   const [selectedMode, setSelectedMode] = useState('100% Home AI Proctored');
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const y = el.getBoundingClientRect().top + window.pageYOffset - 80;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
-
   return (
-    <div className="w-full max-w-[1280px] mx-auto px-4 md:px-6 py-4 space-y-6">
+    <div className="w-full space-y-6">
       <HomeHero />
       {/* Degree programs */}
-      <section id="degrees" className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5 sm:p-6">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center pb-3 border-b border-slate-200/80 gap-3">
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-[#000f22]">Popular Online Degree Programs</h2>
-            <p className="text-xs sm:text-[13px] text-[#43474d] font-normal mt-0.5">
-              UGC Section 22 Entitled degrees with 0% interest EMI tuition and 100% remote proctored exams.
-            </p>
-          </div>
-          <div className="inline-flex p-1 bg-[#f0f4f8] rounded-xl border border-[#c4c6ce]/50 text-[12px] font-semibold">
-            {DEGREE_CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setDegreeTab(cat)}
-                className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer ${
-                  degreeTab === cat ? 'bg-[#115eaf] text-white shadow-sm' : 'text-[#43474d] hover:text-[#111c2d]'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
+      <section id="degrees" className="section bg-white rounded-2xl border border-slate-200/90 shadow-soft">
+        <div className="container">
+          <SectionHeader title="Popular Online Degree Programs" href="/universities" sub="UGC Section 22 Entitled degrees with 0% interest EMI tuition and 100% remote proctored exams." />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
-          {DEGREE_CARDS.map((card) => (
-            <div
-              key={card.title}
-              className="bg-white rounded-xl border border-slate-200 hover:border-[#115eaf] transition-all hover:shadow-md p-4 sm:p-5 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex justify-between items-start mb-2.5 gap-2">
-                  <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-blue-50 text-blue-800 border border-blue-200">
-                    {card.duration}
-                  </span>
-                  <span className={`text-[11px] font-medium px-2 py-0.5 rounded border ${card.badgeTone}`}>
-                    {card.badge}
-                  </span>
-                </div>
-                <h3 className="text-base sm:text-lg font-bold text-[#000f22]">{card.title}</h3>
-                <p className="text-[12px] text-[#43474d] font-normal mt-0.5">{card.subtitle}</p>
-
-                {/* Short Bulleted Highlights */}
-                <div className="mt-3 py-2.5 border-y border-slate-100 space-y-1.5 text-xs text-slate-700">
-                  {card.bullets.map((bullet, idx) => (
-                    <div key={idx} className="flex items-start gap-1.5">
-                      <CheckCircle className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${idx === 1 ? 'text-emerald-600' : 'text-[#115eaf]'}`} />
-                      <span className={idx === 1 ? 'font-semibold text-emerald-700' : 'text-slate-700'}>{bullet}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-4 pt-2 flex items-center justify-between">
-                <div>
-                  <span className="text-[11px] text-[#43474d] block">Tuition Starts From</span>
-                  <span className="text-[15px] font-bold text-[#000f22]">
-                    {card.price} <span className="text-[11px] font-normal text-[#43474d]">/ sem</span>
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => scrollTo('universities')}
-                  className="px-3.5 py-2 rounded-xl bg-[#115eaf] text-white text-[12px] font-semibold hover:bg-[#084a8c] transition-colors cursor-pointer shadow-2xs"
-                >
-                  {card.explore}
-                </button>
-              </div>
-            </div>
-          ))}
+          <DegreePrograms />
         </div>
       </section>
 
       {/* Featured universities */}
-      <section id="universities" className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5 sm:p-6">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center pb-3 border-b border-slate-200/80 gap-3">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#115eaf]" />
-              <h2 className="text-xl sm:text-2xl font-bold text-[#000f22]">Featured NAAC A++ / A+ Online Universities</h2>
-            </div>
-            <p className="text-xs sm:text-[13px] text-[#43474d] font-normal mt-0.5">
-              Category-1 UGC-entitled institutions with 0% interest EMI options and proctored examinations.
-            </p>
+      <section id="universities" className="section soft rounded-2xl border border-slate-200/90 shadow-soft">
+        <div className="container">
+          <SectionHeader title="Explore Some Popular Universities" href="/universities" sub="Category-1 UGC-entitled institutions with 0% interest EMI options and proctored examinations." />
+
+          <div className="uni-grid">
+            {FEATURED_UNIS.map((u) => (
+              <UniversityCard
+                key={u.id}
+                u={{
+                  logo: `/images/${u.id}-logo.png`,
+                  name: u.name,
+                  city: u.short,
+                  approvals: [u.naac],
+                  highlights: u.bullets,
+                  slug: u.id,
+                }}
+              />
+            ))}
           </div>
-          <button
-            type="button"
-            onClick={() => navigate('/universities')}
-            className="text-[12px] font-semibold text-[#115eaf] hover:underline flex items-center gap-1 cursor-pointer"
-          >
-            View All 50+ Universities
-            <ChevronRight className="w-4 h-4" />
-          </button>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
-          {FEATURED_UNIS.map((u) => (
-            <div
-              key={u.id}
-              className="bg-white rounded-xl border border-slate-200 hover:border-[#115eaf] transition-all hover:shadow-md p-4 sm:p-5 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-2.5 gap-2">
-                  <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
-                    {u.naac}
-                  </span>
-                  <span className="text-[11px] font-medium text-slate-500">{u.rank}</span>
-                </div>
-                <h3 className="text-base font-bold text-[#000f22]">{u.name}</h3>
-                <p className="text-[12px] text-[#115eaf] font-medium mt-0.5">{u.short}</p>
-
-                {/* Short Bulleted Highlights */}
-                <div className="mt-3 p-3 rounded-lg bg-slate-50 border border-slate-100 space-y-1.5 text-xs">
-                  {u.bullets.map((bullet, idx) => (
-                    <div key={idx} className="flex items-start gap-1.5">
-                      <CheckCircle className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${idx === 1 ? 'text-emerald-600' : 'text-[#115eaf]'}`} />
-                      <span className={idx === 1 ? 'font-semibold text-emerald-700' : 'text-slate-700'}>{bullet}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-4 space-y-2">
-                <div className="flex items-center justify-between text-xs px-1">
-                  <span className="text-slate-500">Total Program Fee:</span>
-                  <span className="font-bold text-slate-900">{u.totalFee}</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => navigate(`/universities/${u.id}`)}
-                  className="w-full py-2 rounded-xl bg-[#115eaf] text-white text-[12px] font-semibold hover:bg-[#084a8c] transition-colors cursor-pointer shadow-2xs"
-                >
-                  View Details &amp; Apply
-                </button>
-                <button
-                  type="button"
-                  onClick={onOpenHelpDesk}
-                  className="w-full py-1.5 rounded-xl border border-slate-300 text-[12px] font-medium text-slate-700 hover:bg-slate-50 flex items-center justify-center gap-1 cursor-pointer transition-colors"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  Download Brochure
-                </button>
-              </div>
-            </div>
-          ))}
+      {/* Side-by-side counselling section */}
+      <section id="counselling-side" className="section bg-white rounded-2xl border border-slate-200/90 shadow-soft">
+        <div className="container split">
+          <img src="/images/counselling.jpg" alt="Student speaking with a counsellor" />
+          <div>
+            <h2>Not sure which university fits you?</h2>
+            <ul className="tick-list">
+              <li>UGC-DEB approved universities only</li>
+              <li>Fees, EMI and placement support compared side by side</li>
+              <li>Free one-to-one counselling</li>
+            </ul>
+            <Link to="/career-counselling" className="btn-view-all btn-solid">Talk to a counsellor</Link>
+          </div>
         </div>
       </section>
 
       {/* Comparison matrix */}
-      <section id="compare" className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5 sm:p-6">
+      <section id="compare" className="section bg-white rounded-2xl border border-slate-200/90 shadow-soft">
+        <div className="container">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center pb-3 border-b border-slate-200/80 gap-2 mb-4">
           <div>
             <h2 className="text-xl sm:text-2xl font-bold text-[#000f22]">Statutory Equivalence &amp; University Comparison Matrix</h2>
@@ -492,17 +282,19 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </tbody>
           </table>
         </div>
+        </div>
       </section>
 
       {/* Counselling */}
-      <section id="counselling" className="bg-[#0b2540] text-white rounded-2xl shadow-md p-5 sm:p-7">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+      <section id="counselling" className="section bg-[#0b2540] text-white rounded-2xl shadow-soft">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           <div className="lg:col-span-7 space-y-3.5">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 text-blue-200 border border-blue-400/30 text-[11px] font-semibold">
               <Headphones className="w-3.5 h-3.5 text-blue-300" />
               1-ON-1 EXPERT CAREER ADVICE
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-white leading-snug">
+            <h2 className="font-bold text-white leading-snug">
               Confused Between 50+ Universities? Speak with an Unbiased Academic Expert
             </h2>
             <p className="text-sm text-slate-200 font-normal max-w-xl leading-relaxed">
@@ -524,7 +316,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             </div>
           </div>
 
-          <div className="lg:col-span-5 bg-white text-[#111c2d] rounded-xl p-5 sm:p-6 shadow-sm">
+          <div className="lg:col-span-5 bg-white text-[#111c2d] rounded-xl p-5 sm:p-6 shadow-soft">
             <h3 className="text-base font-bold text-[#000f22] mb-1">Request Free Call Back</h3>
             <p className="text-xs text-[#43474d] font-normal mb-4">
               Response guaranteed within 15 minutes during academic working hours.
@@ -588,7 +380,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 </div>
 
                 <button
-                  className="w-full py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-[13px] font-bold transition-all shadow-sm flex items-center justify-center gap-1.5 active:scale-[0.99] cursor-pointer"
+                  className="w-full py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-[13px] font-bold transition-all shadow-soft flex items-center justify-center gap-1.5 active:scale-[0.99] cursor-pointer"
                   type="submit"
                 >
                   Connect with Advisor
@@ -608,6 +400,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
             )}
           </div>
+        </div>
         </div>
       </section>
     </div>

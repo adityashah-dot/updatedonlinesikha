@@ -87,8 +87,8 @@ export const CollegeDetailView = ({
       description="The university page you're looking for could not be found."
     />
         <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 bg-[#f9f9ff]">
-          <h1 className="text-8xl font-black text-[#115eaf]/20 mb-2 tracking-tighter">404</h1>
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#000f22] mb-3">University Not Found</h2>
+          <h1 className="font-black text-[#115eaf]/20 mb-2 tracking-tighter">404</h1>
+          <h2 className="font-bold text-[#000f22] mb-3">University Not Found</h2>
           <p className="text-[#43474d] mb-8 max-w-md text-sm">
             We couldn't find the online university you're looking for. It may have been removed or the link might be broken.
           </p>
@@ -128,8 +128,8 @@ export const CollegeDetailView = ({
         description="The university page you're looking for could not be found."
       />
           <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 bg-[#f9f9ff]">
-            <h1 className="text-8xl font-black text-[#115eaf]/20 mb-2 tracking-tighter">404</h1>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#000f22] mb-3">Page Not Found</h2>
+<h1 className="font-black text-[#115eaf]/20 mb-2 tracking-tighter">404</h1>
+          <h2 className="font-bold text-[#000f22] mb-3">Page Not Found</h2>
             <p className="text-[#43474d] mb-8 max-w-md text-sm">
               The CMS has not published this page for {college?.name || "this university"}.
             </p>
@@ -251,7 +251,7 @@ export const CollegeDetailView = ({
   return <>
       <SEO title={seoTitle} description={seoDescription} />
       <SiteActionsContext.Provider value={siteActions}>
-        <div className="uni-detail">
+          <div className="uni-detail">
           {activeSection === "courses" && <CollegeCourses
         college={{ name: college.name, shortName: college.shortName, college: college }}
         overview={overview}

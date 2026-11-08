@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import { useState } from "react";
 import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
@@ -8,6 +8,14 @@ import { Navbar } from "./components/Navbar.jsx";
 import { Footer } from "./components/Footer";
 import { PageTransition } from "./components/PageTransition";
 import { HomeView } from "./components/HomeView";
+import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
+import Courses from "./pages/Courses";
+import CourseDetail from "./pages/CourseDetail";
+import Exams from "./pages/Exams";
+import ExamDetail from "./pages/ExamDetail";
+import News from "./pages/News";
+import NewsDetail from "./pages/NewsDetail";
 import { CollegeDetailView } from "./components/CollegeDetailView";
 import { UniversitiesView } from "./components/UniversitiesView";
 import { CourseDetailModal } from "./components/CourseDetailModal";
@@ -202,7 +210,12 @@ export default function App() {
 
             <Route
     path="/courses"
-    element={<Navigate to="/universities" replace />}
+    element={<PageTransition><Courses onOpenCounseling={() => setIsCounselorModalOpen(true)} onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)} /></PageTransition>}
+  />
+
+            <Route
+    path="/courses/:slug"
+    element={<PageTransition><CourseDetail onOpenCounseling={() => setIsCounselorModalOpen(true)} onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)} /></PageTransition>}
   />
 
             <Route
@@ -213,6 +226,31 @@ export default function App() {
             <Route
     path="/scholarships"
     element={<Navigate to="/universities" replace />}
+  />
+
+            <Route
+    path="/blog"
+    element={<PageTransition><Blog /></PageTransition>}
+  />
+            <Route
+    path="/blog/:slug"
+    element={<PageTransition><BlogDetail onOpenCounseling={() => setIsCounselorModalOpen(true)} onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)} /></PageTransition>}
+  />
+            <Route
+    path="/exams"
+    element={<PageTransition><Exams /></PageTransition>}
+  />
+            <Route
+    path="/exams/:slug"
+    element={<PageTransition><ExamDetail /></PageTransition>}
+  />
+            <Route
+    path="/news"
+    element={<PageTransition><News onOpenCounseling={() => setIsCounselorModalOpen(true)} /></PageTransition>}
+  />
+            <Route
+    path="/news/:slug"
+    element={<PageTransition><NewsDetail onOpenCounseling={() => setIsCounselorModalOpen(true)} /></PageTransition>}
   />
 
             <Route path="*" element={<Navigate to="/" replace />} />
@@ -231,6 +269,7 @@ export default function App() {
 
       {
     /* Modals Container */
+  }
       <CourseDetailModal
     course={selectedCourseForDetail}
     isOpen={selectedCourseForDetail !== null}

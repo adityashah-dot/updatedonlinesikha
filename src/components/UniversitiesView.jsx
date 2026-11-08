@@ -403,7 +403,7 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
               <span className="text-[#c4c6ce] mx-2">|</span>
               <span className="text-[#115eaf] font-semibold">Session 2026-27 Open</span>
             </div>
-            <h1 className="text-[clamp(24px,6.5vw,32px)] sm:text-4xl lg:text-5xl font-extrabold font-sans tracking-[-0.02em] leading-[1.15]">
+            <h1 className="font-extrabold font-sans tracking-[-0.02em] leading-[1.15]">
               <span className="block text-[#000f22]">Explore Top UGC-DEB Approved</span>
               <span className="block bg-gradient-to-r from-[#115eaf] via-[#2563eb] to-[#0d9488] bg-clip-text text-transparent">
                 Online Universities in India
@@ -635,7 +635,7 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
                     }}/>) : (<span className="text-[13px] font-semibold text-[#115eaf]">{u.short}</span>)}
                       </div>
                       <div className="min-w-0">
-                        <h2 className="text-[17px] font-semibold text-[#000f22] leading-[1.3] line-clamp-2" title={u.name}>
+                        <h2 className="font-semibold text-[#000f22] leading-[1.3] line-clamp-2" title={u.name}>
                           {u.name}
                         </h2>
                         <p className="text-[12px] text-[#74777e] mt-[3px]">
@@ -904,7 +904,7 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
                       </span>
                       <span className="text-xs font-semibold text-emerald-700">{d.price}</span>
                     </div>
-                    <h3 className="text-[17px] font-bold text-[#000f22]">{d.title}</h3>
+                    <h3 className="font-bold text-[#000f22]">{d.title}</h3>
                     <p className="text-xs text-[#74777e] font-normal mt-0.5">{d.duration}</p>
                     <div className="flex flex-wrap gap-1.5 mt-3 mb-4">
                       {d.tracks.map((t) => (<span key={t} className="px-2 py-0.5 bg-white border border-[#e7eeff] rounded-md text-[11px] text-[#43474d]">

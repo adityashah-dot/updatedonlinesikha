@@ -1,0 +1,177 @@
+{
+  "online_bca": {
+    "desktop_1440": {
+      "scrollWidth": 1434,
+      "innerWidth": 1440,
+      "hasOverflow": false,
+      "headingText": "Top Recruiters for Online BCA",
+      "cardCount": 20,
+      "gridCols": 6,
+      "cardHeight": 96
+    },
+    "laptop_1024": {
+      "scrollWidth": 1018,
+      "innerWidth": 1024,
+      "hasOverflow": false,
+      "headingText": "Top Recruiters for Online BCA",
+      "cardCount": 20,
+      "gridCols": 6,
+      "cardHeight": 96
+    },
+    "tablet_768": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasOverflow": false,
+      "headingText": "Top Recruiters for Online BCA",
+      "cardCount": 20,
+      "gridCols": 4,
+      "cardHeight": 96
+    },
+    "mobile_390": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasOverflow": false,
+      "headingText": "Top Recruiters for Online BCA",
+      "cardCount": 20,
+      "gridCols": 2,
+      "cardHeight": 96
+    },
+    "mobile_360": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasOverflow": false,
+      "headingText": "Top Recruiters for Online BCA",
+      "cardCount": 20,
+      "gridCols": 2,
+      "cardHeight": 96
+    }
+  },
+  "lpu_online": {
+    "desktop_1440": {
+      "scrollWidth": 1434,
+      "innerWidth": 1440,
+      "hasOverflow": false,
+      "placementSecFound": true,
+      "recruiterCardsCount": 4,
+      "gridCols": 4,
+      "cardHeight": 72
+    },
+    "laptop_1024": {
+      "scrollWidth": 1018,
+      "innerWidth": 1024,
+      "hasOverflow": false,
+      "placementSecFound": true,
+      "recruiterCardsCount": 4,
+      "gridCols": 4,
+      "cardHeight": 72
+    },
+    "tablet_768": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasOverflow": false,
+      "placementSecFound": true,
+      "recruiterCardsCount": 4,
+      "gridCols": 4,
+      "cardHeight": 72
+    },
+    "mobile_390": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasOverflow": false,
+      "placementSecFound": true,
+      "recruiterCardsCount": 4,
+      "gridCols": 2,
+      "cardHeight": 75
+    },
+    "mobile_360": {
+      "scrollWidth": 360,
+      "innerWidth": 360,
+      "hasOverflow": false,
+      "placementSecFound": true,
+      "recruiterCardsCount": 4,
+      "gridCols": 2,
+      "cardHeight": 95
+    }
+  },
+  "bca_aiml": {
+    "scrollWidth": 1434,
+    "innerWidth": 1440,
+    "hasOverflow": false,
+    "showcaseFound": false,
+    "recruiterHeadingsFound": []
+  },
+  "recruiter_list_verification": {
+    "count": 20,
+    "names": [
+      "TCS",
+      "Infosys",
+      "Wipro",
+      "Cognizant",
+      "Capgemini",
+      "Deloitte",
+      "Tech Mahindra",
+      "Amazon",
+      "HCL Technologies",
+      "Accenture",
+      "IBM",
+      "Oracle",
+      "Microsoft",
+      "Google",
+      "Larsen & Toubro Infotech (LTI)",
+      "Mindtree",
+      "Persistent Systems",
+      "SAP Labs",
+      "Hexaware",
+      "EY (Ernst & Young)"
+    ],
+    "cardsWithGenuineLogos": [
+      {
+        "name": "TCS",
+        "src": "/logos/tcs.jpg"
+      },
+      {
+        "name": "Infosys",
+        "src": "/logos/infosys.png"
+      },
+      {
+        "name": "Wipro",
+        "src": "/logos/wipro.jpg"
+      },
+      {
+        "name": "Cognizant",
+        "src": "/logos/cognizant.jpg"
+      },
+      {
+        "name": "Capgemini",
+        "src": "/logos/capgemini.png"
+      },
+      {
+        "name": "Deloitte",
+        "src": "/logos/deloitte.jpg"
+      },
+      {
+        "name": "Tech Mahindra",
+        "src": "/logos/techmahindra.jpg"
+      },
+      {
+        "name": "Amazon",
+        "src": "/logos/amazon.jpg"
+      }
+    ],
+    "cardsWithTextFallback": [
+      "HCL Technologies",
+      "Accenture",
+      "IBM",
+      "Oracle",
+      "Microsoft",
+      "Google",
+      "Larsen & Toubro Infotech (LTI)",
+      "Mindtree",
+      "Persistent Systems",
+      "SAP Labs",
+      "Hexaware",
+      "EY (Ernst & Young)"
+    ]
+  },
+  "console_errors": []
+}

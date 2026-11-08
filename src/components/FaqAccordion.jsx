@@ -1,5 +1,6 @@
 import { useId, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
+import SafeHtml from "./blog/SafeHtml";
 
 /**
  * Shared accessible FAQ accordion (single-open, site convention).
@@ -85,7 +86,7 @@ export function FaqAccordion({
                   aria-labelledby={buttonId}
                   className={`mt-2 pl-7.5 pr-4 text-xs sm:text-[13px] text-[#43474d] leading-relaxed font-normal whitespace-pre-line animate-fade-in${answerClassName ? ` ${answerClassName}` : ""}`}
                 >
-                  {renderAnswer ? renderAnswer(item, index) : item.answer}
+                  {renderAnswer ? renderAnswer(item, index) : <SafeHtml html={item.answer || ""} />}
                 </div>
               )}
             </div>
@@ -118,7 +119,7 @@ export function FaqAccordion({
                 aria-labelledby={buttonId}
                 className={`px-4 pb-3 text-xs text-[#43474d] bg-[#f9f9ff] border-t border-[#e7eeff] leading-relaxed${answerClassName ? ` ${answerClassName}` : ""}`}
               >
-                <p className="pt-3 font-normal">{renderAnswer ? renderAnswer(item, index) : item.answer}</p>
+                <div className="pt-3 font-normal">{renderAnswer ? renderAnswer(item, index) : <SafeHtml html={item.answer || ""} />}</div>
               </div>
             )}
           </div>

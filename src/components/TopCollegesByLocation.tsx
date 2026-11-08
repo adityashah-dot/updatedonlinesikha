@@ -562,7 +562,7 @@ export const TopCollegesByLocation: React.FC<TopCollegesByLocationProps> = ({ on
               >
                 <div>
                   <div className="flex items-start justify-between gap-3 mb-2.5">
-                    <h3 className="text-[15px] sm:text-base font-bold text-slate-900 group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2">
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2">
                       {college.name}
                     </h3>
                     <div className="w-11 h-11 rounded-xl border border-blue-100 p-1 flex items-center justify-center shrink-0 bg-gradient-to-br from-[#eff6ff] to-[#dbeafe] shadow-2xs">
@@ -684,7 +684,7 @@ export const TopCollegesByLocation: React.FC<TopCollegesByLocationProps> = ({ on
               >
                 <div>
                   <div className="flex items-start justify-between gap-3 mb-2.5">
-                    <h3 className="text-[15px] sm:text-base font-bold text-slate-900 group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2">
+                    <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2">
                       {college.name}
                     </h3>
                     <div className="w-11 h-11 rounded-xl border border-blue-100 p-1 flex items-center justify-center shrink-0 bg-gradient-to-br from-[#eff6ff] to-[#dbeafe] shadow-2xs">

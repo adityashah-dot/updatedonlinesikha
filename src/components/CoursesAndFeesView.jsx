@@ -276,7 +276,7 @@ export default function CoursesAndFeesView({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             <div className="lg:col-span-8 flex flex-col space-y-4">
               <div>
-                <h1 className="section-title text-2xl sm:text-3xl lg:text-4xl font-bold text-[#000f22] tracking-tight font-sans leading-tight">
+                <h1 className="section-title font-bold text-[#000f22] tracking-tight font-sans leading-tight">
                   {coursesData.coursesFees?.title || overview.title}
                 </h1>
                 {coursesData.coursesFees?.description ? (

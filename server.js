@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
 import { answerChat, syncDataset, datasetStatusOf } from './src/services/chatbotDataset.mjs';
+import { injectMetaHtml, buildBlogListing, buildBlogDetail, buildBlogSitemap } from './src/server/blogSsr.js';
 
 dotenv.config();
 
@@ -139,6 +140,46 @@ async function startServer() {
     }, intervalMs);
     console.log(`Chatbot dataset sync scheduled every ${syncIntervalHours}h`);
   }
+
+  // In development, let Vite serve the default transformed HTML (no meta injection) so HMR works.
+  app.get('/sitemap-blog.xml', async (req, res) => {
+    try {
+      const origin = `${req.protocol}://${req.get('host')}`;
+      const xml = await buildBlogSitemap(origin);
+      res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+      res.send(xml);
+    } catch (err) {
+      console.error('sitemap-blog.xml failed:', err?.message);
+      res.status(500).type('text/plain').send('sitemap unavailable');
+    }
+  });
+
+  app.get('/blog', async (req, res, next) => {
+    if (process.env.NODE_ENV !== 'production') return next();
+    try {
+      const origin = `${req.protocol}://${req.get('host')}`;
+      const html = await buildBlogListing(origin);
+      if (html) return res.status(200).type('html').send(html);
+      next();
+    } catch (err) {
+      console.error('blog listing meta injection failed:', err?.message);
+      next();
+    }
+  });
+
+  app.get(/^\/blog\/([^/]+)$/, async (req, res, next) => {
+    if (process.env.NODE_ENV !== 'production') return next();
+    try {
+      const origin = `${req.protocol}://${req.get('host')}`;
+      const slug = decodeURIComponent(req.params[0]);
+      const html = await buildBlogDetail(origin, slug);
+      if (html) return res.status(200).type('html').send(html);
+      next();
+    } catch (err) {
+      console.error('blog detail meta injection failed:', err?.message);
+      next();
+    }
+  });
 
   // Vite development middleware or static production serve
   if (process.env.NODE_ENV === 'production') {

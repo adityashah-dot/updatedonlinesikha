@@ -157,7 +157,7 @@ export const UniversityHero = ({
           <div className="w-16 h-16 rounded-xl bg-white border border-[#e7eeff] shadow-sm p-2 flex items-center justify-center shrink-0">
             {logoImg}
           </div>
-          <h1 className="min-w-0 flex-1 m-0 text-[clamp(20px,5.5vw,26px)] font-bold tracking-[-0.02em] leading-[1.15] text-[#071a34] break-words">
+<h1 className="min-w-0 flex-1 m-0 text-[clamp(20px,5.5vw,26px)] font-bold tracking-[-0.02em] leading-[1.15] text-[#071a34] break-words">
             {university.name}
           </h1>
         </div>
@@ -189,7 +189,7 @@ export const UniversityHero = ({
 
                 <div className="min-w-0 flex-1 space-y-2.5">
                   {metaRow}
-                  <h1 className="m-0 text-[clamp(22px,2vw,28px)] font-semibold tracking-[-0.01em] leading-[1.15] text-[#071a34] max-w-[28ch]">
+<h1 className="m-0 text-[clamp(22px,2vw,28px)] font-semibold tracking-[-0.01em] leading-[1.15] text-[#071a34] max-w-[28ch]">
                     {university.name}
                   </h1>
                   {taglineEl}

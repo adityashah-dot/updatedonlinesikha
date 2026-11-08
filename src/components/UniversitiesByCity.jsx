@@ -65,7 +65,7 @@ export const TopCollegesByLocation = ({ onOpenBrochure, colleges = [] }) => {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-[620px]">
             <p className="text-sm font-medium text-[#115eaf]">By location</p>
-            <h2 className="mt-2 text-[26px] font-bold tracking-[-0.015em] text-[#101828] sm:text-3xl">Online universities by city</h2>
+            <h2 className="mt-2 font-bold tracking-[-0.015em] text-[#101828]">Online universities by city</h2>
             <p className="mt-3 text-[15px] leading-7 text-[#475467]">
               Filter by the city you live in, then check fees and accreditation before shortlisting.
             </p>
@@ -90,7 +90,7 @@ export const TopCollegesByLocation = ({ onOpenBrochure, colleges = [] }) => {
                   {college.logoImage ? (<img src={college.logoImage} alt="" className="absolute inset-0 h-full w-full object-contain p-1.5" onError={(e) => { e.currentTarget.style.display = 'none'; }}/>) : null}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <h3 className="line-clamp-2 text-[15px] font-semibold leading-snug text-[#101828]">{college.name}</h3>
+                  <h3 className="line-clamp-2 font-semibold leading-snug text-[#101828]">{college.name}</h3>
                   <p className="mt-1 flex items-center gap-1 text-xs text-[#667085]">
                     <MapPin className="h-3 w-3"/>
                     {[college.city, college.state].filter(Boolean).join(', ') || 'India'}

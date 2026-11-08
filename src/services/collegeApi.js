@@ -1,12 +1,9 @@
 const API_URL = import.meta.env?.VITE_API_URL || "https://api.degreefyd.com/api/b2c";
-const API_TOKEN = import.meta.env?.VITE_API_TOKEN;
 
 export const COLLEGE_CONTENT_TAG = "college-content";
 
 function buildHeaders() {
-  const headers = { Accept: "application/json" };
-  if (API_TOKEN) headers.Authorization = `Bearer ${API_TOKEN}`;
-  return headers;
+  return { Accept: "application/json" };
 }
 
 function unwrapNestedData(result) {
