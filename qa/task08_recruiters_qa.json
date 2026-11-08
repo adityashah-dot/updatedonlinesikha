@@ -1,0 +1,576 @@
+{
+  "online_bca": {
+    "desktop_1440": {
+      "scrollWidth": 1434,
+      "innerWidth": 1440,
+      "hasOverflow": false,
+      "headingText": "Top Recruiters for Online BCA",
+      "headingTag": "H2",
+      "showcaseFound": true,
+      "cardCount": 20,
+      "gridCols": 6,
+      "firstCard": {
+        "width": 182,
+        "height": 96,
+        "hasImg": true,
+        "imgSrc": "/logos/tcs.jpg",
+        "imgWidth": 2,
+        "imgHeight": 2,
+        "hasFallback": false,
+        "labelText": "TCS"
+      },
+      "sampleCards": [
+        {
+          "width": 182,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/tcs.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "TCS"
+        },
+        {
+          "width": 182,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/infosys.png",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Infosys"
+        },
+        {
+          "width": 182,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/wipro.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Wipro"
+        },
+        {
+          "width": 182,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/cognizant.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Cognizant"
+        },
+        {
+          "width": 182,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/capgemini.png",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Capgemini"
+        },
+        {
+          "width": 182,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/deloitte.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Deloitte"
+        },
+        {
+          "width": 182,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/techmahindra.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Tech Mahindra"
+        },
+        {
+          "width": 182,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/amazon.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Amazon"
+        },
+        {
+          "width": 182,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "HCL Technologies"
+        },
+        {
+          "width": 182,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "Accenture"
+        },
+        {
+          "width": 182,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "IBM"
+        },
+        {
+          "width": 182,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "Oracle"
+        }
+      ]
+    },
+    "laptop_1024": {
+      "scrollWidth": 1018,
+      "innerWidth": 1024,
+      "hasOverflow": false,
+      "headingText": "Top Recruiters for Online BCA",
+      "headingTag": "H2",
+      "showcaseFound": true,
+      "cardCount": 20,
+      "gridCols": 6,
+      "firstCard": {
+        "width": 152,
+        "height": 96,
+        "hasImg": true,
+        "imgSrc": "/logos/tcs.jpg",
+        "imgWidth": 2,
+        "imgHeight": 2,
+        "hasFallback": false,
+        "labelText": "TCS"
+      },
+      "sampleCards": [
+        {
+          "width": 152,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/tcs.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "TCS"
+        },
+        {
+          "width": 152,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/infosys.png",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Infosys"
+        },
+        {
+          "width": 152,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/wipro.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Wipro"
+        },
+        {
+          "width": 152,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/cognizant.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Cognizant"
+        },
+        {
+          "width": 152,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/capgemini.png",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Capgemini"
+        },
+        {
+          "width": 152,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/deloitte.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Deloitte"
+        },
+        {
+          "width": 152,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/techmahindra.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Tech Mahindra"
+        },
+        {
+          "width": 152,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/amazon.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Amazon"
+        },
+        {
+          "width": 152,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "HCL Technologies"
+        },
+        {
+          "width": 152,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "Accenture"
+        },
+        {
+          "width": 152,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "IBM"
+        },
+        {
+          "width": 152,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "Oracle"
+        }
+      ]
+    },
+    "tablet_768": {
+      "scrollWidth": 768,
+      "innerWidth": 768,
+      "hasOverflow": false,
+      "headingText": "Top Recruiters for Online BCA",
+      "headingTag": "H2",
+      "showcaseFound": true,
+      "cardCount": 20,
+      "gridCols": 4,
+      "firstCard": {
+        "width": 171,
+        "height": 96,
+        "hasImg": true,
+        "imgSrc": "/logos/tcs.jpg",
+        "imgWidth": 2,
+        "imgHeight": 2,
+        "hasFallback": false,
+        "labelText": "TCS"
+      },
+      "sampleCards": [
+        {
+          "width": 171,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/tcs.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "TCS"
+        },
+        {
+          "width": 171,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/infosys.png",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Infosys"
+        },
+        {
+          "width": 171,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/wipro.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Wipro"
+        },
+        {
+          "width": 171,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/cognizant.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Cognizant"
+        },
+        {
+          "width": 171,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/capgemini.png",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Capgemini"
+        },
+        {
+          "width": 171,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/deloitte.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Deloitte"
+        },
+        {
+          "width": 171,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/techmahindra.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Tech Mahindra"
+        },
+        {
+          "width": 171,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/amazon.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Amazon"
+        },
+        {
+          "width": 171,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "HCL Technologies"
+        },
+        {
+          "width": 171,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "Accenture"
+        },
+        {
+          "width": 171,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "IBM"
+        },
+        {
+          "width": 171,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "Oracle"
+        }
+      ]
+    },
+    "mobile_390": {
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "hasOverflow": false,
+      "headingText": "Top Recruiters for Online BCA",
+      "headingTag": "H2",
+      "showcaseFound": true,
+      "cardCount": 20,
+      "gridCols": 2,
+      "firstCard": {
+        "width": 173,
+        "height": 96,
+        "hasImg": true,
+        "imgSrc": "/logos/tcs.jpg",
+        "imgWidth": 2,
+        "imgHeight": 2,
+        "hasFallback": false,
+        "labelText": "TCS"
+      },
+      "sampleCards": [
+        {
+          "width": 173,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/tcs.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "TCS"
+        },
+        {
+          "width": 173,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/infosys.png",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Infosys"
+        },
+        {
+          "width": 173,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/wipro.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Wipro"
+        },
+        {
+          "width": 173,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/cognizant.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Cognizant"
+        },
+        {
+          "width": 173,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/capgemini.png",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Capgemini"
+        },
+        {
+          "width": 173,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/deloitte.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Deloitte"
+        },
+        {
+          "width": 173,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/techmahindra.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Tech Mahindra"
+        },
+        {
+          "width": 173,
+          "height": 96,
+          "hasImg": true,
+          "imgSrc": "/logos/amazon.jpg",
+          "imgWidth": 2,
+          "imgHeight": 2,
+          "hasFallback": false,
+          "labelText": "Amazon"
+        },
+        {
+          "width": 173,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "HCL Technologies"
+        },
+        {
+          "width": 173,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "Accenture"
+        },
+        {
+          "width": 173,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "IBM"
+        },
+        {
+          "width": 173,
+          "height": 96,
+          "hasImg": false,
+          "imgSrc": null,
+          "imgWidth": 0,
+          "imgHeight": 0,
+          "hasFallback": true,
+          "labelText": "Oracle"
+        }
+      ]
+    }
+  },
+  "online_bca_aiml": {
+    "showcaseFound": false,
+    "recruiterHeadingsFound": []
+  }
+}

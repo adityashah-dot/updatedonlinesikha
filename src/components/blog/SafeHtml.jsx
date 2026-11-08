@@ -18,7 +18,7 @@ import { useMemo } from "react";
  */
 const ALLOWED_TAGS = new Set([
   "h1", "h2", "h3", "h4", "h5", "h6",
-  "p", "span", "div", "br", "hr",
+  "p", "span", "div", "section", "article", "br", "hr",
   "ul", "ol", "li",
   "strong", "b", "em", "i", "u", "s", "mark", "small", "sub", "sup",
   "a",
@@ -54,6 +54,8 @@ function rewriteDegreefydHref(href) {
     if (blogMatch) return `/blog/${decodeURIComponent(blogMatch[1])}`;
     const collegeMatch = path.match(/^\/colleges?\/([^/?#]+)/i);
     if (collegeMatch) return `/universities/${decodeURIComponent(collegeMatch[1])}`;
+    const courseMatch = path.match(/^\/courses?\/([^/?#]+)/i);
+    if (courseMatch) return `/courses/${decodeURIComponent(courseMatch[1])}`;
     return null;
   } catch {
     return null;
@@ -67,10 +69,14 @@ export function sanitizeHtml(rawHtml) {
   if (typeof window === "undefined" || typeof DOMParser === "undefined") {
     let out = rawHtml
       .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
+      .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, "")
+      .replace(/<\/?google-sheets-html-origin\b[^>]*>/gi, "")
       .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, "")
       .replace(/\son\w+\s*=\s*(?:'[^']*'|"[^"]*"|[^\s>]+)/gi, "")
       .replace(/\shref\s*=\s*['"]\s*javascript:[^'"]*['"]/gi, ' href="#"')
       .replace(/\ssrc\s*=\s*['"]\s*javascript:[^'"]*['"]/gi, "");
+    // Decode double-escaped safe formatting tags if present
+    out = out.replace(/&lt;(\/?(?:p|strong|b|em|i|u|br|ul|ol|li|span|h[2-6])\b[^&]*?)&gt;/gi, "<$1>");
     // Strip anchors whose href points to DegreeFYD; rewrite to OnlineSiksha when possible.
     out = out.replace(/<a\b([^>]*)\bhref\s*=\s*['"]([^'"]*)['"]([^>]*)>([\s\S]*?)<\/a>/gi, (m, pre, href, post, inner) => {
       if (!DEGREEIFYD_LINK_RE.test(href)) return m;
@@ -78,14 +84,24 @@ export function sanitizeHtml(rawHtml) {
       return mapped ? `<a href="${mapped}">${inner}</a>` : inner;
     });
     // Wrap bare tables so they scroll inside the column on narrow screens.
-    out = out.replace(/<table\b[\s\S]*?<\/table>/gi, (m) => `<div class="bd-table-wrap">${m}</div>`);
+    out = out.replace(/<table\b([\s\S]*?)<\/table>/gi, (m) => {
+      const firstTrMatch = m.match(/<tr\b[^>]*>([\s\S]*?)<\/tr>/i);
+      const cellMatches = firstTrMatch ? firstTrMatch[1].match(/<(?:th|td)\b/gi) : null;
+      const colCount = cellMatches ? cellMatches.length : 0;
+      const extraClass = colCount === 2 ? " bd-table-2col" : (colCount === 3 ? " bd-table-3col" : "");
+      const tableWithClass = colCount === 2 ? m.replace(/^<table\b/i, '<table class="table-2col"') : (colCount === 3 ? m.replace(/^<table\b/i, '<table class="table-3col"') : m);
+      return `<div class="bd-table-wrap${extraClass}">${tableWithClass}</div>`;
+    });
+    // Remove empty paragraphs
+    out = out.replace(/<p\b[^>]*>(?:\s|&nbsp;|<br\s*\/?>)*<\/p>/gi, "");
     out = replaceVisibleBrand(out);
     return out;
   }
 
   try {
+    const preCleaned = rawHtml.replace(/&lt;(\/?(?:p|strong|b|em|i|u|br|ul|ol|li|span|h[2-6])\b[^&]*?)&gt;/gi, "<$1>");
     const parser = new DOMParser();
-    const doc = parser.parseFromString(rawHtml, "text/html");
+    const doc = parser.parseFromString(preCleaned, "text/html");
 
     function cleanNode(node) {
       const children = Array.from(node.childNodes);
@@ -181,12 +197,24 @@ export function sanitizeHtml(rawHtml) {
       if (table.parentElement && table.parentElement.classList.contains("bd-table-wrap")) return;
       const wrap = doc.createElement("div");
       wrap.className = "bd-table-wrap";
+
+      // Detect column count to add semantic helper classes
+      const firstRow = table.querySelector("tr");
+      const cells = firstRow ? Array.from(firstRow.children).filter((c) => c.tagName === "TH" || c.tagName === "TD") : [];
+      if (cells.length === 2) {
+        wrap.classList.add("bd-table-2col");
+        table.classList.add("table-2col");
+      } else if (cells.length === 3) {
+        wrap.classList.add("bd-table-3col");
+        table.classList.add("table-3col");
+      }
+
       table.parentNode.insertBefore(wrap, table);
       wrap.appendChild(table);
     });
 
     Array.from(doc.body.querySelectorAll("p, h2, h3, h4, h5, h6")).forEach((el) => {
-      const text = (el.textContent || "").trim();
+      const text = (el.textContent || "").replace(/[\s\u00a0]+/g, "");
       if (text) return;
       const tag = el.tagName;
       const isPara = tag === "P";

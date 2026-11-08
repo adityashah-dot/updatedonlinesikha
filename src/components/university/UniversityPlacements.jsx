@@ -1,6 +1,119 @@
 import { Briefcase, CheckCircle2 } from "lucide-react";
-export const UniversityPlacements = ({ university }) => {
-  return <section id="placements" className="scroll-mt-32 space-y-6">
+
+/**
+ * Reusable Recruiter Cards Grid - identical styling to the University Detail recruiter section.
+ * Supports:
+ * - Genuine logo images (max-h-8 max-w-[85px] object-contain).
+ * - Graceful text fallback if image fails or logoUrl is absent.
+ * - Standard 6-column responsive grid (2 cols mobile, 3 sm, 4 md, 6 lg).
+ * - Fixed h-24 height, rounded-xl, subtle border & shadow.
+ */
+export const RecruitersGrid = ({
+  recruiters = [],
+  title = "Top Corporate Recruiting Partners",
+  subtitle = "MNC & Fortune 500 Employers",
+  note = "",
+  headingLevel = "h3",
+  showHeading = true,
+  className = "",
+}) => {
+  if (!recruiters || recruiters.length === 0) return null;
+
+  const HeadingTag = headingLevel === "h2" ? "h2" : "h3";
+  const headingClasses = headingLevel === "h2"
+    ? "text-lg sm:text-xl font-bold text-[#000f22]"
+    : "text-base font-semibold text-slate-900";
+
+  return (
+    <div className={`space-y-4 pt-2 ${className}`} data-testid="recruiters-showcase">
+      {showHeading && (title || subtitle) ? (
+        <div className="flex flex-wrap items-center justify-between gap-1">
+          {title ? (
+            <HeadingTag className={headingClasses}>
+              {title}
+            </HeadingTag>
+          ) : null}
+          {subtitle ? (
+            <span className="text-xs text-slate-500">
+              {subtitle}
+            </span>
+          ) : null}
+        </div>
+      ) : null}
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+        {recruiters.map((recruiter, idx) => {
+          const name = typeof recruiter === "string" ? recruiter : (recruiter.name || recruiter.title || "Recruiter");
+          const logoUrl = typeof recruiter === "object" ? (recruiter.logoUrl || recruiter.src || recruiter.url) : null;
+
+          return (
+            <div
+              key={idx}
+              className="h-24 bg-white border border-slate-200 rounded-xl p-4 flex flex-col items-center justify-center gap-1.5 shadow-xs hover:border-slate-300 transition-colors"
+            >
+              {logoUrl ? (
+                <img
+                  src={logoUrl}
+                  alt={name}
+                  className="max-h-8 max-w-[85px] object-contain"
+                  loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                    const fallback = e.currentTarget.parentElement?.querySelector(".recruiter-fallback-name");
+                    if (fallback) fallback.classList.remove("hidden");
+                  }}
+                />
+              ) : null}
+              <span
+                className={`recruiter-fallback-name text-xs font-bold text-slate-800 ${logoUrl ? "hidden" : ""}`}
+              >
+                {name}
+              </span>
+              <span className="text-[11px] font-medium text-slate-600 text-center truncate max-w-full">
+                {name}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+
+      {note ? (
+        <p className="text-xs text-slate-500 pt-1">
+          {note}
+        </p>
+      ) : null}
+    </div>
+  );
+};
+
+export const UniversityPlacements = ({
+  university,
+  recruiters: directRecruiters,
+  title,
+  subtitle,
+  note,
+  headingLevel,
+  showHeading,
+  isCourse = false,
+}) => {
+  // If invoked for course recruiters directly or with recruiters prop:
+  if (isCourse || (!university?.placements && directRecruiters)) {
+    return (
+      <RecruitersGrid
+        recruiters={directRecruiters || []}
+        title={title}
+        subtitle={subtitle}
+        note={note}
+        headingLevel={headingLevel}
+        showHeading={showHeading}
+      />
+    );
+  }
+
+  if (!university || !university.placements) return null;
+
+  return (
+    <section id="placements" className="scroll-mt-32 space-y-6">
       <div>
         <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight leading-snug">
           Placements & Career Acceleration
@@ -10,30 +123,31 @@ export const UniversityPlacements = ({ university }) => {
         </p>
       </div>
 
-      {
-    /* Key Metrics Cards */
-  }
+      {/* Key Metrics Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {university.placements.metrics.map((metric, idx) => <div
-    key={idx}
-    className="p-4 sm:p-6 bg-white border border-slate-200 rounded-xl shadow-xs"
-  >
+        {university.placements.metrics.map((metric, idx) => (
+          <div
+            key={idx}
+            className="p-4 sm:p-6 bg-white border border-slate-200 rounded-xl shadow-xs"
+          >
             <span className="block text-xs font-medium text-slate-500">
               {metric.label}
             </span>
             <span className="block text-2xl font-bold text-slate-900 tabular-nums mt-1">
               {metric.value}
             </span>
-            {metric.note && <span className="block text-xs text-slate-500 mt-1">
+            {metric.note && (
+              <span className="block text-xs text-slate-500 mt-1">
                 {metric.note}
-              </span>}
-          </div>)}
+              </span>
+            )}
+          </div>
+        ))}
       </div>
 
-      {
-    /* Career Support Services List */
-  }
-      {university.placements.supportServices && university.placements.supportServices.length > 0 && <div className="p-5 sm:p-6 bg-slate-50 border border-slate-200 rounded-xl space-y-3">
+      {/* Career Support Services List */}
+      {university.placements.supportServices && university.placements.supportServices.length > 0 && (
+        <div className="p-5 sm:p-6 bg-slate-50 border border-slate-200 rounded-xl space-y-3">
           <div className="flex items-center gap-2">
             <Briefcase className="w-5 h-5 text-blue-700" />
             <h3 className="text-sm sm:text-base font-bold text-slate-900">
@@ -42,46 +156,25 @@ export const UniversityPlacements = ({ university }) => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-            {university.placements.supportServices.map((service, idx) => <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+            {university.placements.supportServices.map((service, idx) => (
+              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                 <span>{service}</span>
-              </div>)}
+              </div>
+            ))}
           </div>
-        </div>}
+        </div>
+      )}
 
-      {
-    /* Top Recruiters Showcase */
-  }
-      {university.placements.recruiters && university.placements.recruiters.length > 0 && <div className="space-y-4 pt-2">
-          <div className="flex flex-wrap items-center justify-between gap-1">
-            <h3 className="text-base font-semibold text-slate-900">
-              Top Corporate Recruiting Partners
-            </h3>
-            <span className="text-xs text-slate-500">
-              MNC & Fortune 500 Employers
-            </span>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            {university.placements.recruiters.map((recruiter, idx) => <div
-    key={idx}
-    className="h-24 bg-white border border-slate-200 rounded-xl p-4 flex flex-col items-center justify-center gap-1.5 shadow-xs hover:border-slate-300 transition-colors"
-  >
-                {recruiter.logoUrl ? <img
-    src={recruiter.logoUrl}
-    alt={recruiter.name}
-    className="max-h-8 max-w-[85px] object-contain"
-    loading="lazy"
-  /> : <span className="text-xs font-bold text-slate-800">{recruiter.name}</span>}
-                <span className="text-[11px] font-medium text-slate-600 text-center truncate max-w-full">
-                  {recruiter.name}
-                </span>
-              </div>)}
-          </div>
-
-          {university.placements.note && <p className="text-xs text-slate-500 pt-1">
-              {university.placements.note}
-            </p>}
-        </div>}
-    </section>;
+      {/* Top Recruiters Showcase */}
+      {university.placements.recruiters && university.placements.recruiters.length > 0 && (
+        <RecruitersGrid
+          recruiters={university.placements.recruiters}
+          title="Top Corporate Recruiting Partners"
+          subtitle="MNC & Fortune 500 Employers"
+          note={university.placements.note}
+        />
+      )}
+    </section>
+  );
 };

@@ -10,6 +10,8 @@ import { PageTransition } from "./components/PageTransition";
 import { HomeView } from "./components/HomeView";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
+import Courses from "./pages/Courses";
+import CourseDetail from "./pages/CourseDetail";
 import Exams from "./pages/Exams";
 import ExamDetail from "./pages/ExamDetail";
 import News from "./pages/News";
@@ -208,7 +210,12 @@ export default function App() {
 
             <Route
     path="/courses"
-    element={<Navigate to="/universities" replace />}
+    element={<PageTransition><Courses onOpenCounseling={() => setIsCounselorModalOpen(true)} onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)} /></PageTransition>}
+  />
+
+            <Route
+    path="/courses/:slug"
+    element={<PageTransition><CourseDetail onOpenCounseling={() => setIsCounselorModalOpen(true)} onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)} /></PageTransition>}
   />
 
             <Route

@@ -1,0 +1,420 @@
+/* Course CMS content styling - matches OnlineSiksha design system */
+
+/* Course Detail Hero H1 typography targets (exact match to Blog Detail H1) */
+h1.course-detail-h1 {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+  font-size: 40px !important;
+  line-height: 1.15 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+  color: #000f22 !important;
+  margin-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+  h1.course-detail-h1 {
+    font-size: 28px !important;
+    line-height: 1.15 !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.015em !important;
+  }
+}
+
+/* Course Listing Hero H1 typography targets */
+h1.course-listing-h1 {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 28px !important;
+  line-height: 1.15 !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  color: #000f22 !important;
+  margin-top: 0 !important;
+}
+
+@media (min-width: 768px) {
+  h1.course-listing-h1 {
+    font-size: 34px !important;
+    line-height: 1.12 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1.course-listing-h1 {
+    font-size: 42px !important;
+    line-height: 1.1 !important;
+  }
+}
+
+/* Prevent .course-prose rules from leaking margins/padding into structured Syllabus cards and Counselling Banners */
+.course-prose [data-testid="syllabus-module-card"] h4 {
+  margin: 0 !important;
+  font-size: 14px !important;
+  line-height: 1.32 !important;
+  font-weight: 700 !important;
+  color: #000f22 !important;
+}
+
+.course-prose [data-testid="syllabus-module-card"] ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+
+.course-prose [data-testid="syllabus-module-card"] li {
+  margin: 0 !important;
+  line-height: 1.45 !important;
+}
+
+.course-prose [data-testid="course-counselling-banner"] h3 {
+  margin: 0 !important;
+  font-size: 15px !important;
+  line-height: 1.3 !important;
+  font-weight: 700 !important;
+}
+
+.course-prose [data-testid="course-counselling-banner"] p {
+  margin-top: 2px !important;
+  margin-bottom: 0 !important;
+}
+
+.course-prose {
+  color: #43474d;
+  font-size: 14px;
+  line-height: 1.65;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+  .course-prose {
+    font-size: 15px;
+  }
+}
+
+.course-prose h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #000f22;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.65rem;
+}
+
+@media (min-width: 768px) {
+  .course-prose h2 {
+    font-size: 1.375rem;
+  }
+}
+
+.course-prose h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #000f22;
+  line-height: 1.32;
+  margin-top: 1.25rem;
+  margin-bottom: 0.45rem;
+}
+
+@media (min-width: 768px) {
+  .course-prose h3 {
+    font-size: 1.15rem;
+  }
+}
+
+.course-prose h4 {
+  font-size: 0.925rem;
+  font-weight: 600;
+  color: #000f22;
+  line-height: 1.38;
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.course-prose h5,
+.course-prose h6 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #000f22;
+  margin-top: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.course-prose p {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  line-height: 1.65;
+  color: #43474d;
+}
+
+.course-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.course-prose ul {
+  list-style-type: disc;
+  padding-left: 1.35rem;
+  margin-top: 0.45rem;
+  margin-bottom: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.course-prose ol {
+  list-style-type: decimal;
+  padding-left: 1.35rem;
+  margin-top: 0.45rem;
+  margin-bottom: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.course-prose li {
+  line-height: 1.55;
+  color: #43474d;
+}
+
+.course-prose li::marker {
+  color: #115eaf;
+  font-weight: 600;
+}
+
+.course-prose strong,
+.course-prose b {
+  font-weight: 600;
+  color: #000f22;
+}
+
+.course-prose em,
+.course-prose i {
+  font-style: italic;
+}
+
+.course-prose a {
+  color: #115eaf;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+.course-prose a:hover {
+  color: #084a8c;
+}
+
+.course-prose blockquote {
+  margin: 1rem 0;
+  padding: 0.65rem 0.9rem;
+  border-left: 4px solid #115eaf;
+  background-color: #f7f9fc;
+  border-radius: 0 8px 8px 0;
+  color: #000f22;
+  font-style: italic;
+}
+
+/* Responsive CMS Table System - Scoped exclusively to Course Detail */
+.course-prose div[align="left"] {
+  margin: 0;
+  padding: 0;
+}
+
+.course-prose col {
+  width: auto !important;
+}
+
+.course-prose .bd-table-wrap,
+.course-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+  border: 1px solid #d5e3ff;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 15, 34, 0.04);
+}
+
+.course-prose table {
+  width: 100%;
+  min-width: 460px;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  line-height: 1.42;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .course-prose table {
+    font-size: 0.85rem;
+  }
+}
+
+.course-prose tr,
+.course-prose th,
+.course-prose td {
+  height: auto;
+  min-height: 0;
+}
+
+.course-prose th,
+.course-prose td {
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid #e7eeff;
+  vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+  .course-prose th,
+  .course-prose td {
+    padding: 0.5rem 0.85rem;
+  }
+}
+
+.course-prose th,
+.course-prose tr.header-row td {
+  background: #115eaf;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  white-space: nowrap;
+}
+
+.course-prose tr:nth-child(even) td {
+  background-color: #fbfdff;
+}
+
+.course-prose tr.header-row td {
+  background: #115eaf;
+  color: #ffffff;
+}
+
+.course-prose tr:hover:not(.header-row) td {
+  background-color: #f0f5ff;
+}
+
+.course-prose tr:last-child td {
+  border-bottom: 0;
+}
+
+.course-prose td p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.course-prose td ul,
+.course-prose td ol {
+  margin: 0.2rem 0;
+  padding-left: 1.15rem;
+  gap: 0.15rem;
+}
+
+.course-prose td a {
+  color: #115eaf;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.course-prose td a:hover {
+  color: #084a8c;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Part 2: 2-Column Key-Value Tables (e.g. Highlights, Eligibility, Aspects) */
+.course-prose .bd-table-wrap.bd-table-2col,
+.course-prose .bd-table-wrap:has(table:has(tr > th:nth-child(2):last-child)),
+.course-prose .bd-table-wrap:has(table:has(tr > td:nth-child(2):last-child)) {
+  max-width: 760px;
+}
+
+.course-prose table.table-2col,
+.course-prose table:has(tr > th:nth-child(2):last-child),
+.course-prose table:has(tr > td:nth-child(2):last-child) {
+  min-width: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.course-prose table.table-2col th:first-child,
+.course-prose table.table-2col td:first-child,
+.course-prose table:has(tr > th:nth-child(2):last-child) th:first-child,
+.course-prose table:has(tr > th:nth-child(2):last-child) td:first-child,
+.course-prose table:has(tr > td:nth-child(2):last-child) td:first-child {
+  width: 32%;
+  min-width: 130px;
+  font-weight: 600;
+  color: #000f22;
+}
+
+.course-prose table.table-2col th:nth-child(2),
+.course-prose table.table-2col td:nth-child(2),
+.course-prose table:has(tr > th:nth-child(2):last-child) th:nth-child(2),
+.course-prose table:has(tr > th:nth-child(2):last-child) td:nth-child(2),
+.course-prose table:has(tr > td:nth-child(2):last-child) td:nth-child(2) {
+  width: 68%;
+  color: #43474d;
+}
+
+/* Part 3: 3-Column Tables (e.g. University Fee Comparison Tables) */
+.course-prose .bd-table-wrap.bd-table-3col,
+.course-prose .bd-table-wrap:has(table:has(tr > th:nth-child(3):last-child)),
+.course-prose .bd-table-wrap:has(table:has(tr > td:nth-child(3):last-child)) {
+  max-width: 960px;
+}
+
+.course-prose table.table-3col,
+.course-prose table:has(tr > th:nth-child(3):last-child),
+.course-prose table:has(tr > td:nth-child(3):last-child) {
+  min-width: 540px;
+  width: 100%;
+}
+
+.course-prose table.table-3col th:first-child,
+.course-prose table.table-3col td:first-child,
+.course-prose table:has(tr > th:nth-child(3):last-child) th:first-child,
+.course-prose table:has(tr > th:nth-child(3):last-child) td:first-child {
+  width: 34%;
+  min-width: 150px;
+  font-weight: 600;
+  color: #000f22;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.course-prose table.table-3col th:nth-child(2),
+.course-prose table.table-3col td:nth-child(2),
+.course-prose table:has(tr > th:nth-child(3):last-child) th:nth-child(2),
+.course-prose table:has(tr > th:nth-child(3):last-child) td:nth-child(2) {
+  width: 22%;
+  min-width: 105px;
+  font-weight: 600;
+  color: #115eaf;
+  white-space: nowrap;
+}
+
+.course-prose table.table-3col th:nth-child(3),
+.course-prose table.table-3col td:nth-child(3),
+.course-prose table:has(tr > th:nth-child(3):last-child) th:nth-child(3),
+.course-prose table:has(tr > th:nth-child(3):last-child) td:nth-child(3) {
+  width: 44%;
+  min-width: 190px;
+  color: #43474d;
+  font-size: 0.8125rem;
+  line-height: 1.42;
+}
+
+/* Embedded Media / Figures */
+.course-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid #e7eeff;
+  object-fit: cover;
+  margin: 0.85rem 0;
+}

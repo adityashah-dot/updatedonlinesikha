@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-export default function usePageMeta({ title, description, noindex = true }) {
+export default function usePageMeta({ title, description, noindex = true, canonicalUrl = "" }) {
   useEffect(() => {
     document.title = title;
     const setMeta = (name, content) => {
@@ -9,5 +9,10 @@ export default function usePageMeta({ title, description, noindex = true }) {
     };
     if (description) setMeta("description", description);
     setMeta("robots", noindex ? "noindex, nofollow" : "index, follow");
-  }, [title, description, noindex]);
+    if (canonicalUrl) {
+      let link = document.querySelector('link[rel="canonical"]');
+      if (!link) { link = document.createElement("link"); link.setAttribute("rel", "canonical"); document.head.appendChild(link); }
+      link.setAttribute("href", canonicalUrl);
+    }
+  }, [title, description, noindex, canonicalUrl]);
 }
