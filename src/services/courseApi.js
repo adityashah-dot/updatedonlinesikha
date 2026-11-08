@@ -1,4 +1,4 @@
-import { mapApiCourse } from "./apiAdapter";
+import { mapApiCourse } from "./apiAdapter.ts";
 
 /**
  * Course CMS service - listing + detail pages.

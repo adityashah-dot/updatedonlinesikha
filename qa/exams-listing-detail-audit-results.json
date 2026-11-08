@@ -1,0 +1,941 @@
+{
+  "listing": [
+    {
+      "viewport": "desktop-1440",
+      "width": 1440,
+      "audit": {
+        "h1Text": "National & State Entrance Exams",
+        "totalCards": 10,
+        "rawIsoFound": false,
+        "colonTitleFound": false,
+        "sampleCards": [
+          {
+            "title": "IPS Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "IPS",
+            "mode": "Online",
+            "dateRowText": null,
+            "height": 324,
+            "width": 371
+          },
+          {
+            "title": "UPSC CSE Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": "Reg: 13 Jan 2027 – 2 Feb 2027",
+            "height": 324,
+            "width": 371
+          },
+          {
+            "title": "UPSC IAS Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": null,
+            "height": 324,
+            "width": 371
+          },
+          {
+            "title": "UPSC IFS",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": "Exam: 20 Aug 2027Reg: 13 Jan 2027 – 2 Feb 2027",
+            "height": 324,
+            "width": 371
+          },
+          {
+            "title": "PSEB Board Exam 2026 Class 12",
+            "hasImage": true,
+            "imgSrc": "https://images.degreefyd.com/exams/exm-psbe-board-exam-001/logo/url/pseb-board-exam-pseb-logo.webp",
+            "hasMonogramFallback": false,
+            "initials": null,
+            "mode": "Written",
+            "dateRowText": null,
+            "height": 324,
+            "width": 371
+          },
+          {
+            "title": "CBSE Board Exam 2026 Class 12",
+            "hasImage": true,
+            "imgSrc": "https://images.degreefyd.com/exams/exm-cbse-board-exam-002/logo/url/cbse-board-exam-cbse-logo.webp",
+            "hasMonogramFallback": false,
+            "initials": null,
+            "mode": "Written",
+            "dateRowText": null,
+            "height": 324,
+            "width": 371
+          }
+        ],
+        "scrollWidth": 1434,
+        "innerWidth": 1440,
+        "hasOverflow": false
+      },
+      "screenshot": "exams_listing_desktop-1440.png"
+    },
+    {
+      "viewport": "laptop-1024",
+      "width": 1024,
+      "audit": {
+        "h1Text": "National & State Entrance Exams",
+        "totalCards": 10,
+        "rawIsoFound": false,
+        "colonTitleFound": false,
+        "sampleCards": [
+          {
+            "title": "IPS Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "IPS",
+            "mode": "Online",
+            "dateRowText": null,
+            "height": 324,
+            "width": 310
+          },
+          {
+            "title": "UPSC CSE Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": "Reg: 13 Jan 2027 – 2 Feb 2027",
+            "height": 324,
+            "width": 310
+          },
+          {
+            "title": "UPSC IAS Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": null,
+            "height": 324,
+            "width": 310
+          },
+          {
+            "title": "UPSC IFS",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": "Exam: 20 Aug 2027Reg: 13 Jan 2027 – 2 Feb 2027",
+            "height": 352,
+            "width": 310
+          },
+          {
+            "title": "PSEB Board Exam 2026 Class 12",
+            "hasImage": true,
+            "imgSrc": "https://images.degreefyd.com/exams/exm-psbe-board-exam-001/logo/url/pseb-board-exam-pseb-logo.webp",
+            "hasMonogramFallback": false,
+            "initials": null,
+            "mode": "Written",
+            "dateRowText": null,
+            "height": 352,
+            "width": 310
+          },
+          {
+            "title": "CBSE Board Exam 2026 Class 12",
+            "hasImage": true,
+            "imgSrc": "https://images.degreefyd.com/exams/exm-cbse-board-exam-002/logo/url/cbse-board-exam-cbse-logo.webp",
+            "hasMonogramFallback": false,
+            "initials": null,
+            "mode": "Written",
+            "dateRowText": null,
+            "height": 352,
+            "width": 310
+          }
+        ],
+        "scrollWidth": 1018,
+        "innerWidth": 1024,
+        "hasOverflow": false
+      },
+      "screenshot": "exams_listing_laptop-1024.png"
+    },
+    {
+      "viewport": "tablet-768",
+      "width": 768,
+      "audit": {
+        "h1Text": "National & State Entrance Exams",
+        "totalCards": 10,
+        "rawIsoFound": false,
+        "colonTitleFound": false,
+        "sampleCards": [
+          {
+            "title": "IPS Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "IPS",
+            "mode": "Online",
+            "dateRowText": null,
+            "height": 324,
+            "width": 354
+          },
+          {
+            "title": "UPSC CSE Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": "Reg: 13 Jan 2027 – 2 Feb 2027",
+            "height": 324,
+            "width": 354
+          },
+          {
+            "title": "UPSC IAS Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": null,
+            "height": 324,
+            "width": 354
+          },
+          {
+            "title": "UPSC IFS",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": "Exam: 20 Aug 2027Reg: 13 Jan 2027 – 2 Feb 2027",
+            "height": 324,
+            "width": 354
+          },
+          {
+            "title": "PSEB Board Exam 2026 Class 12",
+            "hasImage": true,
+            "imgSrc": "https://images.degreefyd.com/exams/exm-psbe-board-exam-001/logo/url/pseb-board-exam-pseb-logo.webp",
+            "hasMonogramFallback": false,
+            "initials": null,
+            "mode": "Written",
+            "dateRowText": null,
+            "height": 305,
+            "width": 354
+          },
+          {
+            "title": "CBSE Board Exam 2026 Class 12",
+            "hasImage": true,
+            "imgSrc": "https://images.degreefyd.com/exams/exm-cbse-board-exam-002/logo/url/cbse-board-exam-cbse-logo.webp",
+            "hasMonogramFallback": false,
+            "initials": null,
+            "mode": "Written",
+            "dateRowText": null,
+            "height": 305,
+            "width": 354
+          }
+        ],
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "hasOverflow": false
+      },
+      "screenshot": "exams_listing_tablet-768.png"
+    },
+    {
+      "viewport": "mobile-390",
+      "width": 390,
+      "audit": {
+        "h1Text": "National & State Entrance Exams",
+        "totalCards": 10,
+        "rawIsoFound": false,
+        "colonTitleFound": false,
+        "sampleCards": [
+          {
+            "title": "IPS Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "IPS",
+            "mode": "Online",
+            "dateRowText": null,
+            "height": 266,
+            "width": 350
+          },
+          {
+            "title": "UPSC CSE Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": "Reg: 13 Jan 2027 – 2 Feb 2027",
+            "height": 285,
+            "width": 350
+          },
+          {
+            "title": "UPSC IAS Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": null,
+            "height": 266,
+            "width": 350
+          },
+          {
+            "title": "UPSC IFS",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": "Exam: 20 Aug 2027Reg: 13 Jan 2027 – 2 Feb 2027",
+            "height": 285,
+            "width": 350
+          },
+          {
+            "title": "PSEB Board Exam 2026 Class 12",
+            "hasImage": true,
+            "imgSrc": "https://images.degreefyd.com/exams/exm-psbe-board-exam-001/logo/url/pseb-board-exam-pseb-logo.webp",
+            "hasMonogramFallback": false,
+            "initials": null,
+            "mode": "Written",
+            "dateRowText": null,
+            "height": 246,
+            "width": 350
+          },
+          {
+            "title": "CBSE Board Exam 2026 Class 12",
+            "hasImage": true,
+            "imgSrc": "https://images.degreefyd.com/exams/exm-cbse-board-exam-002/logo/url/cbse-board-exam-cbse-logo.webp",
+            "hasMonogramFallback": false,
+            "initials": null,
+            "mode": "Written",
+            "dateRowText": null,
+            "height": 266,
+            "width": 350
+          }
+        ],
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "hasOverflow": false
+      },
+      "screenshot": "exams_listing_mobile-390.png"
+    },
+    {
+      "viewport": "small-mobile-360",
+      "width": 360,
+      "audit": {
+        "h1Text": "National & State Entrance Exams",
+        "totalCards": 10,
+        "rawIsoFound": false,
+        "colonTitleFound": false,
+        "sampleCards": [
+          {
+            "title": "IPS Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "IPS",
+            "mode": "Online",
+            "dateRowText": null,
+            "height": 266,
+            "width": 320
+          },
+          {
+            "title": "UPSC CSE Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": "Reg: 13 Jan 2027 – 2 Feb 2027",
+            "height": 285,
+            "width": 320
+          },
+          {
+            "title": "UPSC IAS Exam 2027",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": null,
+            "height": 266,
+            "width": 320
+          },
+          {
+            "title": "UPSC IFS",
+            "hasImage": false,
+            "imgSrc": null,
+            "hasMonogramFallback": true,
+            "initials": "UPSC",
+            "mode": "Online",
+            "dateRowText": "Exam: 20 Aug 2027Reg: 13 Jan 2027 – 2 Feb 2027",
+            "height": 312,
+            "width": 320
+          },
+          {
+            "title": "PSEB Board Exam 2026 Class 12",
+            "hasImage": true,
+            "imgSrc": "https://images.degreefyd.com/exams/exm-psbe-board-exam-001/logo/url/pseb-board-exam-pseb-logo.webp",
+            "hasMonogramFallback": false,
+            "initials": null,
+            "mode": "Written",
+            "dateRowText": null,
+            "height": 266,
+            "width": 320
+          },
+          {
+            "title": "CBSE Board Exam 2026 Class 12",
+            "hasImage": true,
+            "imgSrc": "https://images.degreefyd.com/exams/exm-cbse-board-exam-002/logo/url/cbse-board-exam-cbse-logo.webp",
+            "hasMonogramFallback": false,
+            "initials": null,
+            "mode": "Written",
+            "dateRowText": null,
+            "height": 266,
+            "width": 320
+          }
+        ],
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "hasOverflow": false
+      },
+      "screenshot": "exams_listing_small-mobile-360.png"
+    }
+  ],
+  "detail": [
+    {
+      "slug": "ips-exam",
+      "viewport": "desktop-1440",
+      "width": 1440,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 27,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "8px 13.6px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 1434,
+        "innerWidth": 1440,
+        "hasOverflow": false
+      },
+      "screenshot": "ips-exam_polish_desktop-1440.png"
+    },
+    {
+      "slug": "ips-exam",
+      "viewport": "laptop-1024",
+      "width": 1024,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 27,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "8px 13.6px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 1018,
+        "innerWidth": 1024,
+        "hasOverflow": false
+      },
+      "screenshot": "ips-exam_polish_laptop-1024.png"
+    },
+    {
+      "slug": "ips-exam",
+      "viewport": "tablet-768",
+      "width": 768,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 27,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "8px 13.6px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "hasOverflow": false
+      },
+      "screenshot": "ips-exam_polish_tablet-768.png"
+    },
+    {
+      "slug": "ips-exam",
+      "viewport": "mobile-390",
+      "width": 390,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 27,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "7.2px 12px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "hasOverflow": false
+      },
+      "screenshot": "ips-exam_polish_mobile-390.png"
+    },
+    {
+      "slug": "ips-exam",
+      "viewport": "small-mobile-360",
+      "width": 360,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 27,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "7.2px 12px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "hasOverflow": false
+      },
+      "screenshot": "ips-exam_polish_small-mobile-360.png"
+    },
+    {
+      "slug": "upsc-cse-exam",
+      "viewport": "desktop-1440",
+      "width": 1440,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 15,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "8px 13.6px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 1434,
+        "innerWidth": 1440,
+        "hasOverflow": false
+      },
+      "screenshot": "upsc-cse-exam_polish_desktop-1440.png"
+    },
+    {
+      "slug": "upsc-cse-exam",
+      "viewport": "laptop-1024",
+      "width": 1024,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 15,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "8px 13.6px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 1018,
+        "innerWidth": 1024,
+        "hasOverflow": false
+      },
+      "screenshot": "upsc-cse-exam_polish_laptop-1024.png"
+    },
+    {
+      "slug": "upsc-cse-exam",
+      "viewport": "tablet-768",
+      "width": 768,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 15,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "8px 13.6px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "hasOverflow": false
+      },
+      "screenshot": "upsc-cse-exam_polish_tablet-768.png"
+    },
+    {
+      "slug": "upsc-cse-exam",
+      "viewport": "mobile-390",
+      "width": 390,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 15,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "7.2px 12px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "hasOverflow": false
+      },
+      "screenshot": "upsc-cse-exam_polish_mobile-390.png"
+    },
+    {
+      "slug": "upsc-cse-exam",
+      "viewport": "small-mobile-360",
+      "width": 360,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 15,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "7.2px 12px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "hasOverflow": false
+      },
+      "screenshot": "upsc-cse-exam_polish_small-mobile-360.png"
+    },
+    {
+      "slug": "jee-main-exam",
+      "viewport": "desktop-1440",
+      "width": 1440,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 14,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "8px 13.6px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 1434,
+        "innerWidth": 1440,
+        "hasOverflow": false
+      },
+      "screenshot": "jee-main-exam_polish_desktop-1440.png"
+    },
+    {
+      "slug": "jee-main-exam",
+      "viewport": "laptop-1024",
+      "width": 1024,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 14,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "8px 13.6px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 1018,
+        "innerWidth": 1024,
+        "hasOverflow": false
+      },
+      "screenshot": "jee-main-exam_polish_laptop-1024.png"
+    },
+    {
+      "slug": "jee-main-exam",
+      "viewport": "tablet-768",
+      "width": 768,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 14,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "8px 13.6px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "hasOverflow": false
+      },
+      "screenshot": "jee-main-exam_polish_tablet-768.png"
+    },
+    {
+      "slug": "jee-main-exam",
+      "viewport": "mobile-390",
+      "width": 390,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 14,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "7.2px 12px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "hasOverflow": false
+      },
+      "screenshot": "jee-main-exam_polish_mobile-390.png"
+    },
+    {
+      "slug": "jee-main-exam",
+      "viewport": "small-mobile-360",
+      "width": 360,
+      "audit": {
+        "hasSide": true,
+        "hasTocNav": true,
+        "tocLinksCount": 6,
+        "hasDiscoverCard": true,
+        "hasCounsellingCard": true,
+        "totalTables": 14,
+        "tableStyles": {
+          "wrapBorder": "1px solid rgb(213, 227, 255)",
+          "wrapRadius": "10px",
+          "thBg": null,
+          "thColor": null,
+          "thFontSize": null,
+          "thFontWeight": null,
+          "thTextTransform": null,
+          "tdPadding": "7.2px 12px",
+          "tdBorderBottom": "rgb(231, 238, 255)",
+          "evenTdColor": "rgb(251, 253, 255)"
+        },
+        "colors": {
+          "h1Color": "rgb(0, 15, 34)",
+          "h2Color": "rgb(11, 29, 58)",
+          "pColor": "rgb(55, 65, 81)",
+          "pLineHeight": "25.2px"
+        },
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "hasOverflow": false
+      },
+      "screenshot": "jee-main-exam_polish_small-mobile-360.png"
+    }
+  ]
+}

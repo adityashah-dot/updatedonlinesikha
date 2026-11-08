@@ -37,13 +37,13 @@
   .blog-detail h3{ font-size:18px }
 }
 
-.bd-page{ padding-block:20px 44px }
-@media (min-width:1024px){ .bd-page{ padding-block:28px 72px } }
-.bd-layout{ display:grid; gap:28px; grid-template-columns:minmax(0,1fr) }
-@media (min-width:1024px){ .bd-layout{ grid-template-columns:minmax(0,2.2fr) minmax(0,1fr); column-gap:36px; align-items:start } }
-.bd-stack{ display:grid; gap:28px; min-width:0 }
+.bd-page{ padding-block:16px 36px }
+@media (min-width:1024px){ .bd-page{ padding-block:24px 52px } }
+.bd-layout{ display:grid; gap:24px; grid-template-columns:minmax(0,1fr) }
+@media (min-width:1024px){ .bd-layout{ grid-template-columns:minmax(0,2.2fr) minmax(0,1fr); column-gap:32px; align-items:start } }
+.bd-stack{ display:grid; gap:24px; min-width:0 }
 .bd-stack > *{ min-width:0 }
-@media (min-width:768px){ .bd-stack{ gap:32px } .bd-layout{ gap:32px } }
+@media (min-width:768px){ .bd-stack{ gap:28px } .bd-layout{ gap:28px } }
 .bd-card{ background:none; border:0; padding:0 }
 
 /* Breadcrumb */
@@ -95,40 +95,336 @@
 
 /* Prose / content */
 .bd-prose{ max-width:72ch }
-.bd-prose h2{ margin:40px 0 16px }
-.bd-prose h3{ margin:28px 0 8px }
-.bd-prose p{ margin:0 0 16px }
+.bd-prose h2{ margin:28px 0 12px }
+.bd-prose h3{ margin:22px 0 8px }
+.bd-prose p{ margin:0 0 14px }
 .bd-prose p:last-child{ margin-bottom:0 }
-.bd-prose ul, .bd-prose ol{ padding-left:22px; margin:0 0 16px; display:grid; gap:8px }
+.bd-prose ul, .bd-prose ol{ padding-left:22px; margin:0 0 14px; display:grid; gap:6px }
 .bd-prose ul{ list-style:disc }
 .bd-prose ol{ list-style:decimal }
 .bd-prose li::marker{ color:var(--primary) }
 .bd-prose strong{ font-weight:600; color:var(--heading) }
-.bd-prose blockquote{ margin:20px 0; padding:2px 0 2px 18px; border-left:4px solid var(--primary); color:var(--heading); font-weight:500; font-size:1.05em }
-.bd-note{ margin:20px 0 0; padding:2px 0 2px 14px; font-size:15px; line-height:1.6; color:var(--text-2); border-left:3px solid var(--border) }
-.bd-note.ok{ border-left-color:var(--success) }
-.bd-note.warn{ border-left-color:var(--rating) }
+.bd-prose blockquote{ margin:16px 0; padding:4px 0 4px 16px; border-left:4px solid var(--primary); color:var(--heading); font-weight:500; font-size:1.02em; background:#f7faff; border-radius:0 8px 8px 0 }
+.bd-note{ margin:16px 0 0; padding:6px 0 6px 14px; font-size:14px; line-height:1.6; color:var(--text-2); border-left:3px solid var(--primary); background:#f7faff; border-radius:0 6px 6px 0 }
+.bd-note.ok{ border-left-color:var(--success); background:#f0fdf6 }
+.bd-note.warn{ border-left-color:var(--rating); background:#fffbeb }
 
 /* Table */
-.bd-table-wrap{ overflow-x:auto; margin:16px 0 0; border:1px solid var(--border); border-radius:var(--radius) }
-.bd-table{ width:100%; min-width:560px; border-collapse:collapse; font-size:15px; line-height:1.5; text-align:left }
-.bd-table th, .bd-table td{ padding:12px 16px; border-bottom:1px solid var(--divider); vertical-align:top }
-.bd-table th{ background:var(--primary-soft); color:var(--heading); font-weight:600; white-space:nowrap }
+.bd-table-wrap{ overflow-x:auto; -webkit-overflow-scrolling:touch; margin:14px 0 16px; border:1px solid #d5e3ff; border-radius:10px; background:#fff; box-shadow:0 1px 2px rgba(0,15,34,0.04) }
+.bd-table{ width:100%; min-width:480px; border-collapse:collapse; font-size:14px; line-height:1.5; text-align:left }
+.bd-table th, .bd-table td{ padding:10px 14px; border-bottom:1px solid #e7eeff; vertical-align:middle }
+@media (min-width:768px){ .bd-table th, .bd-table td{ padding:12px 16px } }
+.bd-table th{ background:#115eaf !important; color:#fff !important; font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.025em; white-space:nowrap; border-bottom:2px solid #084a8c }
+.bd-table tbody tr:nth-child(even) td{ background-color:#fbfdff }
+.bd-table tbody tr:hover td{ background-color:#f0f5ff }
 .bd-table tr:last-child td{ border-bottom:0 }
 .bd-table td:first-child{ font-weight:600; color:var(--heading) }
-.bd-hint{ margin-top:8px; font-size:13px; color:var(--text-muted) }
+.bd-hint{ margin-top:6px; font-size:12px; color:var(--text-muted) }
 @media (min-width:768px){ .bd-hint{ display:none } }
 
 /* CMS rich-text tables (no .bd-table class) — match the styled table system.
    SafeHtml wraps these in .bd-table-wrap so wide tables scroll inside the column
    instead of forcing horizontal page overflow. */
-.bd-prose .bd-table-wrap table{ width:100%; min-width:480px; border-collapse:collapse; font-size:15px; line-height:1.5; text-align:left; background:#fff; border:1px solid var(--border); border-radius:var(--radius) }
-.bd-prose .bd-table-wrap th, .bd-prose .bd-table-wrap td{ padding:12px 16px; border-bottom:1px solid var(--divider); vertical-align:middle }
-.bd-prose .bd-table-wrap th{ background:var(--primary); color:#fff; font-weight:600; white-space:normal; vertical-align:middle; text-align:left; border-bottom:2px solid var(--primary) }
-.bd-prose .bd-table-wrap tr:last-child td,.bd-prose .bd-table-wrap tr:last-child th{ border-bottom:0 }
+.bd-prose .bd-table-wrap table{ width:100%; min-width:480px; border-collapse:collapse; font-size:14px; line-height:1.5; text-align:left; background:#fff }
+.bd-prose .bd-table-wrap th, .bd-prose .bd-table-wrap td{ padding:10px 14px; border-bottom:1px solid #e7eeff; vertical-align:middle }
+@media (min-width:768px){ .bd-prose .bd-table-wrap th, .bd-prose .bd-table-wrap td{ padding:12px 16px } }
+.bd-prose .bd-table-wrap th,
+.bd-prose .bd-table-wrap table thead th,
+.bd-prose .bd-table-wrap table tr.header-row td{ background:#115eaf !important; color:#fff !important; font-weight:600; font-size:12px; text-transform:uppercase; letter-spacing:0.025em; white-space:nowrap; vertical-align:middle; text-align:left; border-bottom:2px solid #084a8c }
+.bd-prose .bd-table-wrap tbody tr:nth-child(even) td{ background-color:#fbfdff }
+.bd-prose .bd-table-wrap tbody tr:hover td{ background-color:#f0f5ff }
+.bd-prose .bd-table-wrap tr:last-child td, .bd-prose .bd-table-wrap tr:last-child th{ border-bottom:0 }
 .bd-prose .bd-table-wrap td:first-child{ font-weight:600; color:var(--heading) }
 
-/* Definitions list */
+/* 2-column tables (e.g. Highlights, Key Facts, Eligibility) */
+.bd-prose .bd-table-wrap.bd-table-2col table{ min-width:0; width:100% }
+.bd-prose .bd-table-wrap.bd-table-2col th:first-child,
+.bd-prose .bd-table-wrap.bd-table-2col td:first-child{ width:38%; max-width:260px; font-weight:600; color:var(--heading); background-color:#fbfdff }
+.bd-prose .bd-table-wrap.bd-table-2col th{ background:#115eaf !important; color:#fff !important }
+
+/* Exam Detail Specific Layout Optimization */
+@media (min-width: 1024px) {
+  .exam-layout {
+    grid-template-columns: minmax(0, 1fr) 280px;
+    column-gap: 28px;
+    align-items: start;
+  }
+}
+.exam-layout .bd-prose {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  color: #374151;
+}
+.exam-layout .bd-prose h2 {
+  color: #0b1d3a;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  margin: 30px 0 14px;
+}
+.exam-layout .bd-prose h3 {
+  color: #0b3558;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 22px 0 10px;
+}
+.exam-layout .bd-prose p {
+  color: #374151;
+  font-size: 15px;
+  line-height: 1.68;
+  margin-bottom: 15px;
+}
+.exam-layout .bd-prose strong {
+  color: #000f22;
+  font-weight: 600;
+}
+.exam-layout .bd-prose li {
+  color: #374151;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+.exam-layout .bd-side {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-x: hidden !important;
+  min-width: 0;
+}
+.exam-layout .bd-side > * {
+  flex-shrink: 0;
+  min-width: 0;
+}
+@media (min-width: 1024px) {
+  .exam-layout .bd-side {
+    position: sticky;
+    top: 80px;
+    max-height: calc(100vh - 96px);
+    overflow-y: auto;
+    overflow-x: hidden !important;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #d5e3ff transparent;
+    padding-right: 2px;
+  }
+  .exam-layout .bd-side::-webkit-scrollbar {
+    width: 4px;
+  }
+  .exam-layout .bd-side::-webkit-scrollbar-thumb {
+    background: #d5e3ff;
+    border-radius: 4px;
+  }
+}
+.exam-layout .exam-toc,
+.exam-layout .bd-toc {
+  background: #ffffff;
+  border: 1px solid #e7eeff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 1px 2px rgba(0, 15, 34, 0.04);
+  overflow-x: hidden !important;
+  max-width: 100%;
+}
+.exam-layout .exam-toc h2,
+.blog-detail .exam-layout .exam-toc h2,
+.exam-layout .bd-toc h2,
+.blog-detail .exam-layout .bd-toc h2 {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  color: #000f22 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 10px !important;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f0f4f8;
+}
+.exam-layout .exam-toc a,
+.exam-layout .bd-toc a {
+  padding: 4px 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #43474d;
+}
+.exam-layout .exam-toc a:hover,
+.exam-layout .bd-toc a:hover {
+  color: #115eaf;
+}
+/* Course Table Theme Alignment for Exam Detail - Source of Truth: course-content.css */
+.exam-layout .bd-table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+  border: 1px solid #d5e3ff;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 15, 34, 0.04);
+}
+
+.exam-layout .bd-table,
+.exam-layout .bd-prose .bd-table-wrap table {
+  width: 100%;
+  min-width: 460px;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  line-height: 1.42;
+  text-align: left;
+  background: #ffffff;
+}
+
+@media (min-width: 768px) {
+  .exam-layout .bd-table,
+  .exam-layout .bd-prose .bd-table-wrap table {
+    font-size: 0.85rem;
+  }
+}
+
+.exam-layout .bd-table th,
+.exam-layout .bd-table td,
+.exam-layout .bd-prose .bd-table-wrap th,
+.exam-layout .bd-prose .bd-table-wrap td {
+  padding: 0.45rem 0.75rem;
+  border-bottom: 1px solid #e7eeff;
+  vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+  .exam-layout .bd-table th,
+  .exam-layout .bd-table td,
+  .exam-layout .bd-prose .bd-table-wrap th,
+  .exam-layout .bd-prose .bd-table-wrap td {
+    padding: 0.5rem 0.85rem;
+  }
+}
+
+.exam-layout .bd-table th,
+.exam-layout .bd-prose .bd-table-wrap th,
+.exam-layout .bd-prose .bd-table-wrap table thead th,
+.exam-layout .bd-prose .bd-table-wrap table tr.header-row td {
+  background: #115eaf !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  white-space: nowrap;
+  border-bottom: 1px solid #e7eeff !important;
+}
+
+.exam-layout .bd-table tbody tr:nth-child(even) td,
+.exam-layout .bd-prose .bd-table-wrap tbody tr:nth-child(even) td {
+  background-color: #fbfdff;
+}
+
+.exam-layout .bd-table tbody tr:hover:not(.header-row) td,
+.exam-layout .bd-prose .bd-table-wrap tbody tr:hover:not(.header-row) td {
+  background-color: #f0f5ff;
+}
+
+.exam-layout .bd-table tr:last-child td,
+.exam-layout .bd-prose .bd-table-wrap tr:last-child td {
+  border-bottom: 0;
+}
+
+.exam-layout .bd-prose .bd-table-wrap td p {
+  margin: 0;
+  line-height: 1.4;
+  color: #43474d;
+}
+
+.exam-layout .bd-prose .bd-table-wrap td a {
+  color: #115eaf;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.exam-layout .bd-prose .bd-table-wrap td a:hover {
+  color: #084a8c;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* 2-Column Key-Value Tables (e.g. Highlights, Eligibility, Pattern) */
+.exam-layout .bd-prose .bd-table-wrap.bd-table-2col,
+.exam-layout .bd-prose .bd-table-wrap:has(table:has(tr > th:nth-child(2):last-child)),
+.exam-layout .bd-prose .bd-table-wrap:has(table:has(tr > td:nth-child(2):last-child)) {
+  max-width: 760px;
+}
+
+.exam-layout .bd-prose table.table-2col,
+.exam-layout .bd-prose table:has(tr > th:nth-child(2):last-child),
+.exam-layout .bd-prose table:has(tr > td:nth-child(2):last-child) {
+  min-width: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.exam-layout .bd-prose table.table-2col th:first-child,
+.exam-layout .bd-prose table.table-2col td:first-child,
+.exam-layout .bd-prose table:has(tr > th:nth-child(2):last-child) th:first-child,
+.exam-layout .bd-prose table:has(tr > th:nth-child(2):last-child) td:first-child,
+.exam-layout .bd-prose table:has(tr > td:nth-child(2):last-child) td:first-child {
+  width: 32%;
+  min-width: 130px;
+  font-weight: 600;
+  color: #000f22;
+}
+
+.exam-layout .bd-prose table.table-2col th:nth-child(2),
+.exam-layout .bd-prose table.table-2col td:nth-child(2),
+.exam-layout .bd-prose table:has(tr > th:nth-child(2):last-child) th:nth-child(2),
+.exam-layout .bd-prose table:has(tr > th:nth-child(2):last-child) td:nth-child(2),
+.exam-layout .bd-prose table:has(tr > td:nth-child(2):last-child) td:nth-child(2) {
+  width: 68%;
+  color: #43474d;
+}
+
+/* 3-Column Tables (e.g. Cutoff & Comparison Tables) */
+.exam-layout .bd-prose .bd-table-wrap.bd-table-3col,
+.exam-layout .bd-prose .bd-table-wrap:has(table:has(tr > th:nth-child(3):last-child)),
+.exam-layout .bd-prose .bd-table-wrap:has(table:has(tr > td:nth-child(3):last-child)) {
+  max-width: 960px;
+}
+
+.exam-layout .bd-prose table.table-3col,
+.exam-layout .bd-prose table:has(tr > th:nth-child(3):last-child),
+.exam-layout .bd-prose table:has(tr > td:nth-child(3):last-child) {
+  min-width: 540px;
+  width: 100%;
+}
+
+.exam-layout .bd-prose table.table-3col th:first-child,
+.exam-layout .bd-prose table.table-3col td:first-child,
+.exam-layout .bd-prose table:has(tr > th:nth-child(3):last-child) th:first-child,
+.exam-layout .bd-prose table:has(tr > th:nth-child(3):last-child) td:first-child {
+  width: 34%;
+  min-width: 150px;
+  font-weight: 600;
+  color: #000f22;
+}
+
+.exam-layout .bd-prose table.table-3col th:nth-child(2),
+.exam-layout .bd-prose table.table-3col td:nth-child(2),
+.exam-layout .bd-prose table:has(tr > th:nth-child(3):last-child) th:nth-child(2),
+.exam-layout .bd-prose table:has(tr > th:nth-child(3):last-child) td:nth-child(2) {
+  width: 22%;
+  min-width: 105px;
+  font-weight: 600;
+  color: #115eaf;
+  white-space: nowrap;
+}
+
+.exam-layout .bd-prose table.table-3col th:nth-child(3),
+.exam-layout .bd-prose table.table-3col td:nth-child(3),
+.exam-layout .bd-prose table:has(tr > th:nth-child(3):last-child) th:nth-child(3),
+.exam-layout .bd-prose table:has(tr > th:nth-child(3):last-child) td:nth-child(3) {
+  width: 44%;
+  min-width: 190px;
+  color: #43474d;
+  font-size: 0.8125rem;
+  line-height: 1.42;
+}
 .bd-defs{ list-style:none; padding:0; margin:0 0 16px; display:grid; border-top:1px solid var(--divider) }
 .bd-defs li{ padding:12px 0; border-bottom:1px solid var(--divider) }
 .bd-defs strong{ display:block; color:var(--heading); font-weight:600 }
@@ -154,7 +450,8 @@
 .bd-faq details[open] summary svg{ transform:rotate(180deg) }
 .bd-faq .a{ padding:0 0 18px; line-height:1.6 }
 
-/* Figure/gallery */
+/* Figure/gallery/content image */
+.bd-prose img{ max-width:100%; height:auto; border-radius:8px; margin:16px auto; border:1px solid #e7eeff; box-shadow:0 1px 3px rgba(0,15,34,0.05) }
 .bd-figure{ margin:20px 0 }
 .bd-figure img{ width:100%; height:auto; border:1px solid var(--border); border-radius:var(--radius); object-fit:cover; max-height:440px }
 .bd-figure figcaption{ padding:8px 2px; font-size:13px; color:var(--text-muted) }
