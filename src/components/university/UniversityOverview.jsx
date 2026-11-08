@@ -8,7 +8,7 @@ export const UniversityOverview = ({ university }) => {
     /* Editorial Title & Lead */
   }
       <div>
-        <h2 className="text-xl sm:text-2xl font-semibold text-[#000f22] tracking-[-0.02em] leading-snug">
+<h2 className="text-xl sm:text-2xl font-bold text-[#000f22] tracking-[-0.02em] leading-snug">
           About {university.name}
         </h2>
         <div className="mt-2 space-y-2.5 text-[#43474d] text-sm sm:text-base leading-relaxed max-w-4xl">

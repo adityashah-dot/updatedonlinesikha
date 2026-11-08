@@ -56,7 +56,7 @@ export default function CollegeTableOfContents({
     >
       <h2>{title}</h2>
 
-      <ul id={listId} className="toc-list">
+<ul id={listId} className="space-y-3 overflow-x-auto">
         {visibleItems.map((item) => {
           const isActive = activeId === item.id;
 
@@ -65,7 +65,12 @@ export default function CollegeTableOfContents({
               <a
                 href={`#${item.id}`}
                 onClick={(e) => handleScrollTo(e, item.id)}
-                className={isActive ? "is-active" : ""}
+                className={`text-sm sm:text-[14.5px] leading-relaxed whitespace-nowrap transition-colors cursor-pointer ${
+                  isActive
+                    ? "text-[#115eaf] font-medium underline"
+                    : "text-[#115eaf] hover:text-[#004689] hover:underline font-normal"
+                }`}
+
               >
                 {item.label}
               </a>

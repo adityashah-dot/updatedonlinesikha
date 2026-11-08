@@ -662,8 +662,12 @@ export const AmityScholarshipsView = ({
           <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
     sectionId="blogs"
-    className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+    className="w-full rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:p-6"
     compact
+    horizontal
+    autoScroll
+    showDescriptionOnMobile
+    fetchLivePosts
   />
         </div>
       </div>

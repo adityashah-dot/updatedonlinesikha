@@ -139,7 +139,7 @@ export const AmityOverviewView = ({
     }}
   />
             <div className="min-w-0">
-              <h1 className="uni-title tracking-tight font-sans text-[#000f22]">
+<h1 className="section-title text-2xl sm:text-3xl lg:text-3xl font-bold tracking-tight font-sans text-[#000f22] max-w-2xl leading-tight">
                 {AMITY.title}
               </h1>
               <div className="flex flex-wrap items-center gap-2 mt-3">
@@ -280,8 +280,9 @@ export const AmityOverviewView = ({
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
             <div className="flex items-center justify-between flex-wrap gap-3">
-              <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                Amity University Online Highlights 2026
+<h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans md:whitespace-nowrap">
+                 Amity University Online Highlights 2026
+
               </h2>
               <button
     onClick={() => onOpenBrochure()}
@@ -521,7 +522,7 @@ export const AmityOverviewView = ({
     id="rankings"
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
-            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
               {sectionTitle(AMITY.shortName, "Rankings and Accreditations")}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
@@ -681,7 +682,7 @@ export const AmityOverviewView = ({
     id="placements"
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
-            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
               {sectionTitle(AMITY.shortName, "Placements")}
             </h2>
             <p className="section-description text-sm text-[#2d3137] leading-relaxed font-normal">
@@ -952,7 +953,7 @@ export const AmityOverviewView = ({
     id="reviews-section"
     className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px]"
   >
-            <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans">
+            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
               {sectionTitle(AMITY.shortName, "Reviews")}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-[18px]">
@@ -1029,8 +1030,12 @@ export const AmityOverviewView = ({
           <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
     sectionId="blogs"
-    className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+    className="w-full rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:p-6"
     compact
+    horizontal
+    autoScroll
+    showDescriptionOnMobile
+    fetchLivePosts
   />
         </div>
       </div>
