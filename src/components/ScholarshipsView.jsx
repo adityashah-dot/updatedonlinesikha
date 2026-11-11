@@ -1,5 +1,5 @@
 import { BlogsListSection } from "./BlogsListSection";
-﻿
+
 import { useState, useEffect } from "react";
 import {
   Award,

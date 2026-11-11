@@ -8,6 +8,7 @@ import { AdmissionFlowSteps } from "./AdmissionFlowSteps";
 import { ExaminationPatternSteps } from "./ExaminationPatternSteps";
 import { FaqAccordion } from "./FaqAccordion";
 import { ProgrammeCardsSection } from "./ProgrammeCardsSection";
+import { BlogsListSection } from "./BlogsListSection";
 import ReadMoreText from "./ReadMoreText";
 import { CURRENT_YEAR } from "../constants/years";
 import { collegeSectionTitle } from "../lib/collegeTitle";

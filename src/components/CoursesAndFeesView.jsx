@@ -1,5 +1,5 @@
 import { BlogsListSection } from "./BlogsListSection";
-﻿
+
 import { useState, useEffect, useMemo } from "react";
 import {
   ArrowRight,
