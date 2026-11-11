@@ -1615,88 +1615,16 @@ const OverviewView = ({
             {
     /* Blogs */
   }
-            {(collegeData?.blogs?.length) && (
-                <section id="blogs" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
-              <div className="flex items-end justify-between gap-3 flex-wrap">
-                <SectionHeader title="Latest Blogs" href="/blog" sub={collegeData?.blogsMeta?.description} />
-              </div>
-
-              {
-    /* Slider */
-  }
-              <div className="flex items-center gap-3 mt-[18px]">
-                <button
-    onClick={() => setBlogIndex((i) => Math.max(0, i - 1))}
-    disabled={blogIndex === 0}
-    aria-label="Previous blogs"
-    className="shrink-0 w-[42px] h-[42px] rounded-full border border-[#d5e3ff] bg-white text-[#000f22] text-lg flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white disabled:opacity-35 disabled:cursor-default transition-all"
-  >
-                  ←
-                </button>
-
-                <div className="w-full overflow-hidden">
-                  <div
-    className="flex"
-    style={{
-      gap: "22px",
-      transform: `translateX(-${blogIndex * (100 / blogVisible)}%)`,
-      transition: "transform .45s cubic-bezier(.4,0,.2,1)"
-    }}
-  >
-                    {(collegeData?.blogs || []).map((post, i) => <article
-    key={i}
-    className="flex min-w-0 flex-col overflow-hidden bg-white border border-[#e7eeff] rounded-2xl hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
-    style={{ flex: `0 0 calc((100% - ${(blogVisible - 1) * 22}px) / ${blogVisible})` }}
-  >
-                        <a href="#" className="relative block h-[145px] overflow-hidden bg-[#f0f3ff]">
-                          <img
-    src={post.image}
-    alt={post.title}
-    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-  />
-                          <span className="absolute left-3.5 top-3.5 px-2.5 py-1.5 rounded-[20px] bg-[#115eaf] text-white text-[11px] font-bold leading-none">
-                            {post.category}
-                          </span>
-                        </a>
-                        <div className="flex flex-1 flex-col p-[18px]">
-                          <h3 className="line-clamp-2 text-[#000f22] text-lg leading-snug font-bold font-sans">{post.title}</h3>
-                          {post.excerpt ? (
-                            <p className="mt-[7.5px] line-clamp-2 text-sm text-[#43474d] leading-relaxed font-normal">{post.excerpt}</p>
-                          ) : null}
-                          <div className="mt-auto flex items-center justify-start gap-3.5 pt-4">
-                            <span className="flex shrink-0 items-center gap-1.5 whitespace-nowrap text-[13px] text-[#43474d] font-normal">
-                              <Clock className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
-                              {post.date}
-                            </span>
-                          </div>
-                        </div>
-                      </article>)}
-                  </div>
-                </div>
-
-                <button
-    onClick={() => setBlogIndex((i) => Math.min(Math.max(0, (collegeData?.blogs || []).length - blogVisible), i + 1))}
-    disabled={blogIndex >= (collegeData?.blogs || []).length - blogVisible}
-    aria-label="Next blogs"
-    className="shrink-0 w-[42px] h-[42px] rounded-full border border-[#d5e3ff] bg-white text-[#000f22] text-lg flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white disabled:opacity-35 disabled:cursor-default transition-all"
-  >
-                  →
-                </button>
-              </div>
-
-              {
-    /* Dots */
-  }
-              <div className="flex justify-center items-center gap-[7px]">
-                {Array.from({ length: Math.max(0, (collegeData?.blogs || []).length - blogVisible) + 1 }).map((_, i) => <button
-    key={i}
-    onClick={() => setBlogIndex(i)}
-    aria-label={`Go to blog slide ${i + 1}`}
-    className={`h-[7px] rounded-[10px] border-none cursor-pointer transition-all ${i === blogIndex ? "w-[23px] bg-[#115eaf]" : "w-[7px] bg-[#d5e3ff]"}`}
-  />)}
-              </div>
-            </section>
-              )}
+            <BlogsListSection
+              onOpenHelpDesk={onOpenHelpDesk}
+              sectionId="blogs"
+              title={collegeData?.blogsMeta?.title || "Latest Blogs"}
+              sub={collegeData?.blogsMeta?.description || "Want to learn more before you apply? Our blog has a wealth of information to help you."}
+              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs p-5 md:p-6"
+              posts={collegeData?.blogs}
+              fetchLivePosts
+              horizontal
+            />
         </div>
       </div>
 

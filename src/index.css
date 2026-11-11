@@ -739,3 +739,20 @@ body.dark,
   color: #000f22;
   font-weight: 600;
 }
+
+
+/* Responsive Blog Card in Carousel (4 banners across on desktop) */
+.blog-carousel-card {
+  flex: 0 0 84%;
+  scroll-snap-align: start;
+}
+@media (min-width: 640px) {
+  .blog-carousel-card {
+    flex: 0 0 calc((100% - 16px) / 2);
+  }
+}
+@media (min-width: 1024px) {
+  .blog-carousel-card {
+    flex: 0 0 calc((100% - 48px) / 4);
+  }
+}

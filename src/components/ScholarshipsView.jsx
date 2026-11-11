@@ -1,3 +1,4 @@
+import { BlogsListSection } from "./BlogsListSection";
 ﻿
 import { useState, useEffect } from "react";
 import {
@@ -378,42 +379,14 @@ export default function CollegeScholarships({
           )}
 
           {/* 3. Blogs */}
-          {blogs.length > 0 && (
-            <section
-              id="blogs"
-              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
-            >
-              <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
-                Blogs
-              </h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-[18px]">
-                {blogs.slice(0, 3).map((post, idx) => (
-                  <article
-                    key={idx}
-                    className="rounded-xl border border-[#e7eeff] overflow-hidden bg-white hover:border-[#115eaf] transition-all"
-                  >
-                    {post.image ? (
-                      <img
-                        src={post.image}
-                        alt={post.title}
-                        className="w-full h-40 object-cover"
-                        loading="lazy"
-                      />
-                    ) : null}
-                    <div className="p-4">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#115eaf]">
-                        {post.category}
-                      </span>
-                      <h3 className="mt-1.5 text-sm font-medium text-[#115eaf] leading-relaxed">
-                        {post.title}
-                      </h3>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-          )}
+          <BlogsListSection
+            onOpenHelpDesk={onOpenHelpDesk}
+            sectionId="blogs"
+            className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs p-5 md:p-6"
+            posts={blogs}
+            fetchLivePosts
+            horizontal
+          />
 
           {/* 4. Counselor helpline */}
           <section
