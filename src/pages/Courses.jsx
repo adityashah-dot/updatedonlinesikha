@@ -260,7 +260,7 @@ export default function Courses({ onOpenCounseling }) {
                 <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>Online Courses Directory</span>
               </div>
-              <h1 className="course-listing-h1 text-2xl sm:text-3xl lg:text-[42px] font-bold text-[#000f22] tracking-tight leading-[1.1] mb-2">
+              <h1 className="course-listing-h1 text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#000f22] tracking-tight leading-[1.15] mb-2">
                 Explore Accredited Online Courses
               </h1>
               <p className="text-xs sm:text-sm text-[#555960] leading-relaxed max-w-lg mb-4">

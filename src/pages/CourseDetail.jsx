@@ -238,7 +238,7 @@ export default function CourseDetail({ onOpenCounseling }) {
                     </span>
                   </div>
 
-                  <h1 className="course-detail-h1 text-[28px] md:text-[40px] font-bold text-[#000f22] tracking-[-0.015em] leading-[1.15] mb-2 break-words">
+                  <h1 className="course-detail-h1 text-[24px] sm:text-[30px] lg:text-[34px] font-bold text-[#000f22] tracking-[-0.015em] leading-[1.2] mb-2 break-words">
                     {formatCourseTitle(course.name)}
                   </h1>
 
@@ -362,7 +362,7 @@ export default function CourseDetail({ onOpenCounseling }) {
                 <div className="flex items-center justify-between gap-2 mb-3.5">
                   <div className="flex items-center gap-2">
                     <span className="inline-block w-2 h-2 rounded-full bg-[#115eaf]" aria-hidden="true" />
-                    <h2 className="text-base sm:text-lg font-bold text-[#000f22]">Related Online Courses</h2>
+                    <h2 className="text-lg sm:text-xl font-bold text-[#000f22]">Related Online Courses</h2>
                   </div>
                   <Link to="/courses" className="text-xs font-semibold text-[#115eaf] hover:underline inline-flex items-center gap-1">
                     <span>View All</span>
