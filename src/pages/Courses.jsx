@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { getCoursesListing } from "../services/courseApi";
 import { formatCourseLevelLabel, formatFeeDisplay } from "../services/apiAdapter";
 import usePageMeta from "../hooks/usePageMeta";
@@ -138,13 +138,32 @@ export default function Courses({ onOpenCounseling }) {
     noindex: false,
   });
 
-  const [query, setQuery] = useState("");
-  const [debounced, setDebounced] = useState("");
-  const [selectedLevel, setSelectedLevel] = useState("");
+  const [searchParams] = useSearchParams();
+  const urlQuery = searchParams.get("search") || searchParams.get("q") || "";
+  const urlLevel = searchParams.get("level") || "";
+
+  const [query, setQuery] = useState(urlQuery);
+  const [debounced, setDebounced] = useState(urlQuery);
+  const [selectedLevel, setSelectedLevel] = useState(urlLevel);
   const [retryKey, setRetryKey] = useState(0);
   const [page, setPage] = useState(1);
   const [data, setData] = useState({ status: "loading", courses: [], total: 0, totalPages: 1 });
   const [featuredImgFailed, setFeaturedImgFailed] = useState(false);
+
+  useEffect(() => {
+    if (urlQuery && urlQuery !== query) {
+      setQuery(urlQuery);
+      setDebounced(urlQuery);
+      setPage(1);
+    }
+  }, [urlQuery]);
+
+  useEffect(() => {
+    if (urlLevel !== selectedLevel) {
+      setSelectedLevel(urlLevel);
+      setPage(1);
+    }
+  }, [urlLevel]);
 
   useEffect(() => {
     const t = setTimeout(() => {

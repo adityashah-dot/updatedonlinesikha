@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ViewAllButton from "./ViewAllButton";
 import {
   Search,
@@ -9,6 +9,9 @@ import {
   CheckCircle,
   Headphones,
   GraduationCap,
+  BookOpen,
+  Newspaper,
+  Library,
   Wallet,
   ChevronDown,
   Sparkles,
@@ -185,20 +188,20 @@ const COMPARE_CRITERIA = [
 
 
 const DEGREE_PROGRAMS = [
-  { lv: ["PG"], y: "2 Years \u00B7 4 Sems", n: "Online MBA", f: "Master of Business Administration", sp: "19+ (Data, Finance, Marketing, HR)", tg: "High Placement Rate", ctc: "\u20B97.2 \u2013 14.5 LPA", fee: "\u20B918,500", c: 28, lab: "Specializations" },
-  { lv: ["PG"], y: "2 Years \u00B7 4 Sems", n: "Online MCA", f: "Master of Computer Applications", sp: "AI, Cloud, Full-Stack, Cyber", tg: "AI & Cloud Ready", ctc: "\u20B96.5 \u2013 16.0 LPA", fee: "\u20B922,000", c: 22, lab: "Specializations" },
-  { lv: ["UG"], y: "3 Years \u00B7 6 Sems", n: "Online BBA", f: "Bachelor of Business Administration", sp: "Digital Marketing, Finance, HR", tg: "Entry Degree", ctc: "Eligibility: 10+2 with 50% any stream", fee: "\u20B914,000", c: 19, lab: "Specializations" },
-  { lv: ["UG"], y: "3 Years \u00B7 6 Sems", n: "Online BCA", f: "Bachelor of Computer Applications", sp: "Full-Stack, Python, Cloud", tg: "Tech Career Starter", ctc: "100% virtual cloud sandbox labs", fee: "\u20B915,000", c: 17, lab: "Core tracks" },
-  { lv: ["UG", "PG"], y: "UG & PG available", n: "Online B.Com / M.Com", f: "Commerce & Corporate Finance", sp: "Integrated ACCA 9-paper exemption", tg: "ACCA & US CMA options", ctc: "Govt exam validity: UPSC/Banking", fee: "\u20B912,000", c: 15, lab: "Accounting certs" },
-  { lv: ["UG", "PG"], y: "UG & PG tracks", n: "Online BA / MA", f: "Humanities & Social Sciences", sp: "Journalism, English, Public Policy", tg: "Affordable fee", ctc: "Best for civil services aspirants", fee: "\u20B911,000", c: 14, lab: "Disciplines" },
-  { lv: ["UG"], y: "4 Years \u00B7 8 Sems", n: "Online B.Tech", f: "Bachelor of Technology", sp: "CSE, AI/ML, Data Science, Cyber", tg: "Industry 4.0 Ready", ctc: "Eligibility: 10+2 PCM 50%", fee: "\u20B925,000", c: 12, lab: "Specializations" },
-  { lv: ["PG"], y: "2 Years \u00B7 4 Sems", n: "Online M.Sc (Data Science)", f: "Master of Science", sp: "Machine Learning, Big Data, AI", tg: "High Demand Skill", ctc: "\u20B98.0 \u2013 18.0 LPA", fee: "\u20B924,000", c: 10, lab: "Specializations" },
-  { lv: ["PG"], y: "2 Years \u00B7 4 Sems", n: "Online MA (Psychology)", f: "Master of Arts", sp: "Clinical, Counseling, Organizational", tg: "Growing Demand", ctc: "\u20B95.0 \u2013 10.0 LPA", fee: "\u20B916,000", c: 8, lab: "Disciplines" },
-  { lv: ["UG"], y: "3 Years \u00B7 6 Sems", n: "Online B.Sc (IT)", f: "Bachelor of Science (IT)", sp: "Software, Networking, Cloud", tg: "Tech Foundation", ctc: "Eligibility: 10+2 any stream", fee: "\u20B913,000", c: 11, lab: "Core tracks" },
-  { lv: ["EX"], y: "1 Year \u00B7 2 Sems", n: "Executive MBA", f: "Executive Master of Business Administration", sp: "Leadership, Strategy, Finance", tg: "For Working Professionals", ctc: "\u20B912.0 \u2013 25.0 LPA", fee: "\u20B935,000", c: 6, lab: "Specializations" },
-  { lv: ["EX"], y: "6 Months", n: "PG Certificate (AI)", f: "Post Graduate Certificate", sp: "Generative AI, LLMs, MLOps", tg: "Fast-Track Upskilling", ctc: "Career switch ready", fee: "\u20B920,000", c: 5, lab: "Modules" },
-  { lv: ["PG"], y: "2 Years \u00B7 4 Sems", n: "Online M.Com", f: "Master of Commerce", sp: "Accounting, Taxation, Finance", tg: "Commerce Advanced", ctc: "\u20B95.5 \u2013 12.0 LPA", fee: "\u20B917,000", c: 9, lab: "Specializations" },
-  { lv: ["UG"], y: "3 Years \u00B7 6 Sems", n: "Online B.Com", f: "Bachelor of Commerce", sp: "Accounting, Economics, Business Law", tg: "Commerce Foundation", ctc: "Eligibility: 10+2 commerce", fee: "\u20B912,500", c: 13, lab: "Core tracks" }
+  { lv: ["PG"], y: "2 Years · 4 Sems", n: "Online MBA", f: "Master of Business Administration", sp: "19+ (Data, Finance, Marketing, HR)", tg: "High Placement Rate", ctc: "₹7.2 – 14.5 LPA", fee: "₹18,500", c: 28, lab: "Specializations", slug: "online-mba", uniSearch: "mba" },
+  { lv: ["PG"], y: "2 Years · 4 Sems", n: "Online MCA", f: "Master of Computer Applications", sp: "AI, Cloud, Full-Stack, Cyber", tg: "AI & Cloud Ready", ctc: "₹6.5 – 16.0 LPA", fee: "₹22,000", c: 22, lab: "Specializations", slug: "online-mca", uniSearch: "mca" },
+  { lv: ["UG"], y: "3 Years · 6 Sems", n: "Online BBA", f: "Bachelor of Business Administration", sp: "Digital Marketing, Finance, HR", tg: "Entry Degree", ctc: "Eligibility: 10+2 with 50% any stream", fee: "₹14,000", c: 19, lab: "Specializations", slug: "online-bba", uniSearch: "bba" },
+  { lv: ["UG"], y: "3 Years · 6 Sems", n: "Online BCA", f: "Bachelor of Computer Applications", sp: "Full-Stack, Python, Cloud", tg: "Tech Career Starter", ctc: "100% virtual cloud sandbox labs", fee: "₹15,000", c: 17, lab: "Core tracks", slug: "online-bca", uniSearch: "bca" },
+  { lv: ["UG", "PG"], y: "UG & PG available", n: "Online B.Com / M.Com", f: "Commerce & Corporate Finance", sp: "Integrated ACCA 9-paper exemption", tg: "ACCA & US CMA options", ctc: "Govt exam validity: UPSC/Banking", fee: "₹12,000", c: 15, lab: "Accounting certs", slug: "online-bcom", search: "com", uniSearch: "commerce" },
+  { lv: ["UG", "PG"], y: "UG & PG tracks", n: "Online BA / MA", f: "Humanities & Social Sciences", sp: "Journalism, English, Public Policy", tg: "Affordable fee", ctc: "Best for civil services aspirants", fee: "₹11,000", c: 14, lab: "Disciplines", slug: "online-ba", search: "ba", uniSearch: "arts" },
+  { lv: ["UG"], y: "4 Years · 8 Sems", n: "Online B.Tech", f: "Bachelor of Technology", sp: "CSE, AI/ML, Data Science, Cyber", tg: "Industry 4.0 Ready", ctc: "Eligibility: 10+2 PCM 50%", fee: "₹25,000", c: 12, lab: "Specializations", search: "tech", uniSearch: "tech" },
+  { lv: ["PG"], y: "2 Years · 4 Sems", n: "Online M.Sc (Data Science)", f: "Master of Science", sp: "Machine Learning, Big Data, AI", tg: "High Demand Skill", ctc: "₹8.0 – 18.0 LPA", fee: "₹24,000", c: 10, lab: "Specializations", slug: "online-msc-in-data-science", uniSearch: "msc" },
+  { lv: ["PG"], y: "2 Years · 4 Sems", n: "Online MA (Psychology)", f: "Master of Arts", sp: "Clinical, Counseling, Organizational", tg: "Growing Demand", ctc: "₹5.0 – 10.0 LPA", fee: "₹16,000", c: 8, lab: "Disciplines", slug: "online-ma", uniSearch: "ma" },
+  { lv: ["UG"], y: "3 Years · 6 Sems", n: "Online B.Sc (IT)", f: "Bachelor of Science (IT)", sp: "Software, Networking, Cloud", tg: "Tech Foundation", ctc: "Eligibility: 10+2 any stream", fee: "₹13,000", c: 11, lab: "Core tracks", slug: "online-bsc", uniSearch: "bsc" },
+  { lv: ["EX"], y: "1 Year · 2 Sems", n: "Executive MBA", f: "Executive Master of Business Administration", sp: "Leadership, Strategy, Finance", tg: "For Working Professionals", ctc: "₹12.0 – 25.0 LPA", fee: "₹35,000", c: 6, lab: "Specializations", slug: "executive-mba", uniSearch: "mba" },
+  { lv: ["EX"], y: "6 Months", n: "PG Certificate (AI)", f: "Post Graduate Certificate", sp: "Generative AI, LLMs, MLOps", tg: "Fast-Track Upskilling", ctc: "Career switch ready", fee: "₹20,000", c: 5, lab: "Modules", search: "certificate", uniSearch: "management" },
+  { lv: ["PG"], y: "2 Years · 4 Sems", n: "Online M.Com", f: "Master of Commerce", sp: "Accounting, Taxation, Finance", tg: "Commerce Advanced", ctc: "₹5.5 – 12.0 LPA", fee: "₹17,000", c: 9, lab: "Specializations", slug: "online-mcom", uniSearch: "mcom" },
+  { lv: ["UG"], y: "3 Years · 6 Sems", n: "Online B.Com", f: "Bachelor of Commerce", sp: "Accounting, Economics, Business Law", tg: "Commerce Foundation", ctc: "Eligibility: 10+2 commerce", fee: "₹12,500", c: 13, lab: "Core tracks", slug: "online-bcom", uniSearch: "bcom" }
 ];
 
 const DEGREE_LEVELS = [["Master's (PG)", "PG"], ["Bachelor's (UG)", "UG"], ["Executive Tracks", "EX"]];
@@ -269,16 +272,19 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
 
           <div className="flex flex-col gap-3">
             {[
-              { title: 'Online MBA', sub: 'Master of Business Administration', badge: 'High Placement Rate', dur: '2 Years · 4 Sems', spec: '19+ (Data, Finance, Marketing, HR)', career: '₹7.2 – 14.5 LPA', price: '₹18,500', explore: 'Explore 28 Unis' },
-              { title: 'Online MCA', sub: 'Master of Computer Applications', badge: 'AI & Cloud Ready', dur: '2 Years · 4 Sems', spec: 'AI, Cloud, Full-Stack, Cyber', career: '₹6.5 – 16.0 LPA', price: '₹22,000', explore: 'Explore 22 Unis' },
-              { title: 'Online B.Com / M.Com', sub: 'Commerce & Corporate Finance', badge: 'ACCA & US CMA options', dur: 'UG & PG available', spec: 'Integrated ACCA 9-paper exemption', career: 'Govt exam validity: UPSC/Banking', price: '₹12,000', explore: 'Explore 15 Unis' },
-              { title: 'Online BA / MA', sub: 'Humanities & Social Sciences', badge: 'Affordable fee', dur: 'UG & PG tracks', spec: 'Journalism, English, Public Policy', career: 'Best for civil services aspirants', price: '₹11,000', explore: 'Explore 14 Unis' },
-            ].map((c) => (
+              { title: 'Online MBA', sub: 'Master of Business Administration', badge: 'High Placement Rate', dur: '2 Years · 4 Sems', spec: '19+ (Data, Finance, Marketing, HR)', career: '₹7.2 – 14.5 LPA', price: '₹18,500', explore: 'Explore 28 Unis', slug: 'online-mba', uniSearch: 'mba' },
+              { title: 'Online MCA', sub: 'Master of Computer Applications', badge: 'AI & Cloud Ready', dur: '2 Years · 4 Sems', spec: 'AI, Cloud, Full-Stack, Cyber', career: '₹6.5 – 16.0 LPA', price: '₹22,000', explore: 'Explore 22 Unis', slug: 'online-mca', uniSearch: 'mca' },
+              { title: 'Online B.Com / M.Com', sub: 'Commerce & Corporate Finance', badge: 'ACCA & US CMA options', dur: 'UG & PG available', spec: 'Integrated ACCA 9-paper exemption', career: 'Govt exam validity: UPSC/Banking', price: '₹12,000', explore: 'Explore 15 Unis', slug: 'online-bcom', search: 'com', uniSearch: 'commerce' },
+              { title: 'Online BA / MA', sub: 'Humanities & Social Sciences', badge: 'Affordable fee', dur: 'UG & PG tracks', spec: 'Journalism, English, Public Policy', career: 'Best for civil services aspirants', price: '₹11,000', explore: 'Explore 14 Unis', slug: 'online-ba', search: 'ba', uniSearch: 'arts' },
+            ].map((c) => {
+              const courseHref = c.slug ? `/courses/${c.slug}` : `/courses?search=${encodeURIComponent(c.search || c.title)}`;
+              const uniHref = `/universities?search=${encodeURIComponent(c.uniSearch || c.title)}`;
+              return (
               <div key={c.title} className="bg-white border border-slate-200 rounded-xl p-3 shadow-sm">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-[16px] font-bold text-[#102a55]">{c.title}</h3>
-                  <span className="text-[#1264c7] text-lg">›</span>
-                </div>
+                <Link to={courseHref} className="flex justify-between items-center group">
+                  <h3 className="text-[16px] font-bold text-[#102a55] group-hover:text-[#115eaf] transition-colors">{c.title}</h3>
+                  <span className="text-[#1264c7] text-lg font-bold">›</span>
+                </Link>
                 <p className="text-[12px] text-slate-500 mt-0.5">{c.sub}</p>
                 <span className="inline-flex items-center gap-1 bg-blue-50 text-[#0866d8] text-[10px] font-semibold px-2 py-0.5 rounded-full mt-1.5">{c.badge}</span>
                 <div className="grid grid-cols-2 gap-2 mt-2 mb-2">
@@ -303,12 +309,16 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                     </div>
                   </div>
                 </div>
-                <button onClick={() => navigate('/universities')} className="w-full py-2 rounded-lg bg-[#1264c7] text-white text-[11px] font-bold flex items-center justify-center gap-1.5 active:scale-[0.98]">
-                  {c.explore} <span>→</span>
-                </button>
+                <div className="grid grid-cols-2 gap-2 mt-2">
+                  <Link to={courseHref} className="w-full py-2 rounded-lg border border-[#115eaf] text-[#115eaf] text-[11px] font-bold flex items-center justify-center gap-1 active:scale-[0.98] hover:bg-[#eff5ff] transition-colors text-center">
+                    Course Details
+                  </Link>
+                  <Link to={uniHref} className="w-full py-2 rounded-lg bg-[#1264c7] text-white text-[11px] font-bold flex items-center justify-center gap-1 active:scale-[0.98] hover:bg-[#084a8c] transition-colors text-center">
+                    {c.explore} <span>→</span>
+                  </Link>
+                </div>
               </div>
-            ))}
-          </div>
+            );})}</div>
         </div>
       </section>
 
@@ -341,17 +351,25 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             {filteredDegreePrograms.length === 0 ? (
               <p className="em py-7 text-[14px] text-[#43474d]">No executive programs are listed yet. Connect this tab to your existing data.</p>
             ) : (
-              filteredDegreePrograms.map((p, idx) => (
+              filteredDegreePrograms.map((p, idx) => {
+                const courseHref = p.slug ? `/courses/${p.slug}` : `/courses?search=${encodeURIComponent(p.search || p.n)}`;
+                const uniHref = `/universities?search=${encodeURIComponent(p.uniSearch || p.n)}`;
+                return (
                 <div
                   key={p.n + idx}
-                  className={`dg grid grid-cols-2 md:grid-cols-[96px_1.5fr_1.6fr_1.1fr_1fr_auto] gap-x-5 gap-y-2.5 md:gap-5 items-start py-2 md:py-[9.5px] md:pb-[7.1px] border-b border-[#c4c6ce] ${idx === 0 ? "border-t-2 border-t-[#000f22]" : ""}`}
+                  className={`dg grid grid-cols-2 md:grid-cols-[96px_1.5fr_1.6fr_1.1fr_1fr_auto] gap-x-5 gap-y-2.5 md:gap-5 items-start py-2 md:py-[12px] border-b border-[#c4c6ce] ${idx === 0 ? "border-t-2 border-t-[#000f22]" : ""}`}
                 >
                   <span className="du col-span-2 md:col-span-1 order-first md:order-none text-[12px] text-[#43474d] font-medium leading-[1.5]">{p.y}</span>
                   <div className="col-span-2 md:col-span-1">
-                    <h3 className="font-bold tracking-[-0.01em] leading-[1.3] text-[#000f22]">
-                      {p.n}
-                      <small className="block mt-0.5 text-[12.5px] font-normal text-[#43474d] tracking-normal">{p.f}</small>
-                    </h3>
+                    <Link
+                      to={courseHref}
+                      className="group/course block no-underline"
+                    >
+                      <h3 className="font-bold tracking-[-0.01em] leading-[1.3] text-[#000f22] group-hover/course:text-[#115eaf] transition-colors">
+                        {p.n}
+                        <small className="block mt-0.5 text-[12.5px] font-normal text-[#43474d] tracking-normal group-hover/course:text-[#115eaf]/80">{p.f}</small>
+                      </h3>
+                    </Link>
                     <span className="tg block mt-1.5 text-[12px] text-[#115eaf] font-medium">{p.tg}</span>
                   </div>
                   <div className="sp col-span-2 md:col-span-1 text-[13.5px] text-[#43474d] leading-[1.2]">
@@ -367,14 +385,23 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                     <b className="block text-[20px] font-semibold text-[#000f22] tracking-[-0.02em] leading-[1.2]">{p.fee}</b>
                     <span className="text-[11px]">per sem</span>
                   </div>
-                  <a
-                    className="btn col-span-2 md:col-span-1 justify-self-start md:justify-self-center md:self-center inline-flex items-center justify-center bg-[#115eaf] text-white border-0 rounded-md px-5 py-2.5 min-h-[44px] text-[14px] font-medium no-underline cursor-pointer whitespace-nowrap hover:bg-[#084a8c] transition-colors"
-                    href="#"
-                  >
-                    Explore {p.c} Unis
-                  </a>
+                  <div className="col-span-2 md:col-span-1 justify-self-start md:justify-self-center md:self-center flex flex-col items-start md:items-center gap-1.5">
+                    <Link
+                      className="btn inline-flex items-center justify-center bg-[#115eaf] text-white border-0 rounded-md px-5 py-2.5 min-h-[42px] text-[13px] font-semibold no-underline cursor-pointer whitespace-nowrap hover:bg-[#084a8c] transition-colors shadow-2xs"
+                      to={uniHref}
+                    >
+                      Explore {p.c} Unis
+                    </Link>
+                    <Link
+                      to={courseHref}
+                      className="text-[11px] font-semibold text-[#115eaf] hover:underline inline-flex items-center gap-0.5"
+                    >
+                      Course details &rarr;
+                    </Link>
+                  </div>
                 </div>
-              ))
+              );
+              })
             )}
           </div>
         </div>
@@ -777,8 +804,111 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         </div>
       </section>
 
+      {/* Education Resource Hub: Courses, Exams, News, Blogs */}
+      <section id="education-hub" className="w-full bg-white rounded-2xl border border-[#e7eeff] shadow-xs p-5 md:p-7">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#115eaf]" />
+              <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
+                Explore Higher Education Gateways
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal mt-1 max-w-3xl">
+              Comprehensive guidance across verified online degree courses, national entrance exams, university news, and expert articles.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Card 1: Courses */}
+          <Link
+            to="/courses"
+            className="group p-5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] hover:bg-white hover:border-[#115eaf] hover:shadow-md transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-10 h-10 rounded-lg bg-[#e7eeff] text-[#115eaf] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <BookOpen className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors font-sans">
+                Degree Courses
+              </h3>
+              <p className="text-xs text-[#43474d] leading-relaxed font-normal mt-1.5">
+                Explore 35+ accredited online degree courses like MBA, MCA, BCA, BBA with verified syllabus and fee structures.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#115eaf] mt-4 group-hover:underline">
+              Browse Courses <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+
+          {/* Card 2: Exams */}
+          <Link
+            to="/exams"
+            className="group p-5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] hover:bg-white hover:border-[#115eaf] hover:shadow-md transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-10 h-10 rounded-lg bg-[#fef3c7] text-[#b45309] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <GraduationCap className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors font-sans">
+                Entrance Exams
+              </h3>
+              <p className="text-xs text-[#43474d] leading-relaxed font-normal mt-1.5">
+                Check dates, syllabus, cutoff marks and preparation strategies for national exams like CAT, CUET, MAT, and NIMCET.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#115eaf] mt-4 group-hover:underline">
+              Check Exam Dates <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+
+          {/* Card 3: News */}
+          <Link
+            to="/news"
+            className="group p-5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] hover:bg-white hover:border-[#115eaf] hover:shadow-md transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-10 h-10 rounded-lg bg-[#dcfce7] text-[#15803d] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <Newspaper className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors font-sans">
+                Education News
+              </h3>
+              <p className="text-xs text-[#43474d] leading-relaxed font-normal mt-1.5">
+                Stay updated with UGC-DEB notifications, university rankings, admission deadlines, and policy circulars.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#115eaf] mt-4 group-hover:underline">
+              Read Latest News <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+
+          {/* Card 4: Blogs */}
+          <Link
+            to="/blog"
+            className="group p-5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] hover:bg-white hover:border-[#115eaf] hover:shadow-md transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-10 h-10 rounded-lg bg-[#fae8ff] text-[#a21caf] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <Library className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors font-sans">
+                Educational Blogs
+              </h3>
+              <p className="text-xs text-[#43474d] leading-relaxed font-normal mt-1.5">
+                Expert insights, ROI calculations, online vs distance comparisons, and career roadmap articles.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#115eaf] mt-4 group-hover:underline">
+              Explore All Blogs <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+        </div>
+      </section>
+
       {/* Blogs */}
-      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="w-full rounded-2xl border border-[#dce6f3] bg-[#f4f7fb] p-4 shadow-sm md:p-6" compact horizontal autoScroll showDescriptionOnMobile fetchLivePosts />
+      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="w-full rounded-2xl border border-[#e7eeff] bg-white p-5 md:p-6 shadow-xs" horizontal autoScroll showDescriptionOnMobile fetchLivePosts />
 
       {/* Frequently Asked Questions (Accordion) - Last Section */}
       <HomeFaq onOpenHelpDesk={onOpenHelpDesk} />

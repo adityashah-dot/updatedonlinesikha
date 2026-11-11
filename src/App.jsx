@@ -42,6 +42,9 @@ export default function App() {
     }
     if (path.startsWith("/universities/amity")) return "universities";
     if (path.startsWith("/courses")) return "courses";
+    if (path.startsWith("/exams")) return "exams";
+    if (path.startsWith("/news")) return "news";
+    if (path.startsWith("/blog")) return "blog";
     if (path.startsWith("/admission")) return "admission";
     if (path.startsWith("/scholarships")) return "scholarships";
     if (path.startsWith("/universities")) return "universities";
@@ -66,6 +69,9 @@ export default function App() {
       home: "/",
       universities: "/universities",
       courses: onLpuProfile ? "/universities/lpu-online?section=courses" : "/courses",
+      exams: "/exams",
+      news: "/news",
+      blog: "/blog",
       overview: "/universities/lpu-online",
       admission: onLpuProfile ? "/universities/lpu-online?section=admission" : "/admission",
       scholarships: onLpuProfile ? "/universities/lpu-online?section=scholarships" : "/scholarships",
