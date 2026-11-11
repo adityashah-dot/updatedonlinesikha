@@ -13,8 +13,8 @@
 .eyebrow i { color: #677785; font-style: normal; }
 .eyebrow .entitled { color: #258c54; }
 .status-dot { width: 12px; height: 12px; border-radius: 50%; background: #179657; box-shadow: 0 0 0 6px #fff; margin-right: 2px; }
-h1 { margin-top: 0px; font-family: 'Poppins', sans-serif; font-size: clamp(58px, 5.13vw, 82px); line-height: .99; letter-spacing: -3.3px; color: #06143e; font-weight: 700; }
-h1 strong { display: block; color: #006ce5; font-weight: inherit; line-height: 1.05; }
+.hero h1 { margin-top: 0px; font-family: 'Poppins', sans-serif; font-size: clamp(58px, 5.13vw, 82px); line-height: .99; letter-spacing: -3.3px; color: #06143e; font-weight: 700; }
+.hero h1 strong { display: block; color: #006ce5; font-weight: inherit; line-height: 1.05; }
 .underline { width: 193px; height: 20px; object-fit: contain; margin: -2px 0 8px 31px; }
 .intro { color: #69758b; font-size: clamp(17px, 1.38vw, 22px); line-height: 1.42; letter-spacing: -.35px; }
 .hero-actions { display: flex; gap: 17px; margin-top: 25px; }
@@ -70,7 +70,7 @@ h1 strong { display: block; color: #006ce5; font-weight: inherit; line-height: 1
   .hero-grid { min-height: 0; padding-bottom: 48px; grid-template-columns: 1fr; }
   .hero-copy { padding: 38px 24px 0; text-align: center; }
   .eyebrow { margin: 0 auto; }
-  h1 { font-size: clamp(44px, 9vw, 70px); letter-spacing: -2px; }
+  .hero h1 { font-size: clamp(44px, 9vw, 70px); letter-spacing: -2px; }
   .underline { margin-left: auto; margin-right: auto; }
   .hero-actions, .benefits { justify-content: center; }
   .visual { width: min(100%, 650px); height: 540px; margin: 5px auto 0; order: 2; }
@@ -85,7 +85,7 @@ h1 strong { display: block; color: #006ce5; font-weight: inherit; line-height: 1
   .hero-copy { padding: 28px 18px 0; }
   .eyebrow { padding: 7px 12px; gap: 8px; font-size: 11px; }
   .status-dot { width: 9px; height: 9px; box-shadow: 0 0 0 4px #fff; }
-  h1 { margin-top: 14px; font-size: clamp(39px, 12vw, 56px); line-height: 1.03; letter-spacing: -1.8px; }
+  .hero h1 { margin-top: 14px; font-size: clamp(39px, 12vw, 56px); line-height: 1.03; letter-spacing: -1.8px; }
   .underline { width: 145px; margin-top: 2px; }
   .intro { font-size: 16px; line-height: 1.55; }
   .desktop-break { display: none; }

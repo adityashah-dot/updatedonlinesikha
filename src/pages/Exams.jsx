@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getExamsListing } from "../services/examApi";
 import usePageMeta from "../hooks/usePageMeta";
-import "../components/course-content.css";
 import {
   AlertCircle,
   BookOpen,
@@ -11,9 +10,6 @@ import {
   ArrowRight,
   Clock,
   Calendar,
-  Layers,
-  ShieldCheck,
-  CheckCircle,
 } from "lucide-react";
 
 const DEFAULT_SORT = "recommended-exams";
@@ -99,22 +95,22 @@ function ExamCard({ exam }) {
   const contextTag = getExamContext(exam);
 
   return (
-    <article className="group bg-white rounded-xl border border-[#e7eeff] hover:border-[#b1c8eb] hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden">
+    <article className="group bg-white rounded-xl border border-[#e7eeff] hover:border-[#b1c8eb] hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden h-full">
       <div>
         {/* Compact Image Container */}
-        <div className="relative h-32 sm:h-36 overflow-hidden bg-gradient-to-br from-[#f8fbff] via-[#eef4ff] to-[#e7eeff]">
+        <div className="relative h-32 overflow-hidden bg-gradient-to-br from-[#f8fbff] via-[#eef4ff] to-[#e7eeff]">
           {imgSrc ? (
             <img
               src={imgSrc}
               alt={(exam.logo && exam.logo.alt) || `${name} logo`}
               loading="lazy"
               onError={() => setImgFailed(true)}
-              className="w-full h-full object-contain object-center p-3.5 sm:p-4 transition-transform duration-300 group-hover:scale-105"
+              className="w-full h-full object-contain object-center p-3.5 sm:p-4 transition-transform duration-300 group-hover:scale-103"
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center p-3 text-[#115eaf]">
-              <div className="w-11 h-11 rounded-xl bg-white border border-[#d5e3ff] flex items-center justify-center shadow-2xs mb-1">
-                <span className="text-sm font-bold tracking-wider text-[#115eaf] uppercase">
+              <div className="w-10 h-10 rounded-lg bg-white border border-[#d5e3ff] flex items-center justify-center shadow-2xs mb-1">
+                <span className="text-xs font-bold tracking-wider text-[#115eaf] uppercase">
                   {initials}
                 </span>
               </div>
@@ -156,9 +152,9 @@ function ExamCard({ exam }) {
       </div>
 
       {/* Card Footer */}
-      <div className="p-3.5 sm:p-4 pt-0">
+      <div className="p-3.5 sm:p-4 pt-0 mt-auto">
         {(dateStr || rangeText) ? (
-          <div className="flex flex-wrap items-center gap-2.5 text-[11px] text-[#74777e] mb-2.5 pb-2.5 border-b border-[#f0f4f8]">
+          <div className="flex flex-wrap items-center gap-2 text-[11px] text-[#74777e] mb-2.5 pb-2 border-b border-[#f0f4f8]">
             {dateStr ? (
               <span className="inline-flex items-center gap-1 text-[#43474d] font-medium">
                 <Clock className="w-3 h-3 text-[#115eaf]" aria-hidden="true" />
@@ -203,10 +199,10 @@ function Pagination({ pagination, page, onPage }) {
   for (let i = 1; i <= totalPages; i += 1) pages.push(i);
 
   return (
-    <nav className="flex items-center justify-center gap-2 mt-6" aria-label="Exams pagination">
+    <nav className="flex items-center justify-center gap-1.5 mt-8 mb-4 flex-wrap" aria-label="Exams pagination">
       <button
         type="button"
-        className="h-9 px-4 rounded-xl border border-[#d5e3ff] text-[#115eaf] text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#f0f4f8] transition-colors"
+        className="h-9 px-3.5 rounded-lg border border-[#d5e3ff] text-[#115eaf] text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#f0f4f8] transition-colors cursor-pointer"
         disabled={currentPage <= 1}
         onClick={() => onPage(currentPage - 1)}
       >
@@ -216,7 +212,10 @@ function Pagination({ pagination, page, onPage }) {
         <button
           key={p}
           type="button"
-          className={"h-9 min-w-[36px] px-2 rounded-xl text-xs font-semibold transition-colors " + (p === currentPage ? "bg-[#115eaf] text-white" : "border border-[#d5e3ff] text-[#115eaf] hover:bg-[#f0f4f8]")}
+          className={
+            "h-9 min-w-9 px-2.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer " +
+            (p === currentPage ? "bg-[#115eaf] text-white border border-[#115eaf] shadow-xs" : "border border-[#d5e3ff] text-[#115eaf] hover:bg-[#f0f4f8]")
+          }
           aria-current={p === currentPage ? "page" : undefined}
           onClick={() => onPage(p)}
         >
@@ -225,7 +224,7 @@ function Pagination({ pagination, page, onPage }) {
       ))}
       <button
         type="button"
-        className="h-9 px-4 rounded-xl border border-[#d5e3ff] text-[#115eaf] text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#f0f4f8] transition-colors"
+        className="h-9 px-3.5 rounded-lg border border-[#d5e3ff] text-[#115eaf] text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#f0f4f8] transition-colors cursor-pointer"
         disabled={currentPage >= totalPages}
         onClick={() => onPage(currentPage + 1)}
       >
@@ -284,16 +283,18 @@ export default function Exams() {
   };
 
   return (
-    <main className="section">
-      <div className="container">
-        <nav aria-label="Breadcrumb" className="mb-3.5 flex items-center gap-1.5 text-xs text-[#74777e]">
+    <main className="w-full max-w-full overflow-x-hidden bg-white min-h-screen py-4 sm:py-6">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+        {/* Breadcrumb */}
+        <nav aria-label="Breadcrumb" className="mb-2.5 flex items-center gap-1.5 text-xs text-[#74777e]">
           <Link to="/" className="hover:text-[#115eaf] transition-colors">Home</Link>
           <span aria-hidden="true" className="text-slate-300">/</span>
           <span className="text-[#000f22] font-semibold">Exams</span>
         </nav>
 
-        <div className="mt-2 mb-6">
-          <h1 className="course-listing-h1 text-2xl sm:text-3xl lg:text-4xl font-bold text-[#000f22] tracking-tight">
+        {/* Hero Section */}
+        <div className="mb-5">
+          <h1 className="text-2xl sm:text-3xl lg:text-[2rem] font-bold text-[#000f22] tracking-tight leading-snug">
             National &amp; State Entrance Exams
           </h1>
           <p className="mt-1.5 text-xs sm:text-sm text-[#555960] max-w-2xl leading-relaxed">
@@ -311,9 +312,13 @@ export default function Exams() {
         {state.status === "error" && (
           <div className="py-14 flex flex-col items-center justify-center text-center gap-3" role="alert">
             <AlertCircle className="w-8 h-8 text-[#115eaf]" aria-hidden="true" />
-            <h1 className="text-base sm:text-lg font-bold text-[#000f22]">We could not load the exams right now.</h1>
+            <h2 className="text-base sm:text-lg font-bold text-[#000f22]">We could not load the exams right now.</h2>
             <p className="text-xs sm:text-sm text-[#43474d] max-w-md">The exam service is temporarily unavailable. Please try again.</p>
-            <button type="button" onClick={() => setRetryKey((k) => k + 1)} className="mt-2 inline-flex items-center gap-2 px-5 h-10 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold transition-colors cursor-pointer">
+            <button
+              type="button"
+              onClick={() => setRetryKey((k) => k + 1)}
+              className="mt-2 inline-flex items-center gap-2 px-4 h-10 rounded-lg bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
+            >
               <RefreshCw className="w-4 h-4" aria-hidden="true" />
               Try again
             </button>
@@ -322,81 +327,97 @@ export default function Exams() {
 
         {state.status === "ready" && (
           <>
-            <section aria-label="Exam filters" className="mb-6 rounded-xl border border-[#e7eeff] bg-white p-3 sm:p-4">
+            {/* Filter Controls Bar */}
+            <section aria-label="Exam filters" className="mb-6 rounded-xl border border-[#d5e3ff] bg-[#fbfdff] p-3.5 sm:p-4.5 shadow-2xs">
               <form
-                className="flex flex-col sm:flex-row sm:items-end gap-3"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 items-end"
                 onSubmit={(e) => {
                   e.preventDefault();
                   setPage(1);
                 }}
               >
-                <div className="flex-1 min-w-0">
-                  <label htmlFor="exam-search" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5">Search</label>
+                {/* Search Field (appropriately wider) */}
+                <div className="sm:col-span-2 lg:col-span-4 min-w-0">
+                  <label htmlFor="exam-search" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5 truncate">
+                    Search
+                  </label>
                   <div className="relative">
-                    <Search className="w-4 h-4 text-[#74777e] absolute left-3 top-1/2 -translate-y-1/2" aria-hidden="true" />
+                    <Search className="w-4 h-4 text-[#74777e] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true" />
                     <input
                       id="exam-search"
                       type="search"
                       value={search}
                       onChange={(e) => handleFiltersChange(setSearch)(e.target.value)}
-                      placeholder="Search exams..."
-                      className="w-full h-10 rounded-xl border border-[#d5e3ff] bg-[#f9f9ff] pl-9 pr-3 text-xs sm:text-sm text-[#000f22] placeholder:text-[#74777e] outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#e7eeff]"
+                      placeholder="Search exams (e.g. UPSC, JEE, CAT)..."
+                      className="w-full h-10 rounded-lg border border-[#d5e3ff] bg-white pl-9 pr-3 text-xs sm:text-sm text-[#000f22] placeholder:text-[#74777e] outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 shadow-2xs transition-colors"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  <div>
-                    <label htmlFor="exam-category" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5">Category</label>
-                    <select
-                      id="exam-category"
-                      value={category}
-                      onChange={(e) => handleFiltersChange(setCategory)(e.target.value)}
-                      className="w-full h-10 rounded-xl border border-[#d5e3ff] bg-white text-xs sm:text-sm text-[#000f22] px-3 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#e7eeff]"
-                    >
-                      <option value="">All categories</option>
-                      {categoryOptions.map((c) => (
-                        <option key={c} value={c}>{c}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="exam-level" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5">Level</label>
-                    <select
-                      id="exam-level"
-                      value={level}
-                      onChange={(e) => handleFiltersChange(setLevel)(e.target.value)}
-                      className="w-full h-10 rounded-xl border border-[#d5e3ff] bg-white text-xs sm:text-sm text-[#000f22] px-3 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#e7eeff]"
-                    >
-                      <option value="">All levels</option>
-                      {levelOptions.map((l) => (
-                        <option key={l} value={l}>{l}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="exam-stream" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5">Stream</label>
-                    <select
-                      id="exam-stream"
-                      value={stream}
-                      onChange={(e) => handleFiltersChange(setStream)(e.target.value)}
-                      className="w-full h-10 rounded-xl border border-[#d5e3ff] bg-white text-xs sm:text-sm text-[#000f22] px-3 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#e7eeff]"
-                    >
-                      <option value="">All streams</option>
-                      {streamOptions.map((s) => (
-                        <option key={s} value={s}>{s}</option>
-                      ))}
-                    </select>
-                  </div>
+                {/* Category Dropdown */}
+                <div className="sm:col-span-1 lg:col-span-2 min-w-0">
+                  <label htmlFor="exam-category" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5 truncate">
+                    Category
+                  </label>
+                  <select
+                    id="exam-category"
+                    value={category}
+                    onChange={(e) => handleFiltersChange(setCategory)(e.target.value)}
+                    className="w-full h-10 rounded-lg border border-[#d5e3ff] bg-white text-xs sm:text-sm text-[#000f22] px-3 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 shadow-2xs transition-colors cursor-pointer truncate"
+                  >
+                    <option value="">All categories</option>
+                    {categoryOptions.map((c) => (
+                      <option key={c} value={c}>{c}</option>
+                    ))}
+                  </select>
                 </div>
 
-                <div className="sm:w-44">
-                  <label htmlFor="exam-sort" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5">Sort by</label>
+                {/* Level Dropdown */}
+                <div className="sm:col-span-1 lg:col-span-2 min-w-0">
+                  <label htmlFor="exam-level" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5 truncate">
+                    Level
+                  </label>
+                  <select
+                    id="exam-level"
+                    value={level}
+                    onChange={(e) => handleFiltersChange(setLevel)(e.target.value)}
+                    className="w-full h-10 rounded-lg border border-[#d5e3ff] bg-white text-xs sm:text-sm text-[#000f22] px-3 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 shadow-2xs transition-colors cursor-pointer truncate"
+                  >
+                    <option value="">All levels</option>
+                    {levelOptions.map((l) => (
+                      <option key={l} value={l}>{l}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Stream Dropdown */}
+                <div className="sm:col-span-1 lg:col-span-2 min-w-0">
+                  <label htmlFor="exam-stream" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5 truncate">
+                    Stream
+                  </label>
+                  <select
+                    id="exam-stream"
+                    value={stream}
+                    onChange={(e) => handleFiltersChange(setStream)(e.target.value)}
+                    className="w-full h-10 rounded-lg border border-[#d5e3ff] bg-white text-xs sm:text-sm text-[#000f22] px-3 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 shadow-2xs transition-colors cursor-pointer truncate"
+                  >
+                    <option value="">All streams</option>
+                    {streamOptions.map((s) => (
+                      <option key={s} value={s}>{s}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Sort Dropdown */}
+                <div className="sm:col-span-1 lg:col-span-2 min-w-0">
+                  <label htmlFor="exam-sort" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5 truncate">
+                    Sort by
+                  </label>
                   <select
                     id="exam-sort"
                     value={sort}
                     onChange={(e) => handleFiltersChange(setSort)(e.target.value)}
-                    className="w-full h-10 rounded-xl border border-[#d5e3ff] bg-white text-xs sm:text-sm text-[#000f22] px-3 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#e7eeff]"
+                    className="w-full h-10 rounded-lg border border-[#d5e3ff] bg-white text-xs sm:text-sm text-[#000f22] px-3 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 shadow-2xs transition-colors cursor-pointer truncate"
                   >
                     {sortOptions.map((s) => (
                       <option key={s} value={s}>{s}</option>
@@ -406,20 +427,23 @@ export default function Exams() {
               </form>
             </section>
 
+            {/* Exam Cards Grid */}
             {exams.length > 0 ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {exams.map((exam) => (
-                  <ExamCard key={exam.slug} exam={exam} />
+                  <div key={exam.slug} className="w-full col-span-1 flex flex-col">
+                    <ExamCard exam={exam} />
+                  </div>
                 ))}
               </div>
             ) : (
-              <div className="py-16 flex flex-col items-center justify-center text-center gap-3">
+              <div className="py-14 flex flex-col items-center justify-center text-center gap-3">
                 <BookOpen className="w-8 h-8 text-[#115eaf]" aria-hidden="true" />
-                <h1 className="text-base sm:text-lg font-bold text-[#000f22]">No exams found.</h1>
+                <h2 className="text-base sm:text-lg font-bold text-[#000f22]">No exams found.</h2>
                 <p className="text-xs sm:text-sm text-[#43474d] max-w-md">We could not find exams matching your filters right now.</p>
                 <button
                   type="button"
-                  className="mt-2 inline-flex items-center gap-2 px-5 h-10 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
+                  className="mt-2 inline-flex items-center gap-2 px-4 h-10 rounded-lg bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
                   onClick={() => {
                     setSearch("");
                     setCategory("");
@@ -435,6 +459,7 @@ export default function Exams() {
               </div>
             )}
 
+            {/* Pagination Controls */}
             {state.status === "ready" && exams.length > 0 && (
               <Pagination pagination={pagination} page={page} onPage={setPage} />
             )}
