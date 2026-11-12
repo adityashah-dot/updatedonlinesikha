@@ -243,6 +243,14 @@
   gap: 0;
 }
 
+.uni-detail .section-container {
+  gap: 30px;
+}
+
+.uni-detail .page-section + .page-section {
+  margin-top: 30px;
+}
+
 .section-container > :not([hidden]) {
   margin-bottom: 0;
 }
@@ -399,6 +407,16 @@ select[class*="appearance-none"] {
     border-radius: 0 !important;
     border-left: 0 !important;
     border-right: 0 !important;
+  }
+
+  .uni-detail .section-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .uni-detail .page-section + .page-section {
+    margin-top: 30px !important;
   }
 
   /* Typography */
