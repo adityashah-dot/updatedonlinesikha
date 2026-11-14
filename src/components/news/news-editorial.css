@@ -194,15 +194,17 @@ h1.news-detail-h1 {
   }
 }
 
-/* Scoped Table Scrolling Wrapper for embedded news tables */
-.news-table-wrap {
+/* Scoped Table Scrolling Wrapper for embedded news tables — Matches img2 */
+.news-table-wrap,
+.news-prose .bd-table-wrap {
   width: 100%;
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  margin: 1.25rem 0;
-  border: 1px solid #e7eeff;
-  border-radius: 0.75rem;
+  margin: 18px 0;
+  border: 1px solid #dfe9ff;
+  border-radius: 12px;
+  background: #ffffff;
 }
 
 
@@ -299,46 +301,127 @@ h1.news-detail-h1 {
   color: #1f2937;
 }
 
-/* Scoped Table Styles inside .news-prose */
+/* Scoped Table Styles inside .news-prose — Matches img2 (#0b2540 header + clean row gap) */
 .news-prose table,
 .news-table-wrap table,
 .news-prose .bd-table-wrap table {
   width: 100%;
+  min-width: 480px;
   border-collapse: collapse;
-  font-size: 0.8125rem;
+  font-size: 13px;
+  line-height: 1.45;
   text-align: left;
+  background: #ffffff;
+}
+
+@media (min-width: 640px) {
+  .news-prose table,
+  .news-table-wrap table,
+  .news-prose .bd-table-wrap table {
+    font-size: 14px;
+  }
 }
 
 .news-prose th,
 .news-table-wrap th,
-.news-prose .bd-table-wrap th {
-  background-color: #115eaf !important;
+.news-prose .bd-table-wrap th,
+.news-prose thead th,
+.news-prose thead td,
+.news-prose tr.header-row th,
+.news-prose tr.header-row td,
+.news-prose table:not(:has(thead)) tbody tr:first-child td {
+  background-color: #0b2540 !important;
   color: #ffffff !important;
-  font-weight: 600;
-  padding: 0.5rem 0.75rem;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.025em;
-  border: 1px solid #084a8c;
+  font-weight: 700 !important;
+  padding: 12px 16px !important;
+  text-transform: none !important;
+  font-size: 13px;
+  letter-spacing: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid #0b2540 !important;
+  vertical-align: middle;
+}
+
+@media (min-width: 640px) {
+  .news-prose th,
+  .news-table-wrap th,
+  .news-prose .bd-table-wrap th,
+  .news-prose tr.header-row th,
+  .news-prose tr.header-row td {
+    font-size: 14px;
+  }
+}
+
+.news-prose th *,
+.news-table-wrap th *,
+.news-prose .bd-table-wrap th *,
+.news-prose tr.header-row th *,
+.news-prose tr.header-row td *,
+.news-prose table:not(:has(thead)) tbody tr:first-child td * {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
 }
 
 .news-prose td,
 .news-table-wrap td,
 .news-prose .bd-table-wrap td {
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #e7eeff;
-  color: #374151;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e7eeff;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  color: #43474d;
+  font-weight: 400;
   vertical-align: middle;
+  background-color: #ffffff;
 }
 
-.news-prose tr:nth-child(even) td,
-.news-table-wrap tr:nth-child(even) td,
-.news-prose .bd-table-wrap tr:nth-child(even) td {
-  background-color: #fbfdff;
+.news-prose td p,
+.news-table-wrap td p,
+.news-prose .bd-table-wrap td p {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
 }
 
-.news-prose tr:hover td,
-.news-table-wrap tr:hover td,
-.news-prose .bd-table-wrap tr:hover td {
-  background-color: #f0f5ff;
+.news-prose tbody tr:not(.header-row) td:first-child,
+.news-table-wrap tbody tr:not(.header-row) td:first-child,
+.news-prose .bd-table-wrap tbody tr:not(.header-row) td:first-child {
+  font-weight: 700;
+  color: #000f22;
+}
+
+.news-prose tbody tr:not(.header-row) td:first-child p,
+.news-prose tbody tr:not(.header-row) td:first-child strong {
+  font-weight: 700;
+  color: #000f22;
+}
+
+.news-prose tbody tr:not(.header-row):hover td,
+.news-table-wrap tbody tr:not(.header-row):hover td,
+.news-prose .bd-table-wrap tbody tr:not(.header-row):hover td {
+  background-color: rgba(240, 243, 255, 0.6);
+}
+
+.news-prose tr:last-child td,
+.news-table-wrap tr:last-child td,
+.news-prose .bd-table-wrap tr:last-child td {
+  border-bottom: 0;
+}
+
+.news-prose table.table-2col {
+  min-width: 0;
+  width: 100%;
+}
+
+.news-prose table.table-2col th:first-child,
+.news-prose table.table-2col td:first-child {
+  width: 38%;
+  min-width: 140px;
+}
+
+.news-prose table.table-3col tbody tr:not(.header-row) td:nth-child(3) {
+  font-weight: 600;
+  color: #115eaf;
 }

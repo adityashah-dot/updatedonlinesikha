@@ -57,20 +57,20 @@ export const UniversityAdmissions = ({
             </span>
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-xl overflow-x-auto shadow-xs">
+          <div className="bg-white border border-[#dfe9ff] rounded-xl overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm border-collapse">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200 text-slate-700 font-semibold">
-                  <th className="py-3 px-4">Program</th>
-                  <th className="py-3 px-4">Eligibility Requirements</th>
-                  <th className="py-3 px-4">Duration</th>
-                  <th className="py-3 px-4">Total Fee</th>
-                  <th className="py-3 px-4">Selection Mode</th>
+                <tr className="bg-[#0b2540] text-white font-bold">
+                  <th className="py-3 px-4 font-bold">Program</th>
+                  <th className="py-3 px-4 font-bold">Eligibility Requirements</th>
+                  <th className="py-3 px-4 font-bold">Duration</th>
+                  <th className="py-3 px-4 font-bold">Total Fee</th>
+                  <th className="py-3 px-4 font-bold">Selection Mode</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200/70 text-slate-700">
-                {university.admissions.eligibilityMatrix.map((row, idx) => <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
-                    <td className="py-3 px-4 font-semibold text-slate-900 whitespace-nowrap">
+              <tbody className="divide-y divide-[#e7eeff] text-[#43474d]">
+                {university.admissions.eligibilityMatrix.map((row, idx) => <tr key={idx} className="bg-white hover:bg-[#f0f3ff]/60 transition-colors">
+                    <td className="py-3.5 px-4 font-bold text-[#000f22] whitespace-nowrap">
                       {row.course}
                     </td>
                     <td className="py-3 px-4 max-w-xs sm:max-w-md">

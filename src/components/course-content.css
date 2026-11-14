@@ -151,6 +151,26 @@ h1.course-listing-h1 {
   margin-bottom: 0;
 }
 
+.course-prose > section + section,
+.course-prose > .course-section + .course-section {
+  margin-top: 28px;
+}
+
+.course-prose > .course-prose + .course-prose,
+.course-prose section > .course-prose + .course-prose {
+  margin-top: 16px;
+}
+
+.course-prose p + ul,
+.course-prose p + ol {
+  margin-top: 12px;
+}
+
+.course-prose ul + p,
+.course-prose ol + p {
+  margin-top: 14px;
+}
+
 .course-prose ul {
   list-style-type: disc;
   padding-left: 1.35rem;
@@ -214,7 +234,7 @@ h1.course-listing-h1 {
   font-style: italic;
 }
 
-/* Responsive CMS Table System - Scoped exclusively to Course Detail */
+/* Unified CMS Table System - Matches img2 (#0b2540 header + clean row gap) */
 .course-prose div[align="left"] {
   margin: 0;
   padding: 0;
@@ -230,25 +250,25 @@ h1.course-listing-h1 {
   max-width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  margin: 1rem 0;
-  border: 1px solid #d5e3ff;
-  border-radius: 10px;
+  margin: 18px 0;
+  border: 1px solid #dfe9ff;
+  border-radius: 12px;
   background: #ffffff;
-  box-shadow: 0 1px 2px rgba(0, 15, 34, 0.04);
 }
 
 .course-prose table {
   width: 100%;
-  min-width: 460px;
+  min-width: 480px;
   border-collapse: collapse;
-  font-size: 0.8125rem;
-  line-height: 1.42;
+  font-size: 13px;
+  line-height: 1.45;
   text-align: left;
+  background: #ffffff;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .course-prose table {
-    font-size: 0.85rem;
+    font-size: 14px;
   }
 }
 
@@ -260,41 +280,58 @@ h1.course-listing-h1 {
 }
 
 .course-prose th,
-.course-prose td {
-  padding: 0.45rem 0.75rem;
-  border-bottom: 1px solid #e7eeff;
+.course-prose thead th,
+.course-prose thead td,
+.course-prose tr.header-row th,
+.course-prose tr.header-row td,
+.course-prose table:not(:has(thead)) tbody tr:first-child td {
+  background: #0b2540 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 13px;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  padding: 12px 16px !important;
+  border: 0 !important;
+  border-bottom: 1px solid #0b2540 !important;
   vertical-align: middle;
+  text-align: left;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .course-prose th,
-  .course-prose td {
-    padding: 0.5rem 0.85rem;
+  .course-prose thead th,
+  .course-prose tr.header-row th,
+  .course-prose tr.header-row td {
+    font-size: 14px;
   }
 }
 
-.course-prose th,
-.course-prose tr.header-row td {
-  background: #115eaf;
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.025em;
-  white-space: nowrap;
+.course-prose th *,
+.course-prose thead th *,
+.course-prose thead td *,
+.course-prose tr.header-row th *,
+.course-prose tr.header-row td *,
+.course-prose table:not(:has(thead)) tbody tr:first-child td * {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
 }
 
-.course-prose tr:nth-child(even) td {
-  background-color: #fbfdff;
+.course-prose td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e7eeff;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  vertical-align: middle;
+  color: #43474d;
+  font-weight: 400;
+  background-color: #ffffff;
 }
 
-.course-prose tr.header-row td {
-  background: #115eaf;
-  color: #ffffff;
-}
-
-.course-prose tr:hover:not(.header-row) td {
-  background-color: #f0f5ff;
+.course-prose tbody tr:not(.header-row):hover td {
+  background-color: rgba(240, 243, 255, 0.6);
 }
 
 .course-prose tr:last-child td {
@@ -303,7 +340,20 @@ h1.course-listing-h1 {
 
 .course-prose td p {
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.45;
+  color: inherit;
+  font-size: inherit;
+}
+
+.course-prose tbody tr:not(.header-row) td:first-child {
+  font-weight: 700;
+  color: #000f22;
+}
+
+.course-prose tbody tr:not(.header-row) td:first-child p,
+.course-prose tbody tr:not(.header-row) td:first-child strong {
+  font-weight: 700;
+  color: #000f22;
 }
 
 .course-prose td ul,
@@ -326,87 +376,38 @@ h1.course-listing-h1 {
   text-underline-offset: 2px;
 }
 
-/* Part 2: 2-Column Key-Value Tables (e.g. Highlights, Eligibility, Aspects) */
-.course-prose .bd-table-wrap.bd-table-2col,
-.course-prose .bd-table-wrap:has(table:has(tr > th:nth-child(2):last-child)),
-.course-prose .bd-table-wrap:has(table:has(tr > td:nth-child(2):last-child)) {
-  max-width: 760px;
-}
-
+/* 2-Column Key-Value Tables */
 .course-prose table.table-2col,
 .course-prose table:has(tr > th:nth-child(2):last-child),
 .course-prose table:has(tr > td:nth-child(2):last-child) {
   min-width: 0;
   width: 100%;
-  table-layout: fixed;
 }
 
 .course-prose table.table-2col th:first-child,
-.course-prose table.table-2col td:first-child,
-.course-prose table:has(tr > th:nth-child(2):last-child) th:first-child,
-.course-prose table:has(tr > th:nth-child(2):last-child) td:first-child,
-.course-prose table:has(tr > td:nth-child(2):last-child) td:first-child {
-  width: 32%;
-  min-width: 130px;
-  font-weight: 600;
-  color: #000f22;
+.course-prose table.table-2col td:first-child {
+  width: 38%;
+  min-width: 140px;
 }
 
-.course-prose table.table-2col th:nth-child(2),
-.course-prose table.table-2col td:nth-child(2),
-.course-prose table:has(tr > th:nth-child(2):last-child) th:nth-child(2),
-.course-prose table:has(tr > th:nth-child(2):last-child) td:nth-child(2),
-.course-prose table:has(tr > td:nth-child(2):last-child) td:nth-child(2) {
-  width: 68%;
-  color: #43474d;
-}
-
-/* Part 3: 3-Column Tables (e.g. University Fee Comparison Tables) */
-.course-prose .bd-table-wrap.bd-table-3col,
-.course-prose .bd-table-wrap:has(table:has(tr > th:nth-child(3):last-child)),
-.course-prose .bd-table-wrap:has(table:has(tr > td:nth-child(3):last-child)) {
-  max-width: 960px;
-}
-
+/* 3-Column Tables (e.g. University Fee Comparison Tables) */
 .course-prose table.table-3col,
 .course-prose table:has(tr > th:nth-child(3):last-child),
 .course-prose table:has(tr > td:nth-child(3):last-child) {
-  min-width: 540px;
+  min-width: 520px;
   width: 100%;
 }
 
-.course-prose table.table-3col th:first-child,
-.course-prose table.table-3col td:first-child,
-.course-prose table:has(tr > th:nth-child(3):last-child) th:first-child,
-.course-prose table:has(tr > th:nth-child(3):last-child) td:first-child {
-  width: 34%;
-  min-width: 150px;
-  font-weight: 600;
-  color: #000f22;
-  word-break: normal;
-  overflow-wrap: break-word;
-}
-
-.course-prose table.table-3col th:nth-child(2),
-.course-prose table.table-3col td:nth-child(2),
-.course-prose table:has(tr > th:nth-child(3):last-child) th:nth-child(2),
-.course-prose table:has(tr > th:nth-child(3):last-child) td:nth-child(2) {
-  width: 22%;
-  min-width: 105px;
+.course-prose table.table-3col tbody tr:not(.header-row) td:nth-child(3),
+.course-prose table:has(tr > th:nth-child(3):last-child) tbody tr:not(.header-row) td:nth-child(3),
+.course-prose table:has(tr > td:nth-child(3):last-child) tbody tr:not(.header-row) td:nth-child(3) {
   font-weight: 600;
   color: #115eaf;
-  white-space: nowrap;
 }
 
-.course-prose table.table-3col th:nth-child(3),
-.course-prose table.table-3col td:nth-child(3),
-.course-prose table:has(tr > th:nth-child(3):last-child) th:nth-child(3),
-.course-prose table:has(tr > th:nth-child(3):last-child) td:nth-child(3) {
-  width: 44%;
-  min-width: 190px;
-  color: #43474d;
-  font-size: 0.8125rem;
-  line-height: 1.42;
+.course-prose table.table-3col tbody tr:not(.header-row) td:nth-child(3) p {
+  font-weight: 600;
+  color: #115eaf;
 }
 
 /* Embedded Media / Figures */

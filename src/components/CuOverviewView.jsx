@@ -340,8 +340,8 @@ export const CuOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {CU.highlightsTable.map((row, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-normal text-[#000f22]">{row.label}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.value}</td>
+                      <td className="py-3.5 px-4 font-bold text-[#000f22]">{row.label}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.value}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -374,11 +374,11 @@ export const CuOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {CU.courses.map((c) => <tr key={c.id} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{c.name}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{c.duration}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{c.feePerSemester}</td>
-                      <td className="py-2.5 px-4 font-semibold text-[#115eaf]">{c.totalFee}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137] max-w-[220px]">
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{c.name}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{c.duration}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{c.feePerSemester}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#115eaf]">{c.totalFee}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137] max-w-[220px]">
                         {c.eligibility}
                       </td>
                     </tr>)}
@@ -444,9 +444,9 @@ export const CuOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {CU.eligibility.rows.map((row) => <tr key={row.course} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.course}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.eligibility}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.selection}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.course}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.eligibility}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.selection}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -484,10 +484,10 @@ export const CuOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {CU.admission.eligibilityMatrix.map((row) => <tr key={row.course} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.course}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.eligibility}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.duration}</td>
-                      <td className="py-2.5 px-4 font-semibold text-[#115eaf]">{row.totalFee}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.course}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.eligibility}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.duration}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#115eaf]">{row.totalFee}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -528,8 +528,8 @@ export const CuOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {CU.rankings.table.map((row) => <tr key={row.authority} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.authority}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.status}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.authority}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.status}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -692,8 +692,8 @@ export const CuOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {CU.placements.table.map((row) => <tr key={row.authority} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.authority}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.status}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.authority}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.status}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -756,9 +756,9 @@ export const CuOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {CU.scholarships.table.map((row) => <tr key={row.type} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.type}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#115eaf]">{row.benefit}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.who}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.type}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#115eaf]">{row.benefit}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.who}</td>
                     </tr>)}
                 </tbody>
               </table>

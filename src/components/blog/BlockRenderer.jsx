@@ -106,18 +106,39 @@ function RichTextBlock({ block }) {
 }
 
 function TableBlock({ block }) {
-  const title = txt(pick(block, ["title", "caption"]));
-  const headers = asArray(pick(block, ["headers", "columns", "head"]));
-  const rows = asArray(pick(block, ["rows", "data", "body"])).map((r) => (Array.isArray(r) ? r : Object.values(r || {})));
-  if (headers.length === 0 && rows.length === 0) return null;
+  const src = block?.content && typeof block.content === "object" && !Array.isArray(block.content) ? block.content : block;
+  const title = txt(pick(src, ["title", "caption", "heading"]) || pick(block, ["title", "caption", "heading"]));
+  const rawHtml = typeof block?.content === "string" ? block.content : typeof block?.html === "string" ? block.html : typeof src?.html === "string" ? src.html : "";
+  if (rawHtml && /<table\b/i.test(rawHtml)) {
+    return (
+      <div className="bd-prose">
+        {title ? <h3>{title}</h3> : null}
+        <SafeHtml html={rawHtml} />
+      </div>
+    );
+  }
+  const rawHeaders = asArray(pick(src, ["headers", "columns", "head"]) || pick(block, ["headers", "columns", "head"]));
+  const rawRows = asArray(pick(src, ["rows", "data", "body"]) || pick(block, ["rows", "data", "body"])).map((r) => (Array.isArray(r) ? r : Object.values(r || {})));
+  if (rawHeaders.length === 0 && rawRows.length === 0) return null;
+  const headers = rawHeaders.length > 0 ? rawHeaders : rawRows[0] || [];
+  const rows = rawHeaders.length > 0 ? rawRows : rawRows.slice(1);
+  const colCount = headers.length || (rows[0] ? rows[0].length : 0);
+  const colClass = colCount === 2 ? " bd-table-2col" : colCount === 3 ? " bd-table-3col" : "";
+  const tableClass = colCount === 2 ? "bd-table table-2col" : colCount === 3 ? "bd-table table-3col" : "bd-table";
   return (
     <div className="bd-prose">
       {title ? <h3>{title}</h3> : null}
-      <div className="bd-table-wrap">
-        <table className="bd-table">
+      <div className={`bd-table-wrap${colClass}`}>
+        <table className={tableClass}>
           {headers.length > 0 && (
             <thead>
-              <tr>{headers.map((h, i) => <th key={i} scope="col">{typeof h === "object" ? txt(h.title || h.label) : txt(h)}</th>)}</tr>
+              <tr className="header-row">
+                {headers.map((h, i) => (
+                  <th key={i} scope="col">
+                    {typeof h === "object" ? txt(h.title || h.label) : typeof h === "string" ? <SafeHtml html={h} as="span" /> : txt(h)}
+                  </th>
+                ))}
+              </tr>
             </thead>
           )}
           <tbody>

@@ -198,22 +198,22 @@ export default function CoursesAndFeesView({
         </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse text-xs">
+          <table className="w-full text-left border-collapse text-xs sm:text-sm">
             <thead>
-              <tr className="border-b border-[#e7eeff] text-[#43474d] text-xs font-semibold bg-[#f9f9ff]">
-                <th className="py-3 px-4">Course Name</th>
-                <th className="py-3 px-4">Duration</th>
-                <th className="py-3 px-4">Per Sem Fee</th>
-                <th className="py-3 px-4">Total Fee</th>
+              <tr className="bg-[#0b2540] text-white">
+                <th className="py-3 px-4 font-bold">Course Name</th>
+                <th className="py-3 px-4 font-bold">Duration</th>
+                <th className="py-3 px-4 font-bold">Per Sem Fee</th>
+                <th className="py-3 px-4 font-bold">Total Fee</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="divide-y divide-[#e7eeff]">
               {rows.map((row, idx) => (
                 <tr
                   key={`${row.code || row.name}-${idx}`}
-                  className="border-b border-[#e7eeff] last:border-b-0"
+                  className="bg-white hover:bg-[#f0f3ff]/60 transition-colors"
                 >
-                  <td className="py-3.5 px-4 text-[#000f22] font-normal align-top">
+                  <td className="py-3.5 px-4 text-[#000f22] font-bold align-top">
                     {row.name}
                     {row.specializations ? (
                       <span className="block text-[10px] text-[#74777e] font-normal leading-tight">
@@ -472,7 +472,7 @@ export default function CoursesAndFeesView({
           {feeRows.length > 0 && (
             <section
               id="fee-structure"
-              className="content-block scroll-mt-[100px]"
+              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[100px]"
             >
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 gap-3">
                 <div>
@@ -533,7 +533,7 @@ export default function CoursesAndFeesView({
           {courses.length > 0 && (
             <section
               id="all-courses"
-              className="content-block bg-[#f0f3ff]/50 border-t border-[#e7eeff] scroll-mt-[100px]"
+              className="page-section card bg-[#f0f3ff]/50 rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[100px]"
             >
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-left max-w-3xl mb-[18px]">
@@ -719,9 +719,9 @@ export default function CoursesAndFeesView({
           {admissionDates.length > 0 && (
             <section
               id="admission-dates"
-              className="relative w-full max-w-full scroll-mt-[100px] border-y border-[#e7eeff] bg-[#f0f3ff]/60 py-5 sm:py-7"
+              className="page-section relative w-full max-w-full scroll-mt-[100px]"
             >
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div>
                 <div className="overflow-hidden rounded-2xl border border-[#d5e3ff] bg-gradient-to-br from-[#f9fbff] via-[#f0f3ff] to-white shadow-sm">
                 <div className="flex flex-col gap-3 border-b border-[#dfe9ff] px-5 py-5 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
                   <div>
@@ -783,7 +783,7 @@ export default function CoursesAndFeesView({
           {learningRows.length > 0 && (
             <section
               id="learning-platform"
-              className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]"
+              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[100px]"
             >
               <div className="mb-[18px]">
                 <h2 className="section-title text-xl sm:text-2xl font-bold tracking-tight text-[#000f22]">
@@ -839,7 +839,7 @@ export default function CoursesAndFeesView({
           {reviews.length > 0 && (
             <section
               id="student-reviews"
-              className="content-block bg-white border-y border-[#e7eeff] scroll-mt-[100px]"
+              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[100px]"
             >
               <div className="w-full">
                 <div className="text-left mb-[18px]">
@@ -895,7 +895,7 @@ export default function CoursesAndFeesView({
           {faqs.length > 0 && (
             <section
               id="faqs"
-              className="content-block scroll-mt-[100px]"
+              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[100px]"
             >
               <div className="text-left mb-[18px]">
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
@@ -923,37 +923,39 @@ export default function CoursesAndFeesView({
             horizontal
           />
 
-          {/* 8. Counselor helpline */}
+          {/* 8. Counselor helpline — matches AcademicExpertCounselingSection theme */}
           <section
             id="counselor-helpline"
-            className="content-block bg-[#0b2540] text-white scroll-mt-[130px]"
+            className="page-section relative isolate overflow-hidden rounded-[20px] border border-[#d0e2fa] bg-gradient-to-br from-[#eef6ff] via-[#f7fbff] to-white p-5 sm:p-6 text-[#0b1d3a] shadow-sm scroll-mt-[130px]"
           >
+            <div className="pointer-events-none absolute -right-24 -top-24 -z-10 h-96 w-96 rounded-full bg-[#b9daff]/30 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-20 -left-20 -z-10 h-80 w-80 rounded-full bg-[#b9daff]/20 blur-3xl" />
             <div className="w-full flex flex-col md:flex-row items-center justify-between gap-5">
               <div>
-                <h3 className="section-title text-lg sm:text-xl font-bold font-sans tracking-tight">
+                <h3 className="section-title text-lg sm:text-xl font-bold text-[#0b1d3a] font-sans tracking-tight">
                   {coursesData.counselor?.title ||
                     "Have Questions About Courses, Eligibility, or Fees?"}
                 </h3>
-                <p className="section-description text-xs sm:text-sm text-[#b1c8eb] font-normal">
+                <p className="section-description text-xs sm:text-sm text-[#657185] font-normal">
                   {coursesData.counselor?.description ||
                     "Speak directly with an Online Siksha university advisor. We review your documents, help generate your DEB ID, and guide your admission at zero cost."}
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
                 <button
                   type="button"
                   onClick={() => apply?.()}
-                  className="px-5 py-2.5 rounded-lg bg-[#115eaf] text-white text-xs sm:text-sm font-semibold shadow hover:bg-[#004689] active:scale-95 transition-all min-h-[44px]"
+                  className="px-5 py-2.5 rounded-lg bg-[#1764c0] text-white text-xs sm:text-sm font-semibold shadow-md hover:bg-[#1054a5] active:scale-95 transition-all min-h-[44px]"
                 >
                   Book Free Counseling Call
                 </button>
                 <button
                   type="button"
                   onClick={() => helpDesk?.()}
-                  className="px-4 py-2.5 rounded-lg border border-[#768dad]/40 text-white text-xs sm:text-sm font-medium hover:bg-white/10 transition-all flex items-center gap-1.5 min-h-[44px]"
+                  className="px-4 py-2.5 rounded-lg border border-[#c4c6ce] bg-white text-[#0b1d3a] text-xs sm:text-sm font-medium hover:bg-[#f0f3ff] transition-all flex items-center gap-1.5 min-h-[44px]"
                 >
-                  <PhoneCall className="w-4 h-4 text-[#70aaff]" />
+                  <PhoneCall className="w-4 h-4 text-[#1764c0]" />
                   <span>Call Helpline: 1800-889-4422</span>
                 </button>
               </div>

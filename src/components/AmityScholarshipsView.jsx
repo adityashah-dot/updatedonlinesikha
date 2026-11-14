@@ -354,8 +354,8 @@ export const AmityScholarshipsView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {SP.highlights.rows.map((row) => <tr key={row.label} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-normal text-[#000f22]">{row.label}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.value}</td>
+                      <td className="py-3.5 px-4 font-bold text-[#000f22]">{row.label}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.value}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -386,9 +386,9 @@ export const AmityScholarshipsView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {SP.types.rows.map((row) => <tr key={row.type} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.type}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.eligibility}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#115eaf]">{row.benefit}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.type}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.eligibility}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#115eaf]">{row.benefit}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -454,8 +454,8 @@ export const AmityScholarshipsView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {SP.coursesCovered.ug.map((row) => <tr key={row.course} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.course}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.duration}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.course}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.duration}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -473,8 +473,8 @@ export const AmityScholarshipsView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {SP.coursesCovered.pg.map((row) => <tr key={row.course} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.course}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.duration}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.course}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.duration}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -504,8 +504,8 @@ export const AmityScholarshipsView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {SP.benefits.rows.map((row) => <tr key={row.benefit} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.benefit}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.description}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.benefit}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.description}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -566,8 +566,8 @@ export const AmityScholarshipsView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {SP.documents.rows.map((row) => <tr key={row.document} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.document}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.requiredFor}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.document}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.requiredFor}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -598,9 +598,9 @@ export const AmityScholarshipsView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {SP.comparison.rows.map((row) => <tr key={row.particular} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.particular}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.general}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#115eaf]">{row.aonsat}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.particular}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.general}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#115eaf]">{row.aonsat}</td>
                     </tr>)}
                 </tbody>
               </table>

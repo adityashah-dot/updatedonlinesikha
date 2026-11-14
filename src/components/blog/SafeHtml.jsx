@@ -89,7 +89,15 @@ export function sanitizeHtml(rawHtml) {
       const cellMatches = firstTrMatch ? firstTrMatch[1].match(/<(?:th|td)\b/gi) : null;
       const colCount = cellMatches ? cellMatches.length : 0;
       const extraClass = colCount === 2 ? " bd-table-2col" : (colCount === 3 ? " bd-table-3col" : "");
-      const tableWithClass = colCount === 2 ? m.replace(/^<table\b/i, '<table class="table-2col"') : (colCount === 3 ? m.replace(/^<table\b/i, '<table class="table-3col"') : m);
+      let tableHtml = m;
+      if (!/<thead\b/i.test(tableHtml) && firstTrMatch) {
+        const headerTr = firstTrMatch[0]
+          .replace(/^<tr\b/i, '<tr class="header-row"')
+          .replace(/<td(\b[^>]*)>/gi, "<th$1>")
+          .replace(/<\/td>/gi, "</th>");
+        tableHtml = tableHtml.replace(firstTrMatch[0], `<thead>${headerTr}</thead>`);
+      }
+      const tableWithClass = colCount === 2 ? tableHtml.replace(/^<table\b/i, '<table class="table-2col"') : (colCount === 3 ? tableHtml.replace(/^<table\b/i, '<table class="table-3col"') : tableHtml);
       return `<div class="bd-table-wrap${extraClass}">${tableWithClass}</div>`;
     });
     // Remove empty paragraphs
@@ -198,7 +206,7 @@ export function sanitizeHtml(rawHtml) {
       const wrap = doc.createElement("div");
       wrap.className = "bd-table-wrap";
 
-      // Detect column count to add semantic helper classes
+      // Detect column count to add semantic helper classes & promote first row to thead if missing
       const firstRow = table.querySelector("tr");
       const cells = firstRow ? Array.from(firstRow.children).filter((c) => c.tagName === "TH" || c.tagName === "TD") : [];
       if (cells.length === 2) {
@@ -207,6 +215,23 @@ export function sanitizeHtml(rawHtml) {
       } else if (cells.length === 3) {
         wrap.classList.add("bd-table-3col");
         table.classList.add("table-3col");
+      }
+      if (firstRow) {
+        firstRow.classList.add("header-row");
+        let thead = table.querySelector("thead");
+        if (!thead) {
+          thead = doc.createElement("thead");
+          cells.forEach((cell) => {
+            if (cell.tagName === "TD") {
+              const th = doc.createElement("th");
+              Array.from(cell.attributes).forEach((attr) => th.setAttribute(attr.name, attr.value));
+              while (cell.firstChild) th.appendChild(cell.firstChild);
+              cell.parentNode.replaceChild(th, cell);
+            }
+          });
+          thead.appendChild(firstRow);
+          table.insertBefore(thead, table.firstChild);
+        }
       }
 
       table.parentNode.insertBefore(wrap, table);

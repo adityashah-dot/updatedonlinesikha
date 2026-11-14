@@ -240,25 +240,25 @@
 .section-container {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 24px;
+}
+
+@media (min-width: 640px) {
+  .section-container {
+    gap: 28px;
+  }
 }
 
 .uni-detail .section-container {
-  gap: 30px;
+  gap: 28px;
 }
 
-.uni-detail .page-section + .page-section {
-  margin-top: 30px;
+:not(.section-container) > .page-section + .page-section {
+  margin-top: 24px;
 }
 
 .section-container > :not([hidden]) {
   margin-bottom: 0;
-}
-
-@media (max-width: 640px) {
-  .section-container {
-    gap: 0;
-  }
 }
 
 /* Main headings - Minimal gap before description */

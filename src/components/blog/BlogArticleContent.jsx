@@ -8,13 +8,13 @@ export default function BlogArticleContent({ blog, onOpenCounseling }) {
   return (
     <article className="bd-prose">
       {blog.introduction ? (
-        <section id="introduction" aria-label="Introduction">
+        <section id="introduction" aria-label="Introduction" className="bd-section">
           <SafeHtml html={blog.introduction} />
         </section>
       ) : null}
 
       {sections.map((section) => (
-        <section key={section.key || section.id} id={section.id || section.key} aria-labelledby={`h-${section.id || section.key}`}>
+        <section key={section.key || section.id} id={section.id || section.key} aria-labelledby={`h-${section.id || section.key}`} className="bd-section">
           {section.title ? <h2 id={`h-${section.id || section.key}`}>{section.title}</h2> : null}
           {section.blocks.length > 0 ? section.blocks.map((block, bIdx) => (
             <BlockRenderer key={bIdx} block={block} onOpenCounseling={onOpenCounseling} />
@@ -23,14 +23,14 @@ export default function BlogArticleContent({ blog, onOpenCounseling }) {
       ))}
 
       {blog.conclusion ? (
-        <section id="conclusion" aria-labelledby="conclusion-title">
+        <section id="conclusion" aria-labelledby="conclusion-title" className="bd-section">
           <h2 id="conclusion-title">Conclusion</h2>
           <SafeHtml html={blog.conclusion} />
         </section>
       ) : null}
 
       {blog.references && blog.references.length > 0 ? (
-        <section id="references" aria-labelledby="references-title">
+        <section id="references" aria-labelledby="references-title" className="bd-section">
           <h3 id="references-title">Sources</h3>
           <ul>
             {blog.references.map((r, i) => <li key={i}>{r}</li>)}

@@ -19,17 +19,17 @@ export const UniversityDates = ({ university, onOpenApply }) => {
         </button>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+      <div className="bg-white border border-[#dfe9ff] rounded-xl overflow-hidden">
         <table className="w-full text-left text-xs sm:text-sm border-collapse">
           <thead>
-            <tr className="bg-slate-50 border-b border-slate-200 text-slate-700 font-semibold">
-              <th className="py-3 px-4 sm:px-6">Admission Stage / Event</th>
-              <th className="py-3 px-4 sm:px-6">Timeline / Schedule</th>
-              <th className="py-3 px-4 sm:px-6 hidden md:table-cell">Mode</th>
-              <th className="py-3 px-4 sm:px-6 text-right">Status</th>
+            <tr className="bg-[#0b2540] text-white font-bold">
+              <th className="py-3 px-4 font-bold">Admission Stage / Event</th>
+              <th className="py-3 px-4 font-bold">Timeline / Schedule</th>
+              <th className="py-3 px-4 font-bold hidden md:table-cell">Mode</th>
+              <th className="py-3 px-4 font-bold text-right">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-200/80 text-slate-700">
+          <tbody className="divide-y divide-[#e7eeff] text-[#43474d]">
             {university.importantDates.items.map((item, idx) => {
     const isActive = item.status === "Active" || item.status === "Open";
     return <tr key={idx} className="hover:bg-slate-50/50 transition-colors">

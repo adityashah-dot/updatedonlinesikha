@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { COURSES_DATA } from "../data/coursesData";
 import { INDIAN_STATES, INDIAN_STATES_CITIES } from "../data/indianLocations";
-import { X, CheckCircle, ArrowRight, ArrowLeft, Clock, FileText } from "lucide-react";
+import { X, CheckCircle, ArrowRight, ArrowLeft, Clock, FileText, User, Phone, Mail, ChevronDown } from "lucide-react";
 export const ApplyOnlineModal = ({
   isOpen,
   onClose,
@@ -91,46 +91,61 @@ export const ApplyOnlineModal = ({
         <div className="p-6">
           {step === 1 && <form onSubmit={handleNext} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-1.5">
-                  Full Name (As per 10th Class Marksheet) *
+                <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
+                  Full Name (As per 10th Class Marksheet) <span className="text-[#e11d48]">*</span>
                 </label>
-                <input
-    type="text"
-    required
-    value={formData.fullName}
-    onChange={(e) => handleInputChange("fullName", e.target.value)}
-    placeholder="e.g. Rahul Sharma"
-    className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
-  />
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#74777e]">
+                    <User className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="text"
+                    required
+                    value={formData.fullName}
+                    onChange={(e) => handleInputChange("fullName", e.target.value)}
+                    placeholder="e.g. Rahul Sharma"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 bg-white transition-all"
+                  />
+                </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-1.5">
-                    Mobile Number (+91) *
+                  <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
+                    Mobile Number (+91) <span className="text-[#e11d48]">*</span>
                   </label>
-                  <input
-    type="tel"
-    required
-    pattern="[0-9]{10}"
-    value={formData.phone}
-    onChange={(e) => handleInputChange("phone", e.target.value)}
-    placeholder="10-digit Mobile Number"
-    className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
-  />
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#74777e]">
+                      <Phone className="w-4 h-4" />
+                    </div>
+                    <input
+                      type="tel"
+                      required
+                      pattern="[0-9]{10}"
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange("phone", e.target.value)}
+                      placeholder="10-digit Mobile Number"
+                      className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 bg-white transition-all"
+                    />
+                  </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-1.5">
-                    Email Address *
+                  <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
+                    Email Address <span className="text-[#e11d48]">*</span>
                   </label>
-                  <input
-    type="email"
-    required
-    value={formData.email}
-    onChange={(e) => handleInputChange("email", e.target.value)}
-    placeholder="rahul.sharma@example.com"
-    className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
-  />
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#74777e]">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <input
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => handleInputChange("email", e.target.value)}
+                      placeholder="rahul.sharma@example.com"
+                      className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 bg-white transition-all"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -141,22 +156,25 @@ export const ApplyOnlineModal = ({
                   </label>
                   <div className="relative">
                     <select
-    required
-    value={formData.state}
-    onChange={(e) => {
-      const selectedState = e.target.value;
-      const cities = INDIAN_STATES_CITIES[selectedState] || [];
-      setFormData((prev) => ({
-        ...prev,
-        state: selectedState,
-        city: cities[0] || ""
-      }));
-    }}
-    className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 bg-white cursor-pointer hover:border-[#115eaf]/50 transition-colors font-medium"
-  >
+                      required
+                      value={formData.state}
+                      onChange={(e) => {
+                        const selectedState = e.target.value;
+                        const cities = INDIAN_STATES_CITIES[selectedState] || [];
+                        setFormData((prev) => ({
+                          ...prev,
+                          state: selectedState,
+                          city: cities[0] || ""
+                        }));
+                      }}
+                      className="w-full pl-4 pr-10 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-medium text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 bg-white cursor-pointer hover:border-[#115eaf]/50 transition-colors appearance-none"
+                    >
                       <option value="">Select State</option>
                       {INDIAN_STATES.map((st) => <option key={st} value={st}>{st}</option>)}
                     </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-[#74777e]">
+                      <ChevronDown className="w-4 h-4" />
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -165,15 +183,18 @@ export const ApplyOnlineModal = ({
                   </label>
                   <div className="relative">
                     <select
-    required
-    disabled={!formData.state}
-    value={formData.city}
-    onChange={(e) => handleInputChange("city", e.target.value)}
-    className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 bg-white cursor-pointer disabled:bg-[#f0f3ff] disabled:text-[#74777e] disabled:cursor-not-allowed hover:border-[#115eaf]/50 transition-colors font-medium"
-  >
+                      required
+                      disabled={!formData.state}
+                      value={formData.city}
+                      onChange={(e) => handleInputChange("city", e.target.value)}
+                      className="w-full pl-4 pr-10 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-medium text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 bg-white cursor-pointer disabled:bg-[#f0f3ff] disabled:text-[#74777e] disabled:cursor-not-allowed hover:border-[#115eaf]/50 transition-colors appearance-none"
+                    >
                       <option value="">{formData.state ? "Select City" : "Select State first"}</option>
                       {formData.state && (INDIAN_STATES_CITIES[formData.state] || []).map((ct) => <option key={ct} value={ct}>{ct}</option>)}
                     </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-[#74777e]">
+                      <ChevronDown className="w-4 h-4" />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -194,15 +215,22 @@ export const ApplyOnlineModal = ({
                 <label className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-1.5">
                   Select Desired Degree Program *
                 </label>
-                <select
-    value={formData.courseId}
-    onChange={(e) => handleInputChange("courseId", e.target.value)}
-    className="w-full px-4 py-3 rounded-xl border border-[#c4c6ce] text-base sm:text-sm font-semibold text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 cursor-pointer"
-  >
-                  {COURSES_DATA.map((c) => <option key={c.id} value={c.id}>
-                      {c.name} — ₹{c.totalFee.toLocaleString("en-IN")} ({c.duration})
-                    </option>)}
-                </select>
+                <div className="relative">
+                  <select
+                    value={formData.courseId}
+                    onChange={(e) => handleInputChange("courseId", e.target.value)}
+                    className="w-full pl-4 pr-10 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-medium text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 cursor-pointer bg-white appearance-none"
+                  >
+                    {COURSES_DATA.map((c) => (
+                      <option key={c.id} value={c.id}>
+                        {c.name} — ₹{c.totalFee.toLocaleString("en-IN")} ({c.duration})
+                      </option>
+                    ))}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-[#74777e]">
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
+                </div>
               </div>
 
               <div className="p-3.5 rounded-xl bg-[#f0f3ff] border border-[#e7eeff] text-xs space-y-1">
@@ -216,16 +244,21 @@ export const ApplyOnlineModal = ({
                 <label className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-1.5">
                   Current Highest Educational Qualification *
                 </label>
-                <select
-    value={formData.qualification}
-    onChange={(e) => handleInputChange("qualification", e.target.value)}
-    className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf]"
-  >
-                  <option value="12th Pass">10+2 Intermediate (CBSE/ICSE/State)</option>
-                  <option value="Graduation Completed">Bachelor’s Degree (B.Com/BBA/BCA/B.Sc/BA/B.Tech)</option>
-                  <option value="Post Graduation">Master’s Degree or Higher</option>
-                  <option value="Diploma Holder">3-Year Polytechnic Diploma</option>
-                </select>
+                <div className="relative">
+                  <select
+                    value={formData.qualification}
+                    onChange={(e) => handleInputChange("qualification", e.target.value)}
+                    className="w-full pl-4 pr-10 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-medium text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 cursor-pointer bg-white appearance-none"
+                  >
+                    <option value="12th Pass">10+2 Intermediate (CBSE/ICSE/State)</option>
+                    <option value="Graduation Completed">Bachelor’s Degree (B.Com/BBA/BCA/B.Sc/BA/B.Tech)</option>
+                    <option value="Post Graduation">Master’s Degree or Higher</option>
+                    <option value="Diploma Holder">3-Year Polytechnic Diploma</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3.5 text-[#74777e]">
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
+                </div>
               </div>
 
               <div>

@@ -10,15 +10,15 @@ export const UniversityRankings = ({ university }) => {
         </p>
       </div>
 
-      <div className="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+      <div className="bg-white border border-[#dfe9ff] rounded-xl overflow-hidden">
         <table className="w-full text-left text-xs sm:text-sm border-collapse">
           <thead>
-            <tr className="bg-slate-50 border-b border-slate-200 text-slate-700 font-semibold">
-              <th className="py-3 px-4 sm:px-6 w-1/3">Statutory Council / Ranking Body</th>
-              <th className="py-3 px-4 sm:px-6">Recognition Status & Equivalence</th>
+            <tr className="bg-[#0b2540] text-white font-bold">
+              <th className="py-3 px-4 font-bold w-1/3">Statutory Council / Ranking Body</th>
+              <th className="py-3 px-4 font-bold">Recognition Status & Equivalence</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-200/80 text-slate-700">
+          <tbody className="divide-y divide-[#e7eeff] text-[#43474d]">
             {university.rankingsAndAccreditations.table.map((row, idx) => <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
                 <td className="py-3.5 px-4 sm:px-6 font-semibold text-slate-900 align-top">
                   <div className="flex items-start gap-2">

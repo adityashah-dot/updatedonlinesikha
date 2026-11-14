@@ -5,7 +5,7 @@ import { UNIVERSITIES_LISTING_FAQS } from "../data/universityListingFaqs";
 export function UniversitiesFaq({ onOpenHelpDesk }) {
   return (
     <section id="faqs" aria-labelledby="universities-faq-heading" className="scroll-mt-24 bg-white rounded-2xl border border-[#e7eeff] p-4 sm:p-5 md:p-6 shadow-xs">
-      <div className="pt-3 mt-[18px] border-t border-[#e7eeff]">
+      <div>
         <h2 id="universities-faq-heading" className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
           Online Universities — Frequently Asked Questions
         </h2>

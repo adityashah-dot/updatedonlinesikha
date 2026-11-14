@@ -305,8 +305,8 @@ export const AmityOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {AMITY.highlightsTable.map((row) => <tr key={row.label} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-normal text-[#000f22]">{row.label}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.value}</td>
+                      <td className="py-3.5 px-4 font-bold text-[#000f22]">{row.label}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.value}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -365,11 +365,11 @@ export const AmityOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {AMITY_UNIVERSITY_DATA.courses.map((c) => <tr key={c.id} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{c.name}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{c.duration}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{c.feePerSemester}</td>
-                      <td className="py-2.5 px-4 font-semibold text-[#115eaf]">{c.totalFee}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137] max-w-[220px]">
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{c.name}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{c.duration}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{c.feePerSemester}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#115eaf]">{c.totalFee}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137] max-w-[220px]">
                         {c.eligibility}
                       </td>
                     </tr>)}
@@ -434,8 +434,8 @@ export const AmityOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {AMITY.eligibility.rows.map((row) => <tr key={row.course} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.course}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.eligibility}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.course}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.eligibility}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -499,13 +499,13 @@ export const AmityOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {AMITY.admissionDates.table.map((row) => <tr key={row.event} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">
                         <span className="inline-flex items-center gap-1.5">
                           <Calendar className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
                           {row.event}
                         </span>
                       </td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.date}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.date}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -539,9 +539,9 @@ export const AmityOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {AMITY.rankings.table.map((row) => <tr key={row.authority} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.authority}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.category}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#115eaf]">
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.authority}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.category}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#115eaf]">
                         <span className="inline-flex items-center gap-1.5">
                           <Trophy className="w-3.5 h-3.5 text-amber-600 shrink-0" />
                           {row.status}
@@ -698,8 +698,8 @@ export const AmityOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {AMITY.placements.table.map((row) => <tr key={row.label} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.label}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.value}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.label}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.value}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -765,9 +765,9 @@ export const AmityOverviewView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {AMITY.scholarships.table.map((row) => <tr key={row.type} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.type}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#115eaf]">{row.benefit}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.who}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.type}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#115eaf]">{row.benefit}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.who}</td>
                     </tr>)}
                 </tbody>
               </table>

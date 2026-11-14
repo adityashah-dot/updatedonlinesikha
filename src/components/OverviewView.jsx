@@ -486,10 +486,10 @@ const OverviewView = ({
     );
     const visible = highlightsExpanded ? filtered : filtered.slice(0, 8);
     return visible.map((row, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                          <td className="py-2.5 px-4 font-normal text-[#000f22]">
+                          <td className="py-3.5 px-4 font-bold text-[#000f22]">
                             {row.label}
                           </td>
-                          <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.value}</td>
+                          <td className="py-3.5 px-4 font-normal text-[#43474d]">{row.value}</td>
                         </tr>);
   })()}
                   </tbody>
@@ -570,39 +570,41 @@ const OverviewView = ({
               {
     /* Fee Table */
   }
-              <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
-                <table className="w-full text-left border-collapse text-xs sm:text-[13px]">
+              <div className="overflow-hidden rounded-xl border border-[#dfe9ff] bg-white mt-[18px]">
+                <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs sm:text-sm">
                   <thead>
                     <tr className="bg-[#0b2540] text-white">
-                      <th className="py-2 px-3 font-bold">Degree</th>
-                      <th className="py-2 px-3 font-bold">Duration</th>
-                      <th className="py-2 px-3 font-bold">Sem Fees</th>
-                      <th className="py-2 px-3 font-bold">Total Fees</th>
+                      <th className="py-3 px-4 font-bold">Degree</th>
+                      <th className="py-3 px-4 font-bold">Duration</th>
+                      <th className="py-3 px-4 font-bold">Sem Fees</th>
+                      <th className="py-3 px-4 font-bold">Total Fees</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#e7eeff]">
-                    {visibleFeeRows.map((c) => <tr key={c.degree} className="bg-white hover:bg-[#f9f9ff] transition-colors">
-                          <td className="py-2 px-3 align-top">
+                    {visibleFeeRows.map((c) => <tr key={c.degree} className="bg-white hover:bg-[#f0f3ff]/60 transition-colors">
+                          <td className="py-3.5 px-4 align-top">
                             <button
     onClick={() => {
       const course = COURSES_DATA.find((x) => x.id === c.courseId);
       if (course) onSelectCourseHandler(course);
     }}
-    className="block text-left text-xs sm:text-[13px] font-normal text-[#115eaf] hover:text-[#004689] hover:underline transition-colors"
+    className="block text-left text-xs sm:text-sm font-bold text-[#000f22] hover:text-[#115eaf] hover:underline transition-colors"
   >
                               {c.degree}
                             </button>
-                            <span className="block text-[10px] text-[#74777e] font-normal leading-tight">{c.specializations}</span>
+                            <span className="block text-[11px] text-[#74777e] font-normal leading-tight mt-0.5">{c.specializations}</span>
                           </td>
-                          <td className="py-2 px-3 text-[#43474d] font-normal align-top whitespace-nowrap">{c.duration}</td>
-                          <td className="py-2 px-3 text-[#115eaf] font-normal align-top whitespace-nowrap">{c.perSemFee || "—"}</td>
-                          <td className="py-2 px-3 text-[#115eaf] font-normal align-top whitespace-nowrap">{c.avgFees || "—"}</td>
+                          <td className="py-3.5 px-4 text-[#43474d] font-normal align-top whitespace-nowrap">{c.duration}</td>
+                          <td className="py-3.5 px-4 text-[#43474d] font-normal align-top whitespace-nowrap">{c.perSemFee || "—"}</td>
+                          <td className="py-3.5 px-4 text-[#115eaf] font-semibold align-top whitespace-nowrap">{c.avgFees || "—"}</td>
                         </tr>)}
                     {filteredFeeRows.length === 0 && <tr className="bg-white">
                         <td colSpan={4} className="py-6 text-center text-xs text-[#74777e] font-normal">No programmes match your search.</td>
                       </tr>}
                   </tbody>
                 </table>
+                </div>
               </div>
 
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-[18px]">
@@ -705,43 +707,40 @@ const OverviewView = ({
                 </div>
               )}
 
-              {
-    /* Column Header (desktop only) */
-  }
-              <div
-    aria-hidden="true"
-    className={`hidden md:grid ${hasPerCourseSelection ? "grid-cols-[1.15fr_1.5fr_1fr]" : "grid-cols-[1fr_1.6fr]"} gap-x-8 px-3.5 py-2 border-b-2 border-[#000f22] text-xs font-bold text-[#43474d] mt-[18px]`}
-  >
-                <span>Course</span>
-                <span>Eligibility</span>
-                {hasPerCourseSelection && <span>Selection Process</span>}
+              {/* Eligibility Table — Matches img2 */}
+              <div className="mt-5 overflow-hidden rounded-xl border border-[#dfe9ff] bg-white">
+                <div className="overflow-x-auto">
+                  <table className="w-full border-collapse text-left text-xs sm:text-sm">
+                    <thead>
+                      <tr className="bg-[#0b2540] text-white">
+                        <th className="px-4 py-3 font-bold">Course</th>
+                        <th className="px-4 py-3 font-bold">Eligibility</th>
+                        {hasPerCourseSelection && <th className="px-4 py-3 font-bold">Selection Process</th>}
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-[#e7eeff]">
+                      {collegeData?.eligibility?.items.map((row, i) => (
+                        <tr key={i} className="bg-white transition-colors hover:bg-[#f0f3ff]/60">
+                          <td className="px-4 py-3.5 font-bold text-[#000f22] align-top">{row.course}</td>
+                          <td className="px-4 py-3.5 text-[#43474d] align-top">
+                            <ReadMoreText
+                              fullText
+                              text={row.eligibility}
+                              lines={3}
+                              className="text-xs sm:text-sm leading-relaxed text-[#43474d]"
+                            />
+                          </td>
+                          {hasPerCourseSelection && (
+                            <td className="px-4 py-3.5 font-semibold text-[#115eaf] align-top">
+                              {row.selection}
+                            </td>
+                          )}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-
-              {
-    /* Criteria List */
-  }
-              <ul className="list-none">
-                {collegeData?.eligibility?.items.map((row, i) => <li
-    key={i}
-    className={`grid grid-cols-1 ${hasPerCourseSelection ? "md:grid-cols-[1.15fr_1.5fr_1fr]" : "md:grid-cols-[1fr_1.6fr]"} gap-x-8 gap-y-1 items-center px-3.5 py-[11px] border-b border-[#e7eeff] border-l-[3px] border-l-transparent hover:bg-[#f9f9ff] hover:border-l-[#115eaf] transition-colors`}
-  >
-                    <div className="text-[14.5px] font-medium leading-[1.35] text-[#000f22]">{row.course}</div>
-
-                    <div className="text-[13.5px] leading-[1.45] text-[#43474d]">
-                      <span className="md:hidden block text-xs font-semibold text-[#74777e] mb-0.5">Eligibility</span>
-                      <ReadMoreText fullText
-                        text={row.eligibility}
-                        lines={3}
-                        className="text-[13.5px] leading-[1.45] text-[#43474d]"
-                      />
-                    </div>
-
-                    {hasPerCourseSelection && <div className="md:justify-self-start text-xs font-normal leading-[1.35] text-[#115eaf] bg-[#f0f3ff] border border-[#d5e3ff] px-2.5 py-[3px] rounded-[6px]">
-                      <span className="md:hidden block text-[10px] font-medium text-[#74777e] mb-0.5">Selection Process</span>
-                      {row.selection}
-                    </div>}
-                  </li>)}
-              </ul>
             </section>
               )}
 
@@ -911,14 +910,14 @@ const OverviewView = ({
                   <thead>
                     <tr className="bg-[#0b2540] text-white">
                       {(collegeData?.rankings?.columns?.length ? collegeData.rankings.columns : ["Authority / Body", "Recognition / Status"]).map((column, columnIndex) => (
-                        <th key={`${column}-${columnIndex}`} className="py-3 px-5 font-bold">{column}</th>
+                        <th key={`${column}-${columnIndex}`} className="py-3 px-4 font-bold">{column}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-[#e7eeff]">
-                    {collegeData?.rankings?.table.map((r, idx) => <tr key={idx} className={idx % 2 === 0 ? "bg-[#f0f3ff]" : ""}>
+                    {collegeData?.rankings?.table.map((r, idx) => <tr key={idx} className="bg-white hover:bg-[#f0f3ff]/60 transition-colors">
                         {(collegeData?.rankings?.columns?.length ? r.values : [r.authority, r.status]).map((value, columnIndex) => (
-                          <td key={columnIndex} className={`py-3 px-5 font-normal ${columnIndex === 0 ? "text-[#000f22]" : "text-[#43474d]"}`}>{value}</td>
+                          <td key={columnIndex} className={`py-3.5 px-4 ${columnIndex === 0 ? "font-bold text-[#000f22]" : "font-normal text-[#43474d]"}`}>{value}</td>
                         ))}
                       </tr>)}
                   </tbody>
@@ -1112,7 +1111,7 @@ const OverviewView = ({
                   </thead>
                   <tbody className="divide-y divide-[#e7eeff]">
                     {collegeData?.campus?.travelTable.map((t, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                        <td className="py-3.5 px-4 font-normal text-[#000f22] align-top whitespace-nowrap">{t.mode}</td>
+                        <td className="py-3.5 px-4 font-bold text-[#000f22] align-top whitespace-nowrap">{t.mode}</td>
                         <td className="py-3.5 px-4 text-[#43474d] leading-relaxed font-normal">{t.detail}</td>
                       </tr>)}
                   </tbody>

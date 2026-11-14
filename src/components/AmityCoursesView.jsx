@@ -337,11 +337,11 @@ export const AmityCoursesView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {AMITY_UNIVERSITY_DATA.courses.map((c) => <tr key={c.id} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{c.name}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{c.duration}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{c.feePerSemester}</td>
-                      <td className="py-2.5 px-4 font-semibold text-[#115eaf]">{c.totalFee}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137] max-w-[220px]">
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{c.name}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{c.duration}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{c.feePerSemester}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#115eaf]">{c.totalFee}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137] max-w-[220px]">
                         {c.eligibility}
                       </td>
                     </tr>)}
@@ -400,14 +400,14 @@ export const AmityCoursesView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {CP.admissionDates.rows.map((row, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">
                         <span className="inline-flex items-center gap-1.5">
                           <Calendar className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
                           {row.event}
                         </span>
                       </td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.session}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#115eaf]">{row.date}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.session}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#115eaf]">{row.date}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -450,26 +450,26 @@ export const AmityCoursesView = ({
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse text-xs">
                     <thead>
-                      <tr className="border-b border-[#e7eeff] text-[#43474d] text-xs font-semibold bg-[#f9f9ff]">
-                        <th className="py-2.5 px-5">Course Name</th>
-                        <th className="py-2.5 px-3">Duration</th>
-                        <th className="py-2.5 px-3">Per Sem Fee</th>
-                        <th className="py-2.5 px-3">Total Fee</th>
-                        <th className="py-2.5 px-5 text-right">Details</th>
+                      <tr className="bg-[#0b2540] text-white font-bold">
+                        <th className="py-3 px-4">Course Name</th>
+                        <th className="py-3 px-4">Duration</th>
+                        <th className="py-3 px-4">Per Sem Fee</th>
+                        <th className="py-3 px-4">Total Fee</th>
+                        <th className="py-3 px-4 text-right">Details</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-[#e7eeff]">
                       {(() => {
     const ugCourses = AMITY_UNIVERSITY_DATA.courses.filter((c) => c.level === "UG");
     return ugCourses.map((c) => <tr key={c.id} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                            <td className="py-2.5 px-5 font-normal text-[#000f22]">
+                            <td className="py-3.5 px-4 font-bold text-[#000f22]">
                               {c.code}
                               <span className="block text-[11px] font-normal text-[#74777e]">{c.name}</span>
                             </td>
-                            <td className="py-2.5 px-3 text-[#43474d] font-normal">{c.duration.split(" ")[0]} Years</td>
-                            <td className="py-2.5 px-3 font-normal text-[#000f22]">{c.feePerSemester}</td>
-                            <td className="py-2.5 px-3 font-normal text-[#115eaf]">{c.totalFee}</td>
-                            <td className="py-2.5 px-5 text-right">
+                            <td className="py-3 px-4 text-[#43474d] font-normal">{c.duration.split(" ")[0]} Years</td>
+                            <td className="py-3 px-4 font-normal text-[#000f22]">{c.feePerSemester}</td>
+                            <td className="py-3 px-4 font-normal text-[#115eaf]">{c.totalFee}</td>
+                            <td className="py-3 px-4 text-right">
                               <button
       onClick={() => onSelectCourse?.(c)}
       className="tap-hit inline-flex items-center text-[#115eaf] font-medium text-xs hover:underline"
@@ -512,26 +512,26 @@ export const AmityCoursesView = ({
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse text-xs">
                     <thead>
-                      <tr className="border-b border-[#e7eeff] text-[#43474d] text-xs font-semibold bg-[#f9f9ff]">
-                        <th className="py-2.5 px-5">Course Name</th>
-                        <th className="py-2.5 px-3">Duration</th>
-                        <th className="py-2.5 px-3">Per Sem Fee</th>
-                        <th className="py-2.5 px-3">Total Fee</th>
-                        <th className="py-2.5 px-5 text-right">Details</th>
+                      <tr className="bg-[#0b2540] text-white font-bold">
+                        <th className="py-3 px-4">Course Name</th>
+                        <th className="py-3 px-4">Duration</th>
+                        <th className="py-3 px-4">Per Sem Fee</th>
+                        <th className="py-3 px-4">Total Fee</th>
+                        <th className="py-3 px-4 text-right">Details</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-[#e7eeff]">
                       {(() => {
     const pgCourses = AMITY_UNIVERSITY_DATA.courses.filter((c) => c.level === "PG");
     return pgCourses.map((c) => <tr key={c.id} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                            <td className="py-2.5 px-5 font-normal text-[#000f22]">
+                            <td className="py-3.5 px-4 font-bold text-[#000f22]">
                               {c.code}
                               <span className="block text-[11px] font-normal text-[#74777e]">{c.name}</span>
                             </td>
-                            <td className="py-2.5 px-3 text-[#43474d] font-normal">{c.duration.split(" ")[0]} Years</td>
-                            <td className="py-2.5 px-3 font-normal text-[#000f22]">{c.feePerSemester}</td>
-                            <td className="py-2.5 px-3 font-normal text-[#115eaf]">{c.totalFee}</td>
-                            <td className="py-2.5 px-5 text-right">
+                            <td className="py-3 px-4 text-[#43474d] font-normal">{c.duration.split(" ")[0]} Years</td>
+                            <td className="py-3 px-4 font-normal text-[#000f22]">{c.feePerSemester}</td>
+                            <td className="py-3 px-4 font-normal text-[#115eaf]">{c.totalFee}</td>
+                            <td className="py-3 px-4 text-right">
                               <button
       onClick={() => onSelectCourse?.(c)}
       className="tap-hit inline-flex items-center text-[#115eaf] font-medium text-xs hover:underline"
@@ -695,17 +695,14 @@ export const AmityCoursesView = ({
       {
     /* 11. Counselor CTA Strip — matches LPU Courses tab */
   }
-      <section
-    id="counselor-helpline"
-    className="content-block bg-[#0b2540] text-white scroll-mt-[130px]"
-  >
+      <section id="counselor-helpline" className="page-section relative isolate overflow-hidden rounded-[20px] border border-[#d0e2fa] bg-gradient-to-br from-[#eef6ff] via-[#f7fbff] to-white p-5 sm:p-6 text-[#0b1d3a] shadow-sm scroll-mt-[130px] max-w-7xl mx-auto my-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-5">
           <div>
             <h3 className="section-title text-lg sm:text-xl font-bold font-sans tracking-tight">
               Have Questions About Courses, Eligibility, or Fees?
             </h3>
-            <p className="section-description text-xs sm:text-sm text-[#b1c8eb] font-normal">
-              Speak directly with an Online Siksha university advisor. We review your documents, help generate your
+            <p className="section-description text-xs sm:text-sm text-[#657185] font-normal">
+                Speak directly with an Online Siksha university advisor. We review your documents, help generate your
               DEB ID, and guide your admission at zero cost.
             </p>
           </div>
@@ -718,7 +715,7 @@ export const AmityCoursesView = ({
             </button>
             <button
     onClick={onOpenHelpDesk}
-    className="px-4 py-2.5 rounded-lg border border-[#768dad]/40 text-white text-xs sm:text-sm font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
+    className="px-4 py-2.5 rounded-lg border border-[#c4c6ce] bg-white text-[#0b1d3a] text-xs sm:text-sm font-medium hover:bg-[#f0f3ff] transition-all flex items-center gap-1.5"
   >
               <PhoneCall className="w-4 h-4 text-[#70aaff]" />
               <span>Call Helpline: 1800-889-4422</span>

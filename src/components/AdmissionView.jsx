@@ -196,8 +196,8 @@ export default function CollegeAdmission({
                   </thead>
                   <tbody className="divide-y divide-[#e7eeff]">
                     {data.admissionDates.map((row, idx) => (
-                      <tr key={`${row.event}-${idx}`} className="bg-white">
-                        <td className="py-3.5 px-4 text-[#000f22] font-normal align-top">
+                      <tr key={`${row.event}-${idx}`} className="bg-white hover:bg-[#f0f3ff]/60 transition-colors">
+                        <td className="py-3.5 px-4 text-[#000f22] font-bold align-top">
                           {row.event}
                         </td>
                         <td className="py-3.5 px-4 text-[#43474d] font-normal align-top">
@@ -454,38 +454,41 @@ export default function CollegeAdmission({
             </section>
           )}
 
-          {/* 8. Counselling callback */}
+          {/* 8. Counselling callback — matches AcademicExpertCounselingSection theme */}
           <section
             id="counseling-callback"
-            className="page-section card bg-[#0b2540] border border-[#314869] rounded-2xl shadow-xs"
+            className="page-section relative isolate overflow-hidden rounded-[20px] border border-[#d0e2fa] bg-gradient-to-br from-[#eef6ff] via-[#f7fbff] to-white p-5 sm:p-6 text-[#0b1d3a] shadow-sm"
           >
-              <h2 className="section-title text-xl sm:text-2xl font-bold text-[#70aaff] font-sans">
-              Have Questions About Document Eligibility or Grants?
+            <div className="pointer-events-none absolute -right-24 -top-24 -z-10 h-96 w-96 rounded-full bg-[#b9daff]/30 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-20 -left-20 -z-10 h-80 w-80 rounded-full bg-[#b9daff]/20 blur-3xl" />
+
+            <h2 className="section-title text-xl sm:text-2xl font-bold text-[#0b1d3a] font-sans">
+              Have Questions About <span className="text-[#3478ed]">Document Eligibility or Grants?</span>
             </h2>
 
-            <div className="grid lg:grid-cols-12 gap-6 mt-[18px]">
+            <div className="grid lg:grid-cols-12 gap-6 mt-[18px] items-center">
               <div className="lg:col-span-5">
-                <p className="text-sm text-[#b1c8eb] leading-relaxed font-normal">
+                <p className="text-sm text-[#657185] leading-relaxed font-normal">
                   Get a free 1-on-1 session with an unbiased academic counsellor. We
                   will verify your documents, confirm eligibility and walk you through
                   the scholarship and fee options.
                 </p>
 
-                <ul className="mt-4 space-y-2 text-xs text-[#b1c8eb]">
+                <ul className="mt-4 space-y-2.5 text-xs text-[#0b1d3a]">
                   {[
                     "Document & eligibility verification",
                     "Scholarship and fee-waiver guidance",
                     "Zero-cost EMI plan comparison",
                   ].map((line) => (
                     <li key={line} className="flex items-start gap-2">
-                      <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                      {line}
+                      <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <span>{line}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="lg:col-span-7">
+              <div className="lg:col-span-7 rounded-[18px] border border-white/90 bg-white/95 p-4 sm:p-5 text-[#111c2d] shadow-[0_10px_28px_rgba(27,65,112,0.08)]">
                 {!callbackSubmitted ? (
                   <form
                     onSubmit={handleCallback}
@@ -493,7 +496,7 @@ export default function CollegeAdmission({
                     noValidate
                   >
                     <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-[#b1c8eb] mb-1">
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-[#43474d] mb-1">
                         Name
                       </label>
                       <input
@@ -505,19 +508,19 @@ export default function CollegeAdmission({
                             setCallbackErrors({ ...callbackErrors, name: "" });
                         }}
                         placeholder="Full name"
-                        className={`w-full px-3 py-2.5 rounded-lg border text-xs text-[#000f22] outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/30 ${
+                        className={`w-full px-3 py-2.5 rounded-lg border bg-white text-xs text-[#000f22] placeholder:text-[#74777e] outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 ${
                           callbackErrors.name ? "border-red-500" : "border-[#c4c6ce]"
                         }`}
                       />
                       {callbackErrors.name ? (
-                        <p className="mt-1 text-[11px] text-red-400">
+                        <p className="mt-1 text-[11px] text-red-500">
                           {callbackErrors.name}
                         </p>
                       ) : null}
                     </div>
 
                     <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-[#b1c8eb] mb-1">
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-[#43474d] mb-1">
                         Phone
                       </label>
                       <input
@@ -529,19 +532,19 @@ export default function CollegeAdmission({
                             setCallbackErrors({ ...callbackErrors, phone: "" });
                         }}
                         placeholder="98765 43210"
-                        className={`w-full px-3 py-2.5 rounded-lg border text-xs text-[#000f22] outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/30 ${
+                        className={`w-full px-3 py-2.5 rounded-lg border bg-white text-xs text-[#000f22] placeholder:text-[#74777e] outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 ${
                           callbackErrors.phone ? "border-red-500" : "border-[#c4c6ce]"
                         }`}
                       />
                       {callbackErrors.phone ? (
-                        <p className="mt-1 text-[11px] text-red-400">
+                        <p className="mt-1 text-[11px] text-red-500">
                           {callbackErrors.phone}
                         </p>
                       ) : null}
                     </div>
 
                     <div>
-                      <label className="block text-[10px] font-bold uppercase tracking-wider text-[#b1c8eb] mb-1">
+                      <label className="block text-[10px] font-bold uppercase tracking-wider text-[#43474d] mb-1">
                         Email
                       </label>
                       <input
@@ -553,12 +556,12 @@ export default function CollegeAdmission({
                             setCallbackErrors({ ...callbackErrors, email: "" });
                         }}
                         placeholder="name@example.com"
-                        className={`w-full px-3 py-2.5 rounded-lg border text-xs text-[#000f22] outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/30 ${
+                        className={`w-full px-3 py-2.5 rounded-lg border bg-white text-xs text-[#000f22] placeholder:text-[#74777e] outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 ${
                           callbackErrors.email ? "border-red-500" : "border-[#c4c6ce]"
                         }`}
                       />
                       {callbackErrors.email ? (
-                        <p className="mt-1 text-[11px] text-red-400">
+                        <p className="mt-1 text-[11px] text-red-500">
                           {callbackErrors.email}
                         </p>
                       ) : null}
@@ -567,7 +570,7 @@ export default function CollegeAdmission({
                     <div className="sm:col-span-3">
                       <button
                         type="submit"
-                        className="w-full py-2.5 min-h-[44px] bg-[#115eaf] text-white text-xs font-bold rounded-xl hover:bg-[#004689] active:scale-95 transition-all"
+                        className="w-full py-2.5 min-h-[44px] bg-[#1764c0] text-white text-xs font-bold rounded-xl shadow-md hover:bg-[#1054a5] active:scale-[0.99] transition-all cursor-pointer"
                       >
                         Request Callback
                       </button>
@@ -575,19 +578,19 @@ export default function CollegeAdmission({
                   </form>
                 ) : (
                   <div className="text-center py-6 space-y-2">
-                    <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-400/30 flex items-center justify-center mx-auto">
+                    <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center mx-auto">
                       <CheckCircle className="w-6 h-6" />
                     </div>
-                    <h3 className="text-base font-bold text-white">
+                    <h3 className="text-base font-bold text-[#000f22]">
                       Callback Request Confirmed
                     </h3>
-                    <p className="text-xs text-[#b1c8eb]">
+                    <p className="text-xs text-[#555960]">
                       An academic counsellor will call you within 15 minutes.
                     </p>
                     <button
                       type="button"
                       onClick={() => setCallbackSubmitted(false)}
-                      className="text-xs font-semibold text-[#70aaff] hover:underline pt-2 inline-block"
+                      className="text-xs font-semibold text-[#115eaf] hover:underline pt-2 inline-block cursor-pointer"
                     >
                       Submit another enquiry
                     </button>

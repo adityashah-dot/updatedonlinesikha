@@ -389,10 +389,7 @@ export default function CollegeScholarships({
           />
 
           {/* 4. Counselor helpline */}
-          <section
-            id="counselor-helpline"
-            className="content-block bg-[#0b2540] text-white scroll-mt-[130px]"
-          >
+          <section id="counselor-helpline" className="page-section relative isolate overflow-hidden rounded-[20px] border border-[#d0e2fa] bg-gradient-to-br from-[#eef6ff] via-[#f7fbff] to-white p-5 sm:p-6 text-[#0b1d3a] shadow-sm scroll-mt-[130px] max-w-7xl mx-auto my-6">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-5">
               <div>
                 <h3 className="section-title text-lg sm:text-xl font-bold font-sans tracking-tight">
@@ -415,7 +412,7 @@ export default function CollegeScholarships({
                 <button
                   type="button"
                   onClick={onOpenHelpDesk}
-                  className="px-4 py-2.5 rounded-lg border border-[#768dad]/40 text-white text-xs sm:text-sm font-medium hover:bg-white/10 transition-all flex items-center gap-1.5 min-h-[44px]"
+                  className="px-4 py-2.5 rounded-lg border border-[#c4c6ce] bg-white text-[#0b1d3a] text-xs sm:text-sm font-medium hover:bg-[#f0f3ff] transition-all flex items-center gap-1.5 min-h-[44px]"
                 >
                   <PhoneCall className="w-4 h-4 text-[#70aaff]" />
                   <span>Call Helpline: 1800-889-4422</span>

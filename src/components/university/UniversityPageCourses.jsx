@@ -554,7 +554,7 @@ export const UniversityPageCourses = ({
                         <th className="py-3 px-4 font-bold">Tentative Date</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-[#e7eeff]">
+                    <tbody className="divide-y divide-[#e7eeff] bg-white">
                       {importantDates.map((item, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
                           <td className="py-3.5 px-4 font-bold text-[#000f22]">{item.event}</td>
                           <td className="py-3.5 px-4 text-[#43474d]">{item.mode || "Online"}</td>
@@ -632,14 +632,14 @@ export const UniversityPageCourses = ({
           </div>
         </section>}
 
-      <section id="counselor-helpline" className="content-block bg-[#0b2540] text-white scroll-mt-[100px]">
+      <section id="counselor-helpline" className="page-section relative isolate overflow-hidden rounded-[20px] border border-[#d0e2fa] bg-gradient-to-br from-[#eef6ff] via-[#f7fbff] to-white p-5 sm:p-6 text-[#0b1d3a] shadow-sm scroll-mt-[130px] max-w-7xl mx-auto my-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-5">
           <div>
             <h3 className="section-title text-lg sm:text-xl font-bold font-sans tracking-tight">
               Have Questions About Courses, Eligibility, or Fees?
             </h3>
-            <p className="section-description text-xs sm:text-sm text-[#b1c8eb] font-normal">
-              Speak directly with an Online Siksha university advisor. We review your documents, help generate your DEB ID,
+            <p className="section-description text-xs sm:text-sm text-[#657185] font-normal">
+                Speak directly with an Online Siksha university advisor. We review your documents, help generate your DEB ID,
               and guide your admission at zero cost.
             </p>
           </div>
@@ -652,7 +652,7 @@ export const UniversityPageCourses = ({
             </button>
             <button
     onClick={onOpenHelpDesk}
-    className="px-4 py-2.5 rounded-lg border border-[#768dad]/40 text-white text-xs sm:text-sm font-medium hover:bg-white/10 transition-all flex items-center gap-1.5"
+    className="px-4 py-2.5 rounded-lg border border-[#c4c6ce] bg-white text-[#0b1d3a] text-xs sm:text-sm font-medium hover:bg-[#f0f3ff] transition-all flex items-center gap-1.5"
   >
               <PhoneCall className="w-4 h-4 text-[#70aaff]" />
               <span>Call Helpline: 1800-889-4422</span>

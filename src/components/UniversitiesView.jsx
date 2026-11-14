@@ -858,7 +858,7 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
       </main>
 
       {/* ================= LOWER CONTENT SECTIONS ================= */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 space-y-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-8 space-y-8">
         {/* Online universities by city (ported from the reference home page) */}
         <TopCollegesByLocation onOpenBrochure={onOpenHelpDesk} colleges={locationColleges}/>
 
@@ -867,11 +867,7 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
           onOpenBrochure={onOpenBrochure}
           onOpenHelpDesk={onOpenHelpDesk}
         />
-
-        {/* Listing-page FAQ (shared accordion + centralized data) */}
-        <UniversitiesFaq onOpenHelpDesk={onOpenHelpDesk} />
-
-      {/* ================= DEGREES GRID ================= */}
+{/* ================= DEGREES GRID ================= */}
       <section>
         <div className="bg-white rounded-2xl border border-[#d5e3ff] p-5 md:p-6 shadow-xs">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
@@ -961,6 +957,9 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
 
       {/* ================= BLOGS ================= */}
         <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="w-full rounded-2xl border border-[#e7eeff] bg-white p-5 md:p-6 shadow-xs" horizontal autoScroll showDescriptionOnMobile fetchLivePosts />
+
+        {/* Listing-page FAQ — placed last after Blogs just like on the Home page */}
+        <UniversitiesFaq onOpenHelpDesk={onOpenHelpDesk} />
       </div>
 
       {/* ================= MOBILE FULL-SCREEN FILTER OVERLAY ================= */}

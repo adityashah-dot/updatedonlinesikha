@@ -177,7 +177,7 @@ export const UniversityPageAdmission = ({
   />
       </div>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-[10px]">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 sm:space-y-7 pb-10">
         {
     /* 2. ADMISSION IMPORTANT DATES */
   }
@@ -200,7 +200,7 @@ export const UniversityPageAdmission = ({
             certificates during admission. Check the table below for admission dates:
           </p>
 
-          <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
+          <div className="overflow-hidden overflow-x-auto rounded-xl border border-[#dfe9ff] bg-white mt-[18px]">
             <table className="w-full text-left border-collapse text-xs sm:text-sm">
               <thead>
                 <tr className="bg-[#0b2540] text-white">
@@ -209,7 +209,7 @@ export const UniversityPageAdmission = ({
                   <th className="py-3 px-4 font-bold">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#e7eeff]">
+              <tbody className="divide-y divide-[#e7eeff] bg-white">
                 {dates.map((item, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
                     <td className="py-3.5 px-4 font-bold text-[#000f22] flex items-center gap-2">
                       <Calendar className="w-4 h-4 text-[#115eaf]" />
@@ -252,7 +252,7 @@ export const UniversityPageAdmission = ({
 
             <p className="section-description text-xs sm:text-sm text-[#43474d] leading-relaxed">{university.admissions.intro}</p>
 
-            <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
+            <div className="overflow-hidden overflow-x-auto rounded-xl border border-[#dfe9ff] bg-white mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
                   <tr className="bg-[#0b2540] text-white">
@@ -262,14 +262,14 @@ export const UniversityPageAdmission = ({
                     <th className="py-3 px-4 font-bold text-right">Tuition Fee</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#e7eeff]">
+                <tbody className="divide-y divide-[#e7eeff] bg-white">
                   {visibleEligibility.map((item, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
                       <td className="py-3.5 px-4 font-bold text-[#000f22]">
                         {item.course}
                         <span className="block text-[11px] font-normal text-[#74777e]">{item.duration}</span>
                       </td>
                       <td className="py-3.5 px-4 text-[#43474d] max-w-xs">{item.eligibility}</td>
-                      <td className="py-3.5 px-4 text-[#115eaf] font-normal">{item.selection || "Academic Merit Verification"}</td>
+                      <td className="py-3.5 px-4 text-[#115eaf] font-semibold">{item.selection || "Academic Merit Verification"}</td>
                       <td className="py-3.5 px-4 text-right font-bold text-[#000f22]">
                         {item.feeSem || item.totalFee} <span className="text-[11px] font-normal text-[#74777e]">/sem</span>
                       </td>
@@ -434,7 +434,7 @@ export const UniversityPageAdmission = ({
               {feesAndFinancing.intro}
             </p>
 
-            <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
+            <div className="overflow-hidden overflow-x-auto rounded-xl border border-[#dfe9ff] bg-white mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
                   <tr className="bg-[#0b2540] text-white">
@@ -442,7 +442,7 @@ export const UniversityPageAdmission = ({
                     <th className="py-3 px-4 font-bold">Details</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#e7eeff]">
+                <tbody className="divide-y divide-[#e7eeff] bg-white">
                   {scholarships.map((s, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
                       <td className="py-3.5 px-4 font-bold text-[#000f22] align-top">
                         {s.title}
@@ -462,18 +462,20 @@ export const UniversityPageAdmission = ({
   }
         <section
     id="counseling-callback"
-    className="page-section card bg-[#0b2540] text-white rounded-2xl border border-[#314865] relative overflow-hidden shadow-xl scroll-mt-[110px]"
+    className="page-section relative isolate overflow-hidden rounded-[20px] border border-[#d0e2fa] bg-gradient-to-br from-[#eef6ff] via-[#f7fbff] to-white text-[#0b1d3a] shadow-sm scroll-mt-[110px]"
   >
+          <div className="pointer-events-none absolute -right-24 -top-24 -z-10 h-96 w-96 rounded-full bg-[#b9daff]/30 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -left-20 -z-10 h-80 w-80 rounded-full bg-[#b9daff]/20 blur-3xl" />
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-5 sm:p-6 md:p-8">
             <div className="lg:col-span-8 space-y-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#115eaf] text-white text-xs font-bold uppercase tracking-wide">
-                <PhoneCall className="w-3.5 h-3.5" />
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#ffdf70] bg-[#fffdf2] text-[#dca400] text-xs font-bold uppercase tracking-wide">
+                <PhoneCall className="w-3.5 h-3.5 text-[#dca400]" />
                 1-on-1 Academic Counseling
               </span>
-              <h2 className="section-title font-bold text-[#70aaff] font-sans">
-                {counselingTitle || "Have Questions About Document Eligibility or Grants?"}
+              <h2 className="section-title font-bold text-[#0b1d3a] font-sans">
+                {counselingTitle || <>Have Questions About <span className="text-[#3478ed]">Document Eligibility or Grants?</span></>}
               </h2>
-              <p className="section-description text-xs sm:text-sm text-[#b1c8eb] max-w-2xl leading-relaxed">
+              <p className="section-description text-xs sm:text-sm text-[#657185] max-w-2xl leading-relaxed">
                 {counselingSubtitle || "Speak directly with Online Siksha university counselors for transcript pre-screening, scholarship estimation, and instant enrollment support."}
               </p>
             </div>

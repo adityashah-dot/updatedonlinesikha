@@ -201,8 +201,8 @@ export const AmityAdmissionView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {AP.highlights.rows.map((row) => <tr key={row.label} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-normal text-[#000f22]">{row.label}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.value}</td>
+                      <td className="py-3.5 px-4 font-bold text-[#000f22]">{row.label}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.value}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -238,13 +238,13 @@ export const AmityAdmissionView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {AP.dates.rows.map((row) => <tr key={row.event} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">
                         <span className="inline-flex items-center gap-1.5">
                           <Calendar className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
                           {row.event}
                         </span>
                       </td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.date}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.date}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -284,9 +284,9 @@ export const AmityAdmissionView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {eligibilityRows.map((row) => <tr key={row.course} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.course}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.eligibility}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#115eaf]">{row.selection}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.course}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.eligibility}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#115eaf]">{row.selection}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -469,9 +469,9 @@ export const AmityAdmissionView = ({
                 </thead>
                 <tbody className="divide-y divide-[#e7eeff]">
                   {AP.scholarships.table.map((row) => <tr key={row.type} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                      <td className="py-2.5 px-4 font-semibold text-[#000f22]">{row.type}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#115eaf]">{row.benefit}</td>
-                      <td className="py-2.5 px-4 font-normal text-[#2d3137]">{row.who}</td>
+                      <td className="py-3.5 px-4 font-semibold text-[#000f22]">{row.type}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#115eaf]">{row.benefit}</td>
+                      <td className="py-3.5 px-4 font-normal text-[#2d3137]">{row.who}</td>
                     </tr>)}
                 </tbody>
               </table>
@@ -489,49 +489,51 @@ export const AmityAdmissionView = ({
   }
           <section
     id="counseling-callback"
-    className="page-section rounded-2xl bg-[#0b2540] text-white shadow-xs overflow-hidden scroll-mt-[130px]"
+    className="page-section relative isolate overflow-hidden rounded-[20px] border border-[#d0e2fa] bg-gradient-to-br from-[#eef6ff] via-[#f7fbff] to-white p-5 sm:p-6 text-[#0b1d3a] shadow-sm scroll-mt-[130px]"
   >
+            <div className="pointer-events-none absolute -right-24 -top-24 -z-10 h-96 w-96 rounded-full bg-[#b9daff]/30 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-20 -left-20 -z-10 h-80 w-80 rounded-full bg-[#b9daff]/20 blur-3xl" />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
               <div>
-<h2 className="section-title text-2xl sm:text-3xl font-bold font-sans">
-                  Not Sure Which Program Fits You?
+                <h2 className="section-title text-2xl sm:text-3xl font-bold text-[#0b1d3a] font-sans">
+                  Not Sure Which <span className="text-[#3478ed]">Program Fits You?</span>
                 </h2>
-                <p className="section-description text-xs sm:text-sm text-[#b1c8eb] max-w-2xl leading-relaxed mt-2">
+                <p className="section-description text-xs sm:text-sm text-[#657185] max-w-2xl leading-relaxed mt-2">
                   Get a free admission counselling session. Our experts will help you with
                   eligibility, fees, scholarships, and the right programme for your career goals.
                 </p>
                 <div className="flex flex-wrap gap-4 mt-4">
-                  <span className="inline-flex items-center gap-1.5 text-xs text-white/85">
-                    <Users className="w-3.5 h-3.5" />
+                  <span className="inline-flex items-center gap-1.5 text-xs text-[#0b1d3a]">
+                    <Users className="w-3.5 h-3.5 text-emerald-500" />
                     10,000+ students guided
                   </span>
-                  <span className="inline-flex items-center gap-1.5 text-xs text-white/85">
-                    <BadgeCheck className="w-3.5 h-3.5" />
+                  <span className="inline-flex items-center gap-1.5 text-xs text-[#0b1d3a]">
+                    <BadgeCheck className="w-3.5 h-3.5 text-emerald-500" />
                     Verified admission support
                   </span>
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-4 sm:p-5 text-[#000f22]">
+              <div className="rounded-[18px] border border-white/90 bg-white/95 p-4 sm:p-5 text-[#111c2d] shadow-[0_10px_28px_rgba(27,65,112,0.08)]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <input
     type="text"
     placeholder="Your Name"
     value={callbackName}
     onChange={(e) => setCallbackName(e.target.value)}
-    className="px-3 py-2.5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] text-sm outline-none focus:border-[#115eaf] transition-colors"
+    className="px-3 py-2.5 rounded-xl border border-[#c4c6ce] bg-white text-sm text-[#000f22] outline-none focus:border-[#115eaf] transition-colors"
   />
                   <input
     type="tel"
     placeholder="Mobile Number"
     value={callbackPhone}
     onChange={(e) => setCallbackPhone(e.target.value)}
-    className="px-3 py-2.5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] text-sm outline-none focus:border-[#115eaf] transition-colors"
+    className="px-3 py-2.5 rounded-xl border border-[#c4c6ce] bg-white text-sm text-[#000f22] outline-none focus:border-[#115eaf] transition-colors"
   />
                   <select
     value={callbackCourse}
     onChange={(e) => setCallbackCourse(e.target.value)}
-    className="sm:col-span-2 px-3 py-2.5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] text-sm outline-none focus:border-[#115eaf] transition-colors text-[#43474d]"
+    className="sm:col-span-2 px-3 py-2.5 rounded-xl border border-[#c4c6ce] bg-white text-sm outline-none focus:border-[#115eaf] transition-colors text-[#000f22]"
   >
                     <option value="">Select a Programme</option>
                     {AMITY_UNIVERSITY_DATA.courses.map((c) => <option key={c.id} value={c.id}>
@@ -542,13 +544,13 @@ export const AmityAdmissionView = ({
                 <button
     type="button"
     onClick={() => onOpenHelpDesk()}
-    className="w-full mt-3 px-5 py-3 rounded-xl bg-[#115eaf] text-white text-sm font-bold hover:bg-[#004689] active:scale-95 transition-all flex items-center justify-center gap-2"
+    className="w-full mt-3 px-5 py-3 rounded-xl bg-[#1764c0] text-white text-sm font-bold shadow-md hover:bg-[#1054a5] active:scale-95 transition-all flex items-center justify-center gap-2"
   >
                   Request Callback
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <p className="text-[10px] text-[#74777e] text-center mt-2">
-                  By submitting, you agree to be contacted by DegreeFYD admission counsellors.
+                  🔒 Strictly confidential. No marketing spam guaranteed.
                 </p>
               </div>
             </div>
