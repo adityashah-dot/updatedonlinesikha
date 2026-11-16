@@ -16,7 +16,7 @@ export const ThemeProvider = ({ children }) => {
         root.setAttribute("data-theme", "light");
         root.style.colorScheme = "light";
       }
-      localStorage.setItem("degreefyd-theme", theme);
+      localStorage.setItem("onlinesiksha-theme", theme);
     } catch {
     }
   }, [theme]);

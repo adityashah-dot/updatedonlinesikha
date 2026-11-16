@@ -33,10 +33,118 @@ function stripHtml(value) {
     .trim();
 }
 
-function textBeforeTable(html) {
+/**
+ * Sanitizes CMS section headings to prevent raw LLM prompt dumps,
+ * scraper artifacts, or oversized paragraphs from leaking into titles or TOC.
+ */
+export function sanitizeSectionHeading(raw, fallback = "", collegeName = "") {
+  if (!raw || typeof raw !== "string") return fallback || "";
+  let clean = raw
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  // Fix known typographical errors (e.g. single-I for IIM)
+  clean = clean.replace(/\bIM\s+Kozhikode\b/g, "IIM Kozhikode");
+
+  // Strip leading prompt directives like "make simple:", "rephrase and make"
+  clean = clean
+    .replace(
+      /^(?:make\s+simple|rephrase\s+(?:and\s+)?make|please\s+(?:provide|write)|write\s+a\s+short|rewrite)[:\s"']+/i,
+      ""
+    )
+    .trim();
+
+  const isCorrupted =
+    clean.length > 60 ||
+    /\b(make simple|rephrase|check below|candidates can check|as per the report|the details of|participating companies|statistics|highest package|median package|consulting domain|top recruiters|varies depending|flagship pgp)\b/i.test(
+      clean
+    ) ||
+    clean.split(/[.?!]\s+/).length > 2;
+
+  if (isCorrupted) {
+    // 1. Try to extract known clean section title pattern from the beginning
+    const patternMatch = clean.match(
+      /^([A-Za-z0-9\s&–—'’.-]+?(?:Courses\s+(?:and|&)\s+Fees|Fee\s+Structure|Admission(?:\s+Process)?|Placements?|Rankings?|Eligibility(?:\s+Criteria)?|Overview|Highlights|Examination(?:\s+Pattern)?|Cutoff|Scholarships?)(?:\s+20\d\d)?)/i
+    );
+    if (patternMatch && patternMatch[1].trim().length >= 4 && patternMatch[1].trim().length <= 55) {
+      return patternMatch[1].trim();
+    }
+
+    if (fallback) return fallback;
+    if (collegeName) return `${collegeName} Overview`;
+    return "Overview";
+  }
+
+  return clean;
+}
+
+/**
+ * Cleans intro/prose text before tables to strip leaked prompt instructions,
+ * repeated section headers, and duplicate sentences.
+ */
+export function cleanIntroText(text, collegeName = "") {
+  if (!text || typeof text !== "string") return "";
+  let clean = stripHtml(text);
+
+  // Fix known typographical errors
+  clean = clean.replace(/\bIM\s+Kozhikode\b/g, "IIM Kozhikode");
+
+  // Cut off prompt dump tails: prompt instructions, placement table dumps pasted into intro, etc.
+  clean = clean.replace(
+    /\s*(?:rephrase\s+and\s+make|make\s+simple\s+(?:IIM|[A-Z])|Check\s+below\s+for\s+more)[\s\S]*$/i,
+    ""
+  );
+
+  // Strip leading prompt directives like "make simple:"
+  clean = clean
+    .replace(
+      /^(?:make\s+simple|rephrase\s+(?:and\s+)?make|please\s+(?:provide|write)|write\s+a\s+short|rewrite)[:\s"']+/i,
+      ""
+    )
+    .trim();
+
+  // If text starts with an explicit section heading like "IIM Kozhikode Courses and Fees 2026", strip it from the start of prose
+  clean = clean.replace(
+    /^([A-Za-z0-9\s&–—'’.-]+?(?:Courses\s+(?:and|&)\s+Fees|Fee\s+Structure|Admission(?:\s+Process)?|Placements?|Rankings?|Eligibility(?:\s+Criteria)?|Overview|Highlights|Examination(?:\s+Pattern)?)(?:\s+20\d\d)?)\s+(?=[A-Z])/i,
+    ""
+  );
+
+  // Split into sentences and deduplicate
+  const sentences = clean.split(/(?<=[.!?])\s+/);
+  const seen = new Set();
+  const deduped = [];
+
+  for (const s of sentences) {
+    const trimmed = s.trim();
+    if (!trimmed || trimmed.length < 10) continue;
+    // Skip any sentence that is still an obvious prompt command or markdown leak
+    if (/^(?:make simple|rephrase|particulars|highest package|check below)/i.test(trimmed)) continue;
+    if (
+      trimmed.includes("**") ||
+      (trimmed.includes("INR ") && trimmed.includes("LPA") && trimmed.includes("Highest"))
+    )
+      continue;
+
+    const norm = trimmed.toLowerCase().replace(/[^a-z0-9]/g, "");
+    if (!seen.has(norm)) {
+      seen.add(norm);
+      deduped.push(trimmed);
+    }
+  }
+
+  return deduped.join(" ").trim();
+}
+
+function textBeforeTable(html, collegeName = "") {
   if (typeof html !== "string") return "";
   const idx = html.indexOf("<table");
-  return stripHtml(idx === -1 ? html : html.slice(0, idx));
+  const rawText = idx === -1 ? html : html.slice(0, idx);
+  return cleanIntroText(rawText, collegeName);
 }
 
 function parseHtmlTables(html) {
@@ -164,8 +272,8 @@ function richtextOf(section) {
   return blockOfType(section, "richtext")?.content || "";
 }
 
-function titleOf(section, fallback) {
-  return section?.title || fallback;
+function titleOf(section, fallback = "", collegeName = "") {
+  return sanitizeSectionHeading(section?.title, fallback, collegeName);
 }
 
 /** "Online MBA" / "MBA (Online)" -> "mba" (used to match CMS fee rows). */
@@ -384,20 +492,20 @@ export function mapBlogs(blogs) {
 }
 
 const TOC_TARGETS = [
-  { id: "latest-news", match: /latest news|news|update/ },
-  { id: "highlights", match: /highlight/ },
-  { id: "courses-fees", match: /course|fee/ },
-  { id: "popular-programmes", match: /popular programme|popular program/ },
-  { id: "eligibility-criteria", match: /eligib|selection/ },
-  { id: "admission-process", match: /admission/ },
-  { id: "rankings", match: /ranking|accredit/ },
-  { id: "examination-pattern", match: /examin|evaluation/ },
-  { id: "placements", match: /placement/ },
-  { id: "campus", match: /campus|gallery/ },
-  { id: "sample-degree", match: /sample degree|certificate/ },
-  { id: "reviews-section", match: /review|testimonial/ },
-  { id: "compare-colleges", match: /compare/ },
-  { id: "blogs", match: /blog/ },
+  { id: "latest-news", match: /\b(?:latest\s+news|news|updates?)\b/i, defaultLabel: "Latest News" },
+  { id: "highlights", match: /\bhighlights?\b/i, defaultLabel: "Highlights" },
+  { id: "courses-fees", match: /\b(?:courses?|fees?)\b/i, defaultLabel: "Courses & Fees" },
+  { id: "popular-programmes", match: /\bpopular\s+programm?es?\b/i, defaultLabel: "Popular Programmes" },
+  { id: "eligibility-criteria", match: /\b(?:eligib\w*|selection)\b/i, defaultLabel: "Eligibility Criteria" },
+  { id: "admission-process", match: /\badmission\b/i, defaultLabel: "Admission Process" },
+  { id: "rankings", match: /\b(?:rankings?|accredit\w*)\b/i, defaultLabel: "Rankings & Approvals" },
+  { id: "examination-pattern", match: /\b(?:examin\w*|evaluation)\b/i, defaultLabel: "Examination Pattern" },
+  { id: "placements", match: /\bplacements?\b/i, defaultLabel: "Placements" },
+  { id: "campus", match: /\b(?:campus|gallery)\b/i, defaultLabel: "Campus & Infrastructure" },
+  { id: "sample-degree", match: /\b(?:sample\s+degree|certificates?)\b/i, defaultLabel: "Sample Degree" },
+  { id: "reviews-section", match: /\b(?:reviews?|testimonials?)\b/i, defaultLabel: "Reviews & Ratings" },
+  { id: "compare-colleges", match: /\bcompare\b/i, defaultLabel: "Compare Universities" },
+  { id: "blogs", match: /\bblogs?\b/i, defaultLabel: "Related Blogs" },
 ];
 
 function splitListItem(item) {
@@ -445,22 +553,26 @@ function selectionProcessFromIntro(intro) {
     .join(" ");
 }
 
-function mapToc(payloadToc) {
+function mapToc(payloadToc, collegeName = "") {
   if (!Array.isArray(payloadToc) || !payloadToc.length) return [];
 
   const used = new Set();
   const toc = [];
 
   payloadToc.forEach((item) => {
-    const label = item.label || item.title || "";
+    const rawLabel = item.label || item.title || "";
+    const cleanLabel = sanitizeSectionHeading(rawLabel, "", collegeName);
+    const searchStr = (cleanLabel || rawLabel).toLowerCase();
+
     const target = TOC_TARGETS.find(
-      (candidate) => !used.has(candidate.id) && candidate.match.test(label.toLowerCase())
+      (candidate) => !used.has(candidate.id) && candidate.match.test(searchStr)
     );
 
     if (!target) return;
 
     used.add(target.id);
-    toc.push({ id: target.id, label, order: item.order ?? toc.length });
+    const finalLabel = cleanLabel || target.defaultLabel;
+    toc.push({ id: target.id, label: finalLabel, order: item.order ?? toc.length });
   });
 
   return toc.sort((a, b) => a.order - b.order);
@@ -491,6 +603,7 @@ export function mapOverviewData(payload, extras = {}) {
 
   const collegeId =
     college?._id || college?.id || (typeof rawCollegeId === "string" ? rawCollegeId : "");
+  const collegeName = college.name || rawPayload.title || rawPayload.shortTitle || hero.title || "";
 
   const hero = rawPayload.hero || {};
   const sections = Array.isArray(rawPayload.sections) ? rawPayload.sections : [];
@@ -601,8 +714,8 @@ export function mapOverviewData(payload, extras = {}) {
 
     highlights: highlightsSection
       ? {
-          title: titleOf(highlightsSection, ""),
-          intro: textBeforeTable(richtextOf(highlightsSection)),
+          title: titleOf(highlightsSection, `${collegeName} Highlights`.trim(), collegeName),
+          intro: textBeforeTable(richtextOf(highlightsSection), collegeName),
           categories: ["All"],
           items: highlightsRows.slice(1).map((row) => ({
             label: row[0] || "",
@@ -614,8 +727,8 @@ export function mapOverviewData(payload, extras = {}) {
 
     coursesFees: coursesSection
       ? {
-          title: titleOf(coursesSection, ""),
-          intro: textBeforeTable(richtextOf(coursesSection)),
+          title: titleOf(coursesSection, `${collegeName} Courses and Fees`.trim(), collegeName),
+          intro: textBeforeTable(richtextOf(coursesSection), collegeName),
           table: courses,
           roiCalculator: "ROI Calculator",
           viewFeeStructure: "View Fee Structure",
@@ -626,8 +739,8 @@ export function mapOverviewData(payload, extras = {}) {
 
     feeStructure: feeStructureSection
       ? {
-          title: titleOf(feeStructureSection, ""),
-          description: textBeforeTable(richtextOf(feeStructureSection)),
+          title: titleOf(feeStructureSection, `${collegeName} Fee Structure`.trim(), collegeName),
+          description: textBeforeTable(richtextOf(feeStructureSection), collegeName),
           rows: feeStructureRows,
         }
       : null,
@@ -637,9 +750,9 @@ export function mapOverviewData(payload, extras = {}) {
     eligibility:
       eligibilitySection && (eligibilityRows.length > 1 || textBeforeTable(richtextOf(eligibilitySection)))
         ? {
-            title: titleOf(eligibilitySection, ""),
-            intro: textBeforeTable(richtextOf(eligibilitySection)),
-            selectionProcess: selectionProcessFromIntro(textBeforeTable(richtextOf(eligibilitySection))),
+            title: titleOf(eligibilitySection, `${collegeName} Eligibility Criteria`.trim(), collegeName),
+            intro: textBeforeTable(richtextOf(eligibilitySection), collegeName),
+            selectionProcess: selectionProcessFromIntro(textBeforeTable(richtextOf(eligibilitySection), collegeName)),
             table: eligibilityRows.slice(1),
             items: mapEligibilityRows(eligibilityRows),
           }
@@ -650,9 +763,9 @@ export function mapOverviewData(payload, extras = {}) {
       (asList(blockOfType(admissionProcessSection, "admission_flow")?.content?.steps).length ||
         textBeforeTable(richtextOf(admissionProcessSection)))
         ? {
-            title: titleOf(admissionProcessSection, ""),
-            description: textBeforeTable(richtextOf(admissionProcessSection)),
-            intro: textBeforeTable(richtextOf(admissionProcessSection)),
+            title: titleOf(admissionProcessSection, `${collegeName} Admission Process`.trim(), collegeName),
+            description: textBeforeTable(richtextOf(admissionProcessSection), collegeName),
+            intro: textBeforeTable(richtextOf(admissionProcessSection), collegeName),
             steps: asList(blockOfType(admissionProcessSection, "admission_flow")?.content?.steps).map((step) => ({
               title: step.title || "",
               description: stripHtml(step.description || ""),
@@ -663,8 +776,8 @@ export function mapOverviewData(payload, extras = {}) {
     rankings:
       rankingsSection && (rankingsRows.length > 1 || textBeforeTable(richtextOf(rankingsSection)))
         ? {
-            title: titleOf(rankingsSection, ""),
-            intro: textBeforeTable(richtextOf(rankingsSection)),
+            title: titleOf(rankingsSection, `${collegeName} Rankings & Approvals`.trim(), collegeName),
+            intro: textBeforeTable(richtextOf(rankingsSection), collegeName),
             columns: rankingsColumns,
             table: rankingsRows.slice(1).map((row) => ({
               authority: row[0] || "",
@@ -678,7 +791,7 @@ export function mapOverviewData(payload, extras = {}) {
       examinationSection &&
       (examinationSteps.length || examinationIntro)
         ? {
-            title: titleOf(examinationSection, ""),
+            title: titleOf(examinationSection, `${collegeName} Examination Pattern`.trim(), collegeName),
             description: examinationIntro,
             intro: examinationIntro,
             steps: examinationSteps,
@@ -687,8 +800,8 @@ export function mapOverviewData(payload, extras = {}) {
 
     placements: placementsSection
       ? {
-      title: titleOf(placementsSection, ""),
-      intro: textBeforeTable(richtextOf(placementsSection)),
+      title: titleOf(placementsSection, `${collegeName} Placements`.trim(), collegeName),
+      intro: textBeforeTable(richtextOf(placementsSection), collegeName),
       stats: {
         placementRate: placementContent.placementRate || (placementStats.placementPercentage ? `${placementStats.placementPercentage}%` : ""),
         highestPackage: placementContent.highestPackage || (placementStats.highestPackage ? `₹${placementStats.highestPackage} LPA` : ""),
@@ -704,8 +817,8 @@ export function mapOverviewData(payload, extras = {}) {
 
     campus: campusSection
       ? {
-          title: titleOf(campusSection, ""),
-          description: textBeforeTable(richtextOf(campusSection)),
+          title: titleOf(campusSection, `${collegeName} Campus & Infrastructure`.trim(), collegeName),
+          description: textBeforeTable(richtextOf(campusSection), collegeName),
           travelTable: campusRows.slice(1).map((row) => ({
             mode: row[0] || "",
             detail: row[1] || "",
@@ -721,7 +834,7 @@ export function mapOverviewData(payload, extras = {}) {
     sampleDegree:
       sampleDegreeSection && (certificate.imageUrl || certificateBlock?.content?.description)
         ? {
-            title: certificate.title || titleOf(sampleDegreeSection, ""),
+            title: sanitizeSectionHeading(certificate.title || titleOf(sampleDegreeSection, `${collegeName} Sample Degree`.trim(), collegeName), `${collegeName} Sample Degree`.trim(), collegeName),
             description: stripHtml(certificateBlock?.content?.description || ""),
             imageUrl: readImage(certificate.imageUrl || certificate.image),
             altText: certificate.altText || `${rawPayload.title} Degree Certificate`,
@@ -736,7 +849,7 @@ export function mapOverviewData(payload, extras = {}) {
           : rawPayload.testimonials
     ),
     reviewsMeta: {
-      title: titleOf(reviewsSection, ""),
+      title: titleOf(reviewsSection, `${collegeName} Reviews & Ratings`.trim(), collegeName),
       subtitle: "",
     },
 
@@ -753,23 +866,23 @@ export function mapOverviewData(payload, extras = {}) {
       const rows = pickTable(tables, ["particular", "detail"]) || [];
 
       return {
-        title: titleOf(section, ""),
-        description: textBeforeTable(richtextOf(section)),
-        intro: textBeforeTable(richtextOf(section)),
+        title: titleOf(section, `${collegeName} Admission Highlights`.trim(), collegeName),
+        description: textBeforeTable(richtextOf(section), collegeName),
+        intro: textBeforeTable(richtextOf(section), collegeName),
         items: rows.slice(1).map((row) => ({
           label: row[0] || "",
           value: row[1] || "",
         })),
       };
     })(),
-    applicationProcessMeta: { title: titleOf(applicationProcessSection, "") },
-    documentsMeta: { title: titleOf(documentsSection, "") },
+    applicationProcessMeta: { title: titleOf(applicationProcessSection, "Application Process", collegeName) },
+    documentsMeta: { title: titleOf(documentsSection, "Required Documents", collegeName) },
     scholarshipSection: {
-      title: titleOf(scholarshipSection, ""),
-      intro: textBeforeTable(richtextOf(scholarshipSection)),
+      title: titleOf(scholarshipSection, `${collegeName} Scholarships`.trim(), collegeName),
+      intro: textBeforeTable(richtextOf(scholarshipSection), collegeName),
     },
     learningPlatformTitle: "",
-    admissionDatesMeta: { title: titleOf(admissionDatesSection, "") },
+    admissionDatesMeta: { title: titleOf(admissionDatesSection, "Important Admission Dates", collegeName) },
 
     faqs: (Array.isArray(rawPayload.faq?.items)
       ? rawPayload.faq.items
@@ -784,8 +897,8 @@ export function mapOverviewData(payload, extras = {}) {
 
     compareSection: compareSection
       ? {
-      title: titleOf(compareSection, ""),
-      description: textBeforeTable(richtextOf(compareSection)),
+      title: titleOf(compareSection, `Compare ${collegeName}`.trim(), collegeName),
+      description: textBeforeTable(richtextOf(compareSection), collegeName),
       college: {
         name: rawPayload.title || college.name || "",
         location: college.location || "",
@@ -797,12 +910,12 @@ export function mapOverviewData(payload, extras = {}) {
 
     blogs: mapBlogs(extras.blogs?.length ? extras.blogs : rawPayload.blogs),
     blogsMeta: {
-      title: titleOf(blogsSection, ""),
+      title: titleOf(blogsSection, "Related Blogs", collegeName),
       label: "Blogs",
-      description: textBeforeTable(richtextOf(blogsSection)),
+      description: textBeforeTable(richtextOf(blogsSection), collegeName),
     },
 
-    toc: mapToc(rawPayload.toc),
+    toc: mapToc(rawPayload.toc, collegeName),
 
     admissionDates: (() => {
       const structured = mapRows(

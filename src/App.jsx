@@ -28,6 +28,7 @@ import { LoginModal } from "./components/LoginModal";
 import { FloatingActions } from "./components/FloatingActions";
 import { CounselorModal } from "./components/CounselorModal";
 import { TrackApplicationModal } from "./components/TrackApplicationModal";
+import { DegreeExplorerModal } from "./components/DegreeExplorerModal";
 import { GeminiChatbot, ChatbotFloatingTrigger } from "./components/chat/GeminiChatbot";
 import { SEO } from "./components/SEO";
 export default function App() {
@@ -64,6 +65,10 @@ export default function App() {
     }, 80);
   };
   const setActiveTab = (tab) => {
+    if (tab === "degrees") {
+      setIsDegreeExplorerOpen(true);
+      return;
+    }
     const onLpuProfile = location.pathname.startsWith("/universities/lpu") || location.pathname.startsWith("/universities/lovely");
     const routes = {
       home: "/",
@@ -98,6 +103,7 @@ export default function App() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null);
   const [isTrackModalOpen, setIsTrackModalOpen] = useState(false);
+  const [isDegreeExplorerOpen, setIsDegreeExplorerOpen] = useState(false);
   const [isCounselorModalOpen, setIsCounselorModalOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [chatInitialQuery, setChatInitialQuery] = useState("");
@@ -149,6 +155,7 @@ export default function App() {
     onOpenChat={() => setIsChatOpen(true)}
     onOpenLogin={() => setIsLoginModalOpen(true)}
     loggedInUser={loggedInUser}
+    onOpenDegreeExplorer={() => setIsDegreeExplorerOpen(true)}
   />
 
       {
@@ -347,6 +354,11 @@ export default function App() {
       <CounselorModal
     isOpen={isCounselorModalOpen}
     onClose={() => setIsCounselorModalOpen(false)}
+  />
+
+      <DegreeExplorerModal
+        isOpen={isDegreeExplorerOpen}
+        onClose={() => setIsDegreeExplorerOpen(false)}
   />
 
       {

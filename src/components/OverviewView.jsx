@@ -12,6 +12,7 @@ import { BlogsListSection } from "./BlogsListSection";
 import ReadMoreText from "./ReadMoreText";
 import { CURRENT_YEAR } from "../constants/years";
 import { collegeSectionTitle } from "../lib/collegeTitle";
+import { sanitizeSectionHeading } from "../services/overviewMapper";
 
 import {
   CheckCircle,
@@ -136,23 +137,29 @@ const OverviewView = ({
   // CMS publishes none, the list is built from the sections this university
   // actually renders — never from a fixed, another-university list.
   const TOC_ITEMS = (() => {
-    if (collegeData?.toc?.length) return collegeData.toc;
+    const cName = collegeData?.shortName || collegeData?.title || "";
+    if (collegeData?.toc?.length) {
+      return collegeData.toc.map((item) => ({
+        ...item,
+        label: sanitizeSectionHeading(item.label, item.label, cName),
+      }));
+    }
 
     const sections = [
       ["latest-news", collegeData?.latestNews?.title],
       ["highlights", collegeData?.highlights?.title],
       ["courses-fees", collegeData?.coursesFees?.title],
-      ["popular-programmes", `${collegeData?.shortName || collegeData?.title || ""} Popular Programmes`.trim()],
+      ["popular-programmes", `${cName} Popular Programmes`.trim()],
       ["eligibility-criteria", collegeData?.eligibility?.title],
       [
         "admission-process",
-        collegeData?.admission?.title || collegeSectionTitle(collegeData?.shortName || collegeData?.title, `Admission Process ${CURRENT_YEAR}`),
+        collegeData?.admission?.title || collegeSectionTitle(cName, `Admission Process ${CURRENT_YEAR}`),
         ADMISSION_FLOW_STEPS.length > 0,
       ],
       ["rankings", collegeData?.rankings?.title],
       [
         "examination-pattern",
-        collegeData?.examinationPattern?.title || collegeSectionTitle(collegeData?.shortName || collegeData?.title, "Examination Pattern"),
+        collegeData?.examinationPattern?.title || collegeSectionTitle(cName, "Examination Pattern"),
         EXAM_STEPS.length > 0,
       ],
       ["placements", collegeData?.placements?.title],
@@ -165,7 +172,11 @@ const OverviewView = ({
 
     return sections
       .filter(([, label, isVisible]) => Boolean(label) && isVisible !== false)
-      .map(([id, label], index) => ({ id, label, order: index }));
+      .map(([id, label], index) => ({
+        id,
+        label: sanitizeSectionHeading(label, label, cName),
+        order: index,
+      }));
   })();
   const hasPerCourseSelection = Boolean(
     collegeData?.eligibility?.items?.some((row) => row.selection)
@@ -436,7 +447,7 @@ const OverviewView = ({
               <div className="flex items-center justify-between flex-wrap gap-3">
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
-                    {collegeData?.highlights?.title || `${collegeData?.shortName || collegeData?.title} Highlights`}
+                    {sanitizeSectionHeading(collegeData?.highlights?.title, `${collegeData?.shortName || collegeData?.title} Highlights`, collegeData?.shortName || collegeData?.title)}
                   </h2>
                 </div>
                 <button
@@ -543,7 +554,7 @@ const OverviewView = ({
                 <section id="courses-fees" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-2xl font-bold text-[#000f22] font-sans">
-                  {collegeData?.coursesFees?.title || `${collegeData?.title} Courses and Fees`}
+                  {sanitizeSectionHeading(collegeData?.coursesFees?.title, `${collegeData?.shortName || collegeData?.title} Courses and Fees`, collegeData?.shortName || collegeData?.title)}
                 </h2>
                 <ReadMoreText fullText
                   text={collegeData?.coursesFees?.intro}
@@ -684,7 +695,7 @@ const OverviewView = ({
                 <section id="eligibility-criteria" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
-                  {collegeData?.eligibility?.title || `${collegeData?.shortName || collegeData?.title} Eligibility and Selection Criteria`}
+                  {sanitizeSectionHeading(collegeData?.eligibility?.title, `${collegeData?.shortName || collegeData?.title} Eligibility and Selection Criteria`, collegeData?.shortName || collegeData?.title)}
                 </h2>
                 <span className="block w-16 h-[5px] rounded-[5px] bg-[#115eaf] mt-1" />
                 <ReadMoreText fullText
@@ -751,7 +762,7 @@ const OverviewView = ({
                 <section id="admission-process" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
-                  {collegeData?.admission?.title || collegeSectionTitle(collegeData?.shortName || collegeData?.title, `Admission Process ${CURRENT_YEAR}`)}
+                  {sanitizeSectionHeading(collegeData?.admission?.title, collegeSectionTitle(collegeData?.shortName || collegeData?.title, `Admission Process ${CURRENT_YEAR}`), collegeData?.shortName || collegeData?.title)}
                 </h2>
                 <span className="block w-16 h-[5px] rounded-[5px] bg-[#115eaf] mt-1" />
                 <ReadMoreText fullText
@@ -894,7 +905,7 @@ const OverviewView = ({
                 <section id="rankings" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                  {collegeData?.rankings?.title || `${collegeData?.shortName || collegeData?.title} Rankings and Accreditations`}
+                  {sanitizeSectionHeading(collegeData?.rankings?.title, `${collegeData?.shortName || collegeData?.title} Rankings and Accreditations`, collegeData?.shortName || collegeData?.title)}
                 </h2>
                 <span className="block w-16 h-[5px] rounded-[5px] bg-[#115eaf] mt-1" />
                 <ReadMoreText fullText
@@ -933,7 +944,7 @@ const OverviewView = ({
                 <section id="examination-pattern" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
-                  {collegeData?.examinationPattern?.title || collegeSectionTitle(collegeData?.shortName || collegeData?.title, "Examination Pattern")}
+                  {sanitizeSectionHeading(collegeData?.examinationPattern?.title, collegeSectionTitle(collegeData?.shortName || collegeData?.title, "Examination Pattern"), collegeData?.shortName || collegeData?.title)}
                 </h2>
                 <ReadMoreText fullText
                   text={
@@ -1043,7 +1054,7 @@ const OverviewView = ({
                 <section id="placements" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-2xl font-extrabold text-[#000f22] font-sans">
-                  {collegeData?.placements?.title || `${collegeData?.shortName || collegeData?.title} Placements`}
+                  {sanitizeSectionHeading(collegeData?.placements?.title, `${collegeData?.shortName || collegeData?.title} Placements`, collegeData?.shortName || collegeData?.title)}
                 </h2>
                 <ReadMoreText fullText
                   text={
@@ -1091,7 +1102,7 @@ const OverviewView = ({
                 <section id="campus" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
-                  {collegeData?.campus?.title || `${collegeData?.shortName || collegeData?.title} Campus`}
+                  {sanitizeSectionHeading(collegeData?.campus?.title, `${collegeData?.shortName || collegeData?.title} Campus`, collegeData?.shortName || collegeData?.title)}
                 </h2>
                 <ReadMoreText fullText
                   text={collegeData?.campus?.description}

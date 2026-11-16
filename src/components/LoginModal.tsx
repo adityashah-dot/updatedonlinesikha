@@ -39,7 +39,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
   const [loginMethod, setLoginMethod] = useState<'otp' | 'password'>('password');
   
   // Login fields
-  const [emailOrPhone, setEmailOrPhone] = useState('aditya.shah@degreefyd.com');
+  const [emailOrPhone, setEmailOrPhone] = useState('student@onlinesiksha.com');
   const [password, setPassword] = useState('••••••••');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
@@ -103,10 +103,10 @@ export const LoginModal: React.FC<LoginModalProps> = ({
       setIsLoading(false);
       const user: UserSession = {
         name: 'Aditya Shah',
-        email: emailOrPhone.includes('@') ? emailOrPhone : 'aditya.shah@degreefyd.com',
+        email: emailOrPhone.includes('@') ? emailOrPhone : 'student@onlinesiksha.com',
         phone: !emailOrPhone.includes('@') ? emailOrPhone : '+91 98765 43210',
         enrolledCourse: 'Online MBA - Lovely Professional University',
-        applicationId: 'DEG-2026-89421',
+        applicationId: 'OS-2026-89421',
       };
       setLoggedInUser(user);
       setSuccessMsg(`Welcome back, ${user.name}!`);
@@ -128,10 +128,10 @@ export const LoginModal: React.FC<LoginModalProps> = ({
       setIsLoading(false);
       const user: UserSession = {
         name: 'Aditya Shah',
-        email: 'aditya.shah@degreefyd.com',
+        email: 'student@onlinesiksha.com',
         phone: emailOrPhone,
         enrolledCourse: 'Online MBA - Lovely Professional University',
-        applicationId: 'DEG-2026-89421',
+        applicationId: 'OS-2026-89421',
       };
       setLoggedInUser(user);
       setSuccessMsg(`Verified! Welcome back, ${user.name}!`);
@@ -156,7 +156,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
         email: regEmail,
         phone: regPhone,
         enrolledCourse: regCourse,
-        applicationId: `DEG-2026-${Math.floor(10000 + Math.random() * 90000)}`,
+        applicationId: `OS-2026-${Math.floor(10000 + Math.random() * 90000)}`,
       };
       setLoggedInUser(user);
       setSuccessMsg(`Account created successfully! Welcome, ${user.name}!`);
@@ -173,10 +173,10 @@ export const LoginModal: React.FC<LoginModalProps> = ({
       setIsLoading(false);
       const user: UserSession = {
         name: 'Aditya Shah',
-        email: 'aditya.shah@degreefyd.com',
+        email: 'student@onlinesiksha.com',
         phone: '+91 98765 43210',
         enrolledCourse: 'Online MBA - Lovely Professional University',
-        applicationId: 'DEG-2026-89421',
+        applicationId: 'OS-2026-89421',
       };
       setLoggedInUser(user);
       setSuccessMsg('Authenticated via Google. Welcome!');
@@ -367,7 +367,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                             required
                             value={emailOrPhone}
                             onChange={(e) => setEmailOrPhone(e.target.value)}
-                            placeholder="aditya.shah@degreefyd.com"
+                            placeholder="student@onlinesiksha.com"
                             className="w-full pl-9 pr-3 py-2 text-xs sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
                           />
                         </div>
@@ -668,7 +668,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({
             </span>
             <span className="flex items-center gap-1">
               <Sparkles className="w-3 h-3 text-[#115eaf]" />
-              Degreefyd Verified
+              OnlineSiksha Verified
             </span>
           </div>
         </div>

@@ -134,7 +134,7 @@ export const DEGREEFYD_LPU_API = {
   blogs: {
     title: "Latest Blogs",
     label: "Blogs",
-    description: "Stay informed and inspired with our blogs from DegreeFYD. Explore, whether you\u2019re a student, working professional, or lifelong learner. DegreeFYD\u2019s blog helps you make smarter decisions and stay ahead in your education journey.",
+    description: "Stay informed and inspired with our blogs from OnlineSiksha. Explore, whether you\u2019re a student, working professional, or lifelong learner. OnlineSiksha\u2019s blog helps you make smarter decisions and stay ahead in your education journey.",
     posts: [
       { title: "Top Online MBA Universities with NAAC A+ Accreditation in India 2026", excerpt: "Explore the best online MBA universities in India with NAAC A+ accreditation, key highlights, fees and career opportunities.", category: "Online MBA", date: "22 Sep 2026", image: "/images/mbaonline.png" },
       { title: "Popular Online MBA Universities in India 2026", excerpt: "Check the list of online MBA universities in India 2026, along with fees, programmes, eligibility and career opportunities.", category: "Online MBA", date: "13 Sep 2026", image: "/images/mba02.png" },

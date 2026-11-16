@@ -47,7 +47,7 @@ const DEGREE_CARDS = [
       { label: "Avg Career CTC:", value: "\u20B97.2 - 14.5 LPA", tone: "text-[#115eaf] font-semibold" }
     ],
     price: "\u20B918,500",
-    explore: "Explore 28 Unis"
+    explore: "Explore 28 Univ."
   },
   {
     title: "Online MCA",
@@ -60,7 +60,7 @@ const DEGREE_CARDS = [
       { label: "Avg Career CTC:", value: "\u20B96.5 - 16.0 LPA", tone: "text-[#115eaf] font-semibold" }
     ],
     price: "\u20B922,000",
-    explore: "Explore 22 Unis"
+    explore: "Explore 22 Univ."
   },
   {
     title: "Online BBA",
@@ -73,7 +73,7 @@ const DEGREE_CARDS = [
       { label: "Eligibility:", value: "10+2 with 50% Any Stream" }
     ],
     price: "\u20B914,000",
-    explore: "Explore 19 Unis"
+    explore: "Explore 19 Univ."
   },
   {
     title: "Online BCA",
@@ -86,7 +86,7 @@ const DEGREE_CARDS = [
       { label: "Practical Labs:", value: "100% Virtual Cloud Sandbox", tone: "text-emerald-700 font-medium" }
     ],
     price: "\u20B915,000",
-    explore: "Explore 17 Unis"
+    explore: "Explore 17 Univ."
   },
   {
     title: "Online B.Com / M.Com",
@@ -99,7 +99,7 @@ const DEGREE_CARDS = [
       { label: "Govt Exam Validity:", value: "100% Valid (UPSC/Banking)", tone: "text-emerald-700 font-medium" }
     ],
     price: "\u20B912,000",
-    explore: "Explore 15 Unis"
+    explore: "Explore 15 Univ."
   },
   {
     title: "Online BA / MA",
@@ -112,7 +112,7 @@ const DEGREE_CARDS = [
       { label: "Best For:", value: "Civil Services Aspirants" }
     ],
     price: "\u20B911,000",
-    explore: "Explore 14 Unis"
+    explore: "Explore 14 Univ."
   }
 ];
 const FEATURED_UNIS = [
@@ -123,10 +123,10 @@ const FEATURED_UNIS = [
     naac: "NAAC A++ (3.68 CGPA)",
     rank: "NIRF #31",
     rows: [
-      { label: "Total Fees (2 Yrs):", value: "\u20B91,40,000" },
-      { label: "EMI Starts:", value: "\u20B94,950/mo", tone: "text-emerald-700 font-bold" },
-      { label: "Exam Mode:", value: "100% Home AI Proctored" },
-      { label: "Learning:", value: "Live Lectures + LMS" }
+      { label: "Fee Range:", value: "₹80k – ₹1.60L (Course Wise)" },
+      { label: "Starts From:", value: "₹16,000 / sem" },
+      { label: "EMI Starts:", value: "₹2,666 / mo", tone: "text-emerald-700 font-bold" },
+      { label: "Programs:", value: "9+ Courses (UG & PG)" }
     ]
   },
   {
@@ -136,10 +136,10 @@ const FEATURED_UNIS = [
     naac: "NAAC A+",
     rank: "NIRF Top 35",
     rows: [
-      { label: "Total Fees (2 Yrs):", value: "\u20B91,65,000" },
-      { label: "EMI Starts:", value: "\u20B95,833/mo", tone: "text-emerald-700 font-bold" },
-      { label: "Ranking:", value: "QS Online MBA Top 10 Asia" },
-      { label: "Campus LMS:", value: "beSocial Academic App" }
+      { label: "Fee Range:", value: "₹1.10L – ₹1.99L (Course Wise)" },
+      { label: "Starts From:", value: "₹20,000 / sem" },
+      { label: "EMI Starts:", value: "₹3,333 / mo", tone: "text-emerald-700 font-bold" },
+      { label: "Programs:", value: "12+ Courses (UG & PG)" }
     ]
   },
   {
@@ -149,10 +149,10 @@ const FEATURED_UNIS = [
     naac: "NAAC A+",
     rank: "QS World Ranked",
     rows: [
-      { label: "Total Fees (2 Yrs):", value: "\u20B91,35,000" },
-      { label: "EMI Starts:", value: "\u20B94,500/mo", tone: "text-emerald-700 font-bold" },
-      { label: "Special Inclusions:", value: "Harvard Certifications" },
-      { label: "Placement Drives:", value: "300+ Recruiters" }
+      { label: "Fee Range:", value: "₹75k – ₹1.50L (Course Wise)" },
+      { label: "Starts From:", value: "₹15,000 / sem" },
+      { label: "EMI Starts:", value: "₹2,500 / mo", tone: "text-emerald-700 font-bold" },
+      { label: "Programs:", value: "8+ Courses (UG & PG)" }
     ]
   },
   {
@@ -162,30 +162,236 @@ const FEATURED_UNIS = [
     naac: "NAAC A+ (3.59 CGPA)",
     rank: "Legacy 70+ Yrs",
     rows: [
-      { label: "Total Fees (2 Yrs):", value: "\u20B91,75,000" },
-      { label: "EMI Starts:", value: "\u20B95,200/mo", tone: "text-emerald-700 font-bold" },
-      { label: "Content Partner:", value: "Coursera Access" },
-      { label: "Equivalence:", value: "Global WES Recognized" }
+      { label: "Fee Range:", value: "₹85k – ₹1.75L (Course Wise)" },
+      { label: "Starts From:", value: "₹17,500 / sem" },
+      { label: "EMI Starts:", value: "₹2,916 / mo", tone: "text-emerald-700 font-bold" },
+      { label: "Programs:", value: "10+ Courses (UG & PG)" }
     ]
   }
 ];
 const UNI_CHIPS = ["All Unis", "NAAC A++", "NAAC A+"];
+
+const COMPARE_PROGRAMS = [
+  { id: "overview", name: "All Programs (Overview Range)" },
+  { id: "mba", name: "Online MBA (2 Years · 4 Sems)" },
+  { id: "mca", name: "Online MCA (2 Years · 4 Sems)" },
+  { id: "bba", name: "Online BBA (3 Years · 6 Sems)" },
+  { id: "bca", name: "Online BCA (3 Years · 6 Sems)" },
+  { id: "bcom", name: "Online B.Com (3 Years · 6 Sems)" },
+  { id: "mcom", name: "Online M.Com (2 Years · 4 Sems)" }
+];
+
 const COMPARE_UNIVERSITIES = [
-  { name: "LPU Online", fees: "\u20B91,40,000", approval: "Category-1 Approved", emi: "\u20B94,950 / month", duration: "2 Years", exam: "100% Remote AI Web-Cam" },
-  { name: "Amity Online", fees: "\u20B91,65,000", approval: "Category-1 Approved", emi: "\u20B95,833 / month", duration: "2 Years", exam: "100% Remote Proctored" },
-  { name: "CU Online", fees: "\u20B91,35,000", approval: "Category-1 Approved", emi: "\u20B94,500 / month", duration: "2 Years", exam: "Online LMS Exam" },
-  { name: "Manipal Jaipur", fees: "\u20B91,75,000", approval: "Category-1 Approved", emi: "\u20B95,200 / month", duration: "2 Years", exam: "Remote Web Proctored" }
+  {
+    id: "lpu-online",
+    name: "LPU Online",
+    approval: "Category-1 / UGC-DEB / NAAC A++",
+    exam: "100% Remote AI Web-Cam",
+    programs: {
+      overview: {
+        fees: "₹80,000 – ₹1,60,000",
+        perSem: "Starts ₹16,000 / sem",
+        emi: "Starts ₹2,666 / month",
+        duration: "2 to 3 Years (UG & PG)"
+      },
+      mba: {
+        fees: "₹1,60,000",
+        perSem: "₹40,000 / semester",
+        emi: "₹5,333 / month",
+        duration: "2 Years (4 Sems)"
+      },
+      mca: {
+        fees: "₹1,40,000",
+        perSem: "₹35,000 / semester",
+        emi: "₹4,666 / month",
+        duration: "2 Years (4 Sems)"
+      },
+      bba: {
+        fees: "₹1,14,000",
+        perSem: "₹19,000 / semester",
+        emi: "₹3,166 / month",
+        duration: "3 Years (6 Sems)"
+      },
+      bca: {
+        fees: "₹1,20,000",
+        perSem: "₹20,000 / semester",
+        emi: "₹3,333 / month",
+        duration: "3 Years (6 Sems)"
+      },
+      bcom: {
+        fees: "₹96,000",
+        perSem: "₹16,000 / semester",
+        emi: "₹2,666 / month",
+        duration: "3 Years (6 Sems)"
+      },
+      mcom: {
+        fees: "₹80,000",
+        perSem: "₹20,000 / semester",
+        emi: "₹2,666 / month",
+        duration: "2 Years (4 Sems)"
+      }
+    }
+  },
+  {
+    id: "amity-online",
+    name: "Amity Online",
+    approval: "Category-1 / UGC-DEB / NAAC A+",
+    exam: "100% Remote Proctored",
+    programs: {
+      overview: {
+        fees: "₹1,10,000 – ₹1,99,000",
+        perSem: "Starts ₹20,000 / sem",
+        emi: "Starts ₹3,333 / month",
+        duration: "2 to 3 Years (UG & PG)"
+      },
+      mba: {
+        fees: "₹1,99,000",
+        perSem: "₹49,750 / semester",
+        emi: "₹6,633 / month",
+        duration: "2 Years (4 Sems)"
+      },
+      mca: {
+        fees: "₹1,65,000",
+        perSem: "₹41,250 / semester",
+        emi: "₹5,500 / month",
+        duration: "2 Years (4 Sems)"
+      },
+      bba: {
+        fees: "₹1,50,000",
+        perSem: "₹25,000 / semester",
+        emi: "₹4,166 / month",
+        duration: "3 Years (6 Sems)"
+      },
+      bca: {
+        fees: "₹1,40,000",
+        perSem: "₹23,333 / semester",
+        emi: "₹3,888 / month",
+        duration: "3 Years (6 Sems)"
+      },
+      bcom: {
+        fees: "₹1,20,000",
+        perSem: "₹20,000 / semester",
+        emi: "₹3,333 / month",
+        duration: "3 Years (6 Sems)"
+      },
+      mcom: {
+        fees: "₹1,10,000",
+        perSem: "₹27,500 / semester",
+        emi: "₹3,666 / month",
+        duration: "2 Years (4 Sems)"
+      }
+    }
+  },
+  {
+    id: "cu-online",
+    name: "CU Online",
+    approval: "Category-1 / UGC-DEB / NAAC A+",
+    exam: "Online LMS Exam",
+    programs: {
+      overview: {
+        fees: "₹75,000 – ₹1,50,000",
+        perSem: "Starts ₹15,000 / sem",
+        emi: "Starts ₹2,500 / month",
+        duration: "2 to 3 Years (UG & PG)"
+      },
+      mba: {
+        fees: "₹1,50,000",
+        perSem: "₹37,500 / semester",
+        emi: "₹5,000 / month",
+        duration: "2 Years (4 Sems)"
+      },
+      mca: {
+        fees: "₹1,35,000",
+        perSem: "₹33,750 / semester",
+        emi: "₹4,500 / month",
+        duration: "2 Years (4 Sems)"
+      },
+      bba: {
+        fees: "₹1,05,000",
+        perSem: "₹17,500 / semester",
+        emi: "₹2,916 / month",
+        duration: "3 Years (6 Sems)"
+      },
+      bca: {
+        fees: "₹1,10,000",
+        perSem: "₹18,333 / semester",
+        emi: "₹3,055 / month",
+        duration: "3 Years (6 Sems)"
+      },
+      bcom: {
+        fees: "₹90,000",
+        perSem: "₹15,000 / semester",
+        emi: "₹2,500 / month",
+        duration: "3 Years (6 Sems)"
+      },
+      mcom: {
+        fees: "₹85,000",
+        perSem: "₹21,250 / semester",
+        emi: "₹2,833 / month",
+        duration: "2 Years (4 Sems)"
+      }
+    }
+  },
+  {
+    id: "manipal-online",
+    name: "Manipal Jaipur",
+    approval: "Category-1 / UGC-DEB / NAAC A+",
+    exam: "Remote Web Proctored",
+    programs: {
+      overview: {
+        fees: "₹85,000 – ₹1,75,000",
+        perSem: "Starts ₹17,500 / sem",
+        emi: "Starts ₹2,916 / month",
+        duration: "2 to 3 Years (UG & PG)"
+      },
+      mba: {
+        fees: "₹1,75,000",
+        perSem: "₹43,750 / semester",
+        emi: "₹5,833 / month",
+        duration: "2 Years (4 Sems)"
+      },
+      mca: {
+        fees: "₹1,50,000",
+        perSem: "₹37,500 / semester",
+        emi: "₹5,000 / month",
+        duration: "2 Years (4 Sems)"
+      },
+      bba: {
+        fees: "₹1,35,000",
+        perSem: "₹22,500 / semester",
+        emi: "₹3,750 / month",
+        duration: "3 Years (6 Sems)"
+      },
+      bca: {
+        fees: "₹1,35,000",
+        perSem: "₹22,500 / semester",
+        emi: "₹3,750 / month",
+        duration: "3 Years (6 Sems)"
+      },
+      bcom: {
+        fees: "₹1,05,000",
+        perSem: "₹17,500 / semester",
+        emi: "₹2,916 / month",
+        duration: "3 Years (6 Sems)"
+      },
+      mcom: {
+        fees: "₹1,00,000",
+        perSem: "₹25,000 / semester",
+        emi: "₹3,333 / month",
+        duration: "2 Years (4 Sems)"
+      }
+    }
+  }
 ];
 
 const COMPARE_CRITERIA = [
   ["Total fees", "fees"],
-  ["Approval", "approval"],
-  ["EMI", "emi"],
+  ["Per Semester Fee", "perSem"],
   ["Duration", "duration"],
+  ["Monthly EMI", "emi"],
+  ["Approval", "approval"],
   ["Exam mode", "exam"]
 ];
-
-
 
 const DEGREE_PROGRAMS = [
   { lv: ["PG"], y: "2 Years · 4 Sems", n: "Online MBA", f: "Master of Business Administration", sp: "19+ (Data, Finance, Marketing, HR)", tg: "High Placement Rate", ctc: "₹7.2 – 14.5 LPA", fee: "₹18,500", c: 28, lab: "Specializations", slug: "online-mba", uniSearch: "mba" },
@@ -215,6 +421,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
   const [leadSubmitted, setLeadSubmitted] = useState(false);
   const [uniChip, setUniChip] = useState(UNI_CHIPS[0]);
   const [compareColumns, setCompareColumns] = useState([0, 1]);
+  const [selectedCompareCourse, setSelectedCompareCourse] = useState("mba");
   const [degreeLevel, setDegreeLevel] = useState("PG");
   const uniRowRef = useRef(null);
   const filteredFeaturedUnis = uniChip === "NAAC A++" ? FEATURED_UNIS.filter((u) => u.naac.includes("A++")) : uniChip === "NAAC A+" ? FEATURED_UNIS.filter((u) => !u.naac.includes("A++")) : FEATURED_UNIS;
@@ -272,10 +479,10 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
 
           <div className="flex flex-col gap-3">
             {[
-              { title: 'Online MBA', sub: 'Master of Business Administration', badge: 'High Placement Rate', dur: '2 Years · 4 Sems', spec: '19+ (Data, Finance, Marketing, HR)', career: '₹7.2 – 14.5 LPA', price: '₹18,500', explore: 'Explore 28 Unis', slug: 'online-mba', uniSearch: 'mba' },
-              { title: 'Online MCA', sub: 'Master of Computer Applications', badge: 'AI & Cloud Ready', dur: '2 Years · 4 Sems', spec: 'AI, Cloud, Full-Stack, Cyber', career: '₹6.5 – 16.0 LPA', price: '₹22,000', explore: 'Explore 22 Unis', slug: 'online-mca', uniSearch: 'mca' },
-              { title: 'Online B.Com / M.Com', sub: 'Commerce & Corporate Finance', badge: 'ACCA & US CMA options', dur: 'UG & PG available', spec: 'Integrated ACCA 9-paper exemption', career: 'Govt exam validity: UPSC/Banking', price: '₹12,000', explore: 'Explore 15 Unis', slug: 'online-bcom', search: 'com', uniSearch: 'commerce' },
-              { title: 'Online BA / MA', sub: 'Humanities & Social Sciences', badge: 'Affordable fee', dur: 'UG & PG tracks', spec: 'Journalism, English, Public Policy', career: 'Best for civil services aspirants', price: '₹11,000', explore: 'Explore 14 Unis', slug: 'online-ba', search: 'ba', uniSearch: 'arts' },
+              { title: 'Online MBA', sub: 'Master of Business Administration', badge: 'High Placement Rate', dur: '2 Years · 4 Sems', spec: '19+ (Data, Finance, Marketing, HR)', career: '₹7.2 – 14.5 LPA', price: '₹18,500', explore: 'Explore 28 Univ.', slug: 'online-mba', uniSearch: 'mba' },
+              { title: 'Online MCA', sub: 'Master of Computer Applications', badge: 'AI & Cloud Ready', dur: '2 Years · 4 Sems', spec: 'AI, Cloud, Full-Stack, Cyber', career: '₹6.5 – 16.0 LPA', price: '₹22,000', explore: 'Explore 22 Univ.', slug: 'online-mca', uniSearch: 'mca' },
+              { title: 'Online B.Com / M.Com', sub: 'Commerce & Corporate Finance', badge: 'ACCA & US CMA options', dur: 'UG & PG available', spec: 'Integrated ACCA 9-paper exemption', career: 'Govt exam validity: UPSC/Banking', price: '₹12,000', explore: 'Explore 15 Univ.', slug: 'online-bcom', search: 'com', uniSearch: 'commerce' },
+              { title: 'Online BA / MA', sub: 'Humanities & Social Sciences', badge: 'Affordable fee', dur: 'UG & PG tracks', spec: 'Journalism, English, Public Policy', career: 'Best for civil services aspirants', price: '₹11,000', explore: 'Explore 14 Univ.', slug: 'online-ba', search: 'ba', uniSearch: 'arts' },
             ].map((c) => {
               const courseHref = c.slug ? `/courses/${c.slug}` : `/courses?search=${encodeURIComponent(c.search || c.title)}`;
               const uniHref = `/universities?search=${encodeURIComponent(c.uniSearch || c.title)}`;
@@ -390,7 +597,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                       className="btn inline-flex items-center justify-center bg-[#115eaf] text-white border-0 rounded-md px-5 py-2.5 min-h-[42px] text-[13px] font-semibold no-underline cursor-pointer whitespace-nowrap hover:bg-[#084a8c] transition-colors shadow-2xs"
                       to={uniHref}
                     >
-                      Explore {p.c} Unis
+                      Explore {p.c} Univ.
                     </Link>
                     <Link
                       to={courseHref}
@@ -462,6 +669,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                       </span>
                     </div>)}
                 </div>
+                <p className="text-[10px] text-[#74777e] text-center mb-2 italic font-normal">* Fees & EMI vary by course</p>
                 <div className="mt-auto space-y-2">
                   <button
     type="button"
@@ -507,6 +715,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                     </div>)}
                 </div>
               </div>
+              <p className="text-[10px] text-[#74777e] text-center mb-2 italic font-normal">* Fees & EMI vary by course</p>
               <div className="mt-4 space-y-2">
                 <button
     type="button"
@@ -579,18 +788,41 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             </div>
           </div>
           <div>
+            {/* Course Selector for Side-by-Side Comparison */}
+            <div className="mb-4 p-3 rounded-xl bg-[#f0f4f8]/80 border border-[#c4c6ce]/60 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-[#115eaf] shrink-0" />
+                <span className="text-[13px] font-bold text-[#000f22]">Comparing Course:</span>
+              </div>
+              <div className="relative w-full sm:w-auto sm:min-w-[280px]">
+                <select
+                  aria-label="Select course to compare"
+                  value={selectedCompareCourse}
+                  onChange={(e) => setSelectedCompareCourse(e.target.value)}
+                  className="w-full min-h-[38px] pl-3 pr-8 py-1.5 rounded-lg border border-[#c4c6ce] bg-white text-[13px] font-semibold text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 cursor-pointer appearance-none"
+                >
+                  {COMPARE_PROGRAMS.map((prog) => (
+                    <option key={prog.id} value={prog.id}>
+                      {prog.name}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="w-4 h-4 text-[#74777e] pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" />
+              </div>
+            </div>
+
             <div className="overflow-x-auto">
-              <table className="w-full border-collapse min-w-[600px] text-[16px]">
+              <table className="w-full border-collapse min-w-[600px] text-[15px]">
                 <thead>
                   <tr>
-                    <th scope="col" className="text-left p-[13px] pl-0 align-top w-[140px] text-[#000f22] font-semibold text-[16px]">Criteria</th>
+                    <th scope="col" className="text-left p-[13px] pl-0 align-top w-[140px] text-[#000f22] font-semibold text-[15px]">Criteria</th>
                     {compareColumns.map((uniIdx, colIdx) => (
                       <th key={colIdx} scope="col" className="text-left p-[13px] pl-0 align-top">
                         <select
                           aria-label={`University ${colIdx + 1}`}
                           value={uniIdx}
                           onChange={(e) => changeCompareColumn(colIdx, Number(e.target.value))}
-                          className="w-full min-h-[44px] rounded-md border border-[#c4c6ce] bg-white px-2 text-[16px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
+                          className="w-full min-h-[44px] rounded-md border border-[#c4c6ce] bg-white px-2 text-[15px] font-semibold text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
                         >
                           {COMPARE_UNIVERSITIES.map((u, i) => (
                             <option key={i} value={i}>{u.name}</option>
@@ -603,17 +835,29 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 <tbody>
                   {COMPARE_CRITERIA.map(([label, key]) => (
                     <tr key={label} className="border-t border-[#c4c6ce]/60">
-                      <th scope="row" className="text-left p-[13px] pl-0 align-top w-[140px] text-[#000f22] font-medium text-[16px]">{label}</th>
-                      {compareColumns.map((uniIdx, colIdx) => (
-                        <td key={colIdx} className="p-[13px] pl-0 align-top text-[#43474d]">
-                          {COMPARE_UNIVERSITIES[uniIdx][key]}
-                        </td>
-                      ))}
+                      <th scope="row" className="text-left p-[13px] pl-0 align-top w-[140px] text-[#000f22] font-medium text-[14px] sm:text-[15px]">{label}</th>
+                      {compareColumns.map((uniIdx, colIdx) => {
+                        const uni = COMPARE_UNIVERSITIES[uniIdx];
+                        const progData = uni.programs[selectedCompareCourse] || uni.programs.overview;
+                        const val = key === "approval" ? uni.approval : key === "exam" ? uni.exam : progData[key];
+                        return (
+                          <td key={colIdx} className="p-[13px] pl-0 align-top text-[#43474d] text-[14px] sm:text-[15px]">
+                            {key === "fees" || key === "emi" ? (
+                              <span className="font-semibold text-[#000f22]">{val}</span>
+                            ) : (
+                              val
+                            )}
+                          </td>
+                        );
+                      })}
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
+            <p className="mt-2.5 text-[11px] text-[#74777e] italic">
+              * Total fees, per semester fees, duration, and monthly EMI are based on the selected program ({COMPARE_PROGRAMS.find((p) => p.id === selectedCompareCourse)?.name || "chosen course"}).
+            </p>
             <button
               type="button"
               onClick={addCompareColumn}

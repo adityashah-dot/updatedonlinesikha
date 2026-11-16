@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getBlogsList } from "../services/blogApi";
 import usePageMeta from "../hooks/usePageMeta";
 import { Clock, ArrowRight, BookOpen, Sparkles, Search, ChevronLeft, ChevronRight, RefreshCw, AlertCircle } from "lucide-react";
+import { AcademicExpertCounselingSection } from "../components/AcademicExpertCounselingSection";
 
 export default function Blog({ onOpenCounseling }) {
   usePageMeta({
@@ -270,82 +271,26 @@ export default function Blog({ onOpenCounseling }) {
         {/* Article Cards Grid - Compact Dimensions & Slightly Reduced Image Height */}
         {data.status === "ready" && data.articles.length > 0 && (
           <>
+            {/* First Row of Articles */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {data.articles.map((b) => {
-                const slug = b.slug;
-                const dateText = formatDate(b.date);
-                return (
-                  <article
-                    key={slug}
-                    className="group bg-white rounded-xl border border-[#e7eeff] hover:border-[#b1c8eb] hover:shadow-xs overflow-hidden transition-all duration-200 flex flex-col justify-between h-full"
-                  >
-                    <div>
-                      {/* Compact Image Container: h-36 on mobile, h-38 on desktop (aspect ~16:10) */}
-                      <div className="relative h-36 sm:h-38 overflow-hidden bg-[#f0f3ff]">
-                        {b.image ? (
-                          <img
-                            src={b.image}
-                            alt={b.imageAlt || b.title}
-                            className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
-                            loading="lazy"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-[#115eaf]/40">
-                            <BookOpen className="w-7 h-7" aria-hidden="true" />
-                          </div>
-                        )}
-                        {b.category ? (
-                          <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/95 text-[#115eaf] shadow-2xs backdrop-blur-xs border border-[#d5e3ff]">
-                            {b.category}
-                          </span>
-                        ) : null}
-                      </div>
-
-                      {/* Compact Card Content */}
-                      <div className="p-3.5">
-                        <div className="flex items-center gap-1.5 text-[10.5px] text-[#74777e] mb-1.5">
-                          {dateText ? <span>{dateText}</span> : null}
-                          {b.readingTime ? (
-                            <>
-                              {dateText ? <span aria-hidden="true" className="text-slate-300">•</span> : null}
-                              <span className="flex items-center gap-1">
-                                <Clock className="w-3 h-3 text-[#115eaf]" aria-hidden="true" />
-                                {b.readingTime}
-                              </span>
-                            </>
-                          ) : null}
-                          {b.views != null ? (
-                            <>
-                              {b.readingTime ? <span aria-hidden="true" className="text-slate-300">•</span> : null}
-                              <span>{b.views} views</span>
-                            </>
-                          ) : null}
-                        </div>
-                        <h2 className="text-xs sm:text-[14px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors line-clamp-2 leading-snug">
-                          <Link to={"/blog/" + slug}>{b.title}</Link>
-                        </h2>
-                        {b.excerpt ? (
-                          <p className="text-[11px] sm:text-xs text-[#555960] line-clamp-2 mt-1 leading-relaxed">
-                            {b.excerpt}
-                          </p>
-                        ) : null}
-                      </div>
-                    </div>
-
-                    {/* Compact Card Footer */}
-                    <div className="p-3.5 pt-0 mt-auto">
-                      <Link
-                        to={"/blog/" + slug}
-                        className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-[#115eaf] group-hover:underline"
-                      >
-                        <span>Read Full Guide</span>
-                        <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
-                      </Link>
-                    </div>
-                  </article>
-                );
-              })}
+              {data.articles.slice(0, 3).map((b) => (
+                <BlogCard key={b.slug} article={b} />
+              ))}
             </div>
+
+            {/* Academic Expert Advisory Section — Placed after First Row */}
+            <div className="my-5 sm:my-6">
+              <AcademicExpertCounselingSection id="blog-listing-counselling" compact />
+            </div>
+
+            {/* Remaining Articles */}
+            {data.articles.length > 3 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {data.articles.slice(3).map((b) => (
+                  <BlogCard key={b.slug} article={b} />
+                ))}
+              </div>
+            )}
 
             {/* Pagination */}
             {data.totalPages > 1 && (
@@ -421,4 +366,78 @@ function formatDate(iso) {
   const d = new Date(iso);
   if (Number.isNaN(d.getTime())) return null;
   return d.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+}
+
+function BlogCard({ article: b }) {
+  const slug = b.slug;
+  const dateText = formatDate(b.date);
+  return (
+    <article
+      className="group bg-white rounded-xl border border-[#e7eeff] hover:border-[#b1c8eb] hover:shadow-xs overflow-hidden transition-all duration-200 flex flex-col justify-between h-full"
+    >
+      <div>
+        {/* Compact Image Container: h-36 on mobile, h-38 on desktop (aspect ~16:10) */}
+        <div className="relative h-36 sm:h-38 overflow-hidden bg-[#f0f3ff]">
+          {b.image ? (
+            <img
+              src={b.image}
+              alt={b.imageAlt || b.title}
+              className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+              loading="lazy"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-[#115eaf]/40">
+              <BookOpen className="w-7 h-7" aria-hidden="true" />
+            </div>
+          )}
+          {b.category ? (
+            <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/95 text-[#115eaf] shadow-2xs backdrop-blur-xs border border-[#d5e3ff]">
+              {b.category}
+            </span>
+          ) : null}
+        </div>
+
+        {/* Compact Card Content */}
+        <div className="p-3.5">
+          <div className="flex items-center gap-1.5 text-[10.5px] text-[#74777e] mb-1.5">
+            {dateText ? <span>{dateText}</span> : null}
+            {b.readingTime ? (
+              <>
+                {dateText ? <span aria-hidden="true" className="text-slate-300">•</span> : null}
+                <span className="flex items-center gap-1">
+                  <Clock className="w-3 h-3 text-[#115eaf]" aria-hidden="true" />
+                  {b.readingTime}
+                </span>
+              </>
+            ) : null}
+            {b.views != null ? (
+              <>
+                {b.readingTime ? <span aria-hidden="true" className="text-slate-300">•</span> : null}
+                <span>{b.views} views</span>
+              </>
+            ) : null}
+          </div>
+          <h2 className="text-xs sm:text-[14px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors line-clamp-2 leading-snug">
+            <Link to={"/blog/" + slug}>{b.title}</Link>
+          </h2>
+          {b.excerpt ? (
+            <p className="text-[11px] sm:text-xs text-[#555960] line-clamp-2 mt-1 leading-relaxed">
+              {b.excerpt}
+            </p>
+          ) : null}
+        </div>
+      </div>
+
+      {/* Compact Card Footer */}
+      <div className="p-3.5 pt-0 mt-auto">
+        <Link
+          to={"/blog/" + slug}
+          className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-[#115eaf] group-hover:underline"
+        >
+          <span>Read Full Guide</span>
+          <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+        </Link>
+      </div>
+    </article>
+  );
 }

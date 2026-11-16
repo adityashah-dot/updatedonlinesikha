@@ -26,7 +26,7 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({
   const handleDownload = (e: React.FormEvent) => {
     e.preventDefault();
     setIsDownloaded(true);
-    // Download official brochure from Degreefyd API
+    // Download official brochure
     const officialBrochureUrl = 'https://images.degreefyd.com//lpu-online-brochure.pdf';
     const link = document.createElement('a');
     link.href = officialBrochureUrl;

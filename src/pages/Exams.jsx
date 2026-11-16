@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getExamsListing } from "../services/examApi";
 import usePageMeta from "../hooks/usePageMeta";
+import { AcademicExpertCounselingSection } from "../components/AcademicExpertCounselingSection";
 import {
   AlertCircle,
   BookOpen,
@@ -429,13 +430,32 @@ export default function Exams() {
 
             {/* Exam Cards Grid */}
             {exams.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                {exams.map((exam) => (
-                  <div key={exam.slug} className="w-full col-span-1 flex flex-col">
-                    <ExamCard exam={exam} />
+              <>
+                {/* First Row of Exams */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                  {exams.slice(0, 3).map((exam) => (
+                    <div key={exam.slug} className="w-full col-span-1 flex flex-col">
+                      <ExamCard exam={exam} />
+                    </div>
+                  ))}
+                </div>
+
+                {/* Academic Expert Advisory Section — Placed after First Row */}
+                <div className="my-5 sm:my-6">
+                  <AcademicExpertCounselingSection id="exam-listing-counselling" compact />
+                </div>
+
+                {/* Remaining Exams */}
+                {exams.length > 3 && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {exams.slice(3).map((exam) => (
+                      <div key={exam.slug} className="w-full col-span-1 flex flex-col">
+                        <ExamCard exam={exam} />
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                )}
+              </>
             ) : (
               <div className="py-14 flex flex-col items-center justify-center text-center gap-3">
                 <BookOpen className="w-8 h-8 text-[#115eaf]" aria-hidden="true" />

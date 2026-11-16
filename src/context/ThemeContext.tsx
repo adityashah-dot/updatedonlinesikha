@@ -28,7 +28,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         root.setAttribute('data-theme', 'light');
         root.style.colorScheme = 'light';
       }
-      localStorage.setItem('degreefyd-theme', theme);
+      localStorage.setItem('onlinesiksha-theme', theme);
     } catch {
       // Ignore storage errors
     }

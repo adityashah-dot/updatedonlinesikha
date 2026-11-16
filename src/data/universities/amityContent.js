@@ -291,19 +291,19 @@ export const AMITY_PAGE_CONTENT = {
       {
         studentName: "Shivani Singh",
         profession: "Online Learner",
-        text: "DegreeFYD helped me to choose the right program at Amity University Online according to my ambition. The constant guidance and support made my learning journey smooth and career-focused.",
+        text: "OnlineSiksha helped me to choose the right program at Amity University Online according to my ambition. The constant guidance and support made my learning journey smooth and career-focused.",
         rating: 2
       },
       {
         studentName: "Ved Prakash",
         profession: "Online IT Student",
-        text: "I was unable to balance my job while studying but DegreeFYD made it easier by helping me at each step. The course enhanced my technical skills and opened opportunities for top IT roles.",
+        text: "I was unable to balance my job while studying but OnlineSiksha made it easier by helping me at each step. The course enhanced my technical skills and opened opportunities for top IT roles.",
         rating: 5
       },
       {
         studentName: "Shivraj Jain",
         profession: "Online Finance Student",
-        text: "DegreeFYD guided me to select a distance learning program that matched my ambitions and boosted my confidence. Due to which today I am able to work confidently in the finance sector.",
+        text: "OnlineSiksha guided me to select a distance learning program that matched my ambitions and boosted my confidence. Due to which today I am able to work confidently in the finance sector.",
         rating: 5
       }
     ]

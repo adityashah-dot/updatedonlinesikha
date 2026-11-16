@@ -14,10 +14,16 @@ export const Navbar = ({
   onOpenLms,
   onOpenChat,
   onOpenLogin,
-  loggedInUser
+  loggedInUser,
+  onOpenDegreeExplorer,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const handleNavClick = (tab) => {
+    if (tab === "degrees" && onOpenDegreeExplorer) {
+      onOpenDegreeExplorer();
+      setMobileMenuOpen(false);
+      return;
+    }
     setActiveTab(tab);
     setMobileMenuOpen(false);
   };
