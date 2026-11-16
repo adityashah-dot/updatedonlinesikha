@@ -1,72 +1,61 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   X,
-  LogIn,
   Mail,
   Lock,
   Eye,
   EyeOff,
   Phone,
-  ShieldCheck,
+  User,
+  GraduationCap,
+  ChevronDown,
   CheckCircle,
+  ShieldCheck,
   Sparkles,
   ArrowRight,
-  GraduationCap,
-  KeyRound,
-  UserCheck
+  LogIn
 } from "lucide-react";
+
 export const LoginModal = ({
   isOpen,
   onClose,
   onLoginSuccess
 }) => {
-  const [activeTab, setActiveTab] = useState("login");
-  const [loginMethod, setLoginMethod] = useState("password");
-  const [emailOrPhone, setEmailOrPhone] = useState("student@onlinesiksha.com");
-  const [password, setPassword] = useState("\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022");
+  // isSignUp controls the sliding animation: false = Sign In, true = Sign Up
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [email, setEmail] = useState("student@onlinesiksha.com");
+  const [password, setPassword] = useState("••••••••");
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(true);
-  const [otpSent, setOtpSent] = useState(false);
-  const [otpDigits, setOtpDigits] = useState(["", "", "", ""]);
-  const [otpCountdown, setOtpCountdown] = useState(30);
-  const [regName, setRegName] = useState("");
-  const [regEmail, setRegEmail] = useState("");
-  const [regPhone, setRegPhone] = useState("");
-  const [regCourse, setRegCourse] = useState("Online MBA");
+
+  // Sign up fields
+  const [name, setName] = useState("");
+  const [signUpEmail, setSignUpEmail] = useState("");
+  const [signUpPhone, setSignUpPhone] = useState("");
+  const [signUpPassword, setSignUpPassword] = useState("");
+  const [program, setProgram] = useState("Online MBA");
+
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
   const [loggedInUser, setLoggedInUser] = useState(null);
+
+  // Close on Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") handleModalClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
   if (!isOpen) return null;
-  const handleSendOtp = (e) => {
+
+  const handleSignIn = (e) => {
     e.preventDefault();
     setErrorMsg("");
-    if (!emailOrPhone.trim()) {
-      setErrorMsg("Please enter your registered mobile number or email.");
-      return;
-    }
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setOtpSent(true);
-      setOtpCountdown(30);
-    }, 600);
-  };
-  const handleOtpChange = (index, val) => {
-    if (val.length > 1) val = val.slice(-1);
-    const newOtp = [...otpDigits];
-    newOtp[index] = val;
-    setOtpDigits(newOtp);
-    if (val && index < 3) {
-      const nextInput = document.getElementById(`otp-input-${index + 1}`);
-      nextInput?.focus();
-    }
-  };
-  const handlePasswordLogin = (e) => {
-    e.preventDefault();
-    setErrorMsg("");
-    if (!emailOrPhone.trim()) {
-      setErrorMsg("Please enter your email or mobile number.");
+    if (!email.trim() || !password.trim()) {
+      setErrorMsg("Please enter both email and password.");
       return;
     }
     setIsLoading(true);
@@ -74,46 +63,21 @@ export const LoginModal = ({
       setIsLoading(false);
       const user = {
         name: "Aditya Shah",
-        email: emailOrPhone.includes("@") ? emailOrPhone : "student@onlinesiksha.com",
-        phone: !emailOrPhone.includes("@") ? emailOrPhone : "+91 98765 43210",
+        email: email,
+        phone: "+91 98765 43210",
         enrolledCourse: "Online MBA - Lovely Professional University",
         applicationId: "OS-2026-89421"
       };
       setLoggedInUser(user);
       setSuccessMsg(`Welcome back, ${user.name}!`);
-      if (onLoginSuccess) {
-        onLoginSuccess(user);
-      }
-    }, 800);
-  };
-  const handleOtpVerify = (e) => {
-    e.preventDefault();
-    const enteredOtp = otpDigits.join("");
-    if (enteredOtp.length < 4) {
-      setErrorMsg("Please enter the complete 4-digit OTP sent to your phone.");
-      return;
-    }
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      const user = {
-        name: "Aditya Shah",
-        email: "student@onlinesiksha.com",
-        phone: emailOrPhone,
-        enrolledCourse: "Online MBA - Lovely Professional University",
-        applicationId: "OS-2026-89421"
-      };
-      setLoggedInUser(user);
-      setSuccessMsg(`Verified! Welcome back, ${user.name}!`);
-      if (onLoginSuccess) {
-        onLoginSuccess(user);
-      }
+      if (onLoginSuccess) onLoginSuccess(user);
     }, 700);
   };
-  const handleRegister = (e) => {
+
+  const handleSignUp = (e) => {
     e.preventDefault();
     setErrorMsg("");
-    if (!regName.trim() || !regEmail.trim() || !regPhone.trim()) {
+    if (!name.trim() || !signUpEmail.trim() || !signUpPhone.trim()) {
       setErrorMsg("Please fill in your name, email, and mobile number.");
       return;
     }
@@ -121,20 +85,19 @@ export const LoginModal = ({
     setTimeout(() => {
       setIsLoading(false);
       const user = {
-        name: regName,
-        email: regEmail,
-        phone: regPhone,
-        enrolledCourse: regCourse,
-        applicationId: `OS-2026-${Math.floor(1e4 + Math.random() * 9e4)}`
+        name: name,
+        email: signUpEmail,
+        phone: signUpPhone,
+        enrolledCourse: program,
+        applicationId: `OS-2026-${Math.floor(10000 + Math.random() * 90000)}`
       };
       setLoggedInUser(user);
       setSuccessMsg(`Account created successfully! Welcome, ${user.name}!`);
-      if (onLoginSuccess) {
-        onLoginSuccess(user);
-      }
-    }, 800);
+      if (onLoginSuccess) onLoginSuccess(user);
+    }, 750);
   };
-  const handleGoogleLogin = () => {
+
+  const handleGoogleAuth = () => {
     setIsLoading(true);
     setErrorMsg("");
     setTimeout(() => {
@@ -148,471 +111,424 @@ export const LoginModal = ({
       };
       setLoggedInUser(user);
       setSuccessMsg("Authenticated via Google. Welcome!");
-      if (onLoginSuccess) {
-        onLoginSuccess(user);
-      }
-    }, 700);
+      if (onLoginSuccess) onLoginSuccess(user);
+    }, 650);
   };
+
   const handleModalClose = () => {
     setErrorMsg("");
     setSuccessMsg("");
-    setOtpSent(false);
+    setIsSignUp(false);
     onClose();
   };
-  return <div
-    className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-200"
-    onClick={handleModalClose}
-  >
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/65 backdrop-blur-xs transition-opacity duration-200"
+      onClick={handleModalClose}
+      role="dialog"
+      aria-modal="true"
+    >
+      {/* Outer Card Container */}
       <div
-    className="relative w-full max-w-[395px] bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden transform transition-all duration-300 animate-in fade-in zoom-in-95 max-h-[92vh] flex flex-col"
-    onClick={(e) => e.stopPropagation()}
-  >
-        {
-    /* Top Header Background Banner */
-  }
-        <div className="bg-gradient-to-r from-[#000f22] via-[#00224d] to-[#115eaf] px-5 pt-5 pb-4 text-white relative shrink-0">
-          <button
-    type="button"
-    onClick={handleModalClose}
-    className="absolute top-3.5 right-3.5 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center -m-1.5 rounded-full text-slate-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-    aria-label="Close login dialog"
-  >
-            <X className="w-4 h-4" />
-          </button>
+        className={`auth-slider-card ${isSignUp ? "active" : ""} bg-white relative max-w-[780px] w-full min-h-[520px] rounded-[28px] overflow-hidden shadow-2xl flex flex-col md:block`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Floating Close Button */}
+        <button
+          type="button"
+          onClick={handleModalClose}
+          className="absolute top-4 right-4 z-50 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center transition-colors cursor-pointer"
+          aria-label="Close dialog"
+        >
+          <X className="w-4 h-4" />
+        </button>
 
-          <div className="flex items-center gap-2 mb-1.5">
-            <div className="w-7 h-7 rounded-lg bg-blue-500/20 border border-blue-400/30 flex items-center justify-center text-blue-300">
-              <LogIn className="w-3.5 h-3.5" />
+        {/* Success Screen if Logged In */}
+        {loggedInUser ? (
+          <div className="absolute inset-0 bg-white z-50 flex flex-col items-center justify-center p-8 text-center animate-fadeIn">
+            <div className="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-600 flex items-center justify-center shadow-xs mb-4">
+              <CheckCircle className="w-8 h-8" />
             </div>
-            <span className="text-[10px] font-semibold tracking-wider uppercase text-blue-200">
-              Student & Applicant Portal
-            </span>
+            <h3 className="text-2xl font-extrabold text-[#000f22]">
+              {successMsg || "Authentication Successful!"}
+            </h3>
+            <p className="text-sm text-slate-500 mt-1 max-w-sm">
+              Logged in as <strong className="text-slate-800">{loggedInUser.email}</strong>
+            </p>
+            {loggedInUser.applicationId && (
+              <div className="mt-3 inline-block bg-[#eef4ff] border border-[#d5e3ff] text-[#115eaf] px-4 py-1.5 rounded-full text-xs font-bold">
+                Student Application ID: {loggedInUser.applicationId}
+              </div>
+            )}
+            <div className="mt-6 flex flex-col gap-2.5 w-full max-w-xs">
+              <button
+                type="button"
+                onClick={handleModalClose}
+                className="w-full py-3 rounded-xl bg-[#115eaf] hover:bg-[#000f22] text-white text-sm font-bold shadow-md transition-all cursor-pointer"
+              >
+                Continue to Portal
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setLoggedInUser(null);
+                  setSuccessMsg("");
+                }}
+                className="text-xs text-slate-500 hover:text-rose-600 font-semibold py-1 cursor-pointer transition-colors"
+              >
+                Sign Out
+              </button>
+            </div>
           </div>
+        ) : (
+          <>
+            {/* Mobile Header Tab Switcher (Visible only on mobile screens < 768px) */}
+            <div className="md:hidden flex border-b border-slate-100 bg-[#f8fafc] p-1.5 shrink-0">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsSignUp(false);
+                  setErrorMsg("");
+                }}
+                className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all ${
+                  !isSignUp ? "bg-white text-[#115eaf] shadow-xs" : "text-slate-500"
+                }`}
+              >
+                Sign In
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsSignUp(true);
+                  setErrorMsg("");
+                }}
+                className={`flex-1 py-2 text-xs font-bold rounded-xl transition-all ${
+                  isSignUp ? "bg-white text-[#115eaf] shadow-xs" : "text-slate-500"
+                }`}
+              >
+                Create Account
+              </button>
+            </div>
 
-          <h3 className="text-lg font-bold tracking-tight text-white">
-            {activeTab === "login" ? "Welcome Back" : "Create Student Account"}
-          </h3>
-          <p className="text-xs text-slate-200 mt-0.5">
-            Get to know your online career in 30 seconds
-          </p>
-        </div>
-
-        {
-    /* Tab Switcher: Login vs Register */
-  }
-        <div className="flex border-b border-slate-100 bg-slate-50/70 p-1 shrink-0">
-          <button
-    type="button"
-    onClick={() => {
-      setActiveTab("login");
-      setErrorMsg("");
-    }}
-    className={`flex-1 py-2 min-h-[44px] text-xs font-semibold rounded-xl transition-all cursor-pointer ${activeTab === "login" ? "bg-white text-[#115eaf] shadow-xs" : "text-slate-600 hover:text-slate-900"}`}
-  >
-            Student Login
-          </button>
-          <button
-    type="button"
-    onClick={() => {
-      setActiveTab("register");
-      setErrorMsg("");
-    }}
-    className={`flex-1 py-2 min-h-[44px] text-xs font-semibold rounded-xl transition-all cursor-pointer ${activeTab === "register" ? "bg-white text-[#115eaf] shadow-xs" : "text-slate-600 hover:text-slate-900"}`}
-  >
-            New Registration
-          </button>
-        </div>
-
-        {
-    /* Body Container */
-  }
-        <div className="p-4 sm:p-5 overflow-y-auto min-h-0">
-          {
-    /* Success Banner if Logged In */
-  }
-          {loggedInUser ? <div className="text-center py-6 space-y-4 animate-fadeIn">
-              <div className="w-16 h-16 mx-auto rounded-full bg-emerald-100 border border-emerald-200 text-emerald-600 flex items-center justify-center shadow-xs">
-                <UserCheck className="w-8 h-8" />
+            {/* Error Notification */}
+            {errorMsg && (
+              <div className="absolute top-14 left-6 right-6 md:left-10 md:right-auto md:w-[320px] z-30 p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium flex items-center gap-2 animate-fadeIn">
+                <span className="text-rose-500 font-bold">⚠</span>
+                <span>{errorMsg}</span>
               </div>
-              <div>
-                <h4 className="text-lg font-bold text-slate-900">
-                  {successMsg || "Login Successful!"}
-                </h4>
-                <p className="text-xs text-slate-500 mt-1">
-                  Active session for <strong className="text-slate-800">{loggedInUser.email}</strong>
-                </p>
-                {loggedInUser.applicationId && <div className="mt-3 inline-block bg-blue-50 border border-blue-200 text-[#115eaf] px-3 py-1 rounded-full text-xs font-medium">
-                    Application ID: {loggedInUser.applicationId}
-                  </div>}
-              </div>
+            )}
 
-              <div className="pt-2 flex flex-col gap-2">
-                <button
-    type="button"
-    onClick={handleModalClose}
-    className="w-full py-3 min-h-[44px] rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-semibold shadow-xs cursor-pointer transition-all"
-  >
-                  Continue to Portal
-                </button>
-                <button
-    type="button"
-    onClick={() => {
-      setLoggedInUser(null);
-      setSuccessMsg("");
-    }}
-    className="text-xs text-slate-500 hover:text-rose-600 font-medium py-2 min-h-[44px] cursor-pointer transition-colors"
-  >
-                  Sign Out
-                </button>
-              </div>
-            </div> : <>
-              {
-    /* Error Notification */
-  }
-              {errorMsg && <div className="mb-4 p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium flex items-center gap-2">
-                  <span className="text-rose-500">⚠</span>
-                  <span>{errorMsg}</span>
-                </div>}
+            {/* ========================================================
+                1. Sign In Form Panel (Default Left)
+                ======================================================== */}
+            <div
+              className={`auth-form-panel auth-sign-in flex flex-col justify-center items-center px-8 md:px-11 py-8 h-full ${
+                isSignUp ? "hidden md:flex" : "flex"
+              }`}
+            >
+              <form onSubmit={handleSignIn} className="w-full flex flex-col items-center text-center">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#000f22] tracking-tight">
+                  Sign In
+                </h2>
 
-              {
-    /* LOGIN TAB */
-  }
-              {activeTab === "login" && <div>
-                  {
-    /* Login Method Toggle: Password vs OTP */
-  }
-                  <div className="flex items-center justify-center gap-4 mb-4 text-xs font-medium border-b border-slate-100 pb-2">
-                    <button
-    type="button"
-    onClick={() => {
-      setLoginMethod("password");
-      setOtpSent(false);
-      setErrorMsg("");
-    }}
-    className={`pb-2 min-h-[44px] px-1 cursor-pointer transition-colors ${loginMethod === "password" ? "text-[#115eaf] font-bold border-b-2 border-[#115eaf]" : "text-slate-500 hover:text-slate-800"}`}
-  >
-                      Email / Password
-                    </button>
-                    <span className="text-slate-300">|</span>
-                    <button
-    type="button"
-    onClick={() => {
-      setLoginMethod("otp");
-      setErrorMsg("");
-    }}
-    className={`pb-2 min-h-[44px] px-1 cursor-pointer transition-colors ${loginMethod === "otp" ? "text-[#115eaf] font-bold border-b-2 border-[#115eaf]" : "text-slate-500 hover:text-slate-800"}`}
-  >
-                      Instant Mobile OTP
-                    </button>
-                  </div>
-
-                  {loginMethod === "password" ? (
-    /* Email & Password Form */
-    <form onSubmit={handlePasswordLogin} className="space-y-3.5">
-                      <div>
-                        <label className="block text-xs font-medium text-slate-700 mb-1">
-                          Email Address or Mobile Number
-                        </label>
-                        <div className="relative">
-                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                            <Mail className="w-4 h-4" />
-                          </div>
-                          <input
-      type="text"
-      required
-      value={emailOrPhone}
-      onChange={(e) => setEmailOrPhone(e.target.value)}
-      placeholder="student@onlinesiksha.com"
-      className="w-full pl-9 pr-3 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
-    />
-                        </div>
-                      </div>
-
-                      <div>
-                        <div className="flex items-center justify-between mb-1">
-                          <label className="text-xs font-medium text-slate-700">
-                            Password
-                          </label>
-                          <a
-      href="#forgot"
-      onClick={(e) => {
-        e.preventDefault();
-        setErrorMsg("A reset link has been dispatched to your email.");
-      }}
-      className="text-[11px] text-[#115eaf] hover:underline font-medium"
-    >
-                            Forgot Password?
-                          </a>
-                        </div>
-                        <div className="relative">
-                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                            <Lock className="w-4 h-4" />
-                          </div>
-                          <input
-      type={showPassword ? "text" : "password"}
-      required
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      placeholder="Enter your account password"
-      className="w-full pl-9 pr-10 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
-    />
-                          <button
-      type="button"
-      onClick={() => setShowPassword(!showPassword)}
-      className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 cursor-pointer"
-    >
-                            {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                          </button>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between pt-1">
-                        <label className="flex items-center gap-2 cursor-pointer select-none">
-                          <input
-      type="checkbox"
-      checked={rememberMe}
-      onChange={(e) => setRememberMe(e.target.checked)}
-      className="w-4 h-4 text-[#115eaf] rounded border-slate-300 focus:ring-[#115eaf] cursor-pointer"
-    />
-                          <span className="text-xs text-slate-600 font-normal">Remember this device</span>
-                        </label>
-                      </div>
-
-                      <button
-      type="submit"
-      disabled={isLoading}
-      className="w-full py-3 min-h-[44px] rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-base sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.99] shadow-xs cursor-pointer disabled:opacity-60"
-    >
-                        {isLoading ? <span>Verifying Credentials...</span> : <>
-                            <span>Login to Account</span>
-                            <ArrowRight className="w-4 h-4" />
-                          </>}
-                      </button>
-                    </form>
-  ) : (
-    /* OTP Login Form */
-    <form onSubmit={otpSent ? handleOtpVerify : handleSendOtp} className="space-y-3.5">
-                      <div>
-                        <label className="block text-xs font-medium text-slate-700 mb-1">
-                          Registered Mobile Number
-                        </label>
-                        <div className="relative">
-                          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
-                            <Phone className="w-4 h-4" />
-                          </div>
-                          <span className="absolute inset-y-0 left-9 flex items-center text-xs text-slate-500 font-medium">
-                            +91
-                          </span>
-                          <input
-      type="tel"
-      maxLength={10}
-      required
-      value={emailOrPhone.replace(/^\+91\s?/, "")}
-      onChange={(e) => setEmailOrPhone(e.target.value)}
-      placeholder="98765 43210"
-      className="w-full pl-16 pr-3 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
-    />
-                        </div>
-                      </div>
-
-                      {otpSent && <div className="space-y-2 pt-1 animate-fadeIn">
-                          <div className="flex items-center justify-between gap-2">
-                            <label className="text-xs font-medium text-slate-700 shrink-0">
-                              Enter 4-Digit OTP Code
-                            </label>
-                            <span className="text-[11px] text-emerald-600 font-medium min-w-0 truncate">
-                              Sent to {emailOrPhone}
-                            </span>
-                          </div>
-
-                          <div className="flex justify-center gap-3">
-                            {[0, 1, 2, 3].map((idx) => <input
-      key={idx}
-      id={`otp-input-${idx}`}
-      type="text"
-      maxLength={1}
-      inputMode="numeric"
-      value={otpDigits[idx]}
-      onChange={(e) => handleOtpChange(idx, e.target.value)}
-      className="w-12 h-12 text-center text-lg font-bold bg-slate-50 border border-slate-300 focus:border-[#115eaf] focus:bg-white rounded-xl focus:outline-none focus:ring-2 focus:ring-[#115eaf]/20 transition-all text-slate-900"
-    />)}
-                          </div>
-
-                          <div className="flex justify-between items-center text-[11px] text-slate-500 pt-1">
-                            <span>Didn’t receive code?</span>
-                            <button
-      type="button"
-      onClick={() => {
-        setOtpCountdown(30);
-        setErrorMsg("");
-      }}
-      className="text-[#115eaf] hover:underline font-semibold cursor-pointer py-2 min-h-[44px] px-1"
-    >
-                              Resend OTP
-                            </button>
-                          </div>
-                        </div>}
-
-                      <button
-      type="submit"
-      disabled={isLoading}
-      className="w-full py-3 min-h-[44px] rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-base sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.99] shadow-xs cursor-pointer disabled:opacity-60"
-    >
-                        {isLoading ? <span>Processing...</span> : otpSent ? <>
-                            <span>Verify & Sign In</span>
-                            <CheckCircle className="w-4 h-4" />
-                          </> : <>
-                            <span>Get OTP Verification Code</span>
-                            <KeyRound className="w-4 h-4" />
-                          </>}
-                      </button>
-                    </form>
-  )}
-
-                  {
-    /* Or Divider */
-  }
-                  <div className="relative my-4">
-                    <div className="absolute inset-0 flex items-center">
-                      <div className="w-full border-t border-slate-200" />
-                    </div>
-                    <div className="relative flex justify-center text-xs uppercase">
-                      <span className="bg-white px-3 text-slate-400 font-medium text-[11px]">
-                        Or quick continue
-                      </span>
-                    </div>
-                  </div>
-
-                  {
-    /* Google Sign In Button */
-  }
+                {/* Social Login Icons Row */}
+                <div className="flex items-center gap-2.5 my-3.5">
                   <button
-    type="button"
-    onClick={handleGoogleLogin}
-    disabled={isLoading}
-    className="w-full py-3 min-h-[44px] px-4 border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 text-base sm:text-sm font-semibold rounded-xl flex items-center justify-center gap-2.5 transition-all shadow-2xs cursor-pointer active:scale-[0.99]"
-  >
+                    type="button"
+                    onClick={handleGoogleAuth}
+                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-[#115eaf] hover:bg-[#eef4ff]/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs group"
+                    title="Continue with Google"
+                  >
                     <svg className="w-4 h-4" viewBox="0 0 24 24">
                       <path
-    fill="#4285F4"
-    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-  />
+                        fill="#4285F4"
+                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                      />
                       <path
-    fill="#34A853"
-    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-  />
+                        fill="#34A853"
+                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                      />
                       <path
-    fill="#FBBC05"
-    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
-  />
+                        fill="#FBBC05"
+                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+                      />
                       <path
-    fill="#EA4335"
-    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
-  />
+                        fill="#EA4335"
+                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+                      />
                     </svg>
-                    <span>Continue with Google</span>
                   </button>
-                </div>}
-
-              {
-    /* REGISTER TAB */
-  }
-              {activeTab === "register" && <form onSubmit={handleRegister} className="space-y-3 animate-fadeIn">
-                  <div>
-                    <label className="block text-xs font-medium text-slate-700 mb-1">
-                      Full Legal Name
-                    </label>
-                    <input
-    type="text"
-    required
-    value={regName}
-    onChange={(e) => setRegName(e.target.value)}
-    placeholder="e.g. Aditya Sharma"
-    className="w-full px-3 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
-  />
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">
-                        Email Address
-                      </label>
-                      <input
-    type="email"
-    required
-    value={regEmail}
-    onChange={(e) => setRegEmail(e.target.value)}
-    placeholder="name@email.com"
-    className="w-full px-3 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
-  />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-slate-700 mb-1">
-                        Mobile Number
-                      </label>
-                      <input
-    type="tel"
-    maxLength={10}
-    required
-    value={regPhone}
-    onChange={(e) => setRegPhone(e.target.value)}
-    placeholder="10-digit number"
-    className="w-full px-3 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900"
-  />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-medium text-slate-700 mb-1">
-                      Intended Degree Program
-                    </label>
-                    <div className="relative">
-                      <select
-    value={regCourse}
-    onChange={(e) => setRegCourse(e.target.value)}
-    className="w-full px-3 py-2 text-base sm:text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-slate-900 cursor-pointer appearance-none"
-  >
-                        <option value="Online MBA">Online MBA (Master of Business Admin)</option>
-                        <option value="Online MCA">Online MCA (Master of Computer Apps)</option>
-                        <option value="Online BCA">Online BCA (Bachelor of Computer Apps)</option>
-                        <option value="Online BBA">Online BBA (Bachelor of Business Admin)</option>
-                        <option value="Online M.Com">Online M.Com (Commerce & Finance)</option>
-                        <option value="Online M.A.">Online M.A. (English / Psychology)</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <p className="text-[11px] text-slate-500 pt-1 leading-relaxed">
-                    By registering, you agree to receive SMS / WhatsApp admission alerts regarding syllabus updates, cutoffs, and counseling deadlines.
-                  </p>
-
                   <button
-    type="submit"
-    disabled={isLoading}
-    className="w-full py-3 min-h-[44px] rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-base sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.99] shadow-xs cursor-pointer disabled:opacity-60"
-  >
-                    {isLoading ? <span>Creating Registration...</span> : <>
-                        <span>Register & Generate Student ID</span>
-                        <GraduationCap className="w-4 h-4" />
-                      </>}
+                    type="button"
+                    onClick={() => setEmail("student@onlinesiksha.com")}
+                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-[#115eaf] hover:bg-[#eef4ff]/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs text-[#115eaf]"
+                    title="Quick Demo Login"
+                  >
+                    <LogIn className="w-4 h-4" />
                   </button>
-                </form>}
-            </>}
+                  <button
+                    type="button"
+                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-[#115eaf] hover:bg-[#eef4ff]/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs text-emerald-600"
+                    title="UGC Verified Portal"
+                  >
+                    <ShieldCheck className="w-4 h-4" />
+                  </button>
+                </div>
 
-          {
-    /* Security & Verification Footer */
-  }
-          <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
-            <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              256-Bit SSL Encrypted
-            </span>
-            <span className="flex items-center gap-1">
-              <Sparkles className="w-3 h-3 text-[#115eaf]" />
-              OnlineSiksha Verified
-            </span>
-          </div>
-        </div>
+                <span className="text-xs text-slate-400 font-medium mb-3">
+                  or use your email password
+                </span>
+
+                {/* Email Input */}
+                <div className="w-full relative mb-2.5">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="text"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email or Mobile Number"
+                    className="w-full h-11 pl-10 pr-3 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
+                  />
+                </div>
+
+                {/* Password Input */}
+                <div className="w-full relative mb-1.5">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <Lock className="w-4 h-4" />
+                  </div>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Password"
+                    className="w-full h-11 pl-10 pr-10 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 cursor-pointer"
+                  >
+                    {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                  </button>
+                </div>
+
+                {/* Forgot Password */}
+                <a
+                  href="#forgot"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setErrorMsg("Password reset dispatched to your email.");
+                  }}
+                  className="text-xs text-[#115eaf] hover:underline font-semibold my-2.5"
+                >
+                  Forgot Your Password?
+                </a>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="mt-1 w-auto min-w-[170px] px-8 py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#000f22] text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md shadow-[#115eaf]/25 active:scale-[0.98] cursor-pointer disabled:opacity-60"
+                >
+                  {isLoading ? "Signing In..." : "SIGN IN"}
+                </button>
+              </form>
+            </div>
+
+            {/* ========================================================
+                2. Sign Up Form Panel (Hidden Default, Slides In Active)
+                ======================================================== */}
+            <div
+              className={`auth-form-panel auth-sign-up flex flex-col justify-center items-center px-8 md:px-11 py-6 h-full ${
+                !isSignUp ? "hidden md:flex" : "flex"
+              }`}
+            >
+              <form onSubmit={handleSignUp} className="w-full flex flex-col items-center text-center">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#000f22] tracking-tight">
+                  Create Account
+                </h2>
+
+                {/* Social Login Icons Row */}
+                <div className="flex items-center gap-2.5 my-3">
+                  <button
+                    type="button"
+                    onClick={handleGoogleAuth}
+                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-[#115eaf] hover:bg-[#eef4ff]/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs"
+                    title="Sign up with Google"
+                  >
+                    <svg className="w-4 h-4" viewBox="0 0 24 24">
+                      <path
+                        fill="#4285F4"
+                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                      />
+                      <path
+                        fill="#34A853"
+                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                      />
+                      <path
+                        fill="#FBBC05"
+                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"
+                      />
+                      <path
+                        fill="#EA4335"
+                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-[#115eaf] hover:bg-[#eef4ff]/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs text-[#115eaf]"
+                    title="Direct Admission Portal"
+                  >
+                    <GraduationCap className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <span className="text-xs text-slate-400 font-medium mb-2.5">
+                  or use your email for registration
+                </span>
+
+                {/* Name */}
+                <div className="w-full relative mb-2">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <User className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Full Legal Name"
+                    className="w-full h-10 pl-10 pr-3 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
+                  />
+                </div>
+
+                {/* Email */}
+                <div className="w-full relative mb-2">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="email"
+                    required
+                    value={signUpEmail}
+                    onChange={(e) => setSignUpEmail(e.target.value)}
+                    placeholder="Email Address"
+                    className="w-full h-10 pl-10 pr-3 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
+                  />
+                </div>
+
+                {/* Mobile */}
+                <div className="w-full relative mb-2">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="tel"
+                    maxLength={10}
+                    required
+                    value={signUpPhone}
+                    onChange={(e) => setSignUpPhone(e.target.value)}
+                    placeholder="10-digit mobile number"
+                    className="w-full h-10 pl-10 pr-3 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
+                  />
+                </div>
+
+                {/* Intended Program Selector */}
+                <div className="w-full relative mb-3">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <GraduationCap className="w-4 h-4" />
+                  </div>
+                  <select
+                    value={program}
+                    onChange={(e) => setProgram(e.target.value)}
+                    className="w-full h-10 pl-10 pr-8 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22] cursor-pointer appearance-none"
+                  >
+                    <option value="Online MBA">Online MBA</option>
+                    <option value="Online MCA">Online MCA</option>
+                    <option value="Online BCA">Online BCA</option>
+                    <option value="Online BBA">Online BBA</option>
+                    <option value="Online M.Sc">Online M.Sc Data Science</option>
+                    <option value="Online B.Com">Online B.Com</option>
+                  </select>
+                  <ChevronDown className="w-4 h-4 text-slate-400 pointer-events-none absolute right-3 top-1/2 -translate-y-1/2" />
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="w-auto min-w-[170px] px-8 py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#000f22] text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md shadow-[#115eaf]/25 active:scale-[0.98] cursor-pointer disabled:opacity-60"
+                >
+                  {isLoading ? "Creating..." : "SIGN UP"}
+                </button>
+              </form>
+            </div>
+
+            {/* ========================================================
+                3. Sliding Curved Overlay (Desktop Only >= 768px)
+                ======================================================== */}
+            <div className="hidden md:block auth-toggle-container">
+              <div className="auth-toggle">
+                {/* Left Toggle Panel (Shown when on Sign Up mode) */}
+                <div className="auth-toggle-panel auth-toggle-left">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-blue-100 text-[11px] font-semibold mb-3 border border-white/20">
+                    <ShieldCheck className="w-3.5 h-3.5 text-blue-200" />
+                    <span>OnlineSiksha Admissions</span>
+                  </div>
+                  <h3 className="text-3xl font-extrabold text-white tracking-tight mb-2">
+                    Welcome Back!
+                  </h3>
+                  <p className="text-xs text-blue-100/90 leading-relaxed max-w-[240px] mb-6">
+                    To keep connected with your counselor desk &amp; verified application, please sign in.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsSignUp(false);
+                      setErrorMsg("");
+                    }}
+                    className="border-2 border-white text-white hover:bg-white hover:text-[#115eaf] text-xs font-bold tracking-wider uppercase px-9 py-2.5 rounded-xl transition-all cursor-pointer active:scale-[0.98]"
+                  >
+                    SIGN IN
+                  </button>
+                </div>
+
+                {/* Right Toggle Panel (Shown when on Sign In mode) */}
+                <div className="auth-toggle-panel auth-toggle-right">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-blue-100 text-[11px] font-semibold mb-3 border border-white/20">
+                    <Sparkles className="w-3.5 h-3.5 text-blue-200" />
+                    <span>Join 50,000+ Students</span>
+                  </div>
+                  <h3 className="text-3xl font-extrabold text-white tracking-tight mb-2">
+                    Hello, Student!
+                  </h3>
+                  <p className="text-xs text-blue-100/90 leading-relaxed max-w-[240px] mb-6">
+                    Register with your personal details to compare 100+ UGC degrees with 0% interest EMI.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setIsSignUp(true);
+                      setErrorMsg("");
+                    }}
+                    className="border-2 border-white text-white hover:bg-white hover:text-[#115eaf] text-xs font-bold tracking-wider uppercase px-9 py-2.5 rounded-xl transition-all cursor-pointer active:scale-[0.98]"
+                  >
+                    SIGN UP
+                  </button>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
-    </div>;
+    </div>
+  );
 };
+
+export default LoginModal;

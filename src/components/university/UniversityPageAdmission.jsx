@@ -203,7 +203,7 @@ export const UniversityPageAdmission = ({
           <div className="overflow-hidden overflow-x-auto rounded-xl border border-[#dfe9ff] bg-white mt-[18px]">
             <table className="w-full text-left border-collapse text-xs sm:text-sm">
               <thead>
-                <tr className="bg-[#0b2540] text-white">
+                <tr className="bg-[#0b62be] text-white">
                   <th className="py-3 px-4 font-bold">Event</th>
                   <th className="py-3 px-4 font-bold">Important Date</th>
                   <th className="py-3 px-4 font-bold">Status</th>
@@ -255,7 +255,7 @@ export const UniversityPageAdmission = ({
             <div className="overflow-hidden overflow-x-auto rounded-xl border border-[#dfe9ff] bg-white mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Course</th>
                     <th className="py-3 px-4 font-bold">Eligibility</th>
                     <th className="py-3 px-4 font-bold">Selection Process</th>
@@ -381,7 +381,7 @@ export const UniversityPageAdmission = ({
     /* 7. DOCUMENTS REQUIRED */
   }
         {hasDocuments && <section id="documents-required" className="page-section grid grid-cols-1 lg:grid-cols-12 gap-8 items-start scroll-mt-[110px]">
-            <div className="card lg:col-span-4 bg-[#0b2540] text-white rounded-2xl shadow-xs space-y-4 p-5 sm:p-6">
+            <div className="card lg:col-span-4 bg-[#0b62be] text-white rounded-2xl shadow-xs space-y-4 p-5 sm:p-6">
               <span className="text-xs font-bold text-[#b1c8eb] uppercase tracking-wider block">
                 Verification Guide
               </span>
@@ -437,7 +437,7 @@ export const UniversityPageAdmission = ({
             <div className="overflow-hidden overflow-x-auto rounded-xl border border-[#dfe9ff] bg-white mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Scholarship / Benefit</th>
                     <th className="py-3 px-4 font-bold">Details</th>
                   </tr>
@@ -672,7 +672,7 @@ export const UniversityPageAdmission = ({
               </div>
               <button
     onClick={onOpenHelpDesk}
-    className="w-full h-10 mt-3 rounded-lg border-none bg-[#0b2540] text-white text-xs font-bold hover:bg-[#011c37] transition-all cursor-pointer"
+    className="w-full h-10 mt-3 rounded-lg border-none bg-[#0b62be] text-white text-xs font-bold hover:bg-[#011c37] transition-all cursor-pointer"
   >
                 Add College to Compare
               </button>

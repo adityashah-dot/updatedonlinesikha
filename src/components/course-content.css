@@ -285,7 +285,7 @@ h1.course-listing-h1 {
 .course-prose tr.header-row th,
 .course-prose tr.header-row td,
 .course-prose table:not(:has(thead)) tbody tr:first-child td {
-  background: #0b2540 !important;
+  background: #0b62be !important;
   color: #ffffff !important;
   font-weight: 700 !important;
   font-size: 13px;
@@ -293,7 +293,7 @@ h1.course-listing-h1 {
   letter-spacing: 0 !important;
   padding: 12px 16px !important;
   border: 0 !important;
-  border-bottom: 1px solid #0b2540 !important;
+  border-bottom: 1px solid #0b62be !important;
   vertical-align: middle;
   text-align: left;
 }
@@ -330,8 +330,23 @@ h1.course-listing-h1 {
   background-color: #ffffff;
 }
 
-.course-prose tbody tr:not(.header-row):hover td {
-  background-color: rgba(240, 243, 255, 0.6);
+/* Zebra striping: Alternate rows with soft blue tint (increased opacity for clarity) */
+.course-prose tbody tr:nth-child(even) td {
+  background-color: #f1f6fd !important;
+}
+
+.course-prose tbody tr:nth-child(odd) td {
+  background-color: #ffffff !important;
+}
+
+/* Ensure the header row stays solid #0b62be */
+.course-prose thead tr th,
+.course-prose thead tr td,
+.course-prose tbody tr.header-row th,
+.course-prose tbody tr.header-row td,
+.course-prose table:not(:has(thead)) tbody tr:first-child td {
+  background-color: #0b62be !important;
+  color: #ffffff !important;
 }
 
 .course-prose tr:last-child td {
@@ -364,14 +379,16 @@ h1.course-listing-h1 {
 }
 
 .course-prose td a {
-  color: #115eaf;
+  color: #0b4fa8;
+  opacity: 0.8;
   font-weight: 600;
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, opacity 0.15s ease;
 }
 
 .course-prose td a:hover {
-  color: #084a8c;
+  color: #073775;
+  opacity: 1;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -401,13 +418,13 @@ h1.course-listing-h1 {
 .course-prose table.table-3col tbody tr:not(.header-row) td:nth-child(3),
 .course-prose table:has(tr > th:nth-child(3):last-child) tbody tr:not(.header-row) td:nth-child(3),
 .course-prose table:has(tr > td:nth-child(3):last-child) tbody tr:not(.header-row) td:nth-child(3) {
-  font-weight: 600;
-  color: #115eaf;
+  font-weight: 500;
+  color: #43474d;
 }
 
 .course-prose table.table-3col tbody tr:not(.header-row) td:nth-child(3) p {
-  font-weight: 600;
-  color: #115eaf;
+  font-weight: 500;
+  color: #43474d;
 }
 
 /* Embedded Media / Figures */

@@ -215,7 +215,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
       {/* Header - Clean Institutional Advisory Bar */}
       <div className="bg-white text-[#000f22] px-4 sm:px-5 py-3.5 flex items-center justify-between border-b border-[#e7eeff] shrink-0">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0b2540] text-white flex items-center justify-center shrink-0 shadow-xs">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0b62be] text-white flex items-center justify-center shrink-0 shadow-xs">
             <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
           <h3 className="text-sm font-bold tracking-tight text-[#000f22] font-sans">
@@ -306,7 +306,7 @@ export const GeminiChatbot: React.FC<GeminiChatbotProps> = ({
               <div
                 className={`max-w-[85%] rounded-2xl ${
                   isUser
-                    ? 'bg-[#0b2540] text-white rounded-tr-xs px-4 py-3 shadow-xs font-sans text-xs sm:text-[13px] font-normal leading-relaxed'
+                    ? 'bg-[#0b62be] text-white rounded-tr-xs px-4 py-3 shadow-xs font-sans text-xs sm:text-[13px] font-normal leading-relaxed'
                     : 'bg-white border border-[#e7eeff] text-[#1a222f] rounded-tl-xs p-4 sm:p-5 shadow-xs font-sans text-xs sm:text-[13px] leading-relaxed'
                 }`}
               >

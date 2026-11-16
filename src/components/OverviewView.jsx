@@ -485,7 +485,7 @@ const OverviewView = ({
               <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
                 <table className="w-full text-left border-collapse text-xs sm:text-sm">
                   <thead>
-                    <tr className="bg-[#0b2540] text-white">
+                    <tr className="bg-[#0b62be] text-white">
                       <th className="py-3 px-4 font-bold">Particulars</th>
                       <th className="py-3 px-4 font-bold">Details</th>
                     </tr>
@@ -585,7 +585,7 @@ const OverviewView = ({
                 <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs sm:text-sm">
                   <thead>
-                    <tr className="bg-[#0b2540] text-white">
+                    <tr className="bg-[#0b62be] text-white">
                       <th className="py-3 px-4 font-bold">Degree</th>
                       <th className="py-3 px-4 font-bold">Duration</th>
                       <th className="py-3 px-4 font-bold">Sem Fees</th>
@@ -723,7 +723,7 @@ const OverviewView = ({
                 <div className="overflow-x-auto">
                   <table className="w-full border-collapse text-left text-xs sm:text-sm">
                     <thead>
-                      <tr className="bg-[#0b2540] text-white">
+                      <tr className="bg-[#0b62be] text-white">
                         <th className="px-4 py-3 font-bold">Course</th>
                         <th className="px-4 py-3 font-bold">Eligibility</th>
                         {hasPerCourseSelection && <th className="px-4 py-3 font-bold">Selection Process</th>}
@@ -919,7 +919,7 @@ const OverviewView = ({
               {collegeData?.rankings?.table?.length > 0 && <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
                 <table className="w-full text-left border-collapse text-xs sm:text-sm">
                   <thead>
-                    <tr className="bg-[#0b2540] text-white">
+                    <tr className="bg-[#0b62be] text-white">
                       {(collegeData?.rankings?.columns?.length ? collegeData.rankings.columns : ["Authority / Body", "Recognition / Status"]).map((column, columnIndex) => (
                         <th key={`${column}-${columnIndex}`} className="py-3 px-4 font-bold">{column}</th>
                       ))}
@@ -1115,7 +1115,7 @@ const OverviewView = ({
               <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
                 <table className="w-full text-left border-collapse text-xs sm:text-sm">
                   <thead>
-                    <tr className="bg-[#0b2540] text-white">
+                    <tr className="bg-[#0b62be] text-white">
                       <th className="py-3 px-4 font-bold">Mode of Transport</th>
                       <th className="py-3 px-4 font-bold">Details</th>
                     </tr>
@@ -1614,7 +1614,7 @@ const OverviewView = ({
                   </div>
                   <button
     onClick={() => onOpenHelpDesk()}
-    className="w-full h-11 mt-4 rounded-lg border-none bg-[#0b2540] text-white text-sm font-bold hover:bg-[#011c37] transition-all"
+    className="w-full h-11 mt-4 rounded-lg border-none bg-[#0b62be] text-white text-sm font-bold hover:bg-[#011c37] transition-all"
   >
                     Add College
                   </button>
@@ -1644,7 +1644,7 @@ const OverviewView = ({
   }
       <button
     onClick={() => setTocOpen(!tocOpen)}
-    className="fixed bottom-6 left-4 z-30 hidden h-11 w-11 items-center justify-center rounded-full bg-[#0b2540] text-white shadow-lg transition-colors hover:bg-[#115eaf] md:flex"
+    className="fixed bottom-6 left-4 z-30 hidden h-11 w-11 items-center justify-center rounded-full bg-[#0b62be] text-white shadow-lg transition-colors hover:bg-[#115eaf] md:flex"
     aria-label="Toggle Table of Contents"
   >
         <FileText className="w-5 h-5" />
@@ -1704,7 +1704,7 @@ const OverviewView = ({
               {
     /* DEB Advisor Box */
   }
-              <div className="bg-[#0b2540] text-white rounded-xl p-4 space-y-2.5">
+              <div className="bg-[#0b62be] text-white rounded-xl p-4 space-y-2.5">
                 <div className="flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded-full bg-[#115eaf] text-white flex items-center justify-center">
                     <UserCheck className="w-4 h-4" />

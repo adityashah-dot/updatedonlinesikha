@@ -240,7 +240,7 @@ export const UniversityPageCourses = ({
                   <button
     type="button"
     onClick={() => onOpenApply()}
-    className="w-full py-2.5 rounded-lg bg-[#0b2540] text-white text-xs sm:text-sm font-semibold hover:bg-[#000f22] active:scale-95 transition-all flex items-center justify-center gap-2 shadow"
+    className="w-full py-2.5 rounded-lg bg-[#0b62be] text-white text-xs sm:text-sm font-semibold hover:bg-[#000f22] active:scale-95 transition-all flex items-center justify-center gap-2 shadow"
   >
                     <span>Apply Now</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -272,28 +272,28 @@ export const UniversityPageCourses = ({
             <button
     onClick={() => setSelectedCategory("all")}
     aria-pressed={selectedCategory === "all"}
-    className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${selectedCategory === "all" ? "bg-[#0b2540] text-white" : "bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]"}`}
+    className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${selectedCategory === "all" ? "bg-[#0b62be] text-white" : "bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]"}`}
   >
               All Degrees ({university.courses.length})
             </button>
             {hasUG && <button
     onClick={() => setSelectedCategory("UG")}
     aria-pressed={selectedCategory === "UG"}
-    className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${selectedCategory === "UG" ? "bg-[#0b2540] text-white" : "bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]"}`}
+    className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${selectedCategory === "UG" ? "bg-[#0b62be] text-white" : "bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]"}`}
   >
                 Undergraduate (UG)
               </button>}
             {hasPG && <button
     onClick={() => setSelectedCategory("PG")}
     aria-pressed={selectedCategory === "PG"}
-    className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${selectedCategory === "PG" ? "bg-[#0b2540] text-white" : "bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]"}`}
+    className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${selectedCategory === "PG" ? "bg-[#0b62be] text-white" : "bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]"}`}
   >
                 Postgraduate (PG)
               </button>}
             {diplomaCourses.length > 0 && <button
     onClick={() => setSelectedCategory("Diploma")}
     aria-pressed={selectedCategory === "Diploma"}
-    className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${selectedCategory === "Diploma" ? "bg-[#0b2540] text-white" : "bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]"}`}
+    className={`tap-chip px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${selectedCategory === "Diploma" ? "bg-[#0b62be] text-white" : "bg-[#f0f3ff] text-[#43474d] hover:bg-[#e7eeff]"}`}
   >
                 Diploma
               </button>}
@@ -548,7 +548,7 @@ export const UniversityPageCourses = ({
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse text-xs sm:text-sm">
                     <thead>
-                      <tr className="bg-[#0b2540] text-white">
+                      <tr className="bg-[#0b62be] text-white">
                         <th className="py-3 px-4 font-bold">Event</th>
                         <th className="py-3 px-4 font-bold">Details</th>
                         <th className="py-3 px-4 font-bold">Tentative Date</th>

@@ -60,7 +60,7 @@ export const UniversityAdmissions = ({
           <div className="bg-white border border-[#dfe9ff] rounded-xl overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm border-collapse">
               <thead>
-                <tr className="bg-[#0b2540] text-white font-bold">
+                <tr className="bg-[#0b62be] text-white font-bold">
                   <th className="py-3 px-4 font-bold">Program</th>
                   <th className="py-3 px-4 font-bold">Eligibility Requirements</th>
                   <th className="py-3 px-4 font-bold">Duration</th>

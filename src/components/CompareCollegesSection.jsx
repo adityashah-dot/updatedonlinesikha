@@ -103,7 +103,7 @@ export const CompareCollegesSection = ({
           </div>
           <button
     onClick={() => onOpenHelpDesk?.()}
-    className="w-full h-11 mt-4 rounded-lg border-none bg-[#0b2540] text-white text-sm font-bold hover:bg-[#011c37] transition-all"
+    className="w-full h-11 mt-4 rounded-lg border-none bg-[#0b62be] text-white text-sm font-bold hover:bg-[#011c37] transition-all"
   >
             Add College
           </button>

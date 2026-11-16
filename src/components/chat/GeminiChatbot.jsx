@@ -192,7 +192,7 @@ export const GeminiChatbot = ({
   }
       <div className="bg-white text-[#000f22] px-4 sm:px-5 py-3.5 flex items-center justify-between border-b border-[#e7eeff] shrink-0">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0b2540] text-white flex items-center justify-center shrink-0 shadow-xs">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0b62be] text-white flex items-center justify-center shrink-0 shadow-xs">
             <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
           <h3 id="admissions-ai-title" className="text-sm font-bold tracking-tight text-[#000f22] font-sans">
@@ -277,7 +277,7 @@ export const GeminiChatbot = ({
       className={`max-w-[85%] break-words ${isUser ? "" : "flex w-[85%] flex-col items-stretch"}`}
     >
                 <div
-      className={`break-words rounded-2xl ${isUser ? "bg-[#0b2540] text-white rounded-tr-xs px-4 py-3 shadow-xs font-sans text-xs sm:text-[13px] font-normal leading-relaxed" : "bg-white border border-[#e7eeff] text-[#1a222f] rounded-tl-xs p-4 sm:p-5 shadow-xs font-sans text-xs sm:text-[13px] leading-relaxed"}`}
+      className={`break-words rounded-2xl ${isUser ? "bg-[#0b62be] text-white rounded-tr-xs px-4 py-3 shadow-xs font-sans text-xs sm:text-[13px] font-normal leading-relaxed" : "bg-white border border-[#e7eeff] text-[#1a222f] rounded-tl-xs p-4 sm:p-5 shadow-xs font-sans text-xs sm:text-[13px] leading-relaxed"}`}
     >
                   {isUser ? <p className="my-0.5 text-white leading-relaxed font-sans">{msg.text}</p> : renderFormattedText(msg.text)}
 
@@ -406,7 +406,7 @@ export const ChatbotFloatingTrigger = ({ onClick }) => {
   return <button
     type="button"
     onClick={onClick}
-    className="fixed bottom-[140px] right-4 md:bottom-[84px] md:right-6 z-40 h-14 w-14 rounded-full border border-white bg-[#0b2540] text-white shadow-xl shadow-slate-900/25 transition-all duration-200 flex items-center justify-center hover:bg-[#115eaf] hover:shadow-2xl active:scale-95 group font-sans cursor-pointer"
+    className="fixed bottom-[140px] right-4 md:bottom-[84px] md:right-6 z-40 h-14 w-14 rounded-full border border-white bg-[#0b62be] text-white shadow-xl shadow-slate-900/25 transition-all duration-200 flex items-center justify-center hover:bg-[#115eaf] hover:shadow-2xl active:scale-95 group font-sans cursor-pointer"
     aria-label="Open Admissions Desk AI Robot"
     title="Admissions Desk AI"
   >

@@ -436,11 +436,11 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="relative flex flex-col w-full max-w-[1360px] h-[92vh] max-h-[820px] bg-white rounded-3xl shadow-2xl border border-slate-200/80 p-5 sm:p-7 md:p-8 overflow-hidden animate-scaleIn">
+      <div className="relative flex flex-col w-full max-w-[1360px] h-[92vh] max-h-[820px] bg-white rounded-3xl shadow-2xl border border-slate-200/80 p-4 sm:p-5 md:p-6 overflow-hidden animate-scaleIn">
         {/* Top Header Row matching Reference Layout */}
-        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 shrink-0 pb-3 md:pb-4">
+        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 shrink-0 pb-2.5 md:pb-3">
           {/* Left Title: Aligned with domain sidebar */}
-          <div className="w-full md:w-[240px] lg:w-[250px] shrink-0 flex items-center justify-between">
+          <div className="w-full md:w-[230px] lg:w-[240px] shrink-0 flex items-center justify-between">
             <h2
               id="degree-explorer-title"
               className="text-xl sm:text-2xl font-bold tracking-tight text-[#115eaf]"
@@ -469,7 +469,7 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search courses and specializations ..."
-                className="w-full h-11 pl-11 pr-10 rounded-full border border-slate-200 bg-white text-xs sm:text-sm text-[#000f22] placeholder:text-slate-400 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all shadow-2xs"
+                className="w-full h-10 sm:h-10.5 pl-11 pr-10 rounded-full border border-slate-200 bg-white text-xs sm:text-sm text-[#000f22] placeholder:text-slate-400 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all shadow-2xs"
                 autoFocus
               />
               {searchQuery && (
@@ -495,11 +495,11 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
         </div>
 
         {/* Main Body: Left Domains Sidebar + Right Cards Area */}
-        <div className="flex flex-col md:flex-row flex-1 overflow-hidden min-h-0 pt-2 md:pt-3 gap-5 md:gap-8">
-          {/* Left Sidebar: Domains (Clean spacing, no visible scrollbar) */}
-          <div className="w-full md:w-[240px] lg:w-[250px] shrink-0 overflow-x-auto md:overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pr-1">
+        <div className="flex flex-col md:flex-row flex-1 overflow-hidden min-h-0 pt-1 md:pt-2 gap-4 md:gap-6">
+          {/* Left Sidebar: Domains (Clean spacing, all 7 categories fit cleanly) */}
+          <div className="w-full md:w-[230px] lg:w-[240px] shrink-0 overflow-x-auto md:overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden pr-1">
             <nav
-              className="flex md:flex-col gap-2 md:gap-3.5"
+              className="flex md:flex-col gap-1 md:gap-1.5"
               aria-label="Degree domains"
             >
               {DEGREE_DOMAINS.map((domain) => {
@@ -511,16 +511,16 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
                     onClick={() => handleDomainSelect(domain.id)}
                     className={`whitespace-nowrap md:whitespace-normal text-left transition-all duration-150 cursor-pointer ${
                       isActive
-                        ? "bg-[#115eaf] text-white rounded-2xl p-3.5 shadow-sm"
-                        : "bg-transparent text-[#334155] hover:text-[#115eaf] p-1.5 md:px-2 rounded-xl"
+                        ? "bg-[#115eaf] text-white rounded-xl p-2.5 sm:px-3 sm:py-2.5 shadow-xs"
+                        : "bg-transparent text-[#334155] hover:text-[#115eaf] p-2 sm:px-3 sm:py-2 rounded-xl"
                     }`}
                   >
-                    <div className="text-xs sm:text-[14px] font-bold leading-tight">
+                    <div className="text-xs sm:text-[13px] font-bold leading-tight">
                       {domain.name}
                     </div>
                     {domain.tag && (
                       <span
-                        className={`inline-block mt-1.5 text-[10.5px] font-semibold px-2.5 py-0.5 rounded-full transition-colors ${
+                        className={`inline-block mt-1 text-[10px] font-semibold px-2 py-0.5 rounded-full transition-colors ${
                           isActive
                             ? "bg-white text-[#115eaf]"
                             : "bg-[#eef4ff] text-[#115eaf] border border-[#d5e3ff]/60"
@@ -542,7 +542,7 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
           >
             {/* Search result indicator only when searching */}
             {searchResults && (
-              <div className="mb-3">
+              <div className="mb-2.5">
                 <h3 className="text-sm font-bold text-[#000f22]">
                   Search Results for &quot;{searchQuery}&quot; ({searchResults.length})
                 </h3>
@@ -551,21 +551,21 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
 
             {/* Cards Grid matching College Vidya layout */}
             {displayedCourses.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5 pb-4">
                 {displayedCourses.map((c) => (
                   <div
                     key={c.id + c.name}
                     onClick={() => handleCourseClick(c.slug)}
-                    className="group bg-white rounded-2xl border border-slate-200 hover:border-[#115eaf] hover:shadow-md transition-all duration-200 p-5 flex flex-col justify-between cursor-pointer relative min-h-[220px]"
+                    className="group bg-white rounded-xl border border-slate-200 hover:border-[#115eaf] hover:shadow-md transition-all duration-200 p-3.5 sm:p-4 flex flex-col justify-between cursor-pointer relative min-h-[175px] sm:min-h-[182px]"
                   >
                     <div>
                       {/* Top Row: Icon on left + Mint/Green Badge on right */}
-                      <div className="flex items-center justify-between min-h-[32px]">
-                        <div className="w-8 h-8 rounded-lg bg-[#f0f6ff] flex items-center justify-center shrink-0 text-[#115eaf]">
+                      <div className="flex items-center justify-between min-h-[28px]">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#f0f6ff] flex items-center justify-center shrink-0 text-[#115eaf]">
                           <CourseIcon icon={c.icon} />
                         </div>
                         {c.badge ? (
-                          <span className="inline-flex items-center gap-0.5 px-2.5 py-0.5 rounded-full text-[10.5px] font-bold bg-[#e6f7f0] text-[#0f9d6b] border border-[#a7f3d0]/60">
+                          <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#e6f7f0] text-[#0f9d6b] border border-[#a7f3d0]/60">
                             {c.badge}
                           </span>
                         ) : (
@@ -574,19 +574,19 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
                       </div>
 
                       {/* Course Title */}
-                      <h4 className="text-[14px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors mt-4 line-clamp-1 leading-snug">
+                      <h4 className="text-[13.5px] sm:text-[14px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors mt-2 sm:mt-2.5 line-clamp-1 leading-snug">
                         {c.name}
                       </h4>
 
                       {/* Specializations Tag */}
-                      <div className="mt-3">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#eef4ff] text-[#115eaf] border border-[#d5e3ff]/70">
+                      <div className="mt-1.5 sm:mt-2">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10.5px] font-semibold bg-[#eef4ff] text-[#115eaf] border border-[#d5e3ff]/70">
                           {c.specs}
                         </span>
                       </div>
 
-                      {/* University comparison row: 2 lines with dot */}
-                      <div className="mt-3.5 flex items-start gap-1.5 text-xs text-[#334155]">
+                      {/* University comparison row */}
+                      <div className="mt-2 sm:mt-2.5 flex items-start gap-1.5 text-[11px] sm:text-[11.5px] text-[#334155]">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#115eaf] shrink-0 mt-1" />
                         <div className="leading-tight">
                           <span>Compare <strong className="font-bold text-[#000f22]">{c.unis}</strong></span>
@@ -596,7 +596,7 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
                     </div>
 
                     {/* Bottom CTA Link: Clean, no divider line */}
-                    <div className="mt-4 pt-1 flex items-center justify-between text-xs font-semibold text-[#115eaf] group-hover:text-[#084a8c]">
+                    <div className="mt-2 sm:mt-2.5 pt-1 flex items-center justify-between text-[11.5px] sm:text-xs font-semibold text-[#115eaf] group-hover:text-[#084a8c]">
                       <span>View specializations</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </div>

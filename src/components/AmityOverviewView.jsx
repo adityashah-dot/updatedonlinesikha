@@ -298,7 +298,7 @@ export const AmityOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Particulars</th>
                     <th className="py-3 px-4 font-bold">Details</th>
                   </tr>
@@ -355,7 +355,7 @@ export const AmityOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm min-w-[640px]">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Course</th>
                     <th className="py-3 px-4 font-bold">Duration</th>
                     <th className="py-3 px-4 font-bold">Semester Fee</th>
@@ -427,7 +427,7 @@ export const AmityOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Course</th>
                     <th className="py-3 px-4 font-bold">Eligibility</th>
                   </tr>
@@ -492,7 +492,7 @@ export const AmityOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Event</th>
                     <th className="py-3 px-4 font-bold">Important Date</th>
                   </tr>
@@ -531,7 +531,7 @@ export const AmityOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Authority</th>
                     <th className="py-3 px-4 font-bold">Category</th>
                     <th className="py-3 px-4 font-bold">Status</th>
@@ -691,7 +691,7 @@ export const AmityOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Placement Support</th>
                     <th className="py-3 px-4 font-bold">Details</th>
                   </tr>
@@ -757,7 +757,7 @@ export const AmityOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Scholarship Type</th>
                     <th className="py-3 px-4 font-bold">Benefit</th>
                     <th className="py-3 px-4 font-bold">Eligible For</th>
@@ -799,7 +799,7 @@ export const AmityOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Mode</th>
                     <th className="py-3 px-4 font-bold">How to Reach</th>
                   </tr>

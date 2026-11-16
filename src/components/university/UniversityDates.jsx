@@ -22,7 +22,7 @@ export const UniversityDates = ({ university, onOpenApply }) => {
       <div className="bg-white border border-[#dfe9ff] rounded-xl overflow-hidden">
         <table className="w-full text-left text-xs sm:text-sm border-collapse">
           <thead>
-            <tr className="bg-[#0b2540] text-white font-bold">
+            <tr className="bg-[#0b62be] text-white font-bold">
               <th className="py-3 px-4 font-bold">Admission Stage / Event</th>
               <th className="py-3 px-4 font-bold">Timeline / Schedule</th>
               <th className="py-3 px-4 font-bold hidden md:table-cell">Mode</th>

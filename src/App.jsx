@@ -29,6 +29,7 @@ import { FloatingActions } from "./components/FloatingActions";
 import { CounselorModal } from "./components/CounselorModal";
 import { TrackApplicationModal } from "./components/TrackApplicationModal";
 import { DegreeExplorerModal } from "./components/DegreeExplorerModal";
+import DegreeExplorerPage from "./pages/DegreeExplorerPage";
 import { GeminiChatbot, ChatbotFloatingTrigger } from "./components/chat/GeminiChatbot";
 import { SEO } from "./components/SEO";
 export default function App() {
@@ -42,6 +43,7 @@ export default function App() {
       return "overview";
     }
     if (path.startsWith("/universities/amity")) return "universities";
+    if (path.startsWith("/explore") || path.startsWith("/degree-explorer")) return "degrees";
     if (path.startsWith("/courses")) return "courses";
     if (path.startsWith("/exams")) return "exams";
     if (path.startsWith("/news")) return "news";
@@ -81,13 +83,12 @@ export default function App() {
       admission: onLpuProfile ? "/universities/lpu-online?section=admission" : "/admission",
       scholarships: onLpuProfile ? "/universities/lpu-online?section=scholarships" : "/scholarships",
       lms: "/courses",
-      degrees: "/",
+      degrees: "/explore-programs",
       compare: "/",
       nirf: "/universities"
     };
     navigate(routes[tab]);
-    if (tab === "degrees") scrollToHomeSection("degrees");
-    else if (tab === "compare") scrollToHomeSection("compare");
+    if (tab === "compare") scrollToHomeSection("compare");
     else window.scrollTo({ top: 0, behavior: "smooth" });
   };
   const [selectedCourseForDetail, setSelectedCourseForDetail] = useState(null);
@@ -220,6 +221,13 @@ export default function App() {
     />
                 </PageTransition>}
   />
+
+            <Route
+    path="/explore-programs"
+    element={<PageTransition><DegreeExplorerPage onOpenCounseling={() => setIsCounselorModalOpen(true)} onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)} /></PageTransition>}
+  />
+            <Route path="/degree-explorer" element={<Navigate to="/explore-programs" replace />} />
+            <Route path="/explore" element={<Navigate to="/explore-programs" replace />} />
 
             <Route
     path="/courses"

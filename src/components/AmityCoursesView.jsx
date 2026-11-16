@@ -243,7 +243,7 @@ export const AmityCoursesView = ({
                   <button
     type="button"
     onClick={() => onOpenApply()}
-    className="w-full py-2.5 rounded-lg bg-[#0b2540] text-white text-xs sm:text-sm font-semibold hover:bg-[#000f22] active:scale-95 transition-all flex items-center justify-center gap-2 shadow"
+    className="w-full py-2.5 rounded-lg bg-[#0b62be] text-white text-xs sm:text-sm font-semibold hover:bg-[#000f22] active:scale-95 transition-all flex items-center justify-center gap-2 shadow"
   >
                     <span>Apply Now</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -280,7 +280,7 @@ export const AmityCoursesView = ({
           {
     /* 1. EMI Banner */
   }
-          <section className="page-section rounded-2xl bg-[#0b2540] text-white shadow-xs overflow-hidden">
+          <section className="page-section rounded-2xl bg-[#0b62be] text-white shadow-xs overflow-hidden">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="flex items-start gap-3">
                 <span className="w-11 h-11 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
@@ -327,7 +327,7 @@ export const AmityCoursesView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm min-w-[640px]">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Course</th>
                     <th className="py-3 px-4 font-bold">Duration</th>
                     <th className="py-3 px-4 font-bold">Semester Fee</th>
@@ -392,7 +392,7 @@ export const AmityCoursesView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Event</th>
                     <th className="py-3 px-4 font-bold">Session</th>
                     <th className="py-3 px-4 font-bold">Tentative Date</th>
@@ -450,7 +450,7 @@ export const AmityCoursesView = ({
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse text-xs">
                     <thead>
-                      <tr className="bg-[#0b2540] text-white font-bold">
+                      <tr className="bg-[#0b62be] text-white font-bold">
                         <th className="py-3 px-4">Course Name</th>
                         <th className="py-3 px-4">Duration</th>
                         <th className="py-3 px-4">Per Sem Fee</th>
@@ -512,7 +512,7 @@ export const AmityCoursesView = ({
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse text-xs">
                     <thead>
-                      <tr className="bg-[#0b2540] text-white font-bold">
+                      <tr className="bg-[#0b62be] text-white font-bold">
                         <th className="py-3 px-4">Course Name</th>
                         <th className="py-3 px-4">Duration</th>
                         <th className="py-3 px-4">Per Sem Fee</th>

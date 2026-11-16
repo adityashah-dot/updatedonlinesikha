@@ -126,7 +126,7 @@ export default function CourseDetail({ onOpenCounseling }) {
   const [state, setState] = useState({ status: "loading", course: null, related: [] });
   const [retryKey, setRetryKey] = useState(0);
 
-  // Form State matching Reference layout
+  // Form State
   const [leadForm, setLeadForm] = useState({
     name: "",
     phone: "",
@@ -134,11 +134,9 @@ export default function CourseDetail({ onOpenCounseling }) {
     dob: "",
     state: "",
     specialisation: "Not sure yet",
-    coupon: "",
   });
   const [errors, setErrors] = useState({});
   const [leadSubmitted, setLeadSubmitted] = useState(false);
-  const [couponApplied, setCouponApplied] = useState(false);
 
   const cmsCourse = state.status === "ready" ? state.course : null;
   usePageMeta({
@@ -342,8 +340,8 @@ export default function CourseDetail({ onOpenCounseling }) {
                 <section aria-labelledby="course-h1" className="w-full mb-6 pt-1">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
                     
-                    {/* LEFT COLUMN (lg:col-span-5): Dynamic info, Marquee, Quick Specs, Star Benefits, Recruiter Marquee & Counsellor Card */}
-                    <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-3.5">
+                    {/* LEFT COLUMN (lg:col-span-7): Increased width for dynamic info, Marquee, Quick Specs, Star Benefits, Recruiter Marquee & Counsellor Card */}
+                    <div className="lg:col-span-7 flex flex-col justify-between h-full space-y-3.5">
                       
                       {/* Top: 2-Row Infinite Scrolling University Marquee */}
                       <div>
@@ -536,92 +534,64 @@ export default function CourseDetail({ onOpenCounseling }) {
 
                     </div>
 
-                    {/* RIGHT COLUMN: LEAD FORM CARD (lg:col-span-7) */}
-                    <div className="lg:col-span-7 bg-white rounded-2xl border border-[#e2e8f0] p-4 sm:p-5 lg:p-6 shadow-[0_4px_24px_-4px_rgba(17,94,175,0.08)] flex flex-col justify-between h-full">
+                    {/* RIGHT COLUMN: LEAD FORM CARD (lg:col-span-5) */}
+                    <div className="lg:col-span-5 bg-white rounded-2xl border border-[#e2e8f0] p-4 sm:p-5 shadow-[0_4px_24px_-4px_rgba(17,94,175,0.08)] flex flex-col justify-between h-full">
                       
                       {/* Header with compact, clean dynamic title */}
-                      <div className="text-center mb-3">
+                      <div className="text-center mb-2.5">
                         <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#eef6ff] border border-[#d5e3ff] text-[11px] font-semibold text-[#115eaf] mb-1.5">
                           <GraduationCap className="w-3.5 h-3.5" />
                           <span>{course.name}</span>
                         </div>
-                        <h1 id="course-h1" className="text-lg sm:text-xl lg:text-[22px] font-extrabold text-[#000f22] tracking-tight leading-snug">
-                          <span className="text-[#115eaf]">Compare &amp; Apply</span> from 100+<br className="hidden sm:inline" /> Online <span className="text-[#115eaf]">{courseShortTitle}</span> Universities
+                        <h1 id="course-h1" className="text-base sm:text-lg lg:text-xl font-extrabold text-[#000f22] tracking-tight leading-snug">
+                          <span className="text-[#115eaf]">Compare &amp; Apply</span> for Online {courseShortTitle}
                         </h1>
                       </div>
 
                       {/* Benefit Badges */}
-                      <div className="flex flex-wrap items-center justify-center gap-2 mb-3">
-                        <div className="flex items-center gap-1.5 rounded-md bg-emerald-50 border border-emerald-200 px-2.5 py-1 text-[11px] font-bold text-emerald-800">
+                      <div className="flex flex-wrap items-center justify-center gap-1.5 mb-2.5">
+                        <div className="flex items-center gap-1 rounded-md bg-emerald-50 border border-emerald-200 px-2 py-0.5 text-[10.5px] font-bold text-emerald-800">
                           <Percent className="w-3 h-3 text-emerald-600 shrink-0" />
                           <span>Get Online Discount of up to 15%</span>
                         </div>
-                        <div className="flex items-center gap-1.5 rounded-md bg-[#eef6ff] border border-[#d5e3ff] px-2.5 py-1 text-[11px] font-bold text-[#115eaf]">
+                        <div className="flex items-center gap-1 rounded-md bg-[#eef6ff] border border-[#d5e3ff] px-2 py-0.5 text-[10.5px] font-bold text-[#115eaf]">
                           <Handshake className="w-3 h-3 text-[#115eaf] shrink-0" />
                           <span>OnlineSiksha Promise: Lowest Price</span>
                         </div>
                       </div>
 
                       {!leadSubmitted ? (
-                        <form onSubmit={handleLeadSubmit} noValidate className="space-y-3">
+                        <form onSubmit={handleLeadSubmit} noValidate className="space-y-2.5">
                           
-                          {/* Row 1: Full Name & Coupon */}
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <div>
-                              <label htmlFor="lead-name" className="block text-[11.5px] font-bold text-[#1e293b] mb-1">
-                                Full Name <span className="text-rose-500">*</span>
-                              </label>
-                              <input
-                                id="lead-name"
-                                type="text"
-                                placeholder="Full Name"
-                                value={leadForm.name}
-                                onChange={(e) => {
-                                  setLeadForm({ ...leadForm, name: e.target.value });
-                                  if (errors.name) setErrors({ ...errors, name: null });
-                                }}
-                                className={`w-full h-10 px-3 rounded-lg border text-xs sm:text-[13px] font-medium text-[#000f22] placeholder:text-[#94a3b8] outline-none bg-white transition-all ${
-                                  errors.name ? "border-rose-400 focus:border-rose-500" : "border-[#cbd5e1] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15"
-                                }`}
-                              />
-                              {errors.name && <p className="text-[10px] text-rose-500 font-semibold mt-0.5">{errors.name}</p>}
-                            </div>
-
-                            <div>
-                              <label htmlFor="lead-coupon" className="block text-[11.5px] font-bold text-[#1e293b] mb-1">
-                                Apply OnlineSiksha Coupon
-                              </label>
-                              <div className="flex gap-1.5">
-                                <input
-                                  id="lead-coupon"
-                                  type="text"
-                                  placeholder="Have a coupon code? Type here"
-                                  value={leadForm.coupon}
-                                  onChange={(e) => setLeadForm({ ...leadForm, coupon: e.target.value })}
-                                  className="w-full h-10 px-2.5 rounded-lg border border-[#cbd5e1] text-xs font-medium text-[#000f22] placeholder:text-[#94a3b8] focus:border-[#115eaf] outline-none bg-white"
-                                />
-                                <button
-                                  type="button"
-                                  onClick={() => setCouponApplied(true)}
-                                  className="px-3 h-10 rounded-lg bg-[#eef6ff] border border-[#115eaf] text-[#115eaf] text-xs font-bold hover:bg-[#115eaf] hover:text-white transition-colors cursor-pointer shrink-0"
-                                >
-                                  {couponApplied ? "Applied!" : "Apply"}
-                                </button>
-                              </div>
-                              <span className="block text-[10.5px] font-semibold text-[#115eaf] hover:underline cursor-pointer mt-0.5">
-                                View all available coupons &gt;
-                              </span>
-                            </div>
+                          {/* Row 1: Full Name */}
+                          <div>
+                            <label htmlFor="lead-name" className="block text-[11.5px] font-bold text-[#1e293b] mb-1">
+                              Full Name <span className="text-rose-500">*</span>
+                            </label>
+                            <input
+                              id="lead-name"
+                              type="text"
+                              placeholder="Full Name"
+                              value={leadForm.name}
+                              onChange={(e) => {
+                                setLeadForm({ ...leadForm, name: e.target.value });
+                                if (errors.name) setErrors({ ...errors, name: null });
+                              }}
+                              className={`w-full h-9.5 px-3 rounded-lg border text-xs sm:text-[13px] font-medium text-[#000f22] placeholder:text-[#94a3b8] outline-none bg-white transition-all ${
+                                errors.name ? "border-rose-400 focus:border-rose-500" : "border-[#cbd5e1] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15"
+                              }`}
+                            />
+                            {errors.name && <p className="text-[10px] text-rose-500 font-semibold mt-0.5">{errors.name}</p>}
                           </div>
 
                           {/* Row 2: Phone Number & Email */}
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                             <div>
                               <label htmlFor="lead-phone" className="block text-[11.5px] font-bold text-[#1e293b] mb-1">
                                 Phone Number <span className="text-rose-500">*</span>
                               </label>
                               <div className="flex">
-                                <span className="h-10 px-2.5 border border-[#cbd5e1] border-r-0 rounded-l-lg bg-[#f1f5f9] text-[#000f22] font-bold text-xs flex items-center justify-center shrink-0">
+                                <span className="h-9.5 px-2.5 border border-[#cbd5e1] border-r-0 rounded-l-lg bg-[#f1f5f9] text-[#000f22] font-bold text-xs flex items-center justify-center shrink-0">
                                   🇮🇳 +91
                                 </span>
                                 <input
@@ -634,7 +604,7 @@ export default function CourseDetail({ onOpenCounseling }) {
                                     setLeadForm({ ...leadForm, phone: e.target.value.replace(/\D/g, "") });
                                     if (errors.phone) setErrors({ ...errors, phone: null });
                                   }}
-                                  className={`w-full h-10 px-3 rounded-r-lg border text-xs sm:text-[13px] font-medium text-[#000f22] placeholder:text-[#94a3b8] outline-none bg-white transition-all ${
+                                  className={`w-full h-9.5 px-3 rounded-r-lg border text-xs sm:text-[13px] font-medium text-[#000f22] placeholder:text-[#94a3b8] outline-none bg-white transition-all ${
                                     errors.phone ? "border-rose-400 focus:border-rose-500" : "border-[#cbd5e1] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15"
                                   }`}
                                 />
@@ -649,13 +619,13 @@ export default function CourseDetail({ onOpenCounseling }) {
                               <input
                                 id="lead-email"
                                 type="email"
-                                placeholder="Email"
+                                placeholder="Email Address"
                                 value={leadForm.email}
                                 onChange={(e) => {
                                   setLeadForm({ ...leadForm, email: e.target.value });
                                   if (errors.email) setErrors({ ...errors, email: null });
                                 }}
-                                className={`w-full h-10 px-3 rounded-lg border text-xs sm:text-[13px] font-medium text-[#000f22] placeholder:text-[#94a3b8] outline-none bg-white transition-all ${
+                                className={`w-full h-9.5 px-3 rounded-lg border text-xs sm:text-[13px] font-medium text-[#000f22] placeholder:text-[#94a3b8] outline-none bg-white transition-all ${
                                   errors.email ? "border-rose-400 focus:border-rose-500" : "border-[#cbd5e1] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15"
                                 }`}
                               />
@@ -663,21 +633,19 @@ export default function CourseDetail({ onOpenCounseling }) {
                             </div>
                           </div>
 
-                          {/* Row 3: Date of Birth & State */}
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {/* Row 3: Date of birth & State */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                             <div>
                               <label htmlFor="lead-dob" className="block text-[11.5px] font-bold text-[#1e293b] mb-1">
                                 Date of birth
                               </label>
-                              <div className="relative">
-                                <input
-                                  id="lead-dob"
-                                  type="date"
-                                  value={leadForm.dob}
-                                  onChange={(e) => setLeadForm({ ...leadForm, dob: e.target.value })}
-                                  className="w-full h-10 px-3 rounded-lg border border-[#cbd5e1] text-xs sm:text-[13px] font-medium text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 outline-none bg-white"
-                                />
-                              </div>
+                              <input
+                                id="lead-dob"
+                                type="date"
+                                value={leadForm.dob}
+                                onChange={(e) => setLeadForm({ ...leadForm, dob: e.target.value })}
+                                className="w-full h-9.5 px-3 rounded-lg border border-[#cbd5e1] text-xs sm:text-[13px] font-medium text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 outline-none bg-white"
+                              />
                             </div>
 
                             <div>
@@ -692,7 +660,7 @@ export default function CourseDetail({ onOpenCounseling }) {
                                     setLeadForm({ ...leadForm, state: e.target.value });
                                     if (errors.state) setErrors({ ...errors, state: null });
                                   }}
-                                  className={`w-full h-10 pl-3 pr-8 rounded-lg border text-xs sm:text-[13px] font-medium text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 outline-none bg-white appearance-none cursor-pointer ${
+                                  className={`w-full h-9.5 pl-3 pr-8 rounded-lg border text-xs sm:text-[13px] font-medium text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 outline-none bg-white appearance-none cursor-pointer ${
                                     errors.state ? "border-rose-400" : "border-[#cbd5e1]"
                                   }`}
                                 >

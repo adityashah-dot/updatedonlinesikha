@@ -26,7 +26,7 @@ const UniversityFeeTable = ({
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs sm:text-sm">
             <thead>
-              <tr className="bg-[#0b2540] text-white">
+              <tr className="bg-[#0b62be] text-white">
                 <th className="py-3 px-4 font-bold">Course Name</th>
                 <th className="py-3 px-4 font-bold">Duration</th>
                 <th className="py-3 px-4 font-bold">Per Sem Fee</th>

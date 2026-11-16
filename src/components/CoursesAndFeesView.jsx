@@ -200,7 +200,7 @@ export default function CoursesAndFeesView({
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs sm:text-sm">
             <thead>
-              <tr className="bg-[#0b2540] text-white">
+              <tr className="bg-[#0b62be] text-white">
                 <th className="py-3 px-4 font-bold">Course Name</th>
                 <th className="py-3 px-4 font-bold">Duration</th>
                 <th className="py-3 px-4 font-bold">Per Sem Fee</th>
@@ -439,7 +439,7 @@ export default function CoursesAndFeesView({
                     <button
                       type="button"
                       onClick={() => apply?.()}
-                      className="w-full py-2.5 rounded-lg bg-[#0b2540] text-white text-xs sm:text-sm font-semibold hover:bg-[#000f22] active:scale-95 transition-all flex items-center justify-center gap-2 shadow"
+                      className="w-full py-2.5 rounded-lg bg-[#0b62be] text-white text-xs sm:text-sm font-semibold hover:bg-[#000f22] active:scale-95 transition-all flex items-center justify-center gap-2 shadow"
                     >
                       <span>Apply Now</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -755,7 +755,7 @@ export default function CoursesAndFeesView({
                     <div className="overflow-x-auto">
                       <table className="w-full border-collapse text-left text-xs sm:text-sm">
                         <thead>
-                          <tr className="bg-[#0b2540] text-white">
+                          <tr className="bg-[#0b62be] text-white">
                             <th className="px-4 py-3 font-bold">Event</th>
                             <th className="px-4 py-3 font-bold">Details</th>
                             <th className="px-4 py-3 font-bold">Tentative Date</th>

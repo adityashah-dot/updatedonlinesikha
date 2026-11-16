@@ -574,6 +574,41 @@ body.dark,
   color: #64748b !important;
 }
 
+/* Universal Table Header and Zebra Striping */
+table thead tr,
+table tr.header-row,
+tr.bg-\[\#0b2540\],
+thead.bg-\[\#0b2540\],
+th.bg-\[\#0b2540\] {
+  background-color: #0b62be !important;
+  color: #ffffff !important;
+}
+
+table thead th,
+table thead td,
+table tr.header-row th,
+table tr.header-row td {
+  color: #ffffff !important;
+}
+
+table tbody tr:nth-child(even):not(.header-row):not(:has(th[scope="col"])) {
+  background-color: #f1f6fd;
+}
+
+table tbody tr:nth-child(odd):not(.header-row) {
+  background-color: #ffffff;
+}
+
+table tbody td a {
+  color: #0b4fa8;
+  transition: color 0.15s ease;
+}
+
+table tbody td a:hover {
+  color: #073775;
+  text-decoration: underline;
+}
+
 /* Table in Dark Mode */
 .dark table thead tr {
   background-color: #16243a !important;
@@ -772,5 +807,132 @@ body.dark,
 @media (min-width: 1024px) {
   .blog-carousel-card {
     flex: 0 0 calc((100% - 48px) / 4);
+  }
+}
+
+
+/* ========================================================
+   Modern Double-Panel Sliding Auth Modal (Pinterest Style)
+   ======================================================== */
+.auth-slider-card {
+  background-color: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0 25px 50px -12px rgba(0, 15, 34, 0.25), 0 0 1px 1px rgba(11, 98, 190, 0.08);
+  position: relative;
+  overflow: hidden;
+  width: 780px;
+  max-width: 100%;
+  min-height: 520px;
+}
+
+@media (min-width: 768px) {
+  .auth-slider-card .auth-form-panel {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s cubic-bezier(0.68, -0.2, 0.265, 1.2);
+  }
+
+  .auth-slider-card .auth-sign-in {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+  }
+
+  .auth-slider-card.active .auth-sign-in {
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .auth-slider-card .auth-sign-up {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .auth-slider-card.active .auth-sign-up {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    pointer-events: auto;
+    animation: authPanelMove 0.6s;
+  }
+
+  @keyframes authPanelMove {
+    0%, 49.99% {
+      opacity: 0;
+      z-index: 1;
+    }
+    50%, 100% {
+      opacity: 1;
+      z-index: 5;
+    }
+  }
+
+  .auth-slider-card .auth-toggle-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 140px 0 0 90px;
+    z-index: 40;
+  }
+
+  .auth-slider-card.active .auth-toggle-container {
+    transform: translateX(-100%);
+    border-radius: 0 140px 90px 0;
+  }
+
+  .auth-slider-card .auth-toggle {
+    background: linear-gradient(135deg, #0b62be 0%, #115eaf 45%, #000f22 100%);
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
+  }
+
+  .auth-slider-card.active .auth-toggle {
+    transform: translateX(50%);
+  }
+
+  .auth-slider-card .auth-toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 32px;
+    text-align: center;
+    top: 0;
+    transition: all 0.6s ease-in-out;
+  }
+
+  .auth-slider-card .auth-toggle-left {
+    transform: translateX(-200%);
+  }
+
+  .auth-slider-card.active .auth-toggle-left {
+    transform: translateX(0);
+  }
+
+  .auth-slider-card .auth-toggle-right {
+    right: 0;
+    transform: translateX(0);
+  }
+
+  .auth-slider-card.active .auth-toggle-right {
+    transform: translateX(200%);
   }
 }

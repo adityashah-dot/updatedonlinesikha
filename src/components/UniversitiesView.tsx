@@ -945,7 +945,7 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
 
       {/* ================= FLOATING COMPARE DOCK ================= */}
       {compared.length > 0 && (
-        <div className="fixed bottom-16 md:bottom-4 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-4xl bg-[#0b2540] text-white rounded-xl shadow-2xl p-3 md:p-4 border border-[#314865] flex items-center justify-between transition-all duration-300">
+        <div className="fixed bottom-16 md:bottom-4 left-1/2 -translate-x-1/2 z-40 w-11/12 max-w-4xl bg-[#0b62be] text-white rounded-xl shadow-2xl p-3 md:p-4 border border-[#314865] flex items-center justify-between transition-all duration-300">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-[#115eaf] text-white flex items-center justify-center">
               <ArrowLeftRight className="w-4 h-4" />

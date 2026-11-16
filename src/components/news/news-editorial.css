@@ -330,7 +330,7 @@ h1.news-detail-h1 {
 .news-prose tr.header-row th,
 .news-prose tr.header-row td,
 .news-prose table:not(:has(thead)) tbody tr:first-child td {
-  background-color: #0b2540 !important;
+  background-color: #0b62be !important;
   color: #ffffff !important;
   font-weight: 700 !important;
   padding: 12px 16px !important;
@@ -338,7 +338,7 @@ h1.news-detail-h1 {
   font-size: 13px;
   letter-spacing: 0 !important;
   border: 0 !important;
-  border-bottom: 1px solid #0b2540 !important;
+  border-bottom: 1px solid #0b62be !important;
   vertical-align: middle;
 }
 
@@ -377,6 +377,31 @@ h1.news-detail-h1 {
   background-color: #ffffff;
 }
 
+/* Zebra striping: Alternate rows with soft blue tint (increased opacity for clarity) */
+.news-prose tbody tr:nth-child(even) td,
+.news-table-wrap tbody tr:nth-child(even) td,
+.news-prose .bd-table-wrap tbody tr:nth-child(even) td {
+  background-color: #f1f6fd !important;
+}
+
+.news-prose tbody tr:nth-child(odd) td,
+.news-table-wrap tbody tr:nth-child(odd) td,
+.news-prose .bd-table-wrap tbody tr:nth-child(odd) td {
+  background-color: #ffffff !important;
+}
+
+/* Ensure the header row stays solid #0b62be */
+.news-prose thead tr th,
+.news-prose thead tr td,
+.news-table-wrap thead tr th,
+.news-table-wrap thead tr td,
+.news-prose tbody tr.header-row th,
+.news-prose tbody tr.header-row td,
+.news-prose table:not(:has(thead)) tbody tr:first-child td {
+  background-color: #0b62be !important;
+  color: #ffffff !important;
+}
+
 .news-prose td p,
 .news-table-wrap td p,
 .news-prose .bd-table-wrap td p {
@@ -398,10 +423,23 @@ h1.news-detail-h1 {
   color: #000f22;
 }
 
-.news-prose tbody tr:not(.header-row):hover td,
-.news-table-wrap tbody tr:not(.header-row):hover td,
-.news-prose .bd-table-wrap tbody tr:not(.header-row):hover td {
-  background-color: rgba(240, 243, 255, 0.6);
+.news-prose td a,
+.news-table-wrap td a,
+.news-prose .bd-table-wrap td a {
+  color: #0b4fa8;
+  opacity: 0.8;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.news-prose td a:hover,
+.news-table-wrap td a:hover,
+.news-prose .bd-table-wrap td a:hover {
+  color: #073775;
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .news-prose tr:last-child td,
@@ -422,6 +460,6 @@ h1.news-detail-h1 {
 }
 
 .news-prose table.table-3col tbody tr:not(.header-row) td:nth-child(3) {
-  font-weight: 600;
-  color: #115eaf;
+  font-weight: 500;
+  color: #43474d;
 }

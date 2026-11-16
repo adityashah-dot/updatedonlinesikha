@@ -19,11 +19,6 @@ export const Navbar = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const handleNavClick = (tab) => {
-    if (tab === "degrees" && onOpenDegreeExplorer) {
-      onOpenDegreeExplorer();
-      setMobileMenuOpen(false);
-      return;
-    }
     setActiveTab(tab);
     setMobileMenuOpen(false);
   };

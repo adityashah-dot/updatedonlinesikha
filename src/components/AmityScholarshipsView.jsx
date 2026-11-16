@@ -347,7 +347,7 @@ export const AmityScholarshipsView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Particulars</th>
                     <th className="py-3 px-4 font-bold">Details</th>
                   </tr>
@@ -378,7 +378,7 @@ export const AmityScholarshipsView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Scholarship Type</th>
                     <th className="py-3 px-4 font-bold">Eligibility</th>
                     <th className="py-3 px-4 font-bold">Scholarship Benefit</th>
@@ -447,7 +447,7 @@ export const AmityScholarshipsView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-3">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Course</th>
                     <th className="py-3 px-4 font-bold">Duration</th>
                   </tr>
@@ -466,7 +466,7 @@ export const AmityScholarshipsView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-3">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Course</th>
                     <th className="py-3 px-4 font-bold">Duration</th>
                   </tr>
@@ -497,7 +497,7 @@ export const AmityScholarshipsView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Benefit</th>
                     <th className="py-3 px-4 font-bold">Description</th>
                   </tr>
@@ -559,7 +559,7 @@ export const AmityScholarshipsView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Document</th>
                     <th className="py-3 px-4 font-bold">Required For</th>
                   </tr>
@@ -590,7 +590,7 @@ export const AmityScholarshipsView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Particulars</th>
                     <th className="py-3 px-4 font-bold">Amity Online Scholarship</th>
                     <th className="py-3 px-4 font-bold">AONSAT Scholarship</th>

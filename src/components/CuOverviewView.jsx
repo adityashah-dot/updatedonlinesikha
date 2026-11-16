@@ -333,7 +333,7 @@ export const CuOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Particulars</th>
                     <th className="py-3 px-4 font-bold">Details</th>
                   </tr>
@@ -364,7 +364,7 @@ export const CuOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm min-w-[640px]">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Course</th>
                     <th className="py-3 px-4 font-bold">Duration</th>
                     <th className="py-3 px-4 font-bold">Semester Fee</th>
@@ -436,7 +436,7 @@ export const CuOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Course</th>
                     <th className="py-3 px-4 font-bold">Eligibility</th>
                     <th className="py-3 px-4 font-bold">Selection Criteria</th>
@@ -475,7 +475,7 @@ export const CuOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Program Type</th>
                     <th className="py-3 px-4 font-bold">Eligibility</th>
                     <th className="py-3 px-4 font-bold">Duration</th>
@@ -521,7 +521,7 @@ export const CuOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Authority</th>
                     <th className="py-3 px-4 font-bold">Status</th>
                   </tr>
@@ -685,7 +685,7 @@ export const CuOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Placement Support</th>
                     <th className="py-3 px-4 font-bold">Details</th>
                   </tr>
@@ -748,7 +748,7 @@ export const CuOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Scholarship Type</th>
                     <th className="py-3 px-4 font-bold">Benefit</th>
                     <th className="py-3 px-4 font-bold">Eligible For</th>
@@ -784,7 +784,7 @@ export const CuOverviewView = ({
             <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="bg-[#0b2540] text-white">
+                  <tr className="bg-[#0b62be] text-white">
                     <th className="py-3 px-4 font-bold">Mode</th>
                     <th className="py-3 px-4 font-bold">How to Reach</th>
                   </tr>
@@ -1131,7 +1131,7 @@ export const CuOverviewView = ({
                 </div>
                 <button
     onClick={() => onOpenHelpDesk()}
-    className="w-full h-11 mt-4 rounded-lg border-none bg-[#0b2540] text-white text-sm font-bold hover:bg-[#011c37] transition-all"
+    className="w-full h-11 mt-4 rounded-lg border-none bg-[#0b62be] text-white text-sm font-bold hover:bg-[#011c37] transition-all"
   >
                   Add College
                 </button>

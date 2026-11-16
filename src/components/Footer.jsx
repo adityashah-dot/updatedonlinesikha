@@ -32,59 +32,72 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
             </div>
           </div>
 
-          {
-    /* Quick Links: Popular Degrees */
-  }
+          {/* Quick Links: Popular Degrees */}
           <div>
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Popular Degrees</h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-[#b1c8eb]">
               <li>
-                <button
-    onClick={() => onSelectCourse("mba")}
-    className="hover:text-white hover:underline transition-colors text-left"
-  >
-                  LPU Online MBA
-                </button>
+                <Link
+                  to="/courses/online-mba"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="hover:text-white hover:underline transition-colors block text-left"
+                >
+                  Online MBA
+                </Link>
               </li>
               <li>
-                <button
-    onClick={() => onSelectCourse("mca")}
-    className="hover:text-white hover:underline transition-colors text-left"
-  >
-                  LPU Online MCA
-                </button>
+                <Link
+                  to="/courses/online-mca"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="hover:text-white hover:underline transition-colors block text-left"
+                >
+                  Online MCA
+                </Link>
               </li>
               <li>
-                <button
-    onClick={() => onSelectCourse("bca")}
-    className="hover:text-white hover:underline transition-colors text-left"
-  >
-                  LPU Online BCA
-                </button>
+                <Link
+                  to="/courses/online-bca"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="hover:text-white hover:underline transition-colors block text-left"
+                >
+                  Online BCA
+                </Link>
               </li>
               <li>
-                <button
-    onClick={() => onSelectCourse("bba")}
-    className="hover:text-white hover:underline transition-colors text-left"
-  >
-                  LPU Online BBA
-                </button>
+                <Link
+                  to="/courses/online-bba"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="hover:text-white hover:underline transition-colors block text-left"
+                >
+                  Online BBA
+                </Link>
               </li>
               <li>
-                <button
-    onClick={() => onSelectCourse("msc")}
-    className="hover:text-white hover:underline transition-colors text-left"
-  >
-                  M.Sc Mathematics
-                </button>
+                <Link
+                  to="/courses/online-msc-in-data-science"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="hover:text-white hover:underline transition-colors block text-left"
+                >
+                  Online M.Sc
+                </Link>
               </li>
               <li>
-                <button
-    onClick={() => onSelectCourse("ba")}
-    className="hover:text-white hover:underline transition-colors text-left"
-  >
-                  Online BA (Humanities)
-                </button>
+                <Link
+                  to="/courses/online-bcom"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="hover:text-white hover:underline transition-colors block text-left"
+                >
+                  Online B.Com
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/courses/online-ma"
+                  onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                  className="hover:text-white hover:underline transition-colors block text-left"
+                >
+                  Online MA
+                </Link>
               </li>
             </ul>
           </div>

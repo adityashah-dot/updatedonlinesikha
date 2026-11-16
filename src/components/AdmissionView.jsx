@@ -188,7 +188,7 @@ export default function CollegeAdmission({
               <div className="mt-[18px] overflow-x-auto rounded-xl border border-[#e7eeff]">
                 <table className="w-full text-left border-collapse text-xs sm:text-[13px]">
                   <thead>
-                    <tr className="bg-[#0b2540] text-white">
+                    <tr className="bg-[#0b62be] text-white">
                       <th className="py-3 px-4 font-bold">Event</th>
                       <th className="py-3 px-4 font-bold">Details</th>
                       <th className="py-3 px-4 font-bold">Tentative Date</th>
@@ -246,7 +246,7 @@ export default function CollegeAdmission({
                   <div className="mt-[18px] overflow-x-auto rounded-xl border border-[#e7eeff]">
                     <table className="w-full text-left border-collapse text-xs sm:text-[13px]">
                       <thead>
-                        <tr className="bg-[#0b2540] text-white">
+                        <tr className="bg-[#0b62be] text-white">
                           <th className="py-3 px-4 font-bold">Course</th>
                           <th className="py-3 px-4 font-bold">Eligibility</th>
                           {hasPerCourseSelection && <th className="py-3 px-4 font-bold">Selection Process</th>}
@@ -429,7 +429,7 @@ export default function CollegeAdmission({
               <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
                 <table className="w-full text-left border-collapse text-xs sm:text-sm">
                   <thead>
-                    <tr className="bg-[#0b2540] text-white">
+                    <tr className="bg-[#0b62be] text-white">
                       <th className="py-3 px-4 font-bold">Scholarship / Benefit</th>
                       <th className="py-3 px-4 font-bold">Details</th>
                     </tr>
@@ -743,7 +743,7 @@ export default function CollegeAdmission({
                   <button
                     type="button"
                     onClick={onOpenHelpDesk}
-                    className="w-full h-11 mt-4 rounded-lg border-none bg-[#0b2540] text-white text-sm font-bold hover:bg-[#011c37] transition-all"
+                    className="w-full h-11 mt-4 rounded-lg border-none bg-[#0b62be] text-white text-sm font-bold hover:bg-[#011c37] transition-all"
                   >
                     Add College
                   </button>

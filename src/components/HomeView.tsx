@@ -286,7 +286,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
       </section>
 
       {/* Counselling */}
-      <section id="counselling" className="section bg-[#0b2540] text-white rounded-2xl shadow-soft">
+      <section id="counselling" className="section bg-[#0b62be] text-white rounded-2xl shadow-soft">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           <div className="lg:col-span-7 space-y-3.5">
