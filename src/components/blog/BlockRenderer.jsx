@@ -185,22 +185,55 @@ function BlockquoteBlock({ block }) {
 }
 
 function CtaBlock({ block, onOpenCounseling }) {
-  const title = txt(pick(block, ["title", "headline"])) || null;
-  const description = txt(pick(block, ["description", "content", "subtitle"])) || null;
-  const label = txt(pick(block, ["buttonText", "label", "button"])) || "Get free advice";
-  const href = pick(block, ["href", "url", "link"]);
+  const src =
+    block?.data && typeof block.data === "object"
+      ? block.data
+      : block?.content && typeof block.content === "object" && !Array.isArray(block.content)
+      ? block.content
+      : block;
+
+  const rawTitle = txt(
+    pick(src, ["title", "headline", "heading", "header", "name", "caption"]) ||
+    pick(block, ["title", "headline", "heading", "header", "name", "caption"])
+  );
+  const rawDescription = txt(
+    pick(src, ["description", "content", "subtitle", "subHeading", "body", "details", "detail", "message", "sub", "desc", "text"]) ||
+    pick(block, ["description", "content", "subtitle", "subHeading", "body", "details", "detail", "message", "sub", "desc", "text"])
+  );
+  const label = txt(
+    pick(src, ["buttonText", "label", "button", "btnText", "ctaText"]) ||
+    pick(block, ["buttonText", "label", "button", "btnText", "ctaText"])
+  ) || "Get free advice";
+  const href =
+    pick(src, ["href", "url", "link", "buttonUrl"]) ||
+    pick(block, ["href", "url", "link", "buttonUrl"]);
+
+  const title = rawTitle || "Need Guidance on Exam Preparation & Admissions?";
+  const description =
+    rawDescription ||
+    "Speak directly with verified academic advisors for 100% free guidance on syllabus breakdown, cutoffs, and university admissions.";
+
   const handleClick = () => {
     if (typeof onOpenCounseling === "function") onOpenCounseling();
     else if (href) window.location.assign(href);
   };
+
   return (
     <div className="bd-inline-cta">
       <div>
-        {title ? <h4>{title}</h4> : null}
-        {description ? <p>{description}</p> : null}
+        <h4>{title}</h4>
+        <p>{description}</p>
       </div>
-      {href ? <a className="bd-btn" href={href}><ArrowRight size={16} />{label}</a> : (
-        <button type="button" className="bd-btn" onClick={handleClick}><Headphones size={16} />{label}</button>
+      {href ? (
+        <a className="bd-btn" href={href}>
+          <ArrowRight size={16} />
+          {label}
+        </a>
+      ) : (
+        <button type="button" className="bd-btn" onClick={handleClick}>
+          <Headphones size={16} />
+          {label}
+        </button>
       )}
     </div>
   );

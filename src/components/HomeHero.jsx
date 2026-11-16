@@ -34,7 +34,7 @@ export default function HomeHero({ onOpenHelpDesk } = {}) {
   return (
     <>
       {/* Mobile-only hero (new design) */}
-      <div className="md:hidden min-h-screen bg-slate-50 font-sans relative overflow-hidden -mt-5 -mx-1">
+      <div className="md:hidden min-h-screen bg-slate-50 font-sans relative overflow-hidden -mt-4 sm:-mt-5 -mx-3.5 sm:-mx-4">
         <motion.div
           className="absolute -top-40 -right-40 w-96 h-96 border-[60px] border-blue-200 rounded-full pointer-events-none"
           animate={{ rotate: [0, 90, 180, 90, 0], x: [0, 20, 40, 20, 0], y: [0, -20, -40, -20, 0] }}

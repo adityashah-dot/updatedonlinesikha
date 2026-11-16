@@ -921,18 +921,15 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
       {/* ================= VERIFICATION EXPLAINER ================= */}
       <section>
         <div className="bg-white rounded-2xl border border-[#d5e3ff] p-6 md:p-8 shadow-xs">
-          <div className="max-w-2xl mb-8">
-            <span className="text-[11px] text-[#115eaf] uppercase font-bold tracking-wider">
+          <div className="w-full mb-6 pb-4 border-b border-[#e7eeff]">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] text-[#115eaf] uppercase font-bold tracking-wider bg-[#f0f3ff] border border-[#d5e3ff] mb-2">
               Government Regulatory Framework
             </span>
-            <h2 className="text-lg sm:text-xl font-bold text-[#000f22] mt-1">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight">
               How to Verify Online Degree Entitlements
             </h2>
-            <p className="text-sm font-normal text-[#43474d] mt-2 leading-relaxed">
-              As per the UGC (Open and Distance Learning Programmes and Online Programmes)
-              Regulations, online degrees from entitled higher education institutions have full
-              equivalence with conventional on-campus degrees for govt jobs, higher studies, and
-              global corporate employment.
+            <p className="text-xs sm:text-sm font-normal text-[#43474d] mt-2 leading-relaxed w-full">
+              As per the UGC (Open and Distance Learning Programmes and Online Programmes) Regulations, online degrees from entitled higher education institutions have full equivalence with conventional on-campus degrees for govt jobs, higher studies, and global corporate employment.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

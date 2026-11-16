@@ -9,14 +9,14 @@ import {
   Maximize2
 } from "lucide-react";
 const QUICK_TOPICS = [
-  { label: "Universities", prompt: "Which online universities are available?" },
-  { label: "Find a course", prompt: "Help me find a course based on my career goal" },
-  { label: "Affordable", prompt: "What are the most affordable online universities?" },
-  { label: "How to choose", prompt: "How do I choose the right online degree?" },
-  { label: "Admission steps", prompt: "What is the admission process for online courses?" },
-  { label: "Online MBA", prompt: "Which universities offer online MBA programs?" },
-  { label: "Before enrolling", prompt: "What should I check before enrolling in an online university?" },
-  { label: "Compare", prompt: "Can you compare two online universities?" }
+  { label: "UGC Validity", prompt: "Are online degrees UGC-DEB approved and valid for government jobs & WES?" },
+  { label: "Online MBA Fees", prompt: "What are the total fees and EMI options for Online MBA across top universities?" },
+  { label: "Compare Universities", prompt: "Compare LPU Online, Amity Online, and Chandigarh University side by side" },
+  { label: "Remote Exams", prompt: "How do 100% remote AI proctored exams work for online degree programs?" },
+  { label: "Online MCA Tracks", prompt: "Which universities offer Online MCA with AI, Cloud, and Cyber tracks?" },
+  { label: "Avg Placement CTC", prompt: "What are the placement assistance and average salary packages for online courses?" },
+  { label: "Under ₹1 Lakh", prompt: "Which universities offer accredited online degrees under ₹1 Lakh total fee?" },
+  { label: "Eligibility & Admission", prompt: "What are the eligibility criteria and admission process for online degrees?" }
 ];
 export const GeminiChatbot = ({
   isOpen,
@@ -391,13 +391,14 @@ export const GeminiChatbot = ({
   />
 
         <button
-    type="submit"
-    disabled={!inputText.trim() || isLoading}
-    className="h-11 px-4 bg-[#115eaf] hover:bg-[#004689] disabled:opacity-40 text-white rounded-xl transition-all shadow-xs flex items-center justify-center gap-1.5 font-semibold text-xs font-sans shrink-0 active:scale-95 cursor-pointer"
-    aria-label="Send query"
-  >
-          <span className="hidden sm:inline">Send</span>
-          <Send className="w-3.5 h-3.5" />
+          type="submit"
+          disabled={!inputText.trim() || isLoading}
+          className="h-11 px-4 bg-[#0b62be] hover:bg-[#084a8c] disabled:opacity-85 disabled:cursor-not-allowed text-white rounded-xl transition-all shadow-xs flex items-center justify-center gap-1.5 font-bold text-xs font-sans shrink-0 active:scale-95 cursor-pointer"
+          aria-label="Send query"
+          title="Send query"
+        >
+          <span className="inline font-bold">Send</span>
+          <Send className="w-3.5 h-3.5 shrink-0" />
         </button>
       </form>
     </div>;

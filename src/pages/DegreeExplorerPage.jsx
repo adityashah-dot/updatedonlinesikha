@@ -473,241 +473,200 @@ export default function DegreeExplorerPage({ onOpenCounseling, onOpenHelpDesk })
         </div>
       </section>
 
-      {/* Main Body: Left Domains Sidebar + Right Cards Grid */}
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Sticky Sidebar: Domains Navigation */}
-          <aside className="lg:col-span-3 xl:col-span-3">
-            <div className="bg-white rounded-2xl border border-slate-200/90 p-3 sm:p-4 shadow-2xs lg:sticky lg:top-24">
-              <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 px-3 py-2">
-                Domain Categories
-              </h2>
-
-              <nav className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 [scrollbar-width:none]">
-                {DEGREE_DOMAINS.map((domain) => {
-                  const isActive = activeDomainId === domain.id && !searchQuery;
-                  return (
-                    <button
-                      key={domain.id}
-                      type="button"
-                      onClick={() => {
-                        setActiveDomainId(domain.id);
-                        setSearchQuery("");
-                      }}
-                      className={`whitespace-nowrap lg:whitespace-normal text-left transition-all duration-150 cursor-pointer flex-shrink-0 lg:flex-shrink w-auto lg:w-full ${
-                        isActive
-                          ? "bg-[#115eaf] text-white rounded-xl p-3 shadow-xs"
-                          : "bg-transparent text-[#334155] hover:bg-[#eef4ff]/70 hover:text-[#115eaf] p-3 rounded-xl"
+      {/* Horizontal Domain Category Selector (Full Width & Sticky) */}
+      <div className="sticky top-16 z-20 bg-[#f8fafc]/95 backdrop-blur-md border-b border-slate-200/80 shadow-2xs py-3 mb-6">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+            {DEGREE_DOMAINS.map((domain) => {
+              const isActive = activeDomainId === domain.id && !searchQuery;
+              return (
+                <button
+                  key={domain.id}
+                  type="button"
+                  onClick={() => {
+                    setActiveDomainId(domain.id);
+                    setSearchQuery("");
+                  }}
+                  className={`whitespace-nowrap px-4 py-2 rounded-xl text-xs sm:text-[13px] font-bold transition-all cursor-pointer flex items-center gap-2 shrink-0 ${
+                    isActive
+                      ? "bg-[#0b4fa8] text-white shadow-xs"
+                      : "bg-white text-slate-700 hover:bg-[#edf4fd] hover:text-[#0b4fa8] border border-slate-200/90 shadow-2xs"
+                  }`}
+                >
+                  <span>{domain.name}</span>
+                  <span
+                    className={`text-[10.5px] px-2 py-0.5 rounded-full font-bold ${
+                      isActive ? "bg-white/20 text-white" : "bg-slate-100 text-slate-500"
+                    }`}
+                  >
+                    {domain.courses.length}
+                  </span>
+                  {domain.tag && (
+                    <span
+                      className={`hidden md:inline-block text-[10px] px-2 py-0.5 rounded-full font-semibold ${
+                        isActive ? "bg-white text-[#0b4fa8]" : "bg-[#edf4fd] text-[#0b4fa8]"
                       }`}
                     >
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs sm:text-[13.5px] font-bold leading-tight">
-                          {domain.name}
-                        </span>
-                        <span
-                          className={`hidden lg:inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full ${
-                            isActive ? "bg-white/20 text-white" : "text-slate-400"
-                          }`}
-                        >
-                          {domain.courses.length}
-                        </span>
-                      </div>
-                      {domain.tag && (
-                        <span
-                          className={`inline-block mt-1.5 text-[10.5px] font-semibold px-2.5 py-0.5 rounded-full transition-colors ${
-                            isActive
-                              ? "bg-white text-[#115eaf]"
-                              : "bg-[#eef4ff] text-[#115eaf] border border-[#d5e3ff]/60"
-                          }`}
-                        >
-                          {domain.tag}
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
-              </nav>
-
-              {/* Free Counseling Helper Box */}
-              <div className="hidden lg:block mt-6 p-4 rounded-xl bg-gradient-to-br from-[#000f22] to-[#115eaf] text-white">
-                <div className="flex items-center gap-2 mb-2">
-                  <Headphones className="w-4 h-4 text-emerald-400" />
-                  <span className="text-xs font-bold uppercase tracking-wider text-blue-200">
-                    Free Advisory
-                  </span>
-                </div>
-                <h3 className="text-xs sm:text-sm font-bold text-white leading-snug">
-                  Need help choosing the right domain?
-                </h3>
-                <p className="text-[11.5px] text-slate-200 mt-1 leading-relaxed">
-                  Our academic advisors provide 100% unbiased, UGC-entitled university counseling.
-                </p>
-                <button
-                  type="button"
-                  onClick={onOpenCounseling}
-                  className="mt-3 w-full py-2 px-3 rounded-lg bg-white text-[#115eaf] hover:bg-blue-50 text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5 cursor-pointer"
-                >
-                  <PhoneCall className="w-3.5 h-3.5" />
-                  <span>Talk to Counselor</span>
-                </button>
-              </div>
-            </div>
-          </aside>
-
-          {/* Right Main Content: Course Cards Grid */}
-          <main className="lg:col-span-9 xl:col-span-9">
-            {/* Domain Header or Search Header */}
-            <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 mb-6 shadow-2xs">
-              {searchResults ? (
-                <div className="flex items-center justify-between flex-wrap gap-2">
-                  <div>
-                    <h2 className="text-base sm:text-lg font-bold text-[#000f22]">
-                      Search Results for &quot;{searchQuery}&quot;
-                    </h2>
-                    <p className="text-xs text-slate-500 mt-0.5">
-                      Showing {searchResults.length} matching degree programs across all domains
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setSearchQuery("")}
-                    className="text-xs font-semibold text-[#115eaf] hover:underline cursor-pointer"
-                  >
-                    Clear search &amp; show all
-                  </button>
-                </div>
-              ) : (
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div>
-                    <div className="flex items-center gap-2">
-                      <h2 className="text-lg sm:text-xl font-bold text-[#000f22]">
-                        {activeDomain.name}
-                      </h2>
-                      <span className="text-xs font-semibold text-[#115eaf] bg-[#eef4ff] px-2.5 py-0.5 rounded-full border border-[#d5e3ff]">
-                        {activeDomain.courses.length} Programs
-                      </span>
-                    </div>
-                    <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                      {activeDomain.description}
-                    </p>
-                  </div>
-                  <div className="hidden sm:flex items-center gap-3 text-xs text-slate-500 shrink-0">
-                    <span className="flex items-center gap-1 text-emerald-700 font-medium">
-                      <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                      UGC Entitled
+                      {domain.tag}
                     </span>
-                    <span className="flex items-center gap-1 text-[#115eaf] font-medium">
-                      <Sparkles className="w-3.5 h-3.5" />
-                      NAAC Accredited
-                    </span>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Course Cards Grid */}
-            {displayedCourses.length > 0 ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
-                {displayedCourses.map((c) => (
-                  <div
-                    key={c.id + c.name}
-                    onClick={() => handleCourseClick(c.slug)}
-                    className="group bg-white rounded-2xl border border-slate-200/90 hover:border-[#115eaf] hover:shadow-lg transition-all duration-200 p-4 sm:p-5 flex flex-col justify-between cursor-pointer relative min-h-[195px]"
-                  >
-                    <div>
-                      {/* Top Row: Icon on left + Mint/Green Badge on right */}
-                      <div className="flex items-center justify-between min-h-[32px]">
-                        <div className="w-8 h-8 rounded-xl bg-[#f0f6ff] flex items-center justify-center shrink-0 text-[#115eaf]">
-                          <CourseIcon icon={c.icon} />
-                        </div>
-                        {c.badge ? (
-                          <span className="inline-flex items-center gap-0.5 px-2.5 py-0.5 rounded-full text-[10.5px] font-bold bg-[#e6f7f0] text-[#0f9d6b] border border-[#a7f3d0]/60">
-                            {c.badge}
-                          </span>
-                        ) : (
-                          <div className="w-1" />
-                        )}
-                      </div>
-
-                      {/* Course Title */}
-                      <h3 className="text-sm sm:text-[14.5px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors mt-3.5 line-clamp-1 leading-snug">
-                        {c.name}
-                      </h3>
-
-                      {/* Specializations Tag */}
-                      <div className="mt-2.5">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#eef4ff] text-[#115eaf] border border-[#d5e3ff]/70">
-                          {c.specs}
-                        </span>
-                      </div>
-
-                      {/* University comparison row: 2 lines with dot */}
-                      <div className="mt-3 flex items-start gap-1.5 text-xs text-[#334155]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#115eaf] shrink-0 mt-1" />
-                        <div className="leading-tight">
-                          <span>
-                            Compare <strong className="font-bold text-[#000f22]">{c.unis}</strong>
-                          </span>
-                          <span className="block text-[#64748b]">Universities</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Bottom CTA Link */}
-                    <div className="mt-4 pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-[#115eaf] group-hover:text-[#084a8c]">
-                      <span>View specializations</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="bg-white rounded-2xl border border-slate-200 p-12 flex flex-col items-center justify-center text-center gap-3">
-                <Search className="w-10 h-10 text-[#115eaf]/40 mb-1" />
-                <h3 className="text-base font-bold text-[#000f22]">
-                  No matching courses found
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-500 max-w-sm">
-                  We couldn&apos;t find any programs matching &quot;{searchQuery}&quot;. Try searching for &quot;MBA&quot;, &quot;MCA&quot;, or &quot;Data Science&quot;.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery("")}
-                  className="mt-2 px-4 py-2 text-xs font-bold text-[#115eaf] bg-[#eef4ff] hover:bg-[#d5e3ff] rounded-xl transition-colors cursor-pointer"
-                >
-                  Clear search &amp; view all domains
+                  )}
                 </button>
-              </div>
-            )}
-
-            {/* Bottom Advisory Trust Section */}
-            <div className="mt-10 bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-2xs">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#115eaf] bg-[#eef4ff] px-3 py-1 rounded-full mb-2">
-                    <ShieldCheck className="w-3.5 h-3.5" />
-                    <span>OnlineSiksha Assured Comparison</span>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-bold text-[#000f22]">
-                    Still deciding between programs or universities?
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-xl">
-                    Get 100% free personalized counseling, detailed semester syllabus breakdowns, fee lock guarantees, and placement track record insights.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={onOpenCounseling}
-                  className="px-6 py-3 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-bold shadow-sm transition-all flex items-center gap-2 cursor-pointer shrink-0"
-                >
-                  <PhoneCall className="w-4 h-4" />
-                  <span>Request Free Counseling</span>
-                </button>
-              </div>
-            </div>
-          </main>
+              );
+            })}
+          </div>
         </div>
       </div>
+
+      {/* Main Full-Width Content Container */}
+      <main className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Domain Description Bar */}
+        <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 mb-6 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          {searchResults ? (
+            <div className="flex items-center justify-between flex-wrap gap-2 w-full">
+              <div>
+                <h2 className="text-base sm:text-lg font-bold text-[#000f22]">
+                  Search Results for &quot;{searchQuery}&quot;
+                </h2>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Showing {searchResults.length} matching degree programs across all domains
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                className="text-xs font-semibold text-[#0b4fa8] hover:underline cursor-pointer"
+              >
+                Clear search &amp; view all
+              </button>
+            </div>
+          ) : (
+            <>
+              <div>
+                <div className="flex items-center gap-2">
+                  <h2 className="text-lg sm:text-xl font-bold text-[#000f22]">
+                    {activeDomain.name}
+                  </h2>
+                  <span className="text-xs font-bold text-[#0b4fa8] bg-[#edf4fd] px-2.5 py-0.5 rounded-full border border-[#bed8fb]">
+                    {activeDomain.courses.length} Programs
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm text-slate-500 mt-1">
+                  {activeDomain.description}
+                </p>
+              </div>
+              <div className="hidden sm:flex items-center gap-3 text-xs text-slate-600 shrink-0 font-medium">
+                <span className="flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>UGC-DEB Entitled</span>
+                </span>
+                <span className="flex items-center gap-1.5 text-[#0b4fa8] bg-[#edf4fd] px-2.5 py-1 rounded-lg border border-[#bed8fb]">
+                  <Sparkles className="w-3.5 h-3.5 text-[#0b4fa8]" />
+                  <span>NAAC Accredited</span>
+                </span>
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Full-Width 4-Column Card Grid */}
+        {displayedCourses.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+            {displayedCourses.map((c) => (
+              <div
+                key={c.id + c.name}
+                onClick={() => handleCourseClick(c.slug)}
+                className="group bg-white rounded-2xl border border-slate-200/90 hover:border-[#0b4fa8] hover:shadow-lg transition-all duration-200 p-4 sm:p-5 flex flex-col justify-between cursor-pointer relative min-h-[210px] shadow-2xs"
+              >
+                <div>
+                  {/* Top: Icon + Optional Badge */}
+                  <div className="flex items-center justify-between min-h-[32px] mb-3">
+                    <div className="w-9 h-9 rounded-xl bg-[#edf4fd] border border-[#bed8fb] flex items-center justify-center shrink-0 text-[#0b4fa8] group-hover:scale-105 transition-transform">
+                      <CourseIcon icon={c.icon} />
+                    </div>
+                    {c.badge ? (
+                      <span className="inline-flex items-center gap-0.5 px-2.5 py-0.5 rounded-full text-[10.5px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs">
+                        {c.badge}
+                      </span>
+                    ) : (
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                        Online Degree
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Course Title */}
+                  <h3 className="text-[15px] sm:text-base font-bold text-[#000f22] group-hover:text-[#0b4fa8] transition-colors line-clamp-1 leading-snug">
+                    {c.name}
+                  </h3>
+
+                  {/* Specializations Tag */}
+                  <div className="mt-2">
+                    <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-slate-50 text-slate-600 border border-slate-200/80">
+                      {c.specs}
+                    </span>
+                  </div>
+
+                  {/* University Comparison Stat */}
+                  <div className="mt-3 flex items-center gap-2 text-xs text-slate-600">
+                    <span className="w-2 h-2 rounded-full bg-[#0b4fa8] shrink-0" />
+                    <span>
+                      Compare <strong className="font-bold text-[#000f22]">{c.unis}</strong> Universities
+                    </span>
+                  </div>
+                </div>
+
+                {/* Bottom Action Link */}
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#0b4fa8] group-hover:text-[#073774] transition-colors">
+                  <span>Explore Universities</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="bg-white rounded-2xl border border-slate-200 p-12 flex flex-col items-center justify-center text-center gap-3">
+            <Search className="w-10 h-10 text-[#0b4fa8]/40 mb-1" />
+            <h3 className="text-base font-bold text-[#000f22]">
+              No matching courses found
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-500 max-w-sm">
+              We couldn&apos;t find any programs matching &quot;{searchQuery}&quot;. Try searching for &quot;MBA&quot;, &quot;MCA&quot;, or &quot;Data Science&quot;.
+            </p>
+            <button
+              type="button"
+              onClick={() => setSearchQuery("")}
+              className="mt-2 px-4 py-2 text-xs font-bold text-white bg-[#0b4fa8] hover:bg-[#073774] rounded-xl transition-colors cursor-pointer"
+            >
+              Clear search &amp; view all domains
+            </button>
+          </div>
+        )}
+
+        {/* Free Academic Counselling Helper Banner (Full Width) */}
+        <div className="mt-10 rounded-2xl bg-gradient-to-r from-[#000f22] via-[#073774] to-[#000f22] p-5 sm:p-7 text-white shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="max-w-2xl text-center md:text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-blue-200 text-xs font-bold mb-2.5 backdrop-blur-xs">
+              <Headphones className="w-3.5 h-3.5 text-emerald-400" />
+              <span>100% Free &amp; Unbiased Mentorship</span>
+            </div>
+            <h3 className="text-lg sm:text-2xl font-bold text-white leading-tight">
+              Confused between different online degree domains?
+            </h3>
+            <p className="mt-1.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Speak directly with certified academic counselors for personalized university shortlisting, syllabus breakdowns, and scholarship eligibility.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            onClick={onOpenCounseling}
+            className="shrink-0 h-11 px-6 rounded-xl bg-white text-[#073774] hover:bg-[#edf4fd] text-xs sm:text-sm font-bold transition-all shadow-md flex items-center gap-2 cursor-pointer active:scale-[0.98]"
+          >
+            <PhoneCall className="w-4 h-4 text-[#0b4fa8]" />
+            <span>Talk to a Senior Counselor</span>
+          </button>
+        </div>
+      </main>
     </div>
   );
 }

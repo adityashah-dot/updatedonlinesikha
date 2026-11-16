@@ -359,9 +359,9 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
       ) : null}
 
       {/* Banner 1: Immediately after Course Overview */}
-      <div className="my-6">
+      <div className="my-3.5 sm:my-4">
         <CoursesPromoBanner
-          heading="FREE 1-ON-1 ACADEMIC COUNSELLING"
+          heading="FREE 1-ON-1 ACADEMIC ADVISORY"
           title="1-on-1 Admission & University Guidance"
           message="Compare UGC-DEB recognized universities, verified semester fees, and zero-cost EMI options with our academic advisors."
           ctaLabel="Get Free Counselling"
@@ -408,11 +408,11 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
 
             {/* Banner 2: Immediately after Curriculum / Specialisations */}
             {sIdx === banner2SecIdx ? (
-              <div className="my-6">
+              <div className="my-3.5 sm:my-4">
                 <CoursesPromoBanner
-                  heading="FREE 1-ON-1 ACADEMIC COUNSELLING"
+                  heading="FREE 1-ON-1 ACADEMIC ADVISORY"
                   title="Curriculum & Elective Advisory"
-                  message="Speak 1-on-1 with our academic counsellors to match curriculum electives and fee structures with your career goals."
+                  message="Speak 1-on-1 with our academic advisors to match curriculum electives and fee structures with your career goals."
                   ctaLabel="Talk to an Academic Advisor"
                   onCtaClick={handleCounseling}
                 />
@@ -424,11 +424,11 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
 
       {/* Fallback for Banner 2 when a course has 0 CMS sections */}
       {sections.length === 0 ? (
-        <div className="my-6">
+        <div className="my-3.5 sm:my-4">
           <CoursesPromoBanner
-            heading="FREE 1-ON-1 ACADEMIC COUNSELLING"
+            heading="FREE 1-ON-1 ACADEMIC ADVISORY"
             title="Need guidance on syllabus, electives, or university shortlisting?"
-            message="Speak 1-on-1 with our academic counsellors to match curriculum electives and fee structures with your career goals."
+            message="Speak 1-on-1 with our academic advisors to match curriculum electives and fee structures with your career goals."
             ctaLabel="Talk to an Academic Advisor"
             onCtaClick={handleCounseling}
           />

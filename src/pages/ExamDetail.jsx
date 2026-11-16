@@ -128,58 +128,60 @@ function ExamHero({ exam, onOpenCounseling }) {
   const hasLogo = Boolean(exam.logo?.url && !logoFailed);
 
   return (
-    <section className="rounded-2xl border border-[#e7eeff] bg-gradient-to-br from-[#f8fbff] via-white to-[#f0f5ff] p-4 sm:p-5 lg:p-6 mb-6 shadow-2xs">
-      <div className="grid lg:grid-cols-12 gap-5 lg:gap-6 items-start">
-        <div className="lg:col-span-7 xl:col-span-8 min-w-0">
-          <div className="flex flex-wrap items-center gap-1.5 mb-2.5">
-            <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#e7eeff] text-[#115eaf] border border-[#d5e3ff]">
-              {mode}
-            </span>
-            {category ? (
-              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#f7f9fc] text-[#43474d] border border-[#e7eeff]">
-                {category}
+    <section className="rounded-2xl border border-[#d8e5f8] bg-gradient-to-br from-[#f8fbff] via-white to-[#f0f5ff] p-4 sm:p-5 lg:p-6 mb-6 shadow-xs">
+      <div className="grid lg:grid-cols-12 gap-5 lg:gap-6 items-stretch">
+        <div className="lg:col-span-7 xl:col-span-8 min-w-0 flex flex-col justify-between">
+          <div>
+            <div className="flex flex-wrap items-center gap-1.5 mb-2.5">
+              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#edf4fd] text-[#0b4fa8] border border-[#bed8fb]">
+                {mode}
               </span>
+              {category ? (
+                <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#f8fafc] text-[#334155] border border-[#e2e8f0]">
+                  {category}
+                </span>
+              ) : null}
+              {effectiveLevel ? (
+                <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  {effectiveLevel}
+                </span>
+              ) : null}
+            </div>
+
+            <h1 className="text-[20px] sm:text-[24px] md:text-[28px] lg:text-[30px] xl:text-[32px] font-bold tracking-tight font-sans text-[#000f22] leading-[1.2] mb-2.5 break-words">
+              {exam.title}
+            </h1>
+
+            {metaChips.length > 0 ? (
+              <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs sm:text-[13px] text-[#0b4fa8] font-semibold mb-3">
+                {metaChips.map((chip, i) => (
+                  <span key={chip.label} className="inline-flex items-center gap-2">
+                    {i > 0 ? <span aria-hidden="true" className="text-[#bed8fb]">•</span> : null}
+                    <span>
+                      {chip.label}: {chip.value}
+                    </span>
+                  </span>
+                ))}
+              </div>
             ) : null}
-            {effectiveLevel ? (
-              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
-                {effectiveLevel}
-              </span>
-            ) : null}
+
+            <p className="text-xs sm:text-sm text-[#43474d] leading-relaxed max-w-2xl line-clamp-3">
+              {cleanDescription}
+            </p>
           </div>
 
-          <h1 className="course-detail-h1 text-[24px] sm:text-[30px] lg:text-[34px] font-bold text-[#000f22] tracking-[-0.015em] leading-[1.2] mb-2 break-words">
-            {exam.title}
-          </h1>
-
-          {metaChips.length > 0 ? (
-            <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs sm:text-[13px] text-[#115eaf] font-semibold mb-3">
-              {metaChips.map((chip, i) => (
-                <span key={chip.label} className="inline-flex items-center gap-2">
-                  {i > 0 ? <span aria-hidden="true" className="text-[#d5e3ff]">•</span> : null}
-                  <span>
-                    {chip.label}: {chip.value}
-                  </span>
-                </span>
-              ))}
-            </div>
-          ) : null}
-
-          <p className="text-xs sm:text-sm text-[#43474d] leading-relaxed mb-4 max-w-2xl line-clamp-3">
-            {cleanDescription}
-          </p>
-
-          <div className="flex flex-wrap gap-2.5">
+          <div className="flex flex-wrap items-center gap-2.5 mt-6 lg:mt-auto pt-3">
             <button
               type="button"
               onClick={handleCta}
-              className="inline-flex items-center gap-1.5 px-4.5 h-10 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold transition-colors shadow-2xs cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-4 h-8.5 rounded-lg bg-[#0b4fa8] hover:bg-[#073774] text-white text-xs sm:text-[13px] font-semibold transition-colors shadow-2xs cursor-pointer"
             >
               <span>Talk to an Exam Mentor</span>
               <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
             </button>
             <Link
               to="/exams"
-              className="inline-flex items-center gap-1.5 px-4 h-10 rounded-xl border border-[#115eaf] hover:bg-[#eff5ff] text-[#115eaf] text-xs sm:text-sm font-semibold transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 h-8.5 rounded-lg border border-[#0b4fa8] hover:bg-[#edf4fd] text-[#0b4fa8] text-xs sm:text-[13px] font-semibold transition-colors"
             >
               <span>Browse All Exams</span>
               <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -191,7 +193,7 @@ function ExamHero({ exam, onOpenCounseling }) {
                 <a
                   key={i}
                   href={href}
-                  className="inline-flex items-center gap-1.5 px-4 h-10 rounded-xl border border-[#cfe0fa] bg-white hover:bg-[#f0f5ff] text-[#000f22] text-xs sm:text-sm font-semibold transition-colors shadow-2xs"
+                  className="inline-flex items-center gap-1.5 px-3.5 h-8.5 rounded-lg border border-[#bed8fb] bg-white hover:bg-[#f0f5ff] text-[#000f22] text-xs sm:text-[13px] font-semibold transition-colors shadow-2xs"
                 >
                   <span>{label}</span>
                   <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -201,8 +203,8 @@ function ExamHero({ exam, onOpenCounseling }) {
           </div>
         </div>
 
-        <div className="lg:col-span-5 xl:col-span-4 min-w-0 w-full">
-          <div className="rounded-xl border border-[#d5e3ff] bg-white overflow-hidden shadow-2xs">
+        <div className="lg:col-span-5 xl:col-span-4 min-w-0 w-full flex flex-col">
+          <div className="rounded-xl border border-[#bed8fb] bg-white overflow-hidden shadow-xs flex flex-col h-full">
             {hasLogo ? (
               <div className="h-20 sm:h-22 px-4 py-2 bg-gradient-to-b from-[#f8fbff] to-white border-b border-[#e7eeff] flex items-center justify-center">
                 <img
@@ -214,60 +216,62 @@ function ExamHero({ exam, onOpenCounseling }) {
                 />
               </div>
             ) : (
-              <div className="px-3.5 py-2.5 bg-gradient-to-r from-[#eef5ff] to-[#f8fbff] border-b border-[#e7eeff] flex items-center justify-between">
-                <span className="text-[11px] font-bold tracking-wide uppercase text-[#115eaf] flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#115eaf]" aria-hidden="true" />
+              <div className="px-3.5 py-2.5 bg-gradient-to-r from-[#edf4fd] to-[#f8fbff] border-b border-[#e7eeff] flex items-center justify-between">
+                <span className="text-[11px] font-bold tracking-wide uppercase text-[#0b4fa8] flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#0b4fa8]" aria-hidden="true" />
                   <span>Official Exam Summary</span>
                 </span>
-                <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-white text-[#115eaf] border border-[#d5e3ff]">
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-white text-[#0b4fa8] border border-[#bed8fb]">
                   {mode}
                 </span>
               </div>
             )}
 
-            <div className="p-3.5">
-              <h2 className="text-xs sm:text-[13px] font-bold text-[#000f22] mb-2 pb-1.5 border-b border-[#f0f4f8] flex items-center justify-between">
-                <span>Quick Exam Facts</span>
-                <span className="text-[10px] font-medium text-[#6b7280]">Key Highlights</span>
-              </h2>
+            <div className="p-3.5 flex flex-col flex-1 justify-between">
+              <div>
+                <h2 className="text-xs sm:text-[13px] font-bold text-[#000f22] mb-2 pb-1.5 border-b border-[#edf3fc] flex items-center justify-between">
+                  <span>Quick Exam Facts</span>
+                  <span className="text-[10px] font-semibold text-[#0b4fa8] bg-[#edf4fd] px-2 py-0.5 rounded-full border border-[#d2e4f9]">Key Highlights</span>
+                </h2>
 
-              <dl className="space-y-1.5 text-xs">
-                <div className="flex items-center justify-between gap-2.5">
-                  <dt className="text-[#555960]">Exam Mode</dt>
-                  <dd className="font-semibold text-[#000f22] text-right">{mode}</dd>
-                </div>
-                <div className="flex items-center justify-between gap-2.5">
-                  <dt className="text-[#555960]">Academic Level</dt>
-                  <dd className="font-semibold text-[#000f22] text-right">{effectiveLevel}</dd>
-                </div>
-                <div className="flex items-center justify-between gap-2.5">
-                  <dt className="text-[#555960]">Discipline / Stream</dt>
-                  <dd className="font-semibold text-[#000f22] text-right truncate max-w-[170px]">{effectiveStream}</dd>
-                </div>
-                <div className="flex items-start justify-between gap-2.5">
-                  <dt className="text-[#555960] shrink-0">Conducting Body</dt>
-                  <dd className="font-semibold text-[#000f22] text-right text-[11px] line-clamp-1">{effectiveBody}</dd>
-                </div>
-                <div className="flex items-start justify-between gap-2.5">
-                  <dt className="text-[#555960] shrink-0">Registration</dt>
-                  <dd className="font-semibold text-[#000f22] text-right text-[11px]">{effectiveRegistration}</dd>
-                </div>
-                <div className="flex items-center justify-between gap-2.5">
-                  <dt className="text-[#555960]">Exam Date</dt>
-                  <dd className="font-bold text-[#115eaf] text-right">{effectiveExamDate}</dd>
-                </div>
-                {resultDateStr ? (
+                <dl className="space-y-1.5 text-xs">
                   <div className="flex items-center justify-between gap-2.5">
-                    <dt className="text-[#555960]">Result Date</dt>
-                    <dd className="font-semibold text-[#000f22] text-right">{resultDateStr}</dd>
+                    <dt className="text-[#475569] font-medium">Exam Mode</dt>
+                    <dd className="font-semibold text-[#000f22] text-right">{mode}</dd>
                   </div>
-                ) : null}
-              </dl>
+                  <div className="flex items-center justify-between gap-2.5">
+                    <dt className="text-[#475569] font-medium">Academic Level</dt>
+                    <dd className="font-semibold text-[#000f22] text-right">{effectiveLevel}</dd>
+                  </div>
+                  <div className="flex items-center justify-between gap-2.5">
+                    <dt className="text-[#475569] font-medium">Discipline / Stream</dt>
+                    <dd className="font-semibold text-[#000f22] text-right truncate max-w-[170px]">{effectiveStream}</dd>
+                  </div>
+                  <div className="flex items-start justify-between gap-2.5">
+                    <dt className="text-[#475569] font-medium shrink-0">Conducting Body</dt>
+                    <dd className="font-semibold text-[#000f22] text-right text-[11px] line-clamp-1">{effectiveBody}</dd>
+                  </div>
+                  <div className="flex items-start justify-between gap-2.5">
+                    <dt className="text-[#475569] font-medium shrink-0">Registration</dt>
+                    <dd className="font-semibold text-[#000f22] text-right text-[11px]">{effectiveRegistration}</dd>
+                  </div>
+                  <div className="flex items-center justify-between gap-2.5">
+                    <dt className="text-[#475569] font-medium">Exam Date</dt>
+                    <dd className="font-bold text-[#0b4fa8] text-right">{effectiveExamDate}</dd>
+                  </div>
+                  {resultDateStr ? (
+                    <div className="flex items-center justify-between gap-2.5">
+                      <dt className="text-[#475569] font-medium">Result Date</dt>
+                      <dd className="font-semibold text-[#000f22] text-right">{resultDateStr}</dd>
+                    </div>
+                  ) : null}
+                </dl>
+              </div>
 
               <button
                 type="button"
                 onClick={handleCta}
-                className="mt-3 w-full h-8.5 rounded-lg bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-2xs"
+                className="mt-3 w-full h-8.5 rounded-lg bg-[#0b4fa8] hover:bg-[#073774] text-white text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-2xs"
               >
                 <span>Request Free Counselling</span>
                 <ArrowRight className="w-3 h-3" aria-hidden="true" />
@@ -676,10 +680,10 @@ function ExamTOC({ items = [] }) {
   };
 
   return (
-    <nav className="exam-toc bg-white rounded-xl border border-[#e7eeff] p-3.5 sm:p-4 shadow-2xs overflow-hidden w-full max-w-full shrink-0" aria-label="Table of contents">
-      <h2 className="!text-xs font-bold text-[#000f22] uppercase tracking-wider mb-2.5 pb-2 border-b border-[#f0f4f8] flex items-center justify-between">
+    <nav className="exam-toc bg-white rounded-xl border border-[#d8e5f8] p-3.5 sm:p-4 shadow-xs overflow-hidden w-full max-w-full shrink-0" aria-label="Table of contents">
+      <h2 className="!text-xs font-bold text-[#0f172a] uppercase tracking-wider mb-2.5 pb-2 border-b border-[#edf3fc] flex items-center justify-between">
         <span>Table of contents</span>
-        <span className="text-[10px] font-medium text-[#6b7280] lowercase font-normal">{list.length} sections</span>
+        <span className="text-[11px] font-semibold text-[#0b4fa8] bg-[#edf4fd] px-2 py-0.5 rounded-full border border-[#d2e4f9]">{list.length} sections</span>
       </h2>
       <ul className="space-y-1 text-[13px] overflow-hidden w-full">
         {visibleItems.map((item) => {
@@ -689,10 +693,10 @@ function ExamTOC({ items = [] }) {
               <a
                 href={`#${item.id}`}
                 onClick={(e) => jump(e, item.id)}
-                className={`block w-full min-w-0 px-2.5 py-1.5 rounded-lg transition-colors leading-snug truncate ${
+                className={`block w-full min-w-0 px-3 py-1.5 rounded-lg transition-all leading-snug truncate ${
                   isActive
-                    ? "bg-[#eff5ff] text-[#115eaf] font-semibold border-l-2 border-[#115eaf]"
-                    : "text-[#43474d] hover:text-[#115eaf] hover:bg-[#f8fbff]"
+                    ? "bg-[#edf4fd] text-[#073774] font-bold border border-[#bed8fb] shadow-2xs"
+                    : "text-[#1e293b] font-medium hover:text-[#0b4fa8] hover:bg-[#f1f6fd]"
                 }`}
                 title={item.title}
               >
@@ -706,7 +710,7 @@ function ExamTOC({ items = [] }) {
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
-          className="mt-2.5 pt-2 border-t border-[#f0f4f8] w-full text-left text-[11px] font-semibold text-[#115eaf] hover:text-[#084a8c] inline-flex items-center justify-between cursor-pointer"
+          className="mt-2.5 pt-2 border-t border-[#edf3fc] w-full text-left text-[11.5px] font-semibold text-[#0b4fa8] hover:text-[#073774] inline-flex items-center justify-between cursor-pointer transition-colors"
         >
           <span>{expanded ? "Show fewer sections" : `+${hidden} more sections`}</span>
           <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${expanded ? "rotate-180" : ""}`} aria-hidden="true" />
@@ -729,16 +733,16 @@ function SidebarDiscoverCard({ relatedExams, popularExams, currentSlug }) {
   ];
 
   return (
-    <div className="bg-white rounded-xl border border-[#e7eeff] p-3.5 sm:p-4 shadow-2xs divide-y divide-[#f0f4f8]">
+    <div className="bg-white rounded-xl border border-[#d8e5f8] p-3.5 sm:p-4 shadow-xs divide-y divide-[#edf3fc]">
       {/* 1. Related Exams */}
       {filteredRelated.length > 0 && (
         <div className="pb-3.5">
-          <h3 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-2.5 flex items-center justify-between">
+          <h3 className="text-xs font-bold text-[#0f172a] uppercase tracking-wider mb-2.5 flex items-center justify-between">
             <span className="flex items-center gap-1.5">
-              <BookOpen className="w-3.5 h-3.5 text-[#115eaf]" aria-hidden="true" />
+              <BookOpen className="w-3.5 h-3.5 text-[#0b4fa8]" aria-hidden="true" />
               <span>Related Exams</span>
             </span>
-            <span className="text-[10px] font-medium text-[#6b7280]">Curated</span>
+            <span className="text-[10px] font-semibold text-[#0b4fa8] bg-[#edf4fd] px-2 py-0.5 rounded-full border border-[#d2e4f9]">Curated</span>
           </h3>
           <ul className="space-y-2">
             {filteredRelated.map((ex, idx) => {
@@ -749,21 +753,21 @@ function SidebarDiscoverCard({ relatedExams, popularExams, currentSlug }) {
                   <div className="min-w-0 flex-1">
                     <Link
                       to={`/exams/${slug}`}
-                      className="text-xs font-semibold text-[#000f22] group-hover:text-[#115eaf] transition-colors line-clamp-1 leading-snug"
+                      className="text-[12.5px] font-semibold text-[#0f172a] group-hover:text-[#0b4fa8] transition-colors line-clamp-1 leading-snug"
                       title={ex.title || clean}
                     >
                       {clean}
                     </Link>
-                    <div className="flex items-center gap-1.5 mt-0.5 text-[10px] text-[#6b7280]">
-                      <span className="px-1.5 py-0.2 rounded bg-[#f0f5ff] text-[#115eaf] font-medium border border-[#d5e3ff]">
+                    <div className="flex items-center gap-1.5 mt-0.5 text-[11px] text-[#475569]">
+                      <span className="px-1.5 py-0.2 rounded bg-[#f0f6ff] text-[#0b4fa8] font-medium border border-[#d2e4f9]">
                         {ex.examMode || "Online"}
                       </span>
-                      {ex.category ? <span className="truncate max-w-[100px]">{ex.category}</span> : null}
+                      {ex.category ? <span className="truncate max-w-[100px] font-medium">{ex.category}</span> : null}
                     </div>
                   </div>
                   <Link
                     to={`/exams/${slug}`}
-                    className="shrink-0 text-[11px] font-semibold text-[#115eaf] group-hover:text-[#084a8c] inline-flex items-center gap-0.5 pt-0.5"
+                    className="shrink-0 text-[11.5px] font-bold text-[#0b4fa8] group-hover:text-[#073774] inline-flex items-center gap-0.5 pt-0.5"
                     aria-label={`View details of ${clean}`}
                   >
                     <span>View</span>
@@ -779,12 +783,12 @@ function SidebarDiscoverCard({ relatedExams, popularExams, currentSlug }) {
       {/* 2. Popular Exams */}
       {filteredPopular.length > 0 && (
         <div className="py-3.5">
-          <h3 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-2.5 flex items-center justify-between">
+          <h3 className="text-xs font-bold text-[#0f172a] uppercase tracking-wider mb-2.5 flex items-center justify-between">
             <span className="flex items-center gap-1.5">
-              <TrendingUp className="w-3.5 h-3.5 text-[#115eaf]" aria-hidden="true" />
+              <TrendingUp className="w-3.5 h-3.5 text-[#0b4fa8]" aria-hidden="true" />
               <span>Popular Exams</span>
             </span>
-            <span className="text-[10px] font-semibold text-[#115eaf] bg-[#e7eeff] px-1.5 py-0.5 rounded">Top Picks</span>
+            <span className="text-[10px] font-semibold text-[#0b4fa8] bg-[#edf4fd] px-2 py-0.5 rounded-full border border-[#d2e4f9]">Top Picks</span>
           </h3>
           <ul className="space-y-1.5">
             {filteredPopular.map((item, idx) => {
@@ -793,12 +797,12 @@ function SidebarDiscoverCard({ relatedExams, popularExams, currentSlug }) {
                 <li key={item.slug || idx} className="flex items-center justify-between gap-2 text-xs">
                   <Link
                     to={`/exams/${item.slug}`}
-                    className="font-medium text-[#43474d] hover:text-[#115eaf] transition-colors truncate max-w-[180px]"
+                    className="font-medium text-[#1e293b] hover:text-[#0b4fa8] transition-colors truncate max-w-[180px]"
                     title={item.title || clean}
                   >
                     {clean}
                   </Link>
-                  <span className="text-[10px] text-[#6b7280] shrink-0 font-medium px-1.5 py-0.5 rounded bg-[#f8fbff] border border-[#e7eeff]">
+                  <span className="text-[10px] text-[#475569] shrink-0 font-medium px-1.5 py-0.5 rounded bg-[#f8fafc] border border-[#e2e8f0]">
                     {item.mode || item.examMode || "Online"}
                   </span>
                 </li>
@@ -810,8 +814,8 @@ function SidebarDiscoverCard({ relatedExams, popularExams, currentSlug }) {
 
       {/* 3. Explore Categories */}
       <div className="pt-3.5">
-        <h3 className="text-xs font-bold text-[#000f22] uppercase tracking-wider mb-2 flex items-center gap-1.5">
-          <Compass className="w-3.5 h-3.5 text-[#115eaf]" aria-hidden="true" />
+        <h3 className="text-xs font-bold text-[#0f172a] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <Compass className="w-3.5 h-3.5 text-[#0b4fa8]" aria-hidden="true" />
           <span>Explore Categories</span>
         </h3>
         <div className="flex flex-wrap gap-1.5">
@@ -819,7 +823,7 @@ function SidebarDiscoverCard({ relatedExams, popularExams, currentSlug }) {
             <Link
               key={i}
               to={cat.href}
-              className="inline-flex items-center text-[11px] font-medium px-2 py-0.5 rounded-md bg-[#f8fbff] hover:bg-[#eef5ff] text-[#115eaf] border border-[#d5e3ff] transition-colors"
+              className="inline-flex items-center text-[11px] font-semibold px-2 py-0.5 rounded-md bg-[#edf4fd] hover:bg-[#e1edfc] text-[#0b4fa8] border border-[#cbe1fb] transition-colors"
             >
               {cat.label}
             </Link>
@@ -840,20 +844,20 @@ function SidebarCounsellingCard({ onOpenCounseling }) {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-[#d5e3ff] p-3.5 sm:p-4 shadow-2xs">
+    <div className="bg-gradient-to-br from-[#f8fbff] to-white rounded-xl border border-[#bed8fb] p-3.5 sm:p-4 shadow-xs">
       <div className="flex items-center gap-2 mb-2">
-        <div className="w-7 h-7 rounded-lg bg-[#115eaf] text-white flex items-center justify-center shrink-0">
+        <div className="w-7 h-7 rounded-lg bg-[#0b4fa8] text-white flex items-center justify-center shrink-0">
           <Headphones className="w-3.5 h-3.5" aria-hidden="true" />
         </div>
         <div>
-          <h3 className="text-xs font-bold text-[#000f22] leading-tight">Free 1-on-1 Counselling</h3>
-          <p className="text-[10px] text-[#6b7280]">Senior Academic Mentorship</p>
+          <h3 className="text-xs font-bold text-[#0f172a] leading-tight">Free 1-on-1 Counselling</h3>
+          <p className="text-[10px] text-[#475569] font-medium">Senior Academic Mentorship</p>
         </div>
       </div>
-      <p className="text-xs text-[#43474d] leading-relaxed mb-3">
+      <p className="text-xs text-[#334155] leading-relaxed mb-3">
         Confused about exam eligibility, syllabus weightage, or college cutoffs? Speak with our certified mentors today.
       </p>
-      <div className="space-y-1 mb-3 text-[11px] text-[#000f22] font-medium">
+      <div className="space-y-1 mb-3 text-[11px] text-[#0f172a] font-medium">
         <div className="flex items-center gap-1.5">
           <CheckCircle className="w-3 h-3 text-emerald-600 shrink-0" aria-hidden="true" />
           <span>100% Free &amp; Unbiased Mentorship</span>
@@ -866,7 +870,7 @@ function SidebarCounsellingCard({ onOpenCounseling }) {
       <button
         type="button"
         onClick={handleCta}
-        className="w-full h-8.5 rounded-lg bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-2xs"
+        className="w-full h-8.5 rounded-lg bg-[#0b4fa8] hover:bg-[#073774] text-white text-xs font-semibold inline-flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs"
       >
         <span>Request Free Counselling</span>
         <ArrowRight className="w-3 h-3" aria-hidden="true" />
