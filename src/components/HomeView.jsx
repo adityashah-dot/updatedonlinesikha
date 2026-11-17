@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ViewAllButton from "./ViewAllButton";
 import { getCoursesListing } from "../services/courseApi";
 import {
+  TrendingUp,
   Search,
   ShieldCheck,
   ArrowRight,
@@ -187,43 +188,43 @@ const COMPARE_UNIVERSITIES = [
     programs: {
       overview: {
         fees: "₹80,000 – ₹1,60,000",
-        perSem: "Starts ₹16,000 / sem",
+        placement: "₹4.5 – 12.0 LPA",
         emi: "Starts ₹2,666 / month",
         duration: "2 to 3 Years (UG & PG)"
       },
       mba: {
         fees: "₹1,60,000",
-        perSem: "₹40,000 / semester",
+        placement: "₹8.5 LPA",
         emi: "₹5,333 / month",
         duration: "2 Years (4 Sems)"
       },
       mca: {
         fees: "₹1,40,000",
-        perSem: "₹35,000 / semester",
+        placement: "₹7.8 LPA",
         emi: "₹4,666 / month",
         duration: "2 Years (4 Sems)"
       },
       bba: {
         fees: "₹1,14,000",
-        perSem: "₹19,000 / semester",
+        placement: "₹5.5 LPA",
         emi: "₹3,166 / month",
         duration: "3 Years (6 Sems)"
       },
       bca: {
         fees: "₹1,20,000",
-        perSem: "₹20,000 / semester",
+        placement: "₹6.2 LPA",
         emi: "₹3,333 / month",
         duration: "3 Years (6 Sems)"
       },
       bcom: {
         fees: "₹96,000",
-        perSem: "₹16,000 / semester",
+        placement: "₹5.2 LPA",
         emi: "₹2,666 / month",
         duration: "3 Years (6 Sems)"
       },
       mcom: {
         fees: "₹80,000",
-        perSem: "₹20,000 / semester",
+        placement: "₹6.2 LPA",
         emi: "₹2,666 / month",
         duration: "2 Years (4 Sems)"
       }
@@ -237,43 +238,43 @@ const COMPARE_UNIVERSITIES = [
     programs: {
       overview: {
         fees: "₹1,10,000 – ₹1,99,000",
-        perSem: "Starts ₹20,000 / sem",
+        placement: "₹5.0 – 14.5 LPA",
         emi: "Starts ₹3,333 / month",
         duration: "2 to 3 Years (UG & PG)"
       },
       mba: {
         fees: "₹1,99,000",
-        perSem: "₹49,750 / semester",
+        placement: "₹9.2 LPA",
         emi: "₹6,633 / month",
         duration: "2 Years (4 Sems)"
       },
       mca: {
         fees: "₹1,65,000",
-        perSem: "₹41,250 / semester",
+        placement: "₹8.2 LPA",
         emi: "₹5,500 / month",
         duration: "2 Years (4 Sems)"
       },
       bba: {
         fees: "₹1,50,000",
-        perSem: "₹25,000 / semester",
+        placement: "₹5.8 LPA",
         emi: "₹4,166 / month",
         duration: "3 Years (6 Sems)"
       },
       bca: {
         fees: "₹1,40,000",
-        perSem: "₹23,333 / semester",
+        placement: "₹6.5 LPA",
         emi: "₹3,888 / month",
         duration: "3 Years (6 Sems)"
       },
       bcom: {
         fees: "₹1,20,000",
-        perSem: "₹20,000 / semester",
+        placement: "₹6.2 LPA",
         emi: "₹3,333 / month",
         duration: "3 Years (6 Sems)"
       },
       mcom: {
         fees: "₹1,10,000",
-        perSem: "₹27,500 / semester",
+        placement: "₹6.5 LPA",
         emi: "₹3,666 / month",
         duration: "2 Years (4 Sems)"
       }
@@ -287,43 +288,43 @@ const COMPARE_UNIVERSITIES = [
     programs: {
       overview: {
         fees: "₹75,000 – ₹1,50,000",
-        perSem: "Starts ₹15,000 / sem",
+        placement: "₹4.2 – 10.5 LPA",
         emi: "Starts ₹2,500 / month",
         duration: "2 to 3 Years (UG & PG)"
       },
       mba: {
         fees: "₹1,50,000",
-        perSem: "₹37,500 / semester",
+        placement: "₹7.8 LPA",
         emi: "₹5,000 / month",
         duration: "2 Years (4 Sems)"
       },
       mca: {
         fees: "₹1,35,000",
-        perSem: "₹33,750 / semester",
+        placement: "₹7.2 LPA",
         emi: "₹4,500 / month",
         duration: "2 Years (4 Sems)"
       },
       bba: {
         fees: "₹1,05,000",
-        perSem: "₹17,500 / semester",
+        placement: "₹5.0 LPA",
         emi: "₹2,916 / month",
         duration: "3 Years (6 Sems)"
       },
       bca: {
         fees: "₹1,10,000",
-        perSem: "₹18,333 / semester",
+        placement: "₹5.8 LPA",
         emi: "₹3,055 / month",
         duration: "3 Years (6 Sems)"
       },
       bcom: {
         fees: "₹90,000",
-        perSem: "₹15,000 / semester",
+        placement: "₹4.8 LPA",
         emi: "₹2,500 / month",
         duration: "3 Years (6 Sems)"
       },
       mcom: {
         fees: "₹85,000",
-        perSem: "₹21,250 / semester",
+        placement: "₹5.5 LPA",
         emi: "₹2,833 / month",
         duration: "2 Years (4 Sems)"
       }
@@ -337,43 +338,43 @@ const COMPARE_UNIVERSITIES = [
     programs: {
       overview: {
         fees: "₹85,000 – ₹1,75,000",
-        perSem: "Starts ₹17,500 / sem",
+        placement: "₹4.8 – 12.5 LPA",
         emi: "Starts ₹2,916 / month",
         duration: "2 to 3 Years (UG & PG)"
       },
       mba: {
         fees: "₹1,75,000",
-        perSem: "₹43,750 / semester",
+        placement: "₹8.2 LPA",
         emi: "₹5,833 / month",
         duration: "2 Years (4 Sems)"
       },
       mca: {
         fees: "₹1,50,000",
-        perSem: "₹37,500 / semester",
+        placement: "₹7.8 LPA",
         emi: "₹5,000 / month",
         duration: "2 Years (4 Sems)"
       },
       bba: {
         fees: "₹1,35,000",
-        perSem: "₹22,500 / semester",
+        placement: "₹5.4 LPA",
         emi: "₹3,750 / month",
         duration: "3 Years (6 Sems)"
       },
       bca: {
         fees: "₹1,35,000",
-        perSem: "₹22,500 / semester",
+        placement: "₹5.4 LPA",
         emi: "₹3,750 / month",
         duration: "3 Years (6 Sems)"
       },
       bcom: {
         fees: "₹1,05,000",
-        perSem: "₹17,500 / semester",
+        placement: "₹5.0 LPA",
         emi: "₹2,916 / month",
         duration: "3 Years (6 Sems)"
       },
       mcom: {
         fees: "₹1,00,000",
-        perSem: "₹25,000 / semester",
+        placement: "₹5.8 LPA",
         emi: "₹3,333 / month",
         duration: "2 Years (4 Sems)"
       }
@@ -383,7 +384,7 @@ const COMPARE_UNIVERSITIES = [
 
 const COMPARE_CRITERIA = [
   ["Total fees", "fees"],
-  ["Per Semester Fee", "perSem"],
+  ["Average Placement", "placement"],
   ["Duration", "duration"],
   ["Monthly EMI", "emi"],
   ["Approval", "approval"],
@@ -417,7 +418,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
   const [lead, setLead] = useState({ name: "", email: "", phone: "", degree: "Online MBA" });
   const [leadSubmitted, setLeadSubmitted] = useState(false);
   const [uniChip, setUniChip] = useState(UNI_CHIPS[0]);
-  const [compareColumns, setCompareColumns] = useState([0, 1]);
+  const [compareColumns, setCompareColumns] = useState([0, 1, 2]);
   const [selectedCompareCourse, setSelectedCompareCourse] = useState("mba");
     const [degreeLevel, setDegreeLevel] = useState("PG");
   const [degreePrograms, setDegreePrograms] = useState(DEGREE_PROGRAMS);
@@ -487,6 +488,35 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
     e.preventDefault();
     navigate("/universities");
   };
+  const getDynamicPlacement = (uni, courseKey) => {
+    const progData = uni.programs[courseKey] || uni.programs.overview;
+    if (courseKey === "overview") {
+      return progData.placement || "₹4.5 – 12.0 LPA";
+    }
+
+    const matched = degreePrograms.find((dp) => {
+      if (courseKey === "mba") return dp.slug === "online-mba" || dp.n.includes("MBA");
+      if (courseKey === "mca") return dp.slug === "online-mca" || dp.n.includes("MCA");
+      if (courseKey === "bba") return dp.slug === "online-bba" || dp.n.includes("BBA");
+      if (courseKey === "bca") return dp.slug === "online-bca" || dp.n.includes("BCA");
+      if (courseKey === "bcom") return dp.slug === "online-bcom" || dp.n.includes("B.Com");
+      if (courseKey === "mcom") return dp.slug === "online-mcom" || dp.n.includes("M.Com");
+      return false;
+    });
+
+    if (matched && matched.ctc) {
+      const baseNumMatch = matched.ctc.match(/[\d.]+/);
+      const baseNum = baseNumMatch ? parseFloat(baseNumMatch[0]) : 8.0;
+      if (uni.id === "amity-online") return `₹${(baseNum + 0.7).toFixed(1)} LPA`;
+      if (uni.id === "lpu-online") return `₹${baseNum.toFixed(1)} LPA`;
+      if (uni.id === "cu-online") return `₹${Math.max(4.0, baseNum - 0.7).toFixed(1)} LPA`;
+      if (uni.id === "manipal-online") return `₹${Math.max(4.5, baseNum - 0.3).toFixed(1)} LPA`;
+      return matched.ctc;
+    }
+
+    return progData.placement || "₹7.5 LPA";
+  };
+
   const addCompareColumn = () => {
     setCompareColumns((prev) => {
       if (prev.length >= 4) return prev;
@@ -591,7 +621,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
       <div className="hidden md:block">
       <section id="degrees" aria-labelledby="degrees-heading" className="w-full">
         <div className="w-full">
-          <div className="hd flex flex-col md:flex-row md:items-end md:justify-between gap-5 flex-wrap mb-7">
+          <div className="hd flex flex-col md:flex-row md:items-end md:justify-between gap-4 flex-wrap mb-4">
             <div>
               <h2 id="degrees-heading" className="text-xl sm:text-2xl font-bold leading-[1.15] tracking-[-0.025em] text-[#000f22]">Popular online degree programs</h2>
               <p className="s mt-2.5 text-[14px] text-[#43474d] max-w-[52ch]">Approved under UGC Section 22 with equivalence to conventional regular degrees.</p>
@@ -613,6 +643,16 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
           </div>
 
           <div>
+            {/* Clean, compact table header */}
+            <div className="grid grid-cols-[88px_1.5fr_1.6fr_1.1fr_1fr_135px] gap-4 items-center py-2 px-1 border-b-2 border-slate-200 bg-[#f8fafc] text-[11px] font-bold uppercase tracking-wider text-slate-500 rounded-t-lg">
+              <span>Duration</span>
+              <span>Courses</span>
+              <span>Specializations</span>
+              <span>Avg. Placement</span>
+              <span>Total Program Fee</span>
+              <span className="text-center">Action</span>
+            </div>
+
             {filteredDegreePrograms.length === 0 ? (
               <p className="em py-7 text-[14px] text-[#43474d]">No executive programs are listed yet. Connect this tab to your existing data.</p>
             ) : (
@@ -622,10 +662,10 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 return (
                 <div
                   key={p.n + idx}
-                  className={`dg grid grid-cols-2 md:grid-cols-[88px_1.5fr_1.6fr_1.1fr_1fr_auto] gap-x-4 gap-y-2 md:gap-4 items-center py-2 md:py-[9px] border-b border-[#e2e8f0] ${idx === 0 ? "border-t-2 border-t-[#000f22]" : ""}`}
+                  className="dg grid grid-cols-[88px_1.5fr_1.6fr_1.1fr_1fr_135px] gap-4 items-center py-2.5 px-1 border-b border-[#e2e8f0] hover:bg-slate-50/60 transition-colors"
                 >
-                  <span className="du col-span-2 md:col-span-1 order-first md:order-none text-[12px] text-[#475569] font-medium leading-[1.3]">{p.y}</span>
-                  <div className="col-span-2 md:col-span-1">
+                  <span className="du text-[12.5px] text-[#475569] font-medium leading-[1.3]">{p.y}</span>
+                  <div>
                     <Link
                       to={courseHref}
                       className="group/course block no-underline"
@@ -637,22 +677,19 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                     </Link>
                     {p.tg ? <span className="tg block mt-1 text-[11.5px] text-[#0b4fa8] font-medium">{p.tg}</span> : null}
                   </div>
-                  <div className="sp col-span-2 md:col-span-1 text-[12.5px] text-[#475569] leading-[1.25]">
-                    <span className="lb block mb-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#64748b]">{p.lab}</span>
+                  <div className="sp text-[12.5px] text-[#475569] leading-snug">
                     {p.sp}
                   </div>
-                  <div className="sp col-span-1 md:col-span-1 text-[12px] text-[#475569] leading-[1.25]">
-                    <span className="lb block mb-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#64748b]">Avg. Placement</span>
-                    <span className="font-medium text-[#1e293b]">{p.ctc}</span>
+                  <div className="sp text-[12.5px] text-[#475569] leading-[1.25]">
+                    <span className="font-bold text-[#1e293b] text-[13px]">{p.ctc}</span>
                   </div>
-                  <div className="pr col-span-1 md:col-span-1 text-[12px] text-[#475569] leading-[1.25]">
-                    <span className="lb block mb-0.5 text-[10px] font-semibold uppercase tracking-wider text-[#64748b]">Total Program Fee</span>
-                    <b className="block text-[14.5px] font-bold text-[#000f22] tracking-tight leading-tight">{p.totalFee}</b>
+                  <div className="pr text-[12px] text-[#475569] leading-[1.25]">
+                    <b className="block text-[14px] font-bold text-[#000f22] tracking-tight leading-tight">{p.totalFee}</b>
                     <span className="text-[10px] text-[#64748b] block mt-0.5">{p.sems}</span>
                   </div>
-                  <div className="col-span-2 md:col-span-1 justify-self-start md:justify-self-center md:self-center flex flex-col items-start md:items-center gap-1">
+                  <div className="justify-self-center flex flex-col items-center gap-1">
                     <Link
-                      className="btn inline-flex items-center justify-center bg-[#0b4fa8] hover:bg-[#073774] text-white border-0 rounded-md px-4 py-1.5 min-h-[34px] text-[12px] font-semibold no-underline cursor-pointer whitespace-nowrap transition-colors shadow-2xs"
+                      className="btn inline-flex items-center justify-center bg-[#0b4fa8] hover:bg-[#073774] text-white border-0 rounded-md px-3.5 py-1.5 min-h-[32px] text-[11.5px] font-semibold no-underline cursor-pointer whitespace-nowrap transition-colors shadow-2xs"
                       to={uniHref}
                     >
                       Explore {p.c} Univ.
@@ -803,9 +840,9 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         </button>
       </section>
 
-      <section id="compare" className="w-full bg-white rounded-2xl border border-slate-200/90 shadow-sm p-3.5 sm:p-5 md:p-6">
+      <section id="compare" className="w-full bg-white rounded-2xl border border-slate-200/90 shadow-sm p-3 sm:p-4 md:p-4.5">
         {/* Header Block: Full Width, Engaging & Clean */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-3.5 border-b border-slate-100">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 pb-2.5 border-b border-slate-100">
           <div>
             
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#000f22] leading-tight">
@@ -824,7 +861,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 aria-label="Select course to compare"
                 value={selectedCompareCourse}
                 onChange={(e) => setSelectedCompareCourse(e.target.value)}
-                className="w-full h-9.5 pl-3 pr-8 rounded-lg border border-[#bed8fb] bg-[#f8fbff] text-xs sm:text-[13px] font-bold text-[#000f22] focus:border-[#0b4fa8] focus:ring-2 focus:ring-[#0b4fa8]/15 cursor-pointer appearance-none outline-none"
+                className="w-full h-8.5 pl-2.5 pr-7 rounded-lg border border-[#bed8fb] bg-[#f8fbff] text-xs font-bold text-[#000f22] focus:border-[#0b4fa8] focus:ring-1 focus:ring-[#0b4fa8]/15 cursor-pointer appearance-none outline-none"
               >
                 {COMPARE_PROGRAMS.map((prog) => (
                   <option key={prog.id} value={prog.id}>
@@ -838,11 +875,11 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         </div>
 
         {/* Comparison Matrix Table */}
-        <div className="mt-3.5 overflow-x-auto [scrollbar-width:thin]">
-          <table className="w-full border-collapse min-w-[620px] text-left">
+        <div className="mt-2.5 overflow-x-auto [scrollbar-width:thin]">
+          <table className="w-full border-collapse min-w-[700px] text-left">
             <thead>
               <tr>
-                <th scope="col" className="p-3 w-[150px] sm:w-[170px] align-bottom bg-[#f8fafc] rounded-tl-xl text-xs font-bold uppercase tracking-wider text-slate-500 border-b-2 border-slate-200">
+                <th scope="col" className="py-2 px-2.5 sm:py-2.5 sm:px-3 w-[130px] sm:w-[150px] align-bottom bg-[#f8fafc] rounded-tl-xl text-xs font-bold uppercase tracking-wider text-slate-500 border-b-2 border-slate-200">
                   Criteria
                 </th>
                 {compareColumns.map((uniIdx, colIdx) => {
@@ -852,7 +889,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                     <th
                       key={colIdx}
                       scope="col"
-                      className={`p-3 align-top bg-gradient-to-b from-[#f8fbff] to-white border-b-2 border-[#bed8fb] ${isLast ? "rounded-tr-xl" : ""}`}
+                      className={`py-2 px-2.5 sm:py-2.5 sm:px-3 align-top bg-gradient-to-b from-[#f8fbff] to-white border-b-2 border-[#bed8fb] ${isLast ? "rounded-tr-xl" : ""}`}
                     >
                       <div className="space-y-2">
                         <div className="relative">
@@ -860,7 +897,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                             aria-label={`University ${colIdx + 1}`}
                             value={uniIdx}
                             onChange={(e) => changeCompareColumn(colIdx, Number(e.target.value))}
-                            className="w-full h-9 pl-2.5 pr-7 rounded-lg border border-[#bed8fb] bg-white text-xs sm:text-[13px] font-bold text-[#000f22] focus:border-[#0b4fa8] focus:ring-2 focus:ring-[#0b4fa8]/20 cursor-pointer appearance-none truncate outline-none shadow-2xs"
+                            className="w-full h-8 pl-2 pr-6 rounded-md border border-[#bed8fb] bg-white text-xs font-bold text-[#000f22] focus:border-[#0b4fa8] focus:ring-1 focus:ring-[#0b4fa8]/20 cursor-pointer appearance-none truncate outline-none shadow-2xs"
                           >
                             {COMPARE_UNIVERSITIES.map((u, i) => (
                               <option key={i} value={i}>{u.name}</option>
@@ -890,20 +927,22 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             <tbody className="divide-y divide-slate-100 text-xs sm:text-[13px]">
               {COMPARE_CRITERIA.map(([label, key], rowIdx) => (
                 <tr key={label} className={rowIdx % 2 === 0 ? "bg-white" : "bg-slate-50/50"}>
-                  <th scope="row" className="p-3 text-xs font-semibold text-[#000f22] bg-[#f8fafc]/80 border-r border-slate-100">
+                  <th scope="row" className="py-2 px-2.5 sm:py-2.5 sm:px-3 text-xs font-semibold text-[#000f22] bg-[#f8fafc]/80 border-r border-slate-100">
                     {label}
                   </th>
                   {compareColumns.map((uniIdx, colIdx) => {
                     const uni = COMPARE_UNIVERSITIES[uniIdx];
                     const progData = uni.programs[selectedCompareCourse] || uni.programs.overview;
-                    const val = key === "approval" ? uni.approval : key === "exam" ? uni.exam : progData[key];
+                    const val = key === "approval" ? uni.approval : key === "exam" ? uni.exam : key === "placement" ? getDynamicPlacement(uni, selectedCompareCourse) : progData[key];
                     return (
-                      <td key={colIdx} className="p-3 text-slate-700 leading-snug">
+                      <td key={colIdx} className="py-2 px-2.5 sm:py-2.5 sm:px-3 text-slate-700 leading-snug">
                         {key === "fees" ? (
-                          <div>
-                            <span className="font-bold text-[#000f22] text-sm sm:text-[14px] block">{val}</span>
-                            <span className="text-[10px] text-slate-400">Total Program Investment</span>
-                          </div>
+                          <span className="font-bold text-[#000f22] text-xs sm:text-[13.5px] block">{val}</span>
+                        ) : key === "placement" ? (
+                          <span className="inline-flex items-center gap-1 font-bold text-emerald-800 text-xs sm:text-[12.5px] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                            <TrendingUp className="w-3 h-3 text-emerald-600 shrink-0" />
+                            <span>{val}</span>
+                          </span>
                         ) : key === "emi" ? (
                           <span className="inline-block px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 font-bold text-xs border border-emerald-200">
                             {val}
@@ -926,7 +965,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         </div>
 
         {/* Footer Controls: Add University & Program Disclaimer */}
-        <div className="mt-3 pt-2.5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+        <div className="mt-2.5 pt-2 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <p className="text-[11px] text-slate-500 leading-tight">
             * Data reflected for {COMPARE_PROGRAMS.find((p) => p.id === selectedCompareCourse)?.name || "chosen course"}. Approvals verified via official UGC-DEB notifications.
           </p>
@@ -935,7 +974,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             type="button"
             onClick={addCompareColumn}
             disabled={compareColumns.length >= 4}
-            className="self-start sm:self-auto h-8 px-3.5 rounded-lg border border-[#0b4fa8] text-[#0b4fa8] text-xs font-bold hover:bg-[#edf4fd] active:scale-[0.98] transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-1.5 cursor-pointer shrink-0"
+            className="self-start sm:self-auto h-7.5 px-3 rounded-md border border-[#0b4fa8] text-[#0b4fa8] text-xs font-bold hover:bg-[#edf4fd] active:scale-[0.98] transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-1.5 cursor-pointer shrink-0"
           >
             <span>+ Add University</span>
             <span className="text-[10px] opacity-75">({compareColumns.length}/4)</span>
