@@ -218,18 +218,27 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
       {/* ================= HERO & DISCOVERY SEARCH BAR ================= */}
       <section className="bg-gradient-to-b from-[#f0f3ff] via-white to-[#f9f9ff] border-b border-[#e7eeff] pt-8 pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-7">
-            <div className="mb-3 text-[11px] font-medium text-[#43474d]">
-              <span className="text-[#115eaf] font-semibold">Accredited by UGC, AICTE &amp; NAAC</span>
-              <span className="text-[#c4c6ce] mx-2">|</span>
-              <span className="text-[#115eaf] font-semibold">Session 2026-27 Open</span>
+          <div className="text-center max-w-3xl mx-auto mb-3 md:mb-7">
+            <div className="hidden md:block mb-2 text-xs font-semibold text-[#115eaf]">
+              <span>Accredited by UGC, AICTE &amp; NAAC</span>
+              <span className="text-[#c4c6ce] mx-2 font-normal">|</span>
+              <span>Session 2026–27 Open</span>
             </div>
-            <h1 className="font-sans font-bold text-[#000f22] tracking-tight leading-snug">
-              Explore Top UGC-DEB Approved Online Universities in India
+            <h1 className="hidden md:block text-3xl lg:text-4xl font-bold text-[#000f22] tracking-tight leading-tight">
+              Explore Top UGC-DEB Approved
+              <span className="text-[#115eaf] block mt-0.5">Online Universities in India</span>
             </h1>
-            <p className="font-sans text-sm text-[#43474d] font-normal leading-relaxed mt-2.5 max-w-2xl mx-auto">
+            <p className="hidden md:block font-sans text-sm text-[#43474d] font-normal leading-relaxed mt-2.5 max-w-2xl mx-auto">
               Compare verified universities, programs, fees,
               <br className="hidden sm:block" /> and admission details — all in one place.
+            </p>
+
+            {/* Mobile-Only Heading */}
+            <h1 className="md:hidden text-lg sm:text-2xl font-extrabold text-[#000f22] tracking-tight leading-snug m-0">
+              Top Online Universities in India <span className="text-[#115eaf]">(2026)</span>
+            </h1>
+            <p className="md:hidden text-xs text-[#43474d] mt-1 font-normal leading-relaxed">
+              Compare UGC-DEB approved universities, accredited programs &amp; verified fees.
             </p>
           </div>
 
@@ -600,8 +609,6 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                           </span>
                           <span>•</span>
                           <span>{u.established}</span>
-                          <span>•</span>
-                          <span className="text-[#B45309] font-semibold">{u.rankNote}</span>
                         </p>
 
                         <div className={`flex flex-wrap items-center ${u.isLpu || u.id === 'cu-online' ? 'gap-1.5' : 'gap-2'} mt-2.5`}>
@@ -621,18 +628,28 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                       </div>
                     </div>
 
-                    {/* Fee box */}
-                    <div className="text-left md:text-right bg-[#f9f9ff] md:bg-transparent p-3.5 md:p-0 rounded-xl shrink-0 border md:border-0 border-[#e7eeff]">
-                      <span className="block text-[11px] text-[#74777e] font-semibold uppercase">
-                        Total Program Fee
-                      </span>
-                      <div className="text-xl font-bold text-[#000f22]">
-                        {u.feeLabel}{' '}
-                        <span className="text-xs text-[#43474d] font-normal">onwards</span>
-                      </div>
-                      <div className="inline-flex items-center gap-1 px-2.5 py-1 mt-1 bg-emerald-50 text-emerald-800 rounded-full text-[11px] font-semibold border border-emerald-200/60 shadow-xs">
-                        <CreditCard className="w-3 h-3" />
-                        EMI starts {u.emi}
+                    {/* Fee box with NIRF Rank on the Right Side */}
+                    <div className="text-left md:text-right bg-[#f9f9ff] md:bg-transparent p-3.5 md:p-0 rounded-xl shrink-0 border md:border-0 border-[#e7eeff] flex flex-col justify-between items-start md:items-end">
+                      {u.rankNote && (
+                        <div className="mb-2">
+                          <span className="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-bold text-amber-900 bg-amber-50 border border-amber-200/90 shadow-2xs">
+                            <Trophy className="w-3 h-3 text-amber-600 fill-amber-500 shrink-0" />
+                            {u.rankNote}
+                          </span>
+                        </div>
+                      )}
+                      <div>
+                        <span className="block text-[11px] text-[#74777e] font-semibold uppercase">
+                          Fee Range
+                        </span>
+                        <div className="text-xl font-bold text-[#000f22]">
+                          {u.feeRange || u.feeLabel}
+
+                        </div>
+                        <div className="inline-flex items-center gap-1 px-2.5 py-1 mt-1 bg-emerald-50 text-emerald-800 rounded-full text-[11px] font-semibold border border-emerald-200/60 shadow-xs">
+                          <CreditCard className="w-3 h-3" />
+                          EMI starts {u.emi}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -681,6 +698,12 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0">
+                      {u.established && (
+                        <span className="inline-flex items-center gap-1.5 text-xs text-[#43474d] font-normal mr-2">
+                          <Clock className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
+                          Established in {u.established}
+                        </span>
+                      )}
                       <label 
                         className="flex items-center gap-1.5 text-[13px] font-medium text-[#43474d] cursor-pointer mr-2 select-none hover:text-[#000f22]"
                         onClick={(e) => e.stopPropagation()}
@@ -980,6 +1003,20 @@ export const UniversitiesView: React.FC<UniversitiesViewProps> = ({
           </div>
         </div>
       )}
+
+      {/* Vertical Edge Tab — "Free Apply" */}
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex items-center pointer-events-none">
+        <button
+          type="button"
+          onClick={() => onOpenApply?.()}
+          className="pointer-events-auto hidden h-[200px] w-12 items-center justify-center rounded-l-2xl bg-[#115eaf] shadow-md transition-colors hover:bg-[#004689] lg:flex cursor-pointer active:scale-95"
+          aria-label="Free Apply"
+        >
+          <span className="block text-white text-sm font-semibold tracking-wide whitespace-nowrap -rotate-90">
+            Free Apply
+          </span>
+        </button>
+      </div>
 
       {/* hide-scrollbar utility */}
       <style>{`

@@ -6,6 +6,8 @@ import { COURSES_DATA } from "../data/coursesData";
 import { INDIAN_STATES } from "../data/indianLocations";
 import usePageMeta from "../hooks/usePageMeta";
 import CourseCmsContent from "../components/CourseCmsContent";
+import { FaqAccordion } from "../components/FaqAccordion";
+import SafeHtml from "../components/blog/SafeHtml";
 import {
   ArrowRight,
   BookOpen,
@@ -57,73 +59,88 @@ function RelatedCourseCard({ course }) {
   const feeStr = course.feeDisplay || formatFeeDisplay(course.totalFee, course.totalFee) || "Flexible EMI";
 
   return (
-    <article className="group bg-white rounded-xl border border-[#e7eeff] hover:border-[#b1c8eb] hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden">
-      <div>
-        <div className="relative h-32 overflow-hidden bg-gradient-to-br from-[#f0f4f8] via-[#eef4ff] to-[#e7eeff]">
-          {imgSrc ? (
-            <img
-              src={imgSrc}
-              alt={course.images?.alt || course.name}
-              loading="lazy"
-              onError={() => setImgFailed(true)}
-              className={`w-full h-full ${
-                isBanner ? "object-cover object-center group-hover:scale-105" : "object-contain object-center p-4"
-              } transition-transform duration-300`}
-            />
-          ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center p-3 text-[#115eaf]">
-              <div className="w-8 h-8 rounded-lg bg-white/90 border border-[#d5e3ff] flex items-center justify-center shadow-2xs mb-1">
-                <BookOpen className="w-4 h-4 text-[#115eaf]" aria-hidden="true" />
+    <article className="blog-carousel-card group min-w-0 bg-white border border-[#e7eeff] rounded-2xl hover:-translate-y-1 hover:shadow-lg hover:border-[#115eaf]/40 transition-all duration-300 flex flex-col justify-between overflow-hidden">
+      <Link to={"/courses/" + course.id} className="flex flex-col h-full justify-between">
+        <div>
+          {/* Card Banner Image with Hover Zoom */}
+          <div className="relative h-[145px] w-full overflow-hidden bg-gradient-to-br from-[#f0f4f8] via-[#eef4ff] to-[#e7eeff]">
+            {imgSrc ? (
+              <img
+                src={imgSrc}
+                alt={course.images?.alt || course.name}
+                loading="lazy"
+                onError={() => setImgFailed(true)}
+                className={`w-full h-full ${
+                  isBanner ? "object-cover object-center group-hover:scale-105" : "object-contain object-center p-3"
+                } transition-transform duration-500`}
+              />
+            ) : (
+              <div className="w-full h-full flex flex-col items-center justify-center p-3 text-[#115eaf]">
+                <div className="w-9 h-9 rounded-xl bg-white/90 border border-[#d5e3ff] flex items-center justify-center shadow-2xs mb-1">
+                  <BookOpen className="w-4.5 h-4.5 text-[#115eaf]" aria-hidden="true" />
+                </div>
+                <span className="text-[10px] font-bold text-[#555960] tracking-wider uppercase">{displayLevel}</span>
               </div>
-              <span className="text-[10px] font-bold text-[#555960] tracking-wider uppercase">{displayLevel}</span>
-            </div>
-          )}
-          <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/95 text-[#115eaf] border border-[#d5e3ff] shadow-2xs">
-            {displayLevel}
-          </span>
-        </div>
-
-        <div className="p-3.5">
-          <h3 className="text-sm font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors leading-snug line-clamp-2">
-            <Link to={"/courses/" + course.id}>{course.name}</Link>
-          </h3>
-          {course.shortDescription ? (
-            <p className="text-xs text-[#555960] mt-1 line-clamp-2 leading-relaxed">
-              {course.shortDescription}
-            </p>
-          ) : null}
-        </div>
-      </div>
-
-      <div className="p-3.5 pt-0">
-        {course.duration ? (
-          <div className="flex items-center gap-2 text-[11px] text-[#74777e] mb-2 pb-2 border-b border-[#f0f4f8]">
-            <span className="inline-flex items-center gap-1">
-              <Clock className="w-3 h-3 text-[#115eaf]" aria-hidden="true" />
-              <span>{course.duration}</span>
+            )}
+            <span className="absolute left-3 top-3 px-2.5 py-1 rounded-full bg-[#115eaf] text-white text-[10px] font-bold shadow-xs leading-none">
+              {displayLevel}
+            </span>
+            <span className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#000f22]/75 text-white backdrop-blur-xs leading-none">
+              100% Online
             </span>
           </div>
-        ) : null}
-        <div className="flex items-center justify-between gap-2">
-          <span className="text-xs font-bold text-[#115eaf] truncate">
-            {feeStr}
-          </span>
-          <Link
-            to={"/courses/" + course.id}
-            className="h-7.5 px-2.5 rounded-lg bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-semibold inline-flex items-center gap-1 shadow-2xs transition-colors shrink-0"
-          >
-            <span>Explore</span>
-            <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
-          </Link>
+
+          <div className="p-4">
+            <h3 className="font-bold text-sm sm:text-base text-[#000f22] line-clamp-2 leading-snug font-sans group-hover:text-[#115eaf] transition-colors">
+              {course.name}
+            </h3>
+            {course.shortDescription ? (
+              <p className="mt-1.5 line-clamp-2 text-xs text-[#43474d] leading-relaxed font-normal">
+                {course.shortDescription}
+              </p>
+            ) : null}
+          </div>
         </div>
-      </div>
+
+        <div className="p-4 pt-0">
+          {course.duration ? (
+            <div className="flex items-center gap-1.5 text-xs text-[#74777e] mb-2.5 pb-2 border-b border-[#f0f4f8]">
+              <Clock className="w-3.5 h-3.5 text-[#115eaf] shrink-0" aria-hidden="true" />
+              <span>{course.duration}</span>
+            </div>
+          ) : null}
+          <div className="flex items-center justify-between gap-2 pt-1 border-t border-[#f0f4f8]">
+            <span className="text-xs sm:text-sm font-bold text-[#115eaf] truncate">
+              {feeStr}
+            </span>
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors">
+              <span>Explore</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+            </span>
+          </div>
+        </div>
+      </Link>
     </article>
   );
 }
 
+function findLocalCourse(slug) {
+  if (!slug) return null;
+  const clean = String(slug).toLowerCase().trim();
+  const stripped = clean.replace(/^online-/, "");
+  return COURSES_DATA.find(
+    (c) => c.id === clean || c.slug === clean || c.id === stripped || (c.code && c.code.toLowerCase() === stripped) || clean.includes(c.id.toLowerCase())
+  ) || null;
+}
+
 export default function CourseDetail({ onOpenCounseling }) {
   const { slug } = useParams();
-  const [state, setState] = useState({ status: "loading", course: null, related: [] });
+  const initialLocal = findLocalCourse(slug);
+  const [state, setState] = useState({
+    status: initialLocal ? "ready" : "loading",
+    course: initialLocal || null,
+    related: []
+  });
   const [retryKey, setRetryKey] = useState(0);
 
   // Form State
@@ -148,7 +165,9 @@ export default function CourseDetail({ onOpenCounseling }) {
 
   useEffect(() => {
     let cancelled = false;
-    setState((prev) => ({ ...prev, status: "loading" }));
+    if (!state.course) {
+      setState((prev) => ({ ...prev, status: "loading" }));
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
 
     getCourseBySlug(slug)
@@ -157,12 +176,9 @@ export default function CourseDetail({ onOpenCounseling }) {
         if (res && res.course) {
           setState((prev) => ({ ...prev, status: "ready", course: res.course }));
         } else {
-          // Check local fallback
-          const localCourse = COURSES_DATA.find(
-            (c) => c.id === slug || c.slug === slug || (slug && slug.toLowerCase().includes(c.id.toLowerCase()))
-          );
-          if (localCourse) {
-            setState((prev) => ({ ...prev, status: "ready", course: localCourse }));
+          const fallback = findLocalCourse(slug);
+          if (fallback) {
+            setState((prev) => ({ ...prev, status: "ready", course: fallback }));
           } else {
             setState({ status: "ready", course: null, related: [] });
           }
@@ -170,12 +186,9 @@ export default function CourseDetail({ onOpenCounseling }) {
       })
       .catch((err) => {
         if (cancelled) return;
-        // Resilient fallback to local COURSES_DATA if remote API is offline or returns error
-        const localCourse = COURSES_DATA.find(
-          (c) => c.id === slug || c.slug === slug || (slug && slug.toLowerCase().includes(c.id.toLowerCase()))
-        );
-        if (localCourse) {
-          setState((prev) => ({ ...prev, status: "ready", course: localCourse }));
+        const fallback = findLocalCourse(slug);
+        if (fallback) {
+          setState((prev) => ({ ...prev, status: "ready", course: fallback }));
           return;
         }
         if (err && (err.name === "CourseNotFoundError" || err.code === "NOT_FOUND" || err.code === "MISSING_SLUG")) {
@@ -233,7 +246,6 @@ export default function CourseDetail({ onOpenCounseling }) {
     const newErrors = {};
     if (!leadForm.name.trim()) newErrors.name = "Name is required";
     if (!leadForm.phone.trim() || leadForm.phone.trim().length < 10) newErrors.phone = "Phone number is required";
-    if (!leadForm.email.trim() || !leadForm.email.includes("@")) newErrors.email = "Invalid email";
     if (!leadForm.state) newErrors.state = "State is required";
 
     if (Object.keys(newErrors).length > 0) {
@@ -245,8 +257,8 @@ export default function CourseDetail({ onOpenCounseling }) {
   };
 
   return (
-    <main className="w-full max-w-full overflow-x-hidden bg-[#fbfdff] min-h-screen py-3 sm:py-5">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6">
+    <main className="w-full max-w-full overflow-x-hidden bg-[#fbfdff] min-h-screen py-2 sm:py-5">
+      <div className="max-w-[1240px] mx-auto px-3 sm:px-6">
         {state.status === "loading" && (
           <div className="py-16 flex flex-col items-center justify-center text-center gap-3" role="status" aria-live="polite">
             <div className="h-9 w-9 rounded-full border-3 border-[#e7eeff] border-t-[#115eaf] animate-spin" />
@@ -535,7 +547,7 @@ export default function CourseDetail({ onOpenCounseling }) {
                     </div>
 
                     {/* RIGHT COLUMN: LEAD FORM CARD (lg:col-span-5) */}
-                    <div className="lg:col-span-5 bg-white rounded-2xl border border-[#e2e8f0] p-4 sm:p-5 shadow-[0_4px_24px_-4px_rgba(17,94,175,0.08)] flex flex-col justify-between h-full">
+                    <div className="lg:col-span-5 bg-white rounded-2xl border border-[#e2e8f0] p-3.5 sm:p-5 shadow-[0_4px_24px_-4px_rgba(17,94,175,0.08)] flex flex-col justify-between h-full">
                       
                       {/* Header with compact, clean dynamic title */}
                       <div className="text-center mb-2.5">
@@ -584,7 +596,7 @@ export default function CourseDetail({ onOpenCounseling }) {
                             {errors.name && <p className="text-[10px] text-rose-500 font-semibold mt-0.5">{errors.name}</p>}
                           </div>
 
-                          {/* Row 2: Phone Number & Email */}
+                          {/* Row 2: Phone Number & State */}
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                             <div>
                               <label htmlFor="lead-phone" className="block text-[11.5px] font-bold text-[#1e293b] mb-1">
@@ -610,42 +622,6 @@ export default function CourseDetail({ onOpenCounseling }) {
                                 />
                               </div>
                               {errors.phone && <p className="text-[10px] text-rose-500 font-semibold mt-0.5">{errors.phone}</p>}
-                            </div>
-
-                            <div>
-                              <label htmlFor="lead-email" className="block text-[11.5px] font-bold text-[#1e293b] mb-1">
-                                Email <span className="text-rose-500">*</span>
-                              </label>
-                              <input
-                                id="lead-email"
-                                type="email"
-                                placeholder="Email Address"
-                                value={leadForm.email}
-                                onChange={(e) => {
-                                  setLeadForm({ ...leadForm, email: e.target.value });
-                                  if (errors.email) setErrors({ ...errors, email: null });
-                                }}
-                                className={`w-full h-9.5 px-3 rounded-lg border text-xs sm:text-[13px] font-medium text-[#000f22] placeholder:text-[#94a3b8] outline-none bg-white transition-all ${
-                                  errors.email ? "border-rose-400 focus:border-rose-500" : "border-[#cbd5e1] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15"
-                                }`}
-                              />
-                              {errors.email && <p className="text-[10px] text-rose-500 font-semibold mt-0.5">{errors.email}</p>}
-                            </div>
-                          </div>
-
-                          {/* Row 3: Date of birth & State */}
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                            <div>
-                              <label htmlFor="lead-dob" className="block text-[11.5px] font-bold text-[#1e293b] mb-1">
-                                Date of birth
-                              </label>
-                              <input
-                                id="lead-dob"
-                                type="date"
-                                value={leadForm.dob}
-                                onChange={(e) => setLeadForm({ ...leadForm, dob: e.target.value })}
-                                className="w-full h-9.5 px-3 rounded-lg border border-[#cbd5e1] text-xs sm:text-[13px] font-medium text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 outline-none bg-white"
-                              />
                             </div>
 
                             <div>
@@ -677,7 +653,7 @@ export default function CourseDetail({ onOpenCounseling }) {
                             </div>
                           </div>
 
-                          {/* Row 4: Specialization (Full Width) */}
+                          {/* Row 3: Specialization (Full Width) */}
                           <div>
                             <label htmlFor="lead-spec" className="block text-[11.5px] font-bold text-[#1e293b] mb-1">
                               Specialization <span className="text-rose-500">*</span>
@@ -731,16 +707,6 @@ export default function CourseDetail({ onOpenCounseling }) {
                                 <span className="text-[10px] font-bold text-[#000f22] leading-tight">Post Admission Help</span>
                               </div>
                             </div>
-                          </div>
-
-                          {/* Senior Advisor Guarantee Banner */}
-                          <div className="rounded-xl border border-[#d5e3ff] bg-white p-2.5 flex items-center gap-2.5">
-                            <div className="w-8 h-8 rounded-full bg-[#eef6ff] border border-[#d5e3ff] flex items-center justify-center shrink-0">
-                              <User className="w-4 h-4 text-[#115eaf]" />
-                            </div>
-                            <p className="text-[11px] leading-relaxed text-[#43474d]">
-                              <strong className="text-[#000f22]">Senior academic advisors will call you first.</strong> Verified for 100% unbiased university comparison.
-                            </p>
                           </div>
 
                           {/* CTA Button */}
@@ -810,13 +776,38 @@ export default function CourseDetail({ onOpenCounseling }) {
                     <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                   </Link>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="flex overflow-x-auto overscroll-x-contain snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden gap-4 mt-3 sm:grid sm:grid-cols-2 lg:grid-cols-4">
                   {state.related.map((c) => (
                     <RelatedCourseCard key={c.id} course={c} />
                   ))}
                 </div>
               </section>
             )}
+
+            {/* Frequently Asked Questions — Last Section on Detail Page */}
+            {(() => {
+              const faqSource = course ? (course.faq || course.faqs) : null;
+              const faqItems = (faqSource && Array.isArray(faqSource.items) ? faqSource.items : (Array.isArray(course?.faqs) ? course.faqs : [])) || [];
+              if (!faqItems.length) return null;
+              return (
+                <section className="mt-8 mb-6 pt-6 border-t border-[#e7eeff]" aria-labelledby="course-faq-title">
+                  <div className="flex items-center gap-2 mb-3.5">
+                    <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#115eaf]" aria-hidden="true" />
+                    <h2 id="course-faq-title" className="text-lg sm:text-xl font-bold text-[#000f22] m-0">
+                      Frequently Asked Questions ({course?.name || "Online Course"})
+                    </h2>
+                  </div>
+                  <FaqAccordion
+                    items={faqItems.map((f, i) => ({
+                      id: (f && f._id) || (f && f.id) || "course-faq-" + i,
+                      question: String((f && f.question) || "").replace(/DegreeFYD/gi, "OnlineSiksha"),
+                      answer: String((f && f.answer) || "").replace(/DegreeFYD/gi, "OnlineSiksha"),
+                    }))}
+                    renderAnswer={(item) => <SafeHtml html={item.answer} />}
+                  />
+                </section>
+              );
+            })()}
           </>
         )}
       </div>

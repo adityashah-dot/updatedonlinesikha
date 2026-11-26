@@ -891,28 +891,6 @@ export default function CoursesAndFeesView({
             </section>
           )}
 
-          {/* 6. FAQs — shared accessible accordion */}
-          {faqs.length > 0 && (
-            <section
-              id="faqs"
-              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[100px]"
-            >
-              <div className="text-left mb-[18px]">
-                <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
-                  FAQs
-                </h2>
-              </div>
-
-              <div className="space-y-2.5 [&>div]:bg-white [&>div]:rounded-xl [&>div]:shadow-xs">
-                <FaqAccordion
-                  items={faqs}
-                  variant="card"
-                  defaultOpenIndex={0}
-                />
-              </div>
-            </section>
-          )}
-
           {/* 7. Blogs */}
           <BlogsListSection
             onOpenHelpDesk={helpDesk}
@@ -961,6 +939,29 @@ export default function CoursesAndFeesView({
               </div>
             </div>
           </section>
+
+          {/* FAQs — shared accessible accordion, always last section */}
+          {faqs.length > 0 && (
+            <section
+              id="faqs"
+              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[100px] p-5 md:p-6"
+            >
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#115eaf]" aria-hidden="true" />
+                <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans m-0">
+                  Frequently Asked Questions
+                </h2>
+              </div>
+
+              <div className="space-y-2.5 [&>div]:bg-white [&>div]:rounded-xl [&>div]:shadow-xs">
+                <FaqAccordion
+                  items={faqs}
+                  variant="card"
+                  defaultOpenIndex={0}
+                />
+              </div>
+            </section>
+          )}
         </div>
       </div>
     </div>

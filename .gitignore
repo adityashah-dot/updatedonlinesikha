@@ -2,6 +2,10 @@ node_modules/
 build/
 dist/
 coverage/
+.next/
+.vscode/
+scratch/
+*.tsbuildinfo
 .DS_Store
 *.log
 .env*
@@ -9,6 +13,12 @@ coverage/
 qa/.chrome-qa-profile*/
 
 # Temporary QA screenshots and intermediate debugging captures
+qa/**/*.png
+qa/**/*.jpg
+qa/**/*.jpeg
+qa/**/screenshots/
+qa/**/viewports/
+qa/**/detail_page_screenshots/
 qa/**/temp/
 qa/**/*_temp.*
 qa/**/*_debug.*

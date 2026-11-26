@@ -936,3 +936,26 @@ table tbody td a:hover {
     transform: translateX(200%);
   }
 }
+
+/* Universal Salary / LPA Table 2nd Column Right-Shift */
+table.table-salary-col2 th:nth-child(2),
+table.table-salary-col2 td:nth-child(2),
+.bd-table-salary table th:nth-child(2),
+.bd-table-salary table td:nth-child(2),
+.bd-table-salary th:nth-child(2),
+.bd-table-salary td:nth-child(2) {
+  text-align: right !important;
+  padding-right: 1.5rem !important;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 640px) {
+  table.table-salary-col2 th:nth-child(2),
+  table.table-salary-col2 td:nth-child(2),
+  .bd-table-salary table th:nth-child(2),
+  .bd-table-salary table td:nth-child(2),
+  .bd-table-salary th:nth-child(2),
+  .bd-table-salary td:nth-child(2) {
+    padding-right: 2.25rem !important;
+  }
+}

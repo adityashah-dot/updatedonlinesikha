@@ -34,7 +34,7 @@ export default function HomeHero({ onOpenHelpDesk } = {}) {
   return (
     <>
       {/* Mobile-only hero (new design) */}
-      <div className="md:hidden min-h-screen bg-slate-50 font-sans relative overflow-hidden -mt-4 sm:-mt-5 -mx-3.5 sm:-mx-4">
+      <div className="md:hidden pb-6 bg-slate-50 font-sans relative overflow-hidden -mt-4 sm:-mt-5 -mx-3.5 sm:-mx-4">
         <motion.div
           className="absolute -top-40 -right-40 w-96 h-96 border-[60px] border-blue-200 rounded-full pointer-events-none"
           animate={{ rotate: [0, 90, 180, 90, 0], x: [0, 20, 40, 20, 0], y: [0, -20, -40, -20, 0] }}
@@ -95,15 +95,15 @@ export default function HomeHero({ onOpenHelpDesk } = {}) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="w-full flex flex-col gap-4 mb-8"
+            className="w-full flex flex-col gap-2.5 mb-5"
           >
             <a
               href="/universities"
-              className="w-full py-4 px-6 rounded-2xl bg-[#115eaf] hover:bg-[#084a8c] text-white font-bold text-base shadow-lg flex items-center justify-center gap-2 active:scale-[0.98]"
+              className="w-full h-11 py-2.5 px-5 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-[0.98] transition-all"
             >
-              <span className="text-xl">🔍</span>
+              <span className="text-base">🔍</span>
               <span>Explore 50+ Universities</span>
-              <motion.span animate={{ x: [0, 5, 0] }} transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 0.5 }}>
+              <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 0.5 }}>
                 →
               </motion.span>
             </a>
@@ -111,14 +111,14 @@ export default function HomeHero({ onOpenHelpDesk } = {}) {
             <button
               type="button"
               onClick={onOpenHelpDesk}
-              className="w-full py-4 px-6 rounded-2xl bg-white hover:bg-slate-50 text-[#115eaf] font-bold text-base border-2 border-blue-200 shadow-sm flex items-center justify-center gap-2 active:scale-[0.98]"
+              className="w-full h-11 py-2.5 px-5 rounded-xl bg-white hover:bg-slate-50 text-[#115eaf] font-bold text-sm border border-blue-200 shadow-2xs flex items-center justify-center gap-2 active:scale-[0.98] transition-all"
             >
-              <Headphones className="text-lg" />
+              <Headphones className="w-4 h-4 text-[#115eaf]" />
               <span>Talk to an Expert</span>
             </button>
           </motion.div>
 
-          <div className="grid grid-cols-3 gap-3 w-full mb-8 bg-white/70 backdrop-blur-sm p-4 rounded-2xl border border-slate-100 shadow-sm">
+          <div className="grid grid-cols-3 gap-2 w-full mb-6 bg-white/80 backdrop-blur-sm p-3 rounded-xl border border-slate-200/80 shadow-2xs">
             {[
               { icon: Check, bg: 'bg-emerald-100', text: 'text-emerald-600', title: '100% Free', label: 'Counselling' },
               { icon: Shield, bg: 'bg-amber-100', text: 'text-amber-600', title: 'Zero Spam', label: '& Privacy' },
@@ -132,11 +132,11 @@ export default function HomeHero({ onOpenHelpDesk } = {}) {
                 transition={{ delay: 0.4 + index * 0.1, duration: 0.6, ease: 'easeOut' }}
                 className="flex flex-col items-center text-center"
               >
-                <div className={`w-11 h-11 rounded-full ${feature.bg} flex items-center justify-center ${feature.text} mb-2 shadow-inner`}>
-                  <feature.icon className="text-sm" />
+                <div className={`w-8.5 h-8.5 rounded-full ${feature.bg} flex items-center justify-center ${feature.text} mb-1.5 shadow-2xs`}>
+                  <feature.icon className="w-4 h-4" />
                 </div>
-                <span className="text-xs font-bold text-slate-900 leading-tight">{feature.title}</span>
-                <span className="text-[11px] text-slate-500">{feature.label}</span>
+                <span className="text-[11.5px] font-bold text-slate-900 leading-tight">{feature.title}</span>
+                <span className="text-[10px] text-slate-500 mt-0.5">{feature.label}</span>
               </motion.div>
             ))}
           </div>

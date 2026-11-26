@@ -42,7 +42,10 @@ export class CourseServiceError extends Error {
 async function fetchJson(url) {
   let response;
   try {
-    response = await fetch(url, { headers: buildHeaders() });
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 4000);
+    response = await fetch(url, { headers: buildHeaders(), signal: controller.signal });
+    clearTimeout(timeoutId);
   } catch {
     throw new CourseServiceError("Could not reach the course service", "NETWORK");
   }

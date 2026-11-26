@@ -4,7 +4,7 @@ export const LmsPortalModal = ({ isOpen, onClose, onOpenApply }) => {
   const [activeTab, setActiveTab] = useState("vault");
   const [playingVideo, setPlayingVideo] = useState(null);
   if (!isOpen) return null;
-  return <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs animate-in fade-in duration-200">
+  return <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div
     className="bg-white rounded-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-[#e7eeff] relative flex flex-col"
     onClick={(e) => e.stopPropagation()}

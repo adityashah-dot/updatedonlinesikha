@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, ArrowRight, SlidersHorizontal, MapPin, Star, BadgeCheck, CreditCard, Monitor, Clock, Video, TrendingUp, Download, ChevronDown, HelpCircle, ShieldCheck, ChevronLeft, ChevronRight, List, LayoutGrid, X, Award, Globe, ClipboardCheck, Laptop, Hourglass, BarChart3, Smartphone, Handshake, Building2, Users, Brain, PiggyBank, Briefcase, Fuel, Trophy, Flame, ScrollText, IndianRupee, GraduationCap, } from 'lucide-react';
+import { Search, ArrowRight, SlidersHorizontal, MapPin, Star, BadgeCheck, CreditCard, Monitor, Clock, Video, TrendingUp, Download, ChevronDown, HelpCircle, ShieldCheck, ChevronLeft, ChevronRight, List, LayoutGrid, X, Award, Globe, ClipboardCheck, Laptop, Hourglass, BarChart3, Smartphone, Handshake, Building2, Users, Brain, PiggyBank, Briefcase, Fuel, Trophy, Flame, ScrollText, IndianRupee, GraduationCap, BookOpen, } from 'lucide-react';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { getUniversitiesPayload, mapLocationColleges } from '../services/universityApi';
 import { getCollegeBlogs } from '../services/collegeApi';
@@ -9,6 +9,14 @@ import { TopCollegesByLocation } from './UniversitiesByCity';
 import { UniversitiesFaq } from './UniversitiesFaq';
 import { AcademicExpertCounselingSection } from './AcademicExpertCounselingSection';
 import { LpuCompareSection } from './LpuCompareSection';
+
+const CATEGORY_OPTIONS = [
+  { id: 'all', label: 'All Degree Categories', icon: GraduationCap },
+  { id: 'management', label: 'Management (MBA, BBA)', icon: Briefcase },
+  { id: 'technology', label: 'Technology & IT (MCA, BCA)', icon: Laptop },
+  { id: 'commerce', label: 'Commerce & Finance (M.Com, B.Com)', icon: IndianRupee },
+  { id: 'arts', label: 'Arts & Humanities (MA, BA)', icon: BookOpen },
+];
 
 const LISTING_REQUEST_TIMEOUT_MS = 15000;
 
@@ -200,6 +208,8 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
     const [filtersOpen, setFiltersOpen] = useState(false);
     const [quickChips, setQuickChips] = useState([]);
     const [searchInput, setSearchInput] = useState('');
+    const [categoryOpen, setCategoryOpen] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState(CATEGORY_OPTIONS[0]);
 
     /* Live listing fetch (re-runs whenever the page or search changes). */
     useEffect(() => {
@@ -391,62 +401,114 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
     </>);
     return (<div className="pb-20 md:pb-8">
       {/* ================= HERO & DISCOVERY SEARCH BAR ================= */}
-      <section className="uv-hero relative overflow-hidden border-b border-[#e7eeff] bg-[#f2f6fb] pt-4 pb-5 sm:pt-8 sm:pb-4 shadow-[0_18px_45px_rgba(15,23,42,0.02)]">
+      <section className="uv-hero relative overflow-hidden border-b border-[#e7eeff] bg-[#f2f6fb] pt-3 pb-3.5 sm:pt-6 sm:pb-4 shadow-[0_18px_45px_rgba(15,23,42,0.02)]">
         <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-r from-[#eaf3ff]/80 via-[#f3f8ff]/40 to-[#edfdf7]/50 blur-2xl"/>
         <div className="absolute -left-12 top-10 h-36 w-36 rounded-full bg-[#93c5fd]/10 blur-3xl"/>
         <div className="absolute -right-12 bottom-0 h-40 w-40 rounded-full bg-[#a7f3d0]/10 blur-3xl"/>
 
-        <div className="uv-search-shell relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-7">
-            <div className="mb-3 text-[11px] font-medium text-[#43474d]">
-              <span className="text-[#115eaf] font-semibold">Accredited by UGC, AICTE &amp; NAAC</span>
-              <span className="text-[#c4c6ce] mx-2">|</span>
-              <span className="text-[#115eaf] font-semibold">Session 2026-27 Open</span>
+        <div className="uv-search-shell relative z-10 max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          {/* Header: Restored Desktop Heading + Mobile Compact Heading */}
+          <div className="text-center max-w-3xl mx-auto mb-3 md:mb-6">
+            {/* Desktop Accreditation Tag */}
+            <div className="hidden md:block mb-2 text-xs font-semibold text-[#115eaf]">
+              <span>Accredited by UGC, AICTE &amp; NAAC</span>
+              <span className="text-[#c4c6ce] mx-2 font-normal">|</span>
+              <span>Session 2026–27 Open</span>
             </div>
-            <h1 className="font-extrabold font-sans tracking-[-0.02em] leading-[1.15]">
-              <span className="block text-[#000f22]">Explore Top UGC-DEB Approved</span>
-              <span className="block bg-gradient-to-r from-[#115eaf] via-[#2563eb] to-[#0d9488] bg-clip-text text-transparent">
-                Online Universities in India
-              </span>
+
+            {/* Desktop Heading (Restored) */}
+            <h1 className="hidden md:block text-3xl lg:text-4xl font-bold text-[#000f22] tracking-tight leading-tight">
+              Explore Top UGC-DEB Approved
+              <span className="text-[#115eaf] block mt-0.5">Online Universities in India</span>
             </h1>
-            <p className="font-sans text-sm text-[#43474d] font-normal leading-relaxed mt-2.5 max-w-2xl mx-auto">
+            <p className="hidden md:block text-sm text-[#43474d] font-normal leading-relaxed mt-2.5 max-w-2xl mx-auto">
               Compare verified universities, programs, fees,
-              <br className="hidden sm:block"/> and admission details — all in one place.
+              <br className="hidden sm:block" /> and admission details — all in one place.
+            </p>
+
+            {/* Mobile-Only Heading */}
+            <h1 className="md:hidden text-lg sm:text-2xl font-extrabold text-[#000f22] tracking-tight leading-snug m-0">
+              Top Online Universities in India <span className="text-[#115eaf]">(2026)</span>
+            </h1>
+            <p className="md:hidden text-xs text-[#43474d] mt-1 font-normal leading-relaxed">
+              Compare UGC-DEB approved universities, accredited programs &amp; verified fees.
             </p>
           </div>
 
-          {/* Search Console */}
-          <div className="uv-search-card bg-white rounded-2xl p-4 md:p-5 border border-[#d5e3ff] shadow-lg max-w-6xl mx-auto">
-            <div className="uv-search-fields grid grid-cols-1 md:grid-cols-[minmax(0,6fr)_minmax(0,4fr)_160px] gap-3">
+          {/* Search Console - Sleek & Compact */}
+          <div className="uv-search-card bg-white rounded-xl sm:rounded-2xl p-2.5 sm:p-4 border border-[#d5e3ff] shadow-sm max-w-5xl mx-auto">
+            <div className="uv-search-fields grid grid-cols-1 md:grid-cols-[minmax(0,6fr)_minmax(0,4fr)_150px] gap-2.5">
               <div className="relative flex items-center">
-                <Search className="absolute left-3.5 text-[#115eaf] w-5 h-5"/>
-                <input type="search" name="search" aria-label="Search university or degree" value={searchInput} onChange={(e) => setSearchInput(e.target.value)} onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    e.preventDefault();
-                    runSearch();
-                  }
-                }} placeholder="Search university or degree" className="uv-field w-full pl-10 pr-4 py-3 min-h-[48px] bg-[#f9f9ff] rounded-xl border border-[#c4c6ce] text-[#000f22] placeholder:text-[#74777e] text-base sm:text-sm focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all font-normal"/>
+                <Search className="absolute left-3 text-[#115eaf] w-4 h-4"/>
+                <input
+                  type="search"
+                  name="search"
+                  aria-label="Search university or degree"
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      runSearch();
+                    }
+                  }}
+                  placeholder="Search university or degree (e.g. LPU, Online MCA)..."
+                  className="w-full h-10 sm:h-11 pl-9 pr-3 bg-[#f9f9ff] hover:bg-white focus:bg-white rounded-xl border border-[#cbd5e1] text-[#000f22] placeholder:text-[#74777e] text-xs sm:text-sm focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all font-medium"
+                />
               </div>
 
-              <div className="relative flex items-center">
-                <span className="absolute left-3.5 text-[#115eaf] pointer-events-none">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 10 12 5 2 10l10 5 10-5Z"/>
-                    <path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/>
-                  </svg>
-                </span>
-                <select className="uv-field w-full pl-10 pr-8 py-3 min-h-[48px] bg-[#f9f9ff] rounded-xl border border-[#c4c6ce] text-[#000f22] text-base sm:text-sm focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all appearance-none cursor-pointer font-normal">
-                  <option value="all">All Degree Categories</option>
-                  <option value="management">Management (MBA, BBA, Executive)</option>
-                  <option value="technology">Technology &amp; IT (MCA, BCA, M.Sc)</option>
-                  <option value="commerce">Commerce &amp; Finance (M.Com, B.Com)</option>
-                  <option value="arts">Arts &amp; Humanities (MA, BA, Journalism)</option>
-                </select>
-                <ChevronDown className="absolute right-3 text-[#74777e] pointer-events-none w-4 h-4"/>
+              {/* Custom White Degree Category Dropdown (Never Black) */}
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setCategoryOpen(!categoryOpen)}
+                  className="w-full h-10 sm:h-11 px-3 bg-[#f9f9ff] hover:bg-white rounded-xl border border-[#cbd5e1] text-[#000f22] text-xs sm:text-sm font-medium flex items-center justify-between gap-2 transition-all focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 cursor-pointer"
+                >
+                  <div className="flex items-center gap-2 truncate">
+                    {React.createElement(selectedCategory.icon || GraduationCap, { className: "w-4 h-4 text-[#115eaf] shrink-0" })}
+                    <span className="truncate">{selectedCategory.label}</span>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 text-[#74777e] shrink-0 transition-transform ${categoryOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {categoryOpen && (
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-xl border border-[#d5e3ff] shadow-xl p-1.5 z-50 animate-in fade-in zoom-in-95 duration-150">
+                    {CATEGORY_OPTIONS.map((cat) => {
+                      const Icon = cat.icon;
+                      const isSelected = selectedCategory.id === cat.id;
+                      return (
+                        <button
+                          key={cat.id}
+                          type="button"
+                          onClick={() => {
+                            setSelectedCategory(cat);
+                            setCategoryOpen(false);
+                            if (cat.id !== 'all') {
+                              setSearchInput(cat.id === 'management' ? 'MBA' : cat.id === 'technology' ? 'MCA' : cat.id === 'commerce' ? 'M.Com' : 'MA');
+                            }
+                          }}
+                          className={`w-full text-left px-3 py-2 rounded-lg text-xs sm:text-[13px] font-medium flex items-center justify-between gap-2 transition-colors cursor-pointer ${
+                            isSelected ? 'bg-[#eef4ff] text-[#115eaf] font-bold' : 'text-[#000f22] hover:bg-slate-50'
+                          }`}
+                        >
+                          <div className="flex items-center gap-2">
+                            <Icon className={`w-4 h-4 ${isSelected ? 'text-[#115eaf]' : 'text-slate-400'}`} />
+                            <span>{cat.label}</span>
+                          </div>
+                          {isSelected && <span className="text-[#115eaf] text-xs font-bold">✓</span>}
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
 
-              <div className="mt-[2px] md:mt-0">
-                <button type="button" onClick={runSearch} className="uv-find-btn w-full h-full min-h-[48px] py-3 px-4 bg-[#115eaf] hover:bg-[#004689] text-white text-sm font-semibold rounded-xl flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all">
+              <div>
+                <button
+                  type="button"
+                  onClick={runSearch}
+                  className="w-full h-10 sm:h-11 px-4 bg-[#115eaf] hover:bg-[#004689] text-white text-xs sm:text-sm font-bold rounded-xl flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all cursor-pointer"
+                >
                   <span>Find Universities</span>
                   <ArrowRight className="w-4 h-4"/>
                 </button>
@@ -454,20 +516,28 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
             </div>
 
             {/* Trending pills */}
-            <div className="uv-trending flex items-center gap-2 pt-3.5 mt-3.5 md:mt-3 border-t border-[#e7eeff]">
-              <span className="text-[11px] text-[#74777e] uppercase font-semibold whitespace-nowrap shrink-0">
+            <div className="uv-trending flex items-center gap-2 pt-2.5 mt-2.5 border-t border-[#e7eeff]">
+              <span className="text-[10px] text-[#74777e] uppercase font-bold tracking-wider whitespace-nowrap shrink-0">
                 Trending:
               </span>
-              <div className="flex items-center gap-2 flex-1 min-w-0 overflow-x-auto hide-scrollbar">
+              <div className="flex items-center gap-1.5 flex-1 min-w-0 overflow-x-auto hide-scrollbar">
                 {TRENDING.map((t) => {
-            const Icon = t.icon;
-            return (<button key={t.id} onClick={() => setActiveTrending(activeTrending === t.id ? null : t.id)} className={`inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] rounded-full text-[11px] transition-colors whitespace-nowrap shrink-0 font-medium border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-1 ${activeTrending === t.id
-                    ? 'bg-[#115eaf] text-white border-[#115eaf]'
-                    : 'bg-white text-[#000f22] border-[#d5e3ff] hover:bg-[#f0f3ff] hover:border-[#115eaf]'}`}>
-                      <Icon className="w-3.5 h-3.5 shrink-0"/>
+                  const Icon = t.icon;
+                  return (
+                    <button
+                      key={t.id}
+                      onClick={() => setActiveTrending(activeTrending === t.id ? null : t.id)}
+                      className={`inline-flex items-center gap-1 px-2.5 py-1 min-h-[30px] rounded-full text-[10.5px] transition-colors whitespace-nowrap shrink-0 font-medium border cursor-pointer ${
+                        activeTrending === t.id
+                          ? 'bg-[#115eaf] text-white border-[#115eaf]'
+                          : 'bg-white text-[#000f22] border-[#d5e3ff] hover:bg-[#f0f3ff] hover:border-[#115eaf]'
+                      }`}
+                    >
+                      <Icon className="w-3 h-3 shrink-0"/>
                       <span>{t.label}</span>
-                    </button>);
-        })}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -627,79 +697,94 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
               {(universities || []).map((u) => (<article key={u.id} onClick={() => { const href = universityHref(u); if (href) navigate(href); }} className="bg-white rounded-2xl border border-[#d5e3ff] p-2.5 sm:p-4 md:p-5 shadow-xs hover:shadow-xl hover:border-[#115eaf] transition-all duration-300 relative flex flex-col cursor-pointer">
                   {/* ===== Mobile card ===== */}
                   {!isDesktop && (<div className="flex flex-col">
-                    {/* Head: logo + name + location */}
-                    <div className="flex gap-3 pr-9">
-                      <div className="w-[60px] h-[60px] shrink-0 rounded-lg border border-[#e7eeff] bg-white flex items-center justify-center overflow-hidden">
-                        {u.logoImage ? (<img src={u.logoImage} alt={`${u.short} logo`} className="w-full h-full object-contain p-1" onError={(e) => {
-                        e.target.style.display = 'none';
-                    }}/>) : (<span className="text-[13px] font-semibold text-[#115eaf]">{u.short}</span>)}
+                    {/* Head: logo + name + location + NIRF Rank on the Right Side */}
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex gap-2.5 min-w-0 flex-1">
+                        <div className="w-[52px] h-[52px] shrink-0 rounded-xl border border-[#e7eeff] bg-white flex items-center justify-center overflow-hidden shadow-2xs">
+                          {u.logoImage ? (
+                            <img src={u.logoImage} alt={`${u.short} logo`} className="w-full h-full object-contain p-1" onError={(e) => { e.target.style.display = 'none'; }}/>
+                          ) : (
+                            <span className="text-[12px] font-bold text-[#115eaf]">{u.short}</span>
+                          )}
+                        </div>
+                        <div className="min-w-0">
+                          <h2 className="font-bold text-[14.5px] text-[#000f22] leading-tight line-clamp-2" title={u.name}>
+                            {u.name}
+                          </h2>
+                          <p className="text-[11px] text-[#74777e] mt-1">
+                            {u.location} &middot; Est. {u.established}
+                          </p>
+                        </div>
                       </div>
-                      <div className="min-w-0">
-                        <h2 className="font-semibold text-[#000f22] leading-[1.3] line-clamp-2" title={u.name}>
-                          {u.name}
-                        </h2>
-                        <p className="text-[12px] text-[#74777e] mt-[3px]">
-                          {u.location} &middot; Est. {u.established}
-                        </p>
-                      </div>
+
+                      {/* NIRF Rank Badge on the Right Side */}
+                      {u.rankNote ? (
+                        <div className="shrink-0 pt-0.5">
+                          <span className="inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10.5px] font-bold text-amber-900 bg-amber-50 border border-amber-200/90 shadow-2xs whitespace-nowrap">
+                            <Trophy className="w-3 h-3 text-amber-600 fill-amber-500 shrink-0" />
+                            {u.rankNote}
+                          </span>
+                        </div>
+                      ) : null}
                     </div>
 
                     {/* Accreditations chips */}
-                    <div className="flex gap-1.5 overflow-x-auto mt-2.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-                      {u.naac ? (<span className="flex-none flex items-center h-6 px-2.5 rounded-full bg-amber-50 text-amber-900 border border-amber-200/60 text-[11px] font-medium whitespace-nowrap">
-                        {u.naac}
-                      </span>) : null}
-                      {(u.approvals || []).map((a) => (<span key={a} className="flex-none flex items-center h-6 px-2.5 rounded-full bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] text-[11px] font-medium whitespace-nowrap">
+                    <div className="flex gap-1.5 overflow-x-auto mt-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                      {u.naac ? (
+                        <span className="flex-none flex items-center h-5 px-2 rounded-md bg-amber-50 text-amber-900 border border-amber-200/60 text-[10px] font-bold whitespace-nowrap">
+                          {u.naac}
+                        </span>
+                      ) : null}
+                      {(u.approvals || []).map((a) => (
+                        <span key={a} className="flex-none flex items-center h-5 px-2 rounded-md bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] text-[10px] font-semibold whitespace-nowrap">
                           {a}
-                        </span>))}
+                        </span>
+                      ))}
                     </div>
 
-                    {/* Ranking */}
-                    {u.rankNote ? (<p className="text-[12px] font-medium text-[#B45309] mt-2">{u.rankNote}</p>) : null}
-
                     {/* Fee box */}
-                    <div className="bg-[#f9f9ff] border border-[#e7eeff] rounded-lg px-3 py-2.5 mt-2.5 flex items-center justify-between gap-2 flex-wrap">
+                    <div className="bg-[#f8faff] border border-[#e7eeff] rounded-xl px-3 py-2 mt-2 flex items-center justify-between gap-2 flex-wrap">
                       <div>
-                        <span className="block text-[12px] text-[#74777e] font-normal">Total fee</span>
-                        <span className="text-xl font-semibold text-[#000f22]">
-                          {u.feeLabel} <span className="text-[12px] text-[#74777e] font-normal">onwards</span>
+                        <span className="block text-[10px] text-[#74777e] font-semibold uppercase tracking-wider">Fee Range</span>
+                        <span className="text-base font-bold text-[#000f22]">
+                          {u.feeRange || u.feeLabel}
                         </span>
                       </div>
-                      {u.emi ? (<span className="text-[11px] font-medium text-emerald-800 bg-emerald-50 border border-emerald-200/60 rounded-full px-2.5 py-1">
+                      {u.emi ? (<span className="text-[10.5px] font-semibold text-emerald-800 bg-emerald-50 border border-emerald-200/60 rounded-full px-2.5 py-0.5">
                         EMI from {u.emi}
                       </span>) : null}
                     </div>
 
                     {/* Facts */}
-                    <div className="grid grid-cols-3 gap-2 mt-2.5">
+                    <div className="grid grid-cols-3 gap-2 mt-2 pt-2 border-t border-slate-100">
                       {(u.specs || []).slice(0, 3).map((s) => (<div key={s.label} className="min-w-0">
-                          <span className="block text-[11px] text-[#74777e]">{s.label}</span>
-                          <span className={`text-[13px] font-semibold ${s.highlight ? 'text-emerald-700' : 'text-[#000f22]'}`}>
+                          <span className="block text-[9.5px] text-[#74777e] uppercase tracking-wider truncate">{s.label}</span>
+                          <span className={`text-xs font-bold block truncate ${s.highlight ? 'text-emerald-700' : 'text-[#000f22]'}`}>
                             {s.value}
                           </span>
                         </div>))}
                     </div>
 
                     {/* Popular tracks */}
-                    {(u.tracks || []).length > 0 ? (<div className="flex gap-2 mt-2.5 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-                      {(u.tracks || []).map((t) => (<span key={t} className="flex-none border border-[#e7eeff] rounded-[14px] px-3 py-1 text-[12px] text-[#000f22] whitespace-nowrap">
+                    {(u.tracks || []).length > 0 ? (<div className="flex gap-1.5 mt-2 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+                      {(u.tracks || []).map((t) => (<span key={t} className="flex-none border border-[#e7eeff] rounded-md px-2 py-0.5 text-[11px] text-[#000f22] bg-slate-50/50 whitespace-nowrap">
                         {t}
                       </span>))}
                     </div>) : null}
 
                     {/* Actions */}
-                    <div className="flex gap-2 mt-2.5">
+                    <div className="grid grid-cols-2 gap-2 mt-2.5">
                       <button type="button" onClick={(e) => {
                     e.stopPropagation();
                     onOpenBrochure();
-                }} className="flex-1 h-11 rounded-lg bg-white border border-[#115eaf] text-[#115eaf] text-sm font-medium hover:bg-[#f0f3ff] transition-colors">
+                }} className="h-8.5 rounded-lg bg-white border border-[#115eaf] text-[#115eaf] text-xs font-bold hover:bg-[#f0f3ff] transition-all flex items-center justify-center gap-1 shadow-2xs active:scale-95">
                         Brochure
                       </button>
                       <button type="button" onClick={(e) => {
                     e.stopPropagation();
                     const href = universityHref(u);
                     if (href) navigate(href);
-                }} className="flex-1 h-11 rounded-lg bg-[#115eaf] border border-[#115eaf] text-white text-sm font-medium hover:bg-[#084a8c] transition-colors">
+                }} className="h-8.5 rounded-lg bg-[#115eaf] border border-[#115eaf] text-white text-xs font-bold hover:bg-[#084a8c] transition-all flex items-center justify-center gap-1 shadow-2xs active:scale-95">
                         View Details
                       </button>
                     </div>
@@ -748,10 +833,7 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
                             <span>•</span>
                             <span>{u.established}</span>
                           </>) : null}
-                          {u.rankNote ? (<>
-                            <span>•</span>
-                            <span className="text-[#B45309] font-semibold line-clamp-1" title={u.rankNote}>{u.rankNote}</span>
-                          </>) : null}
+                          
                         </p>
 
                         <div className={`flex flex-wrap items-center ${u.isLpu || u.id === 'cu-online' ? 'gap-1.5' : 'gap-2'} mt-2`}>
@@ -769,11 +851,11 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
                     {/* Fee box */}
                     <div className="text-left md:text-right bg-[#f9f9ff] md:bg-transparent p-3 md:p-0 rounded-xl shrink-0 border md:border-0 border-[#e7eeff]">
                       <span className="block text-[11px] text-[#74777e] font-semibold uppercase">
-                        Total Program Fee
+                        Fee Range
                       </span>
                       <div className="text-xl font-bold text-[#000f22]">
-                        {u.feeLabel}{' '}
-                        <span className="text-xs text-[#43474d] font-normal">onwards</span>
+                        {u.feeRange || u.feeLabel}
+
                       </div>
                       {u.emi ? (<div className="inline-flex items-center gap-1 px-2.5 py-0.5 mt-1 bg-emerald-50 text-emerald-800 rounded-full text-[11px] font-semibold border border-emerald-200/60 shadow-xs">
                         <CreditCard className="w-3 h-3"/>
@@ -783,8 +865,8 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
                   </div>
 
                     {/* Spec grid */}
-                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 py-2 my-0 bg-[#f9f9ff] rounded-xl px-3 border border-[#e7eeff] text-center sm:text-left">
-                      {(u.specs || []).map((s) => {
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 py-2 my-0 bg-[#f9f9ff] rounded-xl px-3 border border-[#e7eeff] text-center sm:text-left">
+                      {(u.specs || []).filter((s) => s.label.toLowerCase() !== 'established').map((s) => {
                       const Icon = specIconByLabel[s.label] || Monitor;
                     return (<div key={s.label} className="min-w-0">
                           <span className="text-[10px] text-[#74777e] font-semibold uppercase block">
@@ -799,7 +881,7 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
                   </div>
 
                     {/* Tracks + CTAs */}
-                    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-2 pt-1.5">
+                    <div className="flex flex-col gap-2 pt-1.5">
                       <div className="flex flex-wrap items-center gap-1.5">
                         {(u.tracks || []).length > 0 ? (<>
                           <span className="text-[11px] text-[#74777e] uppercase font-semibold mr-1">
@@ -814,7 +896,19 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
                         </>) : null}
                       </div>
 
-                    <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto lg:shrink-0">
+                    <div className="flex flex-row items-center justify-between gap-2 pt-2 border-t border-[#f0f4f8] mt-1.5 w-full">
+                      <div className="flex items-center gap-1.5 text-xs text-[#43474d] font-normal">
+                        {u.established ? (
+                          <>
+                            <Clock className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
+                            <span>Established in {u.established}</span>
+                          </>
+                        ) : (
+                          <span />
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
                       <button onClick={(e) => {
                     e.stopPropagation();
                     onOpenBrochure();
@@ -830,6 +924,7 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
                         <ArrowRight className="w-3.5 h-3.5"/>
                       </button>
                     </div>
+                  </div>
                   </div>
                   </div>)}
                 </article>))}
@@ -990,6 +1085,20 @@ export const UniversitiesView = ({ onOpenApply, onOpenHelpDesk, onOpenBrochure }
             </button>
           </div>
         </div>)}
+
+      {/* Vertical Edge Tab — "Free Apply" */}
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex items-center pointer-events-none">
+        <button
+          type="button"
+          onClick={() => onOpenApply?.()}
+          className="pointer-events-auto hidden h-[200px] w-12 items-center justify-center rounded-l-2xl bg-[#115eaf] shadow-md transition-colors hover:bg-[#004689] lg:flex cursor-pointer active:scale-95"
+          aria-label="Free Apply"
+        >
+          <span className="block text-white text-sm font-semibold tracking-wide whitespace-nowrap -rotate-90">
+            Free Apply
+          </span>
+        </button>
+      </div>
 
       {/* hide-scrollbar utility */}
       <style>{`

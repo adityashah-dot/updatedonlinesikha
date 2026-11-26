@@ -85,11 +85,14 @@ export function sanitizeHtml(rawHtml) {
     });
     // Wrap bare tables so they scroll inside the column on narrow screens.
     out = out.replace(/<table\b([\s\S]*?)<\/table>/gi, (m) => {
-      const firstTrMatch = m.match(/<tr\b[^>]*>([\s\S]*?)<\/tr>/i);
+      // Strip colgroup with hardcoded pixel widths
+      let cleanTable = m.replace(/<colgroup\b[\s\S]*?<\/colgroup>/gi, "");
+      const firstTrMatch = cleanTable.match(/<tr\b[^>]*>([\s\S]*?)<\/tr>/i);
       const cellMatches = firstTrMatch ? firstTrMatch[1].match(/<(?:th|td)\b/gi) : null;
       const colCount = cellMatches ? cellMatches.length : 0;
-      const extraClass = colCount === 2 ? " bd-table-2col" : (colCount === 3 ? " bd-table-3col" : "");
-      let tableHtml = m;
+      const isSalary = colCount === 2 && (/salary|fee|lpa|inr|package|approx|range/i.test(cleanTable));
+      const extraClass = colCount === 2 ? (isSalary ? " bd-table-2col bd-table-salary" : " bd-table-2col") : (colCount === 3 ? " bd-table-3col" : "");
+      let tableHtml = cleanTable;
       if (!/<thead\b/i.test(tableHtml) && firstTrMatch) {
         const headerTr = firstTrMatch[0]
           .replace(/^<tr\b/i, '<tr class="header-row"')
@@ -97,7 +100,9 @@ export function sanitizeHtml(rawHtml) {
           .replace(/<\/td>/gi, "</th>");
         tableHtml = tableHtml.replace(firstTrMatch[0], `<thead>${headerTr}</thead>`);
       }
-      const tableWithClass = colCount === 2 ? tableHtml.replace(/^<table\b/i, '<table class="table-2col"') : (colCount === 3 ? tableHtml.replace(/^<table\b/i, '<table class="table-3col"') : tableHtml);
+      const tableWithClass = colCount === 2
+        ? (isSalary ? tableHtml.replace(/^<table\b/i, '<table class="table-2col table-salary-col2"') : tableHtml.replace(/^<table\b/i, '<table class="table-2col"'))
+        : (colCount === 3 ? tableHtml.replace(/^<table\b/i, '<table class="table-3col"') : tableHtml);
       return `<div class="bd-table-wrap${extraClass}">${tableWithClass}</div>`;
     });
     // Remove empty paragraphs
@@ -107,7 +112,8 @@ export function sanitizeHtml(rawHtml) {
   }
 
   try {
-    const preCleaned = rawHtml.replace(/&lt;(\/?(?:p|strong|b|em|i|u|br|ul|ol|li|span|h[2-6])\b[^&]*?)&gt;/gi, "<$1>");
+    const debranded = rawHtml.replace(/degreefyd/gi, "OnlineSiksha");
+    const preCleaned = debranded.replace(/&lt;(\/?(?:p|strong|b|em|i|u|br|ul|ol|li|span|h[2-6])\b[^&]*?)&gt;/gi, "<$1>");
     const parser = new DOMParser();
     const doc = parser.parseFromString(preCleaned, "text/html");
 
@@ -212,6 +218,20 @@ export function sanitizeHtml(rawHtml) {
       if (cells.length === 2) {
         wrap.classList.add("bd-table-2col");
         table.classList.add("table-2col");
+
+        // Remove any hardcoded <colgroup> from DegreeFYD that restricts column expansion
+        const colgroup = table.querySelector("colgroup");
+        if (colgroup) colgroup.remove();
+
+        const col2HeaderText = (cells[1]?.textContent || "").toLowerCase();
+        const hasSalary = /salary|fee|fees|lpa|inr|package|amount|stipend|range|approx/i.test(col2HeaderText) ||
+          Array.from(table.querySelectorAll("tr td:nth-child(2)")).some((td) =>
+            /lpa|₹|inr|per annum|\b\d+\s*-\s*\d+/i.test(td.textContent)
+          );
+        if (hasSalary) {
+          table.classList.add("table-salary-col2");
+          wrap.classList.add("bd-table-salary");
+        }
       } else if (cells.length === 3) {
         wrap.classList.add("bd-table-3col");
         table.classList.add("table-3col");

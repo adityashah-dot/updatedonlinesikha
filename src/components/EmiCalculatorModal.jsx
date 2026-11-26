@@ -20,7 +20,7 @@ export const EmiCalculatorModal = ({
   const discountedFee = includeEarlyBird ? Math.round(rawFee * 0.8) : rawFee;
   const principalAfterDownPayment = Math.max(0, discountedFee - downPayment);
   const monthlyEmi = Math.round(principalAfterDownPayment / tenure);
-  return <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
+  return <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div
     className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-[#e7eeff] relative"
     onClick={(e) => e.stopPropagation()}

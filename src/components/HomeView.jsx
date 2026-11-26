@@ -565,12 +565,12 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             ))}
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2.5">
             {filteredDegreePrograms.map((p) => {
               const courseHref = p.slug ? `/courses/${p.slug}` : `/courses?search=${encodeURIComponent(p.search || p.n)}`;
               const uniHref = `/universities?search=${encodeURIComponent(p.uniSearch || p.n)}`;
               return (
-                <div key={p.n} className="bg-white border border-slate-200/90 rounded-lg p-2.5 sm:p-3 shadow-2xs">
+                <div key={p.n} className="bg-white border border-slate-200/90 rounded-xl p-3 shadow-2xs hover:border-[#115eaf]/40 transition-all">
                   <div className="flex justify-between items-start gap-2">
                     <div className="min-w-0">
                       <Link to={courseHref} className="group">
@@ -578,35 +578,33 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                       </Link>
                       <p className="text-[11px] text-slate-500 mt-0.5 leading-tight truncate">{p.f}</p>
                     </div>
-                    <span className="text-[10px] font-bold text-[#0b4fa8] bg-[#edf4fd] px-2 py-0.5 rounded border border-[#bed8fb] shrink-0">{p.y}</span>
+                    <span className="text-[10px] font-bold text-[#0b4fa8] bg-[#edf4fd] px-2 py-0.5 rounded-full border border-[#bed8fb] shrink-0 whitespace-nowrap">{p.y}</span>
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-2 mt-2 mb-2 pt-2 border-t border-slate-100 text-[10.5px]">
-                    <div className="flex flex-col gap-1">
-                      <div className="leading-tight">
-                        <span className="text-slate-400 font-medium block text-[9.5px] uppercase tracking-wider">{p.lab}</span>
-                        <span className="text-slate-700 font-medium line-clamp-1">{p.sp}</span>
-                      </div>
+                  {/* Specializations Tag Line */}
+                  <div className="mt-2 text-[11px] text-slate-600 truncate bg-slate-50/80 px-2 py-1 rounded-md border border-slate-100">
+                    <span className="font-semibold text-slate-700">Specializations:</span> {p.sp}
+                  </div>
+
+                  {/* Clean 2-Column Stats Strip without cramping */}
+                  <div className="grid grid-cols-2 gap-2 mt-2 pt-2 border-t border-slate-100">
+                    <div className="flex flex-col">
+                      <span className="text-slate-400 font-semibold text-[10px] uppercase tracking-wider">Avg. Placement</span>
+                      <span className="text-xs font-bold text-emerald-800">{p.ctc}</span>
                     </div>
-                    <div className="flex flex-col gap-1 border-l border-slate-200/80 pl-2">
-                      <div className="leading-tight flex items-baseline justify-between gap-1">
-                        <div>
-                          <span className="text-slate-400 font-medium block text-[9.5px] uppercase tracking-wider">Avg. Placement</span>
-                          <span className="text-slate-800 font-semibold">{p.ctc}</span>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-slate-400 font-medium block text-[9.5px] uppercase tracking-wider">Total Fee</span>
-                          <span className="text-[11.5px] font-bold text-[#000f22] block leading-tight">{p.totalFee}</span>
-                          <span className="text-[9px] text-slate-500 block leading-tight">{p.sems}</span>
-                        </div>
-                      </div>
+                    <div className="flex flex-col text-right">
+                      <span className="text-slate-400 font-semibold text-[10px] uppercase tracking-wider">Total Program Fee</span>
+                      <span className="text-xs font-bold text-[#000f22] leading-tight">{p.totalFee}</span>
+                      <span className="text-[9.5px] text-slate-400 leading-tight">{p.sems}</span>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 pt-0.5">
-                    <Link to={courseHref} className="w-full h-7.5 rounded-md border border-[#0b4fa8] text-[#0b4fa8] text-[11px] font-bold flex items-center justify-center gap-1 active:scale-[0.98] hover:bg-[#eff5ff] transition-colors text-center">
+
+                  {/* Compact action buttons */}
+                  <div className="grid grid-cols-2 gap-2 mt-2.5 pt-0.5">
+                    <Link to={courseHref} className="w-full h-8 rounded-lg border border-[#0b4fa8] text-[#0b4fa8] text-[11px] font-bold flex items-center justify-center gap-1 active:scale-[0.98] hover:bg-[#eff5ff] transition-colors text-center">
                       Course Details
                     </Link>
-                    <Link to={uniHref} className="w-full h-7.5 rounded-md bg-[#0b4fa8] hover:bg-[#073774] text-white text-[11px] font-bold flex items-center justify-center gap-1 active:scale-[0.98] transition-colors text-center shadow-2xs">
+                    <Link to={uniHref} className="w-full h-8 rounded-lg bg-[#0b4fa8] hover:bg-[#073774] text-white text-[11px] font-bold flex items-center justify-center gap-1 active:scale-[0.98] transition-colors text-center shadow-2xs">
                       Explore {p.c} Univ. <span>→</span>
                     </Link>
                   </div>
@@ -714,73 +712,91 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
     /* Featured universities */
   }
       <section id="universities" className="w-full bg-transparent p-0">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center pb-4 border-b border-[#c4c6ce]/40 gap-2">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#115eaf]" />
-              <h2 className="sm:text-2xl font-bold text-[#000f22] max-[380px]:whitespace-normal whitespace-nowrap">Explore Some Popular Universities</h2>
-            </div>
+        <div className="flex justify-between items-center pb-3 md:pb-4 border-b border-[#c4c6ce]/40 gap-2">
+          <div className="flex items-center gap-2">
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#115eaf] shrink-0" />
+            <h2 className="text-base sm:text-2xl font-bold text-[#000f22] max-[380px]:whitespace-normal whitespace-nowrap">Explore Some Popular Universities</h2>
           </div>
-          <ViewAllButton href="/universities" label="View All 50+ Universities" />
+          <div className="hidden md:block">
+            <ViewAllButton href="/universities" label="View All 50+ Universities" />
+          </div>
         </div>
         {
     /* Mobile only — chip filters + horizontal snap carousel */
   }
-        <div className="md:hidden mt-[17px]">
-          <div className="flex gap-2 overflow-x-auto pb-3 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-            {UNI_CHIPS.map((chip) => <button
-    key={chip}
-    type="button"
-    onClick={() => selectUniChip(chip)}
-    className={`flex-none h-[26px] px-3.5 rounded-[14px] border bg-white text-[12px] cursor-pointer transition-colors ${uniChip === chip ? "border-[#115eaf] text-[#115eaf] font-semibold" : "border-[#c4c6ce] text-[#43474d]"}`}
-  >
-                {chip}
-              </button>)}
+        <div className="md:hidden mt-3">
+          {/* Same row: filter chips on left + compact View All on right corner */}
+          <div className="flex items-center justify-between gap-2 pb-2.5 border-b border-slate-100 mb-3">
+            <div className="flex gap-1.5 overflow-x-auto min-w-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden py-0.5">
+              {UNI_CHIPS.map((chip) => (
+                <button
+                  key={chip}
+                  type="button"
+                  onClick={() => selectUniChip(chip)}
+                  className={`flex-none h-[25px] px-2.5 rounded-full border bg-white text-[11px] cursor-pointer transition-colors ${
+                    uniChip === chip ? "border-[#115eaf] text-[#115eaf] font-bold bg-blue-50/50" : "border-[#c4c6ce] text-[#43474d]"
+                  }`}
+                >
+                  {chip}
+                </button>
+              ))}
+            </div>
+            <Link
+              to="/universities"
+              className="shrink-0 h-[25px] px-2.5 rounded-full bg-[#edf4fd] border border-[#bed8fb] text-[#0b4fa8] text-[11px] font-bold flex items-center gap-1 whitespace-nowrap hover:bg-[#e0ecfc] active:scale-95 transition-all"
+            >
+              <span>View All 50+</span>
+              <span className="text-[10px]">→</span>
+            </Link>
           </div>
 
           <div
     ref={uniRowRef}
     className="flex gap-2 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
   >
-            {filteredFeaturedUnis.map((u) => <article
-    key={u.id}
-    className="flex-none w-[290px] snap-start border border-[#c4c6ce] rounded-[4px] p-3 bg-white flex flex-col"
-  >
-                <h3 className="font-bold leading-[1.35] text-[#000f22] line-clamp-2 mb-2.5">
+            {filteredFeaturedUnis.map((u) => (
+              <article
+                key={u.id}
+                className="flex-none w-[275px] snap-start border border-[#d5e3ff] rounded-xl p-3 bg-white flex flex-col shadow-2xs hover:border-[#115eaf]/50 transition-all"
+              >
+                <h3 className="font-bold text-[14px] leading-snug text-[#000f22] line-clamp-2 mb-2">
                   {u.name}
                 </h3>
-                <div className="flex items-center justify-between gap-2 mb-2.5">
-                  <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className="px-2 py-0.5 rounded text-[10.5px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
                     {u.naac}
                   </span>
-                  <span className="text-[10.5px] font-medium text-[#64748b] bg-[#f8fafc] px-2 py-0.5 rounded border border-[#e2e8f0]">{u.rank}</span>
+                  <span className="text-[10px] font-medium text-[#64748b] bg-[#f8fafc] px-2 py-0.5 rounded border border-[#e2e8f0]">{u.rank}</span>
                 </div>
-                <div className="space-y-1.5 text-[12px] bg-[#f0f4f8]/50 p-2.5 rounded border border-[#c4c6ce]/30 mb-3">
-                  {u.rows.map((r) => <div key={r.label} className="flex justify-between gap-2">
+                <div className="space-y-1 text-[11px] bg-[#f0f4f8]/50 p-2 rounded-lg border border-[#c4c6ce]/30 mb-2.5">
+                  {u.rows.map((r) => (
+                    <div key={r.label} className="flex justify-between gap-2">
                       <span className="text-[#43474d]">{r.label}</span>
-                      <span className={`text-right ${r.tone || "font-medium text-[#000f22]"}`}>
+                      <span className={`text-right ${r.tone || "font-semibold text-[#000f22]"}`}>
                         {r.value}
                       </span>
-                    </div>)}
+                    </div>
+                  ))}
                 </div>
-                <div className="mt-auto space-y-2">
+                <div className="mt-auto grid grid-cols-2 gap-1.5 pt-1">
                   <button
-    type="button"
-    onClick={() => navigate(`/universities/${u.id}`)}
-    className="w-full py-2 min-h-[44px] rounded-md bg-[#115eaf] text-white text-[12px] font-semibold hover:bg-[#084a8c] transition-colors"
-  >
-                    View Details &amp; Apply
+                    type="button"
+                    onClick={() => navigate(`/universities/${u.id}`)}
+                    className="h-8 rounded-lg bg-[#115eaf] text-white text-[11px] font-bold hover:bg-[#084a8c] transition-colors flex items-center justify-center shadow-2xs active:scale-95"
+                  >
+                    View Details
                   </button>
                   <button
-    type="button"
-    onClick={onOpenHelpDesk}
-    className="w-full py-2 min-h-[44px] rounded-md border border-[#74777e] text-[12px] font-medium text-[#43474d] hover:bg-slate-50 flex items-center justify-center gap-1"
-  >
-                    <Download className="w-3.5 h-3.5" />
-                    Download Brochure
+                    type="button"
+                    onClick={onOpenHelpDesk}
+                    className="h-8 rounded-lg border border-[#c4c6ce] text-[11px] font-semibold text-[#43474d] hover:bg-slate-50 flex items-center justify-center gap-1 active:scale-95 transition-all"
+                  >
+                    <Download className="w-3 h-3 text-[#115eaf]" />
+                    Brochure
                   </button>
                 </div>
-              </article>)}
+              </article>
+            ))}
           </div>
         </div>
 
@@ -827,17 +843,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             </div>)}
         </div>
 
-        {
-    /* Mobile only — back to top */
-  }
-        <button
-    type="button"
-    aria-label="Back to top"
-    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-    className="md:hidden fixed right-2.5 bottom-[calc(144px+env(safe-area-inset-bottom))] w-11 h-11 flex items-center justify-center border border-[#c4c6ce] rounded-full bg-white cursor-pointer text-[16px] leading-none text-[#000f22] shadow-[0_1px_4px_rgba(0,0,0,0.15)] z-40"
-  >
-          &uarr;
-        </button>
+
       </section>
 
       <section id="compare" className="w-full bg-white rounded-2xl border border-slate-200/90 shadow-sm p-3 sm:p-4 md:p-4.5">
@@ -876,10 +882,15 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
 
         {/* Comparison Matrix Table */}
         <div className="mt-2.5 overflow-x-auto [scrollbar-width:thin]">
-          <table className="w-full border-collapse min-w-[700px] text-left">
+          {/* Mobile Swipe Hint */}
+          <div className="md:hidden flex items-center justify-between text-[10.5px] text-slate-500 mb-1.5 px-0.5 font-medium">
+            <span>← Swipe to compare all universities →</span>
+            <span className="text-[10px] text-slate-400">({compareColumns.length} colleges)</span>
+          </div>
+          <table className="w-full border-collapse min-w-[480px] md:min-w-[700px] text-left">
             <thead>
               <tr>
-                <th scope="col" className="py-2 px-2.5 sm:py-2.5 sm:px-3 w-[130px] sm:w-[150px] align-bottom bg-[#f8fafc] rounded-tl-xl text-xs font-bold uppercase tracking-wider text-slate-500 border-b-2 border-slate-200">
+                <th scope="col" className="py-2 px-2 sm:py-2.5 sm:px-3 w-[100px] sm:w-[130px] md:w-[150px] align-bottom bg-[#f8fafc] rounded-tl-xl text-[10.5px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 border-b-2 border-slate-200">
                   Criteria
                 </th>
                 {compareColumns.map((uniIdx, colIdx) => {
@@ -992,47 +1003,47 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
   }
       <section
         id="counselling"
-        className="relative isolate overflow-hidden rounded-[20px] bg-gradient-to-br from-[#eef6ff] via-[#f7fbff] to-white border border-[#d0e2fa] text-[#0b1d3a] shadow-sm p-4 sm:p-5 md:p-6"
+        className="relative isolate overflow-hidden rounded-[20px] bg-gradient-to-br from-[#eef6ff] via-[#f7fbff] to-white border border-[#d0e2fa] text-[#0b1d3a] shadow-sm p-3.5 sm:p-5 md:p-6"
       >
         {/* Subtle ambient lighting */}
-        <div className="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-5 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.92fr)] lg:gap-8">
+        <div className="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-4 sm:gap-5 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.92fr)] lg:gap-8">
           {/* Left Column: Copy & Trust Highlights */}
-          <div className="px-1 sm:px-2 flex flex-col justify-center">
+          <div className="px-0 sm:px-2 flex flex-col justify-center">
             {/* Section 1: Advisory Pill Badge */}
-            <div className="mb-3.5 sm:mb-4">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#ffdf70] bg-[#fffdf2] px-3 py-1.5 text-[10.5px] sm:text-[11.5px] font-bold tracking-[0.2px] text-[#b47a00] shadow-2xs">
+            <div className="mb-2.5 sm:mb-4">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#ffdf70] bg-[#fffdf2] px-2.5 py-1 sm:px-3 sm:py-1.5 text-[10px] sm:text-[11.5px] font-bold tracking-[0.2px] text-[#b47a00] shadow-2xs">
                 <Headphones className="w-3.5 h-3.5 text-[#dca400] shrink-0" />
                 FREE 1-ON-1 ACADEMIC ADVISORY
               </span>
             </div>
 
             {/* Section 2 & 3: Heading & Descriptive Paragraph with proper spacing */}
-            <div className="space-y-3.5 sm:space-y-4">
-              <h2 className="max-w-[680px] text-xl sm:text-2xl md:text-[26px] font-bold leading-tight tracking-tight text-[#0b1d3a]">
+            <div className="space-y-2 sm:space-y-4">
+              <h2 className="max-w-[680px] text-lg sm:text-2xl md:text-[26px] font-bold leading-tight tracking-tight text-[#0b1d3a]">
                 Confused Between 50+ Universities? Speak with an <span className="text-[#115eaf]">Unbiased Academic Expert</span>
               </h2>
-              <p className="max-w-[660px] text-xs sm:text-[13.5px] text-[#556377] font-normal leading-relaxed">
+              <p className="max-w-[660px] text-xs sm:text-[13.5px] text-[#556377] font-normal leading-relaxed line-clamp-3 sm:line-clamp-none">
                 Choosing the right online university impacts your career and finances for years. Our certified advisors provide objective comparisons across UGC-DEB entitlements, syllabus depth, recruiter networks, and genuine fee financing — 100% free with zero sales bias.
               </p>
             </div>
 
-            {/* Trust Checkpoints: with healthy gap between items */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3.5 mt-5 sm:mt-6 pt-4 border-t border-[#d8e6f8]/70 text-xs text-[#0b1d3a]">
-              <div className="flex items-center gap-2.5">
-                <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span className="font-medium text-[#1e293b]">100% Free &amp; Unbiased Counseling</span>
+            {/* Trust Checkpoints: compact 2-column grid on mobile */}
+            <div className="grid grid-cols-2 gap-x-3 gap-y-2 sm:gap-x-6 sm:gap-y-3.5 mt-3.5 sm:mt-6 pt-3 sm:pt-4 border-t border-[#d8e6f8]/70 text-[11px] sm:text-xs text-[#0b1d3a]">
+              <div className="flex items-center gap-1.5 sm:gap-2.5">
+                <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <span className="font-medium text-[#1e293b]">100% Free &amp; Unbiased</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span className="font-medium text-[#1e293b]">Official UGC-DEB &amp; NAAC Data</span>
+              <div className="flex items-center gap-1.5 sm:gap-2.5">
+                <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <span className="font-medium text-[#1e293b]">Official UGC-DEB Data</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span className="font-medium text-[#1e293b]">0% Interest Monthly EMI Guidance</span>
+              <div className="flex items-center gap-1.5 sm:gap-2.5">
+                <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <span className="font-medium text-[#1e293b]">0% Interest Monthly EMI</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span className="font-medium text-[#1e293b]">Zero Spam &amp; Complete Privacy</span>
+              <div className="flex items-center gap-1.5 sm:gap-2.5">
+                <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <span className="font-medium text-[#1e293b]">Zero Spam &amp; Privacy</span>
               </div>
             </div>
           </div>

@@ -325,11 +325,28 @@ export function formatDurationDisplay(rawDuration: any, numericYears: number = 0
   return "";
 }
 
+function debrandValue(val: any): any {
+  if (typeof val === "string") {
+    return val.replace(/degreefyd/gi, "OnlineSiksha");
+  }
+  if (Array.isArray(val)) {
+    return val.map(debrandValue);
+  }
+  if (val && typeof val === "object") {
+    const res: any = {};
+    for (const k of Object.keys(val)) {
+      res[k] = debrandValue(val[k]);
+    }
+    return res;
+  }
+  return val;
+}
+
 function mapApiCourses(courses: any[]): CourseData[] {
   if (!Array.isArray(courses)) return [];
   
   return courses.map((course, index) => {
-    const courseData = course || {};
+    const courseData = debrandValue(course || {});
     const courseName = courseData.degreeName || courseData.courseTitle || courseData.name || courseData.title || "";
     const courseId = courseData.slug || courseName.toLowerCase().replace(/[^a-z]/g, "") || `course-${index}`;
     const rawFeeVal = courseData.avgFee !== undefined ? courseData.avgFee : courseData.averageCourseFee;

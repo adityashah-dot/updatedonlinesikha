@@ -162,47 +162,49 @@ export const BlogsListSection = ({
       }}
     >
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-4">
-        <div className="min-w-0 max-w-2xl">
-          <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans tracking-tight">
+      <div className="mb-3.5 sm:mb-4">
+        <div className="flex items-center justify-between gap-2.5">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans tracking-tight m-0">
             {sectionTitle}
           </h2>
-          <p className={`text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal mt-1 ${showDescriptionOnMobile ? "block" : "hidden sm:block"}`}>
-            {sectionDescription}
-          </p>
+
+          <div className="flex items-center gap-1.5 shrink-0">
+            {horizontal && posts.length > 4 && (
+              <div className="hidden sm:flex items-center gap-1.5 mr-1">
+                <button
+                  type="button"
+                  onClick={scrollPrev}
+                  disabled={!canScrollLeft}
+                  aria-label="Previous blogs"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#d5e3ff] bg-white text-[#000f22] flex items-center justify-center hover:bg-[#115eaf] hover:border-[#115eaf] hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer shadow-2xs"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={scrollNext}
+                  disabled={!canScrollRight}
+                  aria-label="Next blogs"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#d5e3ff] bg-white text-[#000f22] flex items-center justify-center hover:bg-[#115eaf] hover:border-[#115eaf] hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer shadow-2xs"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                </button>
+              </div>
+            )}
+
+            <Link
+              to="/blog"
+              className="shrink-0 inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-[#115eaf] text-[#115eaf] hover:bg-[#115eaf] hover:text-white transition-all shadow-2xs active:scale-95 leading-none"
+            >
+              <span>View all</span>
+              <ArrowRight size={12} className="shrink-0" />
+            </Link>
+          </div>
         </div>
 
-        <div className="flex items-center gap-2 self-start sm:self-auto shrink-0">
-          {horizontal && posts.length > 4 && (
-            <div className="hidden sm:flex items-center gap-1.5 mr-1">
-              <button
-                type="button"
-                onClick={scrollPrev}
-                disabled={!canScrollLeft}
-                aria-label="Previous blogs"
-                className="w-8 h-8 rounded-full border border-[#d5e3ff] bg-white text-[#000f22] flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer shadow-2xs"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                type="button"
-                onClick={scrollNext}
-                disabled={!canScrollRight}
-                aria-label="Next blogs"
-                className="w-8 h-8 rounded-full border border-[#d5e3ff] bg-white text-[#000f22] flex items-center justify-center hover:bg-[#0b2540] hover:border-[#0b2540] hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer shadow-2xs"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-          )}
-
-          <Link
-            to="/blog"
-            className="btn-view-all btn-outline shrink-0 inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-xl border border-[#0b2540] text-[#0b2540] hover:bg-[#0b2540] hover:text-white transition-all min-h-[36px]"
-          >
-            View all <ArrowRight size={14} />
-          </Link>
-        </div>
+        <p className={`text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal mt-1 ${showDescriptionOnMobile ? "block" : "hidden sm:block"}`}>
+          {sectionDescription}
+        </p>
       </div>
 
       {/* Blog Cards Container: exactly 4 banners on desktop */}
