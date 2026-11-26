@@ -8,7 +8,7 @@ export const TrackApplicationModal = ({ isOpen, onClose }) => {
     e.preventDefault();
     setSearched(true);
   };
-  return <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
+  return <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div
     className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-[#e7eeff] overflow-hidden max-h-[92vh] overflow-y-auto relative"
     onClick={(e) => e.stopPropagation()}
@@ -18,7 +18,7 @@ export const TrackApplicationModal = ({ isOpen, onClose }) => {
   }
         <div className="px-6 py-5 border-b border-[#e7eeff] flex items-center justify-between bg-[#f0f3ff]">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-[#115eaf] text-white flex items-center justify-center shadow-xs">
               <Search className="w-5 h-5" />
             </div>
             <div>
@@ -47,13 +47,13 @@ export const TrackApplicationModal = ({ isOpen, onClose }) => {
     value={applicationId}
     onChange={(e) => setApplicationId(e.target.value)}
     placeholder="e.g. LPU-2026-00123"
-    className="w-full px-4 py-2.5 rounded-xl border border-[#d5e3ff] text-base sm:text-sm focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none transition-all"
+    className="w-full px-4 py-2.5 rounded-xl border border-[#d5e3ff] text-base sm:text-sm focus:ring-2 focus:ring-[#115eaf] focus:border-[#115eaf] outline-none transition-all"
     required
   />
               </div>
               <button
     type="submit"
-    className="w-full py-3 bg-slate-900 text-white rounded-xl text-sm font-bold hover:bg-slate-800 active:scale-[0.98] transition-all shadow"
+    className="w-full py-3 bg-[#115eaf] text-white rounded-xl text-sm font-bold hover:bg-[#084a8c] active:scale-[0.98] transition-all shadow"
   >
                 Track Application
               </button>
@@ -80,7 +80,7 @@ export const TrackApplicationModal = ({ isOpen, onClose }) => {
                 </button>
                 <button
     onClick={onClose}
-    className="flex-1 py-2.5 min-h-[44px] bg-slate-900 text-white rounded-xl text-sm font-semibold hover:bg-slate-800 transition-all"
+    className="flex-1 py-2.5 min-h-[44px] bg-[#115eaf] text-white rounded-xl text-sm font-semibold hover:bg-[#084a8c] transition-all"
   >
                   Close
                 </button>

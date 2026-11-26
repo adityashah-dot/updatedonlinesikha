@@ -37,9 +37,10 @@ const TOC_ITEMS = [
   { id: "scholarships", label: sectionTitle(AMITY.shortName, "Scholarships") },
   { id: "campus", label: sectionTitle(AMITY.shortName, "Campus") },
   { id: "sample-degree", label: sectionTitle(AMITY.shortName, "Sample Degree") },
-  { id: "reviews-section", label: sectionTitle(AMITY.shortName, "Reviews & FAQs") },
+  { id: "reviews-section", label: sectionTitle(AMITY.shortName, "Reviews & Ratings") },
   { id: "compare-colleges", label: "Compare Colleges with Amity Online" },
-  { id: "blogs", label: "Blogs" }
+  { id: "blogs", label: "Blogs" },
+  { id: "faqs", label: sectionTitle(AMITY.shortName, "Frequently Asked Questions") }
 ];
 const stripHtml = (html) => html.replace(/<[^>]*>/g, " ").replace(/&nbsp;/g, " ").replace(/\s+/g, " ").trim();
 const AMITY_PROGRAMME_CARDS = AMITY_UNIVERSITY_DATA.courses.map((c) => ({
@@ -131,98 +132,102 @@ export const AmityOverviewView = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
           <div className="flex flex-row items-start gap-3 sm:gap-5">
             <img
-    src={AMITY.logoImage}
-    alt={`${AMITY.shortName} Logo`}
-    className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-2xl bg-white border border-[#e7eeff] p-1.5 shadow-sm shrink-0"
-    onError={(e) => {
-      e.target.style.display = "none";
-    }}
-  />
+              src={AMITY.logo}
+              alt="Amity University Online Logo"
+              className="w-14 h-14 sm:w-20 sm:h-20 object-contain rounded-xl sm:rounded-2xl bg-white border border-[#e7eeff] p-1.5 shadow-sm shrink-0"
+              onError={(e) => {
+                e.target.style.display = "none";
+              }}
+            />
             <div className="min-w-0">
-<h1 className="section-title text-2xl sm:text-3xl lg:text-3xl font-bold tracking-tight font-sans text-[#000f22] max-w-2xl leading-tight">
+              <h1 className="section-title text-[18px] sm:text-2xl md:text-3xl font-bold tracking-tight font-sans text-[#000f22] max-w-2xl leading-tight">
                 {AMITY.title}
               </h1>
-              <div className="flex flex-wrap items-center gap-2 mt-3">
-                <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-2 sm:mt-3">
+                <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[10px] sm:text-[11px] font-bold">
                   #{AMITY.nirfRanking} NIRF Rank
                 </span>
-                <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">
+                <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[10px] sm:text-[11px] font-bold">
                   {AMITY.naacGrade}
                 </span>
-                <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">
+                <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[10px] sm:text-[11px] font-bold">
                   UGC-DEB Entitled
                 </span>
-                <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">
+                <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[10px] sm:text-[11px] font-bold">
                   100% Online
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-4 items-start mt-4">
-            <div className="order-2 lg:order-none lg:col-span-7 space-y-3">
-              <p className="section-description text-xs sm:text-sm text-[#43474d] font-normal flex items-center gap-1.5 flex-wrap">
-                <MapPin className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
-                {AMITY.location} · {AMITY.type} · Est. {AMITY.established} ·{" "}
-                <span className="inline-flex items-center gap-0.5 font-bold text-[#B45309]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-3 sm:gap-y-4 items-start mt-3 sm:mt-4">
+            <div className="order-2 lg:order-none lg:col-span-7 space-y-2.5 sm:space-y-3">
+              <div className="flex items-center justify-between gap-2 text-xs sm:text-sm text-[#43474d] flex-wrap">
+                <p className="section-description text-xs sm:text-sm text-[#43474d] font-normal flex items-center gap-1.5">
+                  <MapPin className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
+                  <span>{AMITY.location} · {AMITY.type} · Est. {AMITY.established}</span>
+                </p>
+                <span className="inline-flex items-center gap-1 font-bold text-[#B45309] bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200/60 text-xs shrink-0">
                   <Star className="w-3 h-3 fill-[#D97706] text-[#D97706]" />
                   {AMITY.rating}
                 </span>
-              </p>
-              <p className="text-sm text-[#2d3137] leading-relaxed font-normal">
+              </div>
+              <p className="text-xs sm:text-sm text-[#2d3137] leading-relaxed font-normal">
                 {AMITY.heroDescription}
               </p>
             </div>
 
             <div className="order-1 lg:order-none lg:col-span-5 lg:mr-[50px]">
-              <div className="rounded-2xl overflow-hidden border border-[#e7eeff] shadow-xs bg-[#f9f9ff]">
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-[#e7eeff] shadow-xs bg-[#f9f9ff]">
                 <img
-    src={AMITY.heroImage}
-    alt="Amity University Online Campus"
-    className="w-full h-48 sm:h-60 lg:h-64 object-cover"
-    loading="lazy"
-  />
+                  src={AMITY.heroImage}
+                  alt="Amity University Online Campus"
+                  className="w-full h-44 sm:h-60 lg:h-64 object-cover"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-stretch gap-3 mt-5 lg:mr-[100px]">
-            <div className="bg-[#f0f3ff] border border-[#e7eeff] px-4 py-2.5 rounded-xl text-center min-w-[110px]">
-              <span className="block text-sm font-bold text-[#000f22] font-sans">
-                {AMITY.quickStats.feeRange}
-              </span>
-              <span className="text-[10px] text-[#74777e]">Fee Range</span>
+          <div className="flex flex-col lg:flex-row lg:items-center gap-2.5 sm:gap-3 mt-4 sm:mt-5 lg:mr-[100px]">
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:flex lg:items-stretch gap-2 sm:gap-3 w-full lg:w-auto">
+              <div className="bg-[#f0f3ff] border border-[#e7eeff] px-2.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-center min-w-0 lg:min-w-[110px] flex flex-col justify-center">
+                <span className="block text-xs sm:text-sm font-bold text-[#000f22] font-sans truncate">
+                  {AMITY.quickStats.feeRange}
+                </span>
+                <span className="text-[10px] text-[#74777e] mt-0.5">Fee Range</span>
+              </div>
+              <div className="bg-[#f0f3ff] border border-[#e7eeff] px-2.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-center min-w-0 lg:min-w-[110px] flex flex-col justify-center">
+                <span className="block text-xs sm:text-sm font-bold text-[#115eaf] font-sans truncate">
+                  {AMITY.quickStats.duration}
+                </span>
+                <span className="text-[10px] text-[#74777e] mt-0.5">Duration</span>
+              </div>
+              <div className="bg-[#f0f3ff] border border-[#e7eeff] px-2.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-center min-w-0 lg:min-w-[110px] flex flex-col justify-center">
+                <span className="block text-xs sm:text-sm font-bold text-[#000f22] font-sans truncate">Online</span>
+                <span className="text-[10px] text-[#74777e] mt-0.5">Semester-based</span>
+              </div>
+              <div className="bg-[#f0f3ff] border border-[#e7eeff] px-2.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-center min-w-0 lg:min-w-[110px] flex flex-col justify-center">
+                <span className="block text-xs sm:text-sm font-bold text-[#B45309] font-sans truncate">
+                  {AMITY.quickStats.placementRate}
+                </span>
+                <span className="text-[10px] text-[#74777e] mt-0.5">Placement Rate</span>
+              </div>
             </div>
-            <div className="bg-[#f0f3ff] border border-[#e7eeff] px-4 py-2.5 rounded-xl text-center min-w-[110px]">
-              <span className="block text-sm font-bold text-[#115eaf] font-sans">
-                {AMITY.quickStats.duration}
-              </span>
-              <span className="text-[10px] text-[#74777e]">Duration</span>
-            </div>
-            <div className="bg-[#f0f3ff] border border-[#e7eeff] px-4 py-2.5 rounded-xl text-center min-w-[110px]">
-              <span className="block text-sm font-bold text-[#000f22] font-sans">Online</span>
-              <span className="text-[10px] text-[#74777e]">Semester-based</span>
-            </div>
-            <div className="bg-[#f0f3ff] border border-[#e7eeff] px-4 py-2.5 rounded-xl text-center min-w-[110px]">
-              <span className="block text-sm font-bold text-[#B45309] font-sans">
-                {AMITY.quickStats.placementRate}
-              </span>
-              <span className="text-[10px] text-[#74777e]">Placement Rate</span>
-            </div>
-            <div className="flex items-center gap-3 md:ml-auto">
+            <div className="grid grid-cols-2 gap-2 w-full sm:flex sm:w-auto lg:ml-auto">
               <button
-    onClick={() => onOpenBrochure()}
-    className="px-5 py-2.5 rounded-xl bg-white text-[#115eaf] border border-[#115eaf] text-xs sm:text-sm font-bold hover:bg-[#f0f3ff] active:scale-95 transition-all flex items-center justify-center gap-2"
-  >
-                <Download className="w-4 h-4" />
+                onClick={() => onOpenBrochure()}
+                className="h-9 sm:h-10 px-4 sm:px-5 rounded-xl bg-white text-[#115eaf] border border-[#115eaf] text-xs sm:text-sm font-bold hover:bg-[#f0f3ff] active:scale-95 transition-all flex items-center justify-center gap-1.5 sm:gap-2"
+              >
+                <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 Brochure
               </button>
               <button
-    onClick={() => onOpenApply()}
-    className="px-6 py-2.5 rounded-xl bg-[#115eaf] text-white text-xs sm:text-sm font-bold shadow hover:bg-[#004689] active:scale-95 transition-all flex items-center justify-center gap-2"
-  >
+                onClick={() => onOpenApply()}
+                className="h-9 sm:h-10 px-4 sm:px-6 rounded-xl bg-[#115eaf] text-white text-xs sm:text-sm font-bold shadow hover:bg-[#004689] active:scale-95 transition-all flex items-center justify-center gap-1.5 sm:gap-2"
+              >
                 Apply Now
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </button>
             </div>
           </div>
@@ -979,35 +984,6 @@ export const AmityOverviewView = ({
                   </div>
                 </div>)}
             </div>
-
-            <h3 className="text-lg font-bold text-[#000f22] font-sans mt-6">
-              {AMITY.faqHeading}
-            </h3>
-            <div className="space-y-3 mt-3">
-              {AMITY.faqs.map((faq, idx) => {
-    const isOpen = openFaq === idx;
-    return <div
-      key={idx}
-      className="border border-[#e7eeff] rounded-xl overflow-hidden bg-white"
-    >
-                    <button
-      type="button"
-      onClick={() => setOpenFaq(isOpen ? null : idx)}
-      className="w-full px-4 py-3.5 text-left flex items-center justify-between gap-3 hover:bg-[#f0f3ff]/50 transition-colors"
-    >
-                      <span className="text-sm font-semibold text-[#000f22]">{faq.question}</span>
-                      <span
-      className={`text-[#115eaf] text-lg leading-none shrink-0 transition-transform ${isOpen ? "rotate-45" : ""}`}
-    >
-                        +
-                      </span>
-                    </button>
-                    {isOpen && <p className="px-4 pb-4 text-xs sm:text-sm text-[#43474d] font-normal leading-relaxed border-t border-[#e7eeff] pt-3">
-                        {faq.answer}
-                      </p>}
-                  </div>;
-  })}
-            </div>
           </section>
 
           {
@@ -1037,7 +1013,63 @@ export const AmityOverviewView = ({
     showDescriptionOnMobile
     fetchLivePosts
   />
+
+          {/* 17. Frequently Asked Questions — Last Section on Detail Page */}
+          <section
+            id="faqs"
+            className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[130px] p-5 md:p-6"
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#115eaf]" aria-hidden="true" />
+              <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans m-0">
+                {AMITY.faqHeading || "Frequently Asked Questions (Amity Online)"}
+              </h2>
+            </div>
+            <div className="space-y-3">
+              {AMITY.faqs.map((faq, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="border border-[#e7eeff] rounded-xl overflow-hidden bg-white shadow-2xs"
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenFaq(isOpen ? null : idx)}
+                      className="w-full px-4 py-3.5 text-left flex items-center justify-between gap-3 hover:bg-[#f0f3ff]/50 transition-colors"
+                    >
+                      <span className="text-sm font-semibold text-[#000f22]">{faq.question}</span>
+                      <span
+                        className={`text-[#115eaf] text-lg font-bold leading-none shrink-0 transition-transform ${isOpen ? "rotate-45" : ""}`}
+                      >
+                        +
+                      </span>
+                    </button>
+                    {isOpen && (
+                      <p className="px-4 pb-4 text-xs sm:text-sm text-[#43474d] font-normal leading-relaxed border-t border-[#e7eeff] pt-3">
+                        {faq.answer}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
         </div>
+      </div>
+
+      {/* Vertical Edge Tab — "Free Apply" */}
+      <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex items-center pointer-events-none">
+        <button
+          type="button"
+          onClick={() => onOpenApply?.()}
+          className="pointer-events-auto hidden h-[200px] w-12 items-center justify-center rounded-l-2xl bg-[#115eaf] shadow-md transition-colors hover:bg-[#004689] lg:flex cursor-pointer active:scale-95"
+          aria-label="Free Apply"
+        >
+          <span className="block text-white text-sm font-semibold tracking-wide whitespace-nowrap -rotate-90">
+            Free Apply
+          </span>
+        </button>
       </div>
     </div>;
 };

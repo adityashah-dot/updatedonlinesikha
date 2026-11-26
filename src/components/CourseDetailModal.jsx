@@ -12,7 +12,7 @@ export const CourseDetailModal = ({
   if (!isOpen || !course) return null;
   const earlyBirdTotal = Math.round(course.totalFee * 0.8);
   const monthlyEmiEst = Math.round(earlyBirdTotal / 24);
-  return <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/65 backdrop-blur-xs animate-in fade-in duration-200">
+  return <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div
     className="bg-white rounded-2xl max-w-5xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-[#e7eeff] relative"
     onClick={(e) => e.stopPropagation()}

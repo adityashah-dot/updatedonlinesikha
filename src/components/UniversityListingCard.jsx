@@ -10,6 +10,7 @@ import {
   Monitor,
   Star,
   TrendingUp,
+  Trophy,
   Video,
 } from 'lucide-react';
 import { DEGREEFYD_LPU_API } from '../data/apiData';
@@ -38,7 +39,7 @@ export default function UniversityListingCard({
   return (
     <article
       onClick={onOpen}
-      className="relative flex min-w-0 cursor-pointer flex-col rounded-2xl border border-[#d5e3ff] bg-white p-5 shadow-xs transition-all duration-300 hover:border-[#115eaf] hover:shadow-xl md:p-6"
+      className="relative flex min-w-0 cursor-pointer flex-col rounded-2xl border border-[#d5e3ff] bg-white p-3.5 sm:p-5 md:p-6 shadow-xs transition-all duration-300 hover:border-[#115eaf] hover:shadow-xl"
     >
       <div className="flex flex-col justify-between gap-3 border-b border-[#e7eeff] pb-2.5 md:flex-row md:items-start">
         <div className="flex min-w-0 items-start gap-3">
@@ -72,7 +73,6 @@ export default function UniversityListingCard({
               {u.location && <span className="inline-flex items-center gap-0.5"><MapPin className="h-3.5 w-3.5 text-[#74777e]" />{u.location}</span>}
               {u.established && <span>{u.location ? '•' : `Est. ${u.established}`}</span>}
               {u.established && u.location && <span>Est. {u.established}</span>}
-              {u.rankNote && <span className="line-clamp-1 font-semibold text-[#B45309]" title={u.rankNote}>{u.rankNote}</span>}
             </p>
 
             {(u.naac || approvals.length > 0) && (
@@ -90,22 +90,32 @@ export default function UniversityListingCard({
           </div>
         </div>
 
-        <div className="shrink-0 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] p-3 text-left md:border-0 md:bg-transparent md:p-0 md:text-right">
-          <span className="block text-[11px] font-semibold uppercase text-[#74777e]">Total Program Fee</span>
-          <div className="text-xl font-bold text-[#000f22]">
-            {u.feeLabel || 'Fee on request'}
-            {showOnwards && <span className="text-xs font-normal text-[#43474d]"> onwards</span>}
-          </div>
-          {u.emi && (
-            <div className="mt-1 inline-flex items-center gap-1 rounded-full border border-emerald-200/60 bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-800 shadow-xs">
-              <CreditCard className="h-3 w-3" />EMI starts {u.emi}
+        <div className="shrink-0 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] p-3 text-left md:border-0 md:bg-transparent md:p-0 md:text-right flex flex-col items-start md:items-end justify-between">
+          {u.rankNote && (
+            <div className="mb-1.5">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full px-2.5 py-0.5 text-[10.5px] sm:text-[11px] font-bold text-amber-900 bg-amber-50 border border-amber-200/90 shadow-2xs">
+                <Trophy className="h-3 w-3 text-amber-600 fill-amber-500" />
+                {u.rankNote}
+              </span>
             </div>
           )}
+          <div>
+            <span className="block text-[11px] font-semibold uppercase text-[#74777e]">Fee Range</span>
+            <div className="text-xl font-bold text-[#000f22]">
+              {u.feeRange || u.feeLabel || 'Fee on request'}
+              {!u.feeRange && showOnwards && <span className="text-xs font-normal text-[#43474d]"> onwards</span>}
+            </div>
+            {u.emi && (
+              <div className="mt-1 inline-flex items-center gap-1 rounded-full border border-emerald-200/60 bg-emerald-50 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-800 shadow-xs">
+                <CreditCard className="h-3 w-3" />EMI starts {u.emi}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
       <div className="my-4 grid grid-cols-2 gap-3 rounded-xl border border-[#e1e9ff] bg-[#f8f9ff] px-4 py-4 text-center sm:grid-cols-4 sm:text-left md:gap-4">
-        {u.specs.map((feature) => {
+        {u.specs.filter((feature) => feature.label.toLowerCase() !== 'established').map((feature) => {
           const Icon = FEATURE_ICONS[feature.label] || Building2;
           return (
             <div key={feature.label} className="min-w-0">
@@ -130,17 +140,25 @@ export default function UniversityListingCard({
           )}
         </div>
 
-        <div className="flex w-full flex-wrap items-center gap-2 lg:w-auto lg:shrink-0">
-          <label onClick={(event) => event.stopPropagation()} className="flex min-h-11 cursor-pointer select-none items-center gap-1.5 py-1.5 text-[13px] font-medium text-[#43474d] hover:text-[#000f22] sm:mr-2">
-            <input type="checkbox" checked={isCompared} disabled={compareDisabled} onChange={onToggleCompare} className="h-4 w-4 rounded border-[#c4c6ce] text-[#115eaf] disabled:cursor-not-allowed disabled:opacity-50" />
-            <span>Compare</span>
-          </label>
-          <button onClick={(event) => { event.stopPropagation(); onOpenBrochure(); }} className="inline-flex min-h-11 items-center gap-1 rounded-xl border border-[#d5e3ff] bg-[#f0f3ff] px-3.5 py-1.5 text-xs font-semibold text-[#000f22] transition-colors hover:bg-[#dee8ff]">
-            <Download className="h-4 w-4" /><span>Brochure</span>
-          </button>
-          <button onClick={(event) => { event.stopPropagation(); onOpenApply(); }} className="inline-flex min-h-11 items-center gap-1 rounded-xl bg-[#115eaf] px-4 py-1.5 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#004689] active:scale-95">
-            <span>Apply Now</span><ArrowRight className="h-3.5 w-3.5" />
-          </button>
+        <div className="flex w-full flex-wrap items-center justify-between gap-2 lg:w-auto lg:shrink-0">
+          {u.established && (
+            <span className="inline-flex items-center gap-1.5 text-xs text-[#43474d] font-normal mr-2">
+              <Clock className="h-3.5 w-3.5 text-[#74777e] shrink-0" />
+              Established in {u.established}
+            </span>
+          )}
+          <div className="flex items-center gap-2">
+            <label onClick={(event) => event.stopPropagation()} className="flex min-h-11 cursor-pointer select-none items-center gap-1.5 py-1.5 text-[13px] font-medium text-[#43474d] hover:text-[#000f22] sm:mr-2">
+              <input type="checkbox" checked={isCompared} disabled={compareDisabled} onChange={onToggleCompare} className="h-4 w-4 rounded border-[#c4c6ce] text-[#115eaf] disabled:cursor-not-allowed disabled:opacity-50" />
+              <span>Compare</span>
+            </label>
+            <button onClick={(event) => { event.stopPropagation(); onOpenBrochure(); }} className="inline-flex min-h-11 items-center gap-1 rounded-xl border border-[#d5e3ff] bg-[#f0f3ff] px-3.5 py-1.5 text-xs font-semibold text-[#000f22] transition-colors hover:bg-[#dee8ff]">
+              <Download className="h-4 w-4" /><span>Brochure</span>
+            </button>
+            <button onClick={(event) => { event.stopPropagation(); onOpenApply(); }} className="inline-flex min-h-11 items-center gap-1 rounded-xl bg-[#115eaf] px-4 py-1.5 text-xs font-semibold text-white shadow-sm transition-all hover:bg-[#004689] active:scale-95">
+              <span>Apply Now</span><ArrowRight className="h-3.5 w-3.5" />
+            </button>
+          </div>
         </div>
       </div>
     </article>

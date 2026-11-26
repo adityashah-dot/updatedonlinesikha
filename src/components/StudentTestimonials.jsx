@@ -217,25 +217,25 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
       /* Top Row: User Avatar & Course Info */
     }
               <div>
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <div className="flex min-w-0 flex-1 items-center gap-3">
+                <div className="flex items-start justify-between gap-2.5 mb-2.5">
+                  <div className="flex min-w-0 flex-1 items-center gap-2.5">
                     <div className="relative shrink-0 rounded-full overflow-hidden ring-1 ring-slate-200 dark:ring-slate-700 shadow-md bg-slate-100 dark:bg-slate-800">
                       <img
       src={item.avatarUrl}
       alt={item.name}
-      className="w-13 h-13 object-cover aspect-square rounded-full border-2 border-white dark:border-slate-800"
+      className="w-10 h-10 sm:w-13 sm:h-13 object-cover aspect-square rounded-full border-2 border-white dark:border-slate-800"
       loading="lazy"
     />
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <h3 className="block truncate text-sm sm:text-base font-bold text-[#000f22] dark:text-slate-100 tracking-tight leading-snug" title={item.name}>
+                      <h3 className="block truncate text-[13.5px] sm:text-base font-bold text-[#000f22] dark:text-slate-100 tracking-tight leading-snug" title={item.name}>
                         {item.name}
                       </h3>
-                      <p className="block truncate text-xs text-[#115eaf] dark:text-blue-400 font-medium" title={item.currentRole}>
+                      <p className="block truncate text-[11px] sm:text-xs text-[#115eaf] dark:text-blue-400 font-medium" title={item.currentRole}>
                         {item.currentRole}
                       </p>
-                      <p className="block truncate text-[11px] text-[#74777e] dark:text-slate-400" title={item.company}>
+                      <p className="block truncate text-[10px] sm:text-[11px] text-[#74777e] dark:text-slate-400" title={item.company}>
                         {item.company}
                       </p>
                     </div>
@@ -246,9 +246,9 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
     }
                   <div className="flex shrink-0 max-w-[42%] flex-col items-end gap-1">
                     <div className="flex items-center gap-0.5 text-amber-400">
-                      {[...Array(item.rating)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />)}
+                      {[...Array(item.rating)].map((_, i) => <Star key={i} className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-amber-400 text-amber-400" />)}
                     </div>
-                    <span className="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded-md border border-emerald-200 dark:border-emerald-800/60">
+                    <span className="text-[9.5px] sm:text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 px-1.5 sm:px-2 py-0.5 rounded-md border border-emerald-200 dark:border-emerald-800/60 truncate">
                       {item.highlightMetric}
                     </span>
                   </div>
@@ -257,7 +257,7 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
                 {
       /* Course & University Metadata */
     }
-                <div className="flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-1 text-xs text-[#555960] dark:text-slate-400 pb-2.5 mb-2.5 border-b border-slate-100 dark:border-slate-800/80">
+                <div className="flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[11px] sm:text-xs text-[#555960] dark:text-slate-400 pb-2 mb-2 border-b border-slate-100 dark:border-slate-800/80">
                   <span className="block max-w-full truncate font-semibold leading-snug text-slate-800 dark:text-slate-200" title={item.courseName}>
                     {item.courseName}
                   </span>
@@ -272,12 +272,12 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
                 </div>
 
                 {
-      /* Quote Block - ReadMore */
+      /* Quote Block - ReadMore & hover expand */
     }
-                <div className="relative">
-                  <Quote className="w-6 h-6 text-slate-200 dark:text-slate-700 absolute -top-1 -left-1 -z-0 opacity-70" />
+                <div className="relative group/quote">
+                  <Quote className="w-5 h-5 text-slate-200 dark:text-slate-700 absolute -top-1 -left-1 -z-0 opacity-70" />
                   <ReadMore lines={3}>
-                    <p className="relative z-1 block text-sm sm:text-[14px] font-medium text-[#2d3139] dark:text-slate-300 leading-[1.65] line-clamp-4">
+                    <p className="relative z-1 block text-xs sm:text-[14px] font-medium text-[#2d3139] dark:text-slate-300 leading-relaxed line-clamp-3 hover:line-clamp-none transition-all cursor-pointer">
                       "{item.quote}"
                     </p>
                   </ReadMore>
@@ -345,7 +345,7 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
     /* Full Story Modal */
   }
       {selectedStory && <div
-    className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-sm animate-fadeIn"
+    className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/40 backdrop-blur-sm animate-fadeIn"
     onClick={() => setSelectedStory(null)}
   >
           <div

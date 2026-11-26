@@ -18,6 +18,36 @@ h1.course-detail-h1 {
     font-weight: 700 !important;
     letter-spacing: -0.015em !important;
   }
+
+  /* Eliminate excessive side padding on mobile */
+  .course-prose {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .course-prose section {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Compact mobile tables matching DegreeFYD standard */
+  .course-prose th,
+  .course-prose thead th,
+  .course-prose thead td,
+  .course-prose tr.header-row th,
+  .course-prose tr.header-row td {
+    padding: 8px 10px !important;
+    font-size: 11.5px !important;
+    line-height: 1.3 !important;
+  }
+  .course-prose td {
+    padding: 8px 10px !important;
+    font-size: 11.5px !important;
+    line-height: 1.35 !important;
+  }
+  .course-prose .bd-table-wrap,
+  .course-table-wrap {
+    margin: 10px 0 !important;
+  }
 }
 
 /* Course Listing Hero H1 typography targets */
@@ -285,15 +315,15 @@ h1.course-listing-h1 {
 .course-prose tr.header-row th,
 .course-prose tr.header-row td,
 .course-prose table:not(:has(thead)) tbody tr:first-child td {
-  background: #0b62be !important;
+  background: #115eaf !important;
   color: #ffffff !important;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   font-size: 13px;
   text-transform: none !important;
   letter-spacing: 0 !important;
-  padding: 12px 16px !important;
+  padding: 10px 14px !important;
   border: 0 !important;
-  border-bottom: 1px solid #0b62be !important;
+  border-bottom: 1px solid #115eaf !important;
   vertical-align: middle;
   text-align: left;
 }
@@ -393,7 +423,7 @@ h1.course-listing-h1 {
   text-underline-offset: 2px;
 }
 
-/* 2-Column Key-Value Tables */
+/* 2-Column Key-Value Tables & Salary Tables */
 .course-prose table.table-2col,
 .course-prose table:has(tr > th:nth-child(2):last-child),
 .course-prose table:has(tr > td:nth-child(2):last-child) {
@@ -401,10 +431,39 @@ h1.course-listing-h1 {
   width: 100%;
 }
 
+.course-prose table.table-2col colgroup {
+  display: none !important;
+}
+
 .course-prose table.table-2col th:first-child,
 .course-prose table.table-2col td:first-child {
-  width: 38%;
-  min-width: 140px;
+  width: 48%;
+  text-align: left;
+}
+
+.course-prose table.table-2col th:nth-child(2),
+.course-prose table.table-2col td:nth-child(2) {
+  width: 52%;
+}
+
+/* Right-align Salary / LPA / Financial figures so there is no awkward blank space on the right side */
+.course-prose table.table-salary-col2 th:nth-child(2),
+.course-prose table.table-salary-col2 td:nth-child(2),
+.course-prose .bd-table-salary table th:nth-child(2),
+.course-prose .bd-table-salary table td:nth-child(2) {
+  text-align: right !important;
+  padding-right: 1.5rem !important;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 640px) {
+  .course-prose table.table-salary-col2 th:nth-child(2),
+  .course-prose table.table-salary-col2 td:nth-child(2),
+  .course-prose .bd-table-salary table th:nth-child(2),
+  .course-prose .bd-table-salary table td:nth-child(2) {
+    padding-right: 2.25rem !important;
+  }
 }
 
 /* 3-Column Tables (e.g. University Fee Comparison Tables) */

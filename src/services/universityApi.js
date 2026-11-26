@@ -43,6 +43,26 @@ function readImage(value) {
   return "";
 }
 
+function formatFeeRange(record) {
+  const rawMin = record.minFee ?? record.minimumFee;
+  const rawMax = record.maxFee ?? record.maximumFee;
+  const min = rawMin == null || rawMin === "" ? null : Number(rawMin);
+  const max = rawMax == null || rawMax === "" ? null : Number(rawMax);
+  const hasMin = min !== null && Number.isFinite(min) && min >= 0;
+  const hasMax = max !== null && Number.isFinite(max) && max >= 0;
+
+  if (hasMin && hasMax && (min > 0 || max > 0) && min !== max) {
+    return `\u20B9${Math.round(min / 1000)}K \u2013 \u20B9${(max / 100000).toFixed(2)}L`;
+  }
+  if (hasMin && min > 0) {
+    return `\u20B9${min.toLocaleString("en-IN")}`;
+  }
+  if (hasMax && max > 0) {
+    return `\u20B90K \u2013 \u20B9${(max / 100000).toFixed(2)}L`;
+  }
+  return "";
+}
+
 function formatFee(value) {
   if (value === null || value === undefined || value === "") return "";
 
@@ -90,6 +110,7 @@ export function mapUniversity(recordRaw, index = 0) {
   const minFee = Number.isFinite(rawMinFee) && rawMinFee > 0 ? rawMinFee : null;
   const maxFee = Number.isFinite(rawMaxFee) && rawMaxFee > 0 ? rawMaxFee : null;
 
+  const feeRange = formatFeeRange(record);
   const feeLabel = minFee != null && maxFee != null && minFee !== maxFee
     ? `${formatFee(minFee)} - ${formatFee(maxFee)}`
     : formatFee(minFee ?? maxFee);
@@ -133,6 +154,7 @@ export function mapUniversity(recordRaw, index = 0) {
     approvals,
     accreditations: approvals,
     feeLabel,
+    feeRange,
     minFee,
     maxFee,
     highestPackage: record.highestPackage || 0,
