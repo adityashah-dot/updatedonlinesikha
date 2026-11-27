@@ -50,14 +50,32 @@ function rewriteInternalHref(href) {
   return trimmed;
 }
 
-function RichtextBlock({ block }) {
+function RichtextBlock({ block, sectionTitle }) {
   const content = (block && (block.content || block.html || block.text)) || "";
   const title = (block && (block.title || block.heading)) || "";
   const rawLevel = String((block && (block.headingLevel || block.level)) || "h2").toLowerCase();
   const level = rawLevel === "h3" || rawLevel === "3" ? "h3" : rawLevel === "h4" || rawLevel === "4" ? "h4" : rawLevel === "h5" || rawLevel === "5" ? "h5" : "h2";
-  const sanitizedTitle = String(title).replace(/DegreeFYD/gi, "OnlineSiksha");
+  const sanitizedTitle = String(title).replace(/DegreeFYD/gi, "OnlineSiksha").trim();
 
-  const heading = sanitizedTitle
+  // Suppress block sub-heading when the block only renders a table (with no introductory prose)
+  // or when the block title duplicates the parent section title.
+  const hasTable = /<table\b/i.test(content);
+  const textOutsideTable = hasTable
+    ? content
+        .replace(/<table\b[\s\S]*?<\/table>/gi, "")
+        .replace(/<[^>]+>/g, "")
+        .replace(/&nbsp;/gi, " ")
+        .trim()
+    : "";
+  const isStandaloneTableBlock = hasTable && textOutsideTable.length === 0;
+  const isDuplicateTitle =
+    sanitizedTitle &&
+    sectionTitle &&
+    sanitizedTitle.toLowerCase() === String(sectionTitle).trim().toLowerCase();
+
+  const shouldShowHeading = Boolean(sanitizedTitle && !isStandaloneTableBlock && !isDuplicateTitle);
+
+  const heading = shouldShowHeading
     ? level === "h3"
       ? <h3 className="text-base sm:text-lg font-bold text-[#000f22] mt-4 mb-2">{sanitizedTitle}</h3>
       : level === "h4"
@@ -399,73 +417,138 @@ function SkillsGainedBlock({ items = [], heading = "" }) {
 }
 
 /**
- * Modern Interactive Specialization Cards
+ * Modern Interactive Specialization Cards (capped at 6 by default for user-friendly scanning)
  */
-function SpecializationListBlock({ block, isSkillsSection = false }) {
+const INITIAL_SPECIALIZATIONS_COUNT = 6;
+
+function SpecializationListBlock({ block, isSkillsSection = false, course, sectionTitle }) {
+  const [showAll, setShowAll] = useState(false);
   const content = (block && block.content) || {};
   const items = Array.isArray(content.items) ? content.items : [];
-  const heading = String((content && content.heading) || (block && block.title) || "").replace(/DegreeFYD/gi, "OnlineSiksha");
+  const rawHeading = String((content && content.heading) || (block && block.title) || "").replace(/DegreeFYD/gi, "OnlineSiksha").trim();
+  const isDuplicateHeading = rawHeading && sectionTitle && rawHeading.toLowerCase() === String(sectionTitle).trim().toLowerCase();
+  const heading = isDuplicateHeading ? "" : rawHeading;
+
   if (items.length === 0) return null;
 
   if (isSkillsSection) {
     return <SkillsGainedBlock items={items} heading={heading} />;
   }
 
+  const visibleItems = showAll ? items : items.slice(0, INITIAL_SPECIALIZATIONS_COUNT);
+  const remainingCount = items.length - INITIAL_SPECIALIZATIONS_COUNT;
+  const fallbackDuration = course?.duration || "";
+  const fallbackFee = course?.feeDisplay || "";
+
   return (
     <div className="my-5">
       {heading ? <h3 className="text-sm sm:text-base font-bold text-[#000f22] mb-3.5">{heading}</h3> : null}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        {items.map((item, i) => {
-          const label = item && item.label ? String(item.label) : "";
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+        {visibleItems.map((item, i) => {
+          const label = item && item.label ? String(item.label) : String(item?.title || item?.name || "");
           const rawHref = item && item.isHyperlinkActive ? (item && item.hyperlink ? String(item.hyperlink) : "") : "";
           const href = rewriteInternalHref(rawHref);
           const isInternal = href.startsWith("/");
-          const isHighDemand = /artificial intelligence|machine learning|data science|cyber security|cloud/i.test(label);
-          const isTrending = /generative ai|full-stack|devops|blockchain/i.test(label);
+          const itemDuration = item?.duration || fallbackDuration;
+          const itemFee = item?.fee || item?.fees || fallbackFee;
+          const isHighDemand = /artificial intelligence|machine learning|data science|cyber security|cloud|finance|business analytics/i.test(label);
+          const isTrending = /generative ai|full-stack|devops|blockchain|marketing|strategy|leadership|operations/i.test(label);
 
           return (
             <div
               key={i}
-              className="group p-3.5 rounded-2xl border border-[#e7eeff] bg-white hover:border-[#115eaf]/40 hover:-translate-y-1 hover:shadow-sm transition-all duration-200 flex flex-col justify-between"
+              className="group p-4 rounded-2xl border border-[#d5e3ff] bg-white hover:border-[#115eaf] hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
             >
-              <div className="flex items-start justify-between gap-2 mb-2.5">
-                <div className="flex items-center gap-2 min-w-0">
-                  <span className="w-2 h-2 rounded-full bg-[#115eaf] group-hover:scale-125 transition-transform shrink-0" aria-hidden="true" />
-                  {href ? (
-                    isInternal ? (
-                      <Link to={href} className="text-xs sm:text-[13px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors leading-snug line-clamp-2">
-                        {label}
-                      </Link>
+              <div>
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <div className="flex items-start gap-2.5 min-w-0">
+                    <span className="w-2 h-2 rounded-full bg-[#115eaf] mt-1.5 group-hover:scale-125 transition-transform shrink-0" aria-hidden="true" />
+                    {href ? (
+                      isInternal ? (
+                        <Link to={href} className="text-xs sm:text-[13.5px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors leading-snug line-clamp-2">
+                          {label}
+                        </Link>
+                      ) : (
+                        <a href={href} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-[13.5px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors leading-snug line-clamp-2">
+                          {label}
+                        </a>
+                      )
                     ) : (
-                      <a href={href} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-[13px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors leading-snug line-clamp-2">
-                        {label}
-                      </a>
-                    )
-                  ) : (
-                    <span className="text-xs sm:text-[13px] text-[#000f22] font-bold group-hover:text-[#115eaf] transition-colors leading-snug line-clamp-2">{label}</span>
-                  )}
+                      <span className="text-xs sm:text-[13.5px] text-[#000f22] font-bold group-hover:text-[#115eaf] transition-colors leading-snug line-clamp-2">{label}</span>
+                    )}
+                  </div>
                 </div>
+
+                {(itemDuration || itemFee) ? (
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pl-4.5 mt-1.5 mb-2 text-[11px] text-[#555960]">
+                    {itemDuration ? (
+                      <span className="inline-flex items-center gap-1 font-medium">
+                        <Clock className="w-3 h-3 text-[#115eaf] shrink-0" aria-hidden="true" />
+                        <span>{itemDuration}</span>
+                      </span>
+                    ) : null}
+                    {itemFee ? (
+                      <span className="inline-flex items-center gap-1 font-bold text-[#115eaf]">
+                        <span>{itemFee}</span>
+                      </span>
+                    ) : null}
+                  </div>
+                ) : null}
               </div>
-              <div className="flex items-center justify-between pt-2 border-t border-slate-50 mt-1">
+
+              <div className="flex items-center justify-between pt-2.5 border-t border-[#eef4ff] mt-1">
                 {isHighDemand ? (
-                  <span className="px-2 py-0.5 rounded-md text-[9.5px] font-bold bg-amber-50 text-amber-700 border border-amber-200/70">
+                  <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200/80">
                     High Demand
                   </span>
                 ) : isTrending ? (
-                  <span className="px-2 py-0.5 rounded-md text-[9.5px] font-bold bg-blue-50 text-[#115eaf] border border-[#d5e3ff]">
-                    Trending
+                  <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-[#eef4ff] text-[#115eaf] border border-[#c8dcff]">
+                    Trending Track
                   </span>
                 ) : (
-                  <span className="text-[10px] font-medium text-slate-400">Core Track</span>
+                  <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-slate-50 text-[#43474d] border border-slate-200/80">
+                    UGC Entitled
+                  </span>
                 )}
-                <span className="text-xs font-semibold text-[#115eaf] group-hover:translate-x-0.5 transition-transform">
-                  Explore →
-                </span>
+                {href ? (
+                  isInternal ? (
+                    <Link to={href} className="text-xs font-bold text-[#115eaf] group-hover:translate-x-0.5 transition-transform inline-flex items-center gap-0.5">
+                      <span>Explore</span>
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  ) : (
+                    <a href={href} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-[#115eaf] group-hover:translate-x-0.5 transition-transform inline-flex items-center gap-0.5">
+                      <span>Explore</span>
+                      <span aria-hidden="true">→</span>
+                    </a>
+                  )
+                ) : (
+                  <span className="text-[11px] font-semibold text-emerald-700">
+                    0% EMI Available
+                  </span>
+                )}
               </div>
             </div>
           );
         })}
       </div>
+
+      {items.length > INITIAL_SPECIALIZATIONS_COUNT && (
+        <div className="mt-4 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setShowAll((prev) => !prev)}
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#115eaf] bg-[#f4f8ff] hover:bg-[#115eaf] text-[#115eaf] hover:text-white text-xs font-bold transition-all cursor-pointer shadow-2xs"
+          >
+            <span>
+              {showAll
+                ? "Show Top 6 Specializations"
+                : `View All ${items.length} Specializations (+${remainingCount} More)`}
+            </span>
+            <ChevronRight className={`w-3.5 h-3.5 transition-transform ${showAll ? "-rotate-90" : "rotate-90"}`} />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -499,7 +582,7 @@ function FeatureCardsBlock({ block }) {
   );
 }
 
-function renderCourseBlock(block, key, onOpenCounseling, sectionTitle, isRecruiterSection, isSkillsSection) {
+function renderCourseBlock(block, key, onOpenCounseling, sectionTitle, isRecruiterSection, isSkillsSection, course) {
   if (!block || typeof block !== "object") return null;
   const type = String(block.type || "").toLowerCase();
 
@@ -508,11 +591,11 @@ function renderCourseBlock(block, key, onOpenCounseling, sectionTitle, isRecruit
     return null;
   }
 
-  if (type === "richtext" || type === "html" || type === "text") return <RichtextBlock key={key} block={block} />;
+  if (type === "richtext" || type === "html" || type === "text") return <RichtextBlock key={key} block={block} sectionTitle={sectionTitle} />;
   if (type === "cta" || type === "ctabuttons" || type === "call_to_action" || type === "banner") return <CtaBlock key={key} block={block} onOpenCounseling={onOpenCounseling} />;
   if (type === "step_flow" || type === "admission_flow") return <StepFlowBlock key={key} block={block} />;
   if (type === "syllabus" || type === "compare") return <SyllabusBlock key={key} block={block} sectionTitle={sectionTitle} />;
-  if (type === "specialization_list") return <SpecializationListBlock key={key} block={block} isSkillsSection={isSkillsSection} />;
+  if (type === "specialization_list") return <SpecializationListBlock key={key} block={block} isSkillsSection={isSkillsSection} course={course} sectionTitle={sectionTitle} />;
   if (type === "feature_cards" || type === "feature_list" || type === "courses_list") return <FeatureCardsBlock key={key} block={block} />;
   const fallback = block.content || block.html || block.text || block.value;
   if (fallback) {
@@ -680,7 +763,7 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
 
               <div>
                 {blocks.map((block, bIdx) =>
-                  renderCourseBlock(block, sIdx + "-" + bIdx, handleCounseling, heading, isRecruiterSection, isSkillsSection)
+                  renderCourseBlock(block, sIdx + "-" + bIdx, handleCounseling, heading, isRecruiterSection, isSkillsSection, course)
                 )}
               </div>
             </section>

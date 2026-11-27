@@ -1,4 +1,5 @@
 import { BlogsListSection } from "./BlogsListSection";
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, INDIAN_PHONE_REGEX, EMAIL_REGEX } from "../services/leadApi";
 
 import { useState, useEffect } from "react";
 import {
@@ -115,16 +116,26 @@ export default function CollegeAdmission({
   const handleCallback = (e) => {
     e.preventDefault();
     const errors = {};
+    const cleanPhone = sanitizeIndianPhone(callback.phone);
 
     if (!callback.name.trim()) errors.name = "Enter your name";
-    if (!/^\d{10}$/.test(callback.phone.replace(/\D/g, "")))
-      errors.phone = "Enter a valid 10-digit phone number";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(callback.email))
+    if (!INDIAN_PHONE_REGEX.test(cleanPhone))
+      errors.phone = "Enter a valid 10-digit Indian phone number starting with 6, 7, 8, 9, or 2";
+    if (!EMAIL_REGEX.test(callback.email.trim()))
       errors.email = "Enter a valid email address";
 
     setCallbackErrors(errors);
 
-    if (Object.keys(errors).length === 0) setCallbackSubmitted(true);
+    if (Object.keys(errors).length === 0) {
+      submitLead({
+        name: callback.name,
+        email: callback.email.trim(),
+        phone_number: cleanPhone,
+        preferred_college: data.title || shortName || "",
+        form_name: "Counselling Form in Priority College Page"
+      });
+      setCallbackSubmitted(true);
+    }
   };
 
   return (
@@ -521,21 +532,28 @@ export default function CollegeAdmission({
 
                     <div>
                       <label className="block text-[10px] font-bold uppercase tracking-wider text-[#43474d] mb-1">
-                        Phone
+                        Phone (+91)
                       </label>
-                      <input
-                        type="tel"
-                        value={callback.phone}
-                        onChange={(e) => {
-                          setCallback({ ...callback, phone: e.target.value });
-                          if (callbackErrors.phone)
-                            setCallbackErrors({ ...callbackErrors, phone: "" });
-                        }}
-                        placeholder="98765 43210"
-                        className={`w-full px-3 py-2.5 rounded-lg border bg-white text-xs text-[#000f22] placeholder:text-[#74777e] outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 ${
-                          callbackErrors.phone ? "border-red-500" : "border-[#c4c6ce]"
-                        }`}
-                      />
+                      <div className="relative flex items-center">
+                        <span className="absolute left-3 text-xs font-bold text-[#000f22]">+91</span>
+                        <input
+                          type="tel"
+                          inputMode="numeric"
+                          maxLength={10}
+                          pattern={INDIAN_PHONE_PATTERN}
+                          title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
+                          value={callback.phone}
+                          onChange={(e) => {
+                            setCallback({ ...callback, phone: sanitizeIndianPhone(e.target.value) });
+                            if (callbackErrors.phone)
+                              setCallbackErrors({ ...callbackErrors, phone: "" });
+                          }}
+                          placeholder="10-digit mobile"
+                          className={`w-full pl-10 pr-3 py-2.5 rounded-lg border bg-white text-xs text-[#000f22] placeholder:text-[#74777e] outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 ${
+                            callbackErrors.phone ? "border-red-500" : "border-[#c4c6ce]"
+                          }`}
+                        />
+                      </div>
                       {callbackErrors.phone ? (
                         <p className="mt-1 text-[11px] text-red-500">
                           {callbackErrors.phone}

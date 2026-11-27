@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { X, Search, CheckCircle, Clock, AlertCircle } from 'lucide-react';
+import { X, Search, Clock } from 'lucide-react';
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from '../services/leadApi';
 
 interface TrackApplicationModalProps {
   isOpen: boolean;
@@ -8,12 +9,36 @@ interface TrackApplicationModalProps {
 
 export const TrackApplicationModal: React.FC<TrackApplicationModalProps> = ({ isOpen, onClose }) => {
   const [applicationId, setApplicationId] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   const [searched, setSearched] = useState(false);
 
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg('');
+    const validation = validateLeadFields({
+      name,
+      phone,
+      email,
+      requireName: false,
+      requireEmail: true
+    });
+    if (!validation.valid) {
+      setErrorMsg(validation.error);
+      return;
+    }
+    submitLead({
+      name: name || `Applicant (${applicationId})`,
+      email: validation.cleanEmail,
+      phone_number: validation.cleanPhone,
+      student_comment: applicationId ? [`Application ID: ${applicationId}`] : [],
+      form_name: 'Track Application Modal Form',
+      source: 'OS'
+    });
     setSearched(true);
   };
 
@@ -34,7 +59,7 @@ export const TrackApplicationModal: React.FC<TrackApplicationModalProps> = ({ is
                 Track Application Status
               </h3>
               <p className="text-xs text-[#43474d]">
-                Enter your application ID to check status
+                Enter your application ID & contact details to check status
               </p>
             </div>
           </div>
@@ -48,17 +73,61 @@ export const TrackApplicationModal: React.FC<TrackApplicationModalProps> = ({ is
 
         <div className="p-6">
           {!searched ? (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3.5">
+              {errorMsg && (
+                <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+                  {errorMsg}
+                </div>
+              )}
               <div>
-                <label className="block text-xs font-semibold text-[#000f22] mb-1.5">Application ID</label>
+                <label className="block text-xs font-semibold text-[#000f22] mb-1.5">Application ID *</label>
                 <input
                   type="text"
                   value={applicationId}
                   onChange={(e) => setApplicationId(e.target.value)}
-                  placeholder="e.g. LPU-2026-00123"
+                  placeholder="e.g. OS-LPU-2026-0123"
                   className="w-full px-4 py-2.5 rounded-xl border border-[#d5e3ff] text-sm focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none transition-all"
                   required
                 />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#000f22] mb-1.5">Full Name</label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Enter your full name"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#d5e3ff] text-sm focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none transition-all"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#000f22] mb-1.5">Registered Email Address *</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="your.email@example.com"
+                  className="w-full px-4 py-2.5 rounded-xl border border-[#d5e3ff] text-sm focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none transition-all"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-[#000f22] mb-1.5">Registered Mobile Number (+91) *</label>
+                <div className="relative flex items-center">
+                  <span className="absolute left-3.5 text-xs font-bold text-[#000f22]">+91</span>
+                  <input
+                    type="tel"
+                    inputMode="numeric"
+                    maxLength={10}
+                    pattern={INDIAN_PHONE_PATTERN}
+                    title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
+                    value={phone}
+                    onChange={(e) => setPhone(sanitizeIndianPhone(e.target.value))}
+                    placeholder="10-digit Mobile Number"
+                    className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-[#d5e3ff] text-sm focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none transition-all"
+                    required
+                  />
+                </div>
               </div>
               <button
                 type="submit"
@@ -79,7 +148,7 @@ export const TrackApplicationModal: React.FC<TrackApplicationModalProps> = ({ is
                   <span className="text-sm font-semibold text-amber-600">Under Review</span>
                 </div>
                 <p className="text-xs text-[#43474d]">
-                  Your application is being reviewed by the admissions team. You will receive an update via email within 3-5 working days.
+                  Your application is being reviewed by the admissions team. Updates will be sent to <strong>{email}</strong> and <strong>+91 {phone}</strong>.
                 </p>
               </div>
               <div className="flex gap-3">

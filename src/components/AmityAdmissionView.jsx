@@ -17,6 +17,7 @@ import { CompareCollegesSection } from "./CompareCollegesSection";
 import { AMITY_PAGE_CONTENT as AMITY } from "../data/universities/amityContent";
 import { sectionTitle } from "../lib/sectionTitles";
 import { AMITY_UNIVERSITY_DATA } from "../data/universities/amity";
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from "../services/leadApi";
 const AP = AMITY.admissionPage;
 const TOC_ITEMS = [
   { id: "admission-highlights", label: sectionTitle(AMITY.shortName, "Admission Highlights") },
@@ -44,7 +45,10 @@ export const AmityAdmissionView = ({
   const [showAllEligibility, setShowAllEligibility] = useState(false);
   const [callbackName, setCallbackName] = useState("");
   const [callbackPhone, setCallbackPhone] = useState("");
+  const [callbackEmail, setCallbackEmail] = useState("");
   const [callbackCourse, setCallbackCourse] = useState("");
+  const [callbackError, setCallbackError] = useState("");
+  const [callbackSubmitted, setCallbackSubmitted] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 160;
@@ -515,26 +519,56 @@ export const AmityAdmissionView = ({
               </div>
 
               <div className="rounded-[18px] border border-white/90 bg-white/95 p-4 sm:p-5 text-[#111c2d] shadow-[0_10px_28px_rgba(27,65,112,0.08)]">
+                {callbackError && (
+                  <div className="mb-3 p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+                    {callbackError}
+                  </div>
+                )}
+                {callbackSubmitted ? (
+                  <div className="py-4 text-center space-y-2 text-xs">
+                    <BadgeCheck className="w-8 h-8 text-emerald-600 mx-auto" />
+                    <span className="font-bold text-[#000f22] block">Callback Requested!</span>
+                    <p className="text-[#43474d]">We will call you at +91 {callbackPhone} shortly.</p>
+                  </div>
+                ) : (
+                <>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <input
-    type="text"
-    placeholder="Your Name"
-    value={callbackName}
-    onChange={(e) => setCallbackName(e.target.value)}
-    className="px-3 py-2.5 rounded-xl border border-[#c4c6ce] bg-white text-sm text-[#000f22] outline-none focus:border-[#115eaf] transition-colors"
-  />
+                    type="text"
+                    placeholder="Your Name *"
+                    required
+                    value={callbackName}
+                    onChange={(e) => setCallbackName(e.target.value)}
+                    className="px-3 py-2.5 rounded-xl border border-[#c4c6ce] bg-white text-sm text-[#000f22] outline-none focus:border-[#115eaf] transition-colors"
+                  />
                   <input
-    type="tel"
-    placeholder="Mobile Number"
-    value={callbackPhone}
-    onChange={(e) => setCallbackPhone(e.target.value)}
-    className="px-3 py-2.5 rounded-xl border border-[#c4c6ce] bg-white text-sm text-[#000f22] outline-none focus:border-[#115eaf] transition-colors"
-  />
+                    type="email"
+                    placeholder="Email Address *"
+                    required
+                    value={callbackEmail}
+                    onChange={(e) => setCallbackEmail(e.target.value)}
+                    className="px-3 py-2.5 rounded-xl border border-[#c4c6ce] bg-white text-sm text-[#000f22] outline-none focus:border-[#115eaf] transition-colors"
+                  />
+                  <div className="relative flex items-center sm:col-span-2">
+                    <span className="absolute left-3 text-xs font-bold text-[#000f22]">+91</span>
+                    <input
+                      type="tel"
+                      inputMode="numeric"
+                      maxLength={10}
+                      pattern={INDIAN_PHONE_PATTERN}
+                      title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
+                      required
+                      placeholder="10-digit Mobile Number *"
+                      value={callbackPhone}
+                      onChange={(e) => setCallbackPhone(sanitizeIndianPhone(e.target.value))}
+                      className="w-full pl-11 pr-3 py-2.5 rounded-xl border border-[#c4c6ce] bg-white text-sm text-[#000f22] outline-none focus:border-[#115eaf] transition-colors"
+                    />
+                  </div>
                   <select
-    value={callbackCourse}
-    onChange={(e) => setCallbackCourse(e.target.value)}
-    className="sm:col-span-2 px-3 py-2.5 rounded-xl border border-[#c4c6ce] bg-white text-sm outline-none focus:border-[#115eaf] transition-colors text-[#000f22]"
-  >
+                    value={callbackCourse}
+                    onChange={(e) => setCallbackCourse(e.target.value)}
+                    className="sm:col-span-2 px-3 py-2.5 rounded-xl border border-[#c4c6ce] bg-white text-sm outline-none focus:border-[#115eaf] transition-colors text-[#000f22]"
+                  >
                     <option value="">Select a Programme</option>
                     {AMITY_UNIVERSITY_DATA.courses.map((c) => <option key={c.id} value={c.id}>
                         {c.name}
@@ -542,13 +576,38 @@ export const AmityAdmissionView = ({
                   </select>
                 </div>
                 <button
-    type="button"
-    onClick={() => onOpenHelpDesk()}
-    className="w-full mt-3 px-5 py-3 rounded-xl bg-[#1764c0] text-white text-sm font-bold shadow-md hover:bg-[#1054a5] active:scale-95 transition-all flex items-center justify-center gap-2"
-  >
+                  type="button"
+                  onClick={() => {
+                    setCallbackError("");
+                    const validation = validateLeadFields({
+                      name: callbackName,
+                      phone: callbackPhone,
+                      email: callbackEmail,
+                      requireName: true,
+                      requireEmail: true
+                    });
+                    if (!validation.valid) {
+                      setCallbackError(validation.error);
+                      return;
+                    }
+                    const selectedCourse = AMITY_UNIVERSITY_DATA.courses.find((c) => c.id === callbackCourse);
+                    submitLead({
+                      name: callbackName,
+                      phone_number: validation.cleanPhone,
+                      email: validation.cleanEmail,
+                      preferred_degree: [selectedCourse?.name || callbackCourse].filter(Boolean),
+                      preferred_college: "Amity University Online",
+                      form_name: "Counselling Form in Priority College Page"
+                    });
+                    setCallbackSubmitted(true);
+                  }}
+                  className="w-full mt-3 px-5 py-3 rounded-xl bg-[#1764c0] text-white text-sm font-bold shadow-md hover:bg-[#1054a5] active:scale-95 transition-all flex items-center justify-center gap-2"
+                >
                   Request Callback
                   <ArrowRight className="w-4 h-4" />
                 </button>
+                </>
+                )}
                 <p className="text-[10px] text-[#74777e] text-center mt-2">
                   🔒 Strictly confidential. No marketing spam guaranteed.
                 </p>

@@ -281,9 +281,10 @@ h1.course-listing-h1 {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 18px 0;
-  border: 1px solid #dfe9ff;
+  border: 1.5px solid #b8d0f8;
   border-radius: 12px;
   background: #ffffff;
+  box-shadow: 0 2px 10px rgba(17, 94, 175, 0.06);
 }
 
 .course-prose table {
@@ -313,8 +314,7 @@ h1.course-listing-h1 {
 .course-prose thead th,
 .course-prose thead td,
 .course-prose tr.header-row th,
-.course-prose tr.header-row td,
-.course-prose table:not(:has(thead)) tbody tr:first-child td {
+.course-prose tr.header-row td {
   background: #115eaf !important;
   color: #ffffff !important;
   font-weight: 600 !important;
@@ -341,8 +341,7 @@ h1.course-listing-h1 {
 .course-prose thead th *,
 .course-prose thead td *,
 .course-prose tr.header-row th *,
-.course-prose tr.header-row td *,
-.course-prose table:not(:has(thead)) tbody tr:first-child td * {
+.course-prose tr.header-row td * {
   color: #ffffff !important;
   font-weight: 700 !important;
   margin: 0 !important;
@@ -350,19 +349,16 @@ h1.course-listing-h1 {
 
 .course-prose td {
   padding: 14px 16px;
-  border-bottom: 1px solid #e7eeff;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
+  border: 0 !important;
   vertical-align: middle;
-  color: #43474d;
-  font-weight: 400;
+  color: #1e293b;
+  font-weight: 500;
   background-color: #ffffff;
 }
 
-/* Zebra striping: Alternate rows with soft blue tint (increased opacity for clarity) */
+/* Zebra striping: Alternate rows with soft blue tint (2% lighter than previous #e6f0fd) */
 .course-prose tbody tr:nth-child(even) td {
-  background-color: #f1f6fd !important;
+  background-color: #ebf3fe !important;
 }
 
 .course-prose tbody tr:nth-child(odd) td {
@@ -373,8 +369,7 @@ h1.course-listing-h1 {
 .course-prose thead tr th,
 .course-prose thead tr td,
 .course-prose tbody tr.header-row th,
-.course-prose tbody tr.header-row td,
-.course-prose table:not(:has(thead)) tbody tr:first-child td {
+.course-prose tbody tr.header-row td {
   background-color: #0b62be !important;
   color: #ffffff !important;
 }
@@ -410,7 +405,7 @@ h1.course-listing-h1 {
 
 .course-prose td a {
   color: #0b4fa8;
-  opacity: 0.8;
+  opacity: 0.95;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.15s ease, opacity 0.15s ease;
@@ -437,13 +432,21 @@ h1.course-listing-h1 {
 
 .course-prose table.table-2col th:first-child,
 .course-prose table.table-2col td:first-child {
-  width: 48%;
+  width: 34%;
   text-align: left;
+  border-right: 0 !important;
 }
 
 .course-prose table.table-2col th:nth-child(2),
 .course-prose table.table-2col td:nth-child(2) {
-  width: 52%;
+  width: 66%;
+  text-align: left !important;
+}
+
+.course-prose table.table-2col td:nth-child(2) ul,
+.course-prose table.table-2col td:nth-child(2) ol,
+.course-prose table.table-2col td:nth-child(2) li {
+  text-align: left !important;
 }
 
 /* Right-align Salary / LPA / Financial figures so there is no awkward blank space on the right side */

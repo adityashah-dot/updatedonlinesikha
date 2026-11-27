@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { X, Phone, Mail, Clock, MapPin, CheckCircle, Headphones, MessageSquare } from 'lucide-react';
+import { X, Phone, Mail, Clock, MapPin, CheckCircle, Headphones } from 'lucide-react';
 import { INSTITUTION_HIGHLIGHTS } from '../data/institutionalData';
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from '../services/leadApi';
 
 interface HelpDeskModalProps {
   isOpen: boolean;
@@ -10,12 +11,32 @@ interface HelpDeskModalProps {
 export const HelpDeskModal: React.FC<HelpDeskModalProps> = ({ isOpen, onClose }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg('');
+    const validation = validateLeadFields({
+      name,
+      phone,
+      email,
+      requireName: true,
+      requireEmail: true
+    });
+    if (!validation.valid) {
+      setErrorMsg(validation.error);
+      return;
+    }
+    submitLead({
+      name,
+      phone_number: validation.cleanPhone,
+      email: validation.cleanEmail,
+      form_name: 'Help Desk Callback Form'
+    });
     setSubmitted(true);
   };
 
@@ -80,6 +101,11 @@ export const HelpDeskModal: React.FC<HelpDeskModalProps> = ({ isOpen, onClose })
 
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-3 text-xs">
+                {errorMsg && (
+                  <div className="p-2 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 font-semibold">
+                    {errorMsg}
+                  </div>
+                )}
                 <div>
                   <input
                     type="text"
@@ -92,13 +118,27 @@ export const HelpDeskModal: React.FC<HelpDeskModalProps> = ({ isOpen, onClose })
                 </div>
                 <div>
                   <input
-                    type="tel"
+                    type="email"
                     required
-                    pattern="[0-9]{10}"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="10-digit Mobile Number"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Your Email Address"
                     className="w-full px-3 py-2 rounded-lg border border-[#c4c6ce] bg-white focus:border-[#115eaf] outline-none"
+                  />
+                </div>
+                <div className="relative flex items-center">
+                  <span className="absolute left-3 text-xs font-bold text-[#000f22]">+91</span>
+                  <input
+                    type="tel"
+                    inputMode="numeric"
+                    maxLength={10}
+                    required
+                    pattern={INDIAN_PHONE_PATTERN}
+                    title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
+                    value={phone}
+                    onChange={(e) => setPhone(sanitizeIndianPhone(e.target.value))}
+                    placeholder="10-digit Mobile Number"
+                    className="w-full pl-10 pr-3 py-2 rounded-lg border border-[#c4c6ce] bg-white focus:border-[#115eaf] outline-none"
                   />
                 </div>
                 <button

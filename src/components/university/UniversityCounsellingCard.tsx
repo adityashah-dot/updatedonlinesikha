@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { PhoneCall, ShieldCheck, CheckCircle2, User, Phone, BookOpen } from 'lucide-react';
+import { PhoneCall, ShieldCheck, CheckCircle2, User, Phone, BookOpen, Mail } from 'lucide-react';
 import { UniversityData } from '../../types/university';
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from '../../services/leadApi';
 
 interface UniversityCounsellingCardProps {
   university: UniversityData;
@@ -10,13 +11,34 @@ export const UniversityCounsellingCard: React.FC<UniversityCounsellingCardProps>
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
+    email: '',
     course: university.courses[0]?.name || 'Online MBA',
   });
+  const [errorMsg, setErrorMsg] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) return;
+    setErrorMsg('');
+    const validation = validateLeadFields({
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      requireName: true,
+      requireEmail: true
+    });
+    if (!validation.valid) {
+      setErrorMsg(validation.error);
+      return;
+    }
+    submitLead({
+      name: formData.name,
+      phone_number: validation.cleanPhone,
+      email: validation.cleanEmail,
+      preferred_degree: formData.course ? [formData.course] : [],
+      preferred_college: university?.name || university?.shortName || '',
+      form_name: 'Counselling Form in Priority College Page'
+    });
     setIsSubmitted(true);
   };
 
@@ -52,9 +74,14 @@ export const UniversityCounsellingCard: React.FC<UniversityCounsellingCardProps>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-3">
+          {errorMsg && (
+            <div className="p-2.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+              {errorMsg}
+            </div>
+          )}
           <div>
             <label className="block text-xs font-medium text-slate-700 mb-1">
-              Your Full Name
+              Your Full Name *
             </label>
             <div className="relative">
               <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -71,18 +98,41 @@ export const UniversityCounsellingCard: React.FC<UniversityCounsellingCardProps>
 
           <div>
             <label className="block text-xs font-medium text-slate-700 mb-1">
-              Mobile Number (+91)
+              Email Address *
             </label>
             <div className="relative">
-              <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <input
+                type="email"
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                placeholder="rohit.sharma@example.com"
+                className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 focus:bg-white text-slate-900"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-xs font-medium text-slate-700 mb-1">
+              Mobile Number (+91) *
+            </label>
+            <div className="relative flex items-center">
+              <div className="absolute left-3 flex items-center gap-1 text-xs font-bold text-slate-700 pointer-events-none">
+                <Phone className="w-3.5 h-3.5 text-slate-400" />
+                <span>+91</span>
+              </div>
               <input
                 type="tel"
+                inputMode="numeric"
                 required
                 maxLength={10}
+                pattern={INDIAN_PHONE_PATTERN}
+                title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '') })}
+                onChange={(e) => setFormData({ ...formData, phone: sanitizeIndianPhone(e.target.value) })}
                 placeholder="10-digit mobile number"
-                className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 focus:bg-white text-slate-900"
+                className="w-full pl-14 pr-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 focus:bg-white text-slate-900"
               />
             </div>
           </div>

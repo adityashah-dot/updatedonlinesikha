@@ -13,6 +13,7 @@ import { TableOfContents } from "../TableOfContents";
 import { BlogsListSection } from "../BlogsListSection";
 import { SITE_BLOG_POSTS } from "../../data/siteBlogPosts";
 import { sectionTitle } from "../../lib/sectionTitles";
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from "../../services/leadApi";
 const ADMISSION_TOC_ITEMS = [
   { id: "admission-highlights", label: "Admission Highlights 2026" },
   { id: "admission-dates", label: "Admission Important Dates 2026" },
@@ -53,6 +54,8 @@ export const UniversityPageAdmission = ({
   const [activeSection, setActiveSection] = useState("admission-highlights");
   const [callbackName, setCallbackName] = useState("");
   const [callbackPhone, setCallbackPhone] = useState("");
+  const [callbackEmail, setCallbackEmail] = useState("");
+  const [callbackError, setCallbackError] = useState("");
   const [callbackCourse, setCallbackCourse] = useState("");
   const [callbackSubmitted, setCallbackSubmitted] = useState(false);
   const hasApplicationProcess = Boolean(applicationSteps && applicationSteps.length > 0);
@@ -485,6 +488,17 @@ export const UniversityPageAdmission = ({
               {!callbackSubmitted ? <form
     onSubmit={(e) => {
       e.preventDefault();
+      const validation = validateLeadFields({ name: callbackName, phone: callbackPhone, email: callbackEmail, requireName: true, requireEmail: true });
+      if (!validation.valid) { setCallbackError(validation.error); return; }
+      const matched = (university?.courses || []).find((c) => c.id === callbackCourse);
+      submitLead({
+        name: callbackName,
+        phone_number: validation.cleanPhone,
+        email: validation.cleanEmail,
+        preferred_degree: [matched?.name || callbackCourse].filter(Boolean),
+        preferred_college: university?.name || university?.shortName || "",
+        form_name: "Counselling Form in Priority College Page"
+      });
       setCallbackSubmitted(true);
     }}
     className="space-y-2.5 text-xs"
@@ -493,16 +507,25 @@ export const UniversityPageAdmission = ({
     type="text"
     required
     value={callbackName}
-    onChange={(e) => setCallbackName(e.target.value)}
+    onChange={(e) => { setCallbackError(""); setCallbackName(e.target.value); }}
     placeholder="Full Name"
     className="w-full h-10 px-3 rounded-xl border border-[#c4c6ce] focus:border-[#115eaf] outline-none text-base sm:text-xs"
   />
                   <input
+    type="email"
+    required
+    value={callbackEmail}
+    onChange={(e) => { setCallbackError(""); setCallbackEmail(e.target.value); }}
+    placeholder="Email Address"
+    className="w-full h-10 px-3 rounded-xl border border-[#c4c6ce] focus:border-[#115eaf] outline-none text-base sm:text-xs"
+  />
+                  {callbackError && <p className="text-[11px] text-rose-600 font-semibold">{callbackError}</p>}
+                  <input
     type="tel"
     required
-    pattern="[0-9]{10}"
+    pattern={INDIAN_PHONE_PATTERN} maxLength={10} inputMode="numeric"
     value={callbackPhone}
-    onChange={(e) => setCallbackPhone(e.target.value)}
+    onChange={(e) => { setCallbackError(""); setCallbackPhone(sanitizeIndianPhone(e.target.value)); }}
     placeholder="Mobile Number (+91)"
     className="w-full h-10 px-3 rounded-xl border border-[#c4c6ce] focus:border-[#115eaf] outline-none text-base sm:text-xs"
   />

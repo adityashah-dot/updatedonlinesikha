@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ViewAllButton from "./ViewAllButton";
 import { getCoursesListing } from "../services/courseApi";
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from "../services/leadApi";
 import {
   TrendingUp,
   Search,
@@ -417,6 +418,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
   const [selectedBudget, setSelectedBudget] = useState("Any Budget (\u20B912,000 - \u20B950,000)");
   const [lead, setLead] = useState({ name: "", email: "", phone: "", degree: "Online MBA" });
   const [leadSubmitted, setLeadSubmitted] = useState(false);
+  const [leadError, setLeadError] = useState("");
   const [uniChip, setUniChip] = useState(UNI_CHIPS[0]);
   const [compareColumns, setCompareColumns] = useState([0, 1, 2]);
   const [selectedCompareCourse, setSelectedCompareCourse] = useState("mba");
@@ -1067,9 +1069,33 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
     className="space-y-2"
     onSubmit={(e) => {
       e.preventDefault();
+      setLeadError("");
+      const validation = validateLeadFields({
+        name: lead.name,
+        phone: lead.phone,
+        email: lead.email,
+        requireName: true,
+        requireEmail: true
+      });
+      if (!validation.valid) {
+        setLeadError(validation.error);
+        return;
+      }
+      submitLead({
+        name: lead.name,
+        email: validation.cleanEmail,
+        phone_number: validation.cleanPhone,
+        preferred_degree: lead.degree ? [lead.degree] : [],
+        form_name: "Home Page Counselling Form"
+      });
       setLeadSubmitted(true);
     }}
   >
+                {leadError && (
+                  <div className="p-2 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+                    {leadError}
+                  </div>
+                )}
                 <div>
                   <label className="block text-[10px] font-semibold text-[#43474d] uppercase tracking-wider mb-0.5">
                     Full Name
@@ -1108,11 +1134,15 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                     </span>
                     <input
                       className="w-full border-0 px-3 text-sm text-[#000f22] placeholder:text-[#74777e] outline-none bg-white font-medium"
-                      placeholder="98765 43210"
+                      placeholder="10-digit Mobile Number"
                       required
                       type="tel"
+                      inputMode="numeric"
+                      maxLength={10}
+                      pattern={INDIAN_PHONE_PATTERN}
+                      title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                       value={lead.phone}
-                      onChange={(e) => setLead({ ...lead, phone: e.target.value })}
+                      onChange={(e) => setLead({ ...lead, phone: sanitizeIndianPhone(e.target.value) })}
                     />
                   </div>
                 </div>

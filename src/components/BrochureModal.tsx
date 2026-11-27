@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Course } from '../types';
 import { COURSES_DATA } from '../data/coursesData';
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from '../services/leadApi';
 import { X, Download, FileText, CheckCircle, ShieldCheck } from 'lucide-react';
 
 interface BrochureModalProps {
@@ -17,6 +18,7 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({
   const [courseId, setCourseId] = useState<string>(selectedCourse ? selectedCourse.id : 'all');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   const [isDownloaded, setIsDownloaded] = useState(false);
 
   if (!isOpen) return null;
@@ -25,6 +27,23 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({
 
   const handleDownload = (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg('');
+    const validation = validateLeadFields({
+      phone,
+      email,
+      requireName: false,
+      requireEmail: true
+    });
+    if (!validation.valid) {
+      setErrorMsg(validation.error);
+      return;
+    }
+    submitLead({
+      email: validation.cleanEmail,
+      phone_number: validation.cleanPhone,
+      preferred_degree: currentCourse?.name ? [currentCourse.name] : [],
+      form_name: 'Download Brochure Form'
+    });
     setIsDownloaded(true);
     // Download official brochure
     const officialBrochureUrl = 'https://images.degreefyd.com//lpu-online-brochure.pdf';
@@ -39,6 +58,7 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({
 
   const handleReset = () => {
     setIsDownloaded(false);
+    setErrorMsg('');
     onClose();
   };
 
@@ -74,6 +94,11 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({
         <div className="p-6">
           {!isDownloaded ? (
             <form onSubmit={handleDownload} className="space-y-4">
+              {errorMsg && (
+                <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+                  {errorMsg}
+                </div>
+              )}
               <div>
                 <label className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-1.5">
                   Select Program Curriculum
@@ -108,17 +133,23 @@ export const BrochureModal: React.FC<BrochureModalProps> = ({
 
               <div>
                 <label className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-1.5">
-                  Mobile Number (For SMS Download Link) *
+                  Mobile Number (+91) (For SMS Download Link) *
                 </label>
-                <input
-                  type="tel"
-                  required
-                  pattern="[0-9]{10}"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="10-digit Mobile Number"
-                  className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf]"
-                />
+                <div className="relative flex items-center">
+                  <span className="absolute left-3.5 text-xs font-bold text-[#000f22]">+91</span>
+                  <input
+                    type="tel"
+                    inputMode="numeric"
+                    maxLength={10}
+                    required
+                    pattern={INDIAN_PHONE_PATTERN}
+                    title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
+                    value={phone}
+                    onChange={(e) => setPhone(sanitizeIndianPhone(e.target.value))}
+                    placeholder="10-digit Mobile Number"
+                    className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf]"
+                  />
+                </div>
               </div>
 
               <div className="p-3 rounded-xl bg-[#f0f3ff] border border-[#e7eeff] flex items-center gap-2 text-xs text-[#43474d]">

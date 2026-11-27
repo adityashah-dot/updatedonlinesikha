@@ -63,6 +63,60 @@ function formatFeeRange(record) {
   return "";
 }
 
+const HYPHEN_STRIPPED_PACKAGES = {
+  520: "\u20B95 \u2013 20 LPA",
+  610: "\u20B96 \u2013 10 LPA",
+  810: "\u20B98 \u2013 10 LPA",
+  1215: "\u20B912 \u2013 15 LPA",
+  1620: "\u20B916 \u2013 20 LPA",
+  3035: "\u20B930 \u2013 35 LPA",
+};
+
+export function formatPackage(value) {
+  if (value === null || value === undefined || value === "") return "";
+  if (typeof value !== "string" && typeof value !== "number") return "";
+
+  const str = String(value).trim();
+  if (!str) return "";
+
+  if (/aud/i.test(str) || str === "80000100000") {
+    return "AUD 80K \u2013 100K";
+  }
+
+  if (/[-–]/.test(str) && /lpa|cr|crore/i.test(str)) {
+    const nums = str.match(/\d+(?:\.\d+)?/g);
+    if (nums && nums.length >= 2) {
+      const unit = /cr|crore/i.test(str) ? "Cr" : "LPA";
+      return `\u20B9${nums[0]} \u2013 ${nums[1]} ${unit}`;
+    }
+  }
+
+  if (/cr|crore/i.test(str)) {
+    const numMatch = str.match(/\d+(?:\.\d+)?/);
+    return numMatch ? `\u20B9${numMatch[0]} Cr` : str;
+  }
+
+  const cleanNumStr = str.replace(/[,₹\s]/g, "").replace(/lpa?|inr/gi, "");
+  const numeric = Number(cleanNumStr);
+
+  if (!Number.isFinite(numeric) || numeric <= 0) return "";
+
+  if (HYPHEN_STRIPPED_PACKAGES[numeric]) {
+    return HYPHEN_STRIPPED_PACKAGES[numeric];
+  }
+
+  if (numeric > 0 && numeric < 3) {
+    return `\u20B9${numeric} Cr`;
+  }
+
+  if (numeric >= 100000) {
+    const lakhs = Number((numeric / 100000).toFixed(2));
+    return `\u20B9${lakhs} LPA`;
+  }
+
+  return `\u20B9${numeric} LPA`;
+}
+
 function formatFee(value) {
   if (value === null || value === undefined || value === "") return "";
 
@@ -125,11 +179,13 @@ export function mapUniversity(recordRaw, index = 0) {
   if (coursesCount != null && !Number.isNaN(coursesCount)) {
     specs.push({ label: "Programs", value: `${coursesCount} Courses` });
   }
-  if (record.highestPackage) {
-    specs.push({ label: "Highest CTC Record", value: formatFee(record.highestPackage), highlight: true });
+  const highestCtcFormatted = formatPackage(record.highestPackage);
+  if (highestCtcFormatted) {
+    specs.push({ label: "Highest CTC Record", value: highestCtcFormatted, highlight: true });
   }
-  if (record.placementHighest) {
-    specs.push({ label: "Avg Package", value: formatFee(record.placementHighest) });
+  const avgPkgFormatted = formatPackage(record.placementHighest);
+  if (avgPkgFormatted) {
+    specs.push({ label: "Avg Package", value: avgPkgFormatted });
   }
   const established = readText(record.established);
   if (established) {
@@ -230,7 +286,7 @@ export function mapFeaturedUniversities(universities) {
     if (university.highestPackage) {
       rows.push({
         label: "Highest Package:",
-        value: formatFee(university.highestPackage),
+        value: formatPackage(university.highestPackage),
         tone: "text-[#115eaf] font-semibold",
       });
     }
@@ -251,7 +307,7 @@ export function mapFeaturedUniversities(universities) {
       coursesCount: university.coursesCount,
       mode: modeLabel(university.collegeMode) || university.collegeMode || "",
       established: readText(university.established),
-      highestPackage: university.highestPackage ? formatFee(university.highestPackage) : "",
+      highestPackage: university.highestPackage ? formatPackage(university.highestPackage) : "",
       rows,
     };
   });
@@ -299,7 +355,7 @@ export function mapCompareColleges(universities) {
       rank: university.rankNote,
       mode: modeLabel(university.collegeMode) || university.collegeMode,
       approvals: (university.approvals || []).join(", "),
-      place: university.highestPackage ? formatFee(university.highestPackage) : "",
+      place: university.highestPackage ? formatPackage(university.highestPackage) : "",
     };
   });
 }

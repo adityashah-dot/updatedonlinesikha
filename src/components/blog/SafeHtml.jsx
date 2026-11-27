@@ -90,10 +90,13 @@ export function sanitizeHtml(rawHtml) {
       const firstTrMatch = cleanTable.match(/<tr\b[^>]*>([\s\S]*?)<\/tr>/i);
       const cellMatches = firstTrMatch ? firstTrMatch[1].match(/<(?:th|td)\b/gi) : null;
       const colCount = cellMatches ? cellMatches.length : 0;
-      const isSalary = colCount === 2 && (/salary|fee|lpa|inr|package|approx|range/i.test(cleanTable));
+      const hasBullets = /<(?:ul|ol|li)\b/i.test(cleanTable);
+      const isDataHeader = firstTrMatch && !/<(?:ul|ol|li)\b/i.test(firstTrMatch[1]) &&
+        !/\b(cost effectiveness|flexibility|networking)\b/i.test(firstTrMatch[1]);
+      const isSalary = colCount === 2 && !hasBullets && (/\b(lpa|inr|stipend|per annum)\b|₹|\b\d+\s*[-–]\s*\d+\s*lpa\b/i.test(cleanTable));
       const extraClass = colCount === 2 ? (isSalary ? " bd-table-2col bd-table-salary" : " bd-table-2col") : (colCount === 3 ? " bd-table-3col" : "");
       let tableHtml = cleanTable;
-      if (!/<thead\b/i.test(tableHtml) && firstTrMatch) {
+      if (!/<thead\b/i.test(tableHtml) && firstTrMatch && isDataHeader) {
         const headerTr = firstTrMatch[0]
           .replace(/^<tr\b/i, '<tr class="header-row"')
           .replace(/<td(\b[^>]*)>/gi, "<th$1>")
@@ -224,10 +227,13 @@ export function sanitizeHtml(rawHtml) {
         if (colgroup) colgroup.remove();
 
         const col2HeaderText = (cells[1]?.textContent || "").toLowerCase();
-        const hasSalary = /salary|fee|fees|lpa|inr|package|amount|stipend|range|approx/i.test(col2HeaderText) ||
+        const tableHasLists = Boolean(table.querySelector("ul, ol, li"));
+        const hasSalary = !tableHasLists && (
+          /\b(salary|lpa|inr|package|amount|stipend)\b/i.test(col2HeaderText) ||
           Array.from(table.querySelectorAll("tr td:nth-child(2)")).some((td) =>
-            /lpa|₹|inr|per annum|\b\d+\s*-\s*\d+/i.test(td.textContent)
-          );
+            !td.querySelector("ul, ol, li") && /\b(lpa|inr|per annum)\b|₹|\b\d+\s*[-–]\s*\d+\s*lpa\b/i.test(td.textContent)
+          )
+        );
         if (hasSalary) {
           table.classList.add("table-salary-col2");
           wrap.classList.add("bd-table-salary");
@@ -237,9 +243,13 @@ export function sanitizeHtml(rawHtml) {
         table.classList.add("table-3col");
       }
       if (firstRow) {
-        firstRow.classList.add("header-row");
+        const firstRowHasList = Boolean(firstRow.querySelector("ul, ol, li"));
+        const firstRowHasLongCell = cells.some((c) => (c.textContent || "").trim().length > 75);
+        const isFirstRowDataRow = firstRowHasList || firstRowHasLongCell ||
+          /\b(cost effectiveness|flexibility|networking)\b/i.test(firstRow.textContent || "");
         let thead = table.querySelector("thead");
-        if (!thead) {
+        if (!thead && !isFirstRowDataRow) {
+          firstRow.classList.add("header-row");
           thead = doc.createElement("thead");
           cells.forEach((cell) => {
             if (cell.tagName === "TD") {
@@ -251,6 +261,8 @@ export function sanitizeHtml(rawHtml) {
           });
           thead.appendChild(firstRow);
           table.insertBefore(thead, table.firstChild);
+        } else if (thead) {
+          firstRow.classList.add("header-row");
         }
       }
 

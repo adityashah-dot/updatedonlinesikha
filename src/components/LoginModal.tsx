@@ -14,6 +14,7 @@ import {
   Sparkles,
   LogIn
 } from 'lucide-react';
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from '../services/leadApi';
 
 export interface UserSession {
   name: string;
@@ -70,6 +71,15 @@ export const LoginModal: React.FC<LoginModalProps> = ({
       setErrorMsg('Please enter both email and password.');
       return;
     }
+    const cleanInput = email.trim();
+    const isPhone = /^\d{10}$/.test(sanitizeIndianPhone(cleanInput));
+    submitLead({
+      name: 'Student Login',
+      email: isPhone ? 'student@onlinesiksha.com' : cleanInput,
+      phone_number: isPhone ? sanitizeIndianPhone(cleanInput) : '9876543210',
+      form_name: 'Student Sign In Form',
+      source: 'OS'
+    });
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -89,10 +99,24 @@ export const LoginModal: React.FC<LoginModalProps> = ({
   const handleSignUp = (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
-    if (!name.trim() || !signUpEmail.trim() || !signUpPhone.trim()) {
-      setErrorMsg('Please fill in your name, email, and mobile number.');
+    const validation = validateLeadFields({
+      name,
+      phone: signUpPhone,
+      email: signUpEmail,
+      requireName: true,
+      requireEmail: true
+    });
+    if (!validation.valid) {
+      setErrorMsg(validation.error);
       return;
     }
+    submitLead({
+      name,
+      email: validation.cleanEmail,
+      phone_number: validation.cleanPhone,
+      preferred_degree: program ? [program] : [],
+      form_name: 'Student Sign Up Form'
+    });
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -436,18 +460,22 @@ export const LoginModal: React.FC<LoginModalProps> = ({
                 </div>
 
                 {/* Mobile */}
-                <div className="w-full relative mb-2">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                    <Phone className="w-4 h-4" />
+                <div className="w-full relative mb-2 flex items-center">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500 text-xs font-bold gap-1.5">
+                    <Phone className="w-4 h-4 text-slate-400" />
+                    <span>+91</span>
                   </div>
                   <input
                     type="tel"
+                    inputMode="numeric"
                     maxLength={10}
+                    pattern={INDIAN_PHONE_PATTERN}
+                    title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                     required
                     value={signUpPhone}
-                    onChange={(e) => setSignUpPhone(e.target.value)}
+                    onChange={(e) => setSignUpPhone(sanitizeIndianPhone(e.target.value))}
                     placeholder="10-digit mobile number"
-                    className="w-full h-10 pl-10 pr-3 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
+                    className="w-full h-10 pl-16 pr-3 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
                   />
                 </div>
 

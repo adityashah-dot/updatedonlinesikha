@@ -128,7 +128,7 @@ test("mapUniversity formats fees with the rupee sign and cycles highlight tones"
     first.approvals,
     ["NAAC A++", "UGC Approved"]
   );
-  assert.ok(first.specs.some((spec) => spec.label === "Highest CTC Record" && spec.value === "\u20B910"));
+  assert.ok(first.specs.some((spec) => spec.label === "Highest CTC Record" && spec.value === "\u20B910 LPA"));
 
   const hypers = new Set();
   for (let i = 0; i < 6; i += 1) {

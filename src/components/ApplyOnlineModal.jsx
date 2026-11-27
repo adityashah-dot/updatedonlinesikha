@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { COURSES_DATA } from "../data/coursesData";
 import { INDIAN_STATES, INDIAN_STATES_CITIES } from "../data/indianLocations";
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from "../services/leadApi";
 import { X, CheckCircle, ArrowRight, ArrowLeft, Clock, FileText, User, Phone, Mail, ChevronDown } from "lucide-react";
 export const ApplyOnlineModal = ({
   isOpen,
@@ -22,16 +23,59 @@ export const ApplyOnlineModal = ({
     agreedToTerms: true
   });
   const [submittedAppId, setSubmittedAppId] = useState(null);
+  const [errorMsg, setErrorMsg] = useState("");
   if (!isOpen) return null;
   const selectedCourse = COURSES_DATA.find((c) => c.id === formData.courseId) || COURSES_DATA[3];
   const handleInputChange = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({
+      ...prev,
+      [field]: field === "phone" ? sanitizeIndianPhone(value) : value
+    }));
   };
   const handleNext = (e) => {
     e.preventDefault();
+    setErrorMsg("");
+    if (step === 1) {
+      const validation = validateLeadFields({
+        name: formData.fullName,
+        phone: formData.phone,
+        email: formData.email,
+        requireName: true,
+        requireEmail: true
+      });
+      if (!validation.valid) {
+        setErrorMsg(validation.error);
+        return;
+      }
+    }
     if (step < 3) {
       setStep(step + 1);
     } else {
+      const validation = validateLeadFields({
+        name: formData.fullName,
+        phone: formData.phone,
+        email: formData.email,
+        requireName: true,
+        requireEmail: true
+      });
+      if (!validation.valid) {
+        setErrorMsg(validation.error);
+        setStep(1);
+        return;
+      }
+      submitLead({
+        name: formData.fullName,
+        email: validation.cleanEmail,
+        phone_number: validation.cleanPhone,
+        state: formData.state ? [formData.state] : [],
+        city: formData.city ? [formData.city] : [],
+        currentcity: formData.city,
+        currentstate: formData.state,
+        highest_qualification: formData.qualification,
+        preferred_degree: selectedCourse?.name ? [selectedCourse.name] : [],
+        studyMode: "Online",
+        form_name: "Apply Online Modal Form"
+      });
       const randomNum = Math.floor(1e3 + Math.random() * 9e3);
       const generatedId = `OS-LPU-2026-${randomNum}`;
       setSubmittedAppId(generatedId);
@@ -90,6 +134,11 @@ export const ApplyOnlineModal = ({
   }
         <div className="p-6">
           {step === 1 && <form onSubmit={handleNext} className="space-y-4">
+              {errorMsg && (
+                <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+                  {errorMsg}
+                </div>
+              )}
               <div>
                 <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
                   Full Name (As per 10th Class Marksheet) <span className="text-[#e11d48]">*</span>
@@ -114,18 +163,22 @@ export const ApplyOnlineModal = ({
                   <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
                     Mobile Number (+91) <span className="text-[#e11d48]">*</span>
                   </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#74777e]">
-                      <Phone className="w-4 h-4" />
+                  <div className="relative flex items-center">
+                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#000f22] font-bold text-xs gap-1.5">
+                      <Phone className="w-4 h-4 text-[#74777e]" />
+                      <span>+91</span>
                     </div>
                     <input
                       type="tel"
+                      inputMode="numeric"
+                      maxLength={10}
                       required
-                      pattern="[0-9]{10}"
+                      pattern={INDIAN_PHONE_PATTERN}
+                      title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                       value={formData.phone}
                       onChange={(e) => handleInputChange("phone", e.target.value)}
                       placeholder="10-digit Mobile Number"
-                      className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 bg-white transition-all"
+                      className="w-full pl-16 pr-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 bg-white transition-all"
                     />
                   </div>
                 </div>
