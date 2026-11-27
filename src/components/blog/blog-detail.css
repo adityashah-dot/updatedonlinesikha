@@ -334,8 +334,17 @@
 .bd-prose .bd-table-wrap.bd-table-2col td:first-child,
 .exam-layout .bd-prose table.table-2col th:first-child,
 .exam-layout .bd-prose table.table-2col td:first-child {
-  width: 38%;
+  width: 40%;
   min-width: 140px;
+  text-align: left !important;
+}
+
+.bd-prose .bd-table-wrap.bd-table-2col th:nth-child(2),
+.bd-prose .bd-table-wrap.bd-table-2col td:nth-child(2),
+.exam-layout .bd-prose table.table-2col th:nth-child(2),
+.exam-layout .bd-prose table.table-2col td:nth-child(2) {
+  width: 60%;
+  text-align: left !important;
 }
 
 /* 3-Column Tables: 1st col bold #000f22, 2nd col #43474d, 3rd col semibold #115eaf (matches img2) */

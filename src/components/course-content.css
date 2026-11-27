@@ -432,14 +432,15 @@ h1.course-listing-h1 {
 
 .course-prose table.table-2col th:first-child,
 .course-prose table.table-2col td:first-child {
-  width: 34%;
+  width: 45%;
+  min-width: 140px;
   text-align: left;
   border-right: 0 !important;
 }
 
 .course-prose table.table-2col th:nth-child(2),
 .course-prose table.table-2col td:nth-child(2) {
-  width: 66%;
+  width: 55%;
   text-align: left !important;
 }
 
@@ -449,13 +450,14 @@ h1.course-listing-h1 {
   text-align: left !important;
 }
 
-/* Right-align Salary / LPA / Financial figures so there is no awkward blank space on the right side */
+/* Clean left-alignment for salary / wages / financial range tables so dashes and numbers line up vertically */
 .course-prose table.table-salary-col2 th:nth-child(2),
 .course-prose table.table-salary-col2 td:nth-child(2),
 .course-prose .bd-table-salary table th:nth-child(2),
 .course-prose .bd-table-salary table td:nth-child(2) {
-  text-align: right !important;
-  padding-right: 1.5rem !important;
+  text-align: left !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
@@ -465,7 +467,8 @@ h1.course-listing-h1 {
   .course-prose table.table-salary-col2 td:nth-child(2),
   .course-prose .bd-table-salary table th:nth-child(2),
   .course-prose .bd-table-salary table td:nth-child(2) {
-    padding-right: 2.25rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
   }
 }
 

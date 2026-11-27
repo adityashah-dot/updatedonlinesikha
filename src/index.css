@@ -937,15 +937,20 @@ table tbody td a:hover {
   }
 }
 
-/* Universal Salary / LPA Table 2nd Column Right-Shift */
+/* Universal 2-Column Key-Value / Details / Salary Table 2nd Column Left-Aligned */
 table.table-salary-col2 th:nth-child(2),
 table.table-salary-col2 td:nth-child(2),
 .bd-table-salary table th:nth-child(2),
 .bd-table-salary table td:nth-child(2),
 .bd-table-salary th:nth-child(2),
-.bd-table-salary td:nth-child(2) {
-  text-align: right !important;
-  padding-right: 1.5rem !important;
+.bd-table-salary td:nth-child(2),
+.bd-table-2col th:nth-child(2),
+.bd-table-2col td:nth-child(2),
+table.table-2col th:nth-child(2),
+table.table-2col td:nth-child(2) {
+  text-align: left !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
   font-variant-numeric: tabular-nums;
 }
 
@@ -955,7 +960,12 @@ table.table-salary-col2 td:nth-child(2),
   .bd-table-salary table th:nth-child(2),
   .bd-table-salary table td:nth-child(2),
   .bd-table-salary th:nth-child(2),
-  .bd-table-salary td:nth-child(2) {
-    padding-right: 2.25rem !important;
+  .bd-table-salary td:nth-child(2),
+  .bd-table-2col th:nth-child(2),
+  .bd-table-2col td:nth-child(2),
+  table.table-2col th:nth-child(2),
+  table.table-2col td:nth-child(2) {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
   }
 }
