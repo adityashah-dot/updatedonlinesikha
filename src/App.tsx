@@ -12,6 +12,7 @@ import BlogDetail from './pages/BlogDetail';
 import Exams from './pages/Exams';
 import ExamDetail from './pages/ExamDetail';
 import News from './pages/News';
+import CompareMatrixPage from './pages/CompareMatrixPage';
 import { CollegeDetailView } from './components/CollegeDetailView';
 import { UniversityDetailErrorBoundary } from './components/UniversityDetailErrorBoundary';
 import { UniversitiesView } from './components/UniversitiesView';
@@ -42,6 +43,7 @@ export default function App() {
       return 'overview';
     }
     if (path.startsWith('/universities/amity')) return 'universities';
+    if (path.startsWith('/compare')) return 'compare';
     if (path.startsWith('/courses')) return 'courses';
     if (path.startsWith('/admission')) return 'admission';
     if (path.startsWith('/scholarships')) return 'scholarships';
@@ -78,12 +80,11 @@ export default function App() {
       scholarships: onLpuProfile ? '/universities/lpu-online?section=scholarships' : '/scholarships',
       lms: '/courses',
       degrees: '/',
-      compare: '/',
+      compare: '/compare',
       nirf: '/universities',
     };
     navigate(routes[tab]);
     if (tab === 'degrees') scrollToHomeSection('degrees');
-    else if (tab === 'compare') scrollToHomeSection('compare');
     else window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   
@@ -208,6 +209,20 @@ export default function App() {
                 </PageTransition>
               }
             />
+
+            <Route
+              path="/compare"
+              element={
+                <PageTransition>
+                  <CompareMatrixPage
+                    onOpenApply={handleOpenApply}
+                    onOpenHelpDesk={() => setIsHelpDeskModalOpen(true)}
+                    onOpenBrochure={() => handleOpenBrochure()}
+                  />
+                </PageTransition>
+              }
+            />
+            <Route path="/compare-matrix" element={<Navigate to="/compare" replace />} />
 
             <Route
               path="/courses"

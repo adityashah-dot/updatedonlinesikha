@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { COURSES_DATA } from "../data/coursesData";
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, INDIAN_PHONE_REGEX, EMAIL_REGEX } from "../services/leadApi";
 import { useSiteActions } from "./shell/SiteActionsContext";
 import CollegeTableOfContents from "./CollegeTableOfContents";
 import SectionHeader from "./SectionHeader";
@@ -254,6 +255,28 @@ const OverviewView = ({
   };
   const handleCounselingSubmit = (e) => {
     e.preventDefault();
+    const errs = {};
+    const cleanPhone = sanitizeIndianPhone(counselingForm.phone);
+    const cleanEmail = (counselingForm.email || "").trim();
+    if (!INDIAN_PHONE_REGEX.test(cleanPhone)) {
+      errs.phone = "Enter a valid 10-digit Indian phone number starting with 6, 7, 8, 9, or 2";
+    }
+    if (!EMAIL_REGEX.test(cleanEmail)) {
+      errs.email = "Enter a valid email address";
+    }
+    if (Object.keys(errs).length > 0) {
+      setFormErrors(errs);
+      return;
+    }
+    setFormErrors({});
+    const matchedCourse = COURSES_DATA.find((c) => c.id === counselingForm.course);
+    submitLead({
+      email: cleanEmail,
+      phone_number: cleanPhone,
+      preferred_degree: [matchedCourse?.name || counselingForm.course].filter(Boolean),
+      preferred_college: collegeData?.title || collegeData?.shortName || "",
+      form_name: "Counselling Form in Priority College Page"
+    });
     setFormSubmitted(true);
   };
   const handleOverviewApply = () => {
@@ -1748,17 +1771,23 @@ const OverviewView = ({
 
         <div className="p-4">
           {!formSubmitted ? <form onSubmit={handleCounselingSubmit} className="space-y-2.5">
-              <input
-    type="tel"
-    required
-    pattern="[0-9]{10}"
-    value={counselingForm.phone}
-    onChange={(e) => { setCounselingForm({ ...counselingForm, phone: e.target.value }); if (formErrors.phone) setFormErrors({ ...formErrors, phone: "" }); }}
-    placeholder="Phone Number (+91)"
-    className={`w-full px-3 py-2 rounded-lg border text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none ${formErrors.phone ? "border-red-500" : "border-[#c4c6ce]"}`}
-    aria-invalid={formErrors.phone ? "true" : "false"}
-    aria-describedby={formErrors.phone ? "phone-error" : undefined}
-  />
+              <div className="relative flex items-center">
+                <span className="absolute left-3 text-[11px] font-bold text-[#000f22]">+91</span>
+                <input
+                  type="tel"
+                  inputMode="numeric"
+                  maxLength={10}
+                  required
+                  pattern={INDIAN_PHONE_PATTERN}
+                  title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
+                  value={counselingForm.phone}
+                  onChange={(e) => { setCounselingForm({ ...counselingForm, phone: sanitizeIndianPhone(e.target.value) }); if (formErrors.phone) setFormErrors({ ...formErrors, phone: "" }); }}
+                  placeholder="10-digit Mobile Number"
+                  className={`w-full pl-9 pr-3 py-2 rounded-lg border text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none ${formErrors.phone ? "border-red-500" : "border-[#c4c6ce]"}`}
+                  aria-invalid={formErrors.phone ? "true" : "false"}
+                  aria-describedby={formErrors.phone ? "phone-error" : undefined}
+                />
+              </div>
               {formErrors.phone && (
                 <p id="phone-error" role="alert" aria-live="polite" className="mt-1 text-[11px] text-red-600">{formErrors.phone}</p>
               )}

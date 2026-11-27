@@ -1,4 +1,6 @@
-﻿const SECTION_FIELDS = ["key", "title", "id", "name", "slug", "sectionType"];
+﻿import { formatPackage } from "./universityApi.js";
+
+const SECTION_FIELDS = ["key", "title", "id", "name", "slug", "sectionType"];
 
 /** CMS blocks occasionally send a non-array where a list is expected. */
 function asList(value) {
@@ -804,7 +806,7 @@ export function mapOverviewData(payload, extras = {}) {
       intro: textBeforeTable(richtextOf(placementsSection), collegeName),
       stats: {
         placementRate: placementContent.placementRate || (placementStats.placementPercentage ? `${placementStats.placementPercentage}%` : ""),
-        highestPackage: placementContent.highestPackage || (placementStats.highestPackage ? `₹${placementStats.highestPackage} LPA` : ""),
+        highestPackage: formatPackage(placementContent.highestPackage || placementStats.highestPackage),
         hiringPartners: placementContent.hiringPartners || "",
         internshipsCount: placementStats.internshipsCount ?? "—",
       },

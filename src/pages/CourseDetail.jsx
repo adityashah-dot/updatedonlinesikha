@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getCourseBySlug, getCoursesListing } from "../services/courseApi";
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, INDIAN_PHONE_REGEX, EMAIL_REGEX } from "../services/leadApi";
 import { formatCourseLevelLabel, formatFeeDisplay, formatDurationDisplay } from "../services/apiAdapter";
 import { COURSES_DATA } from "../data/coursesData";
 import { INDIAN_STATES } from "../data/indianLocations";
@@ -31,7 +32,8 @@ import {
   Award,
   Building2,
   Briefcase,
-  PhoneCall
+  PhoneCall,
+  Layers
 } from "lucide-react";
 
 function formatCourseTitle(title) {
@@ -53,17 +55,18 @@ function getCourseShortTitle(title) {
 
 function RelatedCourseCard({ course }) {
   const [imgFailed, setImgFailed] = useState(false);
+  const slug = course.id;
   const imgSrc = (!imgFailed && (course.images?.primary || course.images?.logo || course.images?.hero)) || "";
   const isBanner = Boolean(course.images?.isBanner);
   const displayLevel = course.displayLevel || formatCourseLevelLabel(course.rawLevels || course.level, course.name);
   const feeStr = course.feeDisplay || formatFeeDisplay(course.totalFee, course.totalFee) || "Flexible EMI";
 
   return (
-    <article className="blog-carousel-card group min-w-0 bg-white border border-[#e7eeff] rounded-2xl hover:-translate-y-1 hover:shadow-lg hover:border-[#115eaf]/40 transition-all duration-300 flex flex-col justify-between overflow-hidden">
-      <Link to={"/courses/" + course.id} className="flex flex-col h-full justify-between">
+    <article className="blog-carousel-card group min-w-0 bg-white rounded-xl border border-[#e7eeff] hover:border-[#b1c8eb] hover:shadow-xs overflow-hidden transition-all duration-200 flex flex-col justify-between h-full">
+      <Link to={"/courses/" + slug} className="flex flex-col h-full justify-between">
         <div>
-          {/* Card Banner Image with Hover Zoom */}
-          <div className="relative h-[145px] w-full overflow-hidden bg-gradient-to-br from-[#f0f4f8] via-[#eef4ff] to-[#e7eeff]">
+          {/* Compact Image Container: h-36 on mobile, h-38 on desktop (same size as Blog.jsx) */}
+          <div className="relative h-36 sm:h-38 w-full overflow-hidden bg-[#f0f3ff]">
             {imgSrc ? (
               <img
                 src={imgSrc}
@@ -71,51 +74,52 @@ function RelatedCourseCard({ course }) {
                 loading="lazy"
                 onError={() => setImgFailed(true)}
                 className={`w-full h-full ${
-                  isBanner ? "object-cover object-center group-hover:scale-105" : "object-contain object-center p-3"
-                } transition-transform duration-500`}
+                  isBanner ? "object-cover object-center group-hover:scale-102" : "object-contain object-center p-3.5"
+                } transition-transform duration-300`}
               />
             ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center p-3 text-[#115eaf]">
-                <div className="w-9 h-9 rounded-xl bg-white/90 border border-[#d5e3ff] flex items-center justify-center shadow-2xs mb-1">
-                  <BookOpen className="w-4.5 h-4.5 text-[#115eaf]" aria-hidden="true" />
-                </div>
-                <span className="text-[10px] font-bold text-[#555960] tracking-wider uppercase">{displayLevel}</span>
+              <div className="w-full h-full flex items-center justify-center text-[#115eaf]/40">
+                <BookOpen className="w-7 h-7" aria-hidden="true" />
               </div>
             )}
-            <span className="absolute left-3 top-3 px-2.5 py-1 rounded-full bg-[#115eaf] text-white text-[10px] font-bold shadow-xs leading-none">
+            <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/95 text-[#115eaf] shadow-2xs backdrop-blur-xs border border-[#d5e3ff]">
               {displayLevel}
-            </span>
-            <span className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#000f22]/75 text-white backdrop-blur-xs leading-none">
-              100% Online
             </span>
           </div>
 
-          <div className="p-4">
-            <h3 className="font-bold text-sm sm:text-base text-[#000f22] line-clamp-2 leading-snug font-sans group-hover:text-[#115eaf] transition-colors">
+          {/* Compact Card Content (same dimensions & typography as Blog.jsx) */}
+          <div className="p-3.5">
+            <div className="flex items-center gap-1.5 text-[10.5px] text-[#74777e] mb-1.5">
+              {course.duration ? (
+                <span className="flex items-center gap-1">
+                  <Clock className="w-3 h-3 text-[#115eaf]" aria-hidden="true" />
+                  {course.duration}
+                </span>
+              ) : null}
+              {course.duration && feeStr ? (
+                <span aria-hidden="true" className="text-slate-300">•</span>
+              ) : null}
+              {feeStr ? (
+                <span className="font-semibold text-[#115eaf] truncate">{feeStr}</span>
+              ) : null}
+            </div>
+            <h3 className="text-xs sm:text-[14px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors line-clamp-2 leading-snug">
               {course.name}
             </h3>
             {course.shortDescription ? (
-              <p className="mt-1.5 line-clamp-2 text-xs text-[#43474d] leading-relaxed font-normal">
+              <p className="text-[11px] sm:text-xs text-[#555960] line-clamp-2 mt-1 leading-relaxed">
                 {course.shortDescription}
               </p>
             ) : null}
           </div>
         </div>
 
-        <div className="p-4 pt-0">
-          {course.duration ? (
-            <div className="flex items-center gap-1.5 text-xs text-[#74777e] mb-2.5 pb-2 border-b border-[#f0f4f8]">
-              <Clock className="w-3.5 h-3.5 text-[#115eaf] shrink-0" aria-hidden="true" />
-              <span>{course.duration}</span>
-            </div>
-          ) : null}
-          <div className="flex items-center justify-between gap-2 pt-1 border-t border-[#f0f4f8]">
-            <span className="text-xs sm:text-sm font-bold text-[#115eaf] truncate">
-              {feeStr}
-            </span>
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors">
-              <span>Explore</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+        {/* Compact Card Footer */}
+        <div className="p-3.5 pt-0 mt-auto">
+          <div className="pt-2.5 border-t border-[#f0f3ff] flex items-center justify-between">
+            <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-[#115eaf] group-hover:underline">
+              <span>Explore Course</span>
+              <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
             </span>
           </div>
         </div>
@@ -215,11 +219,11 @@ export default function CourseDetail({ onOpenCounseling }) {
             const bImg = Boolean(b?.images?.primary || b?.images?.logo || b?.images?.hero) ? 1 : 0;
             return bImg - aImg;
           });
-        setState((prev) => ({ ...prev, related: related.slice(0, 3) }));
+        setState((prev) => ({ ...prev, related: related.slice(0, 4) }));
       })
       .catch(() => {
         if (cancelled) return;
-        const localRelated = COURSES_DATA.filter((c) => c.id !== slug).slice(0, 3);
+        const localRelated = COURSES_DATA.filter((c) => c.id !== slug).slice(0, 4);
         setState((prev) => ({ ...prev, related: localRelated }));
       });
 
@@ -244,8 +248,16 @@ export default function CourseDetail({ onOpenCounseling }) {
   const handleLeadSubmit = (e) => {
     e.preventDefault();
     const newErrors = {};
+    const cleanPhone = sanitizeIndianPhone(leadForm.phone);
+    const cleanEmail = (leadForm.email || "").trim();
+
     if (!leadForm.name.trim()) newErrors.name = "Name is required";
-    if (!leadForm.phone.trim() || leadForm.phone.trim().length < 10) newErrors.phone = "Phone number is required";
+    if (!INDIAN_PHONE_REGEX.test(cleanPhone)) {
+      newErrors.phone = "Enter a valid 10-digit Indian phone number starting with 6, 7, 8, 9, or 2";
+    }
+    if (!EMAIL_REGEX.test(cleanEmail)) {
+      newErrors.email = "Enter a valid email address";
+    }
     if (!leadForm.state) newErrors.state = "State is required";
 
     if (Object.keys(newErrors).length > 0) {
@@ -253,6 +265,16 @@ export default function CourseDetail({ onOpenCounseling }) {
       return;
     }
     setErrors({});
+    submitLead({
+      name: leadForm.name,
+      email: cleanEmail,
+      phone_number: cleanPhone,
+      state: leadForm.state ? [leadForm.state] : [],
+      currentstate: leadForm.state || "",
+      preferred_degree: course?.name ? [course.name] : [],
+      studyMode: "Online",
+      form_name: "Course Detail Counselling Form"
+    });
     setLeadSubmitted(true);
   };
 
@@ -575,25 +597,47 @@ export default function CourseDetail({ onOpenCounseling }) {
                       {!leadSubmitted ? (
                         <form onSubmit={handleLeadSubmit} noValidate className="space-y-2.5">
                           
-                          {/* Row 1: Full Name */}
-                          <div>
-                            <label htmlFor="lead-name" className="block text-[11.5px] font-bold text-[#1e293b] mb-1">
-                              Full Name <span className="text-rose-500">*</span>
-                            </label>
-                            <input
-                              id="lead-name"
-                              type="text"
-                              placeholder="Full Name"
-                              value={leadForm.name}
-                              onChange={(e) => {
-                                setLeadForm({ ...leadForm, name: e.target.value });
-                                if (errors.name) setErrors({ ...errors, name: null });
-                              }}
-                              className={`w-full h-9.5 px-3 rounded-lg border text-xs sm:text-[13px] font-medium text-[#000f22] placeholder:text-[#94a3b8] outline-none bg-white transition-all ${
-                                errors.name ? "border-rose-400 focus:border-rose-500" : "border-[#cbd5e1] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15"
-                              }`}
-                            />
-                            {errors.name && <p className="text-[10px] text-rose-500 font-semibold mt-0.5">{errors.name}</p>}
+                          {/* Row 1: Full Name & Email */}
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                            <div>
+                              <label htmlFor="lead-name" className="block text-[11.5px] font-bold text-[#1e293b] mb-1">
+                                Full Name <span className="text-rose-500">*</span>
+                              </label>
+                              <input
+                                id="lead-name"
+                                type="text"
+                                placeholder="Full Name"
+                                value={leadForm.name}
+                                onChange={(e) => {
+                                  setLeadForm({ ...leadForm, name: e.target.value });
+                                  if (errors.name) setErrors({ ...errors, name: null });
+                                }}
+                                className={`w-full h-9.5 px-3 rounded-lg border text-xs sm:text-[13px] font-medium text-[#000f22] placeholder:text-[#94a3b8] outline-none bg-white transition-all ${
+                                  errors.name ? "border-rose-400 focus:border-rose-500" : "border-[#cbd5e1] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15"
+                                }`}
+                              />
+                              {errors.name && <p className="text-[10px] text-rose-500 font-semibold mt-0.5">{errors.name}</p>}
+                            </div>
+
+                            <div>
+                              <label htmlFor="lead-email" className="block text-[11.5px] font-bold text-[#1e293b] mb-1">
+                                Email Address <span className="text-rose-500">*</span>
+                              </label>
+                              <input
+                                id="lead-email"
+                                type="email"
+                                placeholder="name@example.com"
+                                value={leadForm.email}
+                                onChange={(e) => {
+                                  setLeadForm({ ...leadForm, email: e.target.value });
+                                  if (errors.email) setErrors({ ...errors, email: null });
+                                }}
+                                className={`w-full h-9.5 px-3 rounded-lg border text-xs sm:text-[13px] font-medium text-[#000f22] placeholder:text-[#94a3b8] outline-none bg-white transition-all ${
+                                  errors.email ? "border-rose-400 focus:border-rose-500" : "border-[#cbd5e1] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15"
+                                }`}
+                              />
+                              {errors.email && <p className="text-[10px] text-rose-500 font-semibold mt-0.5">{errors.email}</p>}
+                            </div>
                           </div>
 
                           {/* Row 2: Phone Number & State */}
@@ -609,11 +653,14 @@ export default function CourseDetail({ onOpenCounseling }) {
                                 <input
                                   id="lead-phone"
                                   type="tel"
+                                  inputMode="numeric"
                                   maxLength={10}
-                                  placeholder="Phone Number"
+                                  pattern={INDIAN_PHONE_PATTERN}
+                                  title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
+                                  placeholder="10-digit Phone"
                                   value={leadForm.phone}
                                   onChange={(e) => {
-                                    setLeadForm({ ...leadForm, phone: e.target.value.replace(/\D/g, "") });
+                                    setLeadForm({ ...leadForm, phone: sanitizeIndianPhone(e.target.value) });
                                     if (errors.phone) setErrors({ ...errors, phone: null });
                                   }}
                                   className={`w-full h-9.5 px-3 rounded-r-lg border text-xs sm:text-[13px] font-medium text-[#000f22] placeholder:text-[#94a3b8] outline-none bg-white transition-all ${
@@ -763,21 +810,28 @@ export default function CourseDetail({ onOpenCounseling }) {
               }}
             />
 
-            {/* Related Courses Section */}
+            {/* Related Courses Section — Same 4-card template & dimensions as Home Page Blogs */}
             {state.related && state.related.length > 0 && (
-              <section className="mt-8 mb-4 pt-6 border-t border-[#e7eeff]">
-                <div className="flex items-center justify-between gap-2 mb-3.5">
-                  <div className="flex items-center gap-2">
-                    <span className="inline-block w-2 h-2 rounded-full bg-[#115eaf]" aria-hidden="true" />
-                    <h2 className="text-lg sm:text-xl font-bold text-[#000f22]">Related Online Courses</h2>
+              <section className="mt-8 mb-4 w-full rounded-2xl border border-[#e7eeff] bg-white p-5 md:p-6 shadow-xs">
+                <div className="mb-3.5 sm:mb-4">
+                  <div className="flex items-center justify-between gap-2.5">
+                    <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans tracking-tight m-0">
+                      Related Online Courses
+                    </h2>
+                    <Link
+                      to="/courses"
+                      className="shrink-0 inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-[#115eaf] text-[#115eaf] hover:bg-[#115eaf] hover:text-white transition-all shadow-2xs active:scale-95 leading-none"
+                    >
+                      <span>View all</span>
+                      <ArrowRight size={12} className="shrink-0" aria-hidden="true" />
+                    </Link>
                   </div>
-                  <Link to="/courses" className="text-xs font-semibold text-[#115eaf] hover:underline inline-flex items-center gap-1">
-                    <span>View All</span>
-                    <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-                  </Link>
+                  <p className="text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal mt-1">
+                    Compare other UGC-DEB entitled online degree programs with verified fees and flexible EMI plans.
+                  </p>
                 </div>
                 <div className="flex overflow-x-auto overscroll-x-contain snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden gap-4 mt-3 sm:grid sm:grid-cols-2 lg:grid-cols-4">
-                  {state.related.map((c) => (
+                  {state.related.slice(0, 4).map((c) => (
                     <RelatedCourseCard key={c.id} course={c} />
                   ))}
                 </div>

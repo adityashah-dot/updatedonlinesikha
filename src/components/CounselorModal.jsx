@@ -1,15 +1,36 @@
 import { useState } from "react";
-import { X, PhoneCall, CheckCircle, User, Phone } from "lucide-react";
+import { X, PhoneCall, CheckCircle, User, Phone, Mail } from "lucide-react";
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from "../services/leadApi";
 
 export const CounselorModal = ({ isOpen, onClose }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrorMsg("");
+    const validation = validateLeadFields({
+      name,
+      phone,
+      email,
+      requireName: true,
+      requireEmail: true
+    });
+    if (!validation.valid) {
+      setErrorMsg(validation.error);
+      return;
+    }
+    submitLead({
+      name,
+      phone_number: validation.cleanPhone,
+      email: validation.cleanEmail,
+      form_name: "Request Counselor Callback Modal"
+    });
     setSubmitted(true);
   };
 
@@ -46,6 +67,11 @@ export const CounselorModal = ({ isOpen, onClose }) => {
         <div className="p-6">
           {!submitted ? (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {errorMsg && (
+                <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+                  {errorMsg}
+                </div>
+              )}
               <div>
                 <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
                   Full Name <span className="text-[#e11d48]">*</span>
@@ -67,19 +93,42 @@ export const CounselorModal = ({ isOpen, onClose }) => {
 
               <div>
                 <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
-                  Phone Number <span className="text-[#e11d48]">*</span>
+                  Email Address <span className="text-[#e11d48]">*</span>
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#74777e]">
-                    <Phone className="w-4 h-4" />
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your.email@example.com"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#d5e3ff] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none transition-all bg-white"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
+                  Phone Number (+91) <span className="text-[#e11d48]">*</span>
+                </label>
+                <div className="relative flex items-center">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#000f22] font-bold text-xs gap-1.5">
+                    <Phone className="w-4 h-4 text-[#74777e]" />
+                    <span>+91</span>
                   </div>
                   <input
                     type="tel"
-                    pattern="[0-9]{10}"
+                    inputMode="numeric"
+                    maxLength={10}
+                    pattern={INDIAN_PHONE_PATTERN}
+                    title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => setPhone(sanitizeIndianPhone(e.target.value))}
                     placeholder="10-digit Mobile Number"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#d5e3ff] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none transition-all bg-white"
+                    className="w-full pl-16 pr-4 py-2.5 rounded-xl border border-[#d5e3ff] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none transition-all bg-white"
                     required
                   />
                 </div>
@@ -98,7 +147,7 @@ export const CounselorModal = ({ isOpen, onClose }) => {
               <CheckCircle className="w-12 h-12 text-emerald-500 mx-auto" />
               <h4 className="text-lg font-bold text-[#000f22]">Callback Requested!</h4>
               <p className="text-xs sm:text-sm text-[#43474d]">
-                Our counselor will call you within 30 minutes during working hours.
+                Our counselor will call you at +91 {phone} within 30 minutes during working hours.
               </p>
               <button
                 onClick={onClose}

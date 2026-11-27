@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, CheckCircle, Headphones } from "lucide-react";
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from "../services/leadApi";
 
 export function AcademicExpertCounselingSection({
   id = "counselling",
@@ -7,6 +8,7 @@ export function AcademicExpertCounselingSection({
 }) {
   const [lead, setLead] = useState({ phone: "", email: "", degree: "Online MBA" });
   const [leadSubmitted, setLeadSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   return (
     <section
@@ -118,9 +120,31 @@ export function AcademicExpertCounselingSection({
               className={compact ? "space-y-2" : "space-y-3"}
               onSubmit={(event) => {
                 event.preventDefault();
+                setErrorMsg("");
+                const validation = validateLeadFields({
+                  phone: lead.phone,
+                  email: lead.email,
+                  requireName: false,
+                  requireEmail: true
+                });
+                if (!validation.valid) {
+                  setErrorMsg(validation.error);
+                  return;
+                }
+                submitLead({
+                  email: validation.cleanEmail,
+                  phone_number: validation.cleanPhone,
+                  preferred_degree: lead.degree ? [lead.degree] : [],
+                  form_name: "Academic Expert Counseling Form"
+                });
                 setLeadSubmitted(true);
               }}
             >
+              {errorMsg && (
+                <div className="p-2 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-[11px] font-semibold">
+                  {errorMsg}
+                </div>
+              )}
               <div className={compact ? "grid grid-cols-1 sm:grid-cols-2 gap-2" : "space-y-3"}>
                 <div>
                   <label className="mb-0.5 block text-[10px] font-semibold uppercase tracking-wider text-[#43474d]">
@@ -136,11 +160,15 @@ export function AcademicExpertCounselingSection({
                     </span>
                     <input
                       className="w-full border-0 bg-white px-2.5 text-xs font-medium text-[#000f22] outline-none placeholder:text-[#74777e]"
-                      placeholder="98765 43210"
+                      placeholder="10-digit Mobile Number"
                       required
                       type="tel"
+                      inputMode="numeric"
+                      maxLength={10}
+                      pattern={INDIAN_PHONE_PATTERN}
+                      title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                       value={lead.phone}
-                      onChange={(event) => setLead({ ...lead, phone: event.target.value })}
+                      onChange={(event) => setLead({ ...lead, phone: sanitizeIndianPhone(event.target.value) })}
                     />
                   </div>
                 </div>

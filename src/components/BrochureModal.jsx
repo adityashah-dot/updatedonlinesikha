@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { COURSES_DATA } from "../data/coursesData";
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from "../services/leadApi";
 import {
   X,
   Download,
@@ -21,6 +22,7 @@ export const BrochureModal = ({
   const [courseId, setCourseId] = useState(selectedCourse ? selectedCourse.id : "all");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const [isDownloaded, setIsDownloaded] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -64,6 +66,23 @@ export const BrochureModal = ({
 
   const handleDownload = (e) => {
     e.preventDefault();
+    setErrorMsg("");
+    const validation = validateLeadFields({
+      phone,
+      email,
+      requireName: false,
+      requireEmail: true
+    });
+    if (!validation.valid) {
+      setErrorMsg(validation.error);
+      return;
+    }
+    submitLead({
+      email: validation.cleanEmail,
+      phone_number: validation.cleanPhone,
+      preferred_degree: currentCourse?.name ? [currentCourse.name] : [],
+      form_name: "Download Brochure Form"
+    });
     setIsDownloaded(true);
     const officialBrochureUrl = "https://images.degreefyd.com//lpu-online-brochure.pdf";
     const link = document.createElement("a");
@@ -78,6 +97,7 @@ export const BrochureModal = ({
   const handleReset = () => {
     setIsDownloaded(false);
     setIsDropdownOpen(false);
+    setErrorMsg("");
     onClose();
   };
 
@@ -122,6 +142,11 @@ export const BrochureModal = ({
         <div className="p-6">
           {!isDownloaded ? (
             <form onSubmit={handleDownload} className="space-y-4">
+              {errorMsg && (
+                <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+                  {errorMsg}
+                </div>
+              )}
               {/* Program Curriculum Dropdown */}
               <div className="relative" ref={dropdownRef}>
                 <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5 flex items-center justify-between">
@@ -281,20 +306,24 @@ export const BrochureModal = ({
               {/* Mobile Phone with Form Icon */}
               <div>
                 <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
-                  Mobile Number (For SMS Download Link) <span className="text-[#e11d48]">*</span>
+                  Mobile Number (+91) (For SMS Download Link) <span className="text-[#e11d48]">*</span>
                 </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#74777e]">
-                    <Phone className="w-4 h-4" />
+                <div className="relative flex items-center">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#000f22] font-bold text-xs gap-1.5">
+                    <Phone className="w-4 h-4 text-[#74777e]" />
+                    <span>+91</span>
                   </div>
                   <input
                     type="tel"
+                    inputMode="numeric"
+                    maxLength={10}
                     required
-                    pattern="[0-9]{10}"
+                    pattern={INDIAN_PHONE_PATTERN}
+                    title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => setPhone(sanitizeIndianPhone(e.target.value))}
                     placeholder="10-digit Mobile Number"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all bg-white"
+                    className="w-full pl-16 pr-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all bg-white"
                   />
                 </div>
               </div>

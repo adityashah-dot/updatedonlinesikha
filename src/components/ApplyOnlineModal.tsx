@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { COURSES_DATA } from '../data/coursesData';
 import { INDIAN_STATES, INDIAN_STATES_CITIES } from '../data/indianLocations';
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from '../services/leadApi';
 import { X, CheckCircle, ArrowRight, ArrowLeft, ShieldCheck, Clock, FileText } from 'lucide-react';
 
 interface ApplyOnlineModalProps {
@@ -30,20 +31,63 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
     agreedToTerms: true
   });
   const [submittedAppId, setSubmittedAppId] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string>('');
 
   if (!isOpen) return null;
 
   const selectedCourse = COURSES_DATA.find(c => c.id === formData.courseId) || COURSES_DATA[3];
 
   const handleInputChange = (field: string, value: string | boolean) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [field]: field === 'phone' && typeof value === 'string' ? sanitizeIndianPhone(value) : value
+    }));
   };
 
   const handleNext = (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg('');
+    if (step === 1) {
+      const validation = validateLeadFields({
+        name: formData.fullName,
+        phone: formData.phone,
+        email: formData.email,
+        requireName: true,
+        requireEmail: true
+      });
+      if (!validation.valid) {
+        setErrorMsg(validation.error);
+        return;
+      }
+    }
     if (step < 3) {
       setStep(step + 1);
     } else {
+      const validation = validateLeadFields({
+        name: formData.fullName,
+        phone: formData.phone,
+        email: formData.email,
+        requireName: true,
+        requireEmail: true
+      });
+      if (!validation.valid) {
+        setErrorMsg(validation.error);
+        setStep(1);
+        return;
+      }
+      submitLead({
+        name: formData.fullName,
+        email: validation.cleanEmail,
+        phone_number: validation.cleanPhone,
+        state: formData.state ? [formData.state] : [],
+        city: formData.city ? [formData.city] : [],
+        currentcity: formData.city,
+        currentstate: formData.state,
+        highest_qualification: formData.qualification,
+        preferred_degree: selectedCourse?.name ? [selectedCourse.name] : [],
+        studyMode: 'Online',
+        form_name: 'Apply Online Modal Form'
+      });
       // Generate Application ID
       const randomNum = Math.floor(1000 + Math.random() * 9000);
       const generatedId = `OS-LPU-2026-${randomNum}`;
@@ -122,15 +166,21 @@ export const ApplyOnlineModal: React.FC<ApplyOnlineModalProps> = ({
                   <label className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-1.5">
                     Mobile Number (+91) *
                   </label>
-                  <input
-                    type="tel"
-                    required
-                    pattern="[0-9]{10}"
-                    value={formData.phone}
-                    onChange={(e) => handleInputChange('phone', e.target.value)}
-                    placeholder="10-digit Mobile Number"
-                    className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
-                  />
+                  <div className="relative flex items-center">
+                    <span className="absolute left-3.5 text-xs font-bold text-[#000f22]">+91</span>
+                    <input
+                      type="tel"
+                      inputMode="numeric"
+                      maxLength={10}
+                      required
+                      pattern={INDIAN_PHONE_PATTERN}
+                      title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                      placeholder="10-digit Mobile Number"
+                      className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm text-[#000f22] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-1.5">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from '../services/leadApi';
 import { Link } from 'react-router-dom';
 import HomeHero from './HomeHero';
 import ViewAllButton from './ViewAllButton';
@@ -175,6 +176,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 }) => {
   const [lead, setLead] = useState({ phone: '', email: '', degree: 'Online MBA' });
   const [leadSubmitted, setLeadSubmitted] = useState(false);
+  const [leadError, setLeadError] = useState('');
   const [selectedDegree, setSelectedDegree] = useState('Online MBA (Master of Business)');
   const [selectedBudget, setSelectedBudget] = useState('Any Budget (₹12,000 - ₹50,000)');
   const [selectedMode, setSelectedMode] = useState('100% Home AI Proctored');
@@ -326,9 +328,31 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 className="space-y-3.5"
                 onSubmit={(e) => {
                   e.preventDefault();
+                  setLeadError('');
+                  const validation = validateLeadFields({
+                    phone: lead.phone,
+                    email: lead.email,
+                    requireName: false,
+                    requireEmail: true
+                  });
+                  if (!validation.valid) {
+                    setLeadError(validation.error);
+                    return;
+                  }
+                  submitLead({
+                    email: validation.cleanEmail,
+                    phone_number: validation.cleanPhone,
+                    preferred_degree: lead.degree ? [lead.degree] : [],
+                    form_name: 'Home Page Counselling Form'
+                  });
                   setLeadSubmitted(true);
                 }}
               >
+                {leadError && (
+                  <div className="p-2 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+                    {leadError}
+                  </div>
+                )}
                 <div>
                   <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1">
                     Mobile Number (WhatsApp Enabled)
@@ -339,11 +363,15 @@ export const HomeView: React.FC<HomeViewProps> = ({
                     </span>
                     <input
                       className="w-full px-3 py-2 text-sm outline-none text-slate-900"
-                      placeholder="98765 43210"
+                      placeholder="10-digit Mobile Number"
                       required
                       type="tel"
+                      inputMode="numeric"
+                      maxLength={10}
+                      pattern={INDIAN_PHONE_PATTERN}
+                      title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                       value={lead.phone}
-                      onChange={(e) => setLead({ ...lead, phone: e.target.value })}
+                      onChange={(e) => setLead({ ...lead, phone: sanitizeIndianPhone(e.target.value) })}
                     />
                   </div>
                 </div>

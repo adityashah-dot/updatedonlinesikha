@@ -138,9 +138,10 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 18px 0;
-  border: 1px solid #dfe9ff;
+  border: 1.5px solid #b8d0f8;
   border-radius: 12px;
   background: #ffffff;
+  box-shadow: 0 2px 10px rgba(17, 94, 175, 0.06);
 }
 
 .bd-table,
@@ -171,14 +172,12 @@
 .bd-prose .bd-table-wrap table thead td,
 .bd-prose .bd-table-wrap table tr.header-row th,
 .bd-prose .bd-table-wrap table tr.header-row td,
-.bd-prose .bd-table-wrap table:not(:has(thead)) tbody tr:first-child td,
 .exam-layout .bd-table th,
 .exam-layout .bd-prose .bd-table-wrap th,
 .exam-layout .bd-prose .bd-table-wrap table thead th,
 .exam-layout .bd-prose .bd-table-wrap table thead td,
 .exam-layout .bd-prose .bd-table-wrap table tr.header-row th,
-.exam-layout .bd-prose .bd-table-wrap table tr.header-row td,
-.exam-layout .bd-prose .bd-table-wrap table:not(:has(thead)) tbody tr:first-child td {
+.exam-layout .bd-prose .bd-table-wrap table tr.header-row td {
   background: #0b62be !important;
   color: #ffffff !important;
   font-weight: 700 !important;
@@ -213,7 +212,6 @@
 .bd-prose .bd-table-wrap table thead td *,
 .bd-prose .bd-table-wrap table tr.header-row th *,
 .bd-prose .bd-table-wrap table tr.header-row td *,
-.bd-prose .bd-table-wrap table:not(:has(thead)) tbody tr:first-child td *,
 .exam-layout .bd-table th *,
 .exam-layout .bd-prose .bd-table-wrap th *,
 .exam-layout .bd-prose .bd-table-wrap table thead th *,
@@ -229,22 +227,19 @@
 .exam-layout .bd-table td,
 .exam-layout .bd-prose .bd-table-wrap td {
   padding: 14px 16px;
-  border-bottom: 1px solid #e7eeff;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
+  border: 0 !important;
   vertical-align: middle;
-  color: #43474d;
-  font-weight: 400;
+  color: #1e293b;
+  font-weight: 500;
   background-color: #ffffff;
 }
 
-/* Zebra striping: Alternate rows with soft blue tint (increased opacity for clarity) */
+/* Zebra striping: Alternate rows with soft blue tint (2% lighter than previous #e6f0fd) */
 .bd-table tbody tr:nth-child(even) td,
 .bd-prose .bd-table-wrap tbody tr:nth-child(even) td,
 .exam-layout .bd-table tbody tr:nth-child(even) td,
 .exam-layout .bd-prose .bd-table-wrap tbody tr:nth-child(even) td {
-  background-color: #f1f6fd !important;
+  background-color: #ebf3fe !important;
 }
 
 .bd-table tbody tr:nth-child(odd) td,
@@ -270,9 +265,7 @@
 .exam-layout .bd-table tbody tr.header-row th,
 .exam-layout .bd-table tbody tr.header-row td,
 .exam-layout .bd-prose .bd-table-wrap tbody tr.header-row th,
-.exam-layout .bd-prose .bd-table-wrap tbody tr.header-row td,
-.bd-prose .bd-table-wrap table:not(:has(thead)) tbody tr:first-child td,
-.exam-layout .bd-prose .bd-table-wrap table:not(:has(thead)) tbody tr:first-child td {
+.exam-layout .bd-prose .bd-table-wrap tbody tr.header-row td {
   background-color: #0b62be !important;
   color: #ffffff !important;
 }

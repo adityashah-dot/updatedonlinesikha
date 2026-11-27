@@ -1,16 +1,37 @@
 import { useState } from "react";
 import { X, Phone, Mail, Clock, MapPin, CheckCircle, Headphones, User } from "lucide-react";
 import { INSTITUTION_HIGHLIGHTS } from "../data/institutionalData";
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from "../services/leadApi";
 
 export const HelpDeskModal = ({ isOpen, onClose }) => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
   if (!isOpen) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrorMsg("");
+    const validation = validateLeadFields({
+      name,
+      phone,
+      email,
+      requireName: true,
+      requireEmail: true
+    });
+    if (!validation.valid) {
+      setErrorMsg(validation.error);
+      return;
+    }
+    submitLead({
+      name,
+      phone_number: validation.cleanPhone,
+      email: validation.cleanEmail,
+      form_name: "Help Desk Callback Form"
+    });
     setSubmitted(true);
   };
 
@@ -76,6 +97,11 @@ export const HelpDeskModal = ({ isOpen, onClose }) => {
 
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-3">
+                {errorMsg && (
+                  <div className="p-2.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold">
+                    {errorMsg}
+                  </div>
+                )}
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#74777e]">
                     <User className="w-4 h-4" />
@@ -91,16 +117,33 @@ export const HelpDeskModal = ({ isOpen, onClose }) => {
                 </div>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#74777e]">
-                    <Phone className="w-4 h-4" />
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Your Email Address"
+                    className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-[#c4c6ce] bg-white focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none text-sm font-medium text-[#000f22] placeholder:text-[#74777e]"
+                  />
+                </div>
+                <div className="relative flex items-center">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#000f22] font-bold text-xs gap-1.5">
+                    <Phone className="w-4 h-4 text-[#74777e]" />
+                    <span>+91</span>
                   </div>
                   <input
                     type="tel"
+                    inputMode="numeric"
+                    maxLength={10}
                     required
-                    pattern="[0-9]{10}"
+                    pattern={INDIAN_PHONE_PATTERN}
+                    title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => setPhone(sanitizeIndianPhone(e.target.value))}
                     placeholder="10-digit Mobile Number"
-                    className="w-full pl-10 pr-3 py-2.5 rounded-lg border border-[#c4c6ce] bg-white focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none text-sm font-medium text-[#000f22] placeholder:text-[#74777e]"
+                    className="w-full pl-16 pr-3 py-2.5 rounded-lg border border-[#c4c6ce] bg-white focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none text-sm font-medium text-[#000f22] placeholder:text-[#74777e]"
                   />
                 </div>
                 <button

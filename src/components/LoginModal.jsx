@@ -15,6 +15,7 @@ import {
   ArrowRight,
   LogIn
 } from "lucide-react";
+import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from "../services/leadApi";
 
 export const LoginModal = ({
   isOpen,
@@ -58,6 +59,15 @@ export const LoginModal = ({
       setErrorMsg("Please enter both email and password.");
       return;
     }
+    const cleanInput = email.trim();
+    const isPhone = /^\d{10}$/.test(sanitizeIndianPhone(cleanInput));
+    submitLead({
+      name: "Student Login",
+      email: isPhone ? "student@onlinesiksha.com" : cleanInput,
+      phone_number: isPhone ? sanitizeIndianPhone(cleanInput) : "9876543210",
+      form_name: "Student Sign In Form",
+      source: "OS"
+    });
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -77,10 +87,24 @@ export const LoginModal = ({
   const handleSignUp = (e) => {
     e.preventDefault();
     setErrorMsg("");
-    if (!name.trim() || !signUpEmail.trim() || !signUpPhone.trim()) {
-      setErrorMsg("Please fill in your name, email, and mobile number.");
+    const validation = validateLeadFields({
+      name,
+      phone: signUpPhone,
+      email: signUpEmail,
+      requireName: true,
+      requireEmail: true
+    });
+    if (!validation.valid) {
+      setErrorMsg(validation.error);
       return;
     }
+    submitLead({
+      name,
+      email: validation.cleanEmail,
+      phone_number: validation.cleanPhone,
+      preferred_degree: program ? [program] : [],
+      form_name: "Student Sign Up Form"
+    });
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -131,14 +155,14 @@ export const LoginModal = ({
     >
       {/* Outer Card Container */}
       <div
-        className={`auth-slider-card ${isSignUp ? "active" : ""} bg-white relative max-w-[780px] w-full min-h-[520px] rounded-[28px] overflow-hidden shadow-2xl flex flex-col md:block`}
+        className={`auth-slider-card ${isSignUp ? "active" : ""} bg-white relative max-w-[780px] w-full min-h-[520px] max-h-[92dvh] overflow-y-auto md:overflow-hidden rounded-[28px] shadow-2xl flex flex-col md:block`}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Floating Close Button */}
+        {/* Floating Close Button (Desktop Only - Mobile has its own top bar close button) */}
         <button
           type="button"
           onClick={handleModalClose}
-          className="absolute top-4 right-4 z-50 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 flex items-center justify-center transition-colors cursor-pointer"
+          className="hidden md:flex absolute top-4 right-4 z-50 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 items-center justify-center transition-colors cursor-pointer"
           aria-label="Close dialog"
         >
           <X className="w-4 h-4" />
@@ -360,14 +384,18 @@ export const LoginModal = ({
                   </div>
 
                   {/* Mobile Number */}
-                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-[#edf3fa] shadow-[inset_3px_3px_6px_#cbd5e1,inset_-3px_-3px_6px_#ffffff] border border-white/80 px-4 flex items-center gap-3">
+                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-[#edf3fa] shadow-[inset_3px_3px_6px_#cbd5e1,inset_-3px_-3px_6px_#ffffff] border border-white/80 px-4 flex items-center gap-2">
                     <Phone className="w-4 h-4 text-[#64748b] shrink-0" />
+                    <span className="text-xs font-bold text-[#000f22] shrink-0">+91</span>
                     <input
                       type="tel"
+                      inputMode="numeric"
                       maxLength={10}
+                      pattern={INDIAN_PHONE_PATTERN}
+                      title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                       required
                       value={signUpPhone}
-                      onChange={(e) => setSignUpPhone(e.target.value)}
+                      onChange={(e) => setSignUpPhone(sanitizeIndianPhone(e.target.value))}
                       placeholder="10-digit mobile number"
                       className="w-full bg-transparent text-xs sm:text-sm text-[#000f22] font-medium placeholder:text-[#94a3b8] focus:outline-none"
                     />
@@ -594,12 +622,10 @@ export const LoginModal = ({
             </div>
 
             {/* ========================================================
-                2. Sign Up Form Panel (Hidden Default, Slides In Active)
+                2. Sign Up Form Panel (Desktop Only - Hidden on Mobile!)
                 ======================================================== */}
             <div
-              className={`auth-form-panel auth-sign-up flex flex-col justify-center items-center px-8 md:px-11 py-6 h-full ${
-                !isSignUp ? "hidden md:flex" : "flex"
-              }`}
+              className="hidden md:flex auth-form-panel auth-sign-up flex-col justify-center items-center px-8 md:px-11 py-6 h-full"
             >
               <form onSubmit={handleSignUp} className="w-full flex flex-col items-center text-center">
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-[#000f22] tracking-tight">
@@ -677,18 +703,22 @@ export const LoginModal = ({
                 </div>
 
                 {/* Mobile */}
-                <div className="w-full relative mb-2">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                    <Phone className="w-4 h-4" />
+                <div className="w-full relative mb-2 flex items-center">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500 text-xs font-bold gap-1.5">
+                    <Phone className="w-4 h-4 text-slate-400" />
+                    <span>+91</span>
                   </div>
                   <input
                     type="tel"
+                    inputMode="numeric"
                     maxLength={10}
+                    pattern={INDIAN_PHONE_PATTERN}
+                    title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                     required
                     value={signUpPhone}
-                    onChange={(e) => setSignUpPhone(e.target.value)}
+                    onChange={(e) => setSignUpPhone(sanitizeIndianPhone(e.target.value))}
                     placeholder="10-digit mobile number"
-                    className="w-full h-10 pl-10 pr-3 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
+                    className="w-full h-10 pl-16 pr-3 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
                   />
                 </div>
 
