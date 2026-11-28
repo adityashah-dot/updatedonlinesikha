@@ -22,7 +22,7 @@ export const EmiCalculatorModal = ({
   const monthlyEmi = Math.round(principalAfterDownPayment / tenure);
   return <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-    className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-brand-100 relative"
+    className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-line relative"
     onClick={(e) => e.stopPropagation()}
   >
         {
@@ -205,7 +205,7 @@ export const EmiCalculatorModal = ({
         {
     /* Footer Actions */
   }
-        <div className="p-6 border-t border-brand-100 bg-canvas flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="p-6 border-t border-line bg-canvas flex flex-col sm:flex-row items-center justify-between gap-3">
           <button
     onClick={onClose}
     className="w-full sm:w-auto px-5 py-2.5 min-h-[44px] rounded-xl border border-line-strong text-ink-900 font-semibold text-sm hover:bg-white transition-colors"

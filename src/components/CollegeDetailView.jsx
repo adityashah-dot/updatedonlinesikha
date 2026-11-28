@@ -198,7 +198,7 @@ export const CollegeDetailView = ({
     });
   };
 
-  const universityNavigation = <div className="sticky top-[68px] z-30 bg-white border-b border-brand-100 shadow-xs">
+  const universityNavigation = <div className="sticky top-[68px] z-30 bg-white border-b border-line shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex items-center gap-1 sm:gap-1.5 overflow-x-auto py-1.5 ${NAV_TAB_IDS_WITH_HIDDEN_SCROLLBAR}`}>
           {navTabs.map((tab) => {

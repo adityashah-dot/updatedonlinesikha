@@ -12,7 +12,7 @@ export const CompareCollegesSection = ({
 }) => {
   return <section
     id={sectionId}
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
       <h2 className="section-title text-lg sm:text-xl font-bold text-ink-900 font-sans">
         {title ?? "Compare"}
@@ -24,7 +24,7 @@ export const CompareCollegesSection = ({
       {
     /* MAIN COMPARISON BOX — same as LPU */
   }
-      <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_55px_minmax(0,1fr)] items-stretch gap-3 p-4 border border-brand-100 rounded-2xl bg-white shadow-sm mt-[18px]">
+      <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_55px_minmax(0,1fr)] items-stretch gap-3 p-4 border border-line rounded-2xl bg-white shadow-sm mt-[18px]">
         {
     /* SELECTED COLLEGE CARD */
   }
@@ -35,7 +35,7 @@ export const CompareCollegesSection = ({
             </span>
 
             <div className="flex gap-4 items-center">
-              <div className="w-[115px] h-[85px] shrink-0 rounded-lg border border-brand-100 bg-white flex items-center justify-center overflow-hidden">
+              <div className="w-[115px] h-[85px] shrink-0 rounded-lg border border-line bg-white flex items-center justify-center overflow-hidden">
                 {logo ? <img
                   src={logo}
                   alt={`${name} Logo`}
@@ -91,7 +91,7 @@ export const CompareCollegesSection = ({
         {
     /* ADD COLLEGE CARD */
   }
-        <div className="min-h-[220px] rounded-xl border border-dashed border-brand-200 bg-canvas p-4 flex flex-col items-center justify-center text-center">
+        <div className="min-h-[220px] rounded-xl border border-dashed border-line bg-canvas p-4 flex flex-col items-center justify-center text-center">
           <div className="w-12 h-12 rounded-full border border-brand-200 bg-white flex items-center justify-center text-brand-600 text-2xl font-light mb-2.5">
             +
           </div>

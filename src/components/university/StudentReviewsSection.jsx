@@ -8,7 +8,7 @@ export const StudentReviewsSection = ({
   if (!testimonials || testimonials.length === 0) return null;
   return <section
     id="student-reviews"
-    className="content-block bg-white border-y border-brand-100 scroll-mt-[100px]"
+    className="content-block bg-white border-y border-line scroll-mt-[100px]"
   >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-left mb-[18px]">
@@ -21,7 +21,7 @@ export const StudentReviewsSection = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {testimonials.slice(0, limit).map((item, idx) => <div
     key={idx}
-    className="bg-canvas p-4 rounded-xl border border-brand-100 flex flex-col justify-between hover:border-brand-600 transition-all hover:shadow-sm"
+    className="bg-canvas p-4 rounded-xl border border-line flex flex-col justify-between hover:border-brand-600 transition-all hover:shadow-sm"
   >
               <div>
                 <div className="flex items-center text-amber-500 mb-2 gap-0.5">
@@ -31,7 +31,7 @@ export const StudentReviewsSection = ({
                   &quot;{item.text}&quot;
                 </p>
               </div>
-              <div className="flex items-center gap-2.5 mt-4 pt-3 border-t border-brand-200">
+              <div className="flex items-center gap-2.5 mt-4 pt-3 border-t border-line">
                 <div className="w-8 h-8 rounded-full bg-white text-brand-600 flex items-center justify-center font-bold text-xs shadow-sm border border-brand-100 shrink-0">
                   {item.avatar || item.studentName.charAt(0)}
                 </div>

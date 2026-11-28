@@ -4,7 +4,7 @@ import { UNIVERSITIES_LISTING_FAQS } from "../data/universityListingFaqs";
 /** Listing FAQ follows the same card and accordion treatment as university overviews. */
 export function UniversitiesFaq({ onOpenHelpDesk }) {
   return (
-    <section id="faqs" aria-labelledby="universities-faq-heading" className="scroll-mt-24 bg-white rounded-2xl border border-brand-100 p-4 sm:p-5 md:p-6 shadow-xs">
+    <section id="faqs" aria-labelledby="universities-faq-heading" className="scroll-mt-24 bg-white rounded-2xl border border-line p-4 sm:p-5 md:p-6 shadow-xs">
       <div>
         <h2 id="universities-faq-heading" className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
           Online Universities — Frequently Asked Questions

@@ -10,7 +10,7 @@ export const UniversityRankings = ({ university }) => {
         </p>
       </div>
 
-      <div className="bg-white border border-brand-200 rounded-xl overflow-hidden">
+      <div className="bg-white border border-line rounded-xl overflow-hidden">
         <table className="w-full text-left text-xs sm:text-sm border-collapse">
           <thead>
             <tr className="bg-brand-600 text-white font-bold">
@@ -18,7 +18,7 @@ export const UniversityRankings = ({ university }) => {
               <th className="py-3 px-4 font-bold">Recognition Status & Equivalence</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-brand-100 text-ink-700">
+          <tbody className="divide-y divide-line text-ink-700">
             {university.rankingsAndAccreditations.table.map((row, idx) => <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
                 <td className="py-3.5 px-4 sm:px-6 font-semibold text-slate-900 align-top">
                   <div className="flex items-start gap-2">

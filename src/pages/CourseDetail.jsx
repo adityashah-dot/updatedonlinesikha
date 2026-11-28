@@ -62,7 +62,7 @@ function RelatedCourseCard({ course }) {
   const feeStr = course.feeDisplay || formatFeeDisplay(course.totalFee, course.totalFee) || "Flexible EMI";
 
   return (
-    <article className="blog-carousel-card group min-w-0 bg-white rounded-xl border border-brand-100 hover:border-brand-300 hover:shadow-xs overflow-hidden transition-all duration-200 flex flex-col justify-between h-full">
+    <article className="blog-carousel-card group min-w-0 bg-white rounded-xl border border-line hover:border-brand-300 hover:shadow-xs overflow-hidden transition-all duration-200 flex flex-col justify-between h-full">
       <Link to={"/courses/" + slug} className="flex flex-col h-full justify-between">
         <div>
           {/* Compact Image Container: h-36 on mobile, h-38 on desktop (same size as Blog.jsx) */}
@@ -450,19 +450,19 @@ export default function CourseDetail({ onOpenCounseling }) {
 
                       {/* Dynamic Course Highlights Strip */}
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                        <div className="bg-white border border-brand-200 rounded-xl p-2.5 shadow-2xs text-left">
+                        <div className="bg-white border border-line rounded-xl p-2.5 shadow-2xs text-left">
                           <span className="block text-[10px] font-bold text-ink-500 uppercase tracking-wider">Duration</span>
                           <span className="text-xs font-extrabold text-ink-900">{durationText || "2 - 3 Years"}</span>
                         </div>
-                        <div className="bg-white border border-brand-200 rounded-xl p-2.5 shadow-2xs text-left">
+                        <div className="bg-white border border-line rounded-xl p-2.5 shadow-2xs text-left">
                           <span className="block text-[10px] font-bold text-ink-500 uppercase tracking-wider">Semester Fee</span>
                           <span className="text-xs font-extrabold text-brand-600 truncate block">{perSemText ? `${perSemText}` : (feeText || "Starts ₹15k")}</span>
                         </div>
-                        <div className="bg-white border border-brand-200 rounded-xl p-2.5 shadow-2xs text-left">
+                        <div className="bg-white border border-line rounded-xl p-2.5 shadow-2xs text-left">
                           <span className="block text-[10px] font-bold text-ink-500 uppercase tracking-wider">Approvals</span>
                           <span className="text-xs font-extrabold text-emerald-700">UGC-DEB • NAAC</span>
                         </div>
-                        <div className="bg-white border border-brand-200 rounded-xl p-2.5 shadow-2xs text-left">
+                        <div className="bg-white border border-line rounded-xl p-2.5 shadow-2xs text-left">
                           <span className="block text-[10px] font-bold text-ink-500 uppercase tracking-wider">Exam Mode</span>
                           <span className="text-xs font-extrabold text-ink-900">100% Online</span>
                         </div>
@@ -505,7 +505,7 @@ export default function CourseDetail({ onOpenCounseling }) {
                       </ul>
 
                       {/* Recruiter Placement Marquee (Smoothly Moving like College Details Pages) */}
-                      <div className="bg-canvas border border-brand-200 rounded-xl p-2.5 sm:p-3 shadow-2xs">
+                      <div className="bg-canvas border border-line rounded-xl p-2.5 sm:p-3 shadow-2xs">
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-[11px] font-bold text-ink-900 flex items-center gap-1.5">
                             <Briefcase className="w-3.5 h-3.5 text-brand-600" />
@@ -740,7 +740,7 @@ export default function CourseDetail({ onOpenCounseling }) {
                                 Learn more about OS Assured &rarr;
                               </span>
                             </div>
-                            <div className="grid grid-cols-3 gap-2 text-center pt-1 border-t border-brand-200">
+                            <div className="grid grid-cols-3 gap-2 text-center pt-1 border-t border-line">
                               <div className="flex flex-col items-center">
                                 <ShieldCheck className="w-3.5 h-3.5 text-brand-600 mb-0.5" />
                                 <span className="text-[10px] font-bold text-ink-900 leading-tight">100% Free Guidance</span>
@@ -812,7 +812,7 @@ export default function CourseDetail({ onOpenCounseling }) {
 
             {/* Related Courses Section — Same 4-card template & dimensions as Home Page Blogs */}
             {state.related && state.related.length > 0 && (
-              <section className="mt-8 mb-4 w-full rounded-2xl border border-brand-100 bg-white p-5 md:p-6 shadow-xs">
+              <section className="mt-8 mb-4 w-full rounded-2xl border border-line bg-white p-5 md:p-6 shadow-xs">
                 <div className="mb-3.5 sm:mb-4">
                   <div className="flex items-center justify-between gap-2.5">
                     <h2 className="text-xl sm:text-2xl font-bold text-ink-900 font-sans tracking-tight m-0">
@@ -844,7 +844,7 @@ export default function CourseDetail({ onOpenCounseling }) {
               const faqItems = (faqSource && Array.isArray(faqSource.items) ? faqSource.items : (Array.isArray(course?.faqs) ? course.faqs : [])) || [];
               if (!faqItems.length) return null;
               return (
-                <section className="mt-8 mb-6 pt-6 border-t border-brand-100" aria-labelledby="course-faq-title">
+                <section className="mt-8 mb-6 pt-6 border-t border-line" aria-labelledby="course-faq-title">
                   <div className="flex items-center gap-2 mb-3.5">
                     <h2 id="course-faq-title" className="text-lg sm:text-xl font-bold text-ink-900 m-0">
                       Frequently Asked Questions ({course?.name || "Online Course"})

@@ -1,8 +1,15 @@
 {
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+  "functions": {
+    "api/**/*.js": {
+      "includeFiles": "{data-cache/**,dist/index.html,src/data/universities/**}"
     }
+  },
+  "rewrites": [
+    { "source": "/robots.txt", "destination": "/api/robots" },
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" },
+    { "source": "/sitemap-blog.xml", "destination": "/api/sitemap-blog" },
+    { "source": "/blog", "destination": "/api/blog" },
+    { "source": "/blog/:slug", "destination": "/api/blog?slug=:slug" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }

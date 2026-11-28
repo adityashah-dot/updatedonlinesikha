@@ -2,9 +2,10 @@ import { PhoneCall } from "lucide-react";
 export const FloatingActions = ({
   onOpenCounselorModal
 }) => {
+  // Desktop only; phones use MobileBottomBar.
   return <aside
     aria-label="Quick counselor assistance"
-    className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-40 flex items-center"
+    className="hidden md:flex fixed bottom-6 right-6 z-40 items-center"
   >
       {
     /* Redesigned Counselor Help Floating Button */

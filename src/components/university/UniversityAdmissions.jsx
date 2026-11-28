@@ -3,7 +3,7 @@ export const UniversityAdmissions = ({
   university,
   onOpenApply
 }) => {
-  return <section id="admissions" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
+  return <section id="admissions" className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
       {
     /* Heading */
   }
@@ -57,7 +57,7 @@ export const UniversityAdmissions = ({
             </span>
           </div>
 
-          <div className="bg-white border border-brand-200 rounded-xl overflow-x-auto">
+          <div className="bg-white border border-line rounded-xl overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm border-collapse">
               <thead>
                 <tr className="bg-brand-600 text-white font-bold">
@@ -68,7 +68,7 @@ export const UniversityAdmissions = ({
                   <th className="py-3 px-4 font-bold">Selection Mode</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-brand-100 text-ink-700">
+              <tbody className="divide-y divide-line text-ink-700">
                 {university.admissions.eligibilityMatrix.map((row, idx) => <tr key={idx} className="bg-white hover:bg-brand-50/60 transition-colors">
                     <td className="py-3.5 px-4 font-bold text-ink-900 whitespace-nowrap">
                       {row.course}

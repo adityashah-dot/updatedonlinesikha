@@ -96,7 +96,7 @@ function ExamCard({ exam }) {
   const contextTag = getExamContext(exam);
 
   return (
-    <article className="group bg-white rounded-xl border border-brand-100 hover:border-brand-300 hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden h-full">
+    <article className="group bg-white rounded-xl border border-line hover:border-brand-300 hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden h-full">
       <div>
         {/* Compact Image Container */}
         <div className="relative h-32 overflow-hidden bg-gradient-to-br from-canvas via-brand-50 to-brand-100">
@@ -110,7 +110,7 @@ function ExamCard({ exam }) {
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center p-3 text-brand-600">
-              <div className="w-10 h-10 rounded-lg bg-white border border-brand-200 flex items-center justify-center shadow-2xs mb-1">
+              <div className="w-10 h-10 rounded-lg bg-white border border-line flex items-center justify-center shadow-2xs mb-1">
                 <span className="text-xs font-bold tracking-wider text-brand-600 uppercase">
                   {initials}
                 </span>
@@ -203,7 +203,7 @@ function Pagination({ pagination, page, onPage }) {
     <nav className="flex items-center justify-center gap-1.5 mt-8 mb-4 flex-wrap" aria-label="Exams pagination">
       <button
         type="button"
-        className="h-9 px-3.5 rounded-lg border border-brand-200 text-brand-600 text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-canvas transition-colors cursor-pointer"
+        className="h-9 px-3.5 rounded-lg border border-line text-brand-600 text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-canvas transition-colors cursor-pointer"
         disabled={currentPage <= 1}
         onClick={() => onPage(currentPage - 1)}
       >
@@ -225,7 +225,7 @@ function Pagination({ pagination, page, onPage }) {
       ))}
       <button
         type="button"
-        className="h-9 px-3.5 rounded-lg border border-brand-200 text-brand-600 text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-canvas transition-colors cursor-pointer"
+        className="h-9 px-3.5 rounded-lg border border-line text-brand-600 text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-canvas transition-colors cursor-pointer"
         disabled={currentPage >= totalPages}
         onClick={() => onPage(currentPage + 1)}
       >
@@ -329,7 +329,7 @@ export default function Exams() {
         {state.status === "ready" && (
           <>
             {/* Filter Controls Bar */}
-            <section aria-label="Exam filters" className="mb-6 rounded-xl border border-brand-200 bg-canvas p-3.5 sm:p-4.5 shadow-2xs">
+            <section aria-label="Exam filters" className="mb-6 rounded-xl border border-line bg-canvas p-3.5 sm:p-4.5 shadow-2xs">
               <form
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 items-end"
                 onSubmit={(e) => {
@@ -350,7 +350,7 @@ export default function Exams() {
                       value={search}
                       onChange={(e) => handleFiltersChange(setSearch)(e.target.value)}
                       placeholder="Search exams (e.g. UPSC, JEE, CAT)..."
-                      className="w-full h-10 rounded-lg border border-brand-200 bg-white pl-9 pr-3 text-xs sm:text-sm text-ink-900 placeholder:text-ink-500 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors"
+                      className="w-full h-10 rounded-lg border border-line bg-white pl-9 pr-3 text-xs sm:text-sm text-ink-900 placeholder:text-ink-500 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors"
                     />
                   </div>
                 </div>
@@ -364,7 +364,7 @@ export default function Exams() {
                     id="exam-category"
                     value={category}
                     onChange={(e) => handleFiltersChange(setCategory)(e.target.value)}
-                    className="w-full h-10 rounded-lg border border-brand-200 bg-white text-xs sm:text-sm text-ink-900 px-3 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors cursor-pointer truncate"
+                    className="w-full h-10 rounded-lg border border-line bg-white text-xs sm:text-sm text-ink-900 px-3 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors cursor-pointer truncate"
                   >
                     <option value="">All categories</option>
                     {categoryOptions.map((c) => (
@@ -382,7 +382,7 @@ export default function Exams() {
                     id="exam-level"
                     value={level}
                     onChange={(e) => handleFiltersChange(setLevel)(e.target.value)}
-                    className="w-full h-10 rounded-lg border border-brand-200 bg-white text-xs sm:text-sm text-ink-900 px-3 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors cursor-pointer truncate"
+                    className="w-full h-10 rounded-lg border border-line bg-white text-xs sm:text-sm text-ink-900 px-3 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors cursor-pointer truncate"
                   >
                     <option value="">All levels</option>
                     {levelOptions.map((l) => (
@@ -400,7 +400,7 @@ export default function Exams() {
                     id="exam-stream"
                     value={stream}
                     onChange={(e) => handleFiltersChange(setStream)(e.target.value)}
-                    className="w-full h-10 rounded-lg border border-brand-200 bg-white text-xs sm:text-sm text-ink-900 px-3 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors cursor-pointer truncate"
+                    className="w-full h-10 rounded-lg border border-line bg-white text-xs sm:text-sm text-ink-900 px-3 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors cursor-pointer truncate"
                   >
                     <option value="">All streams</option>
                     {streamOptions.map((s) => (
@@ -418,7 +418,7 @@ export default function Exams() {
                     id="exam-sort"
                     value={sort}
                     onChange={(e) => handleFiltersChange(setSort)(e.target.value)}
-                    className="w-full h-10 rounded-lg border border-brand-200 bg-white text-xs sm:text-sm text-ink-900 px-3 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors cursor-pointer truncate"
+                    className="w-full h-10 rounded-lg border border-line bg-white text-xs sm:text-sm text-ink-900 px-3 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors cursor-pointer truncate"
                   >
                     {sortOptions.map((s) => (
                       <option key={s} value={s}>{s}</option>

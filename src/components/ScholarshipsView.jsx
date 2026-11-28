@@ -203,7 +203,7 @@ export default function CollegeScholarships({
             >
               <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
                 <div className="w-full lg:w-3/5 space-y-5">
-                  <div className="flex items-center gap-2.5 pb-3 border-b border-brand-100">
+                  <div className="flex items-center gap-2.5 pb-3 border-b border-line">
                     <span className="w-5 h-5 rounded-md bg-brand-50 text-brand-600 flex items-center justify-center text-xs font-bold">
                       %
                     </span>
@@ -338,7 +338,7 @@ export default function CollegeScholarships({
                 return (
                   <div
                     key={pillar.id || idx}
-                    className="card bg-white border border-brand-100 rounded-2xl shadow-xs flex flex-col justify-between hover:border-brand-600 transition-all"
+                    className="card bg-white border border-line rounded-2xl shadow-xs flex flex-col justify-between hover:border-brand-600 transition-all"
                   >
                     <div>
                       <div
@@ -369,7 +369,7 @@ export default function CollegeScholarships({
                       ) : null}
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-brand-100 text-xs font-bold text-brand-600">
+                    <div className="mt-4 pt-3 border-t border-line text-xs font-bold text-brand-600">
                       {pillar.footnote || "Subject to Verification"}
                     </div>
                   </div>
@@ -382,7 +382,7 @@ export default function CollegeScholarships({
           <BlogsListSection
             onOpenHelpDesk={onOpenHelpDesk}
             sectionId="blogs"
-            className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs p-5 md:p-6"
+            className="page-section card bg-white rounded-2xl border border-line shadow-xs p-5 md:p-6"
             posts={blogs}
             fetchLivePosts
             horizontal

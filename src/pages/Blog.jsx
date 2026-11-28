@@ -119,7 +119,7 @@ export default function Blog({ onOpenCounseling }) {
                     placeholder="Search articles (e.g. online MBA, UGC-DEB, scholarships)"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    className="w-full h-9.5 pl-9 pr-3 rounded-lg border border-brand-200 text-xs sm:text-sm text-ink-900 bg-white placeholder:text-ink-500 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors"
+                    className="w-full h-9.5 pl-9 pr-3 rounded-lg border border-line text-xs sm:text-sm text-ink-900 bg-white placeholder:text-ink-500 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors"
                     aria-label="Search articles"
                   />
                 </label>
@@ -134,7 +134,7 @@ export default function Blog({ onOpenCounseling }) {
             {/* Right Content / Featured Article (Reduced size by 10-15%) */}
             <div className="lg:col-span-5">
               {data.status === "loading" ? (
-                <div className="rounded-xl border border-brand-100 bg-white overflow-hidden shadow-2xs">
+                <div className="rounded-xl border border-line bg-white overflow-hidden shadow-2xs">
                   <div className="h-32 sm:h-36 bg-brand-50 animate-pulse" />
                   <div className="p-3.5 space-y-2">
                     <div className="h-3 w-20 bg-brand-50 rounded animate-pulse" />
@@ -143,7 +143,7 @@ export default function Blog({ onOpenCounseling }) {
                   </div>
                 </div>
               ) : featured ? (
-                <div className="relative rounded-xl border border-brand-100 bg-white overflow-hidden shadow-2xs group hover:border-brand-300 transition-all">
+                <div className="relative rounded-xl border border-line bg-white overflow-hidden shadow-2xs group hover:border-brand-300 transition-all">
                   {featured.image ? (
                     <img
                       src={featured.image}
@@ -221,7 +221,7 @@ export default function Blog({ onOpenCounseling }) {
         {data.status === "loading" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" aria-busy="true">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="rounded-xl border border-brand-100 overflow-hidden bg-white shadow-2xs">
+              <div key={i} className="rounded-xl border border-line overflow-hidden bg-white shadow-2xs">
                 <div className="h-36 sm:h-38 bg-brand-50 animate-pulse" />
                 <div className="p-3.5 space-y-2">
                   <div className="h-3 w-16 bg-brand-50 rounded animate-pulse" />
@@ -300,7 +300,7 @@ export default function Blog({ onOpenCounseling }) {
                   onClick={() => setPage((p) => Math.max(1, p - 1))}
                   disabled={page === 1}
                   aria-label="Previous page"
-                  className="h-8.5 w-8.5 inline-flex items-center justify-center rounded-lg border border-brand-200 text-brand-600 hover:bg-canvas disabled:opacity-40 disabled:hover:bg-white disabled:cursor-not-allowed transition-colors cursor-pointer"
+                  className="h-8.5 w-8.5 inline-flex items-center justify-center rounded-lg border border-line text-brand-600 hover:bg-canvas disabled:opacity-40 disabled:hover:bg-white disabled:cursor-not-allowed transition-colors cursor-pointer"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
@@ -325,7 +325,7 @@ export default function Blog({ onOpenCounseling }) {
                   onClick={() => setPage((p) => Math.min(data.totalPages, p + 1))}
                   disabled={page === data.totalPages}
                   aria-label="Next page"
-                  className="h-8.5 w-8.5 inline-flex items-center justify-center rounded-lg border border-brand-200 text-brand-600 hover:bg-canvas disabled:opacity-40 disabled:hover:bg-white disabled:cursor-not-allowed transition-colors cursor-pointer"
+                  className="h-8.5 w-8.5 inline-flex items-center justify-center rounded-lg border border-line text-brand-600 hover:bg-canvas disabled:opacity-40 disabled:hover:bg-white disabled:cursor-not-allowed transition-colors cursor-pointer"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -373,7 +373,7 @@ function BlogCard({ article: b }) {
   const dateText = formatDate(b.date);
   return (
     <article
-      className="group bg-white rounded-xl border border-brand-100 hover:border-brand-300 hover:shadow-xs overflow-hidden transition-all duration-200 flex flex-col justify-between h-full"
+      className="group bg-white rounded-xl border border-line hover:border-brand-300 hover:shadow-xs overflow-hidden transition-all duration-200 flex flex-col justify-between h-full"
     >
       <div>
         {/* Compact Image Container: h-36 on mobile, h-38 on desktop (aspect ~16:10) */}

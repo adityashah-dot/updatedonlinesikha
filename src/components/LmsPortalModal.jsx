@@ -6,13 +6,13 @@ export const LmsPortalModal = ({ isOpen, onClose, onOpenApply }) => {
   if (!isOpen) return null;
   return <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-    className="bg-white rounded-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-brand-100 relative flex flex-col"
+    className="bg-white rounded-2xl max-w-4xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-line relative flex flex-col"
     onClick={(e) => e.stopPropagation()}
   >
         {
     /* LMS Header Bar */
   }
-        <div className="px-6 py-4 border-b border-brand-100 flex items-center justify-between bg-ink-900 text-white">
+        <div className="px-6 py-4 border-b border-line flex items-center justify-between bg-ink-900 text-white">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-lg bg-brand-600 text-white flex items-center justify-center font-bold">
               <Smartphone className="w-5 h-5" />
@@ -114,7 +114,7 @@ export const LmsPortalModal = ({ isOpen, onClose, onOpenApply }) => {
       tag: "M.Sc & Tech",
       id: "v4"
     }
-  ].map((item) => <div key={item.id} className="p-4 rounded-xl border border-brand-100 bg-canvas hover:border-brand-600 transition-all flex flex-col justify-between">
+  ].map((item) => <div key={item.id} className="p-4 rounded-xl border border-line bg-canvas hover:border-brand-600 transition-all flex flex-col justify-between">
                     <div>
                       <div className="flex justify-between items-center text-[11px] mb-2">
                         <span className="px-2 py-0.5 rounded bg-brand-100 text-brand-600 font-bold">
@@ -128,7 +128,7 @@ export const LmsPortalModal = ({ isOpen, onClose, onOpenApply }) => {
                       <p className="text-xs text-ink-700 mt-1">{item.faculty}</p>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-brand-100 flex items-center justify-between">
+                    <div className="mt-4 pt-3 border-t border-line flex items-center justify-between">
                       <button
     onClick={() => setPlayingVideo(playingVideo === item.id ? null : item.id)}
     className="px-3 py-1.5 min-h-[44px] rounded-lg bg-brand-600 text-white text-xs font-semibold flex items-center gap-1.5 hover:bg-brand-700 transition-colors"
@@ -171,7 +171,7 @@ export const LmsPortalModal = ({ isOpen, onClose, onOpenApply }) => {
     { title: "Business Analytics & PowerBI Manual", pages: "190 Pages", format: "Dataset Files Included" },
     { title: "Discrete Mathematical Structures", pages: "320 Pages", format: "Solved Practice Sets" },
     { title: "Corporate Tax Law Handbook 2026", pages: "260 Pages", format: "Updated Finance Act" }
-  ].map((book, idx) => <div key={idx} className="p-3.5 rounded-xl border border-brand-100 bg-canvas space-y-2">
+  ].map((book, idx) => <div key={idx} className="p-3.5 rounded-xl border border-line bg-canvas space-y-2">
                     <BookOpen className="w-5 h-5 text-brand-600" />
                     <h5 className="font-bold text-xs text-ink-900">{book.title}</h5>
                     <div className="text-[11px] text-ink-500 space-y-0.5">
@@ -198,15 +198,15 @@ export const LmsPortalModal = ({ isOpen, onClose, onOpenApply }) => {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                <div className="p-3 rounded-xl bg-white border border-brand-100">
+                <div className="p-3 rounded-xl bg-white border border-line">
                   <strong className="block text-ink-900 mb-1">Dual AI & Human Invigilation</strong>
                   <span className="text-ink-700">Continuous automated facial recognition and live proctor screen review.</span>
                 </div>
-                <div className="p-3 rounded-xl bg-white border border-brand-100">
+                <div className="p-3 rounded-xl bg-white border border-line">
                   <strong className="block text-ink-900 mb-1">Flexible Weekend Slots</strong>
                   <span className="text-ink-700">Choose Saturday or Sunday time windows (Morning, Afternoon, or Evening).</span>
                 </div>
-                <div className="p-3 rounded-xl bg-white border border-brand-100">
+                <div className="p-3 rounded-xl bg-white border border-line">
                   <strong className="block text-ink-900 mb-1">DigiLocker Marksheets</strong>
                   <span className="text-ink-700">Automated credit transfers straight into your government ABC / DigiLocker account.</span>
                 </div>
@@ -216,7 +216,7 @@ export const LmsPortalModal = ({ isOpen, onClose, onOpenApply }) => {
           {activeTab === "schedule" && <div className="space-y-3">
               <h4 className="font-bold text-sm text-ink-900">Upcoming Interactive Live Masterclasses</h4>
               <div className="space-y-2 text-xs">
-                <div className="p-3 rounded-xl border border-brand-100 bg-white flex flex-wrap items-center justify-between gap-2">
+                <div className="p-3 rounded-xl border border-line bg-white flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-3">
                     <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
                     <div>
@@ -226,7 +226,7 @@ export const LmsPortalModal = ({ isOpen, onClose, onOpenApply }) => {
                   </div>
                   <span className="text-xs font-bold text-brand-600">Live Video Link Active</span>
                 </div>
-                <div className="p-3 rounded-xl border border-brand-100 bg-white flex flex-wrap items-center justify-between gap-2">
+                <div className="p-3 rounded-xl border border-line bg-white flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-3">
                     <span className="w-2.5 h-2.5 rounded-full bg-blue-400" />
                     <div>
@@ -236,7 +236,7 @@ export const LmsPortalModal = ({ isOpen, onClose, onOpenApply }) => {
                   </div>
                   <span className="text-xs text-ink-500">Upcoming Today</span>
                 </div>
-                <div className="p-3 rounded-xl border border-brand-100 bg-white flex flex-wrap items-center justify-between gap-2">
+                <div className="p-3 rounded-xl border border-line bg-white flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-3">
                     <span className="w-2.5 h-2.5 rounded-full bg-blue-400" />
                     <div>
@@ -253,7 +253,7 @@ export const LmsPortalModal = ({ isOpen, onClose, onOpenApply }) => {
         {
     /* Footer */
   }
-        <div className="p-6 border-t border-brand-100 bg-canvas flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="p-6 border-t border-line bg-canvas flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="text-xs text-ink-700">
             Full student access credentials granted immediately upon admission confirmation.
           </div>

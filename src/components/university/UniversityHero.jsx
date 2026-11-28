@@ -112,7 +112,7 @@ export const UniversityHero = ({
           Free Counselling
         </button>}
     </>;
-  const imageBlock = <div className="rounded-2xl overflow-hidden border border-brand-100 shadow-xs bg-canvas">
+  const imageBlock = <div className="rounded-2xl overflow-hidden border border-line shadow-xs bg-canvas">
       {university.backgroundImage ? <img
     src={university.backgroundImage}
     alt={university.name}
@@ -121,32 +121,32 @@ export const UniversityHero = ({
   /> : <div className="w-full h-56 sm:h-64 lg:h-[330px] bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900" />}
     </div>;
   const stats = <>
-      <div className="p-4 bg-canvas rounded-xl border border-brand-100">
+      <div className="p-4 bg-canvas rounded-xl border border-line">
         <span className="block text-[10px] text-ink-700 font-medium uppercase tracking-[0.08em]">Fee Range</span>
         <span className="block text-base font-bold text-ink-900 tabular-nums mt-1">{university.quickStats.feeRange}</span>
       </div>
-      <div className="p-4 bg-canvas rounded-xl border border-brand-100">
+      <div className="p-4 bg-canvas rounded-xl border border-line">
         <span className="block text-[10px] text-ink-700 font-medium uppercase tracking-[0.08em]">Duration</span>
         <span className="block text-base font-bold text-ink-900 mt-1">{university.quickStats.duration}</span>
       </div>
-      <div className="p-4 bg-canvas rounded-xl border border-brand-100">
+      <div className="p-4 bg-canvas rounded-xl border border-line">
         <span className="block text-[10px] text-ink-700 font-medium uppercase tracking-[0.08em]">Mode</span>
         <span className="block text-base font-bold text-ink-900 mt-1 truncate" title={university.quickStats.mode}>{university.quickStats.mode}</span>
       </div>
-      <div className="p-4 bg-canvas rounded-xl border border-brand-100">
+      <div className="p-4 bg-canvas rounded-xl border border-line">
         <span className="block text-[10px] text-ink-700 font-medium uppercase tracking-[0.08em]">Placement</span>
         <span className="block text-base font-bold text-emerald-700 tabular-nums mt-1">{university.quickStats.placementRate}</span>
       </div>
-      <div className="p-4 bg-canvas rounded-xl border border-brand-100">
+      <div className="p-4 bg-canvas rounded-xl border border-line">
         <span className="block text-[10px] text-ink-700 font-medium uppercase tracking-[0.08em]">Highest</span>
         <span className="block text-base font-bold text-brand-600 tabular-nums mt-1">{university.quickStats.highestPackage}</span>
       </div>
-      <div className="p-4 bg-canvas rounded-xl border border-brand-100">
+      <div className="p-4 bg-canvas rounded-xl border border-line">
         <span className="block text-[10px] text-ink-700 font-medium uppercase tracking-[0.08em]">EMI</span>
         <span className="block text-base font-bold text-ink-900 tabular-nums mt-1">{university.quickStats.emiStarting}</span>
       </div>
     </>;
-  return <div className="relative bg-white border-b border-brand-100">
+  return <div className="relative bg-white border-b border-line">
       {
     /* ===== Mobile (<= 767px): logo + name, then image, then text ===== */
   }
@@ -154,7 +154,7 @@ export const UniversityHero = ({
         {topBadges}
 
         <div className="mt-4 flex items-start gap-3">
-          <div className="w-16 h-16 rounded-xl bg-white border border-brand-100 shadow-sm p-2 flex items-center justify-center shrink-0">
+          <div className="w-16 h-16 rounded-xl bg-white border border-line shadow-sm p-2 flex items-center justify-center shrink-0">
             {logoImg}
           </div>
 <h1 className="min-w-0 flex-1 m-0 text-[clamp(20px,5.5vw,26px)] font-bold tracking-[-0.02em] leading-[1.15] text-ink-900 break-words">
@@ -170,7 +170,7 @@ export const UniversityHero = ({
 
         <div className="mt-5 flex flex-wrap items-center gap-2.5">{actions}</div>
 
-        <div className="mt-6 grid grid-cols-2 gap-3 pt-5 border-t border-brand-100">{stats}</div>
+        <div className="mt-6 grid grid-cols-2 gap-3 pt-5 border-t border-line">{stats}</div>
       </div>
 
       {
@@ -183,7 +183,7 @@ export const UniversityHero = ({
               {topBadges}
 
               <div className="mt-4 flex items-start gap-3 sm:gap-4">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-white border border-brand-100 shadow-sm p-2.5 flex items-center justify-center shrink-0">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-white border border-line shadow-sm p-2.5 flex items-center justify-center shrink-0">
                   {logoImg}
                 </div>
 
@@ -203,7 +203,7 @@ export const UniversityHero = ({
             <div className="lg:col-span-5 lg:ml-2">{imageBlock}</div>
           </div>
 
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 pt-6 border-t border-brand-100">
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 pt-6 border-t border-line">
             {stats}
           </div>
         </div>

@@ -186,7 +186,7 @@ export default function News({ onOpenCounseling }) {
         {/* ========================================================= */}
         {/* 1. EDITORIAL MASTHEAD */}
         {/* ========================================================= */}
-        <header className="border-b border-brand-100 pb-5 mb-5">
+        <header className="border-b border-line pb-5 mb-5">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600 mb-1.5">
@@ -201,7 +201,7 @@ export default function News({ onOpenCounseling }) {
               </p>
             </div>
 
-            <div className="flex items-center gap-3 shrink-0 self-start md:self-end text-xs text-ink-700 bg-white border border-brand-100 rounded-xl px-3.5 py-2 shadow-2xs">
+            <div className="flex items-center gap-3 shrink-0 self-start md:self-end text-xs text-ink-700 bg-white border border-line rounded-xl px-3.5 py-2 shadow-2xs">
               <Calendar className="w-3.5 h-3.5 text-brand-600" aria-hidden="true" />
               <span className="font-medium text-ink-900">{todayFormatted}</span>
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
@@ -280,13 +280,13 @@ export default function News({ onOpenCounseling }) {
         {loading && (
           <div className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-              <div className="lg:col-span-8 bg-white rounded-2xl border border-brand-100 p-5 animate-pulse space-y-4">
+              <div className="lg:col-span-8 bg-white rounded-2xl border border-line p-5 animate-pulse space-y-4">
                 <div className="h-64 sm:h-80 bg-canvas rounded-xl w-full" />
                 <div className="h-4 bg-canvas rounded w-1/4" />
                 <div className="h-8 bg-canvas rounded w-3/4" />
                 <div className="h-4 bg-canvas rounded w-full" />
               </div>
-              <div className="lg:col-span-4 bg-white rounded-2xl border border-brand-100 p-5 animate-pulse space-y-4">
+              <div className="lg:col-span-4 bg-white rounded-2xl border border-line p-5 animate-pulse space-y-4">
                 <div className="h-6 bg-canvas rounded w-1/3 mb-4" />
                 {[1, 2, 3].map((n) => (
                   <div key={n} className="space-y-2 border-b border-canvas pb-3">
@@ -328,7 +328,7 @@ export default function News({ onOpenCounseling }) {
           <section className="mb-5 sm:mb-6" aria-label="Featured Story and Trending Headlines">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
               {/* PRIMARY LEAD STORY (65%) */}
-              <article className="lg:col-span-7 xl:col-span-8 group bg-white rounded-2xl border border-brand-100 hover:border-brand-300 p-4 sm:p-5 shadow-2xs hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden">
+              <article className="lg:col-span-7 xl:col-span-8 group bg-white rounded-2xl border border-line hover:border-brand-300 p-4 sm:p-5 shadow-2xs hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden">
                 <div>
                   <div className="relative rounded-xl overflow-hidden bg-ink-900 news-hero-img-wrap mb-4">
                     <img
@@ -388,7 +388,7 @@ export default function News({ onOpenCounseling }) {
               {/* RIGHT COLUMN (35%): TRENDING STORIES + EDUCATION ADVISORY */}
               <div className="lg:col-span-5 xl:col-span-4 flex flex-col gap-4 sm:gap-5 self-start">
                 {/* 1. TRENDING STORIES STACK */}
-                <aside className="bg-white rounded-2xl border border-brand-100 p-4 sm:p-5 shadow-2xs self-start w-full" aria-label="Trending Education Stories">
+                <aside className="bg-white rounded-2xl border border-line p-4 sm:p-5 shadow-2xs self-start w-full" aria-label="Trending Education Stories">
                   <div>
                     <div className="flex items-center justify-between pb-3 mb-3 border-b border-canvas">
                       <div className="flex items-center gap-2">
@@ -491,7 +491,7 @@ export default function News({ onOpenCounseling }) {
         {/* 4. CATEGORY FILTERS & SEARCH BAR */}
         {/* ========================================================= */}
         {!loading && !error && (
-          <nav className="mb-5 sm:mb-6 bg-white rounded-xl border border-brand-100 p-3 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-3" aria-label="News categories and search">
+          <nav className="mb-5 sm:mb-6 bg-white rounded-xl border border-line p-3 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-3" aria-label="News categories and search">
             <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto no-scrollbar pb-1 md:pb-0">
               {[
                 { id: "all", label: "All News", count: articles.length },
@@ -529,7 +529,7 @@ export default function News({ onOpenCounseling }) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 aria-label="Search headlines" placeholder="Search headlines..."
-                className="w-full h-8.5 pl-9 pr-8 rounded-lg bg-canvas border border-brand-100 text-xs text-ink-900 placeholder-ink-400 focus:outline-hidden focus:border-brand-600 focus:bg-white transition-colors"
+                className="w-full h-8.5 pl-9 pr-8 rounded-lg bg-canvas border border-line text-xs text-ink-900 placeholder-ink-400 focus:outline-hidden focus:border-brand-600 focus:bg-white transition-colors"
               />
               {searchQuery && (
                 <button
@@ -563,7 +563,7 @@ export default function News({ onOpenCounseling }) {
               </div>
 
               {filteredArticles.length === 0 ? (
-                <div className="bg-white rounded-2xl border border-brand-100 p-8 text-center my-4">
+                <div className="bg-white rounded-2xl border border-line p-8 text-center my-4">
                   <Newspaper className="w-10 h-10 text-ink-400 mx-auto mb-3" aria-hidden="true" />
                   <h3 className="text-base font-bold text-ink-900 mb-1">No News Articles Found</h3>
                   <p className="text-xs text-ink-700 mb-4">
@@ -584,7 +584,7 @@ export default function News({ onOpenCounseling }) {
                   {filteredArticles.map((item) => (
                     <article
                       key={item.id}
-                      className="group bg-white rounded-xl border border-brand-100 hover:border-brand-300 hover:shadow-sm transition-all duration-200 overflow-hidden flex flex-col sm:flex-row"
+                      className="group bg-white rounded-xl border border-line hover:border-brand-300 hover:shadow-sm transition-all duration-200 overflow-hidden flex flex-col sm:flex-row"
                     >
                       {/* Image Thumbnail */}
                       <div className="w-full sm:w-52 md:w-60 h-44 sm:h-auto shrink-0 relative bg-canvas overflow-hidden">
@@ -649,7 +649,7 @@ export default function News({ onOpenCounseling }) {
               )}
 
               {/* Pagination metadata */}
-              <div className="mt-8 pt-4 border-t border-brand-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink-500">
+              <div className="mt-8 pt-4 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink-500">
                 <span>Showing all {filteredArticles.length} published stories</span>
                 <span className="font-semibold text-brand-600">
                   Verified Education Journalism • OnlineSiksha
@@ -660,7 +660,7 @@ export default function News({ onOpenCounseling }) {
             {/* SIDEBAR WIDGETS (30%) */}
             <aside className="lg:col-span-4 space-y-5 lg:sticky lg:top-24" aria-label="Education resources and counselling">
               {/* WIDGET 1: EXPLORE EXAMS SHORTCUT */}
-              <div className="bg-white rounded-2xl border border-brand-100 p-4.5 shadow-2xs">
+              <div className="bg-white rounded-2xl border border-line p-4.5 shadow-2xs">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-7 h-7 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center">
                     <GraduationCap className="w-4 h-4" aria-hidden="true" />
@@ -701,7 +701,7 @@ export default function News({ onOpenCounseling }) {
               </div>
 
               {/* WIDGET 2: INSTANT EXAM ALERTS */}
-              <div className="bg-white rounded-2xl border border-brand-100 p-4 shadow-2xs">
+              <div className="bg-white rounded-2xl border border-line p-4 shadow-2xs">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
                     <TrendingUp className="w-4 h-4" aria-hidden="true" />

@@ -43,23 +43,86 @@ function readImage(value) {
   return "";
 }
 
-function formatFeeRange(record) {
-  const rawMin = record.minFee ?? record.minimumFee;
-  const rawMax = record.maxFee ?? record.maximumFee;
-  const min = rawMin == null || rawMin === "" ? null : Number(rawMin);
-  const max = rawMax == null || rawMax === "" ? null : Number(rawMax);
-  const hasMin = min !== null && Number.isFinite(min) && min >= 0;
-  const hasMax = max !== null && Number.isFinite(max) && max >= 0;
+/** "₹80K", "₹1.6L", "₹14.3L", "₹1.2Cr" — one consistent compact style. */
+export function compactRupees(value) {
+  const n = Number(value);
+  if (!Number.isFinite(n) || n <= 0) return "";
+  const trim = (x) => String(Number(x.toFixed(1)));
+  if (n >= 1e7) return `₹${trim(n / 1e7)}Cr`;
+  if (n >= 1e5) return `₹${trim(n / 1e5)}L`;
+  return `₹${Math.round(n / 1000)}K`;
+}
 
-  if (hasMin && hasMax && (min > 0 || max > 0) && min !== max) {
-    return `\u20B9${Math.round(min / 1000)}K \u2013 \u20B9${(max / 100000).toFixed(2)}L`;
+/** Zero means "not provided" in the CMS, so it never prints as ₹0. Returns "" when unknown. */
+function formatFeeRange(record) {
+  const toFee = (v) => {
+    const n = Number(v);
+    return Number.isFinite(n) && n > 0 ? n : null;
+  };
+  const min = toFee(record.minFee ?? record.minimumFee);
+  const max = toFee(record.maxFee ?? record.maximumFee);
+  if (min && max && min !== max) return `${compactRupees(Math.min(min, max))} – ${compactRupees(Math.max(min, max))}`;
+  if (min || max) return compactRupees(min || max);
+  return "";
+}
+
+/* ---------- Data clean-up for CMS listing records ---------- */
+
+const APPROVAL_ALIASES = [
+  [/^naac\s*(grade\s*)?a\s*\+\s*\+$/i, "NAAC A++"],
+  [/^naac\s*(grade\s*)?a\s*\+$/i, "NAAC A+"],
+  [/^naac\s*(grade\s*)?a$/i, "NAAC A"],
+  [/^naac\s*(grade\s*)?b\s*\+\s*\+$/i, "NAAC B++"],
+  [/^naac\s*(grade\s*)?b\s*\+$/i, "NAAC B+"],
+  [/^(ugc[\s-]*deb|deb|ugc[\s-]*entitled.*)$/i, "UGC-DEB"],
+];
+
+/** Trims, fixes spelling variants ("NAAC A ++"), dedupes and drops meaningless bare tags. */
+export function normalizeApprovals(list) {
+  const seen = new Set();
+  const out = [];
+  for (const raw of Array.isArray(list) ? list : []) {
+    let name = String(raw || "").replace(/\s+/g, " ").trim();
+    if (!name) continue;
+    for (const [pattern, canonical] of APPROVAL_ALIASES) {
+      if (pattern.test(name)) { name = canonical; break; }
+    }
+    if (/^nirf$/i.test(name)) continue; // a bare "NIRF" tag says nothing about the rank
+    const key = name.toUpperCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(name);
   }
-  if (hasMin && min > 0) {
-    return `\u20B9${min.toLocaleString("en-IN")}`;
-  }
-  if (hasMax && max > 0) {
-    return `\u20B90K \u2013 \u20B9${(max / 100000).toFixed(2)}L`;
-  }
+  // Drop a bare "NAAC" when a graded NAAC tag is present.
+  if (out.some((a) => /^NAAC [AB]/.test(a))) return out.filter((a) => a !== "NAAC");
+  return out;
+}
+
+/** The CMS tags several open/distance institutions as "online"; detect them by name. */
+export function isDistanceInstitution(name) {
+  return /open university|distance (education|learning)|\b(cdoe|sde|idol|dde)\b|directorate of distance|centre for distance|center for distance/i.test(String(name || ""));
+}
+
+/** Clean NIRF rank (1–300) or null. Ranges like "101-150" and open universities are excluded. */
+function cleanNirfRank(value, name) {
+  const str = String(value ?? "").trim();
+  if (!/^\d{1,3}$/.test(str) || isDistanceInstitution(name)) return null;
+  const n = Number(str);
+  return n >= 1 && n <= 300 ? n : null;
+}
+
+/**
+ * The CMS stores packages in mixed units (rupees, LPA, and ambiguous small numbers).
+ * Only return a value when the unit is clear; otherwise hide it.
+ */
+function plausiblePackage(value) {
+  if (value == null || value === "") return "";
+  if (typeof value === "string" && /lpa|cr|crore|aud/i.test(value)) return formatPackage(value);
+  const n = Number(String(value).replace(/[,₹\s]/g, ""));
+  if (!Number.isFinite(n) || n <= 0) return "";
+  if (n >= 100000) return `₹${Number((n / 100000).toFixed(1))} LPA`;
+  if (n >= 3 && n <= 100) return `₹${n} LPA`;
+  if (HYPHEN_STRIPPED_PACKAGES[n]) return HYPHEN_STRIPPED_PACKAGES[n];
   return "";
 }
 
@@ -156,9 +219,11 @@ export function mapUniversity(recordRaw, index = 0) {
   const name = record.collegeName || record.name || record.title || "University";
   const short =
     record.collegeShortName || record.short || record.shortName || name.slice(0, 3).toUpperCase();
-  const mode = String(record.collegeMode || "").toLowerCase();
+  const rawMode = String(record.collegeMode || "").toLowerCase();
+  const mode = rawMode === "online" && isDistanceInstitution(name) ? "distance" : rawMode;
+  const nirfRank = cleanNirfRank(record.nirfRanking, name);
 
-  const approvals = readApprovals(record);
+  const approvals = normalizeApprovals(readApprovals(record));
   const rawMinFee = record.minFee == null || record.minFee === "" ? null : Number(record.minFee);
   const rawMaxFee = record.maxFee == null || record.maxFee === "" ? null : Number(record.maxFee);
   const minFee = Number.isFinite(rawMinFee) && rawMinFee > 0 ? rawMinFee : null;
@@ -179,20 +244,16 @@ export function mapUniversity(recordRaw, index = 0) {
   if (coursesCount != null && !Number.isNaN(coursesCount)) {
     specs.push({ label: "Programs", value: `${coursesCount} Courses` });
   }
-  const highestCtcFormatted = formatPackage(record.highestPackage);
+  const highestCtcFormatted = plausiblePackage(record.highestPackage);
   if (highestCtcFormatted) {
-    specs.push({ label: "Highest CTC Record", value: highestCtcFormatted, highlight: true });
-  }
-  const avgPkgFormatted = formatPackage(record.placementHighest);
-  if (avgPkgFormatted) {
-    specs.push({ label: "Avg Package", value: avgPkgFormatted });
+    specs.push({ label: "Highest package", value: highestCtcFormatted, highlight: true });
   }
   const established = readText(record.established);
   if (established) {
     specs.push({ label: "Established", value: established });
   }
 
-  const naac = approvals.find((approval) => /NAAC/i.test(approval)) || "";
+  const naac = approvals.find((approval) => /^NAAC [AB]/.test(approval)) || "";
 
   const slug = record.slug || "";
 
@@ -205,7 +266,9 @@ export function mapUniversity(recordRaw, index = 0) {
     campusImage: readImage(record.collegeImage || record.collegeLogo),
     location: record.collegeLocation || record.location || "",
     established: readText(record.established),
-    rankNote: record.nirfRanking ? `NIRF Rank #${record.nirfRanking}` : "",
+    rankNote: nirfRank ? `NIRF #${nirfRank}` : "",
+    nirfRank,
+    highestPackageLabel: highestCtcFormatted,
     naac,
     approvals,
     accreditations: approvals,
@@ -382,40 +445,101 @@ function firstNumber(value) {
 
 /* Client-side sorters applied to the FULL mapped list, before the page
    slice — so sorting is never just a re-ordering of the visible 10. */
+const byName = (a, b) => String(a.name).localeCompare(String(b.name));
 const LISTING_SORTS = {
+  // Online first, then UGC-DEB entitled (valid online degrees), then published fees, then NIRF rank.
+  recommended: {
+    compare: (a, b) =>
+      (a.collegeMode === "online" ? 0 : 1) - (b.collegeMode === "online" ? 0 : 1) ||
+      (a.approvals.includes("UGC-DEB") ? 0 : 1) - (b.approvals.includes("UGC-DEB") ? 0 : 1) ||
+      (a._fee === Number.MAX_SAFE_INTEGER) - (b._fee === Number.MAX_SAFE_INTEGER) ||
+      a._nirf - b._nirf ||
+      byName(a, b),
+  },
   nirf: {
-    fields: ["NIRF Rank", "Lowest Fee", "Highest Fee", "Highest CTC"],
-    compare: (a, b) => a.nirfRank - b.nirfRank || a.minFeeNumber - b.minFeeNumber,
+    compare: (a, b) => a._nirf - b._nirf || a._fee - b._fee || byName(a, b),
   },
   lowestFee: {
-    compare: (a, b) => a.minFeeNumber - b.minFeeNumber,
+    compare: (a, b) => a._fee - b._fee || byName(a, b),
   },
   highestFee: {
-    compare: (a, b) => b.minFeeNumber - a.minFeeNumber,
-  },
-  highestPackage: {
-    compare: (a, b) => b.packageNumber - a.packageNumber,
+    compare: (a, b) => (b._fee === Number.MAX_SAFE_INTEGER ? -1 : b._fee) - (a._fee === Number.MAX_SAFE_INTEGER ? -1 : a._fee) || byName(a, b),
   },
 };
 
 function withSortKeys(university) {
   return {
     ...university,
-    nirfRank: Number(String(university.rankNote || "").match(/(\d+)/)?.[1]) || Number.MAX_SAFE_INTEGER,
-    minFeeNumber: firstNumber(university.minFee) ?? Number.MAX_SAFE_INTEGER,
-    packageNumber: firstNumber(university.highestPackage) ?? 0,
+    _nirf: university.nirfRank ?? Number.MAX_SAFE_INTEGER,
+    _fee: firstNumber(university.minFee ?? university.maxFee) ?? Number.MAX_SAFE_INTEGER,
   };
 }
 
 export function sortUniversities(universities, sortId) {
-  const sort = LISTING_SORTS[sortId];
-  if (!sort) return Array.isArray(universities) ? universities : [];
-
+  const sort = LISTING_SORTS[sortId] || LISTING_SORTS.recommended;
   return (Array.isArray(universities) ? universities : [])
     .map(withSortKeys)
     .sort(sort.compare)
-    .map(({ nirfRank, minFeeNumber, packageNumber, ...university }) => university);
+    .map(({ _nirf, _fee, ...university }) => university);
 }
+
+/* ---------- Listing filters (applied before pagination) ---------- */
+
+export const FEE_BANDS = [
+  { id: "under1", label: "Under ₹1L", test: (fee) => fee < 100000 },
+  { id: "1to2", label: "₹1L – ₹2L", test: (fee) => fee >= 100000 && fee < 200000 },
+  { id: "2to3", label: "₹2L – ₹3L", test: (fee) => fee >= 200000 && fee < 300000 },
+  { id: "above3", label: "₹3L and above", test: (fee) => fee >= 300000 },
+];
+
+export const APPROVAL_FILTERS = ["UGC-DEB", "AICTE", "AIU", "WES"];
+export const NAAC_FILTERS = ["NAAC A++", "NAAC A+", "NAAC A"];
+export const MODE_FILTERS = [
+  { id: "online", label: "Online" },
+  { id: "distance", label: "Distance" },
+];
+
+export const EMPTY_LISTING_FILTERS = { modes: [], approvals: [], naac: [], fee: [] };
+
+const startingFee = (u) => u.minFee ?? u.maxFee ?? null;
+
+const FILTER_TESTS = {
+  modes: (u, values) => values.includes(u.collegeMode),
+  approvals: (u, values) => values.every((v) => u.approvals.includes(v)),
+  naac: (u, values) => values.includes(u.naac),
+  fee: (u, values) => {
+    const fee = startingFee(u);
+    return fee != null && FEE_BANDS.some((band) => values.includes(band.id) && band.test(fee));
+  },
+};
+
+export function countActiveFilters(filters = EMPTY_LISTING_FILTERS) {
+  return Object.keys(FILTER_TESTS).reduce((n, key) => n + (filters[key]?.length || 0), 0);
+}
+
+function applyFilters(universities, filters, skipKey) {
+  return universities.filter((u) =>
+    Object.entries(FILTER_TESTS).every(([key, test]) => {
+      const values = filters?.[key] || [];
+      return key === skipKey || !values.length || test(u, values);
+    })
+  );
+}
+
+/** Per-option counts. Each group is counted with the OTHER groups applied, so numbers match what a click would show. */
+function buildFacets(universities, filters) {
+  const count = (key, predicate) => applyFilters(universities, filters, key).filter(predicate).length;
+  return {
+    modes: Object.fromEntries(MODE_FILTERS.map((m) => [m.id, count("modes", (u) => u.collegeMode === m.id)])),
+    approvals: Object.fromEntries(APPROVAL_FILTERS.map((a) => [a, count("approvals", (u) => u.approvals.includes(a))])),
+    naac: Object.fromEntries(NAAC_FILTERS.map((g) => [g, count("naac", (u) => u.naac === g)])),
+    fee: Object.fromEntries(FEE_BANDS.map((band) => [band.id, count("fee", (u) => startingFee(u) != null && band.test(startingFee(u)))])),
+  };
+}
+
+/* Fetched records are cached briefly so changing a filter or page doesn't refetch ~120 records. */
+const LISTING_CACHE_MS = 5 * 60 * 1000;
+const listingCache = new Map();
 
 async function fetchListingByMode({ mode, search, signal }) {
   const params = new URLSearchParams({
@@ -444,26 +568,29 @@ async function fetchListingByMode({ mode, search, signal }) {
 }
 
 export const LISTING_SORT_FIELDS = {
-  nirf: "NIRF Rank",
-  lowestFee: "Lowest Fee",
-  highestFee: "Highest Fee",
-  highestPackage: "Highest CTC",
+  recommended: "Recommended",
+  nirf: "NIRF rank",
+  lowestFee: "Lowest fee",
+  highestFee: "Highest fee",
 };
 
-export async function getUniversitiesPayload({ search = "", page = 1, sort = "nirf", signal } = {}) {
-  try {
-    const results = await Promise.allSettled(
-      LEARNING_MODES.map((mode) => fetchListingByMode({ mode, search, signal }))
-    );
+async function fetchAllListingRecords({ search, signal }) {
+  const cacheKey = search.trim().toLowerCase();
+  const cached = listingCache.get(cacheKey);
+  if (cached && Date.now() - cached.at < LISTING_CACHE_MS) return cached.records;
 
-    const fulfilled = results.filter((result) => result.status === "fulfilled");
+  const results = await Promise.allSettled(
+    LEARNING_MODES.map((mode) => fetchListingByMode({ mode, search, signal }))
+  );
 
-    if (!fulfilled.length) {
-      throw results[0]?.reason || new Error("No learning mode request succeeded");
-    }
+  const fulfilled = results.filter((result) => result.status === "fulfilled");
 
-    const seen = new Set();
-    const records = fulfilled
+  if (!fulfilled.length) {
+    throw results[0]?.reason || new Error("No learning mode request succeeded");
+  }
+
+  const seen = new Set();
+  const records = fulfilled
       .flatMap((result) => result.value)
       .filter((record) => isLearningMode(record?.collegeMode))
       .filter((record) => {
@@ -472,6 +599,15 @@ export async function getUniversitiesPayload({ search = "", page = 1, sort = "ni
         seen.add(key);
         return true;
       });
+
+  // Only cache complete results, so a failed mode request is retried next time.
+  if (fulfilled.length === results.length) listingCache.set(cacheKey, { at: Date.now(), records });
+  return records;
+}
+
+export async function getUniversitiesPayload({ search = "", page = 1, sort = "recommended", filters = EMPTY_LISTING_FILTERS, signal } = {}) {
+  try {
+    const records = await fetchAllListingRecords({ search, signal });
 
     const basePayload = {
       hero: { logoImage: "" },
@@ -486,7 +622,8 @@ export async function getUniversitiesPayload({ search = "", page = 1, sort = "ni
       };
     }
 
-    const universities = sortUniversities(records.map(mapUniversity), sort);
+    const mapped = records.map(mapUniversity);
+    const universities = sortUniversities(applyFilters(mapped, filters), sort);
     const total = universities.length;
     const totalPages = Math.max(1, Math.ceil(total / LISTING_PAGE_SIZE));
     const currentPage = Math.min(Math.max(1, Number(page) || 1), totalPages);
@@ -503,6 +640,8 @@ export async function getUniversitiesPayload({ search = "", page = 1, sort = "ni
         currentPage,
         pageSize: LISTING_PAGE_SIZE,
       },
+      totalUnfiltered: mapped.length,
+      facets: buildFacets(mapped, filters),
     };
   } catch (error) {
     console.error("getUniversitiesPayload failed:", error.message);

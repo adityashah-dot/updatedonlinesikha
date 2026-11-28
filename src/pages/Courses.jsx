@@ -41,7 +41,7 @@ function CourseCard({ course, feeText }) {
   const displayLevel = course.displayLevel || formatCourseLevelLabel(course.rawLevels || course.level, course.name);
 
   return (
-    <article className="group bg-white rounded-xl border border-brand-100 hover:border-brand-300 hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden">
+    <article className="group bg-white rounded-xl border border-line hover:border-brand-300 hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden">
       <div>
         {/* Compact Image Container */}
         <div className="relative h-32 sm:h-36 overflow-hidden bg-gradient-to-br from-canvas via-brand-50 to-brand-100">
@@ -57,7 +57,7 @@ function CourseCard({ course, feeText }) {
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center p-3 text-brand-600">
-              <div className="w-9 h-9 rounded-lg bg-white/90 border border-brand-200 flex items-center justify-center shadow-2xs mb-1">
+              <div className="w-9 h-9 rounded-lg bg-white/90 border border-line flex items-center justify-center shadow-2xs mb-1">
                 <BookOpen className="w-4.5 h-4.5 text-brand-600" aria-hidden="true" />
               </div>
               <span className="text-[10px] font-bold text-ink-700 tracking-wider uppercase">{displayLevel}</span>
@@ -311,7 +311,7 @@ export default function Courses({ onOpenCounseling }) {
             {/* Featured Course Card */}
             <div className="lg:col-span-5 min-w-0">
               {data.status === "loading" ? (
-                <div className="rounded-xl border border-brand-100 bg-white overflow-hidden shadow-2xs">
+                <div className="rounded-xl border border-line bg-white overflow-hidden shadow-2xs">
                   <div className="h-36 sm:h-40 bg-brand-50 animate-pulse" />
                   <div className="p-3.5 space-y-2">
                     <div className="h-3 w-20 bg-brand-50 rounded animate-pulse" />
@@ -320,7 +320,7 @@ export default function Courses({ onOpenCounseling }) {
                   </div>
                 </div>
               ) : featured ? (
-                <div className="relative rounded-xl border border-brand-100 bg-white overflow-hidden shadow-2xs hover:border-brand-300 transition-all">
+                <div className="relative rounded-xl border border-line bg-white overflow-hidden shadow-2xs hover:border-brand-300 transition-all">
                   <div className="relative h-36 sm:h-40 bg-gradient-to-br from-brand-50 via-canvas to-brand-100 overflow-hidden">
                     {featuredImage ? (
                       <img
@@ -377,7 +377,7 @@ export default function Courses({ onOpenCounseling }) {
         </section>
 
         {/* Trust & Approvals Bar - Responsive grid without fixed min-width overflow */}
-        <section className="mb-5 py-2.5 px-3.5 sm:px-5 rounded-xl bg-canvas border border-brand-100">
+        <section className="mb-5 py-2.5 px-3.5 sm:px-5 rounded-xl bg-canvas border border-line">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 text-[11px] sm:text-xs text-ink-700">
             {TRUST_METRICS.map((item, idx) => {
               const Icon = item.icon;
@@ -392,7 +392,7 @@ export default function Courses({ onOpenCounseling }) {
         </section>
 
         {/* Level & Category Filter Tabs */}
-        <div className="mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 border-b border-brand-100 pb-2.5">
+        <div className="mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 border-b border-line pb-2.5">
           <div className="flex items-center gap-2">
             <h2 className="text-base sm:text-lg font-bold text-ink-900">
               {selectedLevel ? (LEVEL_TABS.find((t) => t.value === selectedLevel)?.label || "Filtered Courses") : "All Programmes"}
@@ -424,7 +424,7 @@ export default function Courses({ onOpenCounseling }) {
         {data.status === "loading" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" aria-busy="true">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="rounded-xl border border-brand-100 overflow-hidden bg-white shadow-2xs">
+              <div key={i} className="rounded-xl border border-line overflow-hidden bg-white shadow-2xs">
                 <div className="h-32 sm:h-36 bg-brand-50 animate-pulse" />
                 <div className="p-3.5 space-y-2">
                   <div className="h-3.5 w-3/4 bg-brand-50 rounded animate-pulse" />

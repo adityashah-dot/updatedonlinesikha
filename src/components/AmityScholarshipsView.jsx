@@ -100,13 +100,13 @@ export const AmityScholarshipsView = ({
       {
     /* HERO — LPU college-hero layout */
   }
-      <section className="bg-white text-ink-900 border-b border-brand-100">
+      <section className="bg-white text-ink-900 border-b border-line">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
           <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5">
             <img
     src={AMITY.logoImage}
     alt={`${AMITY.shortName} Logo`}
-    className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-2xl bg-white border border-brand-100 p-1.5 shadow-sm shrink-0"
+    className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-2xl bg-white border border-line p-1.5 shadow-sm shrink-0"
     onError={(e) => {
       e.target.style.display = "none";
     }}
@@ -148,7 +148,7 @@ export const AmityScholarshipsView = ({
             </div>
 
             <div className="lg:col-span-5 lg:mr-[50px]">
-              <div className="rounded-2xl overflow-hidden border border-brand-100 shadow-xs bg-canvas">
+              <div className="rounded-2xl overflow-hidden border border-line shadow-xs bg-canvas">
                 <img
     src={AMITY.heroImage}
     alt="Amity University Online Campus"
@@ -224,7 +224,7 @@ export const AmityScholarshipsView = ({
   >
               <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
                 <div className="w-full lg:w-3/5 space-y-5">
-                  <div className="flex items-center gap-2.5 pb-3 border-b border-brand-100">
+                  <div className="flex items-center gap-2.5 pb-3 border-b border-line">
                     <Calculator className="w-5 h-5 text-brand-600" />
                     <h3 className="font-bold text-base text-ink-900 font-sans">
                       Calculate Your Net Tuition Fee &amp; Savings
@@ -337,7 +337,7 @@ export const AmityScholarshipsView = ({
   }
           <section
     id="highlights"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >            <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Scholarships Highlights")}
             </h2>
@@ -352,7 +352,7 @@ export const AmityScholarshipsView = ({
                     <th className="py-3 px-4 font-bold">Details</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {SP.highlights.rows.map((row) => <tr key={row.label} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-bold text-ink-900">{row.label}</td>
                       <td className="py-3.5 px-4 font-normal text-ink-700">{row.value}</td>
@@ -367,7 +367,7 @@ export const AmityScholarshipsView = ({
   }
           <section
     id="types"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Types of Scholarships")}
@@ -384,7 +384,7 @@ export const AmityScholarshipsView = ({
                     <th className="py-3 px-4 font-bold">Scholarship Benefit</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {SP.types.rows.map((row) => <tr key={row.type} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">{row.type}</td>
                       <td className="py-3.5 px-4 font-normal text-ink-700">{row.eligibility}</td>
@@ -400,7 +400,7 @@ export const AmityScholarshipsView = ({
   }
           <section
     id="aonsat"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "AONSAT Scholarship")}
@@ -433,7 +433,7 @@ export const AmityScholarshipsView = ({
   }
           <section
     id="courses-covered"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Courses Covered")}
@@ -452,7 +452,7 @@ export const AmityScholarshipsView = ({
                     <th className="py-3 px-4 font-bold">Duration</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {SP.coursesCovered.ug.map((row) => <tr key={row.course} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">{row.course}</td>
                       <td className="py-3.5 px-4 font-normal text-ink-700">{row.duration}</td>
@@ -471,7 +471,7 @@ export const AmityScholarshipsView = ({
                     <th className="py-3 px-4 font-bold">Duration</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {SP.coursesCovered.pg.map((row) => <tr key={row.course} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">{row.course}</td>
                       <td className="py-3.5 px-4 font-normal text-ink-700">{row.duration}</td>
@@ -486,7 +486,7 @@ export const AmityScholarshipsView = ({
   }
           <section
     id="benefits"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Benefits")}
@@ -502,7 +502,7 @@ export const AmityScholarshipsView = ({
                     <th className="py-3 px-4 font-bold">Description</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {SP.benefits.rows.map((row) => <tr key={row.benefit} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">{row.benefit}</td>
                       <td className="py-3.5 px-4 font-normal text-ink-700">{row.description}</td>
@@ -517,7 +517,7 @@ export const AmityScholarshipsView = ({
   }
           <section
     id="how-to-apply"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "How to Apply")}
@@ -528,7 +528,7 @@ export const AmityScholarshipsView = ({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-[18px]">
               {SP.howToApply.steps.map((step, idx) => <div
     key={step.title}
-    className="p-4 rounded-xl border border-brand-100 bg-canvas flex items-start gap-3"
+    className="p-4 rounded-xl border border-line bg-canvas flex items-start gap-3"
   >
                   <span className="w-8 h-8 rounded-lg bg-brand-600 text-white text-sm font-bold flex items-center justify-center shrink-0">
                     {idx + 1}
@@ -548,7 +548,7 @@ export const AmityScholarshipsView = ({
   }
           <section
     id="documents"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Documents Required")}
@@ -564,7 +564,7 @@ export const AmityScholarshipsView = ({
                     <th className="py-3 px-4 font-bold">Required For</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {SP.documents.rows.map((row) => <tr key={row.document} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">{row.document}</td>
                       <td className="py-3.5 px-4 font-normal text-ink-700">{row.requiredFor}</td>
@@ -579,7 +579,7 @@ export const AmityScholarshipsView = ({
   }
           <section
     id="comparison"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Scholarship vs AONSAT")}
@@ -596,7 +596,7 @@ export const AmityScholarshipsView = ({
                     <th className="py-3 px-4 font-bold">AONSAT Scholarship</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {SP.comparison.rows.map((row) => <tr key={row.particular} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">{row.particular}</td>
                       <td className="py-3.5 px-4 font-normal text-ink-700">{row.general}</td>
@@ -624,7 +624,7 @@ export const AmityScholarshipsView = ({
   }
           <section
     id="scholarship-faqs"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Scholarship FAQs")}
@@ -634,7 +634,7 @@ export const AmityScholarshipsView = ({
     const isOpen = openFaq === idx;
     return <div
       key={idx}
-      className="border border-brand-100 rounded-xl overflow-hidden bg-white"
+      className="border border-line rounded-xl overflow-hidden bg-white"
     >
                     <button
       type="button"
@@ -648,7 +648,7 @@ export const AmityScholarshipsView = ({
                         +
                       </span>
                     </button>
-                    {isOpen && <p className="px-4 pb-4 text-xs sm:text-sm text-ink-700 font-normal leading-relaxed border-t border-brand-100 pt-3">
+                    {isOpen && <p className="px-4 pb-4 text-xs sm:text-sm text-ink-700 font-normal leading-relaxed border-t border-line pt-3">
                         {faq.answer}
                       </p>}
                   </div>;
@@ -662,7 +662,7 @@ export const AmityScholarshipsView = ({
           <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
     sectionId="blogs"
-    className="w-full rounded-2xl border border-brand-100 bg-canvas p-4 shadow-sm md:p-6"
+    className="w-full rounded-2xl border border-line bg-canvas p-4 shadow-sm md:p-6"
     compact
     horizontal
     autoScroll

@@ -54,7 +54,7 @@ export default function CollegeTableOfContents({
       aria-label="Table of contents"
       className={`mx-3 sm:mx-0 my-3.5 sm:my-5 p-4 sm:p-5 rounded-2xl border border-brand-200 bg-gradient-to-b from-white via-white to-canvas shadow-2xs ${className}`}
     >
-      <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-brand-100">
+      <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-line">
         <h2 className="text-sm sm:text-base font-bold text-ink-900 tracking-tight m-0">
           {title}
         </h2>

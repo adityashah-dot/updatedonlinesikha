@@ -33,7 +33,7 @@ export const BlogsSection = ({
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-[18px]">
         {blogs.posts.slice(0, 3).map((post, i) => <article
     key={i}
-    className="overflow-hidden bg-white border border-brand-100 rounded-2xl hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+    className="overflow-hidden bg-white border border-line rounded-2xl hover:-translate-y-1 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
   >
             <div className="relative h-40 overflow-hidden bg-brand-50">
               <img

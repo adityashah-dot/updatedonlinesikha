@@ -113,7 +113,7 @@ export const AmityCoursesView = ({
       {
     /* HERO — LPU-style light courses hero with metrics + admissions card */
   }
-      <section className="content-block relative bg-gradient-to-b from-brand-50 via-canvas to-canvas overflow-hidden border-b border-brand-100/60">
+      <section className="content-block relative bg-gradient-to-b from-brand-50 via-canvas to-canvas overflow-hidden border-b border-line/60">
         <div className="absolute inset-0 pointer-events-none opacity-40">
           <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-brand-200 blur-3xl" />
           <div className="absolute -left-20 top-40 w-80 h-80 rounded-full bg-brand-200 blur-3xl" />
@@ -170,7 +170,7 @@ export const AmityCoursesView = ({
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
                 {HERO_METRICS.map((m, i) => <div
     key={m.label}
-    className="p-4 rounded-xl bg-white border border-brand-100 flex flex-col justify-between"
+    className="p-4 rounded-xl bg-white border border-line flex flex-col justify-between"
   >
                     <div
     className={`w-7 h-7 rounded-lg ${HERO_METRIC_ICON_BG[i]} flex items-center justify-center mb-1.5`}
@@ -187,8 +187,8 @@ export const AmityCoursesView = ({
     /* Right 4 Columns: Admissions Open card */
   }
             <div className="lg:col-span-4">
-              <div className="rounded-2xl bg-white text-ink-900 border border-brand-100 shadow-xs p-5 sm:p-6">
-                <div className="flex items-center justify-between gap-3 pb-3.5 border-b border-brand-100">
+              <div className="rounded-2xl bg-white text-ink-900 border border-line shadow-xs p-5 sm:p-6">
+                <div className="flex items-center justify-between gap-3 pb-3.5 border-b border-line">
                   <h3 className="text-base font-bold font-sans">Amity Online Admissions</h3>
                   <span className="px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-bold">
                     Open
@@ -239,7 +239,7 @@ export const AmityCoursesView = ({
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-brand-100 flex flex-col gap-1.5">
+                <div className="pt-3 border-t border-line flex flex-col gap-1.5">
                   <button
     type="button"
     onClick={() => onOpenApply()}
@@ -316,7 +316,7 @@ export const AmityCoursesView = ({
   }
           <section
     id="courses-fees"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Courses and Fees")}
@@ -335,7 +335,7 @@ export const AmityCoursesView = ({
                     <th className="py-3 px-4 font-bold">Eligibility</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {AMITY_UNIVERSITY_DATA.courses.map((c) => <tr key={c.id} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">{c.name}</td>
                       <td className="py-3.5 px-4 font-normal text-ink-700">{c.duration}</td>
@@ -375,7 +375,7 @@ export const AmityCoursesView = ({
   }
           <section
     id="admission-dates"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <div className="flex items-center justify-between flex-wrap gap-3">
               <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
@@ -398,7 +398,7 @@ export const AmityCoursesView = ({
                     <th className="py-3 px-4 font-bold">Tentative Date</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {CP.admissionDates.rows.map((row, idx) => <tr key={idx} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">
                         <span className="inline-flex items-center gap-1.5">
@@ -436,7 +436,7 @@ export const AmityCoursesView = ({
             {
     /* Table 1: Undergraduate (UG) Programs */
   }
-            <div className="bg-white rounded-xl border border-brand-100 overflow-hidden flex flex-col justify-between">
+            <div className="bg-white rounded-xl border border-line overflow-hidden flex flex-col justify-between">
               <div>
                 <div className="px-5 py-3.5 bg-brand-50 border-b border-brand-100 flex items-center justify-between">
                   <div>
@@ -458,7 +458,7 @@ export const AmityCoursesView = ({
                         <th className="py-3 px-4 text-right">Details</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-brand-100">
+                    <tbody className="divide-y divide-line">
                       {(() => {
     const ugCourses = AMITY_UNIVERSITY_DATA.courses.filter((c) => c.level === "UG");
     return ugCourses.map((c) => <tr key={c.id} className="hover:bg-brand-50/60 transition-colors">
@@ -484,7 +484,7 @@ export const AmityCoursesView = ({
                   </table>
                 </div>
               </div>
-              <div className="p-3.5 bg-canvas border-t border-brand-100 flex flex-wrap items-center justify-between gap-2 text-xs text-ink-700 font-normal">
+              <div className="p-3.5 bg-canvas border-t border-line flex flex-wrap items-center justify-between gap-2 text-xs text-ink-700 font-normal">
                 <span>Registration Fee: ₹1,100 (adjusted during enrollment)</span>
                 <button
     onClick={() => onOpenApply()}
@@ -498,7 +498,7 @@ export const AmityCoursesView = ({
             {
     /* Table 2: Postgraduate (PG) Programs */
   }
-            <div className="bg-white rounded-xl border border-brand-100 overflow-hidden flex flex-col justify-between">
+            <div className="bg-white rounded-xl border border-line overflow-hidden flex flex-col justify-between">
               <div>
                 <div className="px-5 py-3.5 bg-brand-50 border-b border-brand-100 flex items-center justify-between">
                   <div>
@@ -520,7 +520,7 @@ export const AmityCoursesView = ({
                         <th className="py-3 px-4 text-right">Details</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-brand-100">
+                    <tbody className="divide-y divide-line">
                       {(() => {
     const pgCourses = AMITY_UNIVERSITY_DATA.courses.filter((c) => c.level === "PG");
     return pgCourses.map((c) => <tr key={c.id} className="hover:bg-brand-50/60 transition-colors">
@@ -546,7 +546,7 @@ export const AmityCoursesView = ({
                   </table>
                 </div>
               </div>
-              <div className="p-3.5 bg-canvas border-t border-brand-100 flex flex-wrap items-center justify-between gap-2 text-xs text-ink-700 font-normal">
+              <div className="p-3.5 bg-canvas border-t border-line flex flex-wrap items-center justify-between gap-2 text-xs text-ink-700 font-normal">
                 <span>Specializations selected during second semester</span>
                 <button
     onClick={() => onOpenApply()}
@@ -630,7 +630,7 @@ export const AmityCoursesView = ({
   }
           <section
     id="faqs"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Courses FAQs")}
@@ -640,7 +640,7 @@ export const AmityCoursesView = ({
     const isOpen = openFaq === idx;
     return <div
       key={idx}
-      className="border border-brand-100 rounded-xl overflow-hidden bg-white"
+      className="border border-line rounded-xl overflow-hidden bg-white"
     >
                     <button
       type="button"
@@ -654,7 +654,7 @@ export const AmityCoursesView = ({
                         +
                       </span>
                     </button>
-                    {isOpen && <p className="px-4 pb-4 text-xs sm:text-sm text-ink-700 font-normal leading-relaxed border-t border-brand-100 pt-3">
+                    {isOpen && <p className="px-4 pb-4 text-xs sm:text-sm text-ink-700 font-normal leading-relaxed border-t border-line pt-3">
                         {faq.answer}
                       </p>}
                   </div>;
@@ -668,7 +668,7 @@ export const AmityCoursesView = ({
           <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
     sectionId="blogs"
-    className="w-full rounded-2xl border border-brand-100 bg-canvas p-4 shadow-sm md:p-6"
+    className="w-full rounded-2xl border border-line bg-canvas p-4 shadow-sm md:p-6"
     compact
     horizontal
     autoScroll

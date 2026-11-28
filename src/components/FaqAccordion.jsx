@@ -46,7 +46,7 @@ export function FaqAccordion({
   const isList = variant === "list";
 
   return (
-    <div className={`${isList ? "divide-y divide-brand-100" : "space-y-[12px]"}${listClassName ? ` ${listClassName}` : ""}`}>
+    <div className={`${isList ? "divide-y divide-line" : "space-y-[12px]"}${listClassName ? ` ${listClassName}` : ""}`}>
       {list.map((item, index) => {
         const key = keyOf(item, index);
         const open = openKey === key;

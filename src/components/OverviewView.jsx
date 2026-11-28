@@ -38,7 +38,7 @@ const RecruiterScroll = ({ recruiters = [] }) => {
       <div className="flex items-center gap-6 animate-[marquee_24s_linear_infinite] hover:[animation-play-state:paused]">
         {doubled.map((r, i) => <div
     key={`${r.name}-${i}`}
-    className="flex items-center justify-center h-16 min-w-[125px] px-3.5 bg-canvas border border-brand-100 rounded-lg shrink-0"
+    className="flex items-center justify-center h-16 min-w-[125px] px-3.5 bg-canvas border border-line rounded-lg shrink-0"
   >
             <img
     src={r.src}
@@ -309,7 +309,7 @@ const OverviewView = ({
       {
     /* HERO SECTION — college-hero layout */
   }
-      <section className="bg-white text-ink-900 border-b border-brand-100">
+      <section className="bg-white text-ink-900 border-b border-line">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
 
           {
@@ -319,7 +319,7 @@ const OverviewView = ({
             <img
               src={collegeData?.hero?.logoImage}
               alt={`${collegeData?.shortName || collegeData?.title || "College"} Logo`}
-              className="w-14 h-14 sm:w-20 sm:h-20 object-contain rounded-xl sm:rounded-2xl bg-white border border-brand-100 p-1.5 shadow-sm shrink-0"
+              className="w-14 h-14 sm:w-20 sm:h-20 object-contain rounded-xl sm:rounded-2xl bg-white border border-line p-1.5 shadow-sm shrink-0"
               onError={(e) => {
                 e.target.style.display = "none";
               }}
@@ -375,7 +375,7 @@ const OverviewView = ({
 
             {/* Right: Campus Image — top aligned with location line; 50px to Free Apply */}
             <div className="order-1 lg:order-none lg:col-span-5 lg:mr-[50px]">
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-brand-100 shadow-xs bg-canvas">
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-line shadow-xs bg-canvas">
                 <img
                   src={collegeData?.hero?.backgroundImage}
                   alt={collegeData?.hero?.backgroundImage ? `${collegeData?.title} Campus` : `${collegeData?.title} Campus`}
@@ -465,7 +465,7 @@ const OverviewView = ({
     /* 2. Highlights Table 2026 */
   }
             {(collegeData?.highlights) && (
-                <section id="highlights" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
+                <section id="highlights" className="page-section card bg-white rounded-2xl border border-line shadow-xs">
               <div className="flex items-center justify-between flex-wrap gap-3">
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-ink-900 font-sans mt-2">
@@ -512,7 +512,7 @@ const OverviewView = ({
                       <th className="py-3 px-4 font-bold">Details</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-brand-100">
+                  <tbody className="divide-y divide-line">
                     {(() => {
     const filtered = collegeData?.highlights?.items.filter(
       (row) => selectedHighlightCategory === "All" || row.category === selectedHighlightCategory
@@ -571,7 +571,7 @@ const OverviewView = ({
     /* 3. Courses & Fees 2026 */
   }
             {(collegeData?.coursesFees) && (
-                <section id="courses-fees" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
+                <section id="courses-fees" className="page-section card bg-white rounded-2xl border border-line shadow-xs">
               <div>
                 <h2 className="section-title text-[18px] sm:text-2xl font-bold text-ink-900 font-sans leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.coursesFees?.title, `${collegeData?.shortName || collegeData?.title} Courses and Fees`, collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.coursesFees?.title, `${collegeData?.shortName || collegeData?.title} Courses and Fees`, collegeData?.shortName || collegeData?.title)}
@@ -592,13 +592,13 @@ const OverviewView = ({
     onChange={(e) => setCourseFeeSearch(e.target.value)}
     aria-label="Search programmes"
     placeholder={collegeData?.coursesFees?.searchPlaceholder}
-    className="w-full pl-10 pr-4 py-3 rounded-xl border border-brand-100 bg-canvas text-sm text-ink-900 font-normal placeholder:text-ink-500 focus:outline-none focus:border-brand-600 focus:bg-white transition-all"
+    className="w-full pl-10 pr-4 py-3 rounded-xl border border-line bg-canvas text-sm text-ink-900 font-normal placeholder:text-ink-500 focus:outline-none focus:border-brand-600 focus:bg-white transition-all"
   />
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-500" />
               </div>
 
               {/* Fee Table */}
-              <div className="overflow-hidden rounded-xl border border-brand-200 bg-white mt-[18px]">
+              <div className="overflow-hidden rounded-xl border border-line bg-white mt-[18px]">
                 <div className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                 <table className="w-full text-left border-collapse text-xs sm:text-sm min-w-max">
                   <thead>
@@ -609,7 +609,7 @@ const OverviewView = ({
                       <th className="py-2.5 px-3 sm:px-4 font-semibold text-xs sm:text-sm">Total Fees</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-brand-100">
+                  <tbody className="divide-y divide-line">
                     {visibleFeeRows.map((c) => <tr key={c.degree} className="bg-white hover:bg-brand-50/60 transition-colors">
                           <td className="py-3 px-3 sm:px-4 align-top min-w-[150px] sm:min-w-[190px]">
                             <button
@@ -713,7 +713,7 @@ const OverviewView = ({
     /* 3. Eligibility and Selection Criteria (From API) */
   }
             {(collegeData?.eligibility) && (
-                <section id="eligibility-criteria" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
+                <section id="eligibility-criteria" className="page-section card bg-white rounded-2xl border border-line shadow-xs">
               <div>
                 <h2 className="section-title text-[17px] sm:text-2xl font-bold text-ink-900 font-sans mt-2 tracking-tight leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.eligibility?.title, `${collegeData?.shortName || collegeData?.title} Eligibility and Selection Criteria`, collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.eligibility?.title, `${collegeData?.shortName || collegeData?.title} Eligibility and Selection Criteria`, collegeData?.shortName || collegeData?.title)}
@@ -740,7 +740,7 @@ const OverviewView = ({
               )}
 
               {/* Eligibility Table — Matches DegreeFYD style */}
-              <div className="mt-5 overflow-hidden rounded-xl border border-brand-200 bg-white">
+              <div className="mt-5 overflow-hidden rounded-xl border border-line bg-white">
                 <div className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                   <table className="w-full border-collapse text-left text-xs sm:text-sm min-w-max">
                     <thead>
@@ -750,7 +750,7 @@ const OverviewView = ({
                         {hasPerCourseSelection && <th className="px-3 sm:px-4 py-2.5 font-semibold text-xs sm:text-sm">Selection Process</th>}
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-brand-100">
+                    <tbody className="divide-y divide-line">
                       {collegeData?.eligibility?.items.map((row, i) => (
                         <tr key={i} className="bg-white transition-colors hover:bg-brand-50/60">
                           <td className="px-3 sm:px-4 py-3 font-bold text-ink-900 align-top whitespace-nowrap">{row.course}</td>
@@ -780,7 +780,7 @@ const OverviewView = ({
     /* 5. Admission Process 2026 (Accordion) */
   }
                         {ADMISSION_FLOW_STEPS.length > 0 && (
-                <section id="admission-process" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
+                <section id="admission-process" className="page-section card bg-white rounded-2xl border border-line shadow-xs">
               <div>
                 <h2 className="section-title text-[18px] sm:text-2xl font-bold text-ink-900 font-sans mt-2 leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.admission?.title, collegeSectionTitle(collegeData?.shortName || collegeData?.title, `Admission Process ${CURRENT_YEAR}`), collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.admission?.title, collegeSectionTitle(collegeData?.shortName || collegeData?.title, `Admission Process ${CURRENT_YEAR}`), collegeData?.shortName || collegeData?.title)}
@@ -923,7 +923,7 @@ const OverviewView = ({
     /* 6. Rankings & Accreditations (From API) */
   }
             {(collegeData?.rankings) && (
-                <section id="rankings" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
+                <section id="rankings" className="page-section card bg-white rounded-2xl border border-line shadow-xs">
               <div>
                 <h2 className="section-title text-[18px] sm:text-2xl font-bold text-ink-900 font-sans leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.rankings?.title, `${collegeData?.shortName || collegeData?.title} Rankings and Accreditations`, collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.rankings?.title, `${collegeData?.shortName || collegeData?.title} Rankings and Accreditations`, collegeData?.shortName || collegeData?.title)}
@@ -946,7 +946,7 @@ const OverviewView = ({
                       ))}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-brand-100">
+                  <tbody className="divide-y divide-line">
                     {collegeData?.rankings?.table.map((r, idx) => <tr key={idx} className="bg-white hover:bg-brand-50/60 transition-colors">
                         {(collegeData?.rankings?.columns?.length ? r.values : [r.authority, r.status]).map((value, columnIndex) => (
                           <td key={columnIndex} className={`py-3 px-3 sm:px-4 ${columnIndex === 0 ? "font-bold text-ink-900" : "font-normal text-ink-700"}`}>{value}</td>
@@ -962,7 +962,7 @@ const OverviewView = ({
     /* 7. Examination Pattern (Interactive Module) */
   }
             {EXAM_STEPS.length > 0 && (
-                <section id="examination-pattern" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
+                <section id="examination-pattern" className="page-section card bg-white rounded-2xl border border-line shadow-xs">
               <div>
                 <h2 className="section-title text-[18px] sm:text-2xl font-bold text-ink-900 font-sans mt-2 leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.examinationPattern?.title, collegeSectionTitle(collegeData?.shortName || collegeData?.title, "Examination Pattern"), collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.examinationPattern?.title, collegeSectionTitle(collegeData?.shortName || collegeData?.title, "Examination Pattern"), collegeData?.shortName || collegeData?.title)}
@@ -1072,7 +1072,7 @@ const OverviewView = ({
     /* 8. Placements & Salary Stats (From API) */
   }
             {(collegeData?.placements) && (
-                <section id="placements" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
+                <section id="placements" className="page-section card bg-white rounded-2xl border border-line shadow-xs">
               <div>
                 <h2 className="section-title text-[18px] sm:text-2xl font-bold text-ink-900 font-sans leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.placements?.title, `${collegeData?.shortName || collegeData?.title} Placements`, collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.placements?.title, `${collegeData?.shortName || collegeData?.title} Placements`, collegeData?.shortName || collegeData?.title)}
@@ -1091,20 +1091,20 @@ const OverviewView = ({
 
               {/* 4 Compact Stat Tiles from API */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-[18px]">
-                <div className="p-3.5 rounded-xl bg-canvas border border-brand-100 text-center">
+                <div className="p-3.5 rounded-xl bg-canvas border border-line text-center">
                   <span className="block text-xl font-extrabold text-brand-600 font-sans leading-none">{collegeData?.placements?.stats.placementRate}</span>
                   <span className="block text-[10px] font-normal text-ink-700 uppercase tracking-wide mt-1.5">Placement Rate</span>
                 </div>
-                <div className="p-3.5 rounded-xl bg-canvas border border-brand-100 text-center">
+                <div className="p-3.5 rounded-xl bg-canvas border border-line text-center">
                   <span className="block text-xl font-extrabold text-emerald-700 font-sans leading-none">{collegeData?.placements?.stats.highestPackage}</span>
                   <span className="block text-[10px] font-normal text-ink-700 uppercase tracking-wide mt-1.5">Highest Package</span>
                 </div>
-                <div className="p-3.5 rounded-xl bg-canvas border border-brand-100 text-center">
+                <div className="p-3.5 rounded-xl bg-canvas border border-line text-center">
                   <span className="block text-xl font-extrabold text-ink-900 font-sans leading-none">{collegeData?.placements?.stats.hiringPartners}</span>
                   <span className="block text-[10px] font-normal text-ink-700 uppercase tracking-wide mt-1.5">Hiring Partners</span>
                 </div>
                 {collegeData?.placements?.stats.internshipsCount && collegeData.placements.stats.internshipsCount !== "—" && (
-                <div className="p-3.5 rounded-xl bg-canvas border border-brand-100 text-center">
+                <div className="p-3.5 rounded-xl bg-canvas border border-line text-center">
                   <span className="block text-xl font-extrabold text-accent-700 font-sans leading-none">{collegeData.placements.stats.internshipsCount}</span>
                   <span className="block text-[10px] font-normal text-ink-700 uppercase tracking-wide mt-1.5">Internships</span>
                 </div>
@@ -1121,7 +1121,7 @@ const OverviewView = ({
     /* 7. Campus */
   }
             {(collegeData?.campus) && (
-                <section id="campus" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
+                <section id="campus" className="page-section card bg-white rounded-2xl border border-line shadow-xs">
               <div>
                 <h2 className="section-title text-[18px] sm:text-2xl font-bold text-ink-900 font-sans leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.campus?.title, `${collegeData?.shortName || collegeData?.title} Campus`, collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.campus?.title, `${collegeData?.shortName || collegeData?.title} Campus`, collegeData?.shortName || collegeData?.title)}
@@ -1144,7 +1144,7 @@ const OverviewView = ({
                         <th className="py-3 px-4 font-bold">Details</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-brand-100">
+                    <tbody className="divide-y divide-line">
                       {collegeData?.campus?.travelTable.map((t, idx) => <tr key={idx} className="hover:bg-brand-50/60 transition-colors">
                           <td className="py-3.5 px-4 font-bold text-ink-900 align-top whitespace-nowrap">{t.mode}</td>
                           <td className="py-3.5 px-4 text-ink-700 leading-relaxed font-normal">{t.detail}</td>
@@ -1252,7 +1252,7 @@ const OverviewView = ({
               {
     /* Top Heading Block (Placed at the top of section) */
   }
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-brand-200/70">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-line/70">
                 <div>
                   <div className="flex items-center gap-2 mb-1.5">
                     <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[11px] font-normal flex items-center gap-1">
@@ -1293,11 +1293,11 @@ const OverviewView = ({
                   />
                   
                   <div className="flex flex-wrap items-center gap-2 text-[11px] text-ink-700">
-                    <span className="p-1.5 rounded-lg bg-white/80 border border-brand-200 flex items-center gap-1.5">
+                    <span className="p-1.5 rounded-lg bg-white/80 border border-line flex items-center gap-1.5">
                       <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                       UPSC & PSC Eligible
                     </span>
-                    <span className="p-1.5 rounded-lg bg-white/80 border border-brand-200 flex items-center gap-1.5">
+                    <span className="p-1.5 rounded-lg bg-white/80 border border-line flex items-center gap-1.5">
                       <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                       WES Evaluated (US & Canada)
                     </span>
@@ -1357,11 +1357,11 @@ const OverviewView = ({
     /* 9. Verified Reviews & FAQs */
   }
             {Boolean(collegeData?.reviews?.length) && (
-                <section id="reviews-section" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
+                <section id="reviews-section" className="page-section card bg-white rounded-2xl border border-line shadow-xs">
               {
     /* Header and Rating Summary Bar */
   }
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-2.5 border-b border-brand-100">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-2.5 border-b border-line">
                 <div>
                   <div className="flex items-center gap-2">
                     {REVIEW_SUMMARY.rating && (
@@ -1413,7 +1413,7 @@ const OverviewView = ({
     return (t.course || "").toLowerCase().includes(selectedReviewCategory.toLowerCase());
   }).map((t, idx) => <div
     key={idx}
-    className="bg-white rounded-xl border border-brand-100 hover:border-brand-600/70 hover:shadow-md transition-all p-3 flex flex-col justify-between gap-2.5 group relative"
+    className="bg-white rounded-xl border border-line hover:border-brand-600/70 hover:shadow-md transition-all p-3 flex flex-col justify-between gap-2.5 group relative"
   >
                       {
     /* Top Bar: Stars + Tag */
@@ -1524,7 +1524,7 @@ const OverviewView = ({
     /* Compare Colleges */
   }
             {(collegeData?.compareSection) && (
-                <section id="compare-colleges" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
+                <section id="compare-colleges" className="page-section card bg-white rounded-2xl border border-line shadow-xs">
               <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
                 {collegeData?.compareSection?.title}
               </h2>
@@ -1534,7 +1534,7 @@ const OverviewView = ({
               {
     /* MAIN COMPARISON BOX */
   }
-              <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_55px_minmax(0,1fr)] items-stretch gap-3 p-4 border border-brand-100 rounded-2xl bg-white shadow-sm mt-[18px]">
+              <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_55px_minmax(0,1fr)] items-stretch gap-3 p-4 border border-line rounded-2xl bg-white shadow-sm mt-[18px]">
 
                 {
     /* COLLEGE CARD */
@@ -1546,7 +1546,7 @@ const OverviewView = ({
                     </span>
 
                     <div className="flex gap-4 items-center">
-                      <div className="w-[115px] h-[85px] shrink-0 rounded-lg border border-brand-100 bg-white flex items-center justify-center overflow-hidden">
+                      <div className="w-[115px] h-[85px] shrink-0 rounded-lg border border-line bg-white flex items-center justify-center overflow-hidden">
                         <img
     src={collegeData?.hero?.logoImage}
     alt={`${collegeData?.shortName || collegeData?.title || "College"} Logo`}
@@ -1595,7 +1595,7 @@ const OverviewView = ({
                 {
     /* ADD COLLEGE CARD */
   }
-                <div className="min-h-[220px] rounded-xl border border-dashed border-brand-200 bg-canvas p-4 flex flex-col items-center justify-center text-center">
+                <div className="min-h-[220px] rounded-xl border border-dashed border-line bg-canvas p-4 flex flex-col items-center justify-center text-center">
                   <div className="w-12 h-12 rounded-full border border-brand-200 bg-white flex items-center justify-center text-brand-600 text-2xl font-light mb-2.5">
                     +
                   </div>
@@ -1626,7 +1626,7 @@ const OverviewView = ({
               sectionId="blogs"
               title={collegeData?.blogsMeta?.title || "Latest Blogs"}
               sub={collegeData?.blogsMeta?.description || "Guides to help you choose a programme and university."}
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs p-5 md:p-6"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs p-5 md:p-6"
               posts={collegeData?.blogs}
               fetchLivePosts
               horizontal
@@ -1634,7 +1634,7 @@ const OverviewView = ({
 
             {/* 12. Frequently Asked Questions — Last Section on Detail Page */}
             {Boolean(collegeData?.faqs?.length) && (
-              <section id="faqs" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs p-5 md:p-6">
+              <section id="faqs" className="page-section card bg-white rounded-2xl border border-line shadow-xs p-5 md:p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans m-0">
                     {collegeData?.faqsMeta?.title || `Frequently Asked Questions (${collegeData?.shortName || collegeData?.title})`}
@@ -1678,7 +1678,7 @@ const OverviewView = ({
               {
     /* Header */
   }
-              <div className="flex items-center justify-between pb-3.5 border-b border-brand-100">
+              <div className="flex items-center justify-between pb-3.5 border-b border-line">
                 <div className="flex items-center gap-2">
                   <FileText className="w-4 h-4 text-brand-600" />
                   <h3 className="font-bold text-sm text-ink-900">Table of Contents</h3>
@@ -1752,9 +1752,9 @@ const OverviewView = ({
     /* Slide-up Panel */
   }
         <div
-    className={`w-72 max-w-[calc(100vw-48px)] bg-white border border-brand-100 shadow-2xl rounded-2xl transition-all duration-300 ${counselPanelOpen ? "opacity-100 translate-x-0 pointer-events-auto" : "opacity-0 translate-x-3 pointer-events-none"}`}
+    className={`w-72 max-w-[calc(100vw-48px)] bg-white border border-line shadow-2xl rounded-2xl transition-all duration-300 ${counselPanelOpen ? "opacity-100 translate-x-0 pointer-events-auto" : "opacity-0 translate-x-3 pointer-events-none"}`}
   >
-        <div className="flex items-center justify-between px-4 py-3 border-b border-brand-100">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-line">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-full bg-brand-200 flex items-center justify-center">
               <PhoneCall className="w-3.5 h-3.5 text-brand-600" />

@@ -182,7 +182,7 @@ export default function CollegeAdmission({
           {data.admissionDates?.length > 0 && (
             <section
               id="admission-dates"
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs"
             >
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
@@ -205,7 +205,7 @@ export default function CollegeAdmission({
                       <th className="py-3 px-4 font-bold">Tentative Date</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-brand-100">
+                  <tbody className="divide-y divide-line">
                     {data.admissionDates.map((row, idx) => (
                       <tr key={`${row.event}-${idx}`} className="bg-white hover:bg-brand-50/60 transition-colors">
                         <td className="py-3.5 px-4 text-ink-900 font-bold align-top">
@@ -229,7 +229,7 @@ export default function CollegeAdmission({
           {eligibility && (
             <section
               id="eligibility-criteria"
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs"
             >
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans mt-2">
@@ -268,7 +268,7 @@ export default function CollegeAdmission({
                           )}
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-brand-100">
+                      <tbody className="divide-y divide-line">
                         {eligibility.items
                           .slice(0, showAllEligibility ? undefined : 4)
                           .map((row, i) => (
@@ -331,7 +331,7 @@ export default function CollegeAdmission({
           {admissionSteps.length > 0 && (
             <section
               id="admission-process"
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs"
             >
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans mt-2">
@@ -350,7 +350,7 @@ export default function CollegeAdmission({
           {data.applicationProcess?.length > 0 && (
             <section
               id="application-process"
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs"
             >
               <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
                 {data.applicationProcessMeta?.title || collegeSectionTitle(shortName, `Application Process ${CURRENT_YEAR}`)}
@@ -360,7 +360,7 @@ export default function CollegeAdmission({
                 {data.applicationProcess.map((step, i) => (
                   <div
                     key={i}
-                    className="p-4 rounded-xl border border-brand-100 bg-canvas"
+                    className="p-4 rounded-xl border border-line bg-canvas"
                   >
                     <h3 className="text-sm font-bold text-ink-900 mb-1">
                       {step.title}
@@ -378,7 +378,7 @@ export default function CollegeAdmission({
           {examSteps.length > 0 && (
             <section
               id="examination-pattern"
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs"
             >
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans mt-2">
@@ -400,12 +400,12 @@ export default function CollegeAdmission({
               </h2>
 
               <div className="grid lg:grid-cols-12 gap-4">
-                <div className="card lg:col-span-8 bg-white border border-brand-100 rounded-2xl shadow-xs p-5 sm:p-6">
+                <div className="card lg:col-span-8 bg-white border border-line rounded-2xl shadow-xs p-5 sm:p-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                     {data.documentsRequired.map((doc, idx) => (
                       <div
                         key={idx}
-                        className="p-3.5 rounded-xl border border-brand-100 bg-canvas space-y-1"
+                        className="p-3.5 rounded-xl border border-line bg-canvas space-y-1"
                       >
                         <div className="flex flex-wrap items-center justify-between gap-1">
                           <span className="font-bold text-ink-900 flex items-center gap-1.5">
@@ -431,7 +431,7 @@ export default function CollegeAdmission({
           {scholarshipRows.length > 0 && (
             <section
               id="scholarship-schemes"
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs"
             >
               <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
                 {data.scholarshipSection?.title || collegeSectionTitle(shortName, `Scholarship ${CURRENT_YEAR}`)}
@@ -445,7 +445,7 @@ export default function CollegeAdmission({
                       <th className="py-3 px-4 font-bold">Details</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-brand-100">
+                  <tbody className="divide-y divide-line">
                     {scholarshipRows.map((row, idx) => (
                       <tr
                         key={idx}
@@ -622,7 +622,7 @@ export default function CollegeAdmission({
           {reviews.length > 0 && (
             <section
               id="student-reviews"
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs"
             >
               <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
                 {data.reviewsMeta?.title || collegeSectionTitle(shortName, "Student Reviews")}
@@ -632,7 +632,7 @@ export default function CollegeAdmission({
                 {reviews.slice(0, 6).map((item, idx) => (
                   <div
                     key={idx}
-                    className="bg-canvas p-4 rounded-xl border border-brand-100 flex flex-col justify-between hover:border-brand-600 transition-all hover:shadow-sm"
+                    className="bg-canvas p-4 rounded-xl border border-line flex flex-col justify-between hover:border-brand-600 transition-all hover:shadow-sm"
                   >
                     <div>
                       <div className="flex items-center text-amber-500 mb-2 gap-0.5">
@@ -644,7 +644,7 @@ export default function CollegeAdmission({
                         &quot;{item.text}&quot;
                       </p>
                     </div>
-                    <div className="flex items-center gap-2.5 mt-4 pt-3 border-t border-brand-200">
+                    <div className="flex items-center gap-2.5 mt-4 pt-3 border-t border-line">
                       <div className="w-8 h-8 rounded-full bg-white text-brand-600 flex items-center justify-center font-bold text-xs shadow-sm border border-brand-100 shrink-0">
                         {item.avatar || (item.studentName || "S").charAt(0)}
                       </div>
@@ -667,7 +667,7 @@ export default function CollegeAdmission({
           <BlogsListSection
             onOpenHelpDesk={onOpenHelpDesk}
             sectionId="blogs"
-            className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs p-5 md:p-6"
+            className="page-section card bg-white rounded-2xl border border-line shadow-xs p-5 md:p-6"
             posts={blogs}
             fetchLivePosts
             horizontal
@@ -677,7 +677,7 @@ export default function CollegeAdmission({
           {compare && (
             <section
               id="compare"
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs"
             >
               <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
                 {compare.title || "Compare Colleges"}
@@ -688,7 +688,7 @@ export default function CollegeAdmission({
                 </p>
               ) : null}
 
-              <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_55px_minmax(0,1fr)] items-stretch gap-3 p-4 border border-brand-100 rounded-2xl bg-white shadow-sm mt-[18px]">
+              <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_55px_minmax(0,1fr)] items-stretch gap-3 p-4 border border-line rounded-2xl bg-white shadow-sm mt-[18px]">
                 <div className="min-h-[220px] rounded-xl border border-brand-100 bg-brand-50 p-4 flex flex-col justify-between">
                   <div>
                     <span className="inline-flex mb-2 px-2 py-1 rounded-full bg-brand-100 text-brand-600 text-[11px] font-bold">
@@ -697,7 +697,7 @@ export default function CollegeAdmission({
 
                     <div className="flex gap-4 items-center">
                       {compare.college?.logo ? (
-                        <div className="w-[115px] h-[85px] shrink-0 rounded-lg border border-brand-100 bg-white flex items-center justify-center overflow-hidden">
+                        <div className="w-[115px] h-[85px] shrink-0 rounded-lg border border-line bg-white flex items-center justify-center overflow-hidden">
                           <img
                             src={compare.college.logo}
                             alt={`${compare.college.name} Logo`}
@@ -748,7 +748,7 @@ export default function CollegeAdmission({
                   </span>
                 </div>
 
-                <div className="min-h-[220px] rounded-xl border border-dashed border-brand-200 bg-canvas p-4 flex flex-col items-center justify-center text-center">
+                <div className="min-h-[220px] rounded-xl border border-dashed border-line bg-canvas p-4 flex flex-col items-center justify-center text-center">
                   <div className="w-12 h-12 rounded-full border border-brand-200 bg-white flex items-center justify-center text-brand-600 text-2xl font-light mb-2.5">
                     +
                   </div>
@@ -774,7 +774,7 @@ export default function CollegeAdmission({
           {faqs.length > 0 && (
             <section
               id="admission-faqs"
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs"
             >
               <h2 className="section-title text-xl font-bold text-ink-900 font-sans">
                 Frequently Asked Questions

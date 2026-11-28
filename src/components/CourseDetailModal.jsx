@@ -14,13 +14,13 @@ export const CourseDetailModal = ({
   const monthlyEmiEst = Math.round(earlyBirdTotal / 24);
   return <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-    className="bg-white rounded-2xl max-w-5xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-brand-100 relative"
+    className="bg-white rounded-2xl max-w-5xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-line relative"
     onClick={(e) => e.stopPropagation()}
   >
         {
     /* Sticky Header with Title and Close */
   }
-        <div className="sticky top-0 z-20 px-6 py-4 border-b border-brand-100 bg-white/95 backdrop-blur-md flex items-center justify-between">
+        <div className="sticky top-0 z-20 px-6 py-4 border-b border-line bg-white/95 backdrop-blur-md flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="px-2.5 py-1 rounded bg-brand-100 text-brand-600 text-xs font-bold uppercase tracking-wider">
               {course.level}
@@ -114,8 +114,8 @@ export const CourseDetailModal = ({
             {
     /* Right 5 cols: Financial card */
   }
-            <div className="lg:col-span-5 p-6 rounded-2xl bg-canvas border border-brand-200 shadow-sm space-y-4">
-              <div className="flex justify-between items-center pb-3 border-b border-brand-100">
+            <div className="lg:col-span-5 p-6 rounded-2xl bg-canvas border border-line shadow-sm space-y-4">
+              <div className="flex justify-between items-center pb-3 border-b border-line">
                 <div>
                   <h3 className="font-bold text-base text-ink-900 font-sans">
                     Fee Breakdown & Plans
@@ -238,7 +238,7 @@ export const CourseDetailModal = ({
     /* Curriculum Structure (Semester Roadmap) */
   }
           <div className="space-y-4">
-            <div className="flex flex-col sm:flex-row justify-between sm:items-end gap-2 border-b border-brand-100 pb-3">
+            <div className="flex flex-col sm:flex-row justify-between sm:items-end gap-2 border-b border-line pb-3">
               <div>
                 <h3 className="text-xl font-bold text-ink-900 font-sans">
                   Comprehensive Semester Syllabus Roadmap
@@ -256,11 +256,11 @@ export const CourseDetailModal = ({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {course.syllabus.map((sem) => <div
     key={sem.semester}
-    className="rounded-xl border border-brand-100 bg-canvas overflow-hidden hover:border-brand-600 transition-all"
+    className="rounded-xl border border-line bg-canvas overflow-hidden hover:border-brand-600 transition-all"
   >
                   <button
     onClick={() => setExpandedSemester(expandedSemester === sem.semester ? null : sem.semester)}
-    className="w-full p-4 flex items-center justify-between text-left bg-white border-b border-brand-100 cursor-pointer"
+    className="w-full p-4 flex items-center justify-between text-left bg-white border-b border-line cursor-pointer"
   >
                     <div className="flex items-center gap-3">
                       <span className="w-7 h-7 rounded-lg bg-brand-100 text-brand-600 text-xs font-bold flex items-center justify-center">
@@ -318,7 +318,7 @@ export const CourseDetailModal = ({
         {
     /* Modal Bottom Bar */
   }
-        <div className="sticky bottom-0 z-20 px-6 py-4 border-t border-brand-100 bg-white flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg">
+        <div className="sticky bottom-0 z-20 px-6 py-4 border-t border-line bg-white flex flex-col sm:flex-row items-center justify-between gap-3 shadow-lg">
           <div className="text-xs text-ink-700">
             Admissions Open • Registration Deadline: <strong>31st March 2026</strong>
           </div>

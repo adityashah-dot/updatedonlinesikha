@@ -1,6 +1,6 @@
 import { Clock } from "lucide-react";
 export const UniversityDates = ({ university, onOpenApply }) => {
-  return <section id="dates" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
+  return <section id="dates" className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
         <div>
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight leading-snug">
@@ -19,7 +19,7 @@ export const UniversityDates = ({ university, onOpenApply }) => {
         </button>
       </div>
 
-      <div className="bg-white border border-brand-200 rounded-xl overflow-hidden">
+      <div className="bg-white border border-line rounded-xl overflow-hidden">
         <table className="w-full text-left text-xs sm:text-sm border-collapse">
           <thead>
             <tr className="bg-brand-600 text-white font-bold">
@@ -29,7 +29,7 @@ export const UniversityDates = ({ university, onOpenApply }) => {
               <th className="py-3 px-4 font-bold text-right">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-brand-100 text-ink-700">
+          <tbody className="divide-y divide-line text-ink-700">
             {university.importantDates.items.map((item, idx) => {
     const isActive = item.status === "Active" || item.status === "Open";
     return <tr key={idx} className="hover:bg-slate-50/50 transition-colors">

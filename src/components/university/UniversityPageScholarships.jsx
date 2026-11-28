@@ -81,13 +81,13 @@ export const UniversityPageScholarships = ({
       {
     /* HERO */
   }
-      <section className="bg-white border-b border-brand-100">
+      <section className="bg-white border-b border-line">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
           <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5">
             <img
     src={university.logoImage}
     alt={`${university.shortName} Logo`}
-    className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-2xl bg-white border border-brand-100 p-1.5 shadow-sm shrink-0"
+    className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-2xl bg-white border border-line p-1.5 shadow-sm shrink-0"
     onError={(e) => {
       e.target.style.display = "none";
     }}
@@ -125,7 +125,7 @@ export const UniversityPageScholarships = ({
             </div>
 
             <div className="order-1 lg:order-none lg:col-span-5 lg:mr-[50px]">
-              <div className="rounded-2xl overflow-hidden border border-brand-100 shadow-xs bg-canvas">
+              <div className="rounded-2xl overflow-hidden border border-line shadow-xs bg-canvas">
                 <img
     src={university.backgroundImage}
     alt={`${university.name} Campus`}
@@ -213,7 +213,7 @@ export const UniversityPageScholarships = ({
   >
             <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
               <div className="w-full lg:w-3/5 space-y-5">
-                <div className="flex items-center gap-2.5 pb-3 border-b border-brand-100">
+                <div className="flex items-center gap-2.5 pb-3 border-b border-line">
                   <Calculator className="w-5 h-5 text-brand-600" />
                   <h3 className="font-bold text-base text-ink-900 font-sans">
                     Calculate Your Net Tuition Fee &amp; Savings
@@ -322,7 +322,7 @@ export const UniversityPageScholarships = ({
   }
         <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs"
     compact
     posts={university.blogs && university.blogs.posts ? university.blogs.posts : SITE_BLOG_POSTS}
   />

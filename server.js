@@ -3,18 +3,14 @@ import { createServer as createViteServer } from 'vite';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
-import { GoogleGenAI } from '@google/genai';
-import { answerChat, syncDataset, datasetStatusOf } from './src/services/chatbotDataset.mjs';
+import { syncDataset, datasetStatusOf } from './src/services/chatbotDataset.mjs';
 import { injectMetaHtml, buildBlogListing, buildBlogDetail, buildBlogSitemap } from './src/server/blogSsr.js';
 import { registerSeoRoutes } from './src/server/seoRoutes.js';
+import { handleChatRequest } from './src/server/chatHandler.js';
 
 dotenv.config();
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-// Server-side initialization of Gemini SDK
-const apiKey = process.env.GEMINI_API_KEY || '';
-const ai = new GoogleGenAI({ apiKey });
 
 /* Simple fixed-window rate limiter for the chat API. */
 const RATE_LIMIT_MAX = Number(process.env.CHAT_RATE_LIMIT || 30); // requests / minute / IP
@@ -58,42 +54,8 @@ async function startServer() {
   // Server-side Chat API: retrieval-grounded over the synchronized dataset,
   // with Gemini generation when GEMINI_API_KEY is configured.
   app.post('/api/chat', rateLimitChat, async (req, res) => {
-    try {
-      const { messages, modelChoice = 'gemini-3.5-flash' } = req.body || {};
-
-      if (!Array.isArray(messages) || messages.length === 0) {
-        return res.status(400).json({ error: 'Messages array is required.' });
-      }
-      if (messages.length > 16) {
-        return res.status(400).json({ error: 'Conversation is too long. Please reset the chat.' });
-      }
-      const normalized = messages.map((m) => {
-        const role = m.role === 'model' || m.role === 'assistant' ? 'model' : 'user';
-        const text = String(m.text || '').slice(0, 1200).trim();
-        return { role, text };
-      });
-      if (normalized.some((m) => !m.text)) {
-        return res.status(400).json({ error: 'Invalid message payload.' });
-      }
-
-      const result = await answerChat({
-        messages: normalized,
-        modelChoice,
-        aiFactory: () => ai,
-      });
-
-      return res.json({
-        text: result.text,
-        suggestions: result.suggestions,
-        sources: result.sources,
-        model: process.env.GEMINI_API_KEY ? modelChoice : 'grounded-dataset',
-      });
-    } catch (err) {
-      console.error('Error generating chat response:', err);
-      return res.status(502).json({
-        error: 'The advisor is temporarily unavailable. Please try again shortly.',
-      });
-    }
+    const { status, body } = await handleChatRequest(req.body);
+    res.status(status).json(body);
   });
 
   // Dataset status (sync freshness, counts). No secrets exposed.

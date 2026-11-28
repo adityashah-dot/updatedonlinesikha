@@ -1,5 +1,5 @@
 export const PointerList = ({ children, className = "" }) => {
-  return <ul className={`divide-y divide-brand-100 ${className}`}>{children}</ul>;
+  return <ul className={`divide-y divide-line ${className}`}>{children}</ul>;
 };
 export const PointerItem = ({
   icon,

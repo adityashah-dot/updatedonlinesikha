@@ -38,7 +38,7 @@ export const HelpDeskModal = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-        className="bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-brand-100 overflow-hidden max-h-[92vh] overflow-y-auto relative"
+        className="bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-line overflow-hidden max-h-[92vh] overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -70,7 +70,7 @@ export const HelpDeskModal = ({ isOpen, onClose }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
             <a
               href="tel:18008894422"
-              className="p-3.5 rounded-xl border border-brand-100 bg-canvas hover:border-brand-600 transition-all flex flex-col items-center text-center group"
+              className="p-3.5 rounded-xl border border-line bg-canvas hover:border-brand-600 transition-all flex flex-col items-center text-center group"
             >
               <Phone className="w-5 h-5 text-brand-600 mb-1 group-hover:scale-110 transition-transform" />
               <span className="font-bold text-ink-900">Toll-Free Hotline</span>
@@ -79,7 +79,7 @@ export const HelpDeskModal = ({ isOpen, onClose }) => {
 
             <a
               href="mailto:helpdesk@onlinesiksha.com"
-              className="p-3.5 rounded-xl border border-brand-100 bg-canvas hover:border-brand-600 transition-all flex flex-col items-center text-center group"
+              className="p-3.5 rounded-xl border border-line bg-canvas hover:border-brand-600 transition-all flex flex-col items-center text-center group"
             >
               <Mail className="w-5 h-5 text-brand-600 mb-1 group-hover:scale-110 transition-transform" />
               <span className="font-bold text-ink-900">Direct Email</span>
@@ -175,7 +175,7 @@ export const HelpDeskModal = ({ isOpen, onClose }) => {
           </div>
         </div>
 
-        <div className="p-4 border-t border-brand-100 bg-canvas text-center">
+        <div className="p-4 border-t border-line bg-canvas text-center">
           <button
             onClick={onClose}
             className="px-6 py-2 min-h-[44px] rounded-xl border border-line-strong text-xs font-semibold text-ink-900 hover:bg-white cursor-pointer"

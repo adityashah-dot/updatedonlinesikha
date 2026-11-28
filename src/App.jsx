@@ -2,7 +2,6 @@
 
 import { useState, lazy, Suspense } from "react";
 import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 import { COURSES_DATA } from "./data/coursesData";
 import { Navbar } from "./components/Navbar.jsx";
 import { Footer } from "./components/Footer";
@@ -26,6 +25,7 @@ import { LmsPortalModal } from "./components/LmsPortalModal";
 import { HelpDeskModal } from "./components/HelpDeskModal";
 import { LoginModal } from "./components/LoginModal";
 import { FloatingActions } from "./components/FloatingActions";
+import { MobileBottomBar } from "./components/shell/MobileBottomBar";
 import { CounselorModal } from "./components/CounselorModal";
 import { TrackApplicationModal } from "./components/TrackApplicationModal";
 import { DegreeExplorerModal } from "./components/DegreeExplorerModal";
@@ -153,7 +153,7 @@ export default function App() {
     setChatInitialQuery(query);
     setIsChatOpen(true);
   };
-  return <div className="min-h-screen flex flex-col bg-canvas text-ink-900 font-sans pb-[calc(96px+env(safe-area-inset-bottom))] md:pb-0 transition-colors duration-200">
+  return <div className="min-h-screen flex flex-col bg-canvas text-ink-900 font-sans pb-[calc(56px+env(safe-area-inset-bottom))] md:pb-0 transition-colors duration-200">
       {
     /* Top Application Bar */
   }
@@ -174,7 +174,6 @@ export default function App() {
   }
       <main className="flex-grow">
         <Suspense fallback={<RouteFallback />}>
-        <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route
     path="/"
@@ -289,7 +288,6 @@ export default function App() {
 
             <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
           </Routes>
-        </AnimatePresence>
         </Suspense>
       </main>
 
@@ -395,6 +393,12 @@ export default function App() {
     /* Floating AI Chatbot Trigger & Chat Window */
   }
       <ChatbotFloatingTrigger onClick={() => setIsChatOpen(true)} />
+
+      {/* Phone-only bottom navigation (replaces the floating buttons below 768px) */}
+      <MobileBottomBar
+        onOpenChat={() => setIsChatOpen(true)}
+        onOpenCallback={() => setIsCounselorModalOpen(true)}
+      />
 
       <GeminiChatbot
     isOpen={isChatOpen}

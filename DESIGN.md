@@ -22,6 +22,22 @@ Use them as Tailwind classes. **Do not add new hex colours, arbitrary shadows
 | `accent-*` | `text-accent-700` | Small highlights only — never primary actions |
 | `success-*` / `danger-*` | `text-success-600` | Status, validation |
 
+### Colour usage rules
+
+- **Blue is for things you can act on**: buttons, links, the active tab or filter. Not for decoration.
+- **Cards are white with a neutral `border-line`**, not blue outlines. Sections alternate white and `canvas`.
+- **Brand tint (`bg-brand-50`)** only for icon tiles, selected rows and removable filter chips.
+- **Amber (`accent-*`)** only for NAAC grades, ratings and "popular" markers.
+- **Green (`success-*`)** only for status: "Online", "UGC-DEB entitled", success messages.
+- **Text contrast:** body `ink-700`, secondary `ink-500` (passes AA on white and canvas). `ink-400` is for
+  placeholders and icons only, never for readable text.
+
+## Components
+
+Use the shared primitives in `src/components/ui/` instead of hand-written Tailwind:
+`Button` (primary / secondary / ghost), `Badge` (neutral / brand / success / warning), `Card`,
+`Chip` (filter toggle), `Sheet` (bottom sheet or side drawer), `Skeleton`, `SectionHeader`.
+
 ## Type
 
 - Headings: **Poppins** (`font-display`), 600–700, tracking `-0.02em`.

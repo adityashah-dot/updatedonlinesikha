@@ -12,7 +12,7 @@ export const ProgrammeCardsSection = ({
 }) => (
   <section
     id={sectionId}
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
     <h2 className="section-title text-lg sm:text-xl font-bold text-ink-900 font-sans">
       {title}
@@ -39,7 +39,7 @@ export const ProgrammeCardsSection = ({
         return (
           <article
             key={programme.id || programme.title}
-            className="flex min-w-0 flex-col rounded-xl border border-brand-100 border-l-[3px] border-l-brand-600 bg-white p-4 shadow-xs transition-colors hover:border-l-brand-700 sm:p-4"
+            className="flex min-w-0 flex-col rounded-xl border border-line border-l-[3px] border-l-brand-600 bg-white p-4 shadow-xs transition-colors hover:border-l-brand-700 sm:p-4"
           >
             <div className="mb-2 flex items-start justify-between gap-3">
               <span className="inline-flex rounded-md bg-brand-100 px-2 py-1 text-[10px] font-medium text-brand-700">
@@ -75,7 +75,7 @@ export const ProgrammeCardsSection = ({
                   Total Fee
                 </span>
               </div>
-              <div className="min-w-0 border-l border-brand-100 pl-3">
+              <div className="min-w-0 border-l border-line pl-3">
                 <span className="block break-words text-xs leading-4 font-medium text-brand-600">
                   {secondaryFee || "Online"}
                 </span>

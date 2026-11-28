@@ -39,9 +39,9 @@ export default function CoursesPromoBanner({
         </p>
       </div>
 
-      <div className="shrink-0 flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end pt-1.5 sm:pt-0 border-t sm:border-0 border-brand-200/60">
+      <div className="shrink-0 flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end pt-1.5 sm:pt-0 border-t sm:border-0 border-line/60">
         <div className="flex items-center gap-2">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-brand-200 shadow-2xs overflow-hidden shrink-0 flex items-center justify-center">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-line shadow-2xs overflow-hidden shrink-0 flex items-center justify-center">
             <img
               src="/images/studentfigmaimg.webp"
               alt="Academic Advisor"

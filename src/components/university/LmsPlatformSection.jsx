@@ -23,10 +23,10 @@ export const LmsPlatformSection = ({ title, items }) => {
         </h2>
       </div>
 
-      <ul className="border-t border-brand-100">
+      <ul className="border-t border-line">
         {items.map((item, idx) => <li
     key={idx}
-    className="group grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] gap-x-4 sm:gap-x-6 gap-y-2 py-5 sm:py-6 border-b border-brand-100"
+    className="group grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] gap-x-4 sm:gap-x-6 gap-y-2 py-5 sm:py-6 border-b border-line"
   >
             {
     /* Icon + Index */

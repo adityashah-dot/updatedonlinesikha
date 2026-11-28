@@ -28,7 +28,7 @@ export const ScholarshipPillarsGrid = ({
   return <section id={sectionId} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-mt-[100px]">
       {pillars.map((p, idx) => <div
     key={idx}
-    className="card bg-white border border-brand-100 rounded-2xl shadow-xs flex flex-col justify-between hover:border-brand-600 transition-all"
+    className="card bg-white border border-line rounded-2xl shadow-xs flex flex-col justify-between hover:border-brand-600 transition-all"
   >
           <div>
             <div
@@ -42,7 +42,7 @@ export const ScholarshipPillarsGrid = ({
             <h3 className="section-title font-bold text-base text-ink-900 font-sans mt-2">{p.title}</h3>
             <p className="text-xs text-ink-700 leading-relaxed">{p.body}</p>
           </div>
-          <div className="mt-4 pt-3 border-t border-brand-100 text-xs font-bold text-brand-600">
+          <div className="mt-4 pt-3 border-t border-line text-xs font-bold text-brand-600">
             {p.footnote || "Subject to Verification"}
           </div>
         </div>)}

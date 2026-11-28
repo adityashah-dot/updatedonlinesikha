@@ -45,7 +45,7 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
   ].filter((stat) => stat.value && String(stat.value).trim() && String(stat.value).trim() !== "—");
 
   return (
-    <section className="bg-white text-ink-900 border-b border-brand-100">
+    <section className="bg-white text-ink-900 border-b border-line">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
         {/* Logo + Title + Badges */}
         <div className="flex flex-row items-start gap-3 sm:gap-5">
@@ -53,7 +53,7 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
             <img
               src={logo}
               alt={`${collegeTitle} Logo`}
-              className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-2xl bg-white border border-brand-100 p-1.5 shadow-sm shrink-0"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-2xl bg-white border border-line p-1.5 shadow-sm shrink-0"
               onError={(e) => {
                 e.target.style.display = "none";
               }}
@@ -118,7 +118,7 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
 
           {banner && (
             <div className="order-1 lg:order-none lg:col-span-5 lg:mr-[50px]">
-              <div className="rounded-2xl overflow-hidden border border-brand-100 shadow-xs bg-canvas">
+              <div className="rounded-2xl overflow-hidden border border-line shadow-xs bg-canvas">
                 <img
                   src={banner}
                   alt={`${collegeTitle} Campus`}

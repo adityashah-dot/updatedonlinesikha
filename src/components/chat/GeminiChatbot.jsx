@@ -185,12 +185,12 @@ export const GeminiChatbot = ({
     role="dialog"
     aria-modal="true"
     aria-labelledby="admissions-ai-title"
-    className={`fixed z-50 transition-all duration-300 flex flex-col font-sans ${isExpanded ? "inset-2 sm:inset-6 md:inset-10 bg-white rounded-2xl shadow-2xl border border-brand-100 overflow-hidden" : "bottom-0 left-0 w-full h-[min(680px,calc(100dvh-4rem))] sm:bottom-6 sm:left-6 sm:w-[440px] md:w-[460px] sm:h-[600px] sm:max-h-[85vh] bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl border border-brand-100 overflow-hidden"}`}
+    className={`fixed z-50 transition-all duration-300 flex flex-col font-sans ${isExpanded ? "inset-2 sm:inset-6 md:inset-10 bg-white rounded-2xl shadow-2xl border border-line overflow-hidden" : "bottom-0 left-0 w-full h-[min(680px,calc(100dvh-4rem))] sm:bottom-6 sm:left-6 sm:w-[440px] md:w-[460px] sm:h-[600px] sm:max-h-[85vh] bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl border border-line overflow-hidden"}`}
   >
       {
     /* Header - Clean Institutional Advisory Bar */
   }
-      <div className="bg-white text-ink-900 px-4 sm:px-5 py-3.5 flex items-center justify-between border-b border-brand-100 shrink-0">
+      <div className="bg-white text-ink-900 px-4 sm:px-5 py-3.5 flex items-center justify-between border-b border-line shrink-0">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-brand-600 text-white flex items-center justify-center shrink-0 shadow-xs">
             <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
@@ -338,7 +338,7 @@ export const GeminiChatbot = ({
             <div className="w-8 h-8 rounded-xl bg-canvas border border-line text-brand-900 flex items-center justify-center shrink-0 shadow-xs">
               <Bot className="w-4 h-4 text-brand-900" />
             </div>
-            <div className="bg-white border border-brand-100 rounded-2xl rounded-tl-xs px-4 py-3 flex items-center gap-2.5 text-ink-700 shadow-xs">
+            <div className="bg-white border border-line rounded-2xl rounded-tl-xs px-4 py-3 flex items-center gap-2.5 text-ink-700 shadow-xs">
               <span className="flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse" />
                 <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse [animation-delay:0.2s]" />
@@ -356,7 +356,7 @@ export const GeminiChatbot = ({
       {
     /* Suggested Quick Topics (1-2 words each) */
   }
-      {messages.length <= 2 && !isLoading && <div className="px-4 py-2.5 bg-canvas border-t border-brand-100 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {messages.length <= 2 && !isLoading && <div className="px-4 py-2.5 bg-canvas border-t border-line overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <div className="flex items-center gap-2 flex-nowrap">
             {QUICK_TOPICS.map((topic, pIdx) => <button
     key={pIdx}
@@ -377,7 +377,7 @@ export const GeminiChatbot = ({
       e.preventDefault();
       sendMessage();
     }}
-    className="p-3.5 sm:p-4 bg-white border-t border-brand-100 flex items-center gap-2.5 shrink-0"
+    className="p-3.5 sm:p-4 bg-white border-t border-line flex items-center gap-2.5 shrink-0"
   >
         <input
     ref={inputRef}
@@ -407,7 +407,7 @@ export const ChatbotFloatingTrigger = ({ onClick }) => {
   return <button
     type="button"
     onClick={onClick}
-    className="fixed bottom-[140px] right-4 md:bottom-[84px] md:right-6 z-40 h-14 w-14 rounded-full border border-white bg-brand-600 text-white shadow-xl shadow-slate-900/25 transition-all duration-200 flex items-center justify-center hover:bg-brand-600 hover:shadow-2xl active:scale-95 group font-sans cursor-pointer"
+    className="hidden md:flex fixed bottom-[84px] right-6 z-40 h-14 w-14 rounded-full border border-white bg-brand-600 text-white shadow-lg transition-all duration-200 items-center justify-center hover:bg-brand-600 hover:shadow-2xl active:scale-95 group font-sans cursor-pointer"
     aria-label="Open Admissions Desk AI Robot"
     title="Admissions Desk AI"
   >

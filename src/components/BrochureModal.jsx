@@ -112,7 +112,7 @@ export const BrochureModal = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-        className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-brand-100 max-h-[92vh] overflow-y-auto relative"
+        className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-line max-h-[92vh] overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -192,7 +192,7 @@ export const BrochureModal = ({
                 {isDropdownOpen && (
                   <div
                     role="listbox"
-                    className="absolute left-0 right-0 top-full mt-1.5 z-40 bg-white border border-brand-200 rounded-xl shadow-2xl overflow-hidden max-h-64 overflow-y-auto p-1.5 space-y-1 animate-in fade-in duration-150"
+                    className="absolute left-0 right-0 top-full mt-1.5 z-40 bg-white border border-line rounded-xl shadow-2xl overflow-hidden max-h-64 overflow-y-auto p-1.5 space-y-1 animate-in fade-in duration-150"
                   >
                     {/* All Prospectus Option */}
                     <button

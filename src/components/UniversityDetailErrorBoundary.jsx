@@ -19,7 +19,7 @@ class DetailErrorBoundary extends Component {
         <p className="mt-2 max-w-lg text-sm text-ink-700">Please try loading the page again, or return to the university list.</p>
         <div className="mt-5 flex flex-wrap justify-center gap-3">
           <button type="button" onClick={() => window.location.reload()} className="rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white">Reload page</button>
-          <Link to="/universities" className="rounded-xl border border-brand-200 bg-white px-5 py-2.5 text-sm font-semibold text-brand-600">Browse universities</Link>
+          <Link to="/universities" className="rounded-xl border border-line bg-white px-5 py-2.5 text-sm font-semibold text-brand-600">Browse universities</Link>
         </div>
       </main>;
     }

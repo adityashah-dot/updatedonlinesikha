@@ -134,7 +134,7 @@ export const UniversityPageCourses = ({
         </div>
       </div>
 
-      <section className="content-block relative bg-gradient-to-b from-brand-50 via-canvas to-canvas overflow-hidden border-b border-brand-100/60">
+      <section className="content-block relative bg-gradient-to-b from-brand-50 via-canvas to-canvas overflow-hidden border-b border-line/60">
         <div className="absolute inset-0 pointer-events-none opacity-40">
           <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-brand-200 blur-3xl" />
           <div className="absolute -left-20 top-40 w-80 h-80 rounded-full bg-brand-200 blur-3xl" />
@@ -177,7 +177,7 @@ export const UniversityPageCourses = ({
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
-                {heroMetrics.map((m) => <div key={m.label} className="p-4 rounded-xl bg-white border border-brand-100 flex flex-col justify-between">
+                {heroMetrics.map((m) => <div key={m.label} className="p-4 rounded-xl bg-white border border-line flex flex-col justify-between">
                     <div className="w-7 h-7 rounded-lg bg-brand-200 text-brand-600 flex items-center justify-center mb-1.5">
                       <Award className="w-3.5 h-3.5" />
                     </div>
@@ -193,7 +193,7 @@ export const UniversityPageCourses = ({
               <div className="rounded-xl p-4 sm:p-5 bg-white border border-brand-600/25 shadow-md relative overflow-hidden">
                 <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-200/50 rounded-full blur-2xl pointer-events-none" />
 
-                <div className="flex items-center justify-between pb-3 border-b border-brand-100">
+                <div className="flex items-center justify-between pb-3 border-b border-line">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                     <span className="text-xs sm:text-sm font-normal text-ink-900">Admissions Open</span>
@@ -236,7 +236,7 @@ export const UniversityPageCourses = ({
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-brand-100 flex flex-col gap-1.5">
+                <div className="pt-2 border-t border-line flex flex-col gap-1.5">
                   <button
     type="button"
     onClick={() => onOpenApply()}
@@ -266,7 +266,7 @@ export const UniversityPageCourses = ({
   />
       </div>
 
-      <section className="sticky top-20 z-30 bg-white/95 backdrop-blur-md border-y border-brand-100 shadow-xs py-3.5">
+      <section className="sticky top-20 z-30 bg-white/95 backdrop-blur-md border-y border-line shadow-xs py-3.5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 scrollbar-none">
             <button
@@ -436,7 +436,7 @@ export const UniversityPageCourses = ({
             </p>
           </div>
 
-          {filteredCourses.length === 0 ? <div className="text-center py-10 bg-white rounded-xl border border-brand-100">
+          {filteredCourses.length === 0 ? <div className="text-center py-10 bg-white rounded-xl border border-line">
               <Search className="w-8 h-8 text-ink-500 mx-auto mb-2" />
               <h3 className="text-sm font-semibold text-ink-900">No programs match your search</h3>
               <p className="text-xs text-ink-700 mt-[7.5px] font-normal">
@@ -455,7 +455,7 @@ export const UniversityPageCourses = ({
             </div> : <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
               {filteredCourses.map((course) => <div
     key={course.id}
-    className="bg-white rounded-xl p-4 sm:p-5 flex flex-col justify-between transition-all duration-200 border border-brand-100 shadow-xs hover:border-brand-600/60 hover:shadow-xs"
+    className="bg-white rounded-xl p-4 sm:p-5 flex flex-col justify-between transition-all duration-200 border border-line shadow-xs hover:border-brand-600/60 hover:shadow-xs"
   >
                   <div>
                     <div className="flex items-center justify-between mb-1.5">
@@ -515,7 +515,7 @@ export const UniversityPageCourses = ({
 
       {importantDates.length > 0 && <section id="admission-dates" className="content-block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-[100px]">
           <div className="rounded-2xl border border-brand-200 bg-gradient-to-br from-canvas via-brand-50 to-white shadow-sm overflow-hidden">
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 px-5 sm:px-6 py-5 border-b border-brand-200">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 px-5 sm:px-6 py-5 border-b border-line">
               <div>
                 <h2 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight font-sans">
                   {sectionTitle(university.shortName, "Admission Dates")}
@@ -544,7 +544,7 @@ export const UniversityPageCourses = ({
                 required documents through the official admission portal. Check the table below for admission dates 2026:
               </p>
 
-              <div className="mt-5 overflow-hidden rounded-xl border border-brand-200 bg-white">
+              <div className="mt-5 overflow-hidden rounded-xl border border-line bg-white">
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse text-xs sm:text-sm">
                     <thead>
@@ -554,7 +554,7 @@ export const UniversityPageCourses = ({
                         <th className="py-3 px-4 font-bold">Tentative Date</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-brand-100 bg-white">
+                    <tbody className="divide-y divide-line bg-white">
                       {importantDates.map((item, idx) => <tr key={idx} className="hover:bg-brand-50/60 transition-colors">
                           <td className="py-3.5 px-4 font-bold text-ink-900">{item.event}</td>
                           <td className="py-3.5 px-4 text-ink-700">{item.mode || "Online"}</td>
@@ -592,7 +592,7 @@ export const UniversityPageCourses = ({
 
       <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs max-w-7xl mx-auto"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs max-w-7xl mx-auto"
     compact
     posts={university.blogs && university.blogs.posts ? university.blogs.posts : SITE_BLOG_POSTS}
   />
@@ -612,7 +612,7 @@ export const UniversityPageCourses = ({
     const isOpen = openFaqIndex === idx;
     return <div
       key={idx}
-      className="bg-white rounded-xl border border-brand-100 shadow-xs overflow-hidden transition-all"
+      className="bg-white rounded-xl border border-line shadow-xs overflow-hidden transition-all"
     >
                   <button
       onClick={() => setOpenFaqIndex(isOpen ? null : idx)}

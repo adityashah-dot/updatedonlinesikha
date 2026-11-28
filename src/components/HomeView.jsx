@@ -23,6 +23,8 @@ import {
 } from "lucide-react";
 import { HomeFaq } from "./HomeFaq";
 import HomeHero from "./HomeHero";
+import { ProgrammeTiles } from "./home/ProgrammeTiles";
+import { HowWeHelp } from "./home/HowWeHelp";
 import { StudentTestimonials } from "./StudentTestimonials";
 
 const SHOW_TESTIMONIALS = false;
@@ -533,193 +535,24 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
   const changeCompareColumn = (colIndex, uniIndex) => {
     setCompareColumns((prev) => prev.map((v, i) => (i === colIndex ? uniIndex : v)));
   };
-  const filteredDegreePrograms = degreePrograms.filter((p) => p.lv.includes(degreeLevel));
   return (
-<div className="home-page w-full mx-auto px-3.5 sm:px-4 md:px-6 py-4 sm:py-5 space-y-6 sm:space-y-8">
+<div className="home-page w-full max-w-7xl mx-auto px-3.5 sm:px-4 md:px-6 py-4 sm:py-5 space-y-10 sm:space-y-14">
       <HomeHero onOpenHelpDesk={onOpenHelpDesk} />
 
-      {
-    /* Popular Courses — mobile only */
-  }
-  {/* PopularCoursesMobile removed per request */}
-
-      {
-    /* Degree programs */
-  }
-      {/* Mobile-only: Popular Online Degree Programs */}
-      <section id="degrees-mobile" className="md:hidden w-full">
-        <div className="py-2">
-          <p className="text-[11px] font-bold tracking-[1.5px] text-brand-700 uppercase mb-1">DEGREES</p>
-          <h2 className="text-lg sm:text-xl font-bold tracking-tight text-ink-900 mb-1">Popular online degree programs</h2>
-          <p className="text-[12.5px] text-slate-500 leading-snug mb-3.5">UGC-entitled programmes, valid on par with regular campus degrees.</p>
-
-          <div className="flex gap-2 overflow-x-auto pb-2 mb-3.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {DEGREE_LEVELS.map(([label, key]) => (
-              <button
-                key={key}
-                type="button"
-                onClick={() => setDegreeLevel(key)}
-                className={`whitespace-nowrap px-3.5 py-1.5 text-[12px] font-semibold rounded-lg border-b-2 transition-colors ${
-                  degreeLevel === key
-                    ? 'text-brand-700 border-brand-700 bg-blue-50/80 font-bold'
-                    : 'text-slate-600 border-transparent hover:text-brand-700'
-                }`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex flex-col gap-2.5">
-            {filteredDegreePrograms.map((p) => {
-              const courseHref = p.slug ? `/courses/${p.slug}` : `/courses?search=${encodeURIComponent(p.search || p.n)}`;
-              const uniHref = `/universities?search=${encodeURIComponent(p.uniSearch || p.n)}`;
-              return (
-                <div key={p.n} className="bg-white border border-slate-200/90 rounded-xl p-3 shadow-2xs hover:border-brand-600/40 transition-all">
-                  <div className="flex justify-between items-start gap-2">
-                    <div className="min-w-0">
-                      <Link to={courseHref} className="group">
-                        <h3 className="text-[14px] font-bold text-ink-900 group-hover:text-brand-700 transition-colors leading-tight">{p.n}</h3>
-                      </Link>
-                      <p className="text-[11px] text-slate-500 mt-0.5 leading-tight truncate">{p.f}</p>
-                    </div>
-                    <span className="text-[10px] font-bold text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full border border-brand-300 shrink-0 whitespace-nowrap">{p.y}</span>
-                  </div>
-                  
-                  {/* Specializations Tag Line */}
-                  <div className="mt-2 text-[11px] text-slate-600 truncate bg-slate-50/80 px-2 py-1 rounded-md border border-slate-100">
-                    <span className="font-semibold text-slate-700">Specializations:</span> {p.sp}
-                  </div>
-
-                  {/* Clean 2-Column Stats Strip without cramping */}
-                  <div className="grid grid-cols-2 gap-2 mt-2 pt-2 border-t border-slate-100">
-                    <div className="flex flex-col">
-                      <span className="text-slate-400 font-semibold text-[10px] uppercase tracking-wider">Avg. Placement</span>
-                      <span className="text-xs font-bold text-emerald-800">{p.ctc}</span>
-                    </div>
-                    <div className="flex flex-col text-right">
-                      <span className="text-slate-400 font-semibold text-[10px] uppercase tracking-wider">Total Program Fee</span>
-                      {feesStatus === "loading" ? <span className="ml-auto block h-3.5 w-24 rounded bg-line animate-pulse" aria-label="Loading fee" /> : <span className="text-xs font-bold text-ink-900 leading-tight">{p.totalFee}</span>}
-                      <span className="text-[9.5px] text-slate-400 leading-tight">{p.sems}</span>
-                    </div>
-                  </div>
-
-                  {/* Compact action buttons */}
-                  <div className="grid grid-cols-2 gap-2 mt-2.5 pt-0.5">
-                    <Link to={courseHref} className="w-full h-8 rounded-lg border border-brand-700 text-brand-700 text-[11px] font-bold flex items-center justify-center gap-1 active:scale-[0.98] hover:bg-brand-50 transition-colors text-center">
-                      Course Details
-                    </Link>
-                    <Link to={uniHref} className="w-full h-8 rounded-lg bg-brand-700 hover:bg-brand-800 text-white text-[11px] font-bold flex items-center justify-center gap-1 active:scale-[0.98] transition-colors text-center shadow-2xs">
-                      Explore {p.c} Univ. <span>→</span>
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Desktop degrees section (unchanged) */}
-      <div className="hidden md:block">
-      <section id="degrees" aria-labelledby="degrees-heading" className="w-full">
-        <div className="w-full">
-          <div className="hd flex flex-col md:flex-row md:items-end md:justify-between gap-4 flex-wrap mb-4">
-            <div>
-              <h2 id="degrees-heading" className="text-xl sm:text-2xl font-bold leading-[1.15] tracking-[-0.025em] text-ink-900">Popular online degree programs</h2>
-              <p className="s mt-2.5 text-[14px] text-ink-700 max-w-[52ch]">UGC-entitled programmes, valid on par with regular campus degrees.</p>
-            </div>
-            <div className="tabs flex overflow-x-auto border-b border-line-strong" role="tablist" aria-label="Level">
-              {DEGREE_LEVELS.map(([label, key], i) => (
-                <button
-                  key={key}
-                  type="button"
-                  role="tab"
-                  aria-selected={degreeLevel === key}
-                  onClick={() => setDegreeLevel(key)}
-                  className={`whitespace-nowrap bg-transparent border-0 border-b-2 -mb-px px-4 py-2.5 min-h-[44px] text-[14px] font-medium cursor-pointer transition-colors ${degreeLevel === key ? "text-brand-600 border-brand-600" : "text-ink-700 border-transparent hover:text-ink-900"}`}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            {/* Clean, compact table header */}
-            <div className="grid grid-cols-[88px_1.5fr_1.6fr_1.1fr_1fr_135px] gap-4 items-center py-2 px-1 border-b-2 border-slate-200 bg-canvas text-[11px] font-bold uppercase tracking-wider text-slate-500 rounded-t-lg">
-              <span>Duration</span>
-              <span>Courses</span>
-              <span>Specializations</span>
-              <span>Avg. Placement</span>
-              <span>Total Program Fee</span>
-              <span className="text-center">Action</span>
-            </div>
-
-            {filteredDegreePrograms.length === 0 ? (
-              <p className="em py-7 text-[14px] text-ink-700">No executive programs are listed yet. Connect this tab to your existing data.</p>
-            ) : (
-              filteredDegreePrograms.map((p, idx) => {
-                const courseHref = p.slug ? `/courses/${p.slug}` : `/courses?search=${encodeURIComponent(p.search || p.n)}`;
-                const uniHref = `/universities?search=${encodeURIComponent(p.uniSearch || p.n)}`;
-                return (
-                <div
-                  key={p.n + idx}
-                  className="dg grid grid-cols-[88px_1.5fr_1.6fr_1.1fr_1fr_135px] gap-4 items-center py-2.5 px-1 border-b border-line hover:bg-slate-50/60 transition-colors"
-                >
-                  <span className="du text-[12.5px] text-ink-700 font-medium leading-[1.3]">{p.y}</span>
-                  <div>
-                    <Link
-                      to={courseHref}
-                      className="group/course block no-underline"
-                    >
-                      <h3 className="font-bold tracking-[-0.01em] text-[14.5px] leading-[1.25] text-ink-900 group-hover/course:text-brand-700 transition-colors">
-                        {p.n}
-                        <small className="block mt-0.5 text-[11.5px] font-normal text-ink-500 tracking-normal group-hover/course:text-brand-700/80">{p.f}</small>
-                      </h3>
-                    </Link>
-                    {p.tg ? <span className="tg block mt-1 text-[11.5px] text-brand-700 font-medium">{p.tg}</span> : null}
-                  </div>
-                  <div className="sp text-[12.5px] text-ink-700 leading-snug">
-                    {p.sp}
-                  </div>
-                  <div className="sp text-[12.5px] text-ink-700 leading-[1.25]">
-                    <span className="font-bold text-ink-900 text-[13px]">{p.ctc}</span>
-                  </div>
-                  <div className="pr text-[12px] text-ink-700 leading-[1.25]">
-                    {feesStatus === "loading" ? <span className="block h-4 w-28 rounded bg-line animate-pulse" aria-label="Loading fee" /> : <b className="block text-[14px] font-bold text-ink-900 tracking-tight leading-tight">{p.totalFee}</b>}
-                    <span className="text-[10px] text-ink-500 block mt-0.5">{p.sems}</span>
-                  </div>
-                  <div className="justify-self-center flex flex-col items-center gap-1">
-                    <Link
-                      className="btn inline-flex items-center justify-center bg-brand-700 hover:bg-brand-800 text-white border-0 rounded-md px-3.5 py-1.5 min-h-[32px] text-[11.5px] font-semibold no-underline cursor-pointer whitespace-nowrap transition-colors shadow-2xs"
-                      to={uniHref}
-                    >
-                      Explore {p.c} Univ.
-                    </Link>
-                    <Link
-                      to={courseHref}
-                      className="text-[10.5px] font-semibold text-brand-700 hover:underline inline-flex items-center gap-0.5"
-                    >
-                      Course details &rarr;
-                    </Link>
-                  </div>
-                </div>
-              );
-              })
-            )}
-          </div>
-        </div>
-      </section>
-      </div>
+      <ProgrammeTiles
+        programs={degreePrograms}
+        level={degreeLevel}
+        onLevelChange={setDegreeLevel}
+        feesLoading={feesStatus === "loading"}
+      />
 
       {
     /* Featured universities */
   }
       <section id="universities" className="w-full bg-transparent p-0">
-        <div className="flex justify-between items-center pb-3 md:pb-4 border-b border-line-strong/40 gap-2">
+        <div className="flex justify-between items-center pb-3 md:pb-4 gap-2">
           <div className="flex items-center gap-2">
-            <h2 className="text-base sm:text-2xl font-bold text-ink-900 max-[380px]:whitespace-normal whitespace-nowrap">Popular universities</h2>
+            <h2 className="font-display text-xl sm:text-2xl font-bold text-ink-900">Popular universities</h2>
           </div>
           <div className="hidden md:block">
             <ViewAllButton href="/universities" label="View all universities" />
@@ -761,7 +594,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             {filteredFeaturedUnis.map((u) => (
               <article
                 key={u.id}
-                className="flex-none w-[275px] snap-start border border-brand-200 rounded-xl p-3 bg-white flex flex-col shadow-2xs hover:border-brand-600/50 transition-all"
+                className="flex-none w-[275px] snap-start border border-line rounded-xl p-3 bg-white flex flex-col shadow-2xs hover:border-brand-600/50 transition-all"
               >
                 <h3 className="font-bold text-[14px] leading-snug text-ink-900 line-clamp-2 mb-2">
                   {u.name}
@@ -850,12 +683,12 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
 
       </section>
 
-      <section id="compare" className="w-full bg-white rounded-2xl border border-slate-200/90 shadow-sm p-3 sm:p-4 md:p-4.5">
+      <section id="compare" className="w-full bg-white rounded-xl border border-line p-4 sm:p-6">
         {/* Header Block: Full Width, Engaging & Clean */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 pb-2.5 border-b border-slate-100">
           <div>
             
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-ink-900 leading-tight">
+            <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-ink-900 leading-tight">
               Compare universities side by side
             </h2>
             <p className="mt-1 text-xs sm:text-[13.5px] text-slate-500 max-w-2xl leading-relaxed">
@@ -997,6 +830,8 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         </div>
       </section>
 
+      <HowWeHelp onOpenHelpDesk={onOpenHelpDesk} />
+
       {/* Student testimonials are hidden until we have real, consented student reviews.
           The sample data in StudentTestimonials.jsx is placeholder content — replace it, then
           set SHOW_TESTIMONIALS to true. */}
@@ -1032,7 +867,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             </div>
 
             {/* Trust Checkpoints: compact 2-column grid on mobile */}
-            <div className="grid grid-cols-2 gap-x-3 gap-y-2 sm:gap-x-6 sm:gap-y-3.5 mt-3.5 sm:mt-6 pt-3 sm:pt-4 border-t border-brand-200/70 text-[11px] sm:text-xs text-brand-900">
+            <div className="grid grid-cols-2 gap-x-3 gap-y-2 sm:gap-x-6 sm:gap-y-3.5 mt-3.5 sm:mt-6 pt-3 sm:pt-4 border-t border-line/70 text-[11px] sm:text-xs text-brand-900">
               <div className="flex items-center gap-1.5 sm:gap-2.5">
                 <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                 <span className="font-medium text-ink-900">Free, no obligation</span>
@@ -1197,110 +1032,8 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         </div>
       </section>
 
-      {/* Education Resource Hub: Courses, Exams, News, Blogs */}
-      <section id="education-hub" className="w-full bg-white rounded-2xl border border-brand-100 shadow-xs p-5 md:p-7">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
-          <div>
-            <div className="flex items-center gap-2">
-              <h2 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-tight font-sans">
-                Explore more
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm text-ink-700 leading-relaxed font-normal mt-1 max-w-3xl">
-              Courses, entrance exams, education news and guides.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Card 1: Courses */}
-          <Link
-            to="/courses"
-            className="group p-5 rounded-xl border border-brand-100 bg-canvas hover:bg-white hover:border-brand-600 hover:shadow-md transition-all flex flex-col justify-between"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                <BookOpen className="w-5 h-5" />
-              </div>
-              <h3 className="text-base font-bold text-ink-900 group-hover:text-brand-600 transition-colors font-sans">
-                Degree Courses
-              </h3>
-              <p className="text-xs text-ink-700 leading-relaxed font-normal mt-1.5">
-                Browse online MBA, MCA, BBA, BCA and more, with syllabus and fees.
-              </p>
-            </div>
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-600 mt-4 group-hover:underline">
-              Browse Courses <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </span>
-          </Link>
-
-          {/* Card 2: Exams */}
-          <Link
-            to="/exams"
-            className="group p-5 rounded-xl border border-brand-100 bg-canvas hover:bg-white hover:border-brand-600 hover:shadow-md transition-all flex flex-col justify-between"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-lg bg-[#fef3c7] text-accent-700 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                <GraduationCap className="w-5 h-5" />
-              </div>
-              <h3 className="text-base font-bold text-ink-900 group-hover:text-brand-600 transition-colors font-sans">
-                Entrance Exams
-              </h3>
-              <p className="text-xs text-ink-700 leading-relaxed font-normal mt-1.5">
-                Dates, syllabus and cut-offs for CAT, CUET, MAT, NIMCET and other exams.
-              </p>
-            </div>
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-600 mt-4 group-hover:underline">
-              Check Exam Dates <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </span>
-          </Link>
-
-          {/* Card 3: News */}
-          <Link
-            to="/news"
-            className="group p-5 rounded-xl border border-brand-100 bg-canvas hover:bg-white hover:border-brand-600 hover:shadow-md transition-all flex flex-col justify-between"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-lg bg-success-50 text-[#15803d] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                <Newspaper className="w-5 h-5" />
-              </div>
-              <h3 className="text-base font-bold text-ink-900 group-hover:text-brand-600 transition-colors font-sans">
-                Education News
-              </h3>
-              <p className="text-xs text-ink-700 leading-relaxed font-normal mt-1.5">
-                UGC-DEB notices, rankings and admission deadlines.
-              </p>
-            </div>
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-600 mt-4 group-hover:underline">
-              Read Latest News <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </span>
-          </Link>
-
-          {/* Card 4: Blogs */}
-          <Link
-            to="/blog"
-            className="group p-5 rounded-xl border border-brand-100 bg-canvas hover:bg-white hover:border-brand-600 hover:shadow-md transition-all flex flex-col justify-between"
-          >
-            <div>
-              <div className="w-10 h-10 rounded-lg bg-[#fae8ff] text-[#a21caf] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                <Library className="w-5 h-5" />
-              </div>
-              <h3 className="text-base font-bold text-ink-900 group-hover:text-brand-600 transition-colors font-sans">
-                Guides
-              </h3>
-              <p className="text-xs text-ink-700 leading-relaxed font-normal mt-1.5">
-                Choosing a programme, online vs distance learning, and career paths.
-              </p>
-            </div>
-            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-600 mt-4 group-hover:underline">
-              Explore All Blogs <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </span>
-          </Link>
-        </div>
-      </section>
-
       {/* Blogs */}
-      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="w-full rounded-2xl border border-brand-100 bg-white p-5 md:p-6 shadow-xs" horizontal autoScroll showDescriptionOnMobile fetchLivePosts />
+      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="w-full rounded-2xl border border-line bg-white p-5 md:p-6 shadow-xs" horizontal autoScroll showDescriptionOnMobile fetchLivePosts />
 
       {/* Frequently Asked Questions (Accordion) - Last Section */}
       <HomeFaq onOpenHelpDesk={onOpenHelpDesk} />

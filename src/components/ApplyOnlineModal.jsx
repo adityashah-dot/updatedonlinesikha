@@ -89,7 +89,7 @@ export const ApplyOnlineModal = ({
   };
   return <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-    className="bg-white rounded-2xl max-w-xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-brand-100 relative"
+    className="bg-white rounded-2xl max-w-xl w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-line relative"
     onClick={(e) => e.stopPropagation()}
   >
         {
@@ -486,11 +486,11 @@ export const ApplyOnlineModal = ({
     /* Next Steps callout */
   }
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left max-w-sm mx-auto text-xs text-ink-700">
-                <div className="p-3 rounded-lg border border-brand-100 bg-white flex items-start gap-2">
+                <div className="p-3 rounded-lg border border-line bg-white flex items-start gap-2">
                   <Clock className="w-4 h-4 text-brand-600 shrink-0 mt-0.5" />
                   <span>Call from advisor within 15 mins for transcript review</span>
                 </div>
-                <div className="p-3 rounded-lg border border-brand-100 bg-white flex items-start gap-2">
+                <div className="p-3 rounded-lg border border-line bg-white flex items-start gap-2">
                   <FileText className="w-4 h-4 text-brand-600 shrink-0 mt-0.5" />
                   <span>Provisional offer letter sent to {formData.email || "your email"}</span>
                 </div>

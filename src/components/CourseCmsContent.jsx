@@ -113,9 +113,9 @@ function CtaBlock({ block, onOpenCounseling }) {
         <p className="text-xs sm:text-[12.5px] text-ink-700 mb-0 leading-relaxed">{subtext}</p>
       </div>
 
-      <div className="shrink-0 flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end pt-1.5 sm:pt-0 border-t sm:border-0 border-brand-200/60">
+      <div className="shrink-0 flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end pt-1.5 sm:pt-0 border-t sm:border-0 border-line/60">
         <div className="flex items-center gap-2">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-brand-200 shadow-2xs overflow-hidden shrink-0 flex items-center justify-center">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-line shadow-2xs overflow-hidden shrink-0 flex items-center justify-center">
             <img
               src="/images/studentfigmaimg.webp"
               alt="Academic Advisor"
@@ -212,7 +212,7 @@ function StepFlowBlock({ block }) {
               className={`group relative p-4 rounded-2xl border transition-all duration-300 flex flex-col justify-between cursor-pointer ${
                 isSelected
                   ? "border-brand-600 bg-gradient-to-b from-brand-50 via-white to-white shadow-md -translate-y-1 ring-2 ring-brand-600/15"
-                  : "border-brand-100 bg-white hover:border-brand-600/40 hover:-translate-y-1 hover:shadow-sm"
+                  : "border-line bg-white hover:border-brand-600/40 hover:-translate-y-1 hover:shadow-sm"
               }`}
             >
               <div>
@@ -291,9 +291,9 @@ function SyllabusBlock({ block, sectionTitle }) {
             <div
               key={(sem && sem.id) || i}
               data-testid="syllabus-module-card"
-              className="rounded-xl border border-brand-200 bg-canvas p-[18px] sm:p-[20px] shadow-2xs hover:border-brand-300 transition-colors"
+              className="rounded-xl border border-line bg-canvas p-[18px] sm:p-[20px] shadow-2xs hover:border-brand-300 transition-colors"
             >
-              <div className="flex items-start justify-between gap-2.5 pb-2.5 mb-2.5 border-b border-brand-100">
+              <div className="flex items-start justify-between gap-2.5 pb-2.5 mb-2.5 border-b border-line">
                 <div className="flex items-start gap-2.5 min-w-0 flex-1">
                   <span
                     className="w-6 h-6 rounded-md bg-brand-100 text-brand-600 text-[11px] font-bold flex items-center justify-center shrink-0 mt-0.5"
@@ -457,7 +457,7 @@ function SpecializationListBlock({ block, isSkillsSection = false, course, secti
           return (
             <div
               key={i}
-              className="group p-4 rounded-2xl border border-brand-200 bg-white hover:border-brand-600 hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              className="group p-4 rounded-2xl border border-line bg-white hover:border-brand-600 hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between gap-2 mb-2">
@@ -563,7 +563,7 @@ function FeatureCardsBlock({ block }) {
       {heading ? <h3 className="text-sm sm:text-base font-bold text-ink-900 mb-3">{heading}</h3> : null}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
         {items.map((item, i) => (
-          <div key={i} className="group p-4 rounded-2xl border border-brand-100 bg-white shadow-2xs hover:-translate-y-1 hover:border-brand-600/40 hover:shadow-md transition-all duration-300">
+          <div key={i} className="group p-4 rounded-2xl border border-line bg-white shadow-2xs hover:-translate-y-1 hover:border-brand-600/40 hover:shadow-md transition-all duration-300">
             {item && item.title ? (
               <h4 className="text-xs sm:text-sm font-bold text-ink-900 group-hover:text-brand-600 transition-colors mb-1.5 mt-0 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-600" />
@@ -751,7 +751,7 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
                     {[...courseRecruiters, ...courseRecruiters, ...courseRecruiters].map((r, rIdx) => (
                       <div
                         key={rIdx}
-                        className="h-13 w-32 px-3.5 py-2 bg-white rounded-xl border border-brand-100 flex items-center justify-center shrink-0 shadow-2xs hover:scale-108 hover:border-brand-600/40 hover:shadow-xs transition-all duration-300 cursor-pointer"
+                        className="h-13 w-32 px-3.5 py-2 bg-white rounded-xl border border-line flex items-center justify-center shrink-0 shadow-2xs hover:scale-108 hover:border-brand-600/40 hover:shadow-xs transition-all duration-300 cursor-pointer"
                       >
                         <img src={r.logo} alt={r.name} className="max-h-8 max-w-[95px] object-contain transition-transform duration-300" />
                       </div>
@@ -809,7 +809,7 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
               {[...courseRecruiters, ...courseRecruiters].map((r, rIdx) => (
                 <div
                   key={rIdx}
-                  className="h-12 w-28 px-3 py-1.5 bg-white rounded-xl border border-brand-100 flex items-center justify-center shrink-0 shadow-2xs hover:scale-105 transition-transform"
+                  className="h-12 w-28 px-3 py-1.5 bg-white rounded-xl border border-line flex items-center justify-center shrink-0 shadow-2xs hover:scale-105 transition-transform"
                 >
                   <img src={r.logo} alt={r.name} className="max-h-7 max-w-[90px] object-contain" />
                 </div>

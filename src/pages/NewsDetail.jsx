@@ -365,7 +365,7 @@ export default function NewsDetail({ onOpenCounseling }) {
         {/* 404 ARTICLE NOT FOUND STATE */}
         {/* ========================================================= */}
         {!loading && isNotFound && (
-          <div className="bg-white rounded-2xl border border-brand-100 p-8 sm:p-12 text-center my-8 max-w-2xl mx-auto shadow-sm">
+          <div className="bg-white rounded-2xl border border-line p-8 sm:p-12 text-center my-8 max-w-2xl mx-auto shadow-sm">
             <div className="w-16 h-16 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center mx-auto mb-4 border border-rose-100">
               <AlertCircle className="w-8 h-8" aria-hidden="true" />
             </div>
@@ -383,7 +383,7 @@ export default function NewsDetail({ onOpenCounseling }) {
               </Link>
               <Link
                 to="/"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-brand-100 hover:bg-canvas text-ink-700 text-sm font-semibold transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-line hover:bg-canvas text-ink-700 text-sm font-semibold transition-colors"
               >
                 <span>Back to Home</span>
               </Link>
@@ -516,7 +516,7 @@ export default function NewsDetail({ onOpenCounseling }) {
               {/* PRIMARY READING COLUMN */}
               <article className="min-w-0">
                 {/* Hero Media Asset */}
-                <div className="relative rounded-2xl overflow-hidden bg-canvas border border-brand-100 news-hero-img-wrap mb-4 sm:mb-5 shadow-2xs">
+                <div className="relative rounded-2xl overflow-hidden bg-canvas border border-line news-hero-img-wrap mb-4 sm:mb-5 shadow-2xs">
                   <img
                     src={article.hero?.image?.url || article.resolvedImage?.url || DEFAULT_NEWS_FALLBACK_IMAGE}
                     alt={article.hero?.image?.alt || article.title}
@@ -530,7 +530,7 @@ export default function NewsDetail({ onOpenCounseling }) {
 
                 {/* Mobile Collapsible TOC (Rendered on tablet/mobile) */}
                 {article.tableOfContents && article.tableOfContents.length > 0 && (
-                  <div data-testid="news-toc-mobile" className="lg:hidden mb-4 sm:mb-5 bg-white rounded-xl border border-brand-100 p-3.5 shadow-2xs">
+                  <div data-testid="news-toc-mobile" className="lg:hidden mb-4 sm:mb-5 bg-white rounded-xl border border-line p-3.5 shadow-2xs">
                     <h3 className="text-xs font-bold uppercase tracking-wider text-ink-900 mb-2 flex items-center justify-between">
                       <span>In this article</span>
                       <span className="text-[10px] text-ink-500 font-normal lowercase">{article.tableOfContents.length} sections</span>
@@ -608,7 +608,7 @@ export default function NewsDetail({ onOpenCounseling }) {
 
                 {/* FAQs Section */}
                 {article.faqs && article.faqs.length > 0 && (
-                  <section data-testid="news-faqs" className="my-8 pt-4 border-t border-brand-100">
+                  <section data-testid="news-faqs" className="my-8 pt-4 border-t border-line">
                     <div className="flex items-center gap-2 mb-4">
                       <h3 className="text-lg font-bold text-ink-900">Frequently Asked Questions</h3>
                     </div>
@@ -624,7 +624,7 @@ export default function NewsDetail({ onOpenCounseling }) {
                       {article.tags.map((tag, i) => (
                         <span
                           key={i}
-                          className="px-2.5 py-1 rounded-lg bg-canvas text-ink-700 text-xs border border-brand-100 font-medium"
+                          className="px-2.5 py-1 rounded-lg bg-canvas text-ink-700 text-xs border border-line font-medium"
                         >
                           #{tag}
                         </span>
@@ -638,7 +638,7 @@ export default function NewsDetail({ onOpenCounseling }) {
               <aside className="space-y-3.5 lg:sticky lg:top-24 hidden lg:block" aria-label="Article navigation and advisory">
                 {/* Table of Contents */}
                 {article.tableOfContents && article.tableOfContents.length > 0 && (
-                  <div data-testid="news-toc-desktop" className="bg-white rounded-2xl border border-brand-100 p-4 shadow-2xs">
+                  <div data-testid="news-toc-desktop" className="bg-white rounded-2xl border border-line p-4 shadow-2xs">
                     <h3 className="text-xs font-bold uppercase tracking-wider text-ink-900 mb-2.5 pb-2 border-b border-canvas flex items-center justify-between">
                       <span>Table of Contents</span>
                       <span className="text-[10px] text-ink-500 font-normal lowercase">{article.tableOfContents.length} sections</span>
@@ -690,7 +690,7 @@ export default function NewsDetail({ onOpenCounseling }) {
                 </div>
 
                 {/* Quick News & Exams Shortcuts */}
-                <div className="bg-white rounded-2xl border border-brand-100 p-4 shadow-2xs">
+                <div className="bg-white rounded-2xl border border-line p-4 shadow-2xs">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-ink-900 mb-2 pb-1.5 border-b border-canvas">
                     Education Quick Links
                   </h4>
@@ -723,7 +723,7 @@ export default function NewsDetail({ onOpenCounseling }) {
 
             {/* 3. RELATED EDUCATION COVERAGE */}
             {effectiveRelated.length > 0 && (
-              <section className="mt-12 pt-8 border-t border-brand-100" aria-label="Related Stories">
+              <section className="mt-12 pt-8 border-t border-line" aria-label="Related Stories">
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-2">
                     <h3 className="text-lg sm:text-xl font-bold text-ink-900">Related Education Coverage</h3>
@@ -741,7 +741,7 @@ export default function NewsDetail({ onOpenCounseling }) {
                   {effectiveRelated.slice(0, 4).map((rel, i) => (
                     <article
                       key={rel.id || i}
-                      className="group bg-white rounded-xl border border-brand-100 hover:border-brand-300 hover:shadow-sm transition-all duration-200 overflow-hidden flex flex-col justify-between"
+                      className="group bg-white rounded-xl border border-line hover:border-brand-300 hover:shadow-sm transition-all duration-200 overflow-hidden flex flex-col justify-between"
                     >
                       <div>
                         <div className="h-40 w-full relative bg-canvas overflow-hidden">

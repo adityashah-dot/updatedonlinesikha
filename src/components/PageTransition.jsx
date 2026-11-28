@@ -1,26 +1,9 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+// Short fade-in only. There is no exit animation, so navigation never waits for the old page.
 const pageVariants = {
-  initial: {
-    opacity: 0,
-    y: 8
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.28,
-      ease: [0.16, 1, 0.3, 1]
-    }
-  },
-  exit: {
-    opacity: 0,
-    y: -6,
-    transition: {
-      duration: 0.18,
-      ease: "easeIn"
-    }
-  }
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 0.15, ease: "easeOut" } },
 };
 export const PageTransition = ({ children, className = "" }) => {
   useEffect(() => {
@@ -30,7 +13,6 @@ export const PageTransition = ({ children, className = "" }) => {
     variants={pageVariants}
     initial="initial"
     animate="animate"
-    exit="exit"
     className={`w-full flex-grow flex flex-col ${className}`}
   >
       {children}

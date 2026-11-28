@@ -109,7 +109,7 @@ export const UniversityPageAdmission = ({
   }
       <section
     id="admission-highlights"
-    className="page-section card bg-white border border-brand-100 rounded-2xl shadow-sm scroll-mt-[110px]"
+    className="page-section card bg-white border border-line rounded-2xl shadow-sm scroll-mt-[110px]"
     style={{ fontFamily: "Poppins, sans-serif" }}
   >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-4 items-start p-5 sm:p-6 md:p-8">
@@ -126,7 +126,7 @@ export const UniversityPageAdmission = ({
             <p className="m-0 text-sm text-ink-700 leading-relaxed font-normal">{heroCopy}</p>
 
             <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-0 bg-brand-50 border border-brand-100 rounded-[10px] p-2.5 sm:p-3">
-              {stats.map((s) => <div key={s.label} className="min-w-0 px-2 sm:px-2.5 py-1 border-r border-brand-200">
+              {stats.map((s) => <div key={s.label} className="min-w-0 px-2 sm:px-2.5 py-1 border-r border-line">
                   <span className="block mb-1 text-[10px] leading-[1.4] text-ink-500">{s.label}</span>
                   <span className="block text-[12px] leading-[1.4] font-semibold text-[#129b55]">{s.value}</span>
                 </div>)}
@@ -152,7 +152,7 @@ export const UniversityPageAdmission = ({
           </div>
 
           <div className="lg:col-span-5 lg:mr-[50px]">
-            <div className="rounded-2xl overflow-hidden border border-brand-100 shadow-xs bg-canvas">
+            <div className="rounded-2xl overflow-hidden border border-line shadow-xs bg-canvas">
               <img
     src={university.backgroundImage}
     alt={`${university.name} campus and students`}
@@ -184,8 +184,8 @@ export const UniversityPageAdmission = ({
         {
     /* 2. ADMISSION IMPORTANT DATES */
   }
-        <section id="admission-dates" className="page-section card bg-white border border-brand-100 rounded-2xl shadow-xs scroll-mt-[110px]">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 pb-4 border-b border-brand-100">
+        <section id="admission-dates" className="page-section card bg-white border border-line rounded-2xl shadow-xs scroll-mt-[110px]">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 pb-4 border-b border-line">
             <div>
               <h2 className="section-title text-xl sm:text-2xl font-semibold text-ink-900 font-sans">
                 {sectionTitle(university.shortName, "Admission Important Dates")}
@@ -203,7 +203,7 @@ export const UniversityPageAdmission = ({
             certificates during admission. Check the table below for admission dates:
           </p>
 
-          <div className="overflow-hidden overflow-x-auto rounded-xl border border-brand-200 bg-white mt-[18px]">
+          <div className="overflow-hidden overflow-x-auto rounded-xl border border-line bg-white mt-[18px]">
             <table className="w-full text-left border-collapse text-xs sm:text-sm">
               <thead>
                 <tr className="bg-brand-600 text-white">
@@ -212,7 +212,7 @@ export const UniversityPageAdmission = ({
                   <th className="py-3 px-4 font-bold">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-brand-100 bg-white">
+              <tbody className="divide-y divide-line bg-white">
                 {dates.map((item, idx) => <tr key={idx} className="hover:bg-brand-50/60 transition-colors">
                     <td className="py-3.5 px-4 font-bold text-ink-900 flex items-center gap-2">
                       <Calendar className="w-4 h-4 text-brand-600" />
@@ -237,8 +237,8 @@ export const UniversityPageAdmission = ({
         {
     /* 3. ELIGIBILITY & SELECTION CRITERIA */
   }
-        {eligibilityRows.length > 0 && <section id="eligibility-criteria" className="page-section card bg-white border border-brand-100 rounded-2xl shadow-xs scroll-mt-[110px]">
-            <div className="flex flex-col md:flex-row justify-between md:items-center gap-2 border-b border-brand-100 pb-4">
+        {eligibilityRows.length > 0 && <section id="eligibility-criteria" className="page-section card bg-white border border-line rounded-2xl shadow-xs scroll-mt-[110px]">
+            <div className="flex flex-col md:flex-row justify-between md:items-center gap-2 border-b border-line pb-4">
               <div className="text-left">
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
                   {sectionTitle(university.shortName, "Eligibility & Selection Criteria")}
@@ -255,7 +255,7 @@ export const UniversityPageAdmission = ({
 
             <p className="section-description text-xs sm:text-sm text-ink-700 leading-relaxed">{university.admissions.intro}</p>
 
-            <div className="overflow-hidden overflow-x-auto rounded-xl border border-brand-200 bg-white mt-[18px]">
+            <div className="overflow-hidden overflow-x-auto rounded-xl border border-line bg-white mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
                   <tr className="bg-brand-600 text-white">
@@ -265,7 +265,7 @@ export const UniversityPageAdmission = ({
                     <th className="py-3 px-4 font-bold text-right">Tuition Fee</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100 bg-white">
+                <tbody className="divide-y divide-line bg-white">
                   {visibleEligibility.map((item, idx) => <tr key={idx} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-bold text-ink-900">
                         {item.course}
@@ -295,7 +295,7 @@ export const UniversityPageAdmission = ({
         {
     /* 4. ADMISSION PROCESS */
   }
-        {admissionSteps.length > 0 && <section id="admission-process" className="page-section card bg-white border border-brand-100 rounded-2xl shadow-xs scroll-mt-[110px]">
+        {admissionSteps.length > 0 && <section id="admission-process" className="page-section card bg-white border border-line rounded-2xl shadow-xs scroll-mt-[110px]">
             <div className="mb-5 text-left">
               <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
                 {sectionTitle(university.shortName, "Admission Process")}
@@ -311,7 +311,7 @@ export const UniversityPageAdmission = ({
                     <span className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-brand-600 bg-white text-xs font-semibold text-brand-600 md:mb-3">
                       {String(step.stepNumber).padStart(2, "0")}
                     </span>
-                    <div className="min-w-0 flex-1 rounded-lg border border-brand-100 bg-white p-3.5 md:w-full md:flex-none">
+                    <div className="min-w-0 flex-1 rounded-lg border border-line bg-white p-3.5 md:w-full md:flex-none">
                       <h3 className="mb-1.5 text-sm font-semibold text-ink-900 font-sans">{step.title}</h3>
                       <p className="text-xs leading-relaxed text-ink-700 font-normal">{step.description}</p>
                     </div>
@@ -323,8 +323,8 @@ export const UniversityPageAdmission = ({
         {
     /* 5. APPLICATION PROCESS */
   }
-        <section id="application-process" className="page-section card bg-white border border-brand-100 rounded-2xl shadow-xs scroll-mt-[110px]">
-          <div className="flex flex-col md:flex-row justify-between md:items-center gap-2 border-b border-brand-100 pb-4">
+        <section id="application-process" className="page-section card bg-white border border-line rounded-2xl shadow-xs scroll-mt-[110px]">
+          <div className="flex flex-col md:flex-row justify-between md:items-center gap-2 border-b border-line pb-4">
             <div>
               <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
                 {sectionTitle(university.shortName, "Application Process")}
@@ -343,7 +343,7 @@ export const UniversityPageAdmission = ({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
-            {steps.map((step, idx) => <div key={idx} className="p-4 rounded-xl border border-brand-100 bg-canvas space-y-2">
+            {steps.map((step, idx) => <div key={idx} className="p-4 rounded-xl border border-line bg-canvas space-y-2">
                 <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-brand-600 text-white font-bold text-xs">
                   {idx + 1}
                 </span>
@@ -356,7 +356,7 @@ export const UniversityPageAdmission = ({
         {
     /* 6. EXAMINATION PATTERN */
   }
-        {hasExamPattern && <section id="examination-pattern" className="page-section card bg-white border border-brand-100 rounded-2xl shadow-xs scroll-mt-[110px]">
+        {hasExamPattern && <section id="examination-pattern" className="page-section card bg-white border border-line rounded-2xl shadow-xs scroll-mt-[110px]">
             <div>
               <h2 className="section-title text-xl sm:text-2xl font-semibold text-ink-900 font-sans">
                 {sectionTitle(university.shortName, "Examination Pattern")}
@@ -368,7 +368,7 @@ export const UniversityPageAdmission = ({
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-[18px]">
-              {examPattern.map((step, idx) => <div key={idx} className="p-4 rounded-xl bg-canvas border border-brand-100 flex gap-3 items-start">
+              {examPattern.map((step, idx) => <div key={idx} className="p-4 rounded-xl bg-canvas border border-line flex gap-3 items-start">
                   <span className="w-6 h-6 rounded-full bg-brand-600 text-white font-bold text-[10px] flex items-center justify-center shrink-0">
                     {idx + 1}
                   </span>
@@ -407,9 +407,9 @@ export const UniversityPageAdmission = ({
               </div>
             </div>
 
-            <div className="card lg:col-span-8 bg-white border border-brand-100 rounded-2xl shadow-xs p-5 sm:p-6">
+            <div className="card lg:col-span-8 bg-white border border-line rounded-2xl shadow-xs p-5 sm:p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-                {documents.map((doc, idx) => <div key={idx} className="p-3.5 rounded-xl border border-brand-100 bg-canvas space-y-1">
+                {documents.map((doc, idx) => <div key={idx} className="p-3.5 rounded-xl border border-line bg-canvas space-y-1">
                     <div className="flex flex-wrap items-center justify-between gap-1">
                       <span className="font-bold text-ink-900 flex items-center gap-1.5">
                         <CheckCircle className="w-4 h-4 text-brand-600" />
@@ -426,7 +426,7 @@ export const UniversityPageAdmission = ({
         {
     /* 8. SCHOLARSHIP SCHEMES */
   }
-        {hasScholarships && <section id="scholarship-schemes" className="page-section card bg-white border border-brand-100 rounded-2xl shadow-xs scroll-mt-[110px]">
+        {hasScholarships && <section id="scholarship-schemes" className="page-section card bg-white border border-line rounded-2xl shadow-xs scroll-mt-[110px]">
             <div>
               <h2 className="section-title text-xl sm:text-2xl font-semibold text-ink-900 font-sans">
                 {sectionTitle(university.shortName, "Scholarship")}
@@ -437,7 +437,7 @@ export const UniversityPageAdmission = ({
               {feesAndFinancing.intro}
             </p>
 
-            <div className="overflow-hidden overflow-x-auto rounded-xl border border-brand-200 bg-white mt-[18px]">
+            <div className="overflow-hidden overflow-x-auto rounded-xl border border-line bg-white mt-[18px]">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
                   <tr className="bg-brand-600 text-white">
@@ -445,7 +445,7 @@ export const UniversityPageAdmission = ({
                     <th className="py-3 px-4 font-bold">Details</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100 bg-white">
+                <tbody className="divide-y divide-line bg-white">
                   {scholarships.map((s, idx) => <tr key={idx} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-bold text-ink-900 align-top">
                         {s.title}
@@ -561,8 +561,8 @@ export const UniversityPageAdmission = ({
         {
     /* 10. STUDENT REVIEWS */
   }
-        {hasReviews && <section id="student-reviews" className="page-section card bg-white border border-brand-100 rounded-2xl shadow-xs scroll-mt-[110px]">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-brand-100">
+        {hasReviews && <section id="student-reviews" className="page-section card bg-white border border-line rounded-2xl shadow-xs scroll-mt-[110px]">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-line">
               <div>
                 <h2 className="section-title text-xl sm:text-2xl font-semibold text-ink-900 font-sans">
                   {sectionTitle(university.shortName, "Student Reviews")}
@@ -588,7 +588,7 @@ export const UniversityPageAdmission = ({
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-[18px]">
               {reviews.slice(0, 3).map((t, idx) => <div
     key={idx}
-    className="bg-white rounded-xl border border-brand-100 hover:border-brand-600/70 hover:shadow-md transition-all p-4 flex flex-col justify-between gap-3"
+    className="bg-white rounded-xl border border-line hover:border-brand-600/70 hover:shadow-md transition-all p-4 flex flex-col justify-between gap-3"
   >
                   <div>
                     <div className="flex items-center justify-between mb-2">
@@ -601,7 +601,7 @@ export const UniversityPageAdmission = ({
                     </div>
                     <p className="text-xs text-ink-700 italic leading-relaxed">{t.text}</p>
                   </div>
-                  <div className="border-t border-brand-100 pt-2.5 flex items-center justify-between">
+                  <div className="border-t border-line pt-2.5 flex items-center justify-between">
                     <div>
                       <span className="block font-bold text-xs text-ink-900">{t.studentName}</span>
                       <span className="block text-[10px] text-ink-500">
@@ -619,7 +619,7 @@ export const UniversityPageAdmission = ({
   }
         <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[110px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[110px]"
     compact
     posts={university.blogs && university.blogs.posts ? university.blogs.posts : SITE_BLOG_POSTS}
   />
@@ -627,14 +627,14 @@ export const UniversityPageAdmission = ({
         {
     /* 12. COMPARE */
   }
-        <section id="compare" className="page-section card bg-white border border-brand-100 rounded-2xl shadow-xs scroll-mt-[110px]">
+        <section id="compare" className="page-section card bg-white border border-line rounded-2xl shadow-xs scroll-mt-[110px]">
           <div id="compare-colleges" className="scroll-mt-[110px]" />
           <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">Compare</h2>
           <p className="section-description text-sm text-ink-700 leading-relaxed font-normal">
             Choosing an online university can be tough. We&apos;re here to make it simple.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_55px_minmax(0,1fr)] items-stretch gap-3 p-4 border border-brand-100 rounded-2xl bg-white shadow-sm mt-[18px]">
+          <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_55px_minmax(0,1fr)] items-stretch gap-3 p-4 border border-line rounded-2xl bg-white shadow-sm mt-[18px]">
             <div className="min-h-[200px] rounded-xl border border-brand-100 bg-brand-50 p-4 flex flex-col justify-between">
               <div>
                 <span className="inline-flex mb-2 px-2 py-1 rounded-full bg-brand-100 text-brand-600 text-[11px] font-bold">
@@ -642,7 +642,7 @@ export const UniversityPageAdmission = ({
                 </span>
 
                 <div className="flex gap-4 items-center">
-                  <div className="w-[80px] h-[65px] shrink-0 rounded-lg border border-brand-100 bg-white flex items-center justify-center overflow-hidden">
+                  <div className="w-[80px] h-[65px] shrink-0 rounded-lg border border-line bg-white flex items-center justify-center overflow-hidden">
                     <img
     src={university.logoImage}
     alt={`${university.name} logo`}
@@ -683,7 +683,7 @@ export const UniversityPageAdmission = ({
               </span>
             </div>
 
-            <div className="min-h-[200px] rounded-xl border border-dashed border-brand-200 bg-canvas p-4 flex flex-col items-center justify-center text-center">
+            <div className="min-h-[200px] rounded-xl border border-dashed border-line bg-canvas p-4 flex flex-col items-center justify-center text-center">
               <div className="w-10 h-10 rounded-full border border-brand-200 bg-white flex items-center justify-center text-brand-600 text-xl font-light mb-2">
                 +
               </div>

@@ -14,7 +14,7 @@ const UniversityFeeTable = ({
   const duration = isUG ? "Standard Duration: 3 Years / 6 Semesters" : "Standard Duration: 2 Years / 4 Semesters";
   const badgeBg = isUG ? "bg-brand-200 text-brand-900" : "bg-brand-200 text-brand-700";
   const badgeText = isUG ? "UG Degrees" : "PG Degrees";
-  return <div className="bg-white rounded-xl border border-brand-100 overflow-hidden flex flex-col justify-between">
+  return <div className="bg-white rounded-xl border border-line overflow-hidden flex flex-col justify-between">
       <div>
         <div className="px-5 py-3.5 bg-brand-50 border-b border-brand-100 flex items-center justify-between">
           <div>
@@ -34,7 +34,7 @@ const UniversityFeeTable = ({
                 <th className="py-3 px-4 font-bold text-right">Details</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-brand-100">
+            <tbody className="divide-y divide-line">
               {courses.map((c) => <tr key={c.id} className="bg-white hover:bg-brand-50/60 transition-colors">
                   <td className="py-3.5 px-4 font-bold text-ink-900">
                     {c.code}
@@ -57,7 +57,7 @@ const UniversityFeeTable = ({
           </table>
         </div>
       </div>
-      <div className="p-3.5 bg-canvas border-t border-brand-100 flex flex-wrap items-center justify-between gap-2 text-xs text-ink-700 font-normal">
+      <div className="p-3.5 bg-canvas border-t border-line flex flex-wrap items-center justify-between gap-2 text-xs text-ink-700 font-normal">
         <span>{registrationFee}</span>
         <button
     onClick={() => onOpenApply(courses[0]?.id)}

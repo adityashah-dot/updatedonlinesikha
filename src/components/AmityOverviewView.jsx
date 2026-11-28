@@ -128,13 +128,13 @@ export const AmityOverviewView = ({
       {
     /* HERO — LPU college-hero layout */
   }
-      <section className="bg-white text-ink-900 border-b border-brand-100">
+      <section className="bg-white text-ink-900 border-b border-line">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
           <div className="flex flex-row items-start gap-3 sm:gap-5">
             <img
               src={AMITY.logo}
               alt="Amity University Online Logo"
-              className="w-14 h-14 sm:w-20 sm:h-20 object-contain rounded-xl sm:rounded-2xl bg-white border border-brand-100 p-1.5 shadow-sm shrink-0"
+              className="w-14 h-14 sm:w-20 sm:h-20 object-contain rounded-xl sm:rounded-2xl bg-white border border-line p-1.5 shadow-sm shrink-0"
               onError={(e) => {
                 e.target.style.display = "none";
               }}
@@ -178,7 +178,7 @@ export const AmityOverviewView = ({
             </div>
 
             <div className="order-1 lg:order-none lg:col-span-5 lg:mr-[50px]">
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-brand-100 shadow-xs bg-canvas">
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-line shadow-xs bg-canvas">
                 <img
                   src={AMITY.heroImage}
                   alt="Amity University Online Campus"
@@ -282,7 +282,7 @@ export const AmityOverviewView = ({
   }
           <section
     id="highlights"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <div className="flex items-center justify-between flex-wrap gap-3">
 <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans md:whitespace-nowrap">
@@ -308,7 +308,7 @@ export const AmityOverviewView = ({
                     <th className="py-3 px-4 font-bold">Details</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {AMITY.highlightsTable.map((row) => <tr key={row.label} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-bold text-ink-900">{row.label}</td>
                       <td className="py-3.5 px-4 font-normal text-ink-700">{row.value}</td>
@@ -338,7 +338,7 @@ export const AmityOverviewView = ({
   }
           <section
     id="courses-fees"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Courses and Fees")}
@@ -368,7 +368,7 @@ export const AmityOverviewView = ({
                     <th className="py-3 px-4 font-bold">Eligibility</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {AMITY_UNIVERSITY_DATA.courses.map((c) => <tr key={c.id} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">{c.name}</td>
                       <td className="py-3.5 px-4 font-normal text-ink-700">{c.duration}</td>
@@ -421,7 +421,7 @@ export const AmityOverviewView = ({
   }
           <section
     id="eligibility-criteria"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Eligibility and Selection Criteria")}
@@ -437,7 +437,7 @@ export const AmityOverviewView = ({
                     <th className="py-3 px-4 font-bold">Eligibility</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {AMITY.eligibility.rows.map((row) => <tr key={row.course} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">{row.course}</td>
                       <td className="py-3.5 px-4 font-normal text-ink-700">{row.eligibility}</td>
@@ -452,7 +452,7 @@ export const AmityOverviewView = ({
   }
           <section
     id="admission-process"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Admission Process")}
@@ -480,7 +480,7 @@ export const AmityOverviewView = ({
   }
           <section
     id="admission-dates"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <div className="flex items-center justify-between flex-wrap gap-3">
               <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
@@ -502,7 +502,7 @@ export const AmityOverviewView = ({
                     <th className="py-3 px-4 font-bold">Important Date</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {AMITY.admissionDates.table.map((row) => <tr key={row.event} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">
                         <span className="inline-flex items-center gap-1.5">
@@ -525,7 +525,7 @@ export const AmityOverviewView = ({
   }
           <section
     id="rankings"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Rankings and Accreditations")}
@@ -542,7 +542,7 @@ export const AmityOverviewView = ({
                     <th className="py-3 px-4 font-bold">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {AMITY.rankings.table.map((row) => <tr key={row.authority} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">{row.authority}</td>
                       <td className="py-3.5 px-4 font-normal text-ink-700">{row.category}</td>
@@ -575,7 +575,7 @@ export const AmityOverviewView = ({
   }
           <section
     id="examination-pattern"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Examination Pattern")}
@@ -685,7 +685,7 @@ export const AmityOverviewView = ({
 
 <section
     id="placements"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Placements")}
@@ -701,7 +701,7 @@ export const AmityOverviewView = ({
                     <th className="py-3 px-4 font-bold">Details</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {AMITY.placements.table.map((row) => <tr key={row.label} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">{row.label}</td>
                       <td className="py-3.5 px-4 font-normal text-ink-700">{row.value}</td>
@@ -712,7 +712,7 @@ export const AmityOverviewView = ({
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-[18px]">
               {AMITY.placements.stats.map((s) => <div
     key={s.label}
-    className="p-4 bg-canvas border border-brand-100 rounded-xl text-center"
+    className="p-4 bg-canvas border border-line rounded-xl text-center"
   >
                   <span className="block text-lg font-bold text-brand-600 font-sans tabular-nums">
                     {s.value}
@@ -730,7 +730,7 @@ export const AmityOverviewView = ({
     ...AMITY_UNIVERSITY_DATA.placements.recruiters
   ].map((r, idx) => <div
     key={`${r.name}-${idx}`}
-    className="h-20 min-w-[125px] px-3.5 shrink-0 bg-white border border-brand-100 rounded-xl p-3 flex flex-col items-center justify-center gap-1 shadow-xs"
+    className="h-20 min-w-[125px] px-3.5 shrink-0 bg-white border border-line rounded-xl p-3 flex flex-col items-center justify-center gap-1 shadow-xs"
   >
                     {r.logoUrl ? <img
     src={r.logoUrl}
@@ -751,7 +751,7 @@ export const AmityOverviewView = ({
   }
           <section
     id="scholarships"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Scholarships")}
@@ -768,7 +768,7 @@ export const AmityOverviewView = ({
                     <th className="py-3 px-4 font-bold">Eligible For</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {AMITY.scholarships.table.map((row) => <tr key={row.type} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-semibold text-ink-900">{row.type}</td>
                       <td className="py-3.5 px-4 font-normal text-brand-600">{row.benefit}</td>
@@ -790,7 +790,7 @@ export const AmityOverviewView = ({
   }
           <section
     id="campus"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <div>
               <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
@@ -809,7 +809,7 @@ export const AmityOverviewView = ({
                     <th className="py-3 px-4 font-bold">How to Reach</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-brand-100">
+                <tbody className="divide-y divide-line">
                   {AMITY.gallery.travel.map((row) => <tr key={row.mode} className="hover:bg-brand-50/60 transition-colors">
                       <td className="py-3.5 px-4 font-normal text-ink-900 align-top whitespace-nowrap">
                         {row.mode}
@@ -909,7 +909,7 @@ export const AmityOverviewView = ({
   }
           <section
     id="sample-degree"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Sample Degree")}
@@ -940,7 +940,7 @@ export const AmityOverviewView = ({
                   Download Sample Degree Info
                 </button>
               </div>
-              <div className="rounded-xl overflow-hidden border border-brand-100 shadow-xs bg-white w-full sm:w-56 lg:w-64 shrink-0 justify-self-center sm:justify-self-end">
+              <div className="rounded-xl overflow-hidden border border-line shadow-xs bg-white w-full sm:w-56 lg:w-64 shrink-0 justify-self-center sm:justify-self-end">
                 <img
     src={AMITY.sampleDegreeImage}
     alt="Amity Online Sample Degree Certificate"
@@ -956,7 +956,7 @@ export const AmityOverviewView = ({
   }
           <section
     id="reviews-section"
-    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px]"
+    className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px]"
   >
             <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
               {sectionTitle(AMITY.shortName, "Reviews")}
@@ -964,13 +964,13 @@ export const AmityOverviewView = ({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-[18px]">
               {AMITY.testimonials.items.map((t) => <div
     key={t.studentName}
-    className="p-4 rounded-xl border border-brand-100 bg-canvas flex flex-col"
+    className="p-4 rounded-xl border border-line bg-canvas flex flex-col"
   >
                   <Quote className="w-5 h-5 text-brand-600/40 mb-2" />
                   <p className="text-xs text-ink-700 font-normal leading-relaxed flex-1">
                     {stripHtml(t.text)}
                   </p>
-                  <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-brand-100">
+                  <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-line">
                     <div>
                       <p className="text-sm font-semibold text-ink-900">{t.studentName}</p>
                       <p className="text-[11px] text-ink-500 font-normal">{t.profession}</p>
@@ -1006,7 +1006,7 @@ export const AmityOverviewView = ({
           <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
     sectionId="blogs"
-    className="w-full rounded-2xl border border-brand-100 bg-canvas p-4 shadow-sm md:p-6"
+    className="w-full rounded-2xl border border-line bg-canvas p-4 shadow-sm md:p-6"
     compact
     horizontal
     autoScroll
@@ -1017,7 +1017,7 @@ export const AmityOverviewView = ({
           {/* 17. Frequently Asked Questions — Last Section on Detail Page */}
           <section
             id="faqs"
-            className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[130px] p-5 md:p-6"
+            className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[130px] p-5 md:p-6"
           >
             <div className="flex items-center gap-2 mb-4">
               <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans m-0">
@@ -1030,7 +1030,7 @@ export const AmityOverviewView = ({
                 return (
                   <div
                     key={idx}
-                    className="border border-brand-100 rounded-xl overflow-hidden bg-white shadow-2xs"
+                    className="border border-line rounded-xl overflow-hidden bg-white shadow-2xs"
                   >
                     <button
                       type="button"
@@ -1045,7 +1045,7 @@ export const AmityOverviewView = ({
                       </span>
                     </button>
                     {isOpen && (
-                      <p className="px-4 pb-4 text-xs sm:text-sm text-ink-700 font-normal leading-relaxed border-t border-brand-100 pt-3">
+                      <p className="px-4 pb-4 text-xs sm:text-sm text-ink-700 font-normal leading-relaxed border-t border-line pt-3">
                         {faq.answer}
                       </p>
                     )}

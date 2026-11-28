@@ -222,7 +222,7 @@ export const BlogsListSection = ({
         {posts.map((post, i) => (
           <article
             key={`blog-${i}`}
-            className={`${horizontal ? "blog-carousel-card" : ""} group min-w-0 bg-white border border-brand-100 rounded-2xl hover:-translate-y-1 hover:shadow-lg transition-all duration-200 flex flex-col justify-between overflow-hidden`}
+            className={`${horizontal ? "blog-carousel-card" : ""} group min-w-0 bg-white border border-line rounded-2xl hover:-translate-y-1 hover:shadow-lg transition-all duration-200 flex flex-col justify-between overflow-hidden`}
           >
             <Link
               to={post.slug ? `/blog/${post.slug}` : "/blog"}

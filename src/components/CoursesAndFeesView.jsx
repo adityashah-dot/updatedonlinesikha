@@ -180,7 +180,7 @@ export default function CoursesAndFeesView({
   const admissionDates = coursesData.admissionDates || [];
 
   const renderFeeTable = (rows, label, badge, subtitle, key) => (
-    <div key={key} className="bg-white rounded-xl border border-brand-100 overflow-hidden flex flex-col justify-between">
+    <div key={key} className="bg-white rounded-xl border border-line overflow-hidden flex flex-col justify-between">
       <div>
         <div className="px-5 py-3.5 bg-brand-50 border-b border-brand-100 flex items-center justify-between">
           <div>
@@ -208,7 +208,7 @@ export default function CoursesAndFeesView({
                 <th className="py-3 px-4 font-bold">Total Fee</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-brand-100">
+            <tbody className="divide-y divide-line">
               {rows.map((row, idx) => (
                 <tr
                   key={`${row.code || row.name}-${idx}`}
@@ -238,7 +238,7 @@ export default function CoursesAndFeesView({
         </div>
       </div>
 
-      <div className="px-3.5 py-1.5 bg-canvas border-t border-brand-100 flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div className="px-3.5 py-1.5 bg-canvas border-t border-line flex flex-wrap items-center justify-between gap-2 text-xs">
         <span className="text-ink-700 font-normal">
           {coursesData.coursesFees?.feeNote || DEFAULT_FEE_NOTE}
         </span>
@@ -268,7 +268,7 @@ export default function CoursesAndFeesView({
         </div>
       </div>
 
-      <section className="content-block relative bg-gradient-to-b from-brand-50 via-canvas to-canvas overflow-hidden border-b border-brand-100/60">
+      <section className="content-block relative bg-gradient-to-b from-brand-50 via-canvas to-canvas overflow-hidden border-b border-line/60">
         <div className="absolute inset-0 pointer-events-none opacity-40">
           <div className="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-brand-200 blur-3xl" />
           <div className="absolute -left-20 top-40 w-80 h-80 rounded-full bg-brand-200 blur-3xl" />
@@ -325,7 +325,7 @@ export default function CoursesAndFeesView({
                     return (
                       <div
                         key={metric.label}
-                        className="p-4 rounded-xl bg-white border border-brand-100 flex flex-col justify-between"
+                        className="p-4 rounded-xl bg-white border border-line flex flex-col justify-between"
                       >
                         <div className="w-7 h-7 rounded-lg bg-brand-200 text-brand-600 flex items-center justify-center mb-1.5">
                           <Icon className="w-3.5 h-3.5" />
@@ -347,7 +347,7 @@ export default function CoursesAndFeesView({
 
             <div className="lg:col-span-4 space-y-4">
               {/* Campus image slot — shows the API image, else a placeholder */}
-              <div className="rounded-2xl overflow-hidden border border-brand-100 shadow-xs bg-canvas">
+              <div className="rounded-2xl overflow-hidden border border-line shadow-xs bg-canvas">
                 {campusImage && !campusImageFailed ? (
                   <img
                     src={campusImage}
@@ -373,7 +373,7 @@ export default function CoursesAndFeesView({
                 <div className="rounded-xl p-4 sm:p-5 bg-white border border-brand-600/25 shadow-md relative overflow-hidden">
                   <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-200/50 rounded-full blur-2xl pointer-events-none" />
 
-                  <div className="flex items-center justify-between pb-3 border-b border-brand-100">
+                  <div className="flex items-center justify-between pb-3 border-b border-line">
                     <div className="flex items-center gap-2">
                       {admissionInfo.status ? (
                         <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -434,7 +434,7 @@ export default function CoursesAndFeesView({
                     ) : null}
                   </div>
 
-                  <div className="pt-2 border-t border-brand-100 flex flex-col gap-1.5">
+                  <div className="pt-2 border-t border-line flex flex-col gap-1.5">
                     <button
                       type="button"
                       onClick={() => apply?.()}
@@ -471,7 +471,7 @@ export default function CoursesAndFeesView({
           {feeRows.length > 0 && (
             <section
               id="fee-structure"
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[100px]"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[100px]"
             >
               <div className="flex flex-col md:flex-row md:items-end justify-between mb-3 gap-3">
                 <div>
@@ -599,13 +599,13 @@ export default function CoursesAndFeesView({
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     aria-label="Search programmes" placeholder="Search programmes"
-                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-brand-100 bg-canvas text-sm text-ink-900 font-normal placeholder:text-ink-500 focus:outline-none focus:border-brand-600 focus:bg-white transition-all"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-line bg-canvas text-sm text-ink-900 font-normal placeholder:text-ink-500 focus:outline-none focus:border-brand-600 focus:bg-white transition-all"
                   />
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-500" />
                 </div>
 
                 {visibleCourses.length === 0 ? (
-                  <div className="mt-[18px] rounded-xl border border-brand-100 bg-white py-10 text-center">
+                  <div className="mt-[18px] rounded-xl border border-line bg-white py-10 text-center">
                     <Search className="mx-auto mb-2 h-8 w-8 text-ink-500" />
                     <h3 className="text-sm font-semibold text-ink-900">No programs match your search</h3>
                     <p className="mt-[7.5px] text-xs font-normal text-ink-700">
@@ -638,7 +638,7 @@ export default function CoursesAndFeesView({
                       return (
                         <article
                           key={`${course.code || course.name}-${idx}`}
-                          className="relative flex flex-col justify-between rounded-xl border border-brand-100 bg-white p-4 shadow-xs transition-all duration-200 hover:border-brand-600/60 hover:shadow-xs sm:p-5"
+                          className="relative flex flex-col justify-between rounded-xl border border-line bg-white p-4 shadow-xs transition-all duration-200 hover:border-brand-600/60 hover:shadow-xs sm:p-5"
                         >
                           <div>
                             <div className="mb-1.5 flex items-center justify-between gap-2">
@@ -722,7 +722,7 @@ export default function CoursesAndFeesView({
             >
               <div>
                 <div className="overflow-hidden rounded-2xl border border-brand-200 bg-gradient-to-br from-canvas via-brand-50 to-white shadow-sm">
-                <div className="flex flex-col gap-3 border-b border-brand-200 px-5 py-5 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
+                <div className="flex flex-col gap-3 border-b border-line px-5 py-5 sm:px-6 lg:flex-row lg:items-end lg:justify-between">
                   <div>
                     <h2 className="section-title text-xl sm:text-2xl font-bold tracking-tight text-ink-900">
                       {universityName ? `${universityName} Admission Dates ${CURRENT_YEAR}` : `Admission Dates ${CURRENT_YEAR}`}
@@ -750,7 +750,7 @@ export default function CoursesAndFeesView({
                     applications are submitted online. Check the dates below and use the admission portal to begin your application.
                   </p>
 
-                  <div className="mt-5 overflow-hidden rounded-xl border border-brand-200 bg-white">
+                  <div className="mt-5 overflow-hidden rounded-xl border border-line bg-white">
                     <div className="overflow-x-auto">
                       <table className="w-full border-collapse text-left text-xs sm:text-sm">
                         <thead>
@@ -760,7 +760,7 @@ export default function CoursesAndFeesView({
                             <th className="px-4 py-3 font-bold">Tentative Date</th>
                           </tr>
                         </thead>
-                        <tbody className="divide-y divide-brand-100">
+                        <tbody className="divide-y divide-line">
                           {admissionDates.map((item, idx) => (
                             <tr key={`${item.title}-${idx}`} className="transition-colors hover:bg-brand-50/60">
                               <td className="px-4 py-3.5 font-bold text-ink-900">{item.title}</td>
@@ -782,7 +782,7 @@ export default function CoursesAndFeesView({
           {learningRows.length > 0 && (
             <section
               id="learning-platform"
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[100px]"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[100px]"
             >
               <div className="mb-[18px]">
                 <h2 className="section-title text-xl sm:text-2xl font-bold tracking-tight text-ink-900">
@@ -790,14 +790,14 @@ export default function CoursesAndFeesView({
                 </h2>
               </div>
 
-              <ul className="border-t border-brand-100">
+              <ul className="border-t border-line">
                 {learningRows.map((item, idx) => {
                   const Icon = PLATFORM_ICON[item.icon] || Video;
 
                   return (
                     <li
                       key={idx}
-                      className="group grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] gap-x-4 sm:gap-x-6 gap-y-2 py-5 sm:py-6 border-b border-brand-100"
+                      className="group grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] gap-x-4 sm:gap-x-6 gap-y-2 py-5 sm:py-6 border-b border-line"
                     >
                       <div className="flex items-start gap-3">
                         <span className="w-9 h-9 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center shrink-0 transition-colors group-hover:bg-brand-600 group-hover:text-white">
@@ -838,7 +838,7 @@ export default function CoursesAndFeesView({
           {reviews.length > 0 && (
             <section
               id="student-reviews"
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[100px]"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[100px]"
             >
               <div className="w-full">
                 <div className="text-left mb-[18px]">
@@ -858,7 +858,7 @@ export default function CoursesAndFeesView({
                   {reviews.slice(0, 6).map((item, idx) => (
                     <div
                       key={idx}
-                      className="bg-canvas p-4 rounded-xl border border-brand-100 flex flex-col justify-between hover:border-brand-600 transition-all hover:shadow-sm"
+                      className="bg-canvas p-4 rounded-xl border border-line flex flex-col justify-between hover:border-brand-600 transition-all hover:shadow-sm"
                     >
                       <div>
                         <div className="flex items-center text-amber-500 mb-2 gap-0.5">
@@ -870,7 +870,7 @@ export default function CoursesAndFeesView({
                           &quot;{item.review}&quot;
                         </p>
                       </div>
-                      <div className="flex items-center gap-2.5 mt-4 pt-3 border-t border-brand-200">
+                      <div className="flex items-center gap-2.5 mt-4 pt-3 border-t border-line">
                         <div className="w-8 h-8 rounded-full bg-white text-brand-600 flex items-center justify-center font-bold text-xs shadow-sm border border-brand-100 shrink-0">
                           {item.avatar || (item.name || "S").charAt(0)}
                         </div>
@@ -894,7 +894,7 @@ export default function CoursesAndFeesView({
           <BlogsListSection
             onOpenHelpDesk={helpDesk}
             sectionId="blogs"
-            className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs p-5 md:p-6"
+            className="page-section card bg-white rounded-2xl border border-line shadow-xs p-5 md:p-6"
             posts={blogs}
             fetchLivePosts
             horizontal
@@ -943,7 +943,7 @@ export default function CoursesAndFeesView({
           {faqs.length > 0 && (
             <section
               id="faqs"
-              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[100px] p-5 md:p-6"
+              className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[100px] p-5 md:p-6"
             >
               <div className="flex items-center gap-2 mb-4">
                 <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 tracking-tight font-sans m-0">

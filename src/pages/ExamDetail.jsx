@@ -206,7 +206,7 @@ function ExamHero({ exam, onOpenCounseling }) {
         <div className="lg:col-span-5 xl:col-span-4 min-w-0 w-full flex flex-col">
           <div className="rounded-xl border border-brand-300 bg-white overflow-hidden shadow-xs flex flex-col h-full">
             {hasLogo ? (
-              <div className="h-20 sm:h-22 px-4 py-2 bg-gradient-to-b from-canvas to-white border-b border-brand-100 flex items-center justify-center">
+              <div className="h-20 sm:h-22 px-4 py-2 bg-gradient-to-b from-canvas to-white border-b border-line flex items-center justify-center">
                 <img
                   src={exam.logo.url}
                   alt={exam.logo.alt || `${exam.title} logo`}
@@ -216,7 +216,7 @@ function ExamHero({ exam, onOpenCounseling }) {
                 />
               </div>
             ) : (
-              <div className="px-3.5 py-2.5 bg-gradient-to-r from-brand-50 to-canvas border-b border-brand-100 flex items-center justify-between">
+              <div className="px-3.5 py-2.5 bg-gradient-to-r from-brand-50 to-canvas border-b border-line flex items-center justify-between">
                 <span className="text-[11px] font-bold tracking-wide uppercase text-brand-700 flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-brand-700" aria-hidden="true" />
                   <span>Official Exam Summary</span>
@@ -680,7 +680,7 @@ function ExamTOC({ items = [] }) {
   };
 
   return (
-    <nav className="exam-toc bg-white rounded-xl border border-brand-200 p-3.5 sm:p-4 shadow-xs overflow-hidden w-full max-w-full shrink-0" aria-label="Table of contents">
+    <nav className="exam-toc bg-white rounded-xl border border-line p-3.5 sm:p-4 shadow-xs overflow-hidden w-full max-w-full shrink-0" aria-label="Table of contents">
       <h2 className="!text-xs font-bold text-ink-900 uppercase tracking-wider mb-2.5 pb-2 border-b border-brand-50 flex items-center justify-between">
         <span>Table of contents</span>
         <span className="text-[11px] font-semibold text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full border border-brand-200">{list.length} sections</span>
@@ -733,7 +733,7 @@ function SidebarDiscoverCard({ relatedExams, popularExams, currentSlug }) {
   ];
 
   return (
-    <div className="bg-white rounded-xl border border-brand-200 p-3.5 sm:p-4 shadow-xs divide-y divide-brand-50">
+    <div className="bg-white rounded-xl border border-line p-3.5 sm:p-4 shadow-xs divide-y divide-brand-50">
       {/* 1. Related Exams */}
       {filteredRelated.length > 0 && (
         <div className="pb-3.5">
@@ -1064,7 +1064,7 @@ export default function ExamDetail({ onOpenCounseling }) {
             </div>
 
             {effectiveRelated.length > 0 ? (
-              <section className="mt-8 mb-4 pt-6 border-t border-brand-100">
+              <section className="mt-8 mb-4 pt-6 border-t border-line">
                 <div className="flex items-center justify-between gap-2 mb-4">
                   <div className="flex items-center gap-2">
                     <h2 className="text-lg sm:text-xl font-bold text-ink-900">Related Exams</h2>
@@ -1078,7 +1078,7 @@ export default function ExamDetail({ onOpenCounseling }) {
                   {effectiveRelated.slice(0, 3).map((rex, i) => (
                     <article
                       key={i}
-                      className="group bg-white rounded-xl border border-brand-100 hover:border-brand-300 hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden"
+                      className="group bg-white rounded-xl border border-line hover:border-brand-300 hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden"
                     >
                       {rex.logo?.url ? (
                         <div className="h-20 w-full flex items-center justify-center p-3 bg-canvas border-b border-canvas">

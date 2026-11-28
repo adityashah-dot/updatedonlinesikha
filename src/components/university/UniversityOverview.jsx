@@ -3,7 +3,7 @@ export const UniversityOverview = ({ university }) => {
   const overview = university?.overview || {};
   const introParagraphs = Array.isArray(overview.introParagraphs) ? overview.introParagraphs : [];
   const highlightsTable = Array.isArray(overview.highlightsTable) ? overview.highlightsTable : [];
-  return <section id="overview" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
+  return <section id="overview" className="page-section card bg-white rounded-2xl border border-line shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
       {
     /* Editorial Title & Lead */
   }
@@ -51,8 +51,8 @@ export const UniversityOverview = ({ university }) => {
           </span>
         </div>
 
-        <div className="bg-white border border-brand-100 rounded-xl overflow-hidden shadow-xs">
-          <div className="divide-y divide-brand-100">
+        <div className="bg-white border border-line rounded-xl overflow-hidden shadow-xs">
+          <div className="divide-y divide-line">
             {highlightsTable.map((item, idx) => <div
     key={idx}
     className="grid grid-cols-1 sm:grid-cols-3 p-3.5 sm:px-6 hover:bg-brand-50/60 transition-colors gap-1 sm:gap-4 items-baseline"
