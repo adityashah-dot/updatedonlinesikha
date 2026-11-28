@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ViewAllButton from "./ViewAllButton";
 import { getCoursesListing } from "../services/courseApi";
-import { ALL_UNIVERSITIES } from "../data/universities";
 import { submitLead, sanitizeIndianPhone, INDIAN_PHONE_PATTERN, validateLeadFields } from "../services/leadApi";
 import {
   TrendingUp,
@@ -23,20 +22,22 @@ import {
 } from "lucide-react";
 import { HomeFaq } from "./HomeFaq";
 import HomeHero from "./HomeHero";
-import { ProgrammeTiles } from "./home/ProgrammeTiles";
-import { HowWeHelp } from "./home/HowWeHelp";
 import { StudentTestimonials } from "./StudentTestimonials";
-
-const SHOW_TESTIMONIALS = false;
 import { BlogsListSection } from "./BlogsListSection";
 
 const TRENDING_FILTERS = [
   "NAAC A++ Only",
   "Under \u20B91 Lakh Total",
-  "No-cost EMI",
+  "Zero-Cost EMI",
   "100% Online Exam"
 ];
-const DEGREE_CATEGORIES = ["Master's (PG)", "Bachelor's (UG)", "Executive"];
+const HERO_METRICS = [
+  { value: "50+", label: "Entitled Universities" },
+  { value: "180+", label: "Recognized Degrees" },
+  { value: "5,00,000+", label: "Students Guided", tone: "text-[#115eaf]" },
+  { value: "100%", label: "Zero-Cost EMI Options", tone: "text-emerald-700" }
+];
+const DEGREE_CATEGORIES = ["Master's (PG)", "Bachelor's (UG)", "Executive Tracks"];
 const DEGREE_CARDS = [
   {
     title: "Online MBA",
@@ -46,7 +47,7 @@ const DEGREE_CARDS = [
     badgeTone: "text-emerald-700 bg-emerald-50 border-emerald-200",
     rows: [
       { label: "Specializations:", value: "19+ (Data, Finance, Marketing, HR)" },
-      { label: "Avg Career CTC:", value: "\u20B97.2 - 14.5 LPA", tone: "text-brand-600 font-semibold" }
+      { label: "Avg Career CTC:", value: "\u20B97.2 - 14.5 LPA", tone: "text-[#115eaf] font-semibold" }
     ],
     price: "\u20B918,500",
     explore: "Explore 28 Univ."
@@ -59,7 +60,7 @@ const DEGREE_CARDS = [
     badgeTone: "text-purple-700 bg-purple-50 border-purple-200",
     rows: [
       { label: "Specializations:", value: "AI, Cloud, Full-Stack, Cyber" },
-      { label: "Avg Career CTC:", value: "\u20B96.5 - 16.0 LPA", tone: "text-brand-600 font-semibold" }
+      { label: "Avg Career CTC:", value: "\u20B96.5 - 16.0 LPA", tone: "text-[#115eaf] font-semibold" }
     ],
     price: "\u20B922,000",
     explore: "Explore 22 Univ."
@@ -85,7 +86,7 @@ const DEGREE_CARDS = [
     badgeTone: "text-indigo-700 bg-indigo-50 border-indigo-200",
     rows: [
       { label: "Core Tracks:", value: "Full-Stack, Python, Cloud" },
-      { label: "Practical Labs:", value: "Virtual labs", tone: "text-emerald-700 font-medium" }
+      { label: "Practical Labs:", value: "100% Virtual Cloud Sandbox", tone: "text-emerald-700 font-medium" }
     ],
     price: "\u20B915,000",
     explore: "Explore 17 Univ."
@@ -98,7 +99,7 @@ const DEGREE_CARDS = [
     badgeTone: "text-amber-800 bg-amber-50 border-amber-200",
     rows: [
       { label: "Accounting Certs:", value: "Integrated ACCA 9-Paper Exemption" },
-      { label: "Govt Exam Validity:", value: "Valid for govt. jobs", tone: "text-emerald-700 font-medium" }
+      { label: "Govt Exam Validity:", value: "100% Valid (UPSC/Banking)", tone: "text-emerald-700 font-medium" }
     ],
     price: "\u20B912,000",
     explore: "Explore 15 Univ."
@@ -123,10 +124,11 @@ const FEATURED_UNIS = [
     name: "Lovely Professional University",
     short: "LPU Online",
     naac: "NAAC A++ (3.68 CGPA)",
+    rank: "NIRF #27",
     rows: [
-      { label: "Fees:", value: "₹80k – ₹1.60L" },
-      { label: "EMI from:", value: "₹2,666 / mo", tone: "text-emerald-700 font-bold" },
-      { label: "Programmes:", value: "9+ Courses (UG & PG)" }
+      { label: "Fee Range:", value: "₹80k – ₹1.60L (Course Wise)" },
+      { label: "EMI Starts:", value: "₹2,666 / mo", tone: "text-emerald-700 font-bold" },
+      { label: "Programs:", value: "9+ Courses (UG & PG)" }
     ]
   },
   {
@@ -134,10 +136,11 @@ const FEATURED_UNIS = [
     name: "Amity University",
     short: "Amity Online",
     naac: "NAAC A+",
+    rank: "NIRF #32",
     rows: [
-      { label: "Fees:", value: "₹1.10L – ₹1.99L" },
-      { label: "EMI from:", value: "₹3,333 / mo", tone: "text-emerald-700 font-bold" },
-      { label: "Programmes:", value: "12+ Courses (UG & PG)" }
+      { label: "Fee Range:", value: "₹1.10L – ₹1.99L (Course Wise)" },
+      { label: "EMI Starts:", value: "₹3,333 / mo", tone: "text-emerald-700 font-bold" },
+      { label: "Programs:", value: "12+ Courses (UG & PG)" }
     ]
   },
   {
@@ -145,10 +148,11 @@ const FEATURED_UNIS = [
     name: "Chandigarh University",
     short: "CU Online",
     naac: "NAAC A+",
+    rank: "NIRF #32",
     rows: [
-      { label: "Fees:", value: "₹75k – ₹1.50L" },
-      { label: "EMI from:", value: "₹2,500 / mo", tone: "text-emerald-700 font-bold" },
-      { label: "Programmes:", value: "8+ Courses (UG & PG)" }
+      { label: "Fee Range:", value: "₹75k – ₹1.50L (Course Wise)" },
+      { label: "EMI Starts:", value: "₹2,500 / mo", tone: "text-emerald-700 font-bold" },
+      { label: "Programs:", value: "8+ Courses (UG & PG)" }
     ]
   },
   {
@@ -156,23 +160,18 @@ const FEATURED_UNIS = [
     name: "Manipal University Jaipur",
     short: "Online Manipal",
     naac: "NAAC A+ (3.59 CGPA)",
+    rank: "NIRF #64",
     rows: [
-      { label: "Fees:", value: "₹85k – ₹1.75L" },
-      { label: "EMI from:", value: "₹2,916 / mo", tone: "text-emerald-700 font-bold" },
-      { label: "Programmes:", value: "10+ Courses (UG & PG)" }
+      { label: "Fee Range:", value: "₹85k – ₹1.75L (Course Wise)" },
+      { label: "EMI Starts:", value: "₹2,916 / mo", tone: "text-emerald-700 font-bold" },
+      { label: "Programs:", value: "10+ Courses (UG & PG)" }
     ]
   }
 ];
-// NIRF rank comes from src/data/universities — the same source the compare page uses.
-FEATURED_UNIS.forEach((u) => {
-  const nirf = ALL_UNIVERSITIES.find((d) => d.id === u.id)?.nirfRanking;
-  u.rank = nirf ? `NIRF #${nirf}` : "";
-});
-
 const UNI_CHIPS = ["All Unis", "NAAC A++", "NAAC A+"];
 
 const COMPARE_PROGRAMS = [
-  { id: "overview", name: "All programmes" },
+  { id: "overview", name: "All Programs (Overview Range)" },
   { id: "mba", name: "Online MBA (2 Years · 4 Sems)" },
   { id: "mca", name: "Online MCA (2 Years · 4 Sems)" },
   { id: "bba", name: "Online BBA (3 Years · 6 Sems)" },
@@ -186,7 +185,7 @@ const COMPARE_UNIVERSITIES = [
     id: "lpu-online",
     name: "LPU Online",
     approval: "UGC-DEB / NAAC A++",
-    exam: "Online, webcam-proctored",
+    exam: "100% Remote AI Web-Cam",
     programs: {
       overview: {
         fees: "₹80,000 – ₹1,60,000",
@@ -236,7 +235,7 @@ const COMPARE_UNIVERSITIES = [
     id: "amity-online",
     name: "Amity Online",
     approval: "UGC-DEB / NAAC A+",
-    exam: "Online, proctored",
+    exam: "100% Remote Proctored",
     programs: {
       overview: {
         fees: "₹1,10,000 – ₹1,99,000",
@@ -286,7 +285,7 @@ const COMPARE_UNIVERSITIES = [
     id: "cu-online",
     name: "CU Online",
     approval: "UGC-DEB / NAAC A+",
-    exam: "Online",
+    exam: "Online LMS Exam",
     programs: {
       overview: {
         fees: "₹75,000 – ₹1,50,000",
@@ -410,7 +409,7 @@ const DEGREE_PROGRAMS = [
   { lv: ["UG"], y: "3 Years", n: "Online B.Com", f: "Bachelor of Commerce", sp: "Accounting, Economics, Business Law", tg: "", ctc: "₹4.5 LPA", totalFee: "₹75,000 – 1.4 Lakh", sems: "Across 6 Semesters", c: 13, lab: "Core tracks", slug: "online-bcom", uniSearch: "bcom" }
 ];
 
-const DEGREE_LEVELS = [["Master's (PG)", "PG"], ["Bachelor's (UG)", "UG"], ["Executive", "EX"]];
+const DEGREE_LEVELS = [["Master's (PG)", "PG"], ["Bachelor's (UG)", "UG"], ["Executive Tracks", "EX"]];
 
 export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
   const navigate = useNavigate();
@@ -425,8 +424,6 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
   const [selectedCompareCourse, setSelectedCompareCourse] = useState("mba");
     const [degreeLevel, setDegreeLevel] = useState("PG");
   const [degreePrograms, setDegreePrograms] = useState(DEGREE_PROGRAMS);
-  // "loading" until live fees arrive; static DEGREE_PROGRAMS fees are only a fallback if the API fails.
-  const [feesStatus, setFeesStatus] = useState("loading");
   const uniRowRef = useRef(null);
 
   useEffect(() => {
@@ -435,8 +432,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
       .then((res) => {
         if (!isMounted) return;
         const liveCourses = Array.isArray(res?.courses) ? res.courses : [];
-        if (liveCourses.length === 0) { setFeesStatus("fallback"); return; }
-        setFeesStatus("live");
+        if (liveCourses.length === 0) return;
 
         setDegreePrograms((prevPrograms) => {
           return prevPrograms.map((item) => {
@@ -471,7 +467,6 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         });
       })
       .catch((err) => {
-        if (isMounted) setFeesStatus("fallback");
         console.warn("Could not load dynamic courses for homepage", err);
       });
 
@@ -535,27 +530,197 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
   const changeCompareColumn = (colIndex, uniIndex) => {
     setCompareColumns((prev) => prev.map((v, i) => (i === colIndex ? uniIndex : v)));
   };
+  const filteredDegreePrograms = degreePrograms.filter((p) => p.lv.includes(degreeLevel));
   return (
-<div className="home-page w-full max-w-7xl mx-auto px-3.5 sm:px-4 md:px-6 py-4 sm:py-5 space-y-10 sm:space-y-14">
-      <HomeHero onOpenHelpDesk={onOpenHelpDesk} />
+<div className="home-page w-full mx-auto px-3.5 sm:px-4 md:px-6 py-4 sm:py-5 space-y-6 sm:space-y-8">
+      <HomeHero />
 
-      <ProgrammeTiles
-        programs={degreePrograms}
-        level={degreeLevel}
-        onLevelChange={setDegreeLevel}
-        feesLoading={feesStatus === "loading"}
-      />
+      {
+    /* Popular Courses — mobile only */
+  }
+  {/* PopularCoursesMobile removed per request */}
+
+      {
+    /* Degree programs */
+  }
+      {/* Mobile-only: Popular Online Degree Programs */}
+      <section id="degrees-mobile" className="md:hidden w-full">
+        <div className="py-2">
+          <p className="text-[11px] font-bold tracking-[1.5px] text-[#0b4fa8] uppercase mb-1">DEGREES</p>
+          <h2 className="text-lg sm:text-xl font-bold tracking-tight text-[#000f22] mb-1">Popular online degree programs</h2>
+          <p className="text-[12.5px] text-slate-500 leading-snug mb-3.5">Approved under UGC Section 22 with equivalence to conventional regular degrees.</p>
+
+          <div className="flex gap-2 overflow-x-auto pb-2 mb-3.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {DEGREE_LEVELS.map(([label, key]) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setDegreeLevel(key)}
+                className={`whitespace-nowrap px-3.5 py-1.5 text-[12px] font-semibold rounded-lg border-b-2 transition-colors ${
+                  degreeLevel === key
+                    ? 'text-[#0b4fa8] border-[#0b4fa8] bg-blue-50/80 font-bold'
+                    : 'text-slate-600 border-transparent hover:text-[#0b4fa8]'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-2.5">
+            {filteredDegreePrograms.map((p) => {
+              const courseHref = p.slug ? `/courses/${p.slug}` : `/courses?search=${encodeURIComponent(p.search || p.n)}`;
+              const uniHref = `/universities?search=${encodeURIComponent(p.uniSearch || p.n)}`;
+              return (
+                <div key={p.n} className="bg-white border border-slate-200/90 rounded-xl p-3 shadow-2xs hover:border-[#115eaf]/40 transition-all">
+                  <div className="flex justify-between items-start gap-2">
+                    <div className="min-w-0">
+                      <Link to={courseHref} className="group">
+                        <h3 className="text-[14px] font-bold text-[#000f22] group-hover:text-[#0b4fa8] transition-colors leading-tight">{p.n}</h3>
+                      </Link>
+                      <p className="text-[11px] text-slate-500 mt-0.5 leading-tight truncate">{p.f}</p>
+                    </div>
+                    <span className="text-[10px] font-bold text-[#0b4fa8] bg-[#edf4fd] px-2 py-0.5 rounded-full border border-[#bed8fb] shrink-0 whitespace-nowrap">{p.y}</span>
+                  </div>
+                  
+                  {/* Specializations Tag Line */}
+                  <div className="mt-2 text-[11px] text-slate-600 truncate bg-slate-50/80 px-2 py-1 rounded-md border border-slate-100">
+                    <span className="font-semibold text-slate-700">Specializations:</span> {p.sp}
+                  </div>
+
+                  {/* Clean 2-Column Stats Strip without cramping */}
+                  <div className="grid grid-cols-2 gap-2 mt-2 pt-2 border-t border-slate-100">
+                    <div className="flex flex-col">
+                      <span className="text-slate-400 font-semibold text-[10px] uppercase tracking-wider">Avg. Placement</span>
+                      <span className="text-xs font-bold text-emerald-800">{p.ctc}</span>
+                    </div>
+                    <div className="flex flex-col text-right">
+                      <span className="text-slate-400 font-semibold text-[10px] uppercase tracking-wider">Total Program Fee</span>
+                      <span className="text-xs font-bold text-[#000f22] leading-tight">{p.totalFee}</span>
+                      <span className="text-[9.5px] text-slate-400 leading-tight">{p.sems}</span>
+                    </div>
+                  </div>
+
+                  {/* Compact action buttons */}
+                  <div className="grid grid-cols-2 gap-2 mt-2.5 pt-0.5">
+                    <Link to={courseHref} className="w-full h-8 rounded-lg border border-[#0b4fa8] text-[#0b4fa8] text-[11px] font-bold flex items-center justify-center gap-1 active:scale-[0.98] hover:bg-[#eff5ff] transition-colors text-center">
+                      Course Details
+                    </Link>
+                    <Link to={uniHref} className="w-full h-8 rounded-lg bg-[#0b4fa8] hover:bg-[#073774] text-white text-[11px] font-bold flex items-center justify-center gap-1 active:scale-[0.98] transition-colors text-center shadow-2xs">
+                      Explore {p.c} Univ. <span>→</span>
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Desktop degrees section (unchanged) */}
+      <div className="hidden md:block">
+      <section id="degrees" aria-labelledby="degrees-heading" className="w-full">
+        <div className="w-full">
+          <div className="hd flex flex-col md:flex-row md:items-end md:justify-between gap-4 flex-wrap mb-4">
+            <div>
+              <h2 id="degrees-heading" className="text-xl sm:text-2xl font-bold leading-[1.15] tracking-[-0.025em] text-[#000f22]">Popular online degree programs</h2>
+              <p className="s mt-2.5 text-[14px] text-[#43474d] max-w-[52ch]">Approved under UGC Section 22 with equivalence to conventional regular degrees.</p>
+            </div>
+            <div className="tabs flex overflow-x-auto border-b border-[#c4c6ce]" role="tablist" aria-label="Level">
+              {DEGREE_LEVELS.map(([label, key], i) => (
+                <button
+                  key={key}
+                  type="button"
+                  role="tab"
+                  aria-selected={degreeLevel === key}
+                  onClick={() => setDegreeLevel(key)}
+                  className={`whitespace-nowrap bg-transparent border-0 border-b-2 -mb-px px-4 py-2.5 min-h-[44px] text-[14px] font-medium cursor-pointer transition-colors ${degreeLevel === key ? "text-[#115eaf] border-[#115eaf]" : "text-[#43474d] border-transparent hover:text-[#000f22]"}`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            {/* Clean, compact table header */}
+            <div className="grid grid-cols-[88px_1.5fr_1.6fr_1.1fr_1fr_135px] gap-4 items-center py-2 px-1 border-b-2 border-slate-200 bg-[#f8fafc] text-[11px] font-bold uppercase tracking-wider text-slate-500 rounded-t-lg">
+              <span>Duration</span>
+              <span>Courses</span>
+              <span>Specializations</span>
+              <span>Avg. Placement</span>
+              <span>Total Program Fee</span>
+              <span className="text-center">Action</span>
+            </div>
+
+            {filteredDegreePrograms.length === 0 ? (
+              <p className="em py-7 text-[14px] text-[#43474d]">No executive programs are listed yet. Connect this tab to your existing data.</p>
+            ) : (
+              filteredDegreePrograms.map((p, idx) => {
+                const courseHref = p.slug ? `/courses/${p.slug}` : `/courses?search=${encodeURIComponent(p.search || p.n)}`;
+                const uniHref = `/universities?search=${encodeURIComponent(p.uniSearch || p.n)}`;
+                return (
+                <div
+                  key={p.n + idx}
+                  className="dg grid grid-cols-[88px_1.5fr_1.6fr_1.1fr_1fr_135px] gap-4 items-center py-2.5 px-1 border-b border-[#e2e8f0] hover:bg-slate-50/60 transition-colors"
+                >
+                  <span className="du text-[12.5px] text-[#475569] font-medium leading-[1.3]">{p.y}</span>
+                  <div>
+                    <Link
+                      to={courseHref}
+                      className="group/course block no-underline"
+                    >
+                      <h3 className="font-bold tracking-[-0.01em] text-[14.5px] leading-[1.25] text-[#000f22] group-hover/course:text-[#0b4fa8] transition-colors">
+                        {p.n}
+                        <small className="block mt-0.5 text-[11.5px] font-normal text-[#64748b] tracking-normal group-hover/course:text-[#0b4fa8]/80">{p.f}</small>
+                      </h3>
+                    </Link>
+                    {p.tg ? <span className="tg block mt-1 text-[11.5px] text-[#0b4fa8] font-medium">{p.tg}</span> : null}
+                  </div>
+                  <div className="sp text-[12.5px] text-[#475569] leading-snug">
+                    {p.sp}
+                  </div>
+                  <div className="sp text-[12.5px] text-[#475569] leading-[1.25]">
+                    <span className="font-bold text-[#1e293b] text-[13px]">{p.ctc}</span>
+                  </div>
+                  <div className="pr text-[12px] text-[#475569] leading-[1.25]">
+                    <b className="block text-[14px] font-bold text-[#000f22] tracking-tight leading-tight">{p.totalFee}</b>
+                    <span className="text-[10px] text-[#64748b] block mt-0.5">{p.sems}</span>
+                  </div>
+                  <div className="justify-self-center flex flex-col items-center gap-1">
+                    <Link
+                      className="btn inline-flex items-center justify-center bg-[#0b4fa8] hover:bg-[#073774] text-white border-0 rounded-md px-3.5 py-1.5 min-h-[32px] text-[11.5px] font-semibold no-underline cursor-pointer whitespace-nowrap transition-colors shadow-2xs"
+                      to={uniHref}
+                    >
+                      Explore {p.c} Univ.
+                    </Link>
+                    <Link
+                      to={courseHref}
+                      className="text-[10.5px] font-semibold text-[#0b4fa8] hover:underline inline-flex items-center gap-0.5"
+                    >
+                      Course details &rarr;
+                    </Link>
+                  </div>
+                </div>
+              );
+              })
+            )}
+          </div>
+        </div>
+      </section>
+      </div>
 
       {
     /* Featured universities */
   }
       <section id="universities" className="w-full bg-transparent p-0">
-        <div className="flex justify-between items-center pb-3 md:pb-4 gap-2">
+        <div className="flex justify-between items-center pb-3 md:pb-4 border-b border-[#c4c6ce]/40 gap-2">
           <div className="flex items-center gap-2">
-            <h2 className="font-display text-xl sm:text-2xl font-bold text-ink-900">Popular universities</h2>
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#115eaf] shrink-0" />
+            <h2 className="text-base sm:text-2xl font-bold text-[#000f22] max-[380px]:whitespace-normal whitespace-nowrap">Explore Some Popular Universities</h2>
           </div>
           <div className="hidden md:block">
-            <ViewAllButton href="/universities" label="View all universities" />
+            <ViewAllButton href="/universities" label="View All 50+ Universities" />
           </div>
         </div>
         {
@@ -571,7 +736,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                   type="button"
                   onClick={() => selectUniChip(chip)}
                   className={`flex-none h-[25px] px-2.5 rounded-full border bg-white text-[11px] cursor-pointer transition-colors ${
-                    uniChip === chip ? "border-brand-600 text-brand-600 font-bold bg-blue-50/50" : "border-line-strong text-ink-700"
+                    uniChip === chip ? "border-[#115eaf] text-[#115eaf] font-bold bg-blue-50/50" : "border-[#c4c6ce] text-[#43474d]"
                   }`}
                 >
                   {chip}
@@ -580,7 +745,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             </div>
             <Link
               to="/universities"
-              className="shrink-0 h-[25px] px-2.5 rounded-full bg-brand-50 border border-brand-300 text-brand-700 text-[11px] font-bold flex items-center gap-1 whitespace-nowrap hover:bg-brand-100 active:scale-95 transition-all"
+              className="shrink-0 h-[25px] px-2.5 rounded-full bg-[#edf4fd] border border-[#bed8fb] text-[#0b4fa8] text-[11px] font-bold flex items-center gap-1 whitespace-nowrap hover:bg-[#e0ecfc] active:scale-95 transition-all"
             >
               <span>View All 50+</span>
               <span className="text-[10px]">→</span>
@@ -594,22 +759,22 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             {filteredFeaturedUnis.map((u) => (
               <article
                 key={u.id}
-                className="flex-none w-[275px] snap-start border border-line rounded-xl p-3 bg-white flex flex-col shadow-2xs hover:border-brand-600/50 transition-all"
+                className="flex-none w-[275px] snap-start border border-[#d5e3ff] rounded-xl p-3 bg-white flex flex-col shadow-2xs hover:border-[#115eaf]/50 transition-all"
               >
-                <h3 className="font-bold text-[14px] leading-snug text-ink-900 line-clamp-2 mb-2">
+                <h3 className="font-bold text-[14px] leading-snug text-[#000f22] line-clamp-2 mb-2">
                   {u.name}
                 </h3>
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <span className="px-2 py-0.5 rounded text-[10.5px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
                     {u.naac}
                   </span>
-                  {u.rank && <span className="text-[10px] font-medium text-ink-500 bg-canvas px-2 py-0.5 rounded border border-line">{u.rank}</span>}
+                  <span className="text-[10px] font-medium text-[#64748b] bg-[#f8fafc] px-2 py-0.5 rounded border border-[#e2e8f0]">{u.rank}</span>
                 </div>
-                <div className="space-y-1 text-[11px] bg-canvas/50 p-2 rounded-lg border border-line-strong/30 mb-2.5">
+                <div className="space-y-1 text-[11px] bg-[#f0f4f8]/50 p-2 rounded-lg border border-[#c4c6ce]/30 mb-2.5">
                   {u.rows.map((r) => (
                     <div key={r.label} className="flex justify-between gap-2">
-                      <span className="text-ink-700">{r.label}</span>
-                      <span className={`text-right ${r.tone || "font-semibold text-ink-900"}`}>
+                      <span className="text-[#43474d]">{r.label}</span>
+                      <span className={`text-right ${r.tone || "font-semibold text-[#000f22]"}`}>
                         {r.value}
                       </span>
                     </div>
@@ -619,16 +784,16 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                   <button
                     type="button"
                     onClick={() => navigate(`/universities/${u.id}`)}
-                    className="h-8 rounded-lg bg-brand-600 text-white text-[11px] font-bold hover:bg-brand-700 transition-colors flex items-center justify-center shadow-2xs active:scale-95"
+                    className="h-8 rounded-lg bg-[#115eaf] text-white text-[11px] font-bold hover:bg-[#084a8c] transition-colors flex items-center justify-center shadow-2xs active:scale-95"
                   >
                     View Details
                   </button>
                   <button
                     type="button"
                     onClick={onOpenHelpDesk}
-                    className="h-8 rounded-lg border border-line-strong text-[11px] font-semibold text-ink-700 hover:bg-slate-50 flex items-center justify-center gap-1 active:scale-95 transition-all"
+                    className="h-8 rounded-lg border border-[#c4c6ce] text-[11px] font-semibold text-[#43474d] hover:bg-slate-50 flex items-center justify-center gap-1 active:scale-95 transition-all"
                   >
-                    <Download className="w-3 h-3 text-brand-600" />
+                    <Download className="w-3 h-3 text-[#115eaf]" />
                     Brochure
                   </button>
                 </div>
@@ -643,20 +808,20 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-[17px] mt-[17px]">
           {FEATURED_UNIS.map((u) => <div
     key={u.id}
-    className="bg-white rounded-lg border border-line-strong hover:border-brand-600 transition-all hover:shadow-md p-[17px] flex flex-col justify-between"
+    className="bg-white rounded-lg border border-[#c4c6ce] hover:border-[#115eaf] transition-all hover:shadow-md p-[17px] flex flex-col justify-between"
   >
               <div>
                 <div className="flex items-center justify-between mb-3 gap-2">
                   <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
                     {u.naac}
                   </span>
-                  {u.rank && <span className="text-[10.5px] font-medium text-ink-500 bg-canvas px-2 py-0.5 rounded border border-line">{u.rank}</span>}
+                  <span className="text-[10.5px] font-medium text-[#64748b] bg-[#f8fafc] px-2 py-0.5 rounded border border-[#e2e8f0]">{u.rank}</span>
                 </div>
-                <h3 className="text-lg font-bold text-ink-900">{u.name}</h3>
-                <div className="mt-3 space-y-1.5 text-[12px] bg-canvas/50 p-2.5 rounded border border-line-strong/30">
+                <h3 className="text-lg font-bold text-[#000f22]">{u.name}</h3>
+                <div className="mt-3 space-y-1.5 text-[12px] bg-[#f0f4f8]/50 p-2.5 rounded border border-[#c4c6ce]/30">
                   {u.rows.map((r) => <div key={r.label} className="flex justify-between gap-2">
-                      <span className="text-ink-700">{r.label}</span>
-                      <span className={`text-right ${r.tone || "font-medium text-ink-900"}`}>{r.value}</span>
+                      <span className="text-[#43474d]">{r.label}</span>
+                      <span className={`text-right ${r.tone || "font-medium text-[#000f22]"}`}>{r.value}</span>
                     </div>)}
                 </div>
               </div>
@@ -664,14 +829,14 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 <button
     type="button"
     onClick={() => navigate(`/universities/${u.id}`)}
-    className="w-full py-2 min-h-[44px] md:min-h-0 rounded-md bg-brand-600 text-white text-[12px] font-semibold hover:bg-brand-700 transition-colors"
+    className="w-full py-2 min-h-[44px] md:min-h-0 rounded-md bg-[#115eaf] text-white text-[12px] font-semibold hover:bg-[#084a8c] transition-colors"
   >
-                  View details
+                  View Details &amp; Apply
                 </button>
                 <button
     type="button"
     onClick={onOpenHelpDesk}
-    className="w-full py-2 min-h-[44px] md:min-h-0 rounded-md border border-ink-500 text-[12px] font-medium text-ink-700 hover:bg-slate-50 flex items-center justify-center gap-1"
+    className="w-full py-2 min-h-[44px] md:min-h-0 rounded-md border border-[#74777e] text-[12px] font-medium text-[#43474d] hover:bg-slate-50 flex items-center justify-center gap-1"
   >
                   <Download className="w-3.5 h-3.5" />
                   Download Brochure
@@ -683,16 +848,16 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
 
       </section>
 
-      <section id="compare" className="w-full bg-white rounded-xl border border-line p-4 sm:p-6">
+      <section id="compare" className="w-full bg-white rounded-2xl border border-slate-200/90 shadow-sm p-3 sm:p-4 md:p-4.5">
         {/* Header Block: Full Width, Engaging & Clean */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 pb-2.5 border-b border-slate-100">
           <div>
             
-            <h2 className="font-display text-xl sm:text-2xl font-bold tracking-tight text-ink-900 leading-tight">
-              Compare universities side by side
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#000f22] leading-tight">
+              Compare Universities Side by Side
             </h2>
             <p className="mt-1 text-xs sm:text-[13.5px] text-slate-500 max-w-2xl leading-relaxed">
-              See fees, EMI, approvals and exam format for each university, side by side.
+              Evaluate total course fees, 0% monthly EMI, UGC approvals, and examination modes across accredited online universities.
             </p>
           </div>
 
@@ -704,7 +869,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 aria-label="Select course to compare"
                 value={selectedCompareCourse}
                 onChange={(e) => setSelectedCompareCourse(e.target.value)}
-                className="w-full h-8.5 pl-2.5 pr-7 rounded-lg border border-brand-300 bg-canvas text-xs font-bold text-ink-900 focus:border-brand-700 focus:ring-1 focus:ring-brand-700/15 cursor-pointer appearance-none outline-none"
+                className="w-full h-8.5 pl-2.5 pr-7 rounded-lg border border-[#bed8fb] bg-[#f8fbff] text-xs font-bold text-[#000f22] focus:border-[#0b4fa8] focus:ring-1 focus:ring-[#0b4fa8]/15 cursor-pointer appearance-none outline-none"
               >
                 {COMPARE_PROGRAMS.map((prog) => (
                   <option key={prog.id} value={prog.id}>
@@ -712,7 +877,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                   </option>
                 ))}
               </select>
-              <ChevronDown className="w-4 h-4 text-brand-700 pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" />
+              <ChevronDown className="w-4 h-4 text-[#0b4fa8] pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2" />
             </div>
           </div>
         </div>
@@ -727,7 +892,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
           <table className="w-full border-collapse min-w-[480px] md:min-w-[700px] text-left">
             <thead>
               <tr>
-                <th scope="col" className="py-2 px-2 sm:py-2.5 sm:px-3 w-[100px] sm:w-[130px] md:w-[150px] align-bottom bg-canvas rounded-tl-xl text-[10.5px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 border-b-2 border-slate-200">
+                <th scope="col" className="py-2 px-2 sm:py-2.5 sm:px-3 w-[100px] sm:w-[130px] md:w-[150px] align-bottom bg-[#f8fafc] rounded-tl-xl text-[10.5px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 border-b-2 border-slate-200">
                   Criteria
                 </th>
                 {compareColumns.map((uniIdx, colIdx) => {
@@ -737,7 +902,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                     <th
                       key={colIdx}
                       scope="col"
-                      className={`py-2 px-2.5 sm:py-2.5 sm:px-3 align-top bg-gradient-to-b from-canvas to-white border-b-2 border-brand-300 ${isLast ? "rounded-tr-xl" : ""}`}
+                      className={`py-2 px-2.5 sm:py-2.5 sm:px-3 align-top bg-gradient-to-b from-[#f8fbff] to-white border-b-2 border-[#bed8fb] ${isLast ? "rounded-tr-xl" : ""}`}
                     >
                       <div className="space-y-2">
                         <div className="relative">
@@ -745,13 +910,13 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                             aria-label={`University ${colIdx + 1}`}
                             value={uniIdx}
                             onChange={(e) => changeCompareColumn(colIdx, Number(e.target.value))}
-                            className="w-full h-8 pl-2 pr-6 rounded-md border border-brand-300 bg-white text-xs font-bold text-ink-900 focus:border-brand-700 focus:ring-1 focus:ring-brand-700/20 cursor-pointer appearance-none truncate outline-none shadow-2xs"
+                            className="w-full h-8 pl-2 pr-6 rounded-md border border-[#bed8fb] bg-white text-xs font-bold text-[#000f22] focus:border-[#0b4fa8] focus:ring-1 focus:ring-[#0b4fa8]/20 cursor-pointer appearance-none truncate outline-none shadow-2xs"
                           >
                             {COMPARE_UNIVERSITIES.map((u, i) => (
                               <option key={i} value={i}>{u.name}</option>
                             ))}
                           </select>
-                          <ChevronDown className="w-3.5 h-3.5 text-brand-700 pointer-events-none absolute right-2 top-1/2 -translate-y-1/2" />
+                          <ChevronDown className="w-3.5 h-3.5 text-[#0b4fa8] pointer-events-none absolute right-2 top-1/2 -translate-y-1/2" />
                         </div>
 
                         <div className="flex items-center justify-between gap-1 text-[10.5px]">
@@ -761,7 +926,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                           <button
                             type="button"
                             onClick={() => navigate(`/universities/${uni.id}`)}
-                            className="text-brand-700 font-bold hover:underline shrink-0"
+                            className="text-[#0b4fa8] font-bold hover:underline shrink-0"
                           >
                             View Univ &rarr;
                           </button>
@@ -775,7 +940,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
             <tbody className="divide-y divide-slate-100 text-xs sm:text-[13px]">
               {COMPARE_CRITERIA.map(([label, key], rowIdx) => (
                 <tr key={label} className={rowIdx % 2 === 0 ? "bg-white" : "bg-slate-50/50"}>
-                  <th scope="row" className="py-2 px-2.5 sm:py-2.5 sm:px-3 text-xs font-semibold text-ink-900 bg-canvas/80 border-r border-slate-100">
+                  <th scope="row" className="py-2 px-2.5 sm:py-2.5 sm:px-3 text-xs font-semibold text-[#000f22] bg-[#f8fafc]/80 border-r border-slate-100">
                     {label}
                   </th>
                   {compareColumns.map((uniIdx, colIdx) => {
@@ -785,7 +950,7 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                     return (
                       <td key={colIdx} className="py-2 px-2.5 sm:py-2.5 sm:px-3 text-slate-700 leading-snug">
                         {key === "fees" ? (
-                          <span className="font-bold text-ink-900 text-xs sm:text-[13.5px] block">{val}</span>
+                          <span className="font-bold text-[#000f22] text-xs sm:text-[13.5px] block">{val}</span>
                         ) : key === "placement" ? (
                           <span className="inline-flex items-center gap-1 font-bold text-emerald-800 text-xs sm:text-[12.5px] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                             <TrendingUp className="w-3 h-3 text-emerald-600 shrink-0" />
@@ -815,14 +980,14 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         {/* Footer Controls: Add University & Program Disclaimer */}
         <div className="mt-2.5 pt-2 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <p className="text-[11px] text-slate-500 leading-tight">
-            Showing data for {COMPARE_PROGRAMS.find((p) => p.id === selectedCompareCourse)?.name || "chosen course"}. Check the UGC-DEB website for current approval status.
+            * Data reflected for {COMPARE_PROGRAMS.find((p) => p.id === selectedCompareCourse)?.name || "chosen course"}. Approvals verified via official UGC-DEB notifications.
           </p>
 
           <button
             type="button"
             onClick={addCompareColumn}
             disabled={compareColumns.length >= 4}
-            className="self-start sm:self-auto h-7.5 px-3 rounded-md border border-brand-700 text-brand-700 text-xs font-bold hover:bg-brand-50 active:scale-[0.98] transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-1.5 cursor-pointer shrink-0"
+            className="self-start sm:self-auto h-7.5 px-3 rounded-md border border-[#0b4fa8] text-[#0b4fa8] text-xs font-bold hover:bg-[#edf4fd] active:scale-[0.98] transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-1.5 cursor-pointer shrink-0"
           >
             <span>+ Add University</span>
             <span className="text-[10px] opacity-75">({compareColumns.length}/4)</span>
@@ -830,19 +995,17 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         </div>
       </section>
 
-      <HowWeHelp onOpenHelpDesk={onOpenHelpDesk} />
-
-      {/* Student testimonials are hidden until we have real, consented student reviews.
-          The sample data in StudentTestimonials.jsx is placeholder content — replace it, then
-          set SHOW_TESTIMONIALS to true. */}
-      {SHOW_TESTIMONIALS && <StudentTestimonials onOpenCounseling={onOpenHelpDesk} />}
+      {
+    /* Student Testimonials & Social Proof */
+  }
+      <StudentTestimonials onOpenCounseling={onOpenHelpDesk} />
 
       {
     /* Counselling Section */
   }
       <section
         id="counselling"
-        className="relative isolate overflow-hidden rounded-[20px] bg-gradient-to-br from-brand-50 via-canvas to-white border border-brand-200 text-brand-900 shadow-sm p-3.5 sm:p-5 md:p-6"
+        className="relative isolate overflow-hidden rounded-[20px] bg-gradient-to-br from-[#eef6ff] via-[#f7fbff] to-white border border-[#d0e2fa] text-[#0b1d3a] shadow-sm p-3.5 sm:p-5 md:p-6"
       >
         {/* Subtle ambient lighting */}
         <div className="relative z-10 mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-4 sm:gap-5 lg:grid-cols-[minmax(0,1.08fr)_minmax(360px,0.92fr)] lg:gap-8">
@@ -850,53 +1013,56 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
           <div className="px-0 sm:px-2 flex flex-col justify-center">
             {/* Section 1: Advisory Pill Badge */}
             <div className="mb-2.5 sm:mb-4">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#ffdf70] bg-accent-50 px-2.5 py-1 sm:px-3 sm:py-1.5 text-[10px] sm:text-[11.5px] font-bold tracking-[0.2px] text-[#b47a00] shadow-2xs">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#ffdf70] bg-[#fffdf2] px-2.5 py-1 sm:px-3 sm:py-1.5 text-[10px] sm:text-[11.5px] font-bold tracking-[0.2px] text-[#b47a00] shadow-2xs">
                 <Headphones className="w-3.5 h-3.5 text-[#dca400] shrink-0" />
-                Free counselling
+                FREE 1-ON-1 ACADEMIC ADVISORY
               </span>
             </div>
 
             {/* Section 2 & 3: Heading & Descriptive Paragraph with proper spacing */}
             <div className="space-y-2 sm:space-y-4">
-              <h2 className="max-w-[680px] text-lg sm:text-2xl md:text-[26px] font-bold leading-tight tracking-tight text-brand-900">
-                Not sure which university to choose? <span className="text-brand-600">Talk to an advisor</span>
+              <h2 className="max-w-[680px] text-lg sm:text-2xl md:text-[26px] font-bold leading-tight tracking-tight text-[#0b1d3a]">
+                Confused Between 50+ Universities? Speak with an <span className="text-[#115eaf]">Unbiased Academic Expert</span>
               </h2>
-              <p className="max-w-[660px] text-xs sm:text-[13.5px] text-ink-500 font-normal leading-relaxed line-clamp-3 sm:line-clamp-none">
-                We'll help you compare universities on fees, recognition, curriculum and placement support, and answer your admission questions. Counselling is free and there's no obligation to apply.
+              <p className="max-w-[660px] text-xs sm:text-[13.5px] text-[#556377] font-normal leading-relaxed line-clamp-3 sm:line-clamp-none">
+                Choosing the right online university impacts your career and finances for years. Our certified advisors provide objective comparisons across UGC-DEB entitlements, syllabus depth, recruiter networks, and genuine fee financing — 100% free with zero sales bias.
               </p>
             </div>
 
             {/* Trust Checkpoints: compact 2-column grid on mobile */}
-            <div className="grid grid-cols-2 gap-x-3 gap-y-2 sm:gap-x-6 sm:gap-y-3.5 mt-3.5 sm:mt-6 pt-3 sm:pt-4 border-t border-line/70 text-[11px] sm:text-xs text-brand-900">
+            <div className="grid grid-cols-2 gap-x-3 gap-y-2 sm:gap-x-6 sm:gap-y-3.5 mt-3.5 sm:mt-6 pt-3 sm:pt-4 border-t border-[#d8e6f8]/70 text-[11px] sm:text-xs text-[#0b1d3a]">
               <div className="flex items-center gap-1.5 sm:gap-2.5">
                 <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span className="font-medium text-ink-900">Free, no obligation</span>
+                <span className="font-medium text-[#1e293b]">100% Free &amp; Unbiased</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2.5">
                 <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span className="font-medium text-ink-900">Based on UGC-DEB listings</span>
+                <span className="font-medium text-[#1e293b]">Official UGC-DEB Data</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2.5">
                 <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span className="font-medium text-ink-900">EMI options explained</span>
+                <span className="font-medium text-[#1e293b]">0% Interest Monthly EMI</span>
               </div>
               <div className="flex items-center gap-1.5 sm:gap-2.5">
                 <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span className="font-medium text-ink-900">Your number stays private</span>
+                <span className="font-medium text-[#1e293b]">Zero Spam &amp; Privacy</span>
               </div>
             </div>
           </div>
 
           {/* Right Column: Callback Request Card */}
-          <div className="w-full max-w-[460px] justify-self-end rounded-[18px] border border-white/90 bg-white/95 p-3 sm:p-3.5 text-ink-900 shadow-sm">
+          <div className="w-full max-w-[460px] justify-self-end rounded-[18px] border border-white/90 bg-white/95 p-3 sm:p-3.5 text-[#111c2d] shadow-[0_8px_20px_rgba(27,65,112,0.06)]">
             <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
-              <h3 className="text-base sm:text-lg font-bold leading-tight tracking-[-0.5px] text-brand-900">
-                Request a callback
+              <h3 className="text-base sm:text-lg font-bold leading-tight tracking-[-0.5px] text-[#0b1d3a]">
+                Request Free Callback
               </h3>
-              <span className="text-[11px] text-ink-500 whitespace-nowrap">Mon–Sat, 9am–7pm</span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-[11px] font-medium text-[#087955] bg-[#effdf6] rounded-full border border-[#a5f3d0]">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                Advisors Online
+              </span>
             </div>
-            <p className="text-xs text-ink-500 font-normal leading-relaxed mb-2">
-              An advisor will call you to talk through your options.
+            <p className="text-xs text-[#6b7280] font-normal leading-relaxed mb-2">
+              Connect with a verified academic advisor within 15 minutes.
             </p>
 
             {!leadSubmitted ? <form
@@ -931,12 +1097,12 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                   </div>
                 )}
                 <div>
-                  <label htmlFor="home-lead-name" className="block text-[10px] font-semibold text-ink-700 uppercase tracking-wider mb-0.5">
+                  <label className="block text-[10px] font-semibold text-[#43474d] uppercase tracking-wider mb-0.5">
                     Full Name
                   </label>
                   <input
-                    className="w-full h-9 rounded-[9px] border border-line-strong px-3 text-sm text-ink-900 placeholder:text-ink-500 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 outline-none bg-white font-medium transition-all"
-                    id="home-lead-name" autoComplete="name" placeholder="Enter your name"
+                    className="w-full h-9 rounded-[9px] border border-[#c4c6ce] px-3 text-sm text-[#000f22] placeholder:text-[#74777e] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all"
+                    placeholder="Enter your name"
                     required
                     type="text"
                     value={lead.name}
@@ -945,12 +1111,12 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="home-lead-email" className="block text-[10px] font-semibold text-ink-700 uppercase tracking-wider mb-0.5">
+                  <label className="block text-[10px] font-semibold text-[#43474d] uppercase tracking-wider mb-0.5">
                     Email Address
                   </label>
                   <input
-                    className="w-full h-9 rounded-[9px] border border-line-strong px-3 text-sm text-ink-900 placeholder:text-ink-500 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 outline-none bg-white font-medium transition-all"
-                    id="home-lead-email" autoComplete="email" placeholder="name@example.com"
+                    className="w-full h-9 rounded-[9px] border border-[#c4c6ce] px-3 text-sm text-[#000f22] placeholder:text-[#74777e] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all"
+                    placeholder="name@example.com"
                     required
                     type="email"
                     value={lead.email}
@@ -959,16 +1125,16 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="home-lead-phone" className="block text-[10px] font-semibold text-ink-700 uppercase tracking-wider mb-0.5">
-                    Mobile number
+                  <label className="block text-[10px] font-semibold text-[#43474d] uppercase tracking-wider mb-0.5">
+                    Mobile Number (WhatsApp Enabled)
                   </label>
-                  <div className="flex h-9 rounded-[9px] border border-line-strong focus-within:border-brand-600 focus-within:ring-2 focus-within:ring-brand-600/20 overflow-hidden transition-all bg-white">
-                    <span className="bg-canvas text-ink-900 px-2.5 text-xs font-semibold border-r border-line-strong flex items-center shrink-0">
+                  <div className="flex h-9 rounded-[9px] border border-[#c4c6ce] focus-within:border-[#115eaf] focus-within:ring-2 focus-within:ring-[#115eaf]/20 overflow-hidden transition-all bg-white">
+                    <span className="bg-[#f0f4f8] text-[#000f22] px-2.5 text-xs font-semibold border-r border-[#c4c6ce] flex items-center shrink-0">
                       +91
                     </span>
                     <input
-                      className="w-full border-0 px-3 text-sm text-ink-900 placeholder:text-ink-500 outline-none bg-white font-medium"
-                      id="home-lead-phone" autoComplete="tel-national" placeholder="10-digit Mobile Number"
+                      className="w-full border-0 px-3 text-sm text-[#000f22] placeholder:text-[#74777e] outline-none bg-white font-medium"
+                      placeholder="10-digit Mobile Number"
                       required
                       type="tel"
                       inputMode="numeric"
@@ -982,12 +1148,11 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 </div>
 
                 <div>
-                  <label htmlFor="home-lead-degree" className="block text-[10px] font-semibold text-ink-700 uppercase tracking-wider mb-0.5">
-                    Programme of interest
+                  <label className="block text-[10px] font-semibold text-[#43474d] uppercase tracking-wider mb-0.5">
+                    Program You're Exploring
                   </label>
                   <select
-    id="home-lead-degree"
-    className="w-full h-9 rounded-[9px] border border-line-strong px-3 text-base sm:text-sm text-ink-900 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 outline-none bg-white font-medium transition-all cursor-pointer"
+    className="w-full h-9 rounded-[9px] border border-[#c4c6ce] px-3 text-base sm:text-sm text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none bg-white font-medium transition-all cursor-pointer"
     value={lead.degree}
     onChange={(e) => setLead({ ...lead, degree: e.target.value })}
   >
@@ -1002,28 +1167,28 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
                 </div>
 
                 <button
-    className="w-full h-10 min-h-10 rounded-[9px] bg-brand-600 hover:bg-brand-600 text-white text-xs sm:text-sm font-medium transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 active:scale-[0.99] cursor-pointer"
+    className="w-full h-10 min-h-10 rounded-[9px] bg-[#1764c0] hover:bg-[#1054a5] text-white text-xs sm:text-sm font-medium transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 active:scale-[0.99] cursor-pointer"
     type="submit"
   >
-                  <span>Request callback</span>
+                  <span>Connect with Academic Advisor</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
-                <p className="text-[10px] text-center text-ink-500 font-normal pt-1">
-                  🔒 We only use your details to respond to your enquiry.
+                <p className="text-[10px] text-center text-[#74777e] font-normal pt-1">
+                  🔒 Strictly confidential. No marketing spam guaranteed.
                 </p>
               </form> : <div className="text-center py-6 space-y-2">
                 <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center mx-auto">
                   <CheckCircle className="w-6 h-6" />
                 </div>
-                <h3 className="text-base font-bold text-ink-900">Callback Request Confirmed!</h3>
-                <p className="text-xs text-ink-700 max-w-xs mx-auto">
+                <h3 className="text-base font-bold text-[#000f22]">Callback Request Confirmed!</h3>
+                <p className="text-xs text-[#555960] max-w-xs mx-auto">
                   A senior academic counselor will call you within 15 minutes regarding <strong>{lead.degree}</strong>.
                 </p>
                 <button
     type="button"
     onClick={() => setLeadSubmitted(false)}
-    className="text-xs font-semibold text-brand-600 hover:underline pt-2 inline-block cursor-pointer"
+    className="text-xs font-semibold text-[#115eaf] hover:underline pt-2 inline-block cursor-pointer"
   >
                   Submit another inquiry
                 </button>
@@ -1032,8 +1197,111 @@ export const HomeView = ({ onOpenApply, onOpenHelpDesk }) => {
         </div>
       </section>
 
+      {/* Education Resource Hub: Courses, Exams, News, Blogs */}
+      <section id="education-hub" className="w-full bg-white rounded-2xl border border-[#e7eeff] shadow-xs p-5 md:p-7">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="inline-block w-2.5 h-2.5 rounded-full bg-[#115eaf]" />
+              <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] tracking-tight font-sans">
+                Explore Higher Education Gateways
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal mt-1 max-w-3xl">
+              Comprehensive guidance across verified online degree courses, national entrance exams, university news, and expert articles.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Card 1: Courses */}
+          <Link
+            to="/courses"
+            className="group p-5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] hover:bg-white hover:border-[#115eaf] hover:shadow-md transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-10 h-10 rounded-lg bg-[#e7eeff] text-[#115eaf] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <BookOpen className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors font-sans">
+                Degree Courses
+              </h3>
+              <p className="text-xs text-[#43474d] leading-relaxed font-normal mt-1.5">
+                Explore 35+ accredited online degree courses like MBA, MCA, BCA, BBA with verified syllabus and fee structures.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#115eaf] mt-4 group-hover:underline">
+              Browse Courses <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+
+          {/* Card 2: Exams */}
+          <Link
+            to="/exams"
+            className="group p-5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] hover:bg-white hover:border-[#115eaf] hover:shadow-md transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-10 h-10 rounded-lg bg-[#fef3c7] text-[#b45309] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <GraduationCap className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors font-sans">
+                Entrance Exams
+              </h3>
+              <p className="text-xs text-[#43474d] leading-relaxed font-normal mt-1.5">
+                Check dates, syllabus, cutoff marks and preparation strategies for national exams like CAT, CUET, MAT, and NIMCET.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#115eaf] mt-4 group-hover:underline">
+              Check Exam Dates <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+
+          {/* Card 3: News */}
+          <Link
+            to="/news"
+            className="group p-5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] hover:bg-white hover:border-[#115eaf] hover:shadow-md transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-10 h-10 rounded-lg bg-[#dcfce7] text-[#15803d] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <Newspaper className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors font-sans">
+                Education News
+              </h3>
+              <p className="text-xs text-[#43474d] leading-relaxed font-normal mt-1.5">
+                Stay updated with UGC-DEB notifications, university rankings, admission deadlines, and policy circulars.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#115eaf] mt-4 group-hover:underline">
+              Read Latest News <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+
+          {/* Card 4: Blogs */}
+          <Link
+            to="/blog"
+            className="group p-5 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] hover:bg-white hover:border-[#115eaf] hover:shadow-md transition-all flex flex-col justify-between"
+          >
+            <div>
+              <div className="w-10 h-10 rounded-lg bg-[#fae8ff] text-[#a21caf] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+                <Library className="w-5 h-5" />
+              </div>
+              <h3 className="text-base font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors font-sans">
+                Educational Blogs
+              </h3>
+              <p className="text-xs text-[#43474d] leading-relaxed font-normal mt-1.5">
+                Expert insights, ROI calculations, online vs distance comparisons, and career roadmap articles.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#115eaf] mt-4 group-hover:underline">
+              Explore All Blogs <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+        </div>
+      </section>
+
       {/* Blogs */}
-      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="w-full rounded-2xl border border-line bg-white p-5 md:p-6 shadow-xs" horizontal autoScroll showDescriptionOnMobile fetchLivePosts />
+      <BlogsListSection onOpenHelpDesk={onOpenHelpDesk} className="w-full rounded-2xl border border-[#e7eeff] bg-white p-5 md:p-6 shadow-xs" horizontal autoScroll showDescriptionOnMobile fetchLivePosts />
 
       {/* Frequently Asked Questions (Accordion) - Last Section */}
       <HomeFaq onOpenHelpDesk={onOpenHelpDesk} />

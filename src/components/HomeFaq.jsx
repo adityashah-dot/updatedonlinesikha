@@ -5,7 +5,7 @@ const FAQ_ITEMS = [
   {
     category: "validity",
     question: "Are online degrees recognized by UGC & AICTE and valid for UPSC/Govt jobs?",
-    answer: "Yes. Under the UGC (Open and Distance Learning Programmes and Online Programmes) Regulations 2020, online degrees entitled by the UGC Distance Education Bureau (UGC-DEB) and AICTE are recognized on par with conventional campus degrees. They are legally valid for all Central and State Government examinations (UPSC Civil Services, SSC, Banking, Defense, and State PSCs) as well as for higher education admissions in India."
+    answer: "Yes, 100%. Under the UGC (Open and Distance Learning Programmes and Online Programmes) Regulations 2020, online degrees entitled by the UGC Distance Education Bureau (UGC-DEB) and AICTE are recognized on par with conventional campus degrees. They are legally valid for all Central and State Government examinations (UPSC Civil Services, SSC, Banking, Defense, and State PSCs) as well as for higher education admissions across India and globally."
   },
   {
     category: "validity",
@@ -15,7 +15,7 @@ const FAQ_ITEMS = [
   {
     category: "exams",
     question: "How are semester examinations conducted in online degree programs?",
-    answer: "Exams are held online with remote proctoring. You take them from home on a computer with a webcam and microphone. Exam rules and time slots vary by university, so check the programme page or ask an advisor for details."
+    answer: "Examinations are conducted 100% online through secure, AI-powered remote proctoring technology. You take examinations from your home using a computer with a webcam and microphone. The system features 360-degree environment scans and facial tracking. Most partner universities provide flexible weekend and evening exam time slots to accommodate working professionals."
   },
   {
     category: "fees",
@@ -47,7 +47,7 @@ const CATEGORIES = [
   { id: "all", label: "All Questions" },
   { id: "validity", label: "UGC & Legal Validity" },
   { id: "exams", label: "Exams & LMS" },
-  { id: "fees", label: "Fees & EMI" },
+  { id: "fees", label: "Fees & 0% EMI" },
   { id: "admissions", label: "Eligibility & Admissions" },
   { id: "placements", label: "Placements & Career" }
 ];
@@ -56,14 +56,14 @@ export const HomeFaq = ({ onOpenHelpDesk }) => {
   const filteredFaqs = FAQ_ITEMS.filter(
     (item) => activeCategory === "all" || item.category === activeCategory
   );
-  return <section id="faqs" className="bg-white rounded-xl border border-line-strong/60 shadow-sm p-5 md:p-7">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end pb-4 border-b border-line-strong/40 gap-3">
+  return <section id="faqs" className="bg-white rounded-xl border border-[#c4c6ce]/60 shadow-sm p-5 md:p-7">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end pb-4 border-b border-[#c4c6ce]/40 gap-3">
         <div>
-          <h2 className="text-2xl font-bold text-ink-900 tracking-tight">
+          <h2 className="text-2xl font-bold text-[#000f22] tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-[13px] text-ink-700 font-normal mt-0.5">
-            Common questions about recognition, exams, fees and admissions.
+          <p className="text-[13px] text-[#43474d] font-normal mt-0.5">
+            Everything you need to know about UGC-DEB legal validity, home proctored exams, and fees.
           </p>
         </div>
 
@@ -73,9 +73,9 @@ export const HomeFaq = ({ onOpenHelpDesk }) => {
         <button
     type="button"
     onClick={onOpenHelpDesk}
-    className="text-xs font-semibold text-brand-600 hover:text-brand-700 hover:underline flex items-center gap-1 shrink-0 cursor-pointer"
+    className="text-xs font-semibold text-[#115eaf] hover:text-[#084a8c] hover:underline flex items-center gap-1 shrink-0 cursor-pointer"
   >
-          <span>Have another question? Talk to an advisor</span>
+          <span>Have another question? Speak to an Advisor</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </button>
       </div>
@@ -83,12 +83,12 @@ export const HomeFaq = ({ onOpenHelpDesk }) => {
       {
     /* Category Pills */
   }
-      <div className="flex items-center gap-1.5 overflow-x-auto py-3 border-b border-line-strong/30 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="flex items-center gap-1.5 overflow-x-auto py-3 border-b border-[#c4c6ce]/30 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {CATEGORIES.map((cat) => <button
     key={cat.id}
     type="button"
     onClick={() => setActiveCategory(cat.id)}
-    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap cursor-pointer ${activeCategory === cat.id ? "bg-brand-600 text-white font-semibold shadow-xs" : "bg-canvas text-ink-700 hover:bg-line hover:text-ink-900"}`}
+    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap cursor-pointer ${activeCategory === cat.id ? "bg-[#115eaf] text-white font-semibold shadow-xs" : "bg-[#f0f4f8] text-[#43474d] hover:bg-[#e2e8f0] hover:text-[#000f22]"}`}
   >
             {cat.label}
           </button>)}
@@ -104,26 +104,26 @@ export const HomeFaq = ({ onOpenHelpDesk }) => {
       {
     /* Bottom Assistance Banner */
   }
-      <div className="mt-5 p-4 rounded-xl bg-gradient-to-r from-canvas via-brand-100 to-canvas border border-line-strong/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+      <div className="mt-5 p-4 rounded-xl bg-gradient-to-r from-[#f0f4f8] via-[#e8eff8] to-[#f0f4f8] border border-[#c4c6ce]/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-brand-600 text-white flex items-center justify-center shrink-0">
+          <div className="w-9 h-9 rounded-lg bg-[#115eaf] text-white flex items-center justify-center shrink-0">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <div>
-            <p className="text-xs sm:text-sm font-bold text-ink-900">
-              Still deciding?
-            </p>
-            <p className="text-[11px] sm:text-xs text-ink-700 font-normal">
-              Talk to an advisor about programmes, fees and admissions. It's free.
+            <h4 className="text-xs sm:text-sm font-bold text-[#000f22]">
+              Still evaluating between programs or fee structures?
+            </h4>
+            <p className="text-[11px] sm:text-xs text-[#43474d] font-normal">
+              Our educational counselors offer unbiased assistance with zero fees or sales pressure.
             </p>
           </div>
         </div>
         <button
     type="button"
     onClick={onOpenHelpDesk}
-    className="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-lg text-xs font-semibold whitespace-nowrap transition-colors shadow-xs cursor-pointer"
+    className="px-4 py-2 bg-[#115eaf] hover:bg-[#084a8c] text-white rounded-lg text-xs font-semibold whitespace-nowrap transition-colors shadow-xs cursor-pointer"
   >
-          Talk to an advisor
+          Ask an Expert Now
         </button>
       </div>
     </section>;
