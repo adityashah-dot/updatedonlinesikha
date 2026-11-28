@@ -33,7 +33,7 @@ export const CMS_BLOGS = [
     ],
     mainimage: {
       image: {
-        url: "/images/mbaonline.png",
+        url: "/images/mbaonline.webp",
         alt: "Student reviewing online MBA options in India",
       },
     },
@@ -138,8 +138,8 @@ export const CMS_BLOGS = [
             headers: ["University", "NAAC Rating", "Total 2-Yr Fee", "Monthly EMI", "Exam Mode"],
             rows: [
               ["LPU Online", "NAAC A++", "₹1,40,000", "₹4,950 / mo", "100% Home AI Proctored"],
-              ["Amity Online", "NAAC A+", "₹1,65,000", "₹5,833 / mo", "100% Remote Proctored"],
-              ["Chandigarh University", "NAAC A+", "₹1,35,000", "₹4,500 / mo", "Online LMS Exam"],
+              ["Amity Online", "NAAC A+", "₹1,65,000", "₹5,833 / mo", "Online, proctored"],
+              ["Chandigarh University", "NAAC A+", "₹1,35,000", "₹4,500 / mo", "Online"],
               ["Manipal Jaipur", "NAAC A+", "₹1,75,000", "₹5,200 / mo", "Remote Web Proctored"],
             ],
           },
@@ -147,7 +147,7 @@ export const CMS_BLOGS = [
             type: "cta",
             title: "Confused about which program fits your budget?",
             description: "Get a free 1-on-1 counseling call with an unbiased academic advisor. We compare syllabus, fees, and EMI schemes with zero sales bias.",
-            buttonText: "Request Free Callback",
+            buttonText: "Request a callback",
             action: "counseling",
           },
         ],
@@ -222,7 +222,7 @@ export const CMS_BLOGS = [
     ],
     mainimage: {
       image: {
-        url: "/images/onlinedegree.png",
+        url: "/images/onlinedegree.webp",
         alt: "UGC approved online degree certificate evaluation",
       },
     },
@@ -357,7 +357,7 @@ export const CMS_BLOGS = [
     ],
     mainimage: {
       image: {
-        url: "/images/cuet2026.png",
+        url: "/images/cuet2026.webp",
         alt: "Online BCA versus Regular BCA comparison",
       },
     },
@@ -495,7 +495,7 @@ export const CMS_BLOGS = [
     ],
     mainimage: {
       image: {
-        url: "/images/mbaonline.png",
+        url: "/images/mbaonline.webp",
         alt: "Top NAAC accredited universities in India",
       },
     },

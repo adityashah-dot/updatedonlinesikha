@@ -43,7 +43,7 @@ export const DEGREE_DOMAINS = [
       {
         id: "1-year-mba-online",
         name: "1 Year MBA Online",
-        badge: "ROI 100% ⚡",
+        badge: "High ROI",
         specs: "7+ Specializations",
         unis: 8,
         slug: "online-mba",
@@ -323,23 +323,23 @@ export const DEGREE_DOMAINS = [
 function CourseIcon({ icon }) {
   switch (icon) {
     case "globe":
-      return <Globe className="w-5 h-5 text-[#115eaf]" />;
+      return <Globe className="w-5 h-5 text-brand-600" />;
     case "briefcase":
-      return <Briefcase className="w-5 h-5 text-[#115eaf]" />;
+      return <Briefcase className="w-5 h-5 text-brand-600" />;
     case "laptop":
-      return <Laptop className="w-5 h-5 text-[#115eaf]" />;
+      return <Laptop className="w-5 h-5 text-brand-600" />;
     case "chart":
-      return <BarChart3 className="w-5 h-5 text-[#115eaf]" />;
+      return <BarChart3 className="w-5 h-5 text-brand-600" />;
     case "cpu":
-      return <Cpu className="w-5 h-5 text-[#115eaf]" />;
+      return <Cpu className="w-5 h-5 text-brand-600" />;
     case "book":
-      return <BookOpen className="w-5 h-5 text-[#115eaf]" />;
+      return <BookOpen className="w-5 h-5 text-brand-600" />;
     case "currency":
-      return <CreditCard className="w-5 h-5 text-[#115eaf]" />;
+      return <CreditCard className="w-5 h-5 text-brand-600" />;
     case "award":
-      return <Award className="w-5 h-5 text-[#115eaf]" />;
+      return <Award className="w-5 h-5 text-brand-600" />;
     default:
-      return <GraduationCap className="w-5 h-5 text-[#115eaf]" />;
+      return <GraduationCap className="w-5 h-5 text-brand-600" />;
   }
 }
 
@@ -443,7 +443,7 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
           <div className="w-full md:w-[230px] lg:w-[240px] shrink-0 flex items-center justify-between">
             <h2
               id="degree-explorer-title"
-              className="text-xl sm:text-2xl font-bold tracking-tight text-[#115eaf]"
+              className="text-xl sm:text-2xl font-bold tracking-tight text-brand-600"
             >
               Browse by domains
             </h2>
@@ -468,8 +468,8 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
                 type="search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search courses and specializations ..."
-                className="w-full h-10 sm:h-10.5 pl-11 pr-10 rounded-full border border-slate-200 bg-white text-xs sm:text-sm text-[#000f22] placeholder:text-slate-400 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all shadow-2xs"
+                aria-label="Search courses and specializations" placeholder="Search courses and specializations ..."
+                className="w-full h-10 sm:h-10.5 pl-11 pr-10 rounded-full border border-slate-200 bg-white text-xs sm:text-sm text-ink-900 placeholder:text-slate-400 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15 transition-all shadow-2xs"
                 autoFocus
               />
               {searchQuery && (
@@ -511,8 +511,8 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
                     onClick={() => handleDomainSelect(domain.id)}
                     className={`whitespace-nowrap md:whitespace-normal text-left transition-all duration-150 cursor-pointer ${
                       isActive
-                        ? "bg-[#115eaf] text-white rounded-xl p-2.5 sm:px-3 sm:py-2.5 shadow-xs"
-                        : "bg-transparent text-[#334155] hover:text-[#115eaf] p-2 sm:px-3 sm:py-2 rounded-xl"
+                        ? "bg-brand-600 text-white rounded-xl p-2.5 sm:px-3 sm:py-2.5 shadow-xs"
+                        : "bg-transparent text-ink-700 hover:text-brand-600 p-2 sm:px-3 sm:py-2 rounded-xl"
                     }`}
                   >
                     <div className="text-xs sm:text-[13px] font-bold leading-tight">
@@ -522,8 +522,8 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
                       <span
                         className={`inline-block mt-1 text-[10px] font-semibold px-2 py-0.5 rounded-full transition-colors ${
                           isActive
-                            ? "bg-white text-[#115eaf]"
-                            : "bg-[#eef4ff] text-[#115eaf] border border-[#d5e3ff]/60"
+                            ? "bg-white text-brand-600"
+                            : "bg-brand-50 text-brand-600 border border-brand-200/60"
                         }`}
                       >
                         {domain.tag}
@@ -543,7 +543,7 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
             {/* Search result indicator only when searching */}
             {searchResults && (
               <div className="mb-2.5">
-                <h3 className="text-sm font-bold text-[#000f22]">
+                <h3 className="text-sm font-bold text-ink-900">
                   Search Results for &quot;{searchQuery}&quot; ({searchResults.length})
                 </h3>
               </div>
@@ -556,16 +556,16 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
                   <div
                     key={c.id + c.name}
                     onClick={() => handleCourseClick(c.slug)}
-                    className="group bg-white rounded-xl border border-slate-200 hover:border-[#115eaf] hover:shadow-md transition-all duration-200 p-3.5 sm:p-4 flex flex-col justify-between cursor-pointer relative min-h-[175px] sm:min-h-[182px]"
+                    className="group bg-white rounded-xl border border-slate-200 hover:border-brand-600 hover:shadow-md transition-all duration-200 p-3.5 sm:p-4 flex flex-col justify-between cursor-pointer relative min-h-[175px] sm:min-h-[182px]"
                   >
                     <div>
                       {/* Top Row: Icon on left + Mint/Green Badge on right */}
                       <div className="flex items-center justify-between min-h-[28px]">
-                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#f0f6ff] flex items-center justify-center shrink-0 text-[#115eaf]">
+                        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-brand-50 flex items-center justify-center shrink-0 text-brand-600">
                           <CourseIcon icon={c.icon} />
                         </div>
                         {c.badge ? (
-                          <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#e6f7f0] text-[#0f9d6b] border border-[#a7f3d0]/60">
+                          <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-success-50 text-[#0f9d6b] border border-[#a7f3d0]/60">
                             {c.badge}
                           </span>
                         ) : (
@@ -574,29 +574,29 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
                       </div>
 
                       {/* Course Title */}
-                      <h4 className="text-[13.5px] sm:text-[14px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors mt-2 sm:mt-2.5 line-clamp-1 leading-snug">
+                      <h4 className="text-[13.5px] sm:text-[14px] font-bold text-ink-900 group-hover:text-brand-600 transition-colors mt-2 sm:mt-2.5 line-clamp-1 leading-snug">
                         {c.name}
                       </h4>
 
                       {/* Specializations Tag */}
                       <div className="mt-1.5 sm:mt-2">
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10.5px] font-semibold bg-[#eef4ff] text-[#115eaf] border border-[#d5e3ff]/70">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10.5px] font-semibold bg-brand-50 text-brand-600 border border-brand-200/70">
                           {c.specs}
                         </span>
                       </div>
 
                       {/* University comparison row */}
-                      <div className="mt-2 sm:mt-2.5 flex items-start gap-1.5 text-[11px] sm:text-[11.5px] text-[#334155]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#115eaf] shrink-0 mt-1" />
+                      <div className="mt-2 sm:mt-2.5 flex items-start gap-1.5 text-[11px] sm:text-[11.5px] text-ink-700">
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand-600 shrink-0 mt-1" />
                         <div className="leading-tight">
-                          <span>Compare <strong className="font-bold text-[#000f22]">{c.unis}</strong></span>
-                          <span className="block text-[#64748b]">Universities</span>
+                          <span>Compare <strong className="font-bold text-ink-900">{c.unis}</strong></span>
+                          <span className="block text-ink-500">Universities</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Bottom CTA Link: Clean, no divider line */}
-                    <div className="mt-2 sm:mt-2.5 pt-1 flex items-center justify-between text-[11.5px] sm:text-xs font-semibold text-[#115eaf] group-hover:text-[#084a8c]">
+                    <div className="mt-2 sm:mt-2.5 pt-1 flex items-center justify-between text-[11.5px] sm:text-xs font-semibold text-brand-600 group-hover:text-brand-700">
                       <span>View specializations</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -605,15 +605,15 @@ export function DegreeExplorerModal({ isOpen, onClose }) {
               </div>
             ) : (
               <div className="py-16 flex flex-col items-center justify-center text-center gap-2">
-                <Search className="w-8 h-8 text-[#115eaf]/40 mb-1" />
-                <h4 className="text-sm font-bold text-[#000f22]">No matching courses found</h4>
-                <p className="text-xs text-[#555960] max-w-xs">
+                <Search className="w-8 h-8 text-brand-600/40 mb-1" />
+                <h4 className="text-sm font-bold text-ink-900">No matching courses found</h4>
+                <p className="text-xs text-ink-700 max-w-xs">
                   We couldn&apos;t find any programs matching &quot;{searchQuery}&quot;. Try searching for &quot;MBA&quot;, &quot;MCA&quot;, or &quot;Data Science&quot;.
                 </p>
                 <button
                   type="button"
                   onClick={() => setSearchQuery("")}
-                  className="mt-2 px-3.5 py-1.5 text-xs font-semibold text-[#115eaf] bg-[#eef4ff] hover:bg-[#d5e3ff] rounded-lg transition-colors cursor-pointer"
+                  className="mt-2 px-3.5 py-1.5 text-xs font-semibold text-brand-600 bg-brand-50 hover:bg-brand-200 rounded-lg transition-colors cursor-pointer"
                 >
                   Clear search
                 </button>

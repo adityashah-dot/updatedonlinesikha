@@ -4,7 +4,7 @@ export const UniversityFees = ({
   onOpenEmi,
   onOpenApply
 }) => {
-  return <section id="fees" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
+  return <section id="fees" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
       <div>
         <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight leading-snug">
           Fees, Installment Options & Scholarships
@@ -21,7 +21,7 @@ export const UniversityFees = ({
         <div className="space-y-2 max-w-xl">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-blue-800/80 text-blue-200 text-xs font-semibold">
             <Calculator className="w-3.5 h-3.5" />
-            <span>Zero-Cost Monthly Financing</span>
+            <span>No-cost EMI</span>
           </div>
           <h3 className="text-lg sm:text-xl font-bold text-white">
             Pay in Easy Monthly Installments with 0% Interest

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams, useSearchParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Loader2 } from "lucide-react";
+import { ArrowLeft, Loader2, LayoutGrid, BookOpen, UserCheck, Award, FileText } from "lucide-react";
 import OverviewView from "./OverviewView";
 import CollegeAdmission from "./AdmissionView";
 import CollegeScholarships from "./ScholarshipsView";
@@ -11,16 +11,16 @@ import { SEO } from "../components/SEO";
 import { COURSES_DATA } from "../data/coursesData";
 
 const TAB_ICONS = {
-  overview: "grid_view",
-  courses: "menu_book",
-  admission: "how_to_reg",
-  scholarships: "workspace_premium",
-  scholarship: "workspace_premium",
+  overview: LayoutGrid,
+  courses: BookOpen,
+  admission: UserCheck,
+  scholarships: Award,
+  scholarship: Award,
 };
 
 const getTabIcon = (label) => {
   const key = String(label || "").toLowerCase().replace(/\s+/g, "");
-  return TAB_ICONS[key] || "article";
+  return TAB_ICONS[key] || FileText;
 };
 
 const parseSection = (value) => {
@@ -70,8 +70,8 @@ export const CollegeDetailView = ({
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[60vh] bg-[#f9f9ff]">
-        <Loader2 className="w-10 h-10 text-[#115eaf] animate-spin" />
+      <div className="flex items-center justify-center min-h-[60vh] bg-canvas">
+        <Loader2 className="w-10 h-10 text-brand-600 animate-spin" />
       </div>
     );
   }
@@ -86,15 +86,15 @@ export const CollegeDetailView = ({
       title="University Not Found | Online Siksha"
       description="The university page you're looking for could not be found."
     />
-        <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 bg-[#f9f9ff]">
-          <h1 className="font-black text-[#115eaf]/20 mb-2 tracking-tighter">404</h1>
-          <h2 className="font-bold text-[#000f22] mb-3">University Not Found</h2>
-          <p className="text-[#43474d] mb-8 max-w-md text-sm">
+        <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 bg-canvas">
+          <h1 className="font-black text-brand-600/20 mb-2 tracking-tighter">404</h1>
+          <h2 className="font-bold text-ink-900 mb-3">University Not Found</h2>
+          <p className="text-ink-700 mb-8 max-w-md text-sm">
             We couldn't find the online university you're looking for. It may have been removed or the link might be broken.
           </p>
           <Link
       to="/universities"
-      className="px-6 py-3 bg-[#115eaf] text-white text-sm font-semibold rounded-xl hover:bg-[#004689] shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center gap-2"
+      className="px-6 py-3 bg-brand-600 text-white text-sm font-semibold rounded-xl hover:bg-brand-700 shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center gap-2"
     >
             <ArrowLeft className="w-4 h-4" />
             Browse All Universities
@@ -127,15 +127,15 @@ export const CollegeDetailView = ({
         title="Page Not Found | Online Siksha"
         description="The university page you're looking for could not be found."
       />
-          <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 bg-[#f9f9ff]">
-<h1 className="font-black text-[#115eaf]/20 mb-2 tracking-tighter">404</h1>
-          <h2 className="font-bold text-[#000f22] mb-3">Page Not Found</h2>
-            <p className="text-[#43474d] mb-8 max-w-md text-sm">
+          <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 bg-canvas">
+<h1 className="font-black text-brand-600/20 mb-2 tracking-tighter">404</h1>
+          <h2 className="font-bold text-ink-900 mb-3">Page Not Found</h2>
+            <p className="text-ink-700 mb-8 max-w-md text-sm">
               The CMS has not published this page for {college?.name || "this university"}.
             </p>
             <Link
           to={`/universities/${pageData.collegeSlug}`}
-          className="px-6 py-3 bg-[#115eaf] text-white text-sm font-semibold rounded-xl hover:bg-[#004689] shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center gap-2"
+          className="px-6 py-3 bg-brand-600 text-white text-sm font-semibold rounded-xl hover:bg-brand-700 shadow-md hover:shadow-lg active:scale-95 transition-all flex items-center gap-2"
         >
               <ArrowLeft className="w-4 h-4" />
               Back to Overview
@@ -198,7 +198,7 @@ export const CollegeDetailView = ({
     });
   };
 
-  const universityNavigation = <div className="sticky top-[68px] z-30 bg-white border-b border-[#e7eeff] shadow-xs">
+  const universityNavigation = <div className="sticky top-[68px] z-30 bg-white border-b border-brand-100 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex items-center gap-1 sm:gap-1.5 overflow-x-auto py-1.5 ${NAV_TAB_IDS_WITH_HIDDEN_SCROLLBAR}`}>
           {navTabs.map((tab) => {
@@ -212,9 +212,9 @@ export const CollegeDetailView = ({
     return <button
       key={tab.id || tab.slug || tab.label}
       onClick={() => handleTabClick(tab)}
-      className={`shrink-0 flex items-center gap-1 px-2.5 py-1 min-h-[36px] rounded-lg text-[11px] sm:text-xs font-medium transition-colors ${isActive ? "bg-[#115eaf] text-white font-semibold shadow-xs" : "text-[#43474d] hover:bg-[#f0f3ff] hover:text-[#115eaf]"}`}
+      className={`shrink-0 flex items-center gap-1 px-2.5 py-1 min-h-[36px] rounded-lg text-[11px] sm:text-xs font-medium transition-colors ${isActive ? "bg-brand-600 text-white font-semibold shadow-xs" : "text-ink-700 hover:bg-brand-50 hover:text-brand-600"}`}
     >
-                <span className="material-symbols-outlined text-[14px] sm:text-[16px] leading-none">{getTabIcon(tab.label)}</span>
+                {(() => { const TabIcon = getTabIcon(tab.label); return <TabIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />; })()}
                 <span>{tab.label}</span>
               </button>;
   })}

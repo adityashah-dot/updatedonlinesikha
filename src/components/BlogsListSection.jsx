@@ -45,7 +45,7 @@ export const BlogsListSection = ({
   onOpenHelpDesk = () => {},
   title,
   sub,
-  className = "bg-white rounded-2xl border border-[#e7eeff] shadow-xs p-5 md:p-6",
+  className = "bg-white rounded-2xl border border-brand-100 shadow-xs p-5 md:p-6",
   sectionId = "blogs",
   posts: passedPosts,
   compact = false,
@@ -148,7 +148,7 @@ export const BlogsListSection = ({
   }, [autoScroll, horizontal, reduceMotion, isHovered, hasFocus, posts.length]);
 
   const sectionTitle = title ?? "Latest Blogs";
-  const sectionDescription = sub ?? "Want to learn more before you apply? Our blog has a wealth of information to help you.";
+  const sectionDescription = sub ?? "Guides to help you choose a programme and university.";
 
   return (
     <section
@@ -164,7 +164,7 @@ export const BlogsListSection = ({
       {/* Header */}
       <div className="mb-3.5 sm:mb-4">
         <div className="flex items-center justify-between gap-2.5">
-          <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans tracking-tight m-0">
+          <h2 className="text-xl sm:text-2xl font-bold text-ink-900 font-sans tracking-tight m-0">
             {sectionTitle}
           </h2>
 
@@ -176,7 +176,7 @@ export const BlogsListSection = ({
                   onClick={scrollPrev}
                   disabled={!canScrollLeft}
                   aria-label="Previous blogs"
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#d5e3ff] bg-white text-[#000f22] flex items-center justify-center hover:bg-[#115eaf] hover:border-[#115eaf] hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer shadow-2xs"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-brand-200 bg-white text-ink-900 flex items-center justify-center hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer shadow-2xs"
                 >
                   <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
@@ -185,7 +185,7 @@ export const BlogsListSection = ({
                   onClick={scrollNext}
                   disabled={!canScrollRight}
                   aria-label="Next blogs"
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#d5e3ff] bg-white text-[#000f22] flex items-center justify-center hover:bg-[#115eaf] hover:border-[#115eaf] hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer shadow-2xs"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-brand-200 bg-white text-ink-900 flex items-center justify-center hover:bg-brand-600 hover:border-brand-600 hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer shadow-2xs"
                 >
                   <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </button>
@@ -194,7 +194,7 @@ export const BlogsListSection = ({
 
             <Link
               to="/blog"
-              className="shrink-0 inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-[#115eaf] text-[#115eaf] hover:bg-[#115eaf] hover:text-white transition-all shadow-2xs active:scale-95 leading-none"
+              className="shrink-0 inline-flex items-center gap-1 text-[11px] sm:text-xs font-bold px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white transition-all shadow-2xs active:scale-95 leading-none"
             >
               <span>View all</span>
               <ArrowRight size={12} className="shrink-0" />
@@ -202,7 +202,7 @@ export const BlogsListSection = ({
           </div>
         </div>
 
-        <p className={`text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal mt-1 ${showDescriptionOnMobile ? "block" : "hidden sm:block"}`}>
+        <p className={`text-xs sm:text-sm text-ink-700 leading-relaxed font-normal mt-1 ${showDescriptionOnMobile ? "block" : "hidden sm:block"}`}>
           {sectionDescription}
         </p>
       </div>
@@ -222,14 +222,14 @@ export const BlogsListSection = ({
         {posts.map((post, i) => (
           <article
             key={`blog-${i}`}
-            className={`${horizontal ? "blog-carousel-card" : ""} group min-w-0 bg-white border border-[#e7eeff] rounded-2xl hover:-translate-y-1 hover:shadow-lg transition-all duration-200 flex flex-col justify-between overflow-hidden`}
+            className={`${horizontal ? "blog-carousel-card" : ""} group min-w-0 bg-white border border-brand-100 rounded-2xl hover:-translate-y-1 hover:shadow-lg transition-all duration-200 flex flex-col justify-between overflow-hidden`}
           >
             <Link
               to={post.slug ? `/blog/${post.slug}` : "/blog"}
               className="flex flex-col h-full justify-between"
             >
               {/* Card Banner Image */}
-              <div className={`relative ${compact ? "h-32" : "h-[145px]"} w-full overflow-hidden bg-[#f0f3ff]`}>
+              <div className={`relative ${compact ? "h-32" : "h-[145px]"} w-full overflow-hidden bg-brand-50`}>
                 {post.image ? (
                   <img
                     src={post.image}
@@ -238,11 +238,11 @@ export const BlogsListSection = ({
                     loading="lazy"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-[#0b2540] font-semibold text-sm">
+                  <div className="w-full h-full flex items-center justify-center text-brand-900 font-semibold text-sm">
                     Blog
                   </div>
                 )}
-                <span className="absolute left-3 top-3 px-2.5 py-1 rounded-full bg-[#115eaf] text-white text-[10px] font-bold shadow-xs leading-none">
+                <span className="absolute left-3 top-3 px-2.5 py-1 rounded-full bg-brand-600 text-white text-[10px] font-bold shadow-xs leading-none">
                   {post.category || "Online Education"}
                 </span>
               </div>
@@ -250,22 +250,22 @@ export const BlogsListSection = ({
               {/* Card Content */}
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-1.5 text-xs text-[#74777e] mb-1.5">
+                  <div className="flex items-center gap-1.5 text-xs text-ink-500 mb-1.5">
                     <Clock className="w-3.5 h-3.5 shrink-0" />
                     <span>{post.date}</span>
                   </div>
-                  <h3 className="font-bold text-sm sm:text-base text-[#000f22] line-clamp-2 leading-snug font-sans group-hover:text-[#115eaf] transition-colors">
+                  <h3 className="font-bold text-sm sm:text-base text-ink-900 line-clamp-2 leading-snug font-sans group-hover:text-brand-600 transition-colors">
                     {post.title}
                   </h3>
                   {post.excerpt ? (
-                    <p className="mt-1.5 line-clamp-2 text-xs text-[#43474d] leading-relaxed font-normal">
+                    <p className="mt-1.5 line-clamp-2 text-xs text-ink-700 leading-relaxed font-normal">
                       {post.excerpt}
                     </p>
                   ) : null}
                 </div>
 
-                <div className="mt-3 pt-2.5 border-t border-[#f0f3ff] flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#115eaf] group-hover:underline inline-flex items-center gap-1">
+                <div className="mt-3 pt-2.5 border-t border-brand-50 flex items-center justify-between">
+                  <span className="text-xs font-bold text-brand-600 group-hover:underline inline-flex items-center gap-1">
                     Read Article <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
                   </span>
                 </div>

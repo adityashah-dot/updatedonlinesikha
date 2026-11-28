@@ -20,7 +20,7 @@ export const UniversityCourses = ({
       return matchesLevel && matchesSearch;
     });
   }, [university.courses, levelFilter, searchQuery]);
-  return <section id="courses" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
+  return <section id="courses" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
       {
     /* Header and Controls */
   }
@@ -71,7 +71,7 @@ export const UniversityCourses = ({
     type="text"
     value={searchQuery}
     onChange={(e) => setSearchQuery(e.target.value)}
-    placeholder="Search programs or specializations (e.g., MBA, Data Science, MCA, Marketing)..."
+    aria-label="Search programs or specializations (e.g., MBA, Data Science, MCA, Marketing)" placeholder="Search programs or specializations (e.g., MBA, Data Science, MCA, Marketing)..."
     className="w-full pl-10 pr-4 py-2.5 text-sm bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600/30 focus:border-blue-600 text-slate-900 placeholder:text-slate-400"
   />
         {searchQuery && <button

@@ -89,12 +89,12 @@ Important Guidelines for Applicants:
     readTime: "2 min read",
     isBreaking: false,
     upvotes: 96,
-    tags: ["Admissions 2026", "Zero Cost EMI", "Manipal", "Amity", "LPU"],
+    tags: ["Admissions 2026", "No-cost EMI", "Manipal", "Amity", "LPU"],
     deadline: "April 30, 2026",
     keyTakeaways: [
       "Early bird scholarship grants between 15% and 30% available on first semester tuition.",
       "Flexible 0% interest monthly installment plans without collateral.",
-      "Instant document verification & LMS preview access."
+      "Document verification and LMS preview."
     ],
     verifiedOfficial: true
   },
@@ -190,7 +190,7 @@ Key Benefits for Students:
     keyTakeaways: [
       "Rigorous evaluation metrics ensuring student support quality.",
       "Focus on LMS infrastructure and faculty accessibility.",
-      "Verified NAAC A++ institutions lead nationwide adoption."
+      "NAAC A++ universities lead adoption."
     ],
     verifiedOfficial: true
   },
@@ -341,7 +341,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
       case "Placements":
         return "bg-emerald-600/90 text-white";
       case "Admissions":
-        return "bg-[#115eaf]/90 text-white";
+        return "bg-brand-600/90 text-white";
       case "Exams":
         return "bg-amber-600/90 text-white";
       case "Scholarships":
@@ -350,11 +350,11 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
         return "bg-slate-700/90 text-white";
     }
   };
-  return <section className="bg-white rounded-2xl border border-[#c4c6ce]/60 shadow-sm p-4 sm:p-6 space-y-5 font-sans">
+  return <section className="bg-white rounded-2xl border border-line-strong/60 shadow-sm p-4 sm:p-6 space-y-5 font-sans">
       {
     /* Toast Alert Notification */
   }
-      {toastMessage && <div className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 bg-[#000f22] text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 text-xs sm:text-sm font-medium animate-fadeIn border border-white/10">
+      {toastMessage && <div className="fixed bottom-24 right-4 md:bottom-6 md:right-6 z-50 bg-ink-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-2.5 text-xs sm:text-sm font-medium animate-fadeIn border border-white/10">
           <Check className="w-4 h-4 text-emerald-400 shrink-0" />
           <span>{toastMessage}</span>
         </div>}
@@ -365,7 +365,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
       <div className="space-y-3">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3.5">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#eff6ff] border border-[#dbeafe] flex items-center justify-center text-xl shrink-0 shadow-2xs text-[#115eaf]">
+            <div className="w-10 h-10 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center text-xl shrink-0 shadow-2xs text-brand-600">
               <Newspaper className="w-5 h-5" />
             </div>
             <div>
@@ -378,7 +378,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
                   Live Updates
                 </span>
               </div>
-              <p className="text-xs text-[#74777e] mt-0.5">
+              <p className="text-xs text-ink-500 mt-0.5">
                 Verified UGC notices, admission cycles, exam dates, and placement reports
               </p>
             </div>
@@ -389,15 +389,15 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
   }
           <div className="flex items-center gap-2 w-full sm:w-auto">
             <div className="relative flex-1 sm:w-60">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-[#74777e]">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-ink-500">
                 <Search className="w-3.5 h-3.5" />
               </div>
               <input
     type="text"
     value={searchQuery}
     onChange={(e) => setSearchQuery(e.target.value)}
-    placeholder="Search college news..."
-    className="w-full pl-9 pr-8 py-2 text-xs sm:text-sm bg-[#f8faff] border border-[#c4c6ce] hover:border-[#115eaf] focus:border-[#115eaf] focus:bg-white focus:ring-2 focus:ring-[#115eaf]/20 rounded-xl transition-all"
+    aria-label="Search college news" placeholder="Search college news..."
+    className="w-full pl-9 pr-8 py-2 text-xs sm:text-sm bg-canvas border border-line-strong hover:border-brand-600 focus:border-brand-600 focus:bg-white focus:ring-2 focus:ring-brand-600/20 rounded-xl transition-all"
   />
               {searchQuery && <button
     type="button"
@@ -416,7 +416,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
     type="button"
     onClick={() => scrollCarousel("left")}
     disabled={!canScrollLeft}
-    className={`p-2 rounded-xl border transition-all cursor-pointer ${canScrollLeft ? "border-[#c4c6ce] text-[#000f22] hover:bg-[#f0f4f8] hover:border-[#115eaf]" : "border-slate-200 text-slate-300 opacity-50 cursor-not-allowed"}`}
+    className={`p-2 rounded-xl border transition-all cursor-pointer ${canScrollLeft ? "border-line-strong text-ink-900 hover:bg-canvas hover:border-brand-600" : "border-slate-200 text-slate-300 opacity-50 cursor-not-allowed"}`}
     aria-label="Scroll left"
   >
                   <ChevronLeft className="w-4 h-4" />
@@ -425,7 +425,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
     type="button"
     onClick={() => scrollCarousel("right")}
     disabled={!canScrollRight}
-    className={`p-2 rounded-xl border transition-all cursor-pointer ${canScrollRight ? "border-[#c4c6ce] text-[#000f22] hover:bg-[#f0f4f8] hover:border-[#115eaf]" : "border-slate-200 text-slate-300 opacity-50 cursor-not-allowed"}`}
+    className={`p-2 rounded-xl border transition-all cursor-pointer ${canScrollRight ? "border-line-strong text-ink-900 hover:bg-canvas hover:border-brand-600" : "border-slate-200 text-slate-300 opacity-50 cursor-not-allowed"}`}
     aria-label="Scroll right"
   >
                   <ChevronRight className="w-4 h-4" />
@@ -446,10 +446,10 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
                 <Flame className="w-3 h-3 text-red-600" />
                 FLASH
               </span>
-              <p className="font-semibold text-[#000f22] truncate hover:text-[#115eaf] transition-colors">
+              <p className="font-semibold text-ink-900 truncate hover:text-brand-600 transition-colors">
                 {currentTicker.title}
               </p>
-              <span className="hidden md:inline text-[11px] text-[#74777e] shrink-0">
+              <span className="hidden md:inline text-[11px] text-ink-500 shrink-0">
                 • {currentTicker.publishedAt}
               </span>
             </div>
@@ -487,7 +487,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
       key={cat}
       type="button"
       onClick={() => setActiveCategory(cat)}
-      className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all cursor-pointer ${isActive ? "bg-[#1e1338] text-white font-bold shadow-2xs scale-[1.02]" : "bg-white border border-[#d1d5db] text-[#4b5563] hover:border-[#1e1338] hover:text-[#1e1338]"}`}
+      className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap transition-all cursor-pointer ${isActive ? "bg-[#1e1338] text-white font-bold shadow-2xs scale-[1.02]" : "bg-white border border-line-strong text-ink-700 hover:border-[#1e1338] hover:text-[#1e1338]"}`}
     >
               {cat}
             </button>;
@@ -525,7 +525,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
     return <div
       key={article.id}
       onClick={() => setSelectedArticle(article)}
-      className="group flex-none w-[85vw] max-w-[285px] sm:max-w-none sm:w-[330px] md:w-[350px] snap-start bg-white rounded-2xl border border-[#c4c6ce]/75 hover:border-[#115eaf]/70 flex flex-col justify-between shadow-xs hover:shadow-xl hover:shadow-[#115eaf]/10 transform hover:-translate-y-1.5 transition-all duration-300 ease-out cursor-pointer overflow-hidden"
+      className="group flex-none w-[85vw] max-w-[285px] sm:max-w-none sm:w-[330px] md:w-[350px] snap-start bg-white rounded-2xl border border-line-strong/75 hover:border-brand-600/70 flex flex-col justify-between shadow-xs hover:shadow-xl hover:shadow-sm/10 transform hover:-translate-y-1.5 transition-all duration-300 ease-out cursor-pointer overflow-hidden"
     >
                       {
       /* Card Image Banner */
@@ -588,14 +588,14 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
                           {
       /* Headline */
     }
-<h3 className="font-bold text-sm text-[#000f22] group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2 mb-2">
+<h3 className="font-bold text-sm text-ink-900 group-hover:text-brand-600 leading-snug transition-colors line-clamp-2 mb-2">
                             {article.title}
                           </h3>
 
                           {
       /* Summary */
     }
-                          <p className="text-xs text-[#43474d] line-clamp-2 leading-relaxed mb-3 font-normal">
+                          <p className="text-xs text-ink-700 line-clamp-2 leading-relaxed mb-3 font-normal">
                             {article.summary}
                           </p>
 
@@ -605,7 +605,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
                           <div className="flex flex-wrap gap-1.5 mb-2">
                             {article.tags.slice(0, 2).map((tag) => <span
       key={tag}
-      className="text-[10px] text-slate-600 bg-[#f0f4f8] px-2 py-0.5 rounded-md font-medium"
+      className="text-[10px] text-slate-600 bg-canvas px-2 py-0.5 rounded-md font-medium"
     >
                                 #{tag}
                               </span>)}
@@ -616,8 +616,8 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
       /* Footer Actions */
     }
                         <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 text-xs">
-                          <span className="text-[11px] text-[#74777e] font-medium truncate">
-                            By <strong className="text-[#000f22] font-semibold">{article.source}</strong>
+                          <span className="text-[11px] text-ink-500 font-medium truncate">
+                            By <strong className="text-ink-900 font-semibold">{article.source}</strong>
                           </span>
 
                           <div className="flex items-center gap-1 shrink-0">
@@ -625,9 +625,9 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
       type="button"
       onClick={(e) => toggleUpvote(article.id, e)}
       title="Mark as helpful"
-      className={`px-2 py-1 rounded-lg border flex items-center gap-1 text-[11px] transition-all cursor-pointer ${isUpvoted ? "bg-blue-50 border-blue-300 text-[#115eaf] font-semibold" : "border-slate-200 hover:border-slate-300 text-slate-600 bg-white"}`}
+      className={`px-2 py-1 rounded-lg border flex items-center gap-1 text-[11px] transition-all cursor-pointer ${isUpvoted ? "bg-blue-50 border-blue-300 text-brand-600 font-semibold" : "border-slate-200 hover:border-slate-300 text-slate-600 bg-white"}`}
     >
-                              <ThumbsUp className={`w-3 h-3 ${isUpvoted ? "fill-[#115eaf]" : ""}`} />
+                              <ThumbsUp className={`w-3 h-3 ${isUpvoted ? "fill-brand-600" : ""}`} />
                               <span>{totalUpvotes}</span>
                             </button>
 
@@ -687,7 +687,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
       return <div
         key={article.id}
         onClick={() => setSelectedArticle(article)}
-        className="group bg-white rounded-2xl border border-[#c4c6ce]/75 hover:border-[#115eaf]/70 flex flex-col justify-between shadow-xs hover:shadow-xl hover:shadow-[#115eaf]/10 transform hover:-translate-y-1.5 transition-all duration-300 ease-out cursor-pointer overflow-hidden"
+        className="group bg-white rounded-2xl border border-line-strong/75 hover:border-brand-600/70 flex flex-col justify-between shadow-xs hover:shadow-xl hover:shadow-sm/10 transform hover:-translate-y-1.5 transition-all duration-300 ease-out cursor-pointer overflow-hidden"
       >
                     {
         /* Card Image Banner */
@@ -738,16 +738,16 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
       }
                     <div className="p-4 flex-1 flex flex-col justify-between">
                       <div>
-                        <h3 className="font-bold text-sm text-[#000f22] group-hover:text-[#115eaf] leading-snug transition-colors line-clamp-2 mb-2">
+                        <h3 className="font-bold text-sm text-ink-900 group-hover:text-brand-600 leading-snug transition-colors line-clamp-2 mb-2">
                           {article.title}
                         </h3>
-                        <p className="text-xs text-[#43474d] line-clamp-2 leading-relaxed mb-3 font-normal">
+                        <p className="text-xs text-ink-700 line-clamp-2 leading-relaxed mb-3 font-normal">
                           {article.summary}
                         </p>
                         <div className="flex flex-wrap gap-1.5 mb-2">
                           {article.tags.slice(0, 3).map((tag) => <span
         key={tag}
-        className="text-[10px] text-slate-600 bg-[#f0f4f8] px-2 py-0.5 rounded-md font-medium"
+        className="text-[10px] text-slate-600 bg-canvas px-2 py-0.5 rounded-md font-medium"
       >
                               #{tag}
                             </span>)}
@@ -755,8 +755,8 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
                       </div>
 
                       <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 text-xs">
-                        <span className="text-[11px] text-[#74777e] font-medium truncate">
-                          By <strong className="text-[#000f22] font-semibold">{article.source}</strong>
+                        <span className="text-[11px] text-ink-500 font-medium truncate">
+                          By <strong className="text-ink-900 font-semibold">{article.source}</strong>
                         </span>
 
                         <div className="flex items-center gap-1 shrink-0">
@@ -764,9 +764,9 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
         type="button"
         onClick={(e) => toggleUpvote(article.id, e)}
         title="Mark as helpful"
-        className={`px-2 py-1 rounded-lg border flex items-center gap-1 text-[11px] transition-all cursor-pointer ${isUpvoted ? "bg-blue-50 border-blue-300 text-[#115eaf] font-semibold" : "border-slate-200 hover:border-slate-300 text-slate-600 bg-white"}`}
+        className={`px-2 py-1 rounded-lg border flex items-center gap-1 text-[11px] transition-all cursor-pointer ${isUpvoted ? "bg-blue-50 border-blue-300 text-brand-600 font-semibold" : "border-slate-200 hover:border-slate-300 text-slate-600 bg-white"}`}
       >
-                            <ThumbsUp className={`w-3 h-3 ${isUpvoted ? "fill-[#115eaf]" : ""}`} />
+                            <ThumbsUp className={`w-3 h-3 ${isUpvoted ? "fill-brand-600" : ""}`} />
                             <span>{totalUpvotes}</span>
                           </button>
 
@@ -810,12 +810,12 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
             </div>}
         </div> : (
     /* Empty State */
-    <div className="bg-[#f8faff] rounded-2xl border border-dashed border-[#c4c6ce] p-8 text-center space-y-3">
-          <Newspaper className="w-10 h-10 mx-auto text-[#115eaf]" />
-          <h3 className="text-base font-bold text-[#000f22]">
+    <div className="bg-canvas rounded-2xl border border-dashed border-line-strong p-8 text-center space-y-3">
+          <Newspaper className="w-10 h-10 mx-auto text-brand-600" />
+          <h3 className="text-base font-bold text-ink-900">
             No news articles found for &quot;{searchQuery || activeCategory}&quot;
           </h3>
-          <p className="text-xs sm:text-sm text-[#74777e] max-w-sm mx-auto">
+          <p className="text-xs sm:text-sm text-ink-500 max-w-sm mx-auto">
             Try adjusting your search query or reset the filter to explore all verified university updates.
           </p>
           <button
@@ -824,7 +824,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
         setActiveCategory("All News");
         setSearchQuery("");
       }}
-      className="px-4 py-2 bg-[#115eaf] text-white rounded-xl text-xs sm:text-sm font-semibold hover:bg-[#0c4a8a] transition-all cursor-pointer"
+      className="px-4 py-2 bg-brand-600 text-white rounded-xl text-xs sm:text-sm font-semibold hover:bg-brand-700 transition-all cursor-pointer"
     >
             Reset Filters
           </button>
@@ -835,8 +835,8 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
     /* Engaging 'Explore More' Footer Row */
   }
       <div className="pt-2 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <div className="flex items-center gap-2 text-xs text-[#74777e]">
-          <Sparkles className="w-4 h-4 text-[#115eaf]" />
+        <div className="flex items-center gap-2 text-xs text-ink-500">
+          <Sparkles className="w-4 h-4 text-brand-600" />
           <span>
             Showing <strong>{filteredArticles.length}</strong> verified college news briefs
           </span>
@@ -849,7 +849,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
           <button
     type="button"
     onClick={() => setIsExpandedView(!isExpandedView)}
-    className="w-full sm:w-auto px-5 py-2.5 rounded-xl border-2 border-[#115eaf] text-[#115eaf] hover:bg-[#115eaf] hover:text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md active:scale-98 cursor-pointer"
+    className="w-full sm:w-auto px-5 py-2.5 rounded-xl border-2 border-brand-600 text-brand-600 hover:bg-brand-600 hover:text-white text-xs sm:text-sm font-bold flex items-center justify-center gap-2 transition-all shadow-xs hover:shadow-md active:scale-98 cursor-pointer"
   >
             <span>{isExpandedView ? "Show in Carousel View" : "Explore More College News"}</span>
             {isExpandedView ? <Layers className="w-4 h-4" /> : <ArrowRight className="w-4 h-4" />}
@@ -858,7 +858,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
           <button
     type="button"
     onClick={onOpenAdvisor}
-    className="w-full sm:w-auto px-4 py-2.5 bg-[#1e1338] hover:bg-[#000f22] text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 shadow-xs transition-all cursor-pointer"
+    className="w-full sm:w-auto px-4 py-2.5 bg-[#1e1338] hover:bg-ink-900 text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-1.5 shadow-xs transition-all cursor-pointer"
   >
             <span>Get Advisory</span>
             <ExternalLink className="w-3.5 h-3.5" />
@@ -870,7 +870,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
     /* Interactive Modal Reader for Selected Article */
   }
       {selectedArticle && <div
-    className="fixed inset-0 z-50 bg-[#000f22]/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5 animate-fadeIn"
+    className="fixed inset-0 z-50 bg-ink-900/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-5 animate-fadeIn"
     onClick={() => setSelectedArticle(null)}
   >
           <div
@@ -920,14 +920,14 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
             {
     /* Modal Body */
   }
-            <div className="p-4 sm:p-6 space-y-4 text-xs sm:text-sm text-[#43474d] leading-relaxed">
+            <div className="p-4 sm:p-6 space-y-4 text-xs sm:text-sm text-ink-700 leading-relaxed">
               {
     /* Official Gazette Source Card */
   }
-              <div className="p-3 bg-[#f8faff] rounded-xl border border-[#c4c6ce]/60 flex items-center justify-between text-xs">
+              <div className="p-3 bg-canvas rounded-xl border border-line-strong/60 flex items-center justify-between text-xs">
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                  <span className="font-semibold text-[#000f22]">
+                  <span className="font-semibold text-ink-900">
                     Source: {selectedArticle.source}
                   </span>
                 </div>
@@ -939,19 +939,19 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
               {
     /* Formatted Article Body */
   }
-              <div className="whitespace-pre-line text-[#1a222f] space-y-3 font-normal leading-relaxed">
+              <div className="whitespace-pre-line text-ink-900 space-y-3 font-normal leading-relaxed">
                 {selectedArticle.fullContent}
               </div>
 
               {
     /* Key Takeaways */
   }
-              {selectedArticle.keyTakeaways && selectedArticle.keyTakeaways.length > 0 && <div className="bg-[#f0f4f8] rounded-xl p-4 border border-[#c4c6ce]/60 space-y-2">
-                  <h4 className="font-bold text-[#000f22] text-xs sm:text-sm flex items-center gap-1.5">
-                    <Award className="w-4 h-4 text-[#115eaf]" />
+              {selectedArticle.keyTakeaways && selectedArticle.keyTakeaways.length > 0 && <div className="bg-canvas rounded-xl p-4 border border-line-strong/60 space-y-2">
+                  <h4 className="font-bold text-ink-900 text-xs sm:text-sm flex items-center gap-1.5">
+                    <Award className="w-4 h-4 text-brand-600" />
                     Key Student Takeaways
                   </h4>
-                  <ul className="space-y-1.5 text-xs text-[#000f22]/80">
+                  <ul className="space-y-1.5 text-xs text-ink-900/80">
                     {selectedArticle.keyTakeaways.map((takeaway, i) => <li key={i} className="flex items-start gap-2">
                         <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
                         <span>{takeaway}</span>
@@ -963,12 +963,12 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
             {
     /* Modal Action Footer */
   }
-            <div className="p-4 sm:p-6 border-t border-slate-100 bg-[#f8faff] rounded-b-2xl flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="p-4 sm:p-6 border-t border-slate-100 bg-canvas rounded-b-2xl flex flex-col sm:flex-row items-center justify-between gap-3">
               <div className="flex items-center gap-2 w-full sm:w-auto">
                 <button
     type="button"
     onClick={() => toggleUpvote(selectedArticle.id)}
-    className={`flex-1 sm:flex-none px-3 py-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${upvotedIds.has(selectedArticle.id) ? "bg-blue-50 border-blue-300 text-[#115eaf]" : "bg-white border-slate-200 text-slate-700 hover:border-slate-300"}`}
+    className={`flex-1 sm:flex-none px-3 py-2 rounded-xl border text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${upvotedIds.has(selectedArticle.id) ? "bg-blue-50 border-blue-300 text-brand-600" : "bg-white border-slate-200 text-slate-700 hover:border-slate-300"}`}
   >
                   <ThumbsUp className="w-3.5 h-3.5" />
                   <span>
@@ -1000,7 +1000,7 @@ export const RecommendedCollegeNews = ({ onOpenAdvisor }) => {
       setSelectedArticle(null);
       onOpenAdvisor?.();
     }}
-    className="w-full sm:w-auto px-5 py-2.5 bg-[#115eaf] hover:bg-[#0c4a8a] text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer"
+    className="w-full sm:w-auto px-5 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-xs transition-all cursor-pointer"
   >
                   <span>Speak with Academic Advisor</span>
                   <ArrowRight className="w-3.5 h-3.5" />

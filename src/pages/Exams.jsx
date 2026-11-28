@@ -96,10 +96,10 @@ function ExamCard({ exam }) {
   const contextTag = getExamContext(exam);
 
   return (
-    <article className="group bg-white rounded-xl border border-[#e7eeff] hover:border-[#b1c8eb] hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden h-full">
+    <article className="group bg-white rounded-xl border border-brand-100 hover:border-brand-300 hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden h-full">
       <div>
         {/* Compact Image Container */}
-        <div className="relative h-32 overflow-hidden bg-gradient-to-br from-[#f8fbff] via-[#eef4ff] to-[#e7eeff]">
+        <div className="relative h-32 overflow-hidden bg-gradient-to-br from-canvas via-brand-50 to-brand-100">
           {imgSrc ? (
             <img
               src={imgSrc}
@@ -109,13 +109,13 @@ function ExamCard({ exam }) {
               className="w-full h-full object-contain object-center p-3.5 sm:p-4 transition-transform duration-300 group-hover:scale-103"
             />
           ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center p-3 text-[#115eaf]">
-              <div className="w-10 h-10 rounded-lg bg-white border border-[#d5e3ff] flex items-center justify-center shadow-2xs mb-1">
-                <span className="text-xs font-bold tracking-wider text-[#115eaf] uppercase">
+            <div className="w-full h-full flex flex-col items-center justify-center p-3 text-brand-600">
+              <div className="w-10 h-10 rounded-lg bg-white border border-brand-200 flex items-center justify-center shadow-2xs mb-1">
+                <span className="text-xs font-bold tracking-wider text-brand-600 uppercase">
                   {initials}
                 </span>
               </div>
-              <span className="text-[10px] font-semibold text-[#555960] tracking-wider uppercase mt-0.5">
+              <span className="text-[10px] font-semibold text-ink-700 tracking-wider uppercase mt-0.5">
                 {contextTag}
               </span>
             </div>
@@ -123,13 +123,13 @@ function ExamCard({ exam }) {
 
           {/* Top category / mode pill */}
           <div className="absolute top-2 left-2 flex items-center gap-1.5">
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/95 text-[#115eaf] border border-[#d5e3ff] shadow-2xs backdrop-blur-xs">
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/95 text-brand-600 border border-brand-200 shadow-2xs backdrop-blur-xs">
               {mode}
             </span>
           </div>
 
           <div className="absolute top-2 right-2">
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#000f22]/75 text-white backdrop-blur-xs">
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-ink-900/75 text-white backdrop-blur-xs">
               {contextTag}
             </span>
           </div>
@@ -137,15 +137,15 @@ function ExamCard({ exam }) {
 
         {/* Card Body */}
         <div className="p-3.5 sm:p-4">
-          <h2 className="text-sm sm:text-[15px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors line-clamp-2 leading-snug">
+          <h2 className="text-sm sm:text-[15px] font-bold text-ink-900 group-hover:text-brand-600 transition-colors line-clamp-2 leading-snug">
             <Link to={detailHref}>{name}</Link>
           </h2>
           {exam.fullForm ? (
-            <p className="text-xs text-[#555960] line-clamp-2 mt-1 leading-relaxed">
+            <p className="text-xs text-ink-700 line-clamp-2 mt-1 leading-relaxed">
               {exam.fullForm}
             </p>
           ) : (
-            <p className="text-xs text-[#74777e] line-clamp-2 mt-1 leading-relaxed">
+            <p className="text-xs text-ink-500 line-clamp-2 mt-1 leading-relaxed">
               Official schedule, eligibility benchmarks, test pattern, and cutoff guidance.
             </p>
           )}
@@ -155,16 +155,16 @@ function ExamCard({ exam }) {
       {/* Card Footer */}
       <div className="p-3.5 sm:p-4 pt-0 mt-auto">
         {(dateStr || rangeText) ? (
-          <div className="flex flex-wrap items-center gap-2 text-[11px] text-[#74777e] mb-2.5 pb-2 border-b border-[#f0f4f8]">
+          <div className="flex flex-wrap items-center gap-2 text-[11px] text-ink-500 mb-2.5 pb-2 border-b border-canvas">
             {dateStr ? (
-              <span className="inline-flex items-center gap-1 text-[#43474d] font-medium">
-                <Clock className="w-3 h-3 text-[#115eaf]" aria-hidden="true" />
+              <span className="inline-flex items-center gap-1 text-ink-700 font-medium">
+                <Clock className="w-3 h-3 text-brand-600" aria-hidden="true" />
                 <span>Exam: {dateStr}</span>
               </span>
             ) : null}
             {rangeText ? (
-              <span className="inline-flex items-center gap-1 text-[#43474d] font-medium">
-                <Calendar className="w-3 h-3 text-[#115eaf]" aria-hidden="true" />
+              <span className="inline-flex items-center gap-1 text-ink-700 font-medium">
+                <Calendar className="w-3 h-3 text-brand-600" aria-hidden="true" />
                 <span>Reg: {rangeText}</span>
               </span>
             ) : null}
@@ -173,15 +173,15 @@ function ExamCard({ exam }) {
 
         <div className="flex items-center justify-between gap-2.5">
           <div className="min-w-0">
-            <span className="text-[10px] text-[#74777e] block uppercase tracking-wider font-medium">Exam Mode</span>
-            <span className="text-xs font-bold text-[#115eaf] block truncate">
+            <span className="text-[10px] text-ink-500 block uppercase tracking-wider font-medium">Exam Mode</span>
+            <span className="text-xs font-bold text-brand-600 block truncate">
               {mode} Examination
             </span>
           </div>
 
           <Link
             to={detailHref}
-            className="h-8 px-3 rounded-lg bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-semibold inline-flex items-center gap-1 shadow-2xs transition-colors shrink-0"
+            className="h-8 px-3 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold inline-flex items-center gap-1 shadow-2xs transition-colors shrink-0"
           >
             <span>View Details</span>
             <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
@@ -203,7 +203,7 @@ function Pagination({ pagination, page, onPage }) {
     <nav className="flex items-center justify-center gap-1.5 mt-8 mb-4 flex-wrap" aria-label="Exams pagination">
       <button
         type="button"
-        className="h-9 px-3.5 rounded-lg border border-[#d5e3ff] text-[#115eaf] text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#f0f4f8] transition-colors cursor-pointer"
+        className="h-9 px-3.5 rounded-lg border border-brand-200 text-brand-600 text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-canvas transition-colors cursor-pointer"
         disabled={currentPage <= 1}
         onClick={() => onPage(currentPage - 1)}
       >
@@ -215,7 +215,7 @@ function Pagination({ pagination, page, onPage }) {
           type="button"
           className={
             "h-9 min-w-9 px-2.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer " +
-            (p === currentPage ? "bg-[#115eaf] text-white border border-[#115eaf] shadow-xs" : "border border-[#d5e3ff] text-[#115eaf] hover:bg-[#f0f4f8]")
+            (p === currentPage ? "bg-brand-600 text-white border border-brand-600 shadow-xs" : "border border-brand-200 text-brand-600 hover:bg-canvas")
           }
           aria-current={p === currentPage ? "page" : undefined}
           onClick={() => onPage(p)}
@@ -225,7 +225,7 @@ function Pagination({ pagination, page, onPage }) {
       ))}
       <button
         type="button"
-        className="h-9 px-3.5 rounded-lg border border-[#d5e3ff] text-[#115eaf] text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#f0f4f8] transition-colors cursor-pointer"
+        className="h-9 px-3.5 rounded-lg border border-brand-200 text-brand-600 text-xs font-semibold disabled:opacity-40 disabled:cursor-not-allowed hover:bg-canvas transition-colors cursor-pointer"
         disabled={currentPage >= totalPages}
         onClick={() => onPage(currentPage + 1)}
       >
@@ -287,38 +287,38 @@ export default function Exams() {
     <main className="w-full max-w-full overflow-x-hidden bg-white min-h-screen py-4 sm:py-6">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="mb-2.5 flex items-center gap-1.5 text-xs text-[#74777e]">
-          <Link to="/" className="hover:text-[#115eaf] transition-colors">Home</Link>
+        <nav aria-label="Breadcrumb" className="mb-2.5 flex items-center gap-1.5 text-xs text-ink-500">
+          <Link to="/" className="hover:text-brand-600 transition-colors">Home</Link>
           <span aria-hidden="true" className="text-slate-300">/</span>
-          <span className="text-[#000f22] font-semibold">Exams</span>
+          <span className="text-ink-900 font-semibold">Exams</span>
         </nav>
 
         {/* Hero Section */}
         <div className="mb-5">
-          <h1 className="text-2xl sm:text-3xl lg:text-[2rem] font-bold text-[#000f22] tracking-tight leading-snug">
+          <h1 className="text-2xl sm:text-3xl lg:text-[2rem] font-bold text-ink-900 tracking-tight leading-snug">
             National &amp; State Entrance Exams
           </h1>
-          <p className="mt-1.5 text-xs sm:text-sm text-[#555960] max-w-2xl leading-relaxed">
+          <p className="mt-1.5 text-xs sm:text-sm text-ink-700 max-w-2xl leading-relaxed">
             Verified schedules, eligibility benchmarks, test patterns, and syllabus breakdowns for civil services, management, engineering, and school board exams.
           </p>
         </div>
 
         {state.status === "loading" && (
           <div className="py-16 flex flex-col items-center justify-center text-center gap-3" role="status" aria-live="polite">
-            <div className="h-9 w-9 rounded-full border-3 border-[#e7eeff] border-t-[#115eaf] animate-spin" />
-            <p className="text-xs sm:text-sm text-[#555960]">Loading exams...</p>
+            <div className="h-9 w-9 rounded-full border-3 border-brand-100 border-t-brand-600 animate-spin" />
+            <p className="text-xs sm:text-sm text-ink-700">Loading exams...</p>
           </div>
         )}
 
         {state.status === "error" && (
           <div className="py-14 flex flex-col items-center justify-center text-center gap-3" role="alert">
-            <AlertCircle className="w-8 h-8 text-[#115eaf]" aria-hidden="true" />
-            <h2 className="text-base sm:text-lg font-bold text-[#000f22]">We could not load the exams right now.</h2>
-            <p className="text-xs sm:text-sm text-[#43474d] max-w-md">The exam service is temporarily unavailable. Please try again.</p>
+            <AlertCircle className="w-8 h-8 text-brand-600" aria-hidden="true" />
+            <h2 className="text-base sm:text-lg font-bold text-ink-900">We could not load the exams right now.</h2>
+            <p className="text-xs sm:text-sm text-ink-700 max-w-md">The exam service is temporarily unavailable. Please try again.</p>
             <button
               type="button"
               onClick={() => setRetryKey((k) => k + 1)}
-              className="mt-2 inline-flex items-center gap-2 px-4 h-10 rounded-lg bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
+              className="mt-2 inline-flex items-center gap-2 px-4 h-10 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
             >
               <RefreshCw className="w-4 h-4" aria-hidden="true" />
               Try again
@@ -329,7 +329,7 @@ export default function Exams() {
         {state.status === "ready" && (
           <>
             {/* Filter Controls Bar */}
-            <section aria-label="Exam filters" className="mb-6 rounded-xl border border-[#d5e3ff] bg-[#fbfdff] p-3.5 sm:p-4.5 shadow-2xs">
+            <section aria-label="Exam filters" className="mb-6 rounded-xl border border-brand-200 bg-canvas p-3.5 sm:p-4.5 shadow-2xs">
               <form
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3 items-end"
                 onSubmit={(e) => {
@@ -339,32 +339,32 @@ export default function Exams() {
               >
                 {/* Search Field (appropriately wider) */}
                 <div className="sm:col-span-2 lg:col-span-4 min-w-0">
-                  <label htmlFor="exam-search" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5 truncate">
+                  <label htmlFor="exam-search" className="block text-[11px] font-bold text-ink-700 uppercase tracking-wider mb-1.5 truncate">
                     Search
                   </label>
                   <div className="relative">
-                    <Search className="w-4 h-4 text-[#74777e] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true" />
+                    <Search className="w-4 h-4 text-ink-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" aria-hidden="true" />
                     <input
                       id="exam-search"
                       type="search"
                       value={search}
                       onChange={(e) => handleFiltersChange(setSearch)(e.target.value)}
                       placeholder="Search exams (e.g. UPSC, JEE, CAT)..."
-                      className="w-full h-10 rounded-lg border border-[#d5e3ff] bg-white pl-9 pr-3 text-xs sm:text-sm text-[#000f22] placeholder:text-[#74777e] outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 shadow-2xs transition-colors"
+                      className="w-full h-10 rounded-lg border border-brand-200 bg-white pl-9 pr-3 text-xs sm:text-sm text-ink-900 placeholder:text-ink-500 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors"
                     />
                   </div>
                 </div>
 
                 {/* Category Dropdown */}
                 <div className="sm:col-span-1 lg:col-span-2 min-w-0">
-                  <label htmlFor="exam-category" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5 truncate">
+                  <label htmlFor="exam-category" className="block text-[11px] font-bold text-ink-700 uppercase tracking-wider mb-1.5 truncate">
                     Category
                   </label>
                   <select
                     id="exam-category"
                     value={category}
                     onChange={(e) => handleFiltersChange(setCategory)(e.target.value)}
-                    className="w-full h-10 rounded-lg border border-[#d5e3ff] bg-white text-xs sm:text-sm text-[#000f22] px-3 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 shadow-2xs transition-colors cursor-pointer truncate"
+                    className="w-full h-10 rounded-lg border border-brand-200 bg-white text-xs sm:text-sm text-ink-900 px-3 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors cursor-pointer truncate"
                   >
                     <option value="">All categories</option>
                     {categoryOptions.map((c) => (
@@ -375,14 +375,14 @@ export default function Exams() {
 
                 {/* Level Dropdown */}
                 <div className="sm:col-span-1 lg:col-span-2 min-w-0">
-                  <label htmlFor="exam-level" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5 truncate">
+                  <label htmlFor="exam-level" className="block text-[11px] font-bold text-ink-700 uppercase tracking-wider mb-1.5 truncate">
                     Level
                   </label>
                   <select
                     id="exam-level"
                     value={level}
                     onChange={(e) => handleFiltersChange(setLevel)(e.target.value)}
-                    className="w-full h-10 rounded-lg border border-[#d5e3ff] bg-white text-xs sm:text-sm text-[#000f22] px-3 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 shadow-2xs transition-colors cursor-pointer truncate"
+                    className="w-full h-10 rounded-lg border border-brand-200 bg-white text-xs sm:text-sm text-ink-900 px-3 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors cursor-pointer truncate"
                   >
                     <option value="">All levels</option>
                     {levelOptions.map((l) => (
@@ -393,14 +393,14 @@ export default function Exams() {
 
                 {/* Stream Dropdown */}
                 <div className="sm:col-span-1 lg:col-span-2 min-w-0">
-                  <label htmlFor="exam-stream" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5 truncate">
+                  <label htmlFor="exam-stream" className="block text-[11px] font-bold text-ink-700 uppercase tracking-wider mb-1.5 truncate">
                     Stream
                   </label>
                   <select
                     id="exam-stream"
                     value={stream}
                     onChange={(e) => handleFiltersChange(setStream)(e.target.value)}
-                    className="w-full h-10 rounded-lg border border-[#d5e3ff] bg-white text-xs sm:text-sm text-[#000f22] px-3 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 shadow-2xs transition-colors cursor-pointer truncate"
+                    className="w-full h-10 rounded-lg border border-brand-200 bg-white text-xs sm:text-sm text-ink-900 px-3 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors cursor-pointer truncate"
                   >
                     <option value="">All streams</option>
                     {streamOptions.map((s) => (
@@ -411,14 +411,14 @@ export default function Exams() {
 
                 {/* Sort Dropdown */}
                 <div className="sm:col-span-1 lg:col-span-2 min-w-0">
-                  <label htmlFor="exam-sort" className="block text-[11px] font-bold text-[#43474d] uppercase tracking-wider mb-1.5 truncate">
+                  <label htmlFor="exam-sort" className="block text-[11px] font-bold text-ink-700 uppercase tracking-wider mb-1.5 truncate">
                     Sort by
                   </label>
                   <select
                     id="exam-sort"
                     value={sort}
                     onChange={(e) => handleFiltersChange(setSort)(e.target.value)}
-                    className="w-full h-10 rounded-lg border border-[#d5e3ff] bg-white text-xs sm:text-sm text-[#000f22] px-3 outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 shadow-2xs transition-colors cursor-pointer truncate"
+                    className="w-full h-10 rounded-lg border border-brand-200 bg-white text-xs sm:text-sm text-ink-900 px-3 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors cursor-pointer truncate"
                   >
                     {sortOptions.map((s) => (
                       <option key={s} value={s}>{s}</option>
@@ -458,12 +458,12 @@ export default function Exams() {
               </>
             ) : (
               <div className="py-14 flex flex-col items-center justify-center text-center gap-3">
-                <BookOpen className="w-8 h-8 text-[#115eaf]" aria-hidden="true" />
-                <h2 className="text-base sm:text-lg font-bold text-[#000f22]">No exams found.</h2>
-                <p className="text-xs sm:text-sm text-[#43474d] max-w-md">We could not find exams matching your filters right now.</p>
+                <BookOpen className="w-8 h-8 text-brand-600" aria-hidden="true" />
+                <h2 className="text-base sm:text-lg font-bold text-ink-900">No exams found.</h2>
+                <p className="text-xs sm:text-sm text-ink-700 max-w-md">We could not find exams matching your filters right now.</p>
                 <button
                   type="button"
-                  className="mt-2 inline-flex items-center gap-2 px-4 h-10 rounded-lg bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
+                  className="mt-2 inline-flex items-center gap-2 px-4 h-10 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
                   onClick={() => {
                     setSearch("");
                     setCategory("");

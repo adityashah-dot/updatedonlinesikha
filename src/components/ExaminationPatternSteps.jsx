@@ -47,7 +47,7 @@ export const ExaminationPatternSteps = ({ steps = [] }) => {
           top: 40px;
           bottom: 6px;
           width: 3px;
-          background: repeating-linear-gradient(180deg, #0b2540 0 4px, transparent 4px 9px);
+          background: repeating-linear-gradient(180deg, #0b2a4d 0 4px, transparent 4px 9px);
           animation: exam-flow-down 0.9s linear infinite;
         }
         @keyframes exam-flow-down {
@@ -59,7 +59,7 @@ export const ExaminationPatternSteps = ({ steps = [] }) => {
           height: 34px;
           display: grid;
           place-items: center;
-          background: #0b2540;
+          background: #0b2a4d;
           color: #fff;
           font-size: 13px;
           font-weight: 600;
@@ -71,13 +71,13 @@ export const ExaminationPatternSteps = ({ steps = [] }) => {
           font-size: 18px;
           font-weight: 600;
           line-height: 1.35;
-          color: #000f22;
+          color: #101828;
         }
         .exam-body p {
           margin: 0;
           font-size: 15px;
           line-height: 1.55;
-          color: #43474d;
+          color: #344054;
         }
         .exam-step-reveal {
           opacity: 0;

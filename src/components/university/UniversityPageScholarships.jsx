@@ -64,16 +64,16 @@ export const UniversityPageScholarships = ({
       {
     /* Breadcrumb */
   }
-      <div className="bg-[#f0f3ff] border-b border-[#e7eeff]">
+      <div className="bg-brand-50 border-b border-brand-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
-          <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-[#43474d] font-medium">
-            <Link to="/" className="hover:text-[#115eaf] cursor-pointer">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#74777e]" />
-            <Link to="/universities" className="hover:text-[#115eaf] cursor-pointer">Colleges</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#74777e]" />
-            <span className="hover:text-[#115eaf] cursor-pointer">{university.name}</span>
-            <ChevronRight className="w-3.5 h-3.5 text-[#74777e]" />
-            <span className="text-[#000f22] font-bold">Scholarships & Grants 2026</span>
+          <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-ink-700 font-medium">
+            <Link to="/" className="hover:text-brand-600 cursor-pointer">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-ink-500" />
+            <Link to="/universities" className="hover:text-brand-600 cursor-pointer">Colleges</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-ink-500" />
+            <span className="hover:text-brand-600 cursor-pointer">{university.name}</span>
+            <ChevronRight className="w-3.5 h-3.5 text-ink-500" />
+            <span className="text-ink-900 font-bold">Scholarships & Grants 2026</span>
           </nav>
         </div>
       </div>
@@ -81,32 +81,32 @@ export const UniversityPageScholarships = ({
       {
     /* HERO */
   }
-      <section className="bg-white border-b border-[#e7eeff]">
+      <section className="bg-white border-b border-brand-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
           <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5">
             <img
     src={university.logoImage}
     alt={`${university.shortName} Logo`}
-    className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-2xl bg-white border border-[#e7eeff] p-1.5 shadow-sm shrink-0"
+    className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-2xl bg-white border border-brand-100 p-1.5 shadow-sm shrink-0"
     onError={(e) => {
       e.target.style.display = "none";
     }}
   />
             <div className="min-w-0">
-              <h1 className="uni-title tracking-tight font-sans text-[#000f22]">
+              <h1 className="uni-title tracking-tight font-sans text-ink-900">
                 {sectionTitle(university.shortName, "Scholarships")}
               </h1>
               <div className="flex flex-wrap items-center gap-2 mt-3">
-                <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">
+                <span className="px-2.5 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-600 text-[11px] font-bold">
                   #{university.nirfRanking} NIRF Rank
                 </span>
-                <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">
+                <span className="px-2.5 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-600 text-[11px] font-bold">
                   {university.naacGrade}
                 </span>
-                <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">
+                <span className="px-2.5 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-600 text-[11px] font-bold">
                   UGC-DEB Entitled
                 </span>
-                <span className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold">
+                <span className="px-2.5 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-600 text-[11px] font-bold">
                   100% Online
                 </span>
               </div>
@@ -115,17 +115,17 @@ export const UniversityPageScholarships = ({
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-4 items-start mt-4">
             <div className="order-2 lg:order-none lg:col-span-7 space-y-3">
-              <p className="section-description text-xs sm:text-sm text-[#43474d] font-normal flex items-center gap-1.5 flex-wrap">
+              <p className="section-description text-xs sm:text-sm text-ink-700 font-normal flex items-center gap-1.5 flex-wrap">
                 {university.location} · {university.type} · Est. {university.established} ·{" "}
-                <span className="inline-flex items-center gap-0.5 font-bold text-[#B45309]">{university.rating}</span>
+                <span className="inline-flex items-center gap-0.5 font-bold text-accent-700">{university.rating}</span>
               </p>
-              <p className="text-sm text-[#2d3137] leading-relaxed font-normal">
+              <p className="text-sm text-ink-700 leading-relaxed font-normal">
                 {university.feesAndFinancing.intro}
               </p>
             </div>
 
             <div className="order-1 lg:order-none lg:col-span-5 lg:mr-[50px]">
-              <div className="rounded-2xl overflow-hidden border border-[#e7eeff] shadow-xs bg-[#f9f9ff]">
+              <div className="rounded-2xl overflow-hidden border border-brand-100 shadow-xs bg-canvas">
                 <img
     src={university.backgroundImage}
     alt={`${university.name} Campus`}
@@ -137,34 +137,34 @@ export const UniversityPageScholarships = ({
           </div>
 
           <div className="flex flex-wrap items-stretch gap-3 mt-5 lg:mr-[100px]">
-            <div className="bg-[#f0f3ff] border border-[#e7eeff] px-4 py-2.5 rounded-xl text-center min-w-[110px]">
-              <span className="block text-sm font-bold text-[#000f22] font-sans">
+            <div className="bg-brand-50 border border-brand-100 px-4 py-2.5 rounded-xl text-center min-w-[110px]">
+              <span className="block text-sm font-bold text-ink-900 font-sans">
                 {hasCalculator ? `Up to ${Math.max(...scholarshipRules.map((r) => r.percent))}%` : "Fee Concession"}
               </span>
-              <span className="text-[10px] text-[#74777e]">Fee Waiver</span>
+              <span className="text-[10px] text-ink-500">Fee Waiver</span>
             </div>
-            <div className="bg-[#f0f3ff] border border-[#e7eeff] px-4 py-2.5 rounded-xl text-center min-w-[110px]">
-              <span className="block text-sm font-bold text-[#115eaf] font-sans">Online</span>
-              <span className="text-[10px] text-[#74777e]">Application Mode</span>
+            <div className="bg-brand-50 border border-brand-100 px-4 py-2.5 rounded-xl text-center min-w-[110px]">
+              <span className="block text-sm font-bold text-brand-600 font-sans">Online</span>
+              <span className="text-[10px] text-ink-500">Application Mode</span>
             </div>
-            <div className="bg-[#f0f3ff] border border-[#e7eeff] px-4 py-2.5 rounded-xl text-center min-w-[110px]">
-              <span className="block text-sm font-bold text-[#000f22] font-sans">UG &amp; PG</span>
-              <span className="text-[10px] text-[#74777e]">Eligible Programs</span>
+            <div className="bg-brand-50 border border-brand-100 px-4 py-2.5 rounded-xl text-center min-w-[110px]">
+              <span className="block text-sm font-bold text-ink-900 font-sans">UG &amp; PG</span>
+              <span className="text-[10px] text-ink-500">Eligible Programs</span>
             </div>
-            <div className="bg-[#f0f3ff] border border-[#e7eeff] px-4 py-2.5 rounded-xl text-center min-w-[110px]">
-              <span className="block text-sm font-bold text-[#B45309] font-sans">Free</span>
-              <span className="text-[10px] text-[#74777e]">Counseling Support</span>
+            <div className="bg-brand-50 border border-brand-100 px-4 py-2.5 rounded-xl text-center min-w-[110px]">
+              <span className="block text-sm font-bold text-accent-700 font-sans">Free</span>
+              <span className="text-[10px] text-ink-500">Counseling Support</span>
             </div>
             <div className="flex items-center gap-3 md:ml-auto">
               <button
     onClick={onOpenHelpDesk}
-    className="px-5 py-2.5 rounded-xl bg-white text-[#115eaf] border border-[#115eaf] text-xs sm:text-sm font-bold hover:bg-[#f0f3ff] active:scale-95 transition-all flex items-center justify-center gap-2"
+    className="px-5 py-2.5 rounded-xl bg-white text-brand-600 border border-brand-600 text-xs sm:text-sm font-bold hover:bg-brand-50 active:scale-95 transition-all flex items-center justify-center gap-2"
   >
                 Brochure
               </button>
               <button
     onClick={() => onOpenApply()}
-    className="px-6 py-2.5 rounded-xl bg-[#115eaf] text-white text-xs sm:text-sm font-bold shadow hover:bg-[#004689] active:scale-95 transition-all flex items-center justify-center gap-2"
+    className="px-6 py-2.5 rounded-xl bg-brand-600 text-white text-xs sm:text-sm font-bold shadow hover:bg-brand-700 active:scale-95 transition-all flex items-center justify-center gap-2"
   >
                 Apply Now
                 <ArrowRight className="w-4 h-4" />
@@ -191,14 +191,14 @@ export const UniversityPageScholarships = ({
     /* OVERVIEW */
   }
         <section id="scholarship-overview" className="page-section text-center max-w-3xl mx-auto scroll-mt-[100px]">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFBEB] text-[#92400E] border border-[#FDE68A] text-xs font-bold">
-            <Sparkles className="w-3.5 h-3.5 text-[#D97706]" />
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent-50 text-[#92400E] border border-[#FDE68A] text-xs font-bold">
+            <Sparkles className="w-3.5 h-3.5 text-accent-500" />
             Fee Waivers &amp; Concessions 2026
           </span>
-          <h1 className="text-[32px] font-semibold mt-3 text-[#000f22] tracking-tight font-sans">
+          <h1 className="text-[32px] font-semibold mt-3 text-ink-900 tracking-tight font-sans">
             {sectionTitle(university.shortName, "Scholarships")}
           </h1>
-          <p className="section-description text-xs sm:text-sm text-[#43474d] leading-relaxed">
+          <p className="section-description text-xs sm:text-sm text-ink-700 leading-relaxed">
             Check your eligibility for university fee concessions. Discounts are offered for high academic scorers,
             serving military and defence personnel, early enrolment applicants, and university alumni.
           </p>
@@ -209,25 +209,25 @@ export const UniversityPageScholarships = ({
   }
         {hasCalculator && <section
     id="scholarship-calculator"
-    className="page-section card bg-white rounded-2xl border-2 border-[#115eaf]/30 shadow-lg scroll-mt-[100px]"
+    className="page-section card bg-white rounded-2xl border-2 border-brand-600/30 shadow-lg scroll-mt-[100px]"
   >
             <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
               <div className="w-full lg:w-3/5 space-y-5">
-                <div className="flex items-center gap-2.5 pb-3 border-b border-[#e7eeff]">
-                  <Calculator className="w-5 h-5 text-[#115eaf]" />
-                  <h3 className="font-bold text-base text-[#000f22] font-sans">
+                <div className="flex items-center gap-2.5 pb-3 border-b border-brand-100">
+                  <Calculator className="w-5 h-5 text-brand-600" />
+                  <h3 className="font-bold text-base text-ink-900 font-sans">
                     Calculate Your Net Tuition Fee &amp; Savings
                   </h3>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-bold text-ink-900 uppercase tracking-wider mb-1.5">
                     Select Program
                   </label>
-                  <select
+                  <select aria-label="Program"
     value={calcCourseId}
     onChange={(e) => setCalcCourseId(e.target.value)}
-    className="w-full px-4 py-2.5 rounded-xl border border-[#c4c6ce] text-base sm:text-sm font-semibold text-[#000f22] focus:border-[#115eaf] outline-none"
+    className="w-full px-4 py-2.5 rounded-xl border border-line-strong text-base sm:text-sm font-semibold text-ink-900 focus:border-brand-600 outline-none"
   >
                     {university.courses.map((c) => <option key={c.id} value={c.id}>
                         {c.name} ({c.totalFee})
@@ -237,10 +237,10 @@ export const UniversityPageScholarships = ({
 
                 <div>
                   <div className="flex justify-between items-center mb-1 text-xs">
-                    <label className="font-bold text-[#000f22] uppercase tracking-wider">
+                    <label className="font-bold text-ink-900 uppercase tracking-wider">
                       Qualifying Aggregate Marks: {marks}%
                     </label>
-                    <span className="text-[#115eaf] font-normal">{marksLabel}</span>
+                    <span className="text-brand-600 font-normal">{marksLabel}</span>
                   </div>
                   <input
     type="range"
@@ -248,34 +248,34 @@ export const UniversityPageScholarships = ({
     max={marksMax}
     value={marks}
     onChange={(e) => setMarks(Number(e.target.value))}
-    className="w-full h-2 bg-[#e7eeff] rounded-lg appearance-none cursor-pointer accent-[#115eaf]"
+    className="w-full h-2 bg-brand-100 rounded-lg appearance-none cursor-pointer accent-brand-600"
   />
                 </div>
 
                 <div>
-                  <span className="block text-xs font-bold text-[#000f22] uppercase tracking-wider mb-2">
+                  <span className="block text-xs font-bold text-ink-900 uppercase tracking-wider mb-2">
                     Special Welfare Categories
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                     {scholarshipRules.filter((r) => r.condition).map((r) => <label
     key={r.id}
-    className="tap-chip min-h-[44px] p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all border-[#e7eeff]"
+    className="tap-chip min-h-[44px] p-3 rounded-xl border flex items-center gap-2 cursor-pointer transition-all border-brand-100"
   >
                           <input
     type="checkbox"
     checked={Boolean(matchedRule && matchedRule.id === r.id)}
     readOnly
-    className="shrink-0 w-5 h-5 rounded text-[#115eaf]"
+    className="shrink-0 w-5 h-5 rounded text-brand-600"
   />
-                          <span className="font-normal text-[#000f22]">{r.label}</span>
+                          <span className="font-normal text-ink-900">{r.label}</span>
                         </label>)}
                   </div>
                 </div>
               </div>
 
-              <div className="card w-full lg:w-2/5 rounded-2xl bg-gradient-to-br from-[#0b2540] to-[#000f22] text-white space-y-4 shadow-md">
+              <div className="card w-full lg:w-2/5 rounded-2xl bg-gradient-to-br from-brand-900 to-ink-900 text-white space-y-4 shadow-md">
                 <div className="pb-3 border-b border-white/10">
-                  <span className="text-[11px] font-bold text-[#b1c8eb] uppercase tracking-wider block">
+                  <span className="text-[11px] font-bold text-brand-300 uppercase tracking-wider block">
                     Eligible Tuition Waiver
                   </span>
                   <div className="text-3xl sm:text-4xl font-extrabold text-white mt-1">{waiverPercent}% Waiver</div>
@@ -284,10 +284,10 @@ export const UniversityPageScholarships = ({
                   </p>
                 </div>
 
-                <div className="space-y-2 text-xs text-[#d8e3fb]">
+                <div className="space-y-2 text-xs text-brand-200">
                   <div className="flex justify-between">
-                    <span className="text-[#768dad]">Standard Degree Fee:</span>
-                    <span className="line-through text-[#768dad]">₹{totalFee.toLocaleString("en-IN")}</span>
+                    <span className="text-ink-500">Standard Degree Fee:</span>
+                    <span className="line-through text-ink-500">₹{totalFee.toLocaleString("en-IN")}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Net Total Tuition:</span>
@@ -295,7 +295,7 @@ export const UniversityPageScholarships = ({
                   </div>
                   <div className="flex justify-between p-2 rounded-lg bg-white/10">
                     <span className="font-bold">Net Per Semester:</span>
-                    <span className="font-extrabold text-[#70aaff]">
+                    <span className="font-extrabold text-brand-400">
                       ₹{Math.round(netPayable / (selectedCourse ? 4 : 1)).toLocaleString("en-IN")}/sem
                     </span>
                   </div>
@@ -303,7 +303,7 @@ export const UniversityPageScholarships = ({
 
                 <button
     onClick={() => onOpenApply(calcCourseId)}
-    className="w-full py-3 rounded-xl bg-[#115eaf] text-white text-xs font-bold shadow hover:bg-[#004689] active:scale-95 transition-all flex items-center justify-center gap-2"
+    className="w-full py-3 rounded-xl bg-brand-600 text-white text-xs font-bold shadow hover:bg-brand-700 active:scale-95 transition-all flex items-center justify-center gap-2"
   >
                   <span>Claim {waiverPercent}% Scholarship</span>
                   <ArrowRight className="w-4 h-4" />
@@ -322,7 +322,7 @@ export const UniversityPageScholarships = ({
   }
         <BlogsListSection
     onOpenHelpDesk={onOpenHelpDesk}
-    className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs"
+    className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs"
     compact
     posts={university.blogs && university.blogs.posts ? university.blogs.posts : SITE_BLOG_POSTS}
   />
@@ -330,13 +330,13 @@ export const UniversityPageScholarships = ({
         {
     /* COUNSELOR CTA */
   }
-        <section id="counselor-helpline" className="page-section relative isolate overflow-hidden rounded-[20px] border border-[#d0e2fa] bg-gradient-to-br from-[#eef6ff] via-[#f7fbff] to-white p-5 sm:p-6 text-[#0b1d3a] shadow-sm scroll-mt-[130px] max-w-7xl mx-auto my-6">
+        <section id="counselor-helpline" className="page-section relative isolate overflow-hidden rounded-[20px] border border-brand-200 bg-gradient-to-br from-brand-50 via-canvas to-white p-5 sm:p-6 text-brand-900 shadow-sm scroll-mt-[130px] max-w-7xl mx-auto my-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-5">
             <div>
               <h3 className="section-title text-lg sm:text-xl font-bold font-sans tracking-tight">
                 Have Questions About Courses, Eligibility, or Fees?
               </h3>
-              <p className="section-description text-xs sm:text-sm text-[#657185] font-normal">
+              <p className="section-description text-xs sm:text-sm text-ink-500 font-normal">
                 Speak directly with an Online Siksha university advisor. We review your documents, help generate your
                 DEB ID, and guide your admission at zero cost.
               </p>
@@ -344,15 +344,15 @@ export const UniversityPageScholarships = ({
             <div className="flex flex-wrap items-center justify-center gap-3">
               <button
     onClick={() => onOpenApply()}
-    className="px-5 py-2.5 rounded-lg bg-[#115eaf] text-white text-xs sm:text-sm font-semibold shadow hover:bg-[#004689] active:scale-95 transition-all"
+    className="px-5 py-2.5 rounded-lg bg-brand-600 text-white text-xs sm:text-sm font-semibold shadow hover:bg-brand-700 active:scale-95 transition-all"
   >
                 Book Free Counseling Call
               </button>
               <button
     onClick={onOpenHelpDesk}
-    className="px-4 py-2.5 rounded-lg border border-[#c4c6ce] bg-white text-[#0b1d3a] text-xs sm:text-sm font-medium hover:bg-[#f0f3ff] transition-all flex items-center gap-1.5"
+    className="px-4 py-2.5 rounded-lg border border-line-strong bg-white text-brand-900 text-xs sm:text-sm font-medium hover:bg-brand-50 transition-all flex items-center gap-1.5"
   >
-                <PhoneCall className="w-4 h-4 text-[#70aaff]" />
+                <PhoneCall className="w-4 h-4 text-brand-400" />
                 <span>Call Helpline: 1800-889-4422</span>
               </button>
             </div>

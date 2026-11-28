@@ -186,24 +186,24 @@ export default function News({ onOpenCounseling }) {
         {/* ========================================================= */}
         {/* 1. EDITORIAL MASTHEAD */}
         {/* ========================================================= */}
-        <header className="border-b border-[#e7eeff] pb-5 mb-5">
+        <header className="border-b border-brand-100 pb-5 mb-5">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#115eaf] mb-1.5">
-                <Radio className="w-3.5 h-3.5 text-[#115eaf] animate-pulse" aria-hidden="true" />
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600 mb-1.5">
+                <Radio className="w-3.5 h-3.5 text-brand-600 animate-pulse" aria-hidden="true" />
                 <span>OnlineSiksha Education Dispatch • Live News Desk</span>
               </div>
-              <h1 className="news-listing-h1 text-2xl sm:text-3xl lg:text-[42px] font-bold text-[#000f22] tracking-tight leading-[1.1] mb-2">
+              <h1 className="news-listing-h1 text-2xl sm:text-3xl lg:text-[42px] font-bold text-ink-900 tracking-tight leading-[1.1] mb-2">
                 Latest Education News & Live Updates
               </h1>
-              <p className="mt-1 text-xs sm:text-sm text-[#4b5563] max-w-2xl">
+              <p className="mt-1 text-xs sm:text-sm text-ink-700 max-w-2xl">
                 Verified admissions notices, board results, entrance exam notifications, UGC advisories, and institutional rankings.
               </p>
             </div>
 
-            <div className="flex items-center gap-3 shrink-0 self-start md:self-end text-xs text-[#4b5563] bg-white border border-[#e7eeff] rounded-xl px-3.5 py-2 shadow-2xs">
-              <Calendar className="w-3.5 h-3.5 text-[#115eaf]" aria-hidden="true" />
-              <span className="font-medium text-[#000f22]">{todayFormatted}</span>
+            <div className="flex items-center gap-3 shrink-0 self-start md:self-end text-xs text-ink-700 bg-white border border-brand-100 rounded-xl px-3.5 py-2 shadow-2xs">
+              <Calendar className="w-3.5 h-3.5 text-brand-600" aria-hidden="true" />
+              <span className="font-medium text-ink-900">{todayFormatted}</span>
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
               <span className="text-emerald-700 font-semibold text-[11px]">Real-Time Feed</span>
             </div>
@@ -232,7 +232,7 @@ export default function News({ onOpenCounseling }) {
                 onMouseLeave={() => setIsTickerHovered(false)}
               >
                 <div
-                  className={`news-ticker-track flex items-center text-xs font-medium text-[#111c2d] whitespace-nowrap ${isTickerPaused || isTickerHovered ? "news-ticker-paused" : ""}`}
+                  className={`news-ticker-track flex items-center text-xs font-medium text-ink-900 whitespace-nowrap ${isTickerPaused || isTickerHovered ? "news-ticker-paused" : ""}`}
                 >
                   {[...flashTickerItems, ...flashTickerItems].map((item, idx) => (
                     <span
@@ -246,11 +246,11 @@ export default function News({ onOpenCounseling }) {
                       )}
                       <Link
                         to={`/news/${encodeURIComponent(item.slug)}`}
-                        className="hover:text-[#115eaf] hover:underline transition-colors font-medium text-[#111c2d]"
+                        className="hover:text-brand-600 hover:underline transition-colors font-medium text-ink-900"
                       >
                         {item.title}
                       </Link>
-                      <span className="text-[#9ca3af] ml-6 select-none" aria-hidden="true">•</span>
+                      <span className="text-ink-400 ml-6 select-none" aria-hidden="true">•</span>
                     </span>
                   ))}
                 </div>
@@ -260,7 +260,7 @@ export default function News({ onOpenCounseling }) {
               <button
                 type="button"
                 onClick={() => setIsTickerPaused((prev) => !prev)}
-                className="inline-flex items-center justify-center w-7 h-7 rounded-lg text-[#6b7280] hover:text-[#000f22] hover:bg-black/5 transition-colors shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#115eaf]"
+                className="inline-flex items-center justify-center w-7 h-7 rounded-lg text-ink-500 hover:text-ink-900 hover:bg-black/5 transition-colors shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-600"
                 aria-label={isTickerPaused ? "Resume news alert animation" : "Pause news alert animation"}
                 title={isTickerPaused ? "Resume alerts" : "Pause alerts"}
               >
@@ -280,18 +280,18 @@ export default function News({ onOpenCounseling }) {
         {loading && (
           <div className="space-y-6">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-              <div className="lg:col-span-8 bg-white rounded-2xl border border-[#e7eeff] p-5 animate-pulse space-y-4">
-                <div className="h-64 sm:h-80 bg-[#f0f4f8] rounded-xl w-full" />
-                <div className="h-4 bg-[#f0f4f8] rounded w-1/4" />
-                <div className="h-8 bg-[#f0f4f8] rounded w-3/4" />
-                <div className="h-4 bg-[#f0f4f8] rounded w-full" />
+              <div className="lg:col-span-8 bg-white rounded-2xl border border-brand-100 p-5 animate-pulse space-y-4">
+                <div className="h-64 sm:h-80 bg-canvas rounded-xl w-full" />
+                <div className="h-4 bg-canvas rounded w-1/4" />
+                <div className="h-8 bg-canvas rounded w-3/4" />
+                <div className="h-4 bg-canvas rounded w-full" />
               </div>
-              <div className="lg:col-span-4 bg-white rounded-2xl border border-[#e7eeff] p-5 animate-pulse space-y-4">
-                <div className="h-6 bg-[#f0f4f8] rounded w-1/3 mb-4" />
+              <div className="lg:col-span-4 bg-white rounded-2xl border border-brand-100 p-5 animate-pulse space-y-4">
+                <div className="h-6 bg-canvas rounded w-1/3 mb-4" />
                 {[1, 2, 3].map((n) => (
-                  <div key={n} className="space-y-2 border-b border-[#f0f4f8] pb-3">
-                    <div className="h-3 bg-[#f0f4f8] rounded w-1/4" />
-                    <div className="h-5 bg-[#f0f4f8] rounded w-full" />
+                  <div key={n} className="space-y-2 border-b border-canvas pb-3">
+                    <div className="h-3 bg-canvas rounded w-1/4" />
+                    <div className="h-5 bg-canvas rounded w-full" />
                   </div>
                 ))}
               </div>
@@ -307,13 +307,13 @@ export default function News({ onOpenCounseling }) {
             <div className="w-14 h-14 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center mx-auto mb-4 border border-rose-100">
               <AlertCircle className="w-7 h-7" aria-hidden="true" />
             </div>
-            <h2 className="text-xl font-bold text-[#000f22] mb-2">Unable to Load Education News</h2>
-            <p className="text-sm text-[#4b5563] mb-6 max-w-md mx-auto">
+            <h2 className="text-xl font-bold text-ink-900 mb-2">Unable to Load Education News</h2>
+            <p className="text-sm text-ink-700 mb-6 max-w-md mx-auto">
               We encountered a temporary network issue while connecting to the news feed. Please try again.
             </p>
             <button
               onClick={() => setRetryKey((k) => k + 1)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-sm font-semibold transition-colors shadow-2xs"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold transition-colors shadow-2xs"
             >
               <RefreshCw className="w-4 h-4" aria-hidden="true" />
               <span>Retry Connection</span>
@@ -328,9 +328,9 @@ export default function News({ onOpenCounseling }) {
           <section className="mb-5 sm:mb-6" aria-label="Featured Story and Trending Headlines">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
               {/* PRIMARY LEAD STORY (65%) */}
-              <article className="lg:col-span-7 xl:col-span-8 group bg-white rounded-2xl border border-[#e7eeff] hover:border-[#b1c8eb] p-4 sm:p-5 shadow-2xs hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden">
+              <article className="lg:col-span-7 xl:col-span-8 group bg-white rounded-2xl border border-brand-100 hover:border-brand-300 p-4 sm:p-5 shadow-2xs hover:shadow-sm transition-all duration-200 flex flex-col justify-between overflow-hidden">
                 <div>
-                  <div className="relative rounded-xl overflow-hidden bg-[#000f22] news-hero-img-wrap mb-4">
+                  <div className="relative rounded-xl overflow-hidden bg-ink-900 news-hero-img-wrap mb-4">
                     <img
                       src={leadStory.image?.url || DEFAULT_NEWS_FALLBACK_IMAGE}
                       alt={leadStory.image?.alt || leadStory.title}
@@ -341,7 +341,7 @@ export default function News({ onOpenCounseling }) {
                       }}
                     />
                     <div className="absolute top-3 left-3 flex flex-wrap items-center gap-2">
-                      <span className="px-2.5 py-1 rounded-md bg-[#115eaf] text-white text-xs font-bold tracking-wide uppercase shadow-sm">
+                      <span className="px-2.5 py-1 rounded-md bg-brand-600 text-white text-xs font-bold tracking-wide uppercase shadow-sm">
                         {leadStory.category || "Exam Alerts"}
                       </span>
                       {leadStory.isLive && (
@@ -353,31 +353,31 @@ export default function News({ onOpenCounseling }) {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 text-xs text-[#6b7280] mb-2 font-medium">
+                  <div className="flex items-center gap-2 text-xs text-ink-500 mb-2 font-medium">
                     <span>Reported by {leadStory.author?.name || "OnlineSiksha Desk"}</span>
                     <span>•</span>
-                    <Clock className="w-3.5 h-3.5 text-[#115eaf]" aria-hidden="true" />
+                    <Clock className="w-3.5 h-3.5 text-brand-600" aria-hidden="true" />
                     <span>{getTimeAgo(leadStory.approvalDate)}</span>
                   </div>
 
-                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-[#000f22] group-hover:text-[#115eaf] transition-colors leading-tight mb-3">
+                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-ink-900 group-hover:text-brand-600 transition-colors leading-tight mb-3">
                     <Link to={`/news/${encodeURIComponent(leadStory.slug)}`}>
                       {leadStory.title}
                     </Link>
                   </h2>
 
-                  <p className="text-xs sm:text-sm text-[#4b5563] leading-relaxed news-clamp-3 mb-4">
+                  <p className="text-xs sm:text-sm text-ink-700 leading-relaxed news-clamp-3 mb-4">
                     {getArticleExcerpt(leadStory)}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-[#f0f4f8] flex items-center justify-between">
-                  <span className="text-xs font-medium text-[#6b7280]">
+                <div className="pt-3 border-t border-canvas flex items-center justify-between">
+                  <span className="text-xs font-medium text-ink-500">
                     Published {formatNewsDate(leadStory.approvalDate)}
                   </span>
                   <Link
                     to={`/news/${encodeURIComponent(leadStory.slug)}`}
-                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#115eaf] hover:text-[#084a8c] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-600 hover:text-brand-700 transition-colors"
                   >
                     <span>Read Full Story</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
@@ -388,14 +388,14 @@ export default function News({ onOpenCounseling }) {
               {/* RIGHT COLUMN (35%): TRENDING STORIES + EDUCATION ADVISORY */}
               <div className="lg:col-span-5 xl:col-span-4 flex flex-col gap-4 sm:gap-5 self-start">
                 {/* 1. TRENDING STORIES STACK */}
-                <aside className="bg-white rounded-2xl border border-[#e7eeff] p-4 sm:p-5 shadow-2xs self-start w-full" aria-label="Trending Education Stories">
+                <aside className="bg-white rounded-2xl border border-brand-100 p-4 sm:p-5 shadow-2xs self-start w-full" aria-label="Trending Education Stories">
                   <div>
-                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#f0f4f8]">
+                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-canvas">
                       <div className="flex items-center gap-2">
                         <div className="w-7 h-7 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200">
                           <Flame className="w-4 h-4" aria-hidden="true" />
                         </div>
-                        <h2 className="text-base font-bold text-[#000f22]">Trending Stories</h2>
+                        <h2 className="text-base font-bold text-ink-900">Trending Stories</h2>
                       </div>
                       <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                         Popular Now
@@ -404,17 +404,17 @@ export default function News({ onOpenCounseling }) {
 
                     <div className="space-y-3.5">
                       {trendingStories.map((item, idx) => (
-                        <article key={item.id || idx} className="group flex gap-3 items-start pb-3.5 border-b border-[#f0f4f8] last:border-b-0 last:pb-0">
-                          <span className="w-7 h-7 rounded-full bg-[#f0f5ff] text-[#115eaf] border border-[#d5e3ff] flex items-center justify-center text-xs font-black shrink-0 mt-0.5">
+                        <article key={item.id || idx} className="group flex gap-3 items-start pb-3.5 border-b border-canvas last:border-b-0 last:pb-0">
+                          <span className="w-7 h-7 rounded-full bg-brand-50 text-brand-600 border border-brand-200 flex items-center justify-center text-xs font-black shrink-0 mt-0.5">
                             {idx + 1}
                           </span>
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 text-[11px] text-[#6b7280] mb-1 font-medium">
-                              <span className="text-[#115eaf] font-semibold">{item.category || "Exam Alerts"}</span>
+                            <div className="flex items-center gap-2 text-[11px] text-ink-500 mb-1 font-medium">
+                              <span className="text-brand-600 font-semibold">{item.category || "Exam Alerts"}</span>
                               <span>•</span>
                               <span>{getTimeAgo(item.approvalDate)}</span>
                             </div>
-                            <h3 className="text-xs sm:text-sm font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors leading-snug news-clamp-2">
+                            <h3 className="text-xs sm:text-sm font-bold text-ink-900 group-hover:text-brand-600 transition-colors leading-snug news-clamp-2">
                               <Link to={`/news/${encodeURIComponent(item.slug)}`}>
                                 {item.title}
                               </Link>
@@ -425,8 +425,8 @@ export default function News({ onOpenCounseling }) {
                     </div>
                   </div>
 
-                  <div className="pt-3.5 mt-4 border-t border-[#f0f4f8] bg-[#f8fbff] -mx-4 -mb-4 sm:-mx-5 sm:-mb-5 p-3.5 rounded-b-2xl flex items-center justify-between text-xs text-[#115eaf] font-semibold">
-                    <span className="text-[#4b5563] text-[11px]">Updated every 30 minutes</span>
+                  <div className="pt-3.5 mt-4 border-t border-canvas bg-canvas -mx-4 -mb-4 sm:-mx-5 sm:-mb-5 p-3.5 rounded-b-2xl flex items-center justify-between text-xs text-brand-600 font-semibold">
+                    <span className="text-ink-700 text-[11px]">Updated every 30 minutes</span>
                     <Link to="/news" onClick={() => window.scrollTo({ top: 400, behavior: "smooth" })} className="hover:underline flex items-center gap-1">
                       <span>View all headlines</span>
                       <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -435,24 +435,24 @@ export default function News({ onOpenCounseling }) {
                 </aside>
 
                 {/* 2. ADMISSION COUNSELLING & ADVISORY WIDGET */}
-                <div data-testid="news-counselling-sidebar" className="bg-linear-to-br from-[#f0f5ff] via-[#f8fbff] to-white rounded-2xl p-4.5 sm:p-5 text-[#000f22] shadow-2xs border border-[#b1c8eb] w-full">
+                <div data-testid="news-counselling-sidebar" className="bg-linear-to-br from-brand-50 via-canvas to-white rounded-2xl p-4.5 sm:p-5 text-ink-900 shadow-2xs border border-brand-300 w-full">
                   <div className="flex items-center gap-2 mb-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-[#e7eeff] text-[#115eaf] flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center shrink-0">
                       <Headphones className="w-4 h-4" aria-hidden="true" />
                     </div>
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#115eaf] block">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-brand-600 block">
                         Free Student Advisory
                       </span>
-                      <h3 className="text-sm font-bold text-[#000f22]">Need Higher Education Guidance?</h3>
+                      <h3 className="text-sm font-bold text-ink-900">Need Higher Education Guidance?</h3>
                     </div>
                   </div>
 
-                  <p className="text-xs text-[#4b5563] leading-relaxed mb-3.5">
+                  <p className="text-xs text-ink-700 leading-relaxed mb-3.5">
                     Talk to verified academic counsellors about UGC-entitled online degrees, semester fee structures, and application deadlines.
                   </p>
 
-                  <div className="space-y-1.5 mb-3.5 text-xs text-[#1e293b]">
+                  <div className="space-y-1.5 mb-3.5 text-xs text-ink-900">
                     <div className="flex items-center gap-2">
                       <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" aria-hidden="true" />
                       <span>100% Free Career & Course Matching</span>
@@ -463,7 +463,7 @@ export default function News({ onOpenCounseling }) {
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" aria-hidden="true" />
-                      <span>Zero Cost Pre-Approved EMI Assistance</span>
+                      <span>Help with no-cost EMI</span>
                     </div>
                   </div>
 
@@ -476,7 +476,7 @@ export default function News({ onOpenCounseling }) {
                         window.location.href = "tel:1800123456";
                       }
                     }}
-                    className="w-full h-8.5 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
+                    className="w-full h-8.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
                   >
                     <Sparkles className="w-3.5 h-3.5 text-white" aria-hidden="true" />
                     <span>Talk to Admission Expert</span>
@@ -491,7 +491,7 @@ export default function News({ onOpenCounseling }) {
         {/* 4. CATEGORY FILTERS & SEARCH BAR */}
         {/* ========================================================= */}
         {!loading && !error && (
-          <nav className="mb-5 sm:mb-6 bg-white rounded-xl border border-[#e7eeff] p-3 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-3" aria-label="News categories and search">
+          <nav className="mb-5 sm:mb-6 bg-white rounded-xl border border-brand-100 p-3 shadow-2xs flex flex-col md:flex-row items-center justify-between gap-3" aria-label="News categories and search">
             <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto no-scrollbar pb-1 md:pb-0">
               {[
                 { id: "all", label: "All News", count: articles.length },
@@ -507,13 +507,13 @@ export default function News({ onOpenCounseling }) {
                     onClick={() => setActiveCategory(cat.id)}
                     className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-colors flex items-center gap-1.5 shrink-0 ${
                       isActive
-                        ? "bg-[#115eaf] text-white shadow-2xs"
-                        : "bg-[#f8fbff] text-[#4b5563] hover:bg-[#e7eeff] hover:text-[#000f22] border border-[#e7eeff]"
+                        ? "bg-brand-600 text-white shadow-2xs"
+                        : "bg-canvas text-ink-700 hover:bg-brand-100 hover:text-ink-900 border border-brand-100"
                     }`}
                   >
                     <span>{cat.label}</span>
                     {cat.count !== undefined && (
-                      <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? "bg-white/20 text-white" : "bg-[#e7eeff] text-[#115eaf]"}`}>
+                      <span className={`text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? "bg-white/20 text-white" : "bg-brand-100 text-brand-600"}`}>
                         {cat.count}
                       </span>
                     )}
@@ -523,18 +523,18 @@ export default function News({ onOpenCounseling }) {
             </div>
 
             <div className="relative w-full md:w-64 shrink-0">
-              <Search className="w-4 h-4 text-[#9ca3af] absolute left-3 top-1/2 -translate-y-1/2" aria-hidden="true" />
+              <Search className="w-4 h-4 text-ink-400 absolute left-3 top-1/2 -translate-y-1/2" aria-hidden="true" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search headlines..."
-                className="w-full h-8.5 pl-9 pr-8 rounded-lg bg-[#f8fbff] border border-[#e7eeff] text-xs text-[#000f22] placeholder-[#9ca3af] focus:outline-hidden focus:border-[#115eaf] focus:bg-white transition-colors"
+                aria-label="Search headlines" placeholder="Search headlines..."
+                className="w-full h-8.5 pl-9 pr-8 rounded-lg bg-canvas border border-brand-100 text-xs text-ink-900 placeholder-ink-400 focus:outline-hidden focus:border-brand-600 focus:bg-white transition-colors"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#9ca3af] hover:text-[#000f22]"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-ink-400 hover:text-ink-900"
                   aria-label="Clear search"
                 >
                   <X className="w-3.5 h-3.5" />
@@ -553,21 +553,20 @@ export default function News({ onOpenCounseling }) {
             <section className="lg:col-span-8" aria-label="Chronological News Feed">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#115eaf]" aria-hidden="true" />
-                  <h2 className="text-base sm:text-lg font-bold text-[#000f22]">
+                  <h2 className="text-base sm:text-lg font-bold text-ink-900">
                     {activeCategory === "all" ? "All Chronological Stories" : "Filtered Stories"}
                   </h2>
                 </div>
-                <span className="text-xs text-[#6b7280] font-medium">
+                <span className="text-xs text-ink-500 font-medium">
                   Showing {filteredArticles.length} of {totalCount} Articles
                 </span>
               </div>
 
               {filteredArticles.length === 0 ? (
-                <div className="bg-white rounded-2xl border border-[#e7eeff] p-8 text-center my-4">
-                  <Newspaper className="w-10 h-10 text-[#9ca3af] mx-auto mb-3" aria-hidden="true" />
-                  <h3 className="text-base font-bold text-[#000f22] mb-1">No News Articles Found</h3>
-                  <p className="text-xs text-[#4b5563] mb-4">
+                <div className="bg-white rounded-2xl border border-brand-100 p-8 text-center my-4">
+                  <Newspaper className="w-10 h-10 text-ink-400 mx-auto mb-3" aria-hidden="true" />
+                  <h3 className="text-base font-bold text-ink-900 mb-1">No News Articles Found</h3>
+                  <p className="text-xs text-ink-700 mb-4">
                     There are no stories matching your selected category or search filter.
                   </p>
                   <button
@@ -575,7 +574,7 @@ export default function News({ onOpenCounseling }) {
                       setActiveCategory("all");
                       setSearchQuery("");
                     }}
-                    className="px-4 py-2 rounded-xl bg-[#f0f5ff] text-[#115eaf] text-xs font-semibold hover:bg-[#d5e3ff] transition-colors"
+                    className="px-4 py-2 rounded-xl bg-brand-50 text-brand-600 text-xs font-semibold hover:bg-brand-200 transition-colors"
                   >
                     Reset Filters
                   </button>
@@ -585,10 +584,10 @@ export default function News({ onOpenCounseling }) {
                   {filteredArticles.map((item) => (
                     <article
                       key={item.id}
-                      className="group bg-white rounded-xl border border-[#e7eeff] hover:border-[#b1c8eb] hover:shadow-sm transition-all duration-200 overflow-hidden flex flex-col sm:flex-row"
+                      className="group bg-white rounded-xl border border-brand-100 hover:border-brand-300 hover:shadow-sm transition-all duration-200 overflow-hidden flex flex-col sm:flex-row"
                     >
                       {/* Image Thumbnail */}
-                      <div className="w-full sm:w-52 md:w-60 h-44 sm:h-auto shrink-0 relative bg-[#f8fbff] overflow-hidden">
+                      <div className="w-full sm:w-52 md:w-60 h-44 sm:h-auto shrink-0 relative bg-canvas overflow-hidden">
                         <img
                           src={item.image?.url || DEFAULT_NEWS_FALLBACK_IMAGE}
                           alt={item.image?.alt || item.title}
@@ -612,32 +611,32 @@ export default function News({ onOpenCounseling }) {
                       <div className="p-4 sm:p-5 flex flex-col justify-between flex-1">
                         <div>
                           <div className="flex flex-wrap items-center gap-2 mb-2">
-                            <span className="px-2 py-0.5 rounded-full bg-[#f0f5ff] text-[#115eaf] text-[11px] font-semibold border border-[#d5e3ff]">
+                            <span className="px-2 py-0.5 rounded-full bg-brand-50 text-brand-600 text-[11px] font-semibold border border-brand-200">
                               {item.category || "Exam Alerts"}
                             </span>
-                            <span className="text-[11px] text-[#6b7280]">
+                            <span className="text-[11px] text-ink-500">
                               {getTimeAgo(item.approvalDate)}
                             </span>
                           </div>
 
-                          <h3 className="text-sm sm:text-base font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors leading-snug news-clamp-2 mb-2">
+                          <h3 className="text-sm sm:text-base font-bold text-ink-900 group-hover:text-brand-600 transition-colors leading-snug news-clamp-2 mb-2">
                             <Link to={`/news/${encodeURIComponent(item.slug)}`}>
                               {item.title}
                             </Link>
                           </h3>
 
-                          <p className="text-xs text-[#4b5563] leading-relaxed news-clamp-2 mb-3">
+                          <p className="text-xs text-ink-700 leading-relaxed news-clamp-2 mb-3">
                             {getArticleExcerpt(item)}
                           </p>
                         </div>
 
-                        <div className="pt-2.5 border-t border-[#f0f4f8] flex items-center justify-between text-xs">
-                          <span className="text-[#6b7280] font-medium text-[11px]">
+                        <div className="pt-2.5 border-t border-canvas flex items-center justify-between text-xs">
+                          <span className="text-ink-500 font-medium text-[11px]">
                             By {item.author?.name || "OnlineSiksha Desk"}
                           </span>
                           <Link
                             to={`/news/${encodeURIComponent(item.slug)}`}
-                            className="inline-flex items-center gap-1 font-bold text-[#115eaf] hover:text-[#084a8c] transition-colors group-hover:translate-x-0.5"
+                            className="inline-flex items-center gap-1 font-bold text-brand-600 hover:text-brand-700 transition-colors group-hover:translate-x-0.5"
                           >
                             <span>Read Story</span>
                             <ArrowRight className="w-3 h-3" aria-hidden="true" />
@@ -650,9 +649,9 @@ export default function News({ onOpenCounseling }) {
               )}
 
               {/* Pagination metadata */}
-              <div className="mt-8 pt-4 border-t border-[#e7eeff] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#6b7280]">
+              <div className="mt-8 pt-4 border-t border-brand-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink-500">
                 <span>Showing all {filteredArticles.length} published stories</span>
-                <span className="font-semibold text-[#115eaf]">
+                <span className="font-semibold text-brand-600">
                   Verified Education Journalism • OnlineSiksha
                 </span>
               </div>
@@ -661,14 +660,14 @@ export default function News({ onOpenCounseling }) {
             {/* SIDEBAR WIDGETS (30%) */}
             <aside className="lg:col-span-4 space-y-5 lg:sticky lg:top-24" aria-label="Education resources and counselling">
               {/* WIDGET 1: EXPLORE EXAMS SHORTCUT */}
-              <div className="bg-white rounded-2xl border border-[#e7eeff] p-4.5 shadow-2xs">
+              <div className="bg-white rounded-2xl border border-brand-100 p-4.5 shadow-2xs">
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-7 h-7 rounded-lg bg-[#f0f5ff] text-[#115eaf] flex items-center justify-center">
+                  <div className="w-7 h-7 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center">
                     <GraduationCap className="w-4 h-4" aria-hidden="true" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-[#000f22]">Entrance Exams Catalog</h3>
-                    <span className="text-[10px] text-[#6b7280]">Complete dates & syllabi</span>
+                    <h3 className="text-sm font-bold text-ink-900">Entrance Exams Catalog</h3>
+                    <span className="text-[10px] text-ink-500">Complete dates & syllabi</span>
                   </div>
                 </div>
 
@@ -682,10 +681,10 @@ export default function News({ onOpenCounseling }) {
                     <Link
                       key={i}
                       to={ex.path}
-                      className="p-2 rounded-lg bg-[#f8fbff] hover:bg-[#f0f5ff] border border-[#f0f4f8] hover:border-[#b1c8eb] flex items-center justify-between transition-colors group"
+                      className="p-2 rounded-lg bg-canvas hover:bg-brand-50 border border-canvas hover:border-brand-300 flex items-center justify-between transition-colors group"
                     >
-                      <span className="font-semibold text-[#000f22] group-hover:text-[#115eaf]">{ex.name}</span>
-                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-white text-[#6b7280] border border-[#e7eeff]">
+                      <span className="font-semibold text-ink-900 group-hover:text-brand-600">{ex.name}</span>
+                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-white text-ink-500 border border-brand-100">
                         {ex.mode}
                       </span>
                     </Link>
@@ -694,7 +693,7 @@ export default function News({ onOpenCounseling }) {
 
                 <Link
                   to="/exams"
-                  className="w-full h-8 rounded-lg border border-[#115eaf] text-[#115eaf] hover:bg-[#f0f5ff] text-xs font-semibold flex items-center justify-center gap-1 transition-colors"
+                  className="w-full h-8 rounded-lg border border-brand-600 text-brand-600 hover:bg-brand-50 text-xs font-semibold flex items-center justify-center gap-1 transition-colors"
                 >
                   <span>View All Exams</span>
                   <ArrowRight className="w-3 h-3" aria-hidden="true" />
@@ -702,14 +701,14 @@ export default function News({ onOpenCounseling }) {
               </div>
 
               {/* WIDGET 2: INSTANT EXAM ALERTS */}
-              <div className="bg-white rounded-2xl border border-[#e7eeff] p-4 shadow-2xs">
+              <div className="bg-white rounded-2xl border border-brand-100 p-4 shadow-2xs">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
                     <TrendingUp className="w-4 h-4" aria-hidden="true" />
                   </div>
-                  <h3 className="text-xs font-bold text-[#000f22]">Stay Ahead with Verified Alerts</h3>
+                  <h3 className="text-xs font-bold text-ink-900">Get admission alerts</h3>
                 </div>
-                <p className="text-[11px] text-[#4b5563] leading-relaxed">
+                <p className="text-[11px] text-ink-700 leading-relaxed">
                   Never miss an application deadline, admit card release, or answer key notification. Bookmark our Live Desk for daily verified updates.
                 </p>
               </div>

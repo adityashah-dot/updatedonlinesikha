@@ -17,8 +17,8 @@ export default function UniversityList({ all }) {
   return (
     <>
       <div className="filters">
-        <input placeholder="Search university" value={q} onChange={(e) => setQ(e.target.value)} />
-        <select value={city} onChange={(e) => setCity(e.target.value)}>
+        <input aria-label="Search university" placeholder="Search university" value={q} onChange={(e) => setQ(e.target.value)} />
+        <select aria-label="Location" value={city} onChange={(e) => setCity(e.target.value)}>
           <option value="">All locations</option>
           {cities.map((c) => <option key={c}>{c}</option>)}
         </select>

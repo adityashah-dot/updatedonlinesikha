@@ -64,62 +64,62 @@ export const TopCollegesByLocation = ({ onOpenBrochure, colleges = [] }) => {
     return (<section className="scroll-mt-24">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-[620px]">
-            <p className="text-sm font-medium text-[#115eaf]">By location</p>
-            <h2 className="mt-2 font-bold tracking-[-0.015em] text-[#101828]">Online universities by city</h2>
-            <p className="mt-3 text-[15px] leading-7 text-[#475467]">
+            <p className="text-sm font-medium text-brand-600">By location</p>
+            <h2 className="mt-2 font-bold tracking-[-0.015em] text-ink-900">Online universities by city</h2>
+            <p className="mt-3 text-[15px] leading-7 text-ink-700">
               Filter by the city you live in, then check fees and accreditation before shortlisting.
             </p>
           </div>
           <div className="w-full sm:w-[220px]">
-            <label htmlFor="location-select" className="mb-1.5 block text-sm font-medium text-[#344054]">Choose a city</label>
+            <label htmlFor="location-select" className="mb-1.5 block text-sm font-medium text-ink-700">Choose a city</label>
             <div className="relative">
-              <MapPin className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#667085]"/>
-              <select id="location-select" value={selectedLocation} onChange={(e) => setSelectedLocation(e.target.value)} className="h-11 w-full cursor-pointer appearance-none rounded-lg border border-[#d0d5dd] bg-white pl-9 pr-9 text-sm text-[#101828] outline-none transition-colors focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15">
+              <MapPin className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-500"/>
+              <select id="location-select" value={selectedLocation} onChange={(e) => setSelectedLocation(e.target.value)} className="h-11 w-full cursor-pointer appearance-none rounded-lg border border-line-strong bg-white pl-9 pr-9 text-sm text-ink-900 outline-none transition-colors focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15">
                 {POPULAR_HUBS.map((hub) => (<option key={hub.value} value={hub.value}>{hub.label}</option>))}
               </select>
-              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#667085]"/>
+              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-500"/>
             </div>
           </div>
         </div>
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {visibleColleges.map((college) => (<article key={college.id} className="flex h-full flex-col rounded-xl border border-[#e4e7ec] bg-white p-5 transition-colors hover:border-[#c7d7ee]">
+          {visibleColleges.map((college) => (<article key={college.id} className="flex h-full flex-col rounded-xl border border-line bg-white p-5 transition-colors hover:border-brand-200">
               <div className="flex items-start gap-3">
-                <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#e4e7ec] bg-white">
-                  <span className="text-[11px] font-semibold text-[#667085]">{initialsOf(college)}</span>
+                <span className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-line bg-white">
+                  <span className="text-[11px] font-semibold text-ink-500">{initialsOf(college)}</span>
                   {college.logoImage ? (<img src={college.logoImage} alt="" className="absolute inset-0 h-full w-full object-contain p-1.5" onError={(e) => { e.currentTarget.style.display = 'none'; }}/>) : null}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <h3 className="line-clamp-2 font-semibold leading-snug text-[#101828]">{college.name}</h3>
-                  <p className="mt-1 flex items-center gap-1 text-xs text-[#667085]">
+                  <h3 className="line-clamp-2 font-semibold leading-snug text-ink-900">{college.name}</h3>
+                  <p className="mt-1 flex items-center gap-1 text-xs text-ink-500">
                     <MapPin className="h-3 w-3"/>
                     {[college.city, college.state].filter(Boolean).join(', ') || 'India'}
                   </p>
                 </div>
-                <button type="button" onClick={() => toggleBookmark(college.id)} aria-pressed={bookmarkedIds.has(college.id)} aria-label={`Save ${college.name}`} className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors ${bookmarkedIds.has(college.id) ? 'text-[#115eaf]' : 'text-[#98a2b3] hover:text-[#475467]'}`}>
+                <button type="button" onClick={() => toggleBookmark(college.id)} aria-pressed={bookmarkedIds.has(college.id)} aria-label={`Save ${college.name}`} className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors ${bookmarkedIds.has(college.id) ? 'text-brand-600' : 'text-ink-400 hover:text-ink-700'}`}>
                   <Bookmark className="h-4 w-4" fill={bookmarkedIds.has(college.id) ? 'currentColor' : 'none'}/>
                 </button>
               </div>
 
-              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-[#667085]">
+              <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-500">
                 {college.nirf ? <span>{college.nirf}</span> : null}
                 {college.courses ? <span>{college.courses}</span> : null}
               </div>
 
-              <div className="mt-auto flex items-end justify-between gap-3 border-t border-[#eaecf0] pt-4">
+              <div className="mt-auto flex items-end justify-between gap-3 border-t border-line pt-4">
                 <div>
-                  <p className="text-xs text-[#667085]">Total fee</p>
-                  <p className="mt-0.5 text-sm font-semibold text-[#101828]">{college.totalFees || 'Check with advisor'}</p>
+                  <p className="text-xs text-ink-500">Total fee</p>
+                  <p className="mt-0.5 text-sm font-semibold text-ink-900">{college.totalFees || 'Check with advisor'}</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <button type="button" onClick={onOpenBrochure} className="text-sm font-medium text-[#475467] hover:text-[#115eaf]">Brochure</button>
-                  <button type="button" onClick={() => college.slug && navigate(`/universities/${college.slug}`)} className="inline-flex h-10 items-center justify-center rounded-lg bg-[#115eaf] px-4 text-sm font-semibold text-white transition-colors hover:bg-[#084a8c]">View details</button>
+                  <button type="button" onClick={onOpenBrochure} className="text-sm font-medium text-ink-700 hover:text-brand-600">Brochure</button>
+                  <button type="button" onClick={() => college.slug && navigate(`/universities/${college.slug}`)} className="inline-flex h-10 items-center justify-center rounded-lg bg-brand-600 px-4 text-sm font-semibold text-white transition-colors hover:bg-brand-700">View details</button>
                 </div>
               </div>
             </article>))}
         </div>
 
-        {filteredColleges.length === 0 ? (<p className="mt-6 rounded-lg border border-[#e4e7ec] bg-white px-4 py-6 text-center text-sm text-[#667085]">
+        {filteredColleges.length === 0 ? (<p className="mt-6 rounded-lg border border-line bg-white px-4 py-6 text-center text-sm text-ink-500">
             No universities listed in this city yet. Talk to an advisor and we will suggest the closest options.
           </p>) : null}
       </section>);

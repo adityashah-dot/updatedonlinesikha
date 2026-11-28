@@ -45,5 +45,5 @@ export const ADMISSION_TIMELINE_DATA = DEGREEFYD_LPU_API.importantDates.map((ite
   timelines: item.date,
   mode: item.mode,
   status: item.status,
-  statusClass: item.status === "Active" ? "bg-[#d5e3ff] text-[#004689]" : item.status === "Open" ? "bg-emerald-100 text-emerald-800 font-bold" : "bg-[#e7eeff] text-[#115eaf]"
+  statusClass: item.status === "Active" ? "bg-brand-200 text-brand-700" : item.status === "Open" ? "bg-emerald-100 text-emerald-800 font-bold" : "bg-brand-100 text-brand-600"
 }));

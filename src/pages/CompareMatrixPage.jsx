@@ -31,7 +31,7 @@ import { ALL_UNIVERSITIES } from "../data/universities";
 import { getUniversitiesPayload, formatPackage, mapUniversity } from "../services/universityApi";
 
 const DEGREE_OPTIONS = [
-  { value: "all", label: "All Degrees (Institutional)", code: "ALL" },
+  { value: "all", label: "All programmes", code: "ALL" },
   { value: "mba", label: "Online MBA (2 Years)", code: "MBA" },
   { value: "mca", label: "Online MCA (2 Years)", code: "MCA" },
   { value: "bba", label: "Online BBA (3 Years)", code: "BBA" },
@@ -80,7 +80,7 @@ function normalizeUniversityProfile(uni, liveMap) {
     nirfRanking: uni.nirfRanking || (live?.rankNote ? live.rankNote.replace(/\D+/g, "") : ""),
     approvals: Array.isArray(uni.approvals) && uni.approvals.length > 0 ? uni.approvals : live?.approvals || ["UGC-DEB Entitled"],
     feeRange: uni.quickStats?.feeRange || live?.feeRange || live?.feeLabel || "—",
-    emiStarting: uni.quickStats?.emiStarting || (live?.minFee ? `₹${Math.round(live.minFee / 24).toLocaleString("en-IN")}/mo` : "Zero-Cost EMI Available"),
+    emiStarting: uni.quickStats?.emiStarting || (live?.minFee ? `₹${Math.round(live.minFee / 24).toLocaleString("en-IN")}/mo` : "No-cost EMI available"),
     mode: uni.quickStats?.mode || "100% Online Proctored",
     placementRate: uni.quickStats?.placementRate || "90% Placement Support",
     highestPackage: uni.quickStats?.highestPackage || (live?.highestPackage ? formatPackage(live.highestPackage) : "—"),
@@ -118,15 +118,15 @@ function normalizeLiveOnlyUniversity(live) {
     logoImage: live.logoImage || "",
     shortNaac,
     fullNaac: live.naac ? `${live.naac} Accredited` : "UGC-DEB Recognized",
-    naacSub: live.established ? `Established in ${live.established}` : "Verified Statutory Recognition",
+    naacSub: live.established ? `Established in ${live.established}` : "UGC-DEB entitled",
     nirfRanking: live.rankNote ? live.rankNote.replace(/\D+/g, "") : "",
     approvals: Array.isArray(live.approvals) && live.approvals.length > 0 ? live.approvals : ["UGC-DEB", "AIU"],
     feeRange: live.feeRange || live.feeLabel || "Fee on Request",
     perSemDefault: perSem,
     emiStarting: estEmi,
     mode: live.collegeMode === "distance" ? "Distance & Digital Learning" : "100% Online Proctored",
-    placementRate: "100% Career Support",
-    highestPackage: live.highestPackage ? formatPackage(live.highestPackage) : "Verified Placement Cell",
+    placementRate: "Career support",
+    highestPackage: live.highestPackage ? formatPackage(live.highestPackage) : "Placement support",
     avgPackage: live.placementHighest ? formatPackage(live.placementHighest) : "Industry Standard CTC",
     rating: "4.4",
     lmsName: `${live.short || "University"} Digital LMS Portal`,
@@ -328,45 +328,45 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
   const identicalMobileDim = highlightDiffs ? "opacity-45" : "";
 
   return (
-    <div className="w-full bg-[#F8FAFC] text-[#000f22] font-sans antialiased">
+    <div className="w-full bg-canvas text-ink-900 font-sans antialiased">
       {/* ===================================================================== */}
       {/* MOBILE COMPARE MATRIX VIEW (lg:hidden)                                */}
       {/* ===================================================================== */}
       <div className="lg:hidden flex flex-col w-full pb-8">
         {/* Top Ambient Banner / Breadcrumb & Controls */}
         <section className="px-4 pt-4 pb-2 flex flex-col gap-2">
-          <div className="flex items-center gap-1.5 text-[#74777e]">
-            <ShieldCheck className="w-4 h-4 text-[#115eaf]" />
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-[#43474d]">
+          <div className="flex items-center gap-1.5 text-ink-500">
+            <ShieldCheck className="w-4 h-4 text-brand-600" />
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-ink-700">
               Decision Matrix
             </span>
             <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-[11px] font-bold text-[#115eaf]">
+            <span className="text-[11px] font-bold text-brand-600">
               Compare {activeUniversities.length} Universities
             </span>
           </div>
 
           <div className="flex flex-col gap-1">
-            <h1 className="text-[22px] leading-[30px] font-bold text-[#000f22] tracking-tight">
+            <h1 className="text-[22px] leading-[30px] font-bold text-ink-900 tracking-tight">
               Multi-University Matrix
             </h1>
-            <p className="text-[13px] text-[#43474d] leading-snug">
-              Evaluate NAAC credentials, statutory UGC approvals, transparent per-semester fee structures, and remote proctoring methods across accredited Indian universities.
+            <p className="text-[13px] text-ink-700 leading-snug">
+              Compare accreditation, approvals, fees, EMI and exam format for up to four universities.
             </p>
           </div>
 
           {/* Active Program Selector & Action Bar */}
-          <div className="bg-white rounded-xl p-2.5 shadow-xs border border-[#e7eeff] flex flex-col gap-2 mt-1">
+          <div className="bg-white rounded-xl p-2.5 shadow-xs border border-brand-100 flex flex-col gap-2 mt-1">
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2 min-w-0 flex-1">
-                <div className="w-8 h-8 rounded-lg bg-[#eef6ff] border border-[#d5e3ff] flex items-center justify-center text-[#115eaf] shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-brand-50 border border-brand-200 flex items-center justify-center text-brand-600 shrink-0">
                   <GraduationCap className="w-4.5 h-4.5" />
                 </div>
                 <div className="flex flex-col min-w-0 flex-1">
-                  <span className="text-[10px] font-semibold text-[#74777e] leading-tight uppercase tracking-wider">
+                  <span className="text-[10px] font-semibold text-ink-500 leading-tight uppercase tracking-wider">
                     Benchmark Degree
                   </span>
-                  <span className="text-[14px] font-bold text-[#000f22] truncate">
+                  <span className="text-[14px] font-bold text-ink-900 truncate">
                     {selectedDegreeObj.label}
                   </span>
                 </div>
@@ -374,10 +374,10 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
 
               <div className="relative shrink-0">
                 <select
-                  aria-label="Change Benchmark Degree"
+                  aria-label="Change programme"
                   value={selectedDegree}
                   onChange={(e) => setSelectedDegree(e.target.value)}
-                  className="appearance-none px-2.5 py-1.5 pr-6 rounded-lg bg-[#eff4ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold cursor-pointer focus:outline-none"
+                  className="appearance-none px-2.5 py-1.5 pr-6 rounded-lg bg-brand-100 border border-brand-200 text-brand-600 text-[11px] font-bold cursor-pointer focus:outline-none"
                 >
                   {DEGREE_OPTIONS.map((opt) => (
                     <option key={opt.value} value={opt.value}>
@@ -385,11 +385,11 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                     </option>
                   ))}
                 </select>
-                <ChevronDown className="w-3.5 h-3.5 text-[#115eaf] absolute right-1.5 top-2 pointer-events-none" />
+                <ChevronDown className="w-3.5 h-3.5 text-brand-600 absolute right-1.5 top-2 pointer-events-none" />
               </div>
             </div>
 
-            <div className="flex items-center justify-between bg-[#eff4ff] rounded-lg p-2">
+            <div className="flex items-center justify-between bg-brand-100 rounded-lg p-2">
               {/* Interactive Differences Toggle */}
               <label className="flex items-center gap-2 cursor-pointer select-none">
                 <button
@@ -398,7 +398,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                   aria-checked={highlightDiffs}
                   onClick={() => setHighlightDiffs((prev) => !prev)}
                   className={`w-9 h-5 rounded-full relative transition-colors flex items-center ${
-                    highlightDiffs ? "bg-[#115eaf]" : "bg-[#c3c6d5]"
+                    highlightDiffs ? "bg-brand-600" : "bg-line-strong"
                   }`}
                 >
                   <span
@@ -407,9 +407,9 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                     }`}
                   />
                 </button>
-                <span className="text-[11px] font-semibold text-[#000f22] flex items-center gap-1">
+                <span className="text-[11px] font-semibold text-ink-900 flex items-center gap-1">
                   <span>Highlight Differences</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#115eaf] inline-block" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-600 inline-block" />
                 </span>
               </label>
 
@@ -418,23 +418,23 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                 type="button"
                 onClick={() => window.print()}
                 aria-label="Export Matrix PDF"
-                className="flex items-center gap-1 text-[11px] font-semibold text-[#115eaf] hover:text-[#084a8c] px-2.5 py-1 rounded bg-white border border-[#d5e3ff] shadow-2xs active:scale-95 transition-transform"
+                className="flex items-center gap-1 text-[11px] font-semibold text-brand-600 hover:text-brand-700 px-2.5 py-1 rounded bg-white border border-brand-200 shadow-2xs active:scale-95 transition-transform"
               >
                 <FileText className="w-3.5 h-3.5" />
-                <span>PDF Matrix</span>
+                <span>PDF</span>
               </button>
             </div>
           </div>
         </section>
 
         {/* Sticky Horizontal Universities Carousel Header */}
-        <section className="sticky top-[60px] z-30 bg-white/95 backdrop-blur-md shadow-xs border-y border-[#e7eeff] py-2 px-4">
+        <section className="sticky top-[60px] z-30 bg-white/95 backdrop-blur-md shadow-xs border-y border-brand-100 py-2 px-4">
           <div className="flex items-center justify-between mb-1.5">
-            <span className="text-[11px] font-semibold text-[#74777e] flex items-center gap-1">
+            <span className="text-[11px] font-semibold text-ink-500 flex items-center gap-1">
               <span>↔</span>
               <span>Swipe horizontally to inspect peers</span>
             </span>
-            <span className="text-[11px] text-[#115eaf] font-bold bg-[#eef6ff] border border-[#d5e3ff] px-2 py-0.5 rounded-full">
+            <span className="text-[11px] text-brand-600 font-bold bg-brand-50 border border-brand-200 px-2 py-0.5 rounded-full">
               {activeUniversities.length} Selected
             </span>
           </div>
@@ -444,12 +444,12 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
             {activeUniversities.map((uni, colIdx) => (
               <div
                 key={`mob-card-${uni.id}-${colIdx}`}
-                className="snap-start shrink-0 w-[240px] bg-white rounded-xl p-3 shadow-xs border border-[#e7eeff] flex flex-col justify-between relative overflow-hidden"
+                className="snap-start shrink-0 w-[240px] bg-white rounded-xl p-3 shadow-xs border border-brand-100 flex flex-col justify-between relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 w-16 h-16 bg-[#115eaf]/5 rounded-bl-full pointer-events-none" />
+                <div className="absolute top-0 right-0 w-16 h-16 bg-brand-600/5 rounded-bl-full pointer-events-none" />
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-start gap-2.5 min-w-0">
-                    <div className="w-10 h-10 rounded-lg bg-[#f0f3ff] border border-[#d5e3ff] flex items-center justify-center font-bold text-[#115eaf] shrink-0 overflow-hidden shadow-2xs p-1">
+                    <div className="w-10 h-10 rounded-lg bg-brand-50 border border-brand-200 flex items-center justify-center font-bold text-brand-600 shrink-0 overflow-hidden shadow-2xs p-1">
                       {uni.logoImage ? (
                         <img
                           src={uni.logoImage}
@@ -467,12 +467,12 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                     </div>
                     <div className="flex flex-col min-w-0">
                       <div className="flex items-center gap-1">
-                        <span className="text-[14px] font-bold text-[#000f22] truncate">
+                        <span className="text-[14px] font-bold text-ink-900 truncate">
                           {uni.shortName}
                         </span>
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-brand-600 shrink-0" />
                       </div>
-                      <span className="text-[11px] text-[#74777e] truncate">
+                      <span className="text-[11px] text-ink-500 truncate">
                         {uni.name.split("(")[0].trim()}, {uni.location.split(",")[0]}
                       </span>
                     </div>
@@ -485,7 +485,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                         setSwapSearch("");
                       }}
                       title="Swap University"
-                      className="p-1 rounded-md text-[#74777e] hover:text-[#115eaf] hover:bg-[#eff4ff]"
+                      className="p-1 rounded-md text-ink-500 hover:text-brand-600 hover:bg-brand-100"
                     >
                       <RefreshCw className="w-3.5 h-3.5" />
                     </button>
@@ -494,7 +494,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                         type="button"
                         onClick={() => handleRemoveSlot(colIdx)}
                         title="Remove University"
-                        className="p-1 rounded-md text-[#74777e] hover:text-rose-600 hover:bg-rose-50"
+                        className="p-1 rounded-md text-ink-500 hover:text-rose-600 hover:bg-rose-50"
                       >
                         <X className="w-3.5 h-3.5" />
                       </button>
@@ -503,11 +503,11 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                 </div>
 
                 <div className="flex items-center gap-1.5 mt-2 flex-wrap">
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 text-[#B45309] border border-amber-200/80 font-bold shadow-2xs">
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 text-accent-700 border border-amber-200/80 font-bold shadow-2xs">
                     {uni.shortNaac}
                   </span>
                   {uni.nirfRanking && (
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#eef6ff] text-[#115eaf] border border-[#d5e3ff] font-semibold">
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-brand-50 text-brand-600 border border-brand-200 font-semibold">
                       NIRF #{uni.nirfRanking}
                     </span>
                   )}
@@ -517,7 +517,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                   <button
                     type="button"
                     onClick={() => onOpenApply?.(selectedDegree === "all" ? "mba" : selectedDegree)}
-                    className="flex-1 py-1.5 px-2 rounded-lg bg-[#115eaf] text-white text-[11px] font-semibold text-center hover:bg-[#084a8c] active:scale-95 transition-all shadow-2xs"
+                    className="flex-1 py-1.5 px-2 rounded-lg bg-brand-600 text-white text-[11px] font-semibold text-center hover:bg-brand-700 active:scale-95 transition-all shadow-2xs"
                   >
                     Apply Now
                   </button>
@@ -525,7 +525,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                     type="button"
                     onClick={() => navigate(`/universities/${uni.slug}`)}
                     aria-label={`Details ${uni.shortName}`}
-                    className="w-7 h-7 rounded-lg bg-[#eff4ff] border border-[#d5e3ff] text-[#115eaf] flex items-center justify-center active:scale-95"
+                    className="w-7 h-7 rounded-lg bg-brand-100 border border-brand-200 text-brand-600 flex items-center justify-center active:scale-95"
                   >
                     <Info className="w-3.5 h-3.5" />
                   </button>
@@ -535,8 +535,8 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
           </div>
 
           {/* Quick Add 4th Slot Banner */}
-          <div className="mt-2 px-3 py-1.5 rounded-lg bg-[#eff4ff] border border-[#d5e3ff] flex items-center justify-between">
-            <span className="text-[11px] text-[#43474d] truncate">
+          <div className="mt-2 px-3 py-1.5 rounded-lg bg-brand-100 border border-brand-200 flex items-center justify-between">
+            <span className="text-[11px] text-ink-700 truncate">
               {selectedIds.length < 4
                 ? "Want to benchmark Manipal (MUJ Online) too?"
                 : "4 UGC-DEB Universities Active in Matrix"}
@@ -545,7 +545,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
               <button
                 type="button"
                 onClick={handleAddManipalSlot}
-                className="text-[11px] text-[#115eaf] font-bold flex items-center gap-1 shrink-0 pl-2"
+                className="text-[11px] text-brand-600 font-bold flex items-center gap-1 shrink-0 pl-2"
               >
                 <PlusCircle className="w-3.5 h-3.5" />
                 <span>Add</span>
@@ -565,17 +565,17 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
         {/* Interactive Matrix Content: Stacked Comparison Sections */}
         <div className="px-4 flex flex-col gap-4 mt-4">
           {/* Category 1: Overview & Accreditations */}
-          <div className="bg-white rounded-2xl p-4 shadow-xs border border-[#e7eeff] flex flex-col gap-2.5">
+          <div className="bg-white rounded-2xl p-4 shadow-xs border border-brand-100 flex flex-col gap-2.5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-amber-50 border border-amber-200/80 text-[#B45309] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-amber-50 border border-amber-200/80 text-accent-700 flex items-center justify-center">
                   <ShieldCheck className="w-4.5 h-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <h2 className="text-base font-bold text-[#000f22]">
+                  <h2 className="text-base font-bold text-ink-900">
                     1. Overview &amp; Accreditations
                   </h2>
-                  <span className="text-[11px] text-[#74777e]">
+                  <span className="text-[11px] text-ink-500">
                     Statutory entitlements &amp; national rankings
                   </span>
                 </div>
@@ -587,14 +587,14 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
 
             {/* Metric Row 1: UGC DEB Approval (Identical) */}
             <div
-              className={`rounded-xl p-3 bg-[#F8FAFC] border border-[#e7eeff] flex flex-col gap-2 transition-all ${identicalMobileDim}`}
+              className={`rounded-xl p-3 bg-canvas border border-brand-100 flex flex-col gap-2 transition-all ${identicalMobileDim}`}
             >
               <div className="flex items-center justify-between">
-                <span className="text-[13px] font-semibold text-[#000f22] flex items-center gap-1">
-                  <span>UGC-DEB Statutory Status</span>
-                  <HelpCircle className="w-3.5 h-3.5 text-[#74777e]" />
+                <span className="text-[13px] font-semibold text-ink-900 flex items-center gap-1">
+                  <span>UGC-DEB status</span>
+                  <HelpCircle className="w-3.5 h-3.5 text-ink-500" />
                 </span>
-                <span className="text-[10px] font-semibold text-[#74777e] uppercase">
+                <span className="text-[10px] font-semibold text-ink-500 uppercase">
                   Statutory Requirement
                 </span>
               </div>
@@ -602,9 +602,9 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                 {activeUniversities.map((uni, idx) => (
                   <div
                     key={`m-ugc-${uni.id}-${idx}`}
-                    className="flex flex-col bg-white p-2 rounded-lg text-center shadow-2xs border border-[#e7eeff]"
+                    className="flex flex-col bg-white p-2 rounded-lg text-center shadow-2xs border border-brand-100"
                   >
-                    <span className="text-[10px] font-semibold text-[#74777e] truncate">
+                    <span className="text-[10px] font-semibold text-ink-500 truncate">
                       {uni.shortName}
                     </span>
                     <span className="text-[11px] text-emerald-700 font-bold flex items-center justify-center gap-0.5 mt-0.5">
@@ -617,17 +617,17 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
             </div>
 
             {/* Metric Row 2: NAAC Grade & CGPA (Differs) */}
-            <div className="rounded-xl p-3 bg-[#F8FAFC] border border-[#e7eeff] border-l-4 border-l-[#115eaf] flex flex-col gap-2 transition-all">
+            <div className="rounded-xl p-3 bg-canvas border border-brand-100 border-l-4 border-l-brand-600 flex flex-col gap-2 transition-all">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[13px] font-semibold text-[#000f22]">
+                  <span className="text-[13px] font-semibold text-ink-900">
                     NAAC Grade &amp; CGPA
                   </span>
-                  <span className="text-[9px] bg-[#eef6ff] text-[#115eaf] px-1.5 py-0.5 rounded font-bold">
+                  <span className="text-[9px] bg-brand-50 text-brand-600 px-1.5 py-0.5 rounded font-bold">
                     Key Diff
                   </span>
                 </div>
-                <span className="text-[11px] text-[#74777e]">Accredited</span>
+                <span className="text-[11px] text-ink-500">Accredited</span>
               </div>
               <div className={`grid ${mobileGridCols} gap-2`}>
                 {activeUniversities.map((uni, idx) => {
@@ -636,20 +636,20 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                     <div
                       key={`m-naac-${uni.id}-${idx}`}
                       className={`flex flex-col bg-white p-2 rounded-lg text-center shadow-2xs border ${
-                        isTopAPlusPlus ? "border-amber-300 ring-1 ring-amber-200" : "border-[#e7eeff]"
+                        isTopAPlusPlus ? "border-amber-300 ring-1 ring-amber-200" : "border-brand-100"
                       }`}
                     >
-                      <span className="text-[10px] font-semibold text-[#74777e] truncate">
+                      <span className="text-[10px] font-semibold text-ink-500 truncate">
                         {uni.shortName}
                       </span>
                       <span
                         className={`text-[13.5px] font-extrabold mt-0.5 ${
-                          isTopAPlusPlus ? "text-[#B45309]" : "text-[#000f22]"
+                          isTopAPlusPlus ? "text-accent-700" : "text-ink-900"
                         }`}
                       >
                         {uni.shortNaac.replace(/^NAAC\s+/i, "")}
                       </span>
-                      <span className="text-[9.5px] text-[#43474d] truncate">{uni.naacSub}</span>
+                      <span className="text-[9.5px] text-ink-700 truncate">{uni.naacSub}</span>
                       {isTopAPlusPlus && (
                         <span className="mt-1 text-[9px] font-semibold text-emerald-700 bg-emerald-50 rounded px-1">
                           Top Tier
@@ -661,27 +661,27 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
               </div>
             </div>
 
-            {/* Metric Row 3: NIRF Ranking Band (Differs) */}
-            <div className="rounded-xl p-3 bg-[#F8FAFC] border border-[#e7eeff] border-l-4 border-l-[#115eaf] flex flex-col gap-2 transition-all">
+            {/* Metric Row 3: NIRF rank (Differs) */}
+            <div className="rounded-xl p-3 bg-canvas border border-brand-100 border-l-4 border-l-brand-600 flex flex-col gap-2 transition-all">
               <div className="flex items-center justify-between">
-                <span className="text-[13px] font-semibold text-[#000f22]">
-                  NIRF Ranking Band
+                <span className="text-[13px] font-semibold text-ink-900">
+                  NIRF rank
                 </span>
-                <span className="text-[11px] text-[#74777e]">Ministry of Ed.</span>
+                <span className="text-[11px] text-ink-500">Ministry of Ed.</span>
               </div>
               <div className={`grid ${mobileGridCols} gap-2`}>
                 {activeUniversities.map((uni, idx) => (
                   <div
                     key={`m-nirf-${uni.id}-${idx}`}
-                    className="flex flex-col bg-white p-2 rounded-lg text-center shadow-2xs border border-[#e7eeff]"
+                    className="flex flex-col bg-white p-2 rounded-lg text-center shadow-2xs border border-brand-100"
                   >
-                    <span className="text-[10px] font-semibold text-[#74777e] truncate">
+                    <span className="text-[10px] font-semibold text-ink-500 truncate">
                       {uni.shortName}
                     </span>
-                    <span className="text-[14px] text-[#115eaf] font-bold mt-0.5">
+                    <span className="text-[14px] text-brand-600 font-bold mt-0.5">
                       {uni.nirfRanking ? `#${uni.nirfRanking}` : "Cat-1"}
                     </span>
-                    <span className="text-[9px] text-[#74777e] truncate">
+                    <span className="text-[9px] text-ink-500 truncate">
                       {uni.location.split(",")[0]}
                     </span>
                   </div>
@@ -690,23 +690,23 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
             </div>
 
             {/* Metric Row 4: Global Mobility & WES */}
-            <div className="rounded-xl p-3 bg-[#F8FAFC] border border-[#e7eeff] border-l-4 border-l-[#115eaf] flex flex-col gap-2 transition-all">
+            <div className="rounded-xl p-3 bg-canvas border border-brand-100 border-l-4 border-l-brand-600 flex flex-col gap-2 transition-all">
               <div className="flex items-center justify-between">
-                <span className="text-[13px] font-semibold text-[#000f22]">
-                  Global Mobility &amp; Approvals
+                <span className="text-[13px] font-semibold text-ink-900">
+                  Approvals &amp; recognition
                 </span>
-                <span className="text-[11px] text-[#74777e]">US / Canada / Global</span>
+                <span className="text-[11px] text-ink-500">US / Canada / Global</span>
               </div>
               <div className={`grid ${mobileGridCols} gap-2 text-[10px]`}>
                 {activeUniversities.map((uni, idx) => (
                   <div
                     key={`m-wes-${uni.id}-${idx}`}
-                    className="bg-white p-2 rounded-lg shadow-2xs border border-[#e7eeff] flex flex-col items-center text-center"
+                    className="bg-white p-2 rounded-lg shadow-2xs border border-brand-100 flex flex-col items-center text-center"
                   >
-                    <span className="font-bold text-[#000f22] truncate w-full">
+                    <span className="font-bold text-ink-900 truncate w-full">
                       {uni.approvals[0] || "UGC-DEB"}
                     </span>
-                    <span className="text-[#74777e] text-[9px] mt-0.5 truncate w-full">
+                    <span className="text-ink-500 text-[9px] mt-0.5 truncate w-full">
                       {uni.approvals.slice(1, 3).join(" • ") || "AIU & WES"}
                     </span>
                   </div>
@@ -715,36 +715,36 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
             </div>
           </div>
 
-          {/* Category 2: Fees & Financial Aid Structure */}
-          <div className="bg-white rounded-2xl p-4 shadow-xs border border-[#e7eeff] flex flex-col gap-2.5">
+          {/* Category 2: Fees & financial aid */}
+          <div className="bg-white rounded-2xl p-4 shadow-xs border border-brand-100 flex flex-col gap-2.5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-[#eef6ff] border border-[#d5e3ff] text-[#115eaf] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-brand-50 border border-brand-200 text-brand-600 flex items-center justify-center">
                   <CreditCard className="w-4.5 h-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <h2 className="text-base font-bold text-[#000f22]">
+                  <h2 className="text-base font-bold text-ink-900">
                     2. Fees &amp; Financial Aid
                   </h2>
-                  <span className="text-[11px] text-[#74777e]">
+                  <span className="text-[11px] text-ink-500">
                     Course fees, per-semester cost &amp; EMI options
                   </span>
                 </div>
               </div>
-              <span className="text-[10px] text-[#115eaf] font-bold bg-[#eef6ff] border border-[#d5e3ff] px-2 py-0.5 rounded-full">
+              <span className="text-[10px] text-brand-600 font-bold bg-brand-50 border border-brand-200 px-2 py-0.5 rounded-full">
                 0% EMI
               </span>
             </div>
 
             {/* Metric Row: Total Degree Cost */}
-            <div className="rounded-xl p-3 bg-[#F8FAFC] border border-[#e7eeff] border-l-4 border-l-[#115eaf] flex flex-col gap-2 transition-all">
+            <div className="rounded-xl p-3 bg-canvas border border-brand-100 border-l-4 border-l-brand-600 flex flex-col gap-2 transition-all">
               <div className="flex items-center justify-between">
-                <span className="text-[13px] font-semibold text-[#000f22]">
+                <span className="text-[13px] font-semibold text-ink-900">
                   {selectedDegree === "all"
                     ? "Full Program Fee Range"
                     : `Full ${selectedDegreeObj.code} Program Fee`}
                 </span>
-                <span className="text-[11px] text-[#74777e]">All Semesters</span>
+                <span className="text-[11px] text-ink-500">All Semesters</span>
               </div>
               <div className={`grid ${mobileGridCols} gap-2`}>
                 {activeUniversities.map((uni, idx) => {
@@ -752,15 +752,15 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                   return (
                     <div
                       key={`m-fee-${uni.id}-${idx}`}
-                      className="flex flex-col bg-white p-2.5 rounded-lg shadow-2xs border border-[#e7eeff]"
+                      className="flex flex-col bg-white p-2.5 rounded-lg shadow-2xs border border-brand-100"
                     >
-                      <span className="text-[10px] font-semibold text-[#74777e] truncate">
+                      <span className="text-[10px] font-semibold text-ink-500 truncate">
                         {uni.shortName}
                       </span>
-                      <span className="text-[12.5px] text-[#000f22] font-extrabold mt-0.5 leading-tight">
+                      <span className="text-[12.5px] text-ink-900 font-extrabold mt-0.5 leading-tight">
                         {metrics.feeMain}
                       </span>
-                      <span className="text-[9.5px] text-[#43474d] mt-0.5 truncate">
+                      <span className="text-[9.5px] text-ink-700 mt-0.5 truncate">
                         {metrics.feeSub}
                       </span>
                     </div>
@@ -769,13 +769,13 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
               </div>
             </div>
 
-            {/* Metric Row: 0% Interest EMI Scheme */}
-            <div className="rounded-xl p-3 bg-[#F8FAFC] border border-[#e7eeff] border-l-4 border-l-[#115eaf] flex flex-col gap-2 transition-all">
+            {/* Metric Row: No-cost EMI */}
+            <div className="rounded-xl p-3 bg-canvas border border-brand-100 border-l-4 border-l-brand-600 flex flex-col gap-2 transition-all">
               <div className="flex items-center justify-between">
-                <span className="text-[13px] font-semibold text-[#000f22]">
+                <span className="text-[13px] font-semibold text-ink-900">
                   Monthly Outflow (0% EMI)
                 </span>
-                <span className="text-[11px] text-[#74777e]">No Collateral</span>
+                <span className="text-[11px] text-ink-500">No Collateral</span>
               </div>
               <div className={`grid ${mobileGridCols} gap-2`}>
                 {activeUniversities.map((uni, idx) => {
@@ -783,16 +783,16 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                   return (
                     <div
                       key={`m-emi-${uni.id}-${idx}`}
-                      className="flex flex-col bg-white p-2 rounded-lg text-center shadow-2xs border border-[#e7eeff]"
+                      className="flex flex-col bg-white p-2 rounded-lg text-center shadow-2xs border border-brand-100"
                     >
-                      <span className="text-[10px] font-semibold text-[#74777e] truncate">
+                      <span className="text-[10px] font-semibold text-ink-500 truncate">
                         {uni.shortName}
                       </span>
-                      <span className="text-[12.5px] text-[#115eaf] font-bold mt-0.5">
+                      <span className="text-[12.5px] text-brand-600 font-bold mt-0.5">
                         {metrics.emiAmount}
-                        <span className="text-[9px] font-normal text-[#74777e]">/mo</span>
+                        <span className="text-[9px] font-normal text-ink-500">/mo</span>
                       </span>
-                      <span className="text-[9px] text-[#74777e]">12-24 mos tenure</span>
+                      <span className="text-[9px] text-ink-500">12-24 mos tenure</span>
                     </div>
                   );
                 })}
@@ -800,12 +800,12 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
             </div>
 
             {/* Metric Row: Merit & Need Scholarships */}
-            <div className="rounded-xl p-3 bg-[#F8FAFC] border border-[#e7eeff] border-l-4 border-l-[#115eaf] flex flex-col gap-2 transition-all">
+            <div className="rounded-xl p-3 bg-canvas border border-brand-100 border-l-4 border-l-brand-600 flex flex-col gap-2 transition-all">
               <div className="flex items-center justify-between">
-                <span className="text-[13px] font-semibold text-[#000f22]">
+                <span className="text-[13px] font-semibold text-ink-900">
                   Scholarship Discretion
                 </span>
-                <span className="text-[11px] text-[#74777e]">Merit &amp; Defense</span>
+                <span className="text-[11px] text-ink-500">Merit &amp; Defense</span>
               </div>
               <div className={`grid ${mobileGridCols} gap-2 text-center text-[10px]`}>
                 {activeUniversities.map((uni, idx) => {
@@ -813,12 +813,12 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                   return (
                     <div
                       key={`m-sch-${uni.id}-${idx}`}
-                      className="bg-white p-2 rounded-lg shadow-2xs border border-[#e7eeff] flex flex-col"
+                      className="bg-white p-2 rounded-lg shadow-2xs border border-brand-100 flex flex-col"
                     >
-                      <span className="font-bold text-[#000f22] truncate">
+                      <span className="font-bold text-ink-900 truncate">
                         {topSch?.benefit || "Up to 25%"}
                       </span>
-                      <span className="text-[#74777e] text-[9px] mt-0.5 truncate">
+                      <span className="text-ink-500 text-[9px] mt-0.5 truncate">
                         {topSch?.title || "Defense & Merit"}
                       </span>
                     </div>
@@ -828,32 +828,32 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
             </div>
           </div>
 
-          {/* Category 3: Academics, Delivery & Examination */}
-          <div className="bg-white rounded-2xl p-4 shadow-xs border border-[#e7eeff] flex flex-col gap-2.5">
+          {/* Category 3: Classes & exams */}
+          <div className="bg-white rounded-2xl p-4 shadow-xs border border-brand-100 flex flex-col gap-2.5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-[#e6eeff] text-[#115eaf] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center">
                   <Monitor className="w-4.5 h-4.5" />
                 </div>
                 <div className="flex flex-col">
-                  <h2 className="text-base font-bold text-[#000f22]">
+                  <h2 className="text-base font-bold text-ink-900">
                     3. Academics &amp; Exams
                   </h2>
-                  <span className="text-[11px] text-[#74777e]">
+                  <span className="text-[11px] text-ink-500">
                     LMS platform, live interaction &amp; testing
                   </span>
                 </div>
               </div>
-              <span className="text-[10px] text-[#43474d] font-semibold bg-[#eff4ff] px-2 py-0.5 rounded-full">
+              <span className="text-[10px] text-ink-700 font-semibold bg-brand-100 px-2 py-0.5 rounded-full">
                 100% Online
               </span>
             </div>
 
             {/* Metric: Remote Proctoring Mode */}
-            <div className="rounded-xl p-3 bg-[#F8FAFC] border border-[#e7eeff] border-l-4 border-l-[#115eaf] flex flex-col gap-2 transition-all">
+            <div className="rounded-xl p-3 bg-canvas border border-brand-100 border-l-4 border-l-brand-600 flex flex-col gap-2 transition-all">
               <div className="flex items-center justify-between">
-                <span className="text-[13px] font-semibold text-[#000f22]">
-                  Exam Execution Method
+                <span className="text-[13px] font-semibold text-ink-900">
+                  Exam format
                 </span>
                 <span className="text-[11px] text-emerald-700 font-semibold">
                   Zero Campus Visits
@@ -863,42 +863,42 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                 {activeUniversities.map((uni, idx) => (
                   <div
                     key={`m-exam-${uni.id}-${idx}`}
-                    className="bg-white p-2.5 rounded-lg shadow-2xs border border-[#e7eeff] flex flex-col text-center"
+                    className="bg-white p-2.5 rounded-lg shadow-2xs border border-brand-100 flex flex-col text-center"
                   >
-                    <span className="text-[10px] font-semibold text-[#74777e] truncate">
+                    <span className="text-[10px] font-semibold text-ink-500 truncate">
                       {uni.shortName}
                     </span>
-                    <span className="font-bold text-[#000f22] mt-1 leading-tight">
+                    <span className="font-bold text-ink-900 mt-1 leading-tight">
                       {uni.mode.replace(/·.*$/, "").trim()}
                     </span>
-                    <span className="text-[#74777e] text-[9px] mt-0.5">AI Proctored</span>
+                    <span className="text-ink-500 text-[9px] mt-0.5">AI Proctored</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Metric: LMS Mobile App Score */}
-            <div className="rounded-xl p-3 bg-[#F8FAFC] border border-[#e7eeff] border-l-4 border-l-[#115eaf] flex flex-col gap-2 transition-all">
+            <div className="rounded-xl p-3 bg-canvas border border-brand-100 border-l-4 border-l-brand-600 flex flex-col gap-2 transition-all">
               <div className="flex items-center justify-between">
-                <span className="text-[13px] font-semibold text-[#000f22]">
+                <span className="text-[13px] font-semibold text-ink-900">
                   Mobile Learning Tech (LMS)
                 </span>
-                <span className="text-[11px] text-[#74777e]">App Store Rating</span>
+                <span className="text-[11px] text-ink-500">App Store Rating</span>
               </div>
               <div className={`grid ${mobileGridCols} gap-2 text-center`}>
                 {activeUniversities.map((uni, idx) => (
                   <div
                     key={`m-lms-${uni.id}-${idx}`}
-                    className="bg-white p-2 rounded-lg shadow-2xs border border-[#e7eeff] flex flex-col items-center"
+                    className="bg-white p-2 rounded-lg shadow-2xs border border-brand-100 flex flex-col items-center"
                   >
-                    <span className="text-[10px] font-semibold text-[#74777e] truncate w-full">
+                    <span className="text-[10px] font-semibold text-ink-500 truncate w-full">
                       {uni.lmsName.replace(/\s+LMS.*$/i, "")}
                     </span>
                     <div className="flex items-center gap-0.5 text-amber-500 mt-0.5">
                       <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
-                      <span className="text-[12px] text-[#000f22] font-bold">{uni.rating}</span>
+                      <span className="text-[12px] text-ink-900 font-bold">{uni.rating}</span>
                     </div>
-                    <span className="text-[9px] text-[#74777e] truncate w-full">
+                    <span className="text-[9px] text-ink-500 truncate w-full">
                       {uni.coursesCount}+ Programs
                     </span>
                   </div>
@@ -908,45 +908,45 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
           </div>
 
           {/* Category 4: Placements & Career Services */}
-          <div className="bg-white rounded-2xl p-4 shadow-xs border border-[#e7eeff] flex flex-col gap-2.5">
+          <div className="bg-white rounded-2xl p-4 shadow-xs border border-brand-100 flex flex-col gap-2.5">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center">
                 <Briefcase className="w-4.5 h-4.5" />
               </div>
               <div className="flex flex-col">
-                <h2 className="text-base font-bold text-[#000f22]">
+                <h2 className="text-base font-bold text-ink-900">
                   4. Placements &amp; Careers
                 </h2>
-                <span className="text-[11px] text-[#74777e]">
+                <span className="text-[11px] text-ink-500">
                   Corporate tie-ups, career fairs &amp; job support
                 </span>
               </div>
             </div>
 
             {/* Placement Support & Highest CTC */}
-            <div className="rounded-xl p-3 bg-[#F8FAFC] border border-[#e7eeff] border-l-4 border-l-[#115eaf] flex flex-col gap-2 transition-all">
+            <div className="rounded-xl p-3 bg-canvas border border-brand-100 border-l-4 border-l-brand-600 flex flex-col gap-2 transition-all">
               <div className="flex items-center justify-between">
-                <span className="text-[13px] font-semibold text-[#000f22]">
+                <span className="text-[13px] font-semibold text-ink-900">
                   Highest CTC &amp; Support
                 </span>
-                <span className="text-[11px] text-[#74777e]">Dedicated Desk</span>
+                <span className="text-[11px] text-ink-500">Dedicated Desk</span>
               </div>
               <div className={`grid ${mobileGridCols} gap-2 text-[10px]`}>
                 {activeUniversities.map((uni, idx) => (
                   <div
                     key={`m-plc-${uni.id}-${idx}`}
-                    className="bg-white p-2 rounded-lg shadow-2xs border border-[#e7eeff] flex flex-col text-center"
+                    className="bg-white p-2 rounded-lg shadow-2xs border border-brand-100 flex flex-col text-center"
                   >
-                    <span className="text-[10px] font-semibold text-[#74777e] truncate">
+                    <span className="text-[10px] font-semibold text-ink-500 truncate">
                       {uni.shortName}
                     </span>
                     <span className="font-extrabold text-emerald-700 text-[12px] mt-1">
                       {uni.highestPackage}
                     </span>
-                    <span className="text-[#74777e] text-[9px] mt-0.5 truncate">
+                    <span className="text-ink-500 text-[9px] mt-0.5 truncate">
                       {uni.avgPackage && uni.avgPackage !== "—"
                         ? `Avg ${uni.avgPackage}`
-                        : "100% Career Cell"}
+                        : "Career support"}
                     </span>
                   </div>
                 ))}
@@ -954,14 +954,14 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
             </div>
 
             {/* Prominent Recruiters */}
-            <div className="rounded-xl p-3 bg-[#F8FAFC] border border-[#e7eeff] border-l-4 border-l-[#115eaf] flex flex-col gap-2 transition-all">
+            <div className="rounded-xl p-3 bg-canvas border border-brand-100 border-l-4 border-l-brand-600 flex flex-col gap-2 transition-all">
               <div className="flex items-center justify-between">
-                <span className="text-[13px] font-semibold text-[#000f22]">
+                <span className="text-[13px] font-semibold text-ink-900">
                   Top Hiring Partners
                 </span>
-                <span className="text-[11px] text-[#74777e]">Corporate Network</span>
+                <span className="text-[11px] text-ink-500">Corporate Network</span>
               </div>
-              <div className={`grid ${mobileGridCols} gap-2 text-[10px] text-[#43474d]`}>
+              <div className={`grid ${mobileGridCols} gap-2 text-[10px] text-ink-700`}>
                 {activeUniversities.map((uni, idx) => {
                   const topRecs =
                     uni.recruiters?.length > 0
@@ -970,9 +970,9 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                   return (
                     <div
                       key={`m-rec-${uni.id}-${idx}`}
-                      className="bg-white p-2 rounded-lg shadow-2xs border border-[#e7eeff] flex flex-col gap-0.5"
+                      className="bg-white p-2 rounded-lg shadow-2xs border border-brand-100 flex flex-col gap-0.5"
                     >
-                      <span className="font-bold text-[#115eaf] text-[10.5px] truncate">
+                      <span className="font-bold text-brand-600 text-[10.5px] truncate">
                         {uni.shortName}
                       </span>
                       {topRecs.map((rName) => (
@@ -988,17 +988,17 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
 
             {/* Final Degree Equivalence (Identical) */}
             <div
-              className={`rounded-xl p-3 bg-[#F8FAFC] border border-[#e7eeff] flex flex-col gap-1.5 transition-all ${identicalMobileDim}`}
+              className={`rounded-xl p-3 bg-canvas border border-brand-100 flex flex-col gap-1.5 transition-all ${identicalMobileDim}`}
             >
               <div className="flex items-center justify-between">
-                <span className="text-[13px] font-semibold text-[#000f22]">
+                <span className="text-[13px] font-semibold text-ink-900">
                   Degree Wording Equivalence
                 </span>
                 <span className="text-[9px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded font-bold">
                   100% Equal
                 </span>
               </div>
-              <p className="text-[11px] text-[#43474d] leading-snug">
+              <p className="text-[11px] text-ink-700 leading-snug">
                 As per UGC Gazette notifications, online degrees awarded by{" "}
                 {activeUniversities.map((u) => u.shortName).join(", ")} hold legal and statutory
                 equivalence with on-campus full-time regular degrees for all Central/State Govt
@@ -1010,10 +1010,10 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
           {/* Section 5: Strategic Decision Guide ("Choose If...") */}
           <div className="flex flex-col gap-2.5 mt-1">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-[#115eaf]" />
+              <Sparkles className="w-5 h-5 text-brand-600" />
               <div>
-                <h2 className="text-base font-bold text-[#000f22]">Recommendation Verdict</h2>
-                <p className="text-[11px] text-[#74777e]">
+                <h2 className="text-base font-bold text-ink-900">Recommendation Verdict</h2>
+                <p className="text-[11px] text-ink-500">
                   Tailor your pick based on your career trajectory
                 </p>
               </div>
@@ -1024,33 +1024,33 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
               return (
                 <div
                   key={`m-verdict-${uni.id}-${idx}`}
-                  className="bg-white rounded-xl p-4 shadow-xs border border-[#e7eeff] flex flex-col gap-2 relative overflow-hidden"
+                  className="bg-white rounded-xl p-4 shadow-xs border border-brand-100 flex flex-col gap-2 relative overflow-hidden"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-2 min-w-0">
-                      <div className="w-7 h-7 rounded-md bg-[#eef6ff] border border-[#d5e3ff] text-[#115eaf] font-bold text-[11px] flex items-center justify-center shrink-0">
+                      <div className="w-7 h-7 rounded-md bg-brand-50 border border-brand-200 text-brand-600 font-bold text-[11px] flex items-center justify-center shrink-0">
                         {uni.shortName.slice(0, 3).toUpperCase()}
                       </div>
-                      <span className="text-[15px] font-bold text-[#000f22] truncate">
+                      <span className="text-[15px] font-bold text-ink-900 truncate">
                         Choose {uni.shortName} if...
                       </span>
                     </div>
-                    <span className="text-[10px] text-[#B45309] bg-amber-50 border border-amber-200/80 px-2 py-0.5 rounded-full font-bold shrink-0">
+                    <span className="text-[10px] text-accent-700 bg-amber-50 border border-amber-200/80 px-2 py-0.5 rounded-full font-bold shrink-0">
                       {uni.shortNaac}
                     </span>
                   </div>
-                  <p className="text-[12px] text-[#43474d] leading-relaxed">
-                    You prioritize <strong className="text-[#000f22]">{uni.shortNaac}</strong>{" "}
+                  <p className="text-[12px] text-ink-700 leading-relaxed">
+                    You prioritize <strong className="text-ink-900">{uni.shortNaac}</strong>{" "}
                     accreditation
                     {uni.nirfRanking ? ` and NIRF Rank #${uni.nirfRanking}` : ""}, desire a highly
                     rated LMS ({uni.lmsName} {uni.rating}★), and look for an optimal fee structure
-                    of <strong className="text-[#000f22]">{metrics.feeMain}</strong> ({metrics.feeSub}
+                    of <strong className="text-ink-900">{metrics.feeMain}</strong> ({metrics.feeSub}
                     ).
                   </p>
                   <button
                     type="button"
                     onClick={() => onOpenApply?.(selectedDegree === "all" ? "mba" : selectedDegree)}
-                    className="mt-1 self-start text-[12px] text-[#115eaf] font-bold flex items-center gap-1"
+                    className="mt-1 self-start text-[12px] text-brand-600 font-bold flex items-center gap-1"
                   >
                     <span>Apply to {uni.shortName}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -1061,7 +1061,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
           </div>
 
           {/* Neutral Guidance Desk Banner */}
-          <div className="bg-gradient-to-br from-[#115eaf] to-[#084a8c] text-white rounded-2xl p-4 shadow-md flex flex-col gap-2.5 mt-1">
+          <div className="bg-gradient-to-br from-brand-600 to-brand-700 text-white rounded-2xl p-4 shadow-md flex flex-col gap-2.5 mt-1">
             <div className="flex items-center gap-2.5">
               <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
                 <Headphones className="w-5 h-5 text-white" />
@@ -1079,7 +1079,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
               <button
                 type="button"
                 onClick={() => onOpenHelpDesk?.()}
-                className="w-full py-2.5 px-4 rounded-xl bg-white text-[#115eaf] text-[13px] font-bold text-center active:scale-[0.98] transition-transform shadow-xs flex items-center justify-center gap-1.5"
+                className="w-full py-2.5 px-4 rounded-xl bg-white text-brand-600 text-[13px] font-bold text-center active:scale-[0.98] transition-transform shadow-xs flex items-center justify-center gap-1.5"
               >
                 <Calendar className="w-4 h-4" />
                 <span>Book Free 1-on-1 Guidance</span>
@@ -1115,41 +1115,41 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
       {/* ===================================================================== */}
       <div className="hidden lg:block">
       {/* Top Command & Filter Deck */}
-      <section className="w-full bg-[#eef4ff]/70 py-6 border-b border-[#e7eeff]">
+      <section className="w-full bg-brand-50/70 py-6 border-b border-brand-100">
         <div className="max-w-[1280px] mx-auto px-4 md:px-8">
           {/* Breadcrumb & Status */}
           <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
-            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[#43474d] text-[13px]">
-              <Link to="/" className="hover:text-[#115eaf] transition-colors">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-ink-700 text-[13px]">
+              <Link to="/" className="hover:text-brand-600 transition-colors">
                 Home
               </Link>
-              <ChevronRight className="w-4 h-4 text-[#74777e]" />
-              <Link to="/universities" className="hover:text-[#115eaf] transition-colors">
+              <ChevronRight className="w-4 h-4 text-ink-500" />
+              <Link to="/universities" className="hover:text-brand-600 transition-colors">
                 Student Tools
               </Link>
-              <ChevronRight className="w-4 h-4 text-[#74777e]" />
-              <span className="font-semibold text-[#000f22]">Compare Matrix</span>
+              <ChevronRight className="w-4 h-4 text-ink-500" />
+              <span className="font-semibold text-ink-900">Compare universities</span>
             </nav>
 
             <div className="flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full">
               <ShieldCheck className="w-4 h-4 shrink-0" />
               <span className="text-[11px] font-semibold tracking-wide">
-                UGC-DEB Statutory Equivalency Guaranteed (Gazette Reg. 22)
+                UGC-DEB entitled universities only
               </span>
             </div>
           </div>
 
           {/* Action Panel Header */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 bg-white p-6 rounded-xl shadow-xs border border-[#e7eeff]">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 bg-white p-6 rounded-xl shadow-xs border border-brand-100">
             <div>
-              <span className="text-[11px] uppercase tracking-wider text-[#115eaf] font-bold">
-                Institutional Benchmark Engine
+              <span className="text-[11px] uppercase tracking-wider text-brand-600 font-bold">
+                Compare
               </span>
-              <h1 className="text-2xl sm:text-[28px] font-bold text-[#000f22] tracking-tight mt-1 leading-tight">
-                Multi-University Decision Matrix
+              <h1 className="text-2xl sm:text-[28px] font-bold text-ink-900 tracking-tight mt-1 leading-tight">
+                Compare online universities
               </h1>
-              <p className="text-[13px] text-[#43474d] mt-1 max-w-2xl leading-relaxed">
-                Evaluate NAAC credentials, statutory UGC approvals, transparent per-semester fee structures, and remote proctoring methods across accredited Indian universities.
+              <p className="text-[13px] text-ink-700 mt-1 max-w-2xl leading-relaxed">
+                Compare accreditation, approvals, fees, EMI and exam format for up to four universities.
               </p>
             </div>
 
@@ -1159,16 +1159,16 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
               <div className="relative min-w-[215px]">
                 <label
                   htmlFor="degreeFilter"
-                  className="block text-[11px] font-semibold text-[#74777e] mb-1"
+                  className="block text-[11px] font-semibold text-ink-500 mb-1"
                 >
-                  Target Degree
+                  Programme
                 </label>
                 <div className="relative">
                   <select
                     id="degreeFilter"
                     value={selectedDegree}
                     onChange={(e) => setSelectedDegree(e.target.value)}
-                    className="w-full appearance-none bg-[#f8f9ff] border border-[#d5e3ff] text-[13px] font-semibold text-[#000f22] px-3.5 py-2.5 rounded-lg pr-9 shadow-2xs focus:outline-none focus:border-[#115eaf] cursor-pointer"
+                    className="w-full appearance-none bg-canvas border border-brand-200 text-[13px] font-semibold text-ink-900 px-3.5 py-2.5 rounded-lg pr-9 shadow-2xs focus:outline-none focus:border-brand-600 cursor-pointer"
                   >
                     {DEGREE_OPTIONS.map((opt) => (
                       <option key={opt.value} value={opt.value}>
@@ -1176,27 +1176,27 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                       </option>
                     ))}
                   </select>
-                  <ChevronDown className="w-4 h-4 absolute right-3 top-3 pointer-events-none text-[#74777e]" />
+                  <ChevronDown className="w-4 h-4 absolute right-3 top-3 pointer-events-none text-ink-500" />
                 </div>
               </div>
 
               {/* Highlight Differences Switch */}
               <div className="flex flex-col justify-end">
-                <span className="block text-[11px] font-semibold text-[#74777e] mb-1">
-                  Contrast Mode
+                <span className="block text-[11px] font-semibold text-ink-500 mb-1">
+                  View
                 </span>
                 <button
                   type="button"
                   onClick={() => setHighlightDiffs((prev) => !prev)}
                   className={`flex items-center gap-2 px-3.5 py-2.5 rounded-lg border transition-all shadow-2xs text-[13px] font-semibold cursor-pointer ${
                     highlightDiffs
-                      ? "bg-[#eef6ff] border-[#115eaf] text-[#115eaf] font-bold"
-                      : "bg-[#f8f9ff] border-[#d5e3ff] text-[#43474d] hover:text-[#115eaf]"
+                      ? "bg-brand-50 border-brand-600 text-brand-600 font-bold"
+                      : "bg-canvas border-brand-200 text-ink-700 hover:text-brand-600"
                   }`}
                 >
                   <span
                     className={`w-7 h-4 rounded-full relative transition-colors flex items-center ${
-                      highlightDiffs ? "bg-[#115eaf]" : "bg-slate-300"
+                      highlightDiffs ? "bg-brand-600" : "bg-slate-300"
                     }`}
                   >
                     <span
@@ -1217,10 +1217,10 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                 <button
                   type="button"
                   onClick={() => window.print()}
-                  className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg bg-[#eef6ff] border border-[#d5e3ff] text-[#115eaf] hover:bg-[#115eaf] hover:text-white transition-colors text-[13px] font-semibold cursor-pointer"
+                  className="flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg bg-brand-50 border border-brand-200 text-brand-600 hover:bg-brand-600 hover:text-white transition-colors text-[13px] font-semibold cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
-                  <span>Export PDF Matrix</span>
+                  <span>Download PDF</span>
                 </button>
               </div>
             </div>
@@ -1232,25 +1232,25 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
       <section className="w-full pb-12">
         <div className="max-w-[1280px] mx-auto px-4 md:px-8 mt-4">
           {/* Matrix Master Container */}
-          <div className="bg-white rounded-xl shadow-xs border border-[#e7eeff] overflow-hidden">
+          <div className="bg-white rounded-xl shadow-xs border border-brand-100 overflow-hidden">
             {/* Sticky University Crest / Header Rack */}
-            <div className="sticky top-[60px] z-30 bg-white/95 backdrop-blur-md shadow-xs border-b border-[#e7eeff] transition-all duration-200">
+            <div className="sticky top-[60px] z-30 bg-white/95 backdrop-blur-md shadow-xs border-b border-brand-100 transition-all duration-200">
               <div className={`grid ${gridTemplateClass} gap-4 p-4 items-stretch`}>
                 {/* Left Header Legend Slot */}
                 <div className={`${labelColClass} pr-2 hidden lg:flex flex-col justify-center`}>
-                  <span className="text-[11px] text-[#74777e] uppercase tracking-wider font-semibold">
-                    Selected For Benchmark
+                  <span className="text-[11px] text-ink-500 uppercase tracking-wider font-semibold">
+                    Comparing
                   </span>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className="text-base font-bold text-[#000f22]">
+                    <span className="text-base font-bold text-ink-900">
                       {activeUniversities.length} of 4 Universities
                     </span>
-                    <span className="px-2 py-0.5 rounded text-[11px] bg-[#eef6ff] text-[#115eaf] font-bold border border-[#d5e3ff]">
+                    <span className="px-2 py-0.5 rounded text-[11px] bg-brand-50 text-brand-600 font-bold border border-brand-200">
                       Active
                     </span>
                   </div>
-                  <p className="text-[12px] text-[#74777e] mt-0.5">
-                    Parameters verified with UGC-DEB 2025-26 notification
+                  <p className="text-[12px] text-ink-500 mt-0.5">
+                    Approval data from the UGC-DEB 2025-26 list
                   </p>
                 </div>
 
@@ -1258,10 +1258,10 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                 {activeUniversities.map((uni, colIdx) => (
                   <div
                     key={`${uni.id}-${colIdx}`}
-                    className={`${uniColClass} bg-[#f8f9ff] border border-[#e7eeff] p-3 rounded-lg flex flex-col justify-between relative group hover:border-[#115eaf]/50 transition-colors`}
+                    className={`${uniColClass} bg-canvas border border-brand-100 p-3 rounded-lg flex flex-col justify-between relative group hover:border-brand-600/50 transition-colors`}
                   >
                     <div className="flex items-start gap-2.5">
-                      <div className="w-12 h-12 rounded-lg bg-white border border-[#e7eeff] flex items-center justify-center shadow-2xs shrink-0 overflow-hidden p-1">
+                      <div className="w-12 h-12 rounded-lg bg-white border border-brand-100 flex items-center justify-center shadow-2xs shrink-0 overflow-hidden p-1">
                         {uni.logoImage ? (
                           <img
                             src={uni.logoImage}
@@ -1272,12 +1272,12 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                             }}
                           />
                         ) : (
-                          <Building2 className="w-6 h-6 text-[#115eaf]" />
+                          <Building2 className="w-6 h-6 text-brand-600" />
                         )}
                       </div>
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center justify-between gap-1">
-                          <span className="inline-flex px-1.5 py-0.5 rounded text-[10.5px] bg-amber-50 text-[#B45309] border border-amber-200/80 font-bold truncate">
+                          <span className="inline-flex px-1.5 py-0.5 rounded text-[10.5px] bg-amber-50 text-accent-700 border border-amber-200/80 font-bold truncate">
                             {uni.shortNaac}
                           </span>
                           <div className="flex items-center gap-1 shrink-0">
@@ -1288,7 +1288,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                                 setSwapSearch("");
                               }}
                               title="Swap University"
-                              className="p-1 rounded hover:bg-[#e7eeff] text-[#74777e] hover:text-[#115eaf] transition-colors cursor-pointer"
+                              className="p-1 rounded hover:bg-brand-100 text-ink-500 hover:text-brand-600 transition-colors cursor-pointer"
                             >
                               <RefreshCw className="w-3.5 h-3.5" />
                             </button>
@@ -1297,7 +1297,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                                 type="button"
                                 onClick={() => handleRemoveSlot(colIdx)}
                                 title="Remove Column"
-                                className="p-1 rounded hover:bg-rose-50 text-[#74777e] hover:text-rose-600 transition-colors cursor-pointer"
+                                className="p-1 rounded hover:bg-rose-50 text-ink-500 hover:text-rose-600 transition-colors cursor-pointer"
                               >
                                 <X className="w-3.5 h-3.5" />
                               </button>
@@ -1305,22 +1305,22 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                           </div>
                         </div>
                         <h3
-                          className="text-base font-bold text-[#000f22] truncate mt-0.5"
+                          className="text-base font-bold text-ink-900 truncate mt-0.5"
                           title={uni.name}
                         >
                           {uni.shortName}
                         </h3>
-                        <p className="text-[12px] text-[#74777e] truncate" title={uni.location}>
+                        <p className="text-[12px] text-ink-500 truncate" title={uni.location}>
                           {uni.name.split("(")[0].trim()}, {uni.location.split(",")[0]}
                         </p>
                       </div>
                     </div>
 
-                    <div className="mt-3 pt-2 border-t border-[#e7eeff] flex items-center gap-2">
+                    <div className="mt-3 pt-2 border-t border-brand-100 flex items-center gap-2">
                       <button
                         type="button"
                         onClick={() => onOpenApply?.(selectedDegree === "all" ? "mba" : selectedDegree)}
-                        className="flex-1 text-center py-1.5 px-2 bg-[#115eaf] hover:bg-[#084a8c] text-white rounded text-[13px] font-semibold shadow-2xs transition-colors cursor-pointer"
+                        className="flex-1 text-center py-1.5 px-2 bg-brand-600 hover:bg-brand-700 text-white rounded text-[13px] font-semibold shadow-2xs transition-colors cursor-pointer"
                       >
                         Apply Now
                       </button>
@@ -1328,7 +1328,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                         type="button"
                         onClick={() => navigate(`/universities/${uni.slug}`)}
                         title="View University Overview & Syllabus"
-                        className="p-1.5 rounded border border-[#d5e3ff] bg-white hover:bg-[#eef6ff] text-[#43474d] hover:text-[#115eaf] transition-colors cursor-pointer"
+                        className="p-1.5 rounded border border-brand-200 bg-white hover:bg-brand-50 text-ink-700 hover:text-brand-600 transition-colors cursor-pointer"
                       >
                         <Info className="w-4 h-4" />
                       </button>
@@ -1342,30 +1342,30 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
             <div className="w-full">
               {/* Category 1: Overview & Statutory Recognition */}
               <div>
-                <div className="bg-[#e6eeff] px-4 py-2.5 flex items-center justify-between border-b border-[#d5e3ff]">
-                  <div className="flex items-center gap-2 text-[#115eaf] text-base font-bold">
+                <div className="bg-brand-100 px-4 py-2.5 flex items-center justify-between border-b border-brand-200">
+                  <div className="flex items-center gap-2 text-brand-600 text-base font-bold">
                     <ShieldCheck className="w-5 h-5" />
-                    <span>1. Overview &amp; Statutory Recognition</span>
+                    <span>1. Recognition &amp; rankings</span>
                   </div>
-                  <span className="text-[11px] font-semibold text-[#43474d]">
-                    {activeUniversities.length} Data Nodes Verified
+                  <span className="text-[11px] font-semibold text-ink-700">
+                    {activeUniversities.length} universities
                   </span>
                 </div>
 
                 {/* Row 1.1: UGC-DEB Status */}
                 <div
-                  className={`grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-[#e7eeff]/70 hover:bg-[#f8f9ff]/60 transition-colors`}
+                  className={`grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-brand-100/70 hover:bg-canvas/60 transition-colors`}
                 >
                   <div className={labelColClass}>
-                    <div className="text-[13px] font-semibold text-[#000f22] flex items-center gap-1.5">
+                    <div className="text-[13px] font-semibold text-ink-900 flex items-center gap-1.5">
                       <span>UGC-DEB Entitlement Status</span>
                       <HelpCircle
-                        className="w-3.5 h-3.5 text-[#74777e]"
+                        className="w-3.5 h-3.5 text-ink-500"
                         title="Valid for Govt Exams and Higher Studies"
                       />
                     </div>
-                    <div className="text-[12px] text-[#74777e]">
-                      Mandatory Distance Ed Bureau Approval
+                    <div className="text-[12px] text-ink-500">
+                      Required for an online degree to be valid
                     </div>
                   </div>
                   {activeUniversities.map((uni, idx) => (
@@ -1380,45 +1380,45 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
 
                 {/* Row 1.2: NAAC Accreditation & Score (DIFFERENCE ROW) */}
                 <div
-                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-[#e7eeff]/70 hover:bg-[#f8f9ff]/60 transition-colors ${diffRowHighlight}`}
+                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-brand-100/70 hover:bg-canvas/60 transition-colors ${diffRowHighlight}`}
                 >
                   <div className={labelColClass}>
-                    <div className="text-[13px] font-semibold text-[#000f22] flex items-center gap-1.5">
+                    <div className="text-[13px] font-semibold text-ink-900 flex items-center gap-1.5">
                       <span>NAAC Grade &amp; CGPA</span>
-                      <span className="px-1.5 py-0.5 rounded text-[10px] bg-[#eef6ff] text-[#115eaf] font-bold uppercase">
+                      <span className="px-1.5 py-0.5 rounded text-[10px] bg-brand-50 text-brand-600 font-bold uppercase">
                         Differs
                       </span>
                     </div>
-                    <div className="text-[12px] text-[#74777e]">
+                    <div className="text-[12px] text-ink-500">
                       National Assessment &amp; Accreditation Council
                     </div>
                   </div>
                   {activeUniversities.map((uni, idx) => (
                     <div key={`naac-${uni.id}-${idx}`} className={uniColClass}>
-                      <div className="text-base font-bold text-[#000f22]">{uni.shortNaac} Grade</div>
-                      <div className="text-[12.5px] text-[#43474d]">{uni.naacSub}</div>
+                      <div className="text-base font-bold text-ink-900">{uni.shortNaac} Grade</div>
+                      <div className="text-[12.5px] text-ink-700">{uni.naacSub}</div>
                     </div>
                   ))}
                 </div>
 
-                {/* Row 1.3: NIRF Ranking Band (DIFFERENCE ROW) */}
+                {/* Row 1.3: NIRF rank (DIFFERENCE ROW) */}
                 <div
-                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-[#e7eeff]/70 bg-[#f8f9ff]/30 hover:bg-[#f8f9ff]/60 transition-colors ${diffRowHighlight}`}
+                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-brand-100/70 bg-canvas/30 hover:bg-canvas/60 transition-colors ${diffRowHighlight}`}
                 >
                   <div className={labelColClass}>
-                    <div className="text-[13px] font-semibold text-[#000f22]">
-                      NIRF Ranking Band
+                    <div className="text-[13px] font-semibold text-ink-900">
+                      NIRF rank
                     </div>
-                    <div className="text-[12px] text-[#74777e]">
+                    <div className="text-[12px] text-ink-500">
                       Ministry of Education, Govt of India
                     </div>
                   </div>
                   {activeUniversities.map((uni, idx) => (
                     <div key={`nirf-${uni.id}-${idx}`} className={uniColClass}>
-                      <span className="inline-flex px-2 py-0.5 rounded text-[12.5px] bg-amber-50 text-[#B45309] border border-amber-200/80 font-bold">
+                      <span className="inline-flex px-2 py-0.5 rounded text-[12.5px] bg-amber-50 text-accent-700 border border-amber-200/80 font-bold">
                         {uni.nirfRanking ? `Rank #${uni.nirfRanking} (NIRF)` : "UGC Category-1 Ranked"}
                       </span>
-                      <div className="text-[12.5px] text-[#43474d] mt-1">
+                      <div className="text-[12.5px] text-ink-700 mt-1">
                         {uni.location}
                       </div>
                     </div>
@@ -1427,14 +1427,14 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
 
                 {/* Row 1.4: International Credential Recognition */}
                 <div
-                  className={`grid ${gridTemplateClass} gap-4 p-4 items-center hover:bg-[#f8f9ff]/60 transition-colors`}
+                  className={`grid ${gridTemplateClass} gap-4 p-4 items-center hover:bg-canvas/60 transition-colors`}
                 >
                   <div className={labelColClass}>
-                    <div className="text-[13px] font-semibold text-[#000f22]">
-                      Global Mobility &amp; Approvals
+                    <div className="text-[13px] font-semibold text-ink-900">
+                      Approvals &amp; recognition
                     </div>
-                    <div className="text-[12px] text-[#74777e]">
-                      Statutory &amp; global migration equivalency
+                    <div className="text-[12px] text-ink-500">
+                      Bodies that approve or recognise the university
                     </div>
                   </div>
                   {activeUniversities.map((uni, idx) => (
@@ -1442,7 +1442,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                       {uni.approvals.slice(0, 4).map((app) => (
                         <span
                           key={app}
-                          className="px-2 py-0.5 rounded text-xs bg-[#e6eeff] text-[#000f22] font-medium"
+                          className="px-2 py-0.5 rounded text-xs bg-brand-100 text-ink-900 font-medium"
                         >
                           {app}
                         </span>
@@ -1453,33 +1453,33 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
               </div>
 
               {/* Category 2: Fees & Financial Aid */}
-              <div className="border-t border-[#e7eeff]">
-                <div className="bg-[#e6eeff] px-4 py-2.5 flex items-center justify-between border-b border-[#d5e3ff]">
-                  <div className="flex items-center gap-2 text-[#115eaf] text-base font-bold">
+              <div className="border-t border-brand-100">
+                <div className="bg-brand-100 px-4 py-2.5 flex items-center justify-between border-b border-brand-200">
+                  <div className="flex items-center gap-2 text-brand-600 text-base font-bold">
                     <CreditCard className="w-5 h-5" />
-                    <span>2. Fees &amp; Financial Aid Structure</span>
+                    <span>2. Fees &amp; financial aid</span>
                   </div>
-                  <span className="text-[11px] font-semibold text-[#43474d]">
-                    Zero Cost EMI Options Enabled
+                  <span className="text-[11px] font-semibold text-ink-700">
+                    No-cost EMI available
                   </span>
                 </div>
 
                 {/* Row 2.1: Total Degree Fee (DIFFERENCE ROW) */}
                 <div
-                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-[#e7eeff]/70 hover:bg-[#f8f9ff]/60 transition-colors ${diffRowHighlight}`}
+                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-brand-100/70 hover:bg-canvas/60 transition-colors ${diffRowHighlight}`}
                 >
                   <div className={labelColClass}>
-                    <div className="text-[13px] font-semibold text-[#000f22] flex items-center gap-1.5">
+                    <div className="text-[13px] font-semibold text-ink-900 flex items-center gap-1.5">
                       <span>
                         {selectedDegree === "all"
                           ? "Full Course Fee Range"
                           : `${selectedDegreeObj.code} Total Program Fee`}
                       </span>
-                      <span className="px-1.5 py-0.5 rounded text-[10px] bg-[#eef6ff] text-[#115eaf] font-bold uppercase">
+                      <span className="px-1.5 py-0.5 rounded text-[10px] bg-brand-50 text-brand-600 font-bold uppercase">
                         Differs
                       </span>
                     </div>
-                    <div className="text-[12px] text-[#74777e]">
+                    <div className="text-[12px] text-ink-500">
                       Inclusive of registration &amp; online exams
                     </div>
                   </div>
@@ -1487,25 +1487,25 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                     const metrics = getDegreeMetrics(uni);
                     return (
                       <div key={`fee-${uni.id}-${idx}`} className={uniColClass}>
-                        <div className="text-lg font-bold text-[#000f22] tracking-tight">
+                        <div className="text-lg font-bold text-ink-900 tracking-tight">
                           {metrics.feeMain}
                         </div>
-                        <div className="text-[12.5px] text-[#43474d] mt-0.5">{metrics.feeSub}</div>
+                        <div className="text-[12.5px] text-ink-700 mt-0.5">{metrics.feeSub}</div>
                       </div>
                     );
                   })}
                 </div>
 
-                {/* Row 2.2: 0% Interest Monthly EMI (DIFFERENCE ROW) */}
+                {/* Row 2.2: EMI options explained (DIFFERENCE ROW) */}
                 <div
-                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-[#e7eeff]/70 bg-[#f8f9ff]/30 hover:bg-[#f8f9ff]/60 transition-colors ${diffRowHighlight}`}
+                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-brand-100/70 bg-canvas/30 hover:bg-canvas/60 transition-colors ${diffRowHighlight}`}
                 >
                   <div className={labelColClass}>
-                    <div className="text-[13px] font-semibold text-[#000f22]">
-                      0% Interest EMI Scheme
+                    <div className="text-[13px] font-semibold text-ink-900">
+                      No-cost EMI
                     </div>
-                    <div className="text-[12px] text-[#74777e]">
-                      No-cost monthly installment plan
+                    <div className="text-[12px] text-ink-500">
+                      Monthly instalments, no interest
                     </div>
                   </div>
                   {activeUniversities.map((uni, idx) => {
@@ -1513,10 +1513,10 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                     return (
                       <div key={`emi-${uni.id}-${idx}`} className={uniColClass}>
                         <div className="flex items-baseline gap-1">
-                          <span className="text-lg font-extrabold text-[#115eaf]">
+                          <span className="text-lg font-extrabold text-brand-600">
                             {metrics.emiAmount}
                           </span>
-                          <span className="text-[12px] text-[#74777e]">/ month</span>
+                          <span className="text-[12px] text-ink-500">/ month</span>
                         </div>
                         <span className="text-[11px] text-emerald-700 font-semibold">
                           0% interest • 12/24 mo tenor
@@ -1528,13 +1528,13 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
 
                 {/* Row 2.3: Scholarship Concessions */}
                 <div
-                  className={`grid ${gridTemplateClass} gap-4 p-4 items-center hover:bg-[#f8f9ff]/60 transition-colors`}
+                  className={`grid ${gridTemplateClass} gap-4 p-4 items-center hover:bg-canvas/60 transition-colors`}
                 >
                   <div className={labelColClass}>
-                    <div className="text-[13px] font-semibold text-[#000f22]">
+                    <div className="text-[13px] font-semibold text-ink-900">
                       Scholarship Concessions
                     </div>
-                    <div className="text-[12px] text-[#74777e]">
+                    <div className="text-[12px] text-ink-500">
                       Defense, Merit, &amp; Special categories
                     </div>
                   </div>
@@ -1542,10 +1542,10 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                     const topSch = uni.scholarships?.[0];
                     return (
                       <div key={`sch-${uni.id}-${idx}`} className={uniColClass}>
-                        <span className="text-[13.5px] font-semibold text-[#000f22]">
+                        <span className="text-[13.5px] font-semibold text-ink-900">
                           {topSch?.benefit || "Up to 25% Fee Waiver"}
                         </span>
-                        <p className="text-[12px] text-[#74777e] mt-0.5 line-clamp-2">
+                        <p className="text-[12px] text-ink-500 mt-0.5 line-clamp-2">
                           {topSch?.title
                             ? `${topSch.title} — ${topSch.description || "Defense, merit & early bird"}`
                             : "Armed personnel, merit & early bird grants"}
@@ -1557,36 +1557,36 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
               </div>
 
               {/* Category 3: Academics & Examination Engine */}
-              <div className="border-t border-[#e7eeff]">
-                <div className="bg-[#e6eeff] px-4 py-2.5 flex items-center justify-between border-b border-[#d5e3ff]">
-                  <div className="flex items-center gap-2 text-[#115eaf] text-base font-bold">
+              <div className="border-t border-brand-100">
+                <div className="bg-brand-100 px-4 py-2.5 flex items-center justify-between border-b border-brand-200">
+                  <div className="flex items-center gap-2 text-brand-600 text-base font-bold">
                     <Monitor className="w-5 h-5" />
-                    <span>3. Academics, Delivery &amp; Examination</span>
+                    <span>3. Classes &amp; exams</span>
                   </div>
-                  <span className="text-[11px] font-semibold text-[#43474d]">
-                    No Campus Visits Mandatory
+                  <span className="text-[11px] font-semibold text-ink-700">
+                    No campus visits required
                   </span>
                 </div>
 
                 {/* Row 3.1: Examination Proctoring Mode (DIFFERENCE ROW) */}
                 <div
-                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-[#e7eeff]/70 hover:bg-[#f8f9ff]/60 transition-colors ${diffRowHighlight}`}
+                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-brand-100/70 hover:bg-canvas/60 transition-colors ${diffRowHighlight}`}
                 >
                   <div className={labelColClass}>
-                    <div className="text-[13px] font-semibold text-[#000f22] flex items-center gap-1.5">
-                      <span>Exam Execution Method</span>
-                      <span className="px-1.5 py-0.5 rounded text-[10px] bg-[#eef6ff] text-[#115eaf] font-bold uppercase">
+                    <div className="text-[13px] font-semibold text-ink-900 flex items-center gap-1.5">
+                      <span>Exam format</span>
+                      <span className="px-1.5 py-0.5 rounded text-[10px] bg-brand-50 text-brand-600 font-bold uppercase">
                         Differs
                       </span>
                     </div>
-                    <div className="text-[12px] text-[#74777e]">
-                      Evaluation modality for term-end exams
+                    <div className="text-[12px] text-ink-500">
+                      How semester exams are held
                     </div>
                   </div>
                   {activeUniversities.map((uni, idx) => (
                     <div key={`exam-${uni.id}-${idx}`} className={uniColClass}>
-                      <div className="text-[15px] font-bold text-[#000f22]">{uni.mode}</div>
-                      <div className="text-[12px] text-[#43474d] mt-0.5">
+                      <div className="text-[15px] font-bold text-ink-900">{uni.mode}</div>
+                      <div className="text-[12px] text-ink-700 mt-0.5">
                         {uni.examPattern?.[0]?.description ||
                           "AI-proctored online exams from home with flexible slot booking"}
                       </div>
@@ -1596,25 +1596,25 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
 
                 {/* Row 3.2: LMS Architecture & Mobile App */}
                 <div
-                  className={`grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-[#e7eeff]/70 bg-[#f8f9ff]/30 hover:bg-[#f8f9ff]/60 transition-colors`}
+                  className={`grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-brand-100/70 bg-canvas/30 hover:bg-canvas/60 transition-colors`}
                 >
                   <div className={labelColClass}>
-                    <div className="text-[13px] font-semibold text-[#000f22]">
-                      LMS Mobile App &amp; Tech
+                    <div className="text-[13px] font-semibold text-ink-900">
+                      Learning platform
                     </div>
-                    <div className="text-[12px] text-[#74777e]">
-                      Student portal &amp; digital learning ratings
+                    <div className="text-[12px] text-ink-500">
+                      Student portal and app rating
                     </div>
                   </div>
                   {activeUniversities.map((uni, idx) => (
                     <div key={`lms-${uni.id}-${idx}`} className={uniColClass}>
-                      <div className="flex items-center gap-1.5 text-[13px] font-semibold text-[#000f22]">
+                      <div className="flex items-center gap-1.5 text-[13px] font-semibold text-ink-900">
                         <Star className="w-4 h-4 fill-amber-500 text-amber-500 shrink-0" />
                         <span>
                           {uni.rating} / 5.0 ({uni.lmsName})
                         </span>
                       </div>
-                      <div className="text-[12px] text-[#43474d] mt-0.5 line-clamp-2">
+                      <div className="text-[12px] text-ink-700 mt-0.5 line-clamp-2">
                         {uni.lmsFeatures?.[0] || "Recorded lectures, e-library & live weekend sessions"}
                       </div>
                     </div>
@@ -1623,26 +1623,26 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
 
                 {/* Row 3.3: Total Online Degrees Offered (DIFFERENCE ROW) */}
                 <div
-                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center hover:bg-[#f8f9ff]/60 transition-colors ${diffRowHighlight}`}
+                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center hover:bg-canvas/60 transition-colors ${diffRowHighlight}`}
                 >
                   <div className={labelColClass}>
-                    <div className="text-[13px] font-semibold text-[#000f22]">
+                    <div className="text-[13px] font-semibold text-ink-900">
                       {selectedDegree === "all"
                         ? "Total Accredited Online Degrees"
                         : `${selectedDegreeObj.code} Specializations & Tracks`}
                     </div>
-                    <div className="text-[12px] text-[#74777e]">
-                      UG &amp; PG authorized programs
+                    <div className="text-[12px] text-ink-500">
+                      Programmes offered
                     </div>
                   </div>
                   {activeUniversities.map((uni, idx) => {
                     const metrics = getDegreeMetrics(uni);
                     return (
                       <div key={`prog-${uni.id}-${idx}`} className={uniColClass}>
-                        <div className="text-[15px] font-bold text-[#000f22]">
+                        <div className="text-[15px] font-bold text-ink-900">
                           {metrics.programsCountLabel}
                         </div>
-                        <div className="text-[12px] text-[#43474d] mt-0.5 line-clamp-2">
+                        <div className="text-[12px] text-ink-700 mt-0.5 line-clamp-2">
                           {metrics.programsList}
                         </div>
                       </div>
@@ -1652,29 +1652,29 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
               </div>
 
               {/* Category 4: Placements & Career Services */}
-              <div className="border-t border-[#e7eeff]">
-                <div className="bg-[#e6eeff] px-4 py-2.5 flex items-center justify-between border-b border-[#d5e3ff]">
-                  <div className="flex items-center gap-2 text-[#115eaf] text-base font-bold">
+              <div className="border-t border-brand-100">
+                <div className="bg-brand-100 px-4 py-2.5 flex items-center justify-between border-b border-brand-200">
+                  <div className="flex items-center gap-2 text-brand-600 text-base font-bold">
                     <Briefcase className="w-5 h-5" />
                     <span>4. Placements &amp; Career Services</span>
                   </div>
-                  <span className="text-[11px] font-semibold text-[#43474d]">
+                  <span className="text-[11px] font-semibold text-ink-700">
                     Alumni Network &amp; Job Fairs
                   </span>
                 </div>
 
                 {/* Row 4.1: Highest CTC & Placement Drive (DIFFERENCE ROW) */}
                 <div
-                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-[#e7eeff]/70 hover:bg-[#f8f9ff]/60 transition-colors ${diffRowHighlight}`}
+                  className={`diff-row grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-brand-100/70 hover:bg-canvas/60 transition-colors ${diffRowHighlight}`}
                 >
                   <div className={labelColClass}>
-                    <div className="text-[13px] font-semibold text-[#000f22] flex items-center gap-1.5">
+                    <div className="text-[13px] font-semibold text-ink-900 flex items-center gap-1.5">
                       <span>Highest CTC &amp; Placement Support</span>
-                      <span className="px-1.5 py-0.5 rounded text-[10px] bg-[#eef6ff] text-[#115eaf] font-bold uppercase">
+                      <span className="px-1.5 py-0.5 rounded text-[10px] bg-brand-50 text-brand-600 font-bold uppercase">
                         Differs
                       </span>
                     </div>
-                    <div className="text-[12px] text-[#74777e]">
+                    <div className="text-[12px] text-ink-500">
                       Verified placement cell &amp; career outcomes
                     </div>
                   </div>
@@ -1685,12 +1685,12 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                           {uni.highestPackage}
                         </span>
                         {uni.avgPackage && uni.avgPackage !== "—" && (
-                          <span className="text-[11.5px] font-semibold text-[#43474d] bg-[#f0f3ff] px-2 py-0.5 rounded">
+                          <span className="text-[11.5px] font-semibold text-ink-700 bg-brand-50 px-2 py-0.5 rounded">
                             Avg: {uni.avgPackage}
                           </span>
                         )}
                       </div>
-                      <p className="text-[12px] text-[#43474d] mt-1 line-clamp-2">
+                      <p className="text-[12px] text-ink-700 mt-1 line-clamp-2">
                         {uni.supportServices?.[0] ||
                           "Dedicated placement assistance, mock interviews & virtual job fairs"}
                       </p>
@@ -1700,19 +1700,19 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
 
                 {/* Row 4.2: Hiring Partners Track Record */}
                 <div
-                  className={`grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-[#e7eeff]/70 bg-[#f8f9ff]/30 hover:bg-[#f8f9ff]/60 transition-colors`}
+                  className={`grid ${gridTemplateClass} gap-4 p-4 items-center border-b border-brand-100/70 bg-canvas/30 hover:bg-canvas/60 transition-colors`}
                 >
                   <div className={labelColClass}>
-                    <div className="text-[13px] font-semibold text-[#000f22]">
+                    <div className="text-[13px] font-semibold text-ink-900">
                       Prominent Recruiters
                     </div>
-                    <div className="text-[12px] text-[#74777e]">
+                    <div className="text-[12px] text-ink-500">
                       Corporate recruitment partners
                     </div>
                   </div>
                   {activeUniversities.map((uni, idx) => (
                     <div key={`rec-${uni.id}-${idx}`} className={uniColClass}>
-                      <div className="text-[12.5px] text-[#000f22] font-medium leading-relaxed">
+                      <div className="text-[12.5px] text-ink-900 font-medium leading-relaxed">
                         {uni.recruiters?.length > 0
                           ? uni.recruiters
                               .slice(0, 6)
@@ -1726,13 +1726,13 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
 
                 {/* Row 4.3: Degree Certificate Validity Note */}
                 <div
-                  className={`grid ${gridTemplateClass} gap-4 p-4 items-center hover:bg-[#f8f9ff]/60 transition-colors`}
+                  className={`grid ${gridTemplateClass} gap-4 p-4 items-center hover:bg-canvas/60 transition-colors`}
                 >
                   <div className={labelColClass}>
-                    <div className="text-[13px] font-semibold text-[#000f22]">
+                    <div className="text-[13px] font-semibold text-ink-900">
                       Final Degree Wording
                     </div>
-                    <div className="text-[12px] text-[#74777e]">
+                    <div className="text-[12px] text-ink-500">
                       Statutory equivalence to on-campus degrees
                     </div>
                   </div>
@@ -1740,10 +1740,10 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                     const metrics = getDegreeMetrics(uni);
                     return (
                       <div key={`deg-${uni.id}-${idx}`} className={uniColClass}>
-                        <div className="text-[12.5px] text-[#43474d] leading-relaxed">
+                        <div className="text-[12.5px] text-ink-700 leading-relaxed">
                           UGC Compliant: Conferred by{" "}
-                          <strong className="text-[#000f22]">{uni.shortName}</strong> as{" "}
-                          <strong className="text-[#000f22]">{metrics.courseTitle}</strong>; identical
+                          <strong className="text-ink-900">{uni.shortName}</strong> as{" "}
+                          <strong className="text-ink-900">{metrics.courseTitle}</strong>; identical
                           validity for Govt / PSU jobs, UPSC &amp; global higher studies.
                         </div>
                       </div>
@@ -1753,16 +1753,16 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
               </div>
 
               {/* Bottom Action Shelf */}
-              <div className="bg-[#eff4ff] p-4 border-t border-[#d5e3ff] flex flex-col md:flex-row items-center justify-between gap-4">
-                <div className="flex items-center gap-3 text-[#43474d]">
-                  <div className="w-10 h-10 rounded-xl bg-white border border-[#d5e3ff] flex items-center justify-center text-[#115eaf] shrink-0">
+              <div className="bg-brand-100 p-4 border-t border-brand-200 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-3 text-ink-700">
+                  <div className="w-10 h-10 rounded-xl bg-white border border-brand-200 flex items-center justify-center text-brand-600 shrink-0">
                     <Headphones className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[13.5px] font-bold text-[#000f22] block">
+                    <span className="text-[13.5px] font-bold text-ink-900 block">
                       Need neutral, unbiased academic counseling?
                     </span>
-                    <span className="text-[12px] text-[#43474d]">
+                    <span className="text-[12px] text-ink-700">
                       Our certified educational advisors evaluate your specific work experience, budget, and career goals.
                     </span>
                   </div>
@@ -1771,14 +1771,14 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                   <button
                     type="button"
                     onClick={() => onOpenBrochure?.()}
-                    className="px-4 py-2.5 rounded-lg bg-white border border-[#d5e3ff] text-[#000f22] hover:bg-[#f8f9ff] hover:border-[#115eaf] text-[13px] font-semibold shadow-2xs transition-colors cursor-pointer"
+                    className="px-4 py-2.5 rounded-lg bg-white border border-brand-200 text-ink-900 hover:bg-canvas hover:border-brand-600 text-[13px] font-semibold shadow-2xs transition-colors cursor-pointer"
                   >
                     Download Comparative PDF
                   </button>
                   <button
                     type="button"
                     onClick={() => onOpenHelpDesk?.()}
-                    className="px-4 py-2.5 rounded-lg bg-[#115eaf] text-white hover:bg-[#084a8c] text-[13px] font-semibold shadow-xs transition-colors cursor-pointer"
+                    className="px-4 py-2.5 rounded-lg bg-brand-600 text-white hover:bg-brand-700 text-[13px] font-semibold shadow-xs transition-colors cursor-pointer"
                   >
                     Book Free 1-on-1 Guidance
                   </button>
@@ -1788,18 +1788,18 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
           </div>
 
           {/* Add University 4th Comparison Slot / Upsell Drawer */}
-          <div className="mt-6 bg-white p-6 rounded-xl shadow-xs border border-dashed border-[#c2daff] flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="mt-6 bg-white p-6 rounded-xl shadow-xs border border-dashed border-brand-200 flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#eef6ff] border border-[#d5e3ff] flex items-center justify-center text-[#115eaf] shrink-0">
+              <div className="w-12 h-12 rounded-full bg-brand-50 border border-brand-200 flex items-center justify-center text-brand-600 shrink-0">
                 <PlusCircle className="w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-base sm:text-lg font-bold text-[#000f22]">
+                <h4 className="text-base sm:text-lg font-bold text-ink-900">
                   {selectedIds.length < 4
                     ? "Want to benchmark Manipal University Jaipur (MUJ Online) too?"
                     : "4 UGC-DEB Universities Active in Comparison Matrix"}
                 </h4>
-                <p className="text-[13px] text-[#74777e] mt-0.5">
+                <p className="text-[13px] text-ink-500 mt-0.5">
                   OnlineSiksha allows you to compare up to 4 UGC-DEB accredited institutions side-by-side, or swap any column above.
                 </p>
               </div>
@@ -1808,10 +1808,10 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
               <button
                 type="button"
                 onClick={handleAddManipalSlot}
-                className="px-5 py-2.5 rounded-lg bg-white text-[#115eaf] hover:bg-[#115eaf] hover:text-white border border-[#115eaf] transition-all text-[13px] font-semibold flex items-center gap-2 cursor-pointer shrink-0"
+                className="px-5 py-2.5 rounded-lg bg-white text-brand-600 hover:bg-brand-600 hover:text-white border border-brand-600 transition-all text-[13px] font-semibold flex items-center gap-2 cursor-pointer shrink-0"
               >
                 <Plus className="w-4 h-4" />
-                <span>Add Manipal (MUJ) to Matrix</span>
+                <span>Add Manipal (MUJ)</span>
               </button>
             ) : (
               <div className="flex items-center gap-2">
@@ -1822,7 +1822,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                 <button
                   type="button"
                   onClick={() => handleRemoveSlot(3)}
-                  className="px-3 py-2 rounded-lg border border-slate-200 text-xs font-semibold text-[#43474d] hover:text-rose-600 hover:border-rose-200 transition-colors cursor-pointer"
+                  className="px-3 py-2 rounded-lg border border-slate-200 text-xs font-semibold text-ink-700 hover:text-rose-600 hover:border-rose-200 transition-colors cursor-pointer"
                 >
                   Reset to 3 Columns
                 </button>
@@ -1841,34 +1841,34 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
               return (
                 <div
                   key={`guide-${uni.id}-${idx}`}
-                  className="bg-white p-5 rounded-xl shadow-xs border border-[#e7eeff] flex flex-col justify-between"
+                  className="bg-white p-5 rounded-xl shadow-xs border border-brand-100 flex flex-col justify-between"
                 >
                   <div>
-                    <div className="flex items-center gap-2 text-[#115eaf] text-base font-bold mb-2">
+                    <div className="flex items-center gap-2 text-brand-600 text-base font-bold mb-2">
                       <ThumbsUp className="w-4 h-4 shrink-0" />
                       <span>Choose {uni.shortName} If...</span>
                     </div>
-                    <p className="text-[13px] text-[#43474d] leading-relaxed">
-                      You prioritize <strong className="text-[#000f22]">{uni.shortNaac}</strong>{" "}
+                    <p className="text-[13px] text-ink-700 leading-relaxed">
+                      You prioritize <strong className="text-ink-900">{uni.shortNaac}</strong>{" "}
                       accreditation
                       {uni.nirfRanking ? ` and NIRF Rank #${uni.nirfRanking}` : ""}, seek a transparent
                       fee structure ({metrics.feeMain} • {uni.emiStarting} EMI), and value{" "}
                       {uni.lmsName} digital delivery with{" "}
-                      <strong className="text-[#000f22]">{uni.highestPackage}</strong> top placement
+                      <strong className="text-ink-900">{uni.highestPackage}</strong> top placement
                       outcomes.
                     </p>
                   </div>
-                  <div className="mt-3 pt-2.5 border-t border-[#f0f3ff] flex items-center justify-between text-xs">
+                  <div className="mt-3 pt-2.5 border-t border-brand-50 flex items-center justify-between text-xs">
                     <Link
                       to={`/universities/${uni.slug}`}
-                      className="font-semibold text-[#115eaf] hover:underline"
+                      className="font-semibold text-brand-600 hover:underline"
                     >
                       Explore {uni.shortName} →
                     </Link>
                     <button
                       type="button"
                       onClick={() => onOpenApply?.(selectedDegree === "all" ? "mba" : selectedDegree)}
-                      className="font-semibold text-[#43474d] hover:text-[#115eaf] cursor-pointer"
+                      className="font-semibold text-ink-700 hover:text-brand-600 cursor-pointer"
                     >
                       Free Apply
                     </button>
@@ -1888,42 +1888,42 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
           onClick={() => setSwapSlotIndex(null)}
         >
           <div
-            className="bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-[#e7eeff] overflow-hidden"
+            className="bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-brand-100 overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="px-5 py-4 bg-[#f0f3ff] border-b border-[#e7eeff] flex items-center justify-between">
+            <div className="px-5 py-4 bg-brand-50 border-b border-brand-100 flex items-center justify-between">
               <div>
-                <h3 className="text-base font-bold text-[#000f22]">
+                <h3 className="text-base font-bold text-ink-900">
                   Select University for Benchmark Slot #{swapSlotIndex + 1}
                 </h3>
-                <p className="text-xs text-[#43474d]">
+                <p className="text-xs text-ink-700">
                   Choose from {catalogue.length} UGC-DEB verified universities
                 </p>
               </div>
               <button
                 type="button"
                 onClick={() => setSwapSlotIndex(null)}
-                className="p-1.5 rounded-lg text-[#74777e] hover:text-[#000f22] hover:bg-white transition-colors cursor-pointer"
+                className="p-1.5 rounded-lg text-ink-500 hover:text-ink-900 hover:bg-white transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="p-4 border-b border-[#e7eeff]">
+            <div className="p-4 border-b border-brand-100">
               <div className="relative">
-                <Search className="w-4 h-4 text-[#74777e] absolute left-3.5 top-3" />
+                <Search className="w-4 h-4 text-ink-500 absolute left-3.5 top-3" />
                 <input
                   type="text"
                   value={swapSearch}
                   onChange={(e) => setSwapSearch(e.target.value)}
-                  placeholder="Search university by name or city..."
-                  className="w-full pl-9 pr-3 py-2 rounded-xl border border-[#d5e3ff] text-sm text-[#000f22] outline-none focus:border-[#115eaf]"
+                  aria-label="Search university by name or city" placeholder="Search university by name or city..."
+                  className="w-full pl-9 pr-3 py-2 rounded-xl border border-brand-200 text-sm text-ink-900 outline-none focus:border-brand-600"
                   autoFocus
                 />
               </div>
             </div>
 
-            <div className="max-h-[340px] overflow-y-auto divide-y divide-[#f0f3ff] p-2">
+            <div className="max-h-[340px] overflow-y-auto divide-y divide-brand-50 p-2">
               {filteredCatalogue.map((u) => {
                 const isAlreadySelected = selectedIds.includes(u.id);
                 return (
@@ -1933,12 +1933,12 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                     onClick={() => handleSwapSelect(u.id)}
                     className={`w-full text-left px-3.5 py-2.5 rounded-xl flex items-center justify-between gap-3 transition-colors cursor-pointer ${
                       isAlreadySelected
-                        ? "bg-[#eef6ff] text-[#115eaf]"
-                        : "hover:bg-[#f8f9ff] text-[#000f22]"
+                        ? "bg-brand-50 text-brand-600"
+                        : "hover:bg-canvas text-ink-900"
                     }`}
                   >
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-9 h-9 rounded-lg border border-[#e7eeff] bg-white flex items-center justify-center shrink-0 overflow-hidden p-1">
+                      <div className="w-9 h-9 rounded-lg border border-brand-100 bg-white flex items-center justify-center shrink-0 overflow-hidden p-1">
                         {u.logoImage ? (
                           <img
                             src={u.logoImage}
@@ -1946,17 +1946,17 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
                             className="w-full h-full object-contain"
                           />
                         ) : (
-                          <Building2 className="w-4 h-4 text-[#115eaf]" />
+                          <Building2 className="w-4 h-4 text-brand-600" />
                         )}
                       </div>
                       <div className="min-w-0">
                         <div className="text-sm font-bold truncate">{u.name}</div>
-                        <div className="text-[11px] text-[#74777e] truncate">
+                        <div className="text-[11px] text-ink-500 truncate">
                           {u.location} • {u.shortNaac} • {u.feeRange}
                         </div>
                       </div>
                     </div>
-                    <span className="text-xs font-semibold text-[#115eaf] shrink-0">
+                    <span className="text-xs font-semibold text-brand-600 shrink-0">
                       {isAlreadySelected ? "Active" : "Select →"}
                     </span>
                   </button>
@@ -1969,7 +1969,7 @@ export default function CompareMatrixPage({ onOpenApply, onOpenHelpDesk, onOpenB
 
       {/* Feedback Toast */}
       {toastMessage && (
-        <div className="fixed bottom-6 right-6 bg-[#000f22] text-white px-4 py-3 rounded-xl shadow-xl text-[13px] font-semibold flex items-center gap-2 z-50">
+        <div className="fixed bottom-6 right-6 bg-ink-900 text-white px-4 py-3 rounded-xl shadow-xl text-[13px] font-semibold flex items-center gap-2 z-50">
           <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
           <span>{toastMessage}</span>
         </div>

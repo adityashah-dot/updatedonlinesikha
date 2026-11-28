@@ -8,17 +8,17 @@ const PILLAR_ICON = {
   star: <Award className="w-5 h-5" />
 };
 const PILLAR_ICON_BG = {
-  award: "bg-[#FFFBEB] text-[#92400E]",
-  shield: "bg-[#e7eeff] text-[#115eaf]",
-  clock: "bg-[#FFFBEB] text-[#92400E]",
-  heart: "bg-[#f0f3ff] text-[#115eaf]",
-  user: "bg-[#f0f3ff] text-[#115eaf]",
-  star: "bg-[#e7eeff] text-[#115eaf]"
+  award: "bg-accent-50 text-[#92400E]",
+  shield: "bg-brand-100 text-brand-600",
+  clock: "bg-accent-50 text-[#92400E]",
+  heart: "bg-brand-50 text-brand-600",
+  user: "bg-brand-50 text-brand-600",
+  star: "bg-brand-100 text-brand-600"
 };
 const PILLAR_TAG = {
   amber: "bg-[#ffdcc3] text-[#6e3900]",
-  blue: "bg-[#d5e3ff] text-[#004689]",
-  green: "bg-[#e0f2e9] text-[#129b55]"
+  blue: "bg-brand-200 text-brand-700",
+  green: "bg-success-50 text-[#129b55]"
 };
 export const ScholarshipPillarsGrid = ({
   pillars,
@@ -28,7 +28,7 @@ export const ScholarshipPillarsGrid = ({
   return <section id={sectionId} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 scroll-mt-[100px]">
       {pillars.map((p, idx) => <div
     key={idx}
-    className="card bg-white border border-[#e7eeff] rounded-2xl shadow-xs flex flex-col justify-between hover:border-[#115eaf] transition-all"
+    className="card bg-white border border-brand-100 rounded-2xl shadow-xs flex flex-col justify-between hover:border-brand-600 transition-all"
   >
           <div>
             <div
@@ -39,10 +39,10 @@ export const ScholarshipPillarsGrid = ({
             {p.tag && <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${PILLAR_TAG[p.tone || "amber"]}`}>
                 {p.tag}
               </span>}
-            <h3 className="section-title font-bold text-base text-[#000f22] font-sans mt-2">{p.title}</h3>
-            <p className="text-xs text-[#43474d] leading-relaxed">{p.body}</p>
+            <h3 className="section-title font-bold text-base text-ink-900 font-sans mt-2">{p.title}</h3>
+            <p className="text-xs text-ink-700 leading-relaxed">{p.body}</p>
           </div>
-          <div className="mt-4 pt-3 border-t border-[#e7eeff] text-xs font-bold text-[#115eaf]">
+          <div className="mt-4 pt-3 border-t border-brand-100 text-xs font-bold text-brand-600">
             {p.footnote || "Subject to Verification"}
           </div>
         </div>)}

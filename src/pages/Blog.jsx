@@ -89,42 +89,42 @@ export default function Blog({ onOpenCounseling }) {
     <main className="w-full max-w-full overflow-x-hidden bg-white min-h-screen py-4 sm:py-5">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="mb-2.5 flex items-center gap-1.5 text-xs text-[#74777e]">
-          <Link to="/" className="hover:text-[#115eaf] transition-colors">Home</Link>
+        <nav aria-label="Breadcrumb" className="mb-2.5 flex items-center gap-1.5 text-xs text-ink-500">
+          <Link to="/" className="hover:text-brand-600 transition-colors">Home</Link>
           <span aria-hidden="true" className="text-slate-300">/</span>
-          <span className="text-[#000f22] font-semibold">Blogs &amp; Guides</span>
+          <span className="text-ink-900 font-semibold">Blogs &amp; Guides</span>
         </nav>
 
         {/* Hero Section - Reduced Background Shade Opacity (98% pure white with ultra-subtle tint) */}
-        <section className="rounded-xl border border-[#e7eeff] bg-gradient-to-br from-[#fafcff] via-white to-[#f7faff] p-4 sm:p-5 lg:p-6 mb-5 shadow-none">
+        <section className="rounded-xl border border-brand-100 bg-gradient-to-br from-canvas via-white to-canvas p-4 sm:p-5 lg:p-6 mb-5 shadow-none">
           <div className="grid lg:grid-cols-12 gap-5 lg:gap-7 items-center">
             {/* Left Content */}
             <div className="lg:col-span-7 min-w-0">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-[#e7eeff]/75 text-[#115eaf] border border-[#d5e3ff]/80 mb-2">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-brand-100/75 text-brand-600 border border-brand-200/80 mb-2">
                 <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>Research &amp; Guidance</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl lg:text-[2rem] font-bold text-[#000f22] tracking-tight leading-snug mb-2">
+              <h1 className="text-2xl sm:text-3xl lg:text-[2rem] font-bold text-ink-900 tracking-tight leading-snug mb-2">
                 Education Insights. Better Decisions.
               </h1>
-              <p className="text-xs sm:text-sm text-[#555960] leading-relaxed max-w-xl mb-3.5 sm:mb-4">
+              <p className="text-xs sm:text-sm text-ink-700 leading-relaxed max-w-xl mb-3.5 sm:mb-4">
                 Stay informed with verified guidance on UGC-DEB entitlements, curriculum deep dives, zero-cost EMI options, and career transitions across India&apos;s top universities.
               </p>
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 max-w-xl">
                 <label htmlFor="blog-search" className="relative block flex-1">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#74777e] pointer-events-none" aria-hidden="true" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-500 pointer-events-none" aria-hidden="true" />
                   <input
                     id="blog-search"
                     type="search"
                     placeholder="Search articles (e.g. online MBA, UGC-DEB, scholarships)"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    className="w-full h-9.5 pl-9 pr-3 rounded-lg border border-[#d5e3ff] text-xs sm:text-sm text-[#000f22] bg-white placeholder:text-[#74777e] outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 shadow-2xs transition-colors"
+                    className="w-full h-9.5 pl-9 pr-3 rounded-lg border border-brand-200 text-xs sm:text-sm text-ink-900 bg-white placeholder:text-ink-500 outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-2xs transition-colors"
                     aria-label="Search articles"
                   />
                 </label>
                 {totalLabel ? (
-                  <span className="text-[11px] sm:text-xs font-medium text-[#555960] whitespace-nowrap bg-white border border-[#e2e8f0] px-2.5 py-1.5 rounded-lg shadow-2xs self-start sm:self-center">
+                  <span className="text-[11px] sm:text-xs font-medium text-ink-700 whitespace-nowrap bg-white border border-line px-2.5 py-1.5 rounded-lg shadow-2xs self-start sm:self-center">
                     {totalLabel}
                   </span>
                 ) : null}
@@ -134,16 +134,16 @@ export default function Blog({ onOpenCounseling }) {
             {/* Right Content / Featured Article (Reduced size by 10-15%) */}
             <div className="lg:col-span-5">
               {data.status === "loading" ? (
-                <div className="rounded-xl border border-[#e7eeff] bg-white overflow-hidden shadow-2xs">
-                  <div className="h-32 sm:h-36 bg-[#f0f3ff] animate-pulse" />
+                <div className="rounded-xl border border-brand-100 bg-white overflow-hidden shadow-2xs">
+                  <div className="h-32 sm:h-36 bg-brand-50 animate-pulse" />
                   <div className="p-3.5 space-y-2">
-                    <div className="h-3 w-20 bg-[#f0f3ff] rounded animate-pulse" />
-                    <div className="h-4 w-4/5 bg-[#f0f3ff] rounded animate-pulse" />
-                    <div className="h-3 w-2/3 bg-[#f0f3ff] rounded animate-pulse" />
+                    <div className="h-3 w-20 bg-brand-50 rounded animate-pulse" />
+                    <div className="h-4 w-4/5 bg-brand-50 rounded animate-pulse" />
+                    <div className="h-3 w-2/3 bg-brand-50 rounded animate-pulse" />
                   </div>
                 </div>
               ) : featured ? (
-                <div className="relative rounded-xl border border-[#e7eeff] bg-white overflow-hidden shadow-2xs group hover:border-[#b1c8eb] transition-all">
+                <div className="relative rounded-xl border border-brand-100 bg-white overflow-hidden shadow-2xs group hover:border-brand-300 transition-all">
                   {featured.image ? (
                     <img
                       src={featured.image}
@@ -152,27 +152,27 @@ export default function Blog({ onOpenCounseling }) {
                       loading="lazy"
                     />
                   ) : (
-                    <div className="h-32 sm:h-36 bg-[#f0f3ff] flex items-center justify-center">
-                      <BookOpen className="w-8 h-8 text-[#115eaf]" aria-hidden="true" />
+                    <div className="h-32 sm:h-36 bg-brand-50 flex items-center justify-center">
+                      <BookOpen className="w-8 h-8 text-brand-600" aria-hidden="true" />
                     </div>
                   )}
                   <div className="p-3 sm:p-3.5">
                     {featured.category ? (
-                      <span className="inline-flex px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#e7eeff] text-[#115eaf] border border-[#d5e3ff]">
+                      <span className="inline-flex px-2 py-0.5 rounded-full text-[10px] font-bold bg-brand-100 text-brand-600 border border-brand-200">
                         {featured.category}
                       </span>
                     ) : null}
-                    <h2 className="mt-1.5 text-xs sm:text-sm font-bold text-[#000f22] leading-snug line-clamp-2 group-hover:text-[#115eaf] transition-colors">
+                    <h2 className="mt-1.5 text-xs sm:text-sm font-bold text-ink-900 leading-snug line-clamp-2 group-hover:text-brand-600 transition-colors">
                       <Link to={"/blog/" + featured.slug}>{featured.title}</Link>
                     </h2>
                     {featured.excerpt ? (
-                      <p className="mt-1 text-[11px] sm:text-xs text-[#555960] leading-relaxed line-clamp-2">
+                      <p className="mt-1 text-[11px] sm:text-xs text-ink-700 leading-relaxed line-clamp-2">
                         {featured.excerpt}
                       </p>
                     ) : null}
                     <Link
                       to={"/blog/" + featured.slug}
-                      className="mt-2 inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-[#115eaf] hover:underline"
+                      className="mt-2 inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-brand-600 hover:underline"
                     >
                       <span>Read Full Guide</span>
                       <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
@@ -193,8 +193,8 @@ export default function Blog({ onOpenCounseling }) {
                 onClick={() => setQuery("")}
                 className={
                   !query.trim()
-                    ? "h-7.5 px-3 rounded-lg border text-xs font-semibold transition-all bg-[#115eaf] text-white border-[#115eaf] shadow-xs cursor-pointer"
-                    : "h-7.5 px-3 rounded-lg border text-xs font-semibold transition-all bg-white text-[#43474d] border-[#d5e3ff] hover:border-[#115eaf] hover:text-[#115eaf] hover:bg-[#f8fbff] cursor-pointer"
+                    ? "h-7.5 px-3 rounded-lg border text-xs font-semibold transition-all bg-brand-600 text-white border-brand-600 shadow-xs cursor-pointer"
+                    : "h-7.5 px-3 rounded-lg border text-xs font-semibold transition-all bg-white text-ink-700 border-brand-200 hover:border-brand-600 hover:text-brand-600 hover:bg-canvas cursor-pointer"
                 }
               >
                 All
@@ -206,8 +206,8 @@ export default function Blog({ onOpenCounseling }) {
                   onClick={() => setQuery(c)}
                   className={
                     isTopicActive(c)
-                      ? "h-7.5 px-3 rounded-lg border text-xs font-semibold transition-all bg-[#115eaf] text-white border-[#115eaf] shadow-xs cursor-pointer"
-                      : "h-7.5 px-3 rounded-lg border text-xs font-semibold transition-all bg-white text-[#43474d] border-[#d5e3ff] hover:border-[#115eaf] hover:text-[#115eaf] hover:bg-[#f8fbff] cursor-pointer"
+                      ? "h-7.5 px-3 rounded-lg border text-xs font-semibold transition-all bg-brand-600 text-white border-brand-600 shadow-xs cursor-pointer"
+                      : "h-7.5 px-3 rounded-lg border text-xs font-semibold transition-all bg-white text-ink-700 border-brand-200 hover:border-brand-600 hover:text-brand-600 hover:bg-canvas cursor-pointer"
                   }
                 >
                   {c}
@@ -221,12 +221,12 @@ export default function Blog({ onOpenCounseling }) {
         {data.status === "loading" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" aria-busy="true">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="rounded-xl border border-[#e7eeff] overflow-hidden bg-white shadow-2xs">
-                <div className="h-36 sm:h-38 bg-[#f0f3ff] animate-pulse" />
+              <div key={i} className="rounded-xl border border-brand-100 overflow-hidden bg-white shadow-2xs">
+                <div className="h-36 sm:h-38 bg-brand-50 animate-pulse" />
                 <div className="p-3.5 space-y-2">
-                  <div className="h-3 w-16 bg-[#f0f3ff] rounded animate-pulse" />
-                  <div className="h-4 w-4/5 bg-[#f0f3ff] rounded animate-pulse" />
-                  <div className="h-3 w-2/3 bg-[#f0f3ff] rounded animate-pulse" />
+                  <div className="h-3 w-16 bg-brand-50 rounded animate-pulse" />
+                  <div className="h-4 w-4/5 bg-brand-50 rounded animate-pulse" />
+                  <div className="h-3 w-2/3 bg-brand-50 rounded animate-pulse" />
                 </div>
               </div>
             ))}
@@ -236,13 +236,13 @@ export default function Blog({ onOpenCounseling }) {
         {/* Error State */}
         {data.status === "error" && (
           <div className="py-12 flex flex-col items-center justify-center text-center gap-3" role="alert">
-            <AlertCircle className="w-8 h-8 text-[#115eaf]" aria-hidden="true" />
-            <h2 className="text-base sm:text-lg font-bold text-[#000f22]">We couldn&apos;t load the articles right now.</h2>
-            <p className="text-xs sm:text-sm text-[#43474d] max-w-md">The listing service is unavailable. Please check your connection and try again.</p>
+            <AlertCircle className="w-8 h-8 text-brand-600" aria-hidden="true" />
+            <h2 className="text-base sm:text-lg font-bold text-ink-900">We couldn&apos;t load the articles right now.</h2>
+            <p className="text-xs sm:text-sm text-ink-700 max-w-md">The listing service is unavailable. Please check your connection and try again.</p>
             <button
               type="button"
               onClick={() => setRetryKey((k) => k + 1)}
-              className="mt-2 inline-flex items-center gap-2 px-4 h-9.5 rounded-lg bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
+              className="mt-2 inline-flex items-center gap-2 px-4 h-9.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
             >
               <RefreshCw className="w-4 h-4" aria-hidden="true" />
               Try again
@@ -253,14 +253,14 @@ export default function Blog({ onOpenCounseling }) {
         {/* Empty State */}
         {data.status === "ready" && data.articles.length === 0 && (
           <div className="py-12 flex flex-col items-center justify-center text-center gap-3">
-            <BookOpen className="w-8 h-8 text-[#115eaf]" aria-hidden="true" />
-            <h2 className="text-base sm:text-lg font-bold text-[#000f22]">No articles match your search.</h2>
-            <p className="text-xs sm:text-sm text-[#43474d] max-w-md">Try a shorter or different search term.</p>
+            <BookOpen className="w-8 h-8 text-brand-600" aria-hidden="true" />
+            <h2 className="text-base sm:text-lg font-bold text-ink-900">No articles match your search.</h2>
+            <p className="text-xs sm:text-sm text-ink-700 max-w-md">Try a shorter or different search term.</p>
             {debounced ? (
               <button
                 type="button"
                 onClick={() => setQuery("")}
-                className="mt-2 px-4 h-9.5 rounded-lg border border-[#115eaf] text-[#115eaf] hover:bg-[#eff5ff] text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
+                className="mt-2 px-4 h-9.5 rounded-lg border border-brand-600 text-brand-600 hover:bg-brand-50 text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
               >
                 Clear search
               </button>
@@ -300,7 +300,7 @@ export default function Blog({ onOpenCounseling }) {
                   onClick={() => setPage((p) => Math.max(1, p - 1))}
                   disabled={page === 1}
                   aria-label="Previous page"
-                  className="h-8.5 w-8.5 inline-flex items-center justify-center rounded-lg border border-[#d5e3ff] text-[#115eaf] hover:bg-[#f0f4f8] disabled:opacity-40 disabled:hover:bg-white disabled:cursor-not-allowed transition-colors cursor-pointer"
+                  className="h-8.5 w-8.5 inline-flex items-center justify-center rounded-lg border border-brand-200 text-brand-600 hover:bg-canvas disabled:opacity-40 disabled:hover:bg-white disabled:cursor-not-allowed transition-colors cursor-pointer"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
@@ -313,8 +313,8 @@ export default function Blog({ onOpenCounseling }) {
                     aria-current={n === page ? "page" : undefined}
                     className={
                       n === page
-                        ? "h-8.5 min-w-8.5 px-2.5 inline-flex items-center justify-center rounded-lg border text-xs font-semibold transition-colors bg-[#115eaf] text-white border-[#115eaf] shadow-xs cursor-pointer"
-                        : "h-8.5 min-w-8.5 px-2.5 inline-flex items-center justify-center rounded-lg border text-xs font-semibold transition-colors bg-white text-[#43474d] border-[#d5e3ff] hover:border-[#115eaf] hover:text-[#115eaf] hover:bg-[#f8fbff] cursor-pointer"
+                        ? "h-8.5 min-w-8.5 px-2.5 inline-flex items-center justify-center rounded-lg border text-xs font-semibold transition-colors bg-brand-600 text-white border-brand-600 shadow-xs cursor-pointer"
+                        : "h-8.5 min-w-8.5 px-2.5 inline-flex items-center justify-center rounded-lg border text-xs font-semibold transition-colors bg-white text-ink-700 border-brand-200 hover:border-brand-600 hover:text-brand-600 hover:bg-canvas cursor-pointer"
                     }
                   >
                     {n}
@@ -325,7 +325,7 @@ export default function Blog({ onOpenCounseling }) {
                   onClick={() => setPage((p) => Math.min(data.totalPages, p + 1))}
                   disabled={page === data.totalPages}
                   aria-label="Next page"
-                  className="h-8.5 w-8.5 inline-flex items-center justify-center rounded-lg border border-[#d5e3ff] text-[#115eaf] hover:bg-[#f0f4f8] disabled:opacity-40 disabled:hover:bg-white disabled:cursor-not-allowed transition-colors cursor-pointer"
+                  className="h-8.5 w-8.5 inline-flex items-center justify-center rounded-lg border border-brand-200 text-brand-600 hover:bg-canvas disabled:opacity-40 disabled:hover:bg-white disabled:cursor-not-allowed transition-colors cursor-pointer"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -335,12 +335,12 @@ export default function Blog({ onOpenCounseling }) {
         )}
 
         {/* Counseling CTA Banner */}
-        <div className="mt-8 p-4 sm:p-5 rounded-xl bg-gradient-to-r from-[#f0f4f8] via-[#f8fbff] to-white border border-[#d5e3ff] flex flex-col sm:flex-row items-center justify-between gap-3.5 shadow-2xs">
+        <div className="mt-8 p-4 sm:p-5 rounded-xl bg-gradient-to-r from-canvas via-canvas to-white border border-brand-200 flex flex-col sm:flex-row items-center justify-between gap-3.5 shadow-2xs">
           <div className="max-w-xl text-center sm:text-left">
-            <h3 className="text-sm sm:text-base font-bold text-[#000f22] mb-0.5">
+            <h3 className="text-sm sm:text-base font-bold text-ink-900 mb-0.5">
               Need Help Deciding on the Right Online University?
             </h3>
-            <p className="text-xs text-[#555960] leading-relaxed">
+            <p className="text-xs text-ink-700 leading-relaxed">
               Our certified academic counselors provide 100% free comparisons across UGC entitlements, fees, and career placements.
             </p>
           </div>
@@ -350,7 +350,7 @@ export default function Blog({ onOpenCounseling }) {
               if (onOpenCounseling) onOpenCounseling();
               else window.location.href = "/counselling";
             }}
-            className="px-4 py-2 rounded-lg bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs sm:text-sm font-semibold transition-all shrink-0 shadow-2xs flex items-center gap-1.5 active:scale-98 cursor-pointer"
+            className="px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-xs sm:text-sm font-semibold transition-all shrink-0 shadow-2xs flex items-center gap-1.5 active:scale-98 cursor-pointer"
           >
             <span>Talk to an Academic Advisor</span>
             <Sparkles className="w-4 h-4" aria-hidden="true" />
@@ -373,11 +373,11 @@ function BlogCard({ article: b }) {
   const dateText = formatDate(b.date);
   return (
     <article
-      className="group bg-white rounded-xl border border-[#e7eeff] hover:border-[#b1c8eb] hover:shadow-xs overflow-hidden transition-all duration-200 flex flex-col justify-between h-full"
+      className="group bg-white rounded-xl border border-brand-100 hover:border-brand-300 hover:shadow-xs overflow-hidden transition-all duration-200 flex flex-col justify-between h-full"
     >
       <div>
         {/* Compact Image Container: h-36 on mobile, h-38 on desktop (aspect ~16:10) */}
-        <div className="relative h-36 sm:h-38 overflow-hidden bg-[#f0f3ff]">
+        <div className="relative h-36 sm:h-38 overflow-hidden bg-brand-50">
           {b.image ? (
             <img
               src={b.image}
@@ -386,12 +386,12 @@ function BlogCard({ article: b }) {
               loading="lazy"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-[#115eaf]/40">
+            <div className="w-full h-full flex items-center justify-center text-brand-600/40">
               <BookOpen className="w-7 h-7" aria-hidden="true" />
             </div>
           )}
           {b.category ? (
-            <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/95 text-[#115eaf] shadow-2xs backdrop-blur-xs border border-[#d5e3ff]">
+            <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full text-[10px] font-bold bg-white/95 text-brand-600 shadow-2xs backdrop-blur-xs border border-brand-200">
               {b.category}
             </span>
           ) : null}
@@ -399,13 +399,13 @@ function BlogCard({ article: b }) {
 
         {/* Compact Card Content */}
         <div className="p-3.5">
-          <div className="flex items-center gap-1.5 text-[10.5px] text-[#74777e] mb-1.5">
+          <div className="flex items-center gap-1.5 text-[10.5px] text-ink-500 mb-1.5">
             {dateText ? <span>{dateText}</span> : null}
             {b.readingTime ? (
               <>
                 {dateText ? <span aria-hidden="true" className="text-slate-300">•</span> : null}
                 <span className="flex items-center gap-1">
-                  <Clock className="w-3 h-3 text-[#115eaf]" aria-hidden="true" />
+                  <Clock className="w-3 h-3 text-brand-600" aria-hidden="true" />
                   {b.readingTime}
                 </span>
               </>
@@ -417,11 +417,11 @@ function BlogCard({ article: b }) {
               </>
             ) : null}
           </div>
-          <h2 className="text-xs sm:text-[14px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors line-clamp-2 leading-snug">
+          <h2 className="text-xs sm:text-[14px] font-bold text-ink-900 group-hover:text-brand-600 transition-colors line-clamp-2 leading-snug">
             <Link to={"/blog/" + slug}>{b.title}</Link>
           </h2>
           {b.excerpt ? (
-            <p className="text-[11px] sm:text-xs text-[#555960] line-clamp-2 mt-1 leading-relaxed">
+            <p className="text-[11px] sm:text-xs text-ink-700 line-clamp-2 mt-1 leading-relaxed">
               {b.excerpt}
             </p>
           ) : null}
@@ -432,7 +432,7 @@ function BlogCard({ article: b }) {
       <div className="p-3.5 pt-0 mt-auto">
         <Link
           to={"/blog/" + slug}
-          className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-[#115eaf] group-hover:underline"
+          className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-brand-600 group-hover:underline"
         >
           <span>Read Full Guide</span>
           <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />

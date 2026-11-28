@@ -12,7 +12,7 @@ const QUICK_TOPICS = [
   { label: "UGC Validity", prompt: "Are online degrees UGC-DEB approved and valid for government jobs & WES?" },
   { label: "Online MBA Fees", prompt: "What are the total fees and EMI options for Online MBA across top universities?" },
   { label: "Compare Universities", prompt: "Compare LPU Online, Amity Online, and Chandigarh University side by side" },
-  { label: "Remote Exams", prompt: "How do 100% remote AI proctored exams work for online degree programs?" },
+  { label: "Remote Exams", prompt: "How do online proctored exams work?" },
   { label: "Online MCA Tracks", prompt: "Which universities offer Online MCA with AI, Cloud, and Cyber tracks?" },
   { label: "Avg Placement CTC", prompt: "What are the placement assistance and average salary packages for online courses?" },
   { label: "Under ₹1 Lakh", prompt: "Which universities offer accredited online degrees under ₹1 Lakh total fee?" },
@@ -146,13 +146,13 @@ export const GeminiChatbot = ({
     return raw.split("\n").map((line, idx) => {
       if (line.trim().startsWith("- ") || line.trim().startsWith("* ")) {
         const content = line.trim().substring(2);
-        return <li key={idx} className="ml-4 list-disc my-1 text-xs sm:text-[13px] text-[#1a222f] leading-relaxed font-sans">
+        return <li key={idx} className="ml-4 list-disc my-1 text-xs sm:text-[13px] text-ink-900 leading-relaxed font-sans">
             <span>{formatInline(content)}</span>
           </li>;
       }
       if (/^\d+\.\s/.test(line.trim())) {
         const content = line.trim().replace(/^\d+\.\s/, "");
-        return <li key={idx} className="ml-4 list-decimal my-1 text-xs sm:text-[13px] text-[#1a222f] leading-relaxed font-sans">
+        return <li key={idx} className="ml-4 list-decimal my-1 text-xs sm:text-[13px] text-ink-900 leading-relaxed font-sans">
             <span>{formatInline(content)}</span>
           </li>;
       }
@@ -161,7 +161,7 @@ export const GeminiChatbot = ({
       }
       return <p
         key={idx}
-        className="my-1.5 text-xs sm:text-[13px] text-[#1a222f] leading-relaxed font-sans font-normal"
+        className="my-1.5 text-xs sm:text-[13px] text-ink-900 leading-relaxed font-sans font-normal"
       >{formatInline(line)}</p>;
     });
   };
@@ -170,13 +170,13 @@ export const GeminiChatbot = ({
     const parts = str.split(tokenPattern).filter(Boolean);
     return parts.map((part, index) => {
       if (part.startsWith("**") && part.endsWith("**")) {
-        return <strong key={index} className="font-semibold text-[#000f22]">{part.slice(2, -2)}</strong>;
+        return <strong key={index} className="font-semibold text-ink-900">{part.slice(2, -2)}</strong>;
       }
       if (part.startsWith("*") && part.endsWith("*")) {
-        return <em key={index} className="italic text-[#1a222f]">{part.slice(1, -1)}</em>;
+        return <em key={index} className="italic text-ink-900">{part.slice(1, -1)}</em>;
       }
       if (part.startsWith("`") && part.endsWith("`")) {
-        return <code key={index} className="rounded bg-slate-100 px-1.5 py-0.5 text-xs font-mono text-[#004689]">{part.slice(1, -1)}</code>;
+        return <code key={index} className="rounded bg-slate-100 px-1.5 py-0.5 text-xs font-mono text-brand-700">{part.slice(1, -1)}</code>;
       }
       return <React.Fragment key={index}>{part}</React.Fragment>;
     });
@@ -185,17 +185,17 @@ export const GeminiChatbot = ({
     role="dialog"
     aria-modal="true"
     aria-labelledby="admissions-ai-title"
-    className={`fixed z-50 transition-all duration-300 flex flex-col font-sans ${isExpanded ? "inset-2 sm:inset-6 md:inset-10 bg-white rounded-2xl shadow-2xl border border-[#e7eeff] overflow-hidden" : "bottom-0 left-0 w-full h-[min(680px,calc(100dvh-4rem))] sm:bottom-6 sm:left-6 sm:w-[440px] md:w-[460px] sm:h-[600px] sm:max-h-[85vh] bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl border border-[#e7eeff] overflow-hidden"}`}
+    className={`fixed z-50 transition-all duration-300 flex flex-col font-sans ${isExpanded ? "inset-2 sm:inset-6 md:inset-10 bg-white rounded-2xl shadow-2xl border border-brand-100 overflow-hidden" : "bottom-0 left-0 w-full h-[min(680px,calc(100dvh-4rem))] sm:bottom-6 sm:left-6 sm:w-[440px] md:w-[460px] sm:h-[600px] sm:max-h-[85vh] bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl border border-brand-100 overflow-hidden"}`}
   >
       {
     /* Header - Clean Institutional Advisory Bar */
   }
-      <div className="bg-white text-[#000f22] px-4 sm:px-5 py-3.5 flex items-center justify-between border-b border-[#e7eeff] shrink-0">
+      <div className="bg-white text-ink-900 px-4 sm:px-5 py-3.5 flex items-center justify-between border-b border-brand-100 shrink-0">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0b62be] text-white flex items-center justify-center shrink-0 shadow-xs">
+          <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-brand-600 text-white flex items-center justify-center shrink-0 shadow-xs">
             <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
-          <h3 id="admissions-ai-title" className="text-sm font-bold tracking-tight text-[#000f22] font-sans">
+          <h3 id="admissions-ai-title" className="text-sm font-bold tracking-tight text-ink-900 font-sans">
             Admissions AI
           </h3>
         </div>
@@ -211,7 +211,7 @@ export const GeminiChatbot = ({
             <button
     type="button"
     onClick={() => setModelChoice("gemini-3.5-flash")}
-    className={`px-2.5 py-1 rounded-md transition-colors ${modelChoice === "gemini-3.5-flash" ? "bg-white text-[#0b2540] font-semibold shadow-2xs" : "text-[#555960] hover:text-[#000f22]"}`}
+    className={`px-2.5 py-1 rounded-md transition-colors ${modelChoice === "gemini-3.5-flash" ? "bg-white text-brand-900 font-semibold shadow-2xs" : "text-ink-700 hover:text-ink-900"}`}
     title="Comprehensive analysis mode"
   >
               Detailed
@@ -219,7 +219,7 @@ export const GeminiChatbot = ({
             <button
     type="button"
     onClick={() => setModelChoice("gemini-3.1-flash-lite")}
-    className={`px-2.5 py-1 rounded-md transition-colors ${modelChoice === "gemini-3.1-flash-lite" ? "bg-white text-[#0b2540] font-semibold shadow-2xs" : "text-[#555960] hover:text-[#000f22]"}`}
+    className={`px-2.5 py-1 rounded-md transition-colors ${modelChoice === "gemini-3.1-flash-lite" ? "bg-white text-brand-900 font-semibold shadow-2xs" : "text-ink-700 hover:text-ink-900"}`}
     title="Quick answer mode"
   >
               Quick
@@ -230,7 +230,7 @@ export const GeminiChatbot = ({
     type="button"
     onClick={clearChat}
     title="Reset conversation"
-    className="p-2 text-[#555960] hover:text-[#0b2540] hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+    className="p-2 text-ink-700 hover:text-brand-900 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
     aria-label="Reset conversation"
   >
             <RotateCcw className="w-4 h-4" />
@@ -240,7 +240,7 @@ export const GeminiChatbot = ({
     type="button"
     onClick={() => setIsExpanded(!isExpanded)}
     title={isExpanded ? "Minimize" : "Expand"}
-    className="hidden sm:block p-2 text-[#555960] hover:text-[#0b2540] hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+    className="hidden sm:block p-2 text-ink-700 hover:text-brand-900 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
     aria-label={isExpanded ? "Minimize chat" : "Expand chat"}
   >
             {isExpanded ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
@@ -249,7 +249,7 @@ export const GeminiChatbot = ({
           <button
     type="button"
     onClick={onClose}
-    className="p-2 text-[#555960] hover:text-[#000f22] hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+    className="p-2 text-ink-700 hover:text-ink-900 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
     aria-label="Close advisory window"
   >
             <X className="w-4 h-4" />
@@ -260,7 +260,7 @@ export const GeminiChatbot = ({
       {
     /* Message Thread */
   }
-      <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 sm:p-5 space-y-4 bg-[#fbfcfe] text-[#111c2d]">
+      <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 sm:p-5 space-y-4 bg-canvas text-ink-900">
         {messages.map((msg) => {
     const isUser = msg.role === "user";
     return <div
@@ -268,23 +268,23 @@ export const GeminiChatbot = ({
       className={`flex items-start gap-3 ${isUser ? "flex-row-reverse" : "flex-row"}`}
     >
               <div
-      className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 text-xs font-semibold shadow-xs ${isUser ? "bg-[#115eaf] text-white" : "bg-[#f0f4f8] text-[#0b2540] border border-[#e2e8f0]"}`}
+      className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 text-xs font-semibold shadow-xs ${isUser ? "bg-brand-600 text-white" : "bg-canvas text-brand-900 border border-line"}`}
     >
-                {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4 text-[#0b2540]" />}
+                {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4 text-brand-900" />}
               </div>
 
               <div
       className={`max-w-[85%] break-words ${isUser ? "" : "flex w-[85%] flex-col items-stretch"}`}
     >
                 <div
-      className={`break-words rounded-2xl ${isUser ? "bg-[#0b62be] text-white rounded-tr-xs px-4 py-3 shadow-xs font-sans text-xs sm:text-[13px] font-normal leading-relaxed" : "bg-white border border-[#e7eeff] text-[#1a222f] rounded-tl-xs p-4 sm:p-5 shadow-xs font-sans text-xs sm:text-[13px] leading-relaxed"}`}
+      className={`break-words rounded-2xl ${isUser ? "bg-brand-600 text-white rounded-tr-xs px-4 py-3 shadow-xs font-sans text-xs sm:text-[13px] font-normal leading-relaxed" : "bg-white border border-brand-100 text-ink-900 rounded-tl-xs p-4 sm:p-5 shadow-xs font-sans text-xs sm:text-[13px] leading-relaxed"}`}
     >
                   {isUser ? <p className="my-0.5 text-white leading-relaxed font-sans">{msg.text}</p> : renderFormattedText(msg.text)}
 
                   <span
       role="status"
       aria-live="polite"
-      className={`block text-[10px] mt-2 font-normal font-sans ${isUser ? "text-slate-300 text-right" : "text-[#74777e]"}`}
+      className={`block text-[10px] mt-2 font-normal font-sans ${isUser ? "text-slate-300 text-right" : "text-ink-500"}`}
     >
                     {msg.timestamp}
                   </span>
@@ -293,18 +293,18 @@ export const GeminiChatbot = ({
                 {!isUser && (msg.dataNote || (msg.sources && msg.sources.length > 0) || (msg.suggestions && msg.suggestions.length > 0)) ? (
                   <div className="mt-2 flex flex-col items-start gap-1.5">
                     {msg.dataNote ? (
-                      <span className="text-[10px] italic text-[#74777e] font-sans">{msg.dataNote}</span>
+                      <span className="text-[10px] italic text-ink-500 font-sans">{msg.dataNote}</span>
                     ) : null}
                     {msg.sources && msg.sources.length > 0 ? (
                       <div className="flex flex-wrap items-center gap-1.5">
-                        <span className="text-[10px] text-[#74777e] font-sans">Sources:</span>
+                        <span className="text-[10px] text-ink-500 font-sans">Sources:</span>
                         {msg.sources.map((url, sIdx) => (
                           <a
                             key={sIdx}
                             href={url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="max-w-[180px] truncate text-[11px] font-semibold text-[#115eaf] hover:text-[#004689] hover:underline font-sans"
+                            className="max-w-[180px] truncate text-[11px] font-semibold text-brand-600 hover:text-brand-700 hover:underline font-sans"
                           >
                             {url.replace(/^\/universities\//, "").replace(/-+/g, " ")}
                           </a>
@@ -318,7 +318,7 @@ export const GeminiChatbot = ({
                             key={sIdx}
                             type="button"
                             onClick={() => sendMessage(suggestion)}
-                            className="px-3 py-1.5 bg-white hover:bg-[#eef4ff] text-[#004689] border border-[#d5e3ff] hover:border-[#115eaf] rounded-full text-xs font-semibold transition-colors cursor-pointer font-sans text-left"
+                            className="px-3 py-1.5 bg-white hover:bg-brand-50 text-brand-700 border border-brand-200 hover:border-brand-600 rounded-full text-xs font-semibold transition-colors cursor-pointer font-sans text-left"
                           >
                             {suggestion}
                           </button>
@@ -335,16 +335,16 @@ export const GeminiChatbot = ({
     /* Loading Indicator - Clean Institutional Status */
   }
         {isLoading && <div className="flex items-start gap-3">
-            <div className="w-8 h-8 rounded-xl bg-[#f0f4f8] border border-[#e2e8f0] text-[#0b2540] flex items-center justify-center shrink-0 shadow-xs">
-              <Bot className="w-4 h-4 text-[#0b2540]" />
+            <div className="w-8 h-8 rounded-xl bg-canvas border border-line text-brand-900 flex items-center justify-center shrink-0 shadow-xs">
+              <Bot className="w-4 h-4 text-brand-900" />
             </div>
-            <div className="bg-white border border-[#e7eeff] rounded-2xl rounded-tl-xs px-4 py-3 flex items-center gap-2.5 text-[#555960] shadow-xs">
+            <div className="bg-white border border-brand-100 rounded-2xl rounded-tl-xs px-4 py-3 flex items-center gap-2.5 text-ink-700 shadow-xs">
               <span className="flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse" />
                 <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse [animation-delay:0.2s]" />
                 <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse [animation-delay:0.4s]" />
               </span>
-              <span className="text-xs text-[#555960] font-normal font-sans">
+              <span className="text-xs text-ink-700 font-normal font-sans">
                 Reviewing institutional records...
               </span>
             </div>
@@ -356,13 +356,13 @@ export const GeminiChatbot = ({
       {
     /* Suggested Quick Topics (1-2 words each) */
   }
-      {messages.length <= 2 && !isLoading && <div className="px-4 py-2.5 bg-[#f8faff] border-t border-[#e7eeff] overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {messages.length <= 2 && !isLoading && <div className="px-4 py-2.5 bg-canvas border-t border-brand-100 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <div className="flex items-center gap-2 flex-nowrap">
             {QUICK_TOPICS.map((topic, pIdx) => <button
     key={pIdx}
     type="button"
     onClick={() => sendMessage(topic.prompt)}
-    className="px-3 py-1.5 bg-white hover:bg-[#eef4ff] text-[#004689] border border-[#d5e3ff] hover:border-[#115eaf] rounded-full text-xs font-semibold whitespace-nowrap transition-colors shrink-0 shadow-2xs font-sans cursor-pointer"
+    className="px-3 py-1.5 bg-white hover:bg-brand-50 text-brand-700 border border-brand-200 hover:border-brand-600 rounded-full text-xs font-semibold whitespace-nowrap transition-colors shrink-0 shadow-2xs font-sans cursor-pointer"
   >
                 {topic.label}
               </button>)}
@@ -377,7 +377,7 @@ export const GeminiChatbot = ({
       e.preventDefault();
       sendMessage();
     }}
-    className="p-3.5 sm:p-4 bg-white border-t border-[#e7eeff] flex items-center gap-2.5 shrink-0"
+    className="p-3.5 sm:p-4 bg-white border-t border-brand-100 flex items-center gap-2.5 shrink-0"
   >
         <input
     ref={inputRef}
@@ -387,13 +387,13 @@ export const GeminiChatbot = ({
     aria-label="Ask the admissions advisor"
     placeholder="Ask about fees, UGC validity, eligibility..."
     disabled={isLoading}
-    className="flex-1 h-11 px-4 text-xs sm:text-sm bg-[#f9fbff] border border-[#c4c6ce] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 rounded-xl font-normal text-[#111c2d] placeholder:text-[#74777e] outline-none font-sans"
+    className="flex-1 h-11 px-4 text-xs sm:text-sm bg-canvas border border-line-strong focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15 rounded-xl font-normal text-ink-900 placeholder:text-ink-500 outline-none font-sans"
   />
 
         <button
           type="submit"
           disabled={!inputText.trim() || isLoading}
-          className="h-11 px-4 bg-[#0b62be] hover:bg-[#084a8c] disabled:opacity-85 disabled:cursor-not-allowed text-white rounded-xl transition-all shadow-xs flex items-center justify-center gap-1.5 font-bold text-xs font-sans shrink-0 active:scale-95 cursor-pointer"
+          className="h-11 px-4 bg-brand-600 hover:bg-brand-700 disabled:opacity-85 disabled:cursor-not-allowed text-white rounded-xl transition-all shadow-xs flex items-center justify-center gap-1.5 font-bold text-xs font-sans shrink-0 active:scale-95 cursor-pointer"
           aria-label="Send query"
           title="Send query"
         >
@@ -407,7 +407,7 @@ export const ChatbotFloatingTrigger = ({ onClick }) => {
   return <button
     type="button"
     onClick={onClick}
-    className="fixed bottom-[140px] right-4 md:bottom-[84px] md:right-6 z-40 h-14 w-14 rounded-full border border-white bg-[#0b62be] text-white shadow-xl shadow-slate-900/25 transition-all duration-200 flex items-center justify-center hover:bg-[#115eaf] hover:shadow-2xl active:scale-95 group font-sans cursor-pointer"
+    className="fixed bottom-[140px] right-4 md:bottom-[84px] md:right-6 z-40 h-14 w-14 rounded-full border border-white bg-brand-600 text-white shadow-xl shadow-slate-900/25 transition-all duration-200 flex items-center justify-center hover:bg-brand-600 hover:shadow-2xl active:scale-95 group font-sans cursor-pointer"
     aria-label="Open Admissions Desk AI Robot"
     title="Admissions Desk AI"
   >

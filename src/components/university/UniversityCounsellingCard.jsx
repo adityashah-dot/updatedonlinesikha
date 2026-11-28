@@ -85,7 +85,7 @@ export const UniversityCounsellingCard = ({ university }) => {
                 required
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="e.g., Rohit Sharma"
+                aria-label="e.g., Rohit Sharma" placeholder="e.g., Rohit Sharma"
                 className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 focus:bg-white text-slate-900"
               />
             </div>
@@ -102,7 +102,7 @@ export const UniversityCounsellingCard = ({ university }) => {
                 required
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="rohit.sharma@example.com"
+                aria-label="rohit.sharma@example.com" placeholder="rohit.sharma@example.com"
                 className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 focus:bg-white text-slate-900"
               />
             </div>
@@ -126,7 +126,7 @@ export const UniversityCounsellingCard = ({ university }) => {
                 title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: sanitizeIndianPhone(e.target.value) })}
-                placeholder="10-digit mobile number"
+                aria-label="Mobile number" placeholder="10-digit mobile number"
                 className="w-full pl-14 pr-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 focus:bg-white text-slate-900"
               />
             </div>
@@ -138,7 +138,7 @@ export const UniversityCounsellingCard = ({ university }) => {
             </label>
             <div className="relative">
               <BookOpen className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
-              <select
+              <select aria-label="Interested Program"
                 value={formData.course}
                 onChange={(e) => setFormData({ ...formData, course: e.target.value })}
                 className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-600 focus:bg-white text-slate-900"
@@ -157,7 +157,7 @@ export const UniversityCounsellingCard = ({ university }) => {
             className="w-full py-2.5 px-4 text-xs font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition-colors flex items-center justify-center gap-1.5 shadow-xs cursor-pointer"
           >
             <PhoneCall className="w-3.5 h-3.5" />
-            <span>Request Free Callback</span>
+            <span>Request a callback</span>
           </button>
 
           <p className="text-[11px] text-slate-400 text-center leading-tight">

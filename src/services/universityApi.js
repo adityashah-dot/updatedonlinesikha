@@ -287,7 +287,7 @@ export function mapFeaturedUniversities(universities) {
       rows.push({
         label: "Highest Package:",
         value: formatPackage(university.highestPackage),
-        tone: "text-[#115eaf] font-semibold",
+        tone: "text-brand-600 font-semibold",
       });
     }
 

@@ -211,7 +211,7 @@ function CtaBlock({ block, onOpenCounseling }) {
   const title = rawTitle || "Need Guidance on Exam Preparation & Admissions?";
   const description =
     rawDescription ||
-    "Speak directly with verified academic advisors for 100% free guidance on syllabus breakdown, cutoffs, and university admissions.";
+    "Talk to an advisor about syllabus, cut-offs and admissions. It's free.";
 
   const handleClick = () => {
     if (typeof onOpenCounseling === "function") onOpenCounseling();

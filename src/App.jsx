@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { COURSES_DATA } from "./data/coursesData";
@@ -8,16 +8,16 @@ import { Navbar } from "./components/Navbar.jsx";
 import { Footer } from "./components/Footer";
 import { PageTransition } from "./components/PageTransition";
 import { HomeView } from "./components/HomeView";
-import Blog from "./pages/Blog";
-import BlogDetail from "./pages/BlogDetail";
-import Courses from "./pages/Courses";
-import CourseDetail from "./pages/CourseDetail";
-import Exams from "./pages/Exams";
-import ExamDetail from "./pages/ExamDetail";
-import News from "./pages/News";
-import NewsDetail from "./pages/NewsDetail";
-import { CollegeDetailView } from "./components/CollegeDetailView";
-import { UniversitiesView } from "./components/UniversitiesView";
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogDetail = lazy(() => import("./pages/BlogDetail"));
+const Courses = lazy(() => import("./pages/Courses"));
+const CourseDetail = lazy(() => import("./pages/CourseDetail"));
+const Exams = lazy(() => import("./pages/Exams"));
+const ExamDetail = lazy(() => import("./pages/ExamDetail"));
+const News = lazy(() => import("./pages/News"));
+const NewsDetail = lazy(() => import("./pages/NewsDetail"));
+const CollegeDetailView = lazy(() => import("./components/CollegeDetailView").then((m) => ({ default: m.CollegeDetailView })));
+const UniversitiesView = lazy(() => import("./components/UniversitiesView").then((m) => ({ default: m.UniversitiesView })));
 import { CourseDetailModal } from "./components/CourseDetailModal";
 import { EmiCalculatorModal } from "./components/EmiCalculatorModal";
 import { ApplyOnlineModal } from "./components/ApplyOnlineModal";
@@ -29,10 +29,18 @@ import { FloatingActions } from "./components/FloatingActions";
 import { CounselorModal } from "./components/CounselorModal";
 import { TrackApplicationModal } from "./components/TrackApplicationModal";
 import { DegreeExplorerModal } from "./components/DegreeExplorerModal";
-import DegreeExplorerPage from "./pages/DegreeExplorerPage";
-import CompareMatrixPage from "./pages/CompareMatrixPage";
+const DegreeExplorerPage = lazy(() => import("./pages/DegreeExplorerPage"));
+const CompareMatrixPage = lazy(() => import("./pages/CompareMatrixPage"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 import { GeminiChatbot, ChatbotFloatingTrigger } from "./components/chat/GeminiChatbot";
 import { SEO } from "./components/SEO";
+
+// Shown briefly while a lazily loaded page downloads.
+const RouteFallback = () => (
+  <div className="min-h-[60vh] flex items-center justify-center" role="status" aria-label="Loading page">
+    <span className="h-6 w-6 rounded-full border-2 border-line border-t-brand-600 animate-spin" />
+  </div>
+);
 export default function App() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -145,7 +153,7 @@ export default function App() {
     setChatInitialQuery(query);
     setIsChatOpen(true);
   };
-  return <div className="min-h-screen flex flex-col bg-[#f9f9ff] text-[#111c2d] font-sans pb-[calc(96px+env(safe-area-inset-bottom))] md:pb-0 transition-colors duration-200">
+  return <div className="min-h-screen flex flex-col bg-canvas text-ink-900 font-sans pb-[calc(96px+env(safe-area-inset-bottom))] md:pb-0 transition-colors duration-200">
       {
     /* Top Application Bar */
   }
@@ -165,14 +173,15 @@ export default function App() {
     /* Routed Pages with Framer Motion Page Transitions */
   }
       <main className="flex-grow">
+        <Suspense fallback={<RouteFallback />}>
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route
     path="/"
     element={<PageTransition>
                   <SEO
-      title="Online Siksha - Higher Education Gateway"
-      description="Compare online universities, courses, fees, and admissions. UGC-entitled degrees from top Indian universities."
+      title="Online Siksha – Compare UGC-Entitled Online Degrees in India"
+      description="Compare 50+ UGC-entitled online universities in India. Check MBA, MCA, BBA and BCA fees, eligibility and admissions, and get free one-on-one counselling."
     />
                   <HomeView
       onOpenApply={handleOpenApply}
@@ -278,9 +287,10 @@ export default function App() {
     element={<PageTransition><NewsDetail onOpenCounseling={() => setIsCounselorModalOpen(true)} /></PageTransition>}
   />
 
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
           </Routes>
         </AnimatePresence>
+        </Suspense>
       </main>
 
       {

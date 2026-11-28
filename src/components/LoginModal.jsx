@@ -174,14 +174,14 @@ export const LoginModal = ({
             <div className="w-16 h-16 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-600 flex items-center justify-center shadow-xs mb-4">
               <CheckCircle className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-extrabold text-[#000f22]">
+            <h3 className="text-2xl font-extrabold text-ink-900">
               {successMsg || "Authentication Successful!"}
             </h3>
             <p className="text-sm text-slate-500 mt-1 max-w-sm">
               Logged in as <strong className="text-slate-800">{loggedInUser.email}</strong>
             </p>
             {loggedInUser.applicationId && (
-              <div className="mt-3 inline-block bg-[#eef4ff] border border-[#d5e3ff] text-[#115eaf] px-4 py-1.5 rounded-full text-xs font-bold">
+              <div className="mt-3 inline-block bg-brand-50 border border-brand-200 text-brand-600 px-4 py-1.5 rounded-full text-xs font-bold">
                 Student Application ID: {loggedInUser.applicationId}
               </div>
             )}
@@ -189,7 +189,7 @@ export const LoginModal = ({
               <button
                 type="button"
                 onClick={handleModalClose}
-                className="w-full py-3 rounded-xl bg-[#115eaf] hover:bg-[#000f22] text-white text-sm font-bold shadow-md transition-all cursor-pointer"
+                className="w-full py-3 rounded-xl bg-brand-600 hover:bg-ink-900 text-white text-sm font-bold shadow-md transition-all cursor-pointer"
               >
                 Continue to Portal
               </button>
@@ -211,12 +211,12 @@ export const LoginModal = ({
                 MOBILE NEUMORPHIC VIEW (Visible strictly on screens < 768px)
                 Matches Pinterest pin: 1108378158347906539
                 ======================================================== */}
-            <div className="md:hidden flex flex-col w-full min-h-[580px] bg-gradient-to-b from-[#eaf0f8] via-[#f2f6fc] to-[#e8eef6] p-6 relative overflow-hidden select-none">
+            <div className="md:hidden flex flex-col w-full min-h-[580px] bg-gradient-to-b from-brand-100 via-brand-50 to-brand-100 p-6 relative overflow-hidden select-none">
               {/* Soft decorative neumorphic 3D shapes in background */}
-              <div className="absolute -top-12 -left-12 w-36 h-36 rounded-full border-[10px] border-white/60 shadow-[8px_8px_20px_#cfd9e8,-8px_-8px_20px_#ffffff] pointer-events-none" />
-              <div className="absolute top-16 -right-8 w-24 h-24 rounded-full bg-gradient-to-br from-white/80 to-blue-100/40 shadow-[6px_6px_16px_#cbd5e1,-6px_-6px_16px_#ffffff] pointer-events-none" />
-              <div className="absolute -bottom-10 -right-10 w-44 h-44 rounded-full border-[14px] border-white/70 shadow-[10px_10px_24px_#cfd9e8,-10px_-10px_24px_#ffffff] pointer-events-none" />
-              <div className="absolute bottom-20 -left-6 w-20 h-20 rounded-full bg-gradient-to-tr from-white/70 to-blue-50/50 shadow-[4px_4px_12px_#cbd5e1] pointer-events-none" />
+              <div className="absolute -top-12 -left-12 w-36 h-36 rounded-full border-[10px] border-white/60 shadow-sm pointer-events-none" />
+              <div className="absolute top-16 -right-8 w-24 h-24 rounded-full bg-gradient-to-br from-white/80 to-blue-100/40 shadow-sm pointer-events-none" />
+              <div className="absolute -bottom-10 -right-10 w-44 h-44 rounded-full border-[14px] border-white/70 shadow-sm pointer-events-none" />
+              <div className="absolute bottom-20 -left-6 w-20 h-20 rounded-full bg-gradient-to-tr from-white/70 to-blue-50/50 shadow-sm pointer-events-none" />
 
               {/* Error Notification on Mobile */}
               {errorMsg && (
@@ -231,41 +231,41 @@ export const LoginModal = ({
                 <button
                   type="button"
                   onClick={handleModalClose}
-                  className="w-9 h-9 rounded-full bg-[#edf3fa] shadow-[4px_4px_8px_#cbd5e1,-4px_-4px_8px_#ffffff] border border-white/80 flex items-center justify-center text-slate-600 active:shadow-[inset_2px_2px_4px_#cbd5e1,inset_-2px_-2px_4px_#ffffff] transition-all cursor-pointer"
+                  className="w-9 h-9 rounded-full bg-brand-50 shadow-sm border border-white/80 flex items-center justify-center text-slate-600 active:shadow-none transition-all cursor-pointer"
                   aria-label="Close dialog"
                 >
                   <X className="w-4 h-4" />
                 </button>
-                <div className="w-9 h-9 rounded-full bg-[#edf3fa] shadow-[4px_4px_8px_#cbd5e1,-4px_-4px_8px_#ffffff] border border-white/80 flex items-center justify-center text-[#115eaf]">
-                  <Sparkles className="w-4 h-4 text-[#115eaf]" />
+                <div className="w-9 h-9 rounded-full bg-brand-50 shadow-sm border border-white/80 flex items-center justify-center text-brand-600">
+                  <Sparkles className="w-4 h-4 text-brand-600" />
                 </div>
               </div>
 
               {/* Logo: Centered Neumorphic Squircle Card */}
               <div className="flex flex-col items-center justify-center z-10 mb-3">
-                <div className="w-20 h-20 rounded-[24px] bg-gradient-to-b from-white/95 to-[#e8eff8] shadow-[8px_8px_18px_#cfd9e8,-8px_-8px_18px_#ffffff] border border-white flex items-center justify-center p-3 relative">
+                <div className="w-20 h-20 rounded-[24px] bg-gradient-to-b from-white/95 to-brand-100 shadow-sm border border-white flex items-center justify-center p-3 relative">
                   {/* Glowing 3D Emblem with OnlineSiksha Brand Colors */}
-                  <div className="w-13 h-13 rounded-2xl bg-gradient-to-tr from-[#115eaf] via-[#2563eb] to-[#60a5fa] shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),0_8px_16px_rgba(17,94,175,0.3)] flex items-center justify-center">
+                  <div className="w-13 h-13 rounded-2xl bg-gradient-to-tr from-brand-600 via-brand-600 to-[#60a5fa] shadow-none flex items-center justify-center">
                     <GraduationCap className="w-7 h-7 text-white drop-shadow-md" />
                   </div>
                 </div>
 
-                <h1 className="text-xl sm:text-2xl font-black text-[#000f22] tracking-tight mt-2.5 mb-0">
+                <h1 className="text-xl sm:text-2xl font-black text-ink-900 tracking-tight mt-2.5 mb-0">
                   {isSignUp ? "Create Account" : "Welcome Back"}
                 </h1>
-                <p className="text-[11px] font-bold text-[#64748b] tracking-wider uppercase mt-0.5">
+                <p className="text-[11px] font-bold text-ink-500 tracking-wider uppercase mt-0.5">
                   {isSignUp ? "New Student Registration" : "Sign in to Online Siksha"}
                 </p>
 
                 {/* Neumorphic Segmented Tab Switcher */}
-                <div className="flex w-full max-w-[270px] p-1 mt-3 rounded-2xl bg-[#edf3fa] shadow-[inset_3px_3px_6px_#cbd5e1,inset_-3px_-3px_6px_#ffffff] border border-white/80">
+                <div className="flex w-full max-w-[270px] p-1 mt-3 rounded-2xl bg-brand-50 shadow-none border border-white/80">
                   <button
                     type="button"
                     onClick={() => { setIsSignUp(false); setErrorMsg(""); }}
                     className={`flex-1 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                       !isSignUp
-                        ? "bg-gradient-to-r from-[#115eaf] to-[#2563eb] text-white shadow-[0_4px_10px_rgba(17,94,175,0.3)]"
-                        : "text-[#64748b] hover:text-[#000f22]"
+                        ? "bg-gradient-to-r from-brand-600 to-brand-600 text-white shadow-sm"
+                        : "text-ink-500 hover:text-ink-900"
                     }`}
                   >
                     Sign In
@@ -275,8 +275,8 @@ export const LoginModal = ({
                     onClick={() => { setIsSignUp(true); setErrorMsg(""); }}
                     className={`flex-1 py-1.5 text-xs font-bold rounded-xl transition-all cursor-pointer ${
                       isSignUp
-                        ? "bg-gradient-to-r from-[#115eaf] to-[#2563eb] text-white shadow-[0_4px_10px_rgba(17,94,175,0.3)]"
-                        : "text-[#64748b] hover:text-[#000f22]"
+                        ? "bg-gradient-to-r from-brand-600 to-brand-600 text-white shadow-sm"
+                        : "text-ink-500 hover:text-ink-900"
                     }`}
                   >
                     Create Account
@@ -289,52 +289,52 @@ export const LoginModal = ({
                 /* ----------------- SIGN IN FORM (MOBILE) ----------------- */
                 <form onSubmit={handleSignIn} className="w-full flex flex-col gap-2.5 z-10">
                   {/* Email / Username Input */}
-                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-[#edf3fa] shadow-[inset_3px_3px_6px_#cbd5e1,inset_-3px_-3px_6px_#ffffff] border border-white/80 px-4 flex items-center gap-3">
-                    <User className="w-4 h-4 text-[#64748b] shrink-0" />
+                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-brand-50 shadow-none border border-white/80 px-4 flex items-center gap-3">
+                    <User className="w-4 h-4 text-ink-500 shrink-0" />
                     <input
                       type="text"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Username or Email"
-                      className="w-full bg-transparent text-xs sm:text-sm text-[#000f22] font-medium placeholder:text-[#94a3b8] focus:outline-none"
+                      aria-label="Username or Email" placeholder="Username or Email"
+                      className="w-full bg-transparent text-xs sm:text-sm text-ink-900 font-medium placeholder:text-ink-400 focus:outline-none"
                     />
                   </div>
 
                   {/* Password Input */}
-                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-[#edf3fa] shadow-[inset_3px_3px_6px_#cbd5e1,inset_-3px_-3px_6px_#ffffff] border border-white/80 px-4 flex items-center gap-3">
-                    <Lock className="w-4 h-4 text-[#64748b] shrink-0" />
+                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-brand-50 shadow-none border border-white/80 px-4 flex items-center gap-3">
+                    <Lock className="w-4 h-4 text-ink-500 shrink-0" />
                     <input
                       type={showPassword ? "text" : "password"}
                       required
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Password"
-                      className="w-full bg-transparent text-xs sm:text-sm text-[#000f22] font-medium placeholder:text-[#94a3b8] focus:outline-none"
+                      aria-label="Password" placeholder="Password"
+                      className="w-full bg-transparent text-xs sm:text-sm text-ink-900 font-medium placeholder:text-ink-400 focus:outline-none"
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="text-[#64748b] hover:text-[#000f22] cursor-pointer"
+                      className="text-ink-500 hover:text-ink-900 cursor-pointer"
                     >
-                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4 text-[#64748b]" />}
+                      {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4 text-ink-500" />}
                     </button>
                   </div>
 
                   {/* Remember Me & Forgot Password */}
                   <div className="flex items-center justify-between text-xs px-1 mt-0.5">
-                    <label className="flex items-center gap-2 cursor-pointer text-[#475569] font-medium">
+                    <label className="flex items-center gap-2 cursor-pointer text-ink-700 font-medium">
                       <input
                         type="checkbox"
                         defaultChecked
-                        className="w-3.5 h-3.5 rounded-md accent-[#115eaf] cursor-pointer"
+                        className="w-3.5 h-3.5 rounded-md accent-brand-600 cursor-pointer"
                       />
                       <span>Remember Me</span>
                     </label>
                     <button
                       type="button"
                       onClick={() => alert("Password reset link sent to your registered email.")}
-                      className="text-[#115eaf] font-bold hover:underline cursor-pointer"
+                      className="text-brand-600 font-bold hover:underline cursor-pointer"
                     >
                       Forgot Password?
                     </button>
@@ -344,7 +344,7 @@ export const LoginModal = ({
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="h-11 sm:h-12 w-full rounded-2xl bg-gradient-to-r from-[#115eaf] via-[#1d63cb] to-[#2563eb] text-white font-bold text-sm shadow-[0_10px_24px_rgba(17,94,175,0.38)] flex items-center justify-center relative active:scale-[0.98] transition-all cursor-pointer mt-1"
+                    className="h-11 sm:h-12 w-full rounded-2xl bg-gradient-to-r from-brand-600 via-[#1d63cb] to-brand-600 text-white font-bold text-sm shadow-sm flex items-center justify-center relative active:scale-[0.98] transition-all cursor-pointer mt-1"
                   >
                     <span>{isLoading ? "Signing in..." : "Login"}</span>
                     <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 flex items-center justify-center absolute right-2.5">
@@ -358,35 +358,35 @@ export const LoginModal = ({
                 /* ----------------- SIGN UP FORM (MOBILE) ----------------- */
                 <form onSubmit={handleSignUp} className="w-full flex flex-col gap-2.5 z-10">
                   {/* Full Name */}
-                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-[#edf3fa] shadow-[inset_3px_3px_6px_#cbd5e1,inset_-3px_-3px_6px_#ffffff] border border-white/80 px-4 flex items-center gap-3">
-                    <User className="w-4 h-4 text-[#64748b] shrink-0" />
+                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-brand-50 shadow-none border border-white/80 px-4 flex items-center gap-3">
+                    <User className="w-4 h-4 text-ink-500 shrink-0" />
                     <input
                       type="text"
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="Full Legal Name"
-                      className="w-full bg-transparent text-xs sm:text-sm text-[#000f22] font-medium placeholder:text-[#94a3b8] focus:outline-none"
+                      aria-label="Full Legal Name" placeholder="Full Legal Name"
+                      className="w-full bg-transparent text-xs sm:text-sm text-ink-900 font-medium placeholder:text-ink-400 focus:outline-none"
                     />
                   </div>
 
                   {/* Email Address */}
-                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-[#edf3fa] shadow-[inset_3px_3px_6px_#cbd5e1,inset_-3px_-3px_6px_#ffffff] border border-white/80 px-4 flex items-center gap-3">
-                    <Mail className="w-4 h-4 text-[#64748b] shrink-0" />
+                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-brand-50 shadow-none border border-white/80 px-4 flex items-center gap-3">
+                    <Mail className="w-4 h-4 text-ink-500 shrink-0" />
                     <input
                       type="email"
                       required
                       value={signUpEmail}
                       onChange={(e) => setSignUpEmail(e.target.value)}
-                      placeholder="Email Address"
-                      className="w-full bg-transparent text-xs sm:text-sm text-[#000f22] font-medium placeholder:text-[#94a3b8] focus:outline-none"
+                      aria-label="Email Address" placeholder="Email Address"
+                      className="w-full bg-transparent text-xs sm:text-sm text-ink-900 font-medium placeholder:text-ink-400 focus:outline-none"
                     />
                   </div>
 
                   {/* Mobile Number */}
-                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-[#edf3fa] shadow-[inset_3px_3px_6px_#cbd5e1,inset_-3px_-3px_6px_#ffffff] border border-white/80 px-4 flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-[#64748b] shrink-0" />
-                    <span className="text-xs font-bold text-[#000f22] shrink-0">+91</span>
+                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-brand-50 shadow-none border border-white/80 px-4 flex items-center gap-2">
+                    <Phone className="w-4 h-4 text-ink-500 shrink-0" />
+                    <span className="text-xs font-bold text-ink-900 shrink-0">+91</span>
                     <input
                       type="tel"
                       inputMode="numeric"
@@ -396,18 +396,18 @@ export const LoginModal = ({
                       required
                       value={signUpPhone}
                       onChange={(e) => setSignUpPhone(sanitizeIndianPhone(e.target.value))}
-                      placeholder="10-digit mobile number"
-                      className="w-full bg-transparent text-xs sm:text-sm text-[#000f22] font-medium placeholder:text-[#94a3b8] focus:outline-none"
+                      aria-label="Mobile number" placeholder="10-digit mobile number"
+                      className="w-full bg-transparent text-xs sm:text-sm text-ink-900 font-medium placeholder:text-ink-400 focus:outline-none"
                     />
                   </div>
 
-                  {/* Target Degree */}
-                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-[#edf3fa] shadow-[inset_3px_3px_6px_#cbd5e1,inset_-3px_-3px_6px_#ffffff] border border-white/80 px-4 flex items-center gap-3 relative">
-                    <GraduationCap className="w-4 h-4 text-[#64748b] shrink-0" />
-                    <select
+                  {/* Programme */}
+                  <div className="h-11 sm:h-12 w-full rounded-2xl bg-brand-50 shadow-none border border-white/80 px-4 flex items-center gap-3 relative">
+                    <GraduationCap className="w-4 h-4 text-ink-500 shrink-0" />
+                    <select aria-label="Programme"
                       value={program}
                       onChange={(e) => setProgram(e.target.value)}
-                      className="w-full bg-transparent text-xs sm:text-sm text-[#000f22] font-medium focus:outline-none appearance-none cursor-pointer pr-6"
+                      className="w-full bg-transparent text-xs sm:text-sm text-ink-900 font-medium focus:outline-none appearance-none cursor-pointer pr-6"
                     >
                       <option value="Online MBA">Online MBA</option>
                       <option value="Online MCA">Online MCA</option>
@@ -416,14 +416,14 @@ export const LoginModal = ({
                       <option value="Online M.Sc">Online M.Sc Data Science</option>
                       <option value="Online B.Com">Online B.Com</option>
                     </select>
-                    <ChevronDown className="w-4 h-4 text-[#64748b] pointer-events-none absolute right-4 top-1/2 -translate-y-1/2" />
+                    <ChevronDown className="w-4 h-4 text-ink-500 pointer-events-none absolute right-4 top-1/2 -translate-y-1/2" />
                   </div>
 
                   {/* Register Button with Embedded Arrow */}
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="h-11 sm:h-12 w-full rounded-2xl bg-gradient-to-r from-[#115eaf] via-[#1d63cb] to-[#2563eb] text-white font-bold text-sm shadow-[0_10px_24px_rgba(17,94,175,0.38)] flex items-center justify-center relative active:scale-[0.98] transition-all cursor-pointer mt-1"
+                    className="h-11 sm:h-12 w-full rounded-2xl bg-gradient-to-r from-brand-600 via-[#1d63cb] to-brand-600 text-white font-bold text-sm shadow-sm flex items-center justify-center relative active:scale-[0.98] transition-all cursor-pointer mt-1"
                   >
                     <span>{isLoading ? "Creating Account..." : "Register & Start"}</span>
                     <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 flex items-center justify-center absolute right-2.5">
@@ -437,11 +437,11 @@ export const LoginModal = ({
 
               {/* Divider: OR CONTINUE WITH */}
               <div className="flex items-center gap-3 my-4 z-10">
-                <div className="flex-1 h-px bg-[#cbd5e1]" />
-                <span className="text-[10px] font-bold tracking-widest text-[#64748b] uppercase">
+                <div className="flex-1 h-px bg-line-strong" />
+                <span className="text-[10px] font-bold tracking-widest text-ink-500 uppercase">
                   or continue with
                 </span>
-                <div className="flex-1 h-px bg-[#cbd5e1]" />
+                <div className="flex-1 h-px bg-line-strong" />
               </div>
 
               {/* Neumorphic Social Buttons */}
@@ -450,7 +450,7 @@ export const LoginModal = ({
                 <button
                   type="button"
                   onClick={handleGoogleAuth}
-                  className="w-13 h-13 rounded-2xl bg-gradient-to-b from-white to-[#edf3fa] shadow-[5px_5px_12px_#cbd5e1,-5px_-5px_12px_#ffffff] border border-white/80 flex items-center justify-center active:shadow-[inset_2px_2px_4px_#cbd5e1] active:scale-95 transition-all cursor-pointer"
+                  className="w-13 h-13 rounded-2xl bg-gradient-to-b from-white to-brand-50 shadow-sm border border-white/80 flex items-center justify-center active:shadow-none active:scale-95 transition-all cursor-pointer"
                   title="Google"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -465,17 +465,17 @@ export const LoginModal = ({
                 <button
                   type="button"
                   onClick={() => { setEmail("student@onlinesiksha.com"); setPassword("••••••••"); }}
-                  className="w-13 h-13 rounded-2xl bg-gradient-to-b from-white to-[#edf3fa] shadow-[5px_5px_12px_#cbd5e1,-5px_-5px_12px_#ffffff] border border-white/80 flex items-center justify-center active:shadow-[inset_2px_2px_4px_#cbd5e1] active:scale-95 transition-all cursor-pointer text-[#115eaf]"
+                  className="w-13 h-13 rounded-2xl bg-gradient-to-b from-white to-brand-50 shadow-sm border border-white/80 flex items-center justify-center active:shadow-none active:scale-95 transition-all cursor-pointer text-brand-600"
                   title="Demo Student"
                 >
-                  <LogIn className="w-5 h-5 text-[#115eaf]" />
+                  <LogIn className="w-5 h-5 text-brand-600" />
                 </button>
 
                 {/* UGC Verified Badge */}
                 <button
                   type="button"
-                  className="w-13 h-13 rounded-2xl bg-gradient-to-b from-white to-[#edf3fa] shadow-[5px_5px_12px_#cbd5e1,-5px_-5px_12px_#ffffff] border border-white/80 flex items-center justify-center active:shadow-[inset_2px_2px_4px_#cbd5e1] active:scale-95 transition-all cursor-pointer text-emerald-600"
-                  title="Verified Portal"
+                  className="w-13 h-13 rounded-2xl bg-gradient-to-b from-white to-brand-50 shadow-sm border border-white/80 flex items-center justify-center active:shadow-none active:scale-95 transition-all cursor-pointer text-emerald-600"
+                  title="Student portal"
                 >
                   <ShieldCheck className="w-5 h-5 text-emerald-600" />
                 </button>
@@ -483,10 +483,10 @@ export const LoginModal = ({
 
               {/* Tagline footer matching Pinterest design */}
               <div className="mt-5 pt-2 text-center z-10 flex flex-col items-center gap-1">
-                <span className="text-[10px] font-black tracking-widest text-[#64748b] uppercase">
+                <span className="text-[10px] font-black tracking-widest text-ink-500 uppercase">
                   LEARN &nbsp;•&nbsp; GROW &nbsp;•&nbsp; EXCEL TOGETHER
                 </span>
-                <span className="text-[9.5px] font-semibold text-[#115eaf]/70 uppercase tracking-wider">
+                <span className="text-[9.5px] font-semibold text-brand-600/70 uppercase tracking-wider">
                   ONLINE SIKSHA PORTAL
                 </span>
               </div>
@@ -509,7 +509,7 @@ export const LoginModal = ({
               }`}
             >
               <form onSubmit={handleSignIn} className="w-full flex flex-col items-center text-center">
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#000f22] tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-ink-900 tracking-tight">
                   Sign In
                 </h2>
 
@@ -518,7 +518,7 @@ export const LoginModal = ({
                   <button
                     type="button"
                     onClick={handleGoogleAuth}
-                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-[#115eaf] hover:bg-[#eef4ff]/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs group"
+                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs group"
                     title="Continue with Google"
                   >
                     <svg className="w-4 h-4" viewBox="0 0 24 24">
@@ -543,15 +543,15 @@ export const LoginModal = ({
                   <button
                     type="button"
                     onClick={() => setEmail("student@onlinesiksha.com")}
-                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-[#115eaf] hover:bg-[#eef4ff]/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs text-[#115eaf]"
+                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs text-brand-600"
                     title="Quick Demo Login"
                   >
                     <LogIn className="w-4 h-4" />
                   </button>
                   <button
                     type="button"
-                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-[#115eaf] hover:bg-[#eef4ff]/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs text-emerald-600"
-                    title="UGC Verified Portal"
+                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs text-emerald-600"
+                    title="Student portal"
                   >
                     <ShieldCheck className="w-4 h-4" />
                   </button>
@@ -571,8 +571,8 @@ export const LoginModal = ({
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email or Mobile Number"
-                    className="w-full h-11 pl-10 pr-3 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
+                    aria-label="Email or Mobile Number" placeholder="Email or Mobile Number"
+                    className="w-full h-11 pl-10 pr-3 text-xs sm:text-sm bg-brand-50 border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15 transition-all text-ink-900"
                   />
                 </div>
 
@@ -586,8 +586,8 @@ export const LoginModal = ({
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                    className="w-full h-11 pl-10 pr-10 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
+                    aria-label="Password" placeholder="Password"
+                    className="w-full h-11 pl-10 pr-10 text-xs sm:text-sm bg-brand-50 border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15 transition-all text-ink-900"
                   />
                   <button
                     type="button"
@@ -605,7 +605,7 @@ export const LoginModal = ({
                     e.preventDefault();
                     setErrorMsg("Password reset dispatched to your email.");
                   }}
-                  className="text-xs text-[#115eaf] hover:underline font-semibold my-2.5"
+                  className="text-xs text-brand-600 hover:underline font-semibold my-2.5"
                 >
                   Forgot Your Password?
                 </a>
@@ -614,7 +614,7 @@ export const LoginModal = ({
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="mt-1 w-auto min-w-[170px] px-8 py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#000f22] text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md shadow-[#115eaf]/25 active:scale-[0.98] cursor-pointer disabled:opacity-60"
+                  className="mt-1 w-auto min-w-[170px] px-8 py-2.5 rounded-xl bg-brand-600 hover:bg-ink-900 text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md shadow-sm/25 active:scale-[0.98] cursor-pointer disabled:opacity-60"
                 >
                   {isLoading ? "Signing In..." : "SIGN IN"}
                 </button>
@@ -628,7 +628,7 @@ export const LoginModal = ({
               className="hidden md:flex auth-form-panel auth-sign-up flex-col justify-center items-center px-8 md:px-11 py-6 h-full"
             >
               <form onSubmit={handleSignUp} className="w-full flex flex-col items-center text-center">
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#000f22] tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-ink-900 tracking-tight">
                   Create Account
                 </h2>
 
@@ -637,7 +637,7 @@ export const LoginModal = ({
                   <button
                     type="button"
                     onClick={handleGoogleAuth}
-                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-[#115eaf] hover:bg-[#eef4ff]/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs"
+                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs"
                     title="Sign up with Google"
                   >
                     <svg className="w-4 h-4" viewBox="0 0 24 24">
@@ -661,7 +661,7 @@ export const LoginModal = ({
                   </button>
                   <button
                     type="button"
-                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-[#115eaf] hover:bg-[#eef4ff]/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs text-[#115eaf]"
+                    className="w-10 h-10 rounded-xl border border-slate-200 hover:border-brand-600 hover:bg-brand-50/50 flex items-center justify-center transition-all cursor-pointer shadow-2xs text-brand-600"
                     title="Direct Admission Portal"
                   >
                     <GraduationCap className="w-4 h-4" />
@@ -682,8 +682,8 @@ export const LoginModal = ({
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Full Legal Name"
-                    className="w-full h-10 pl-10 pr-3 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
+                    aria-label="Full Legal Name" placeholder="Full Legal Name"
+                    className="w-full h-10 pl-10 pr-3 text-xs sm:text-sm bg-brand-50 border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15 transition-all text-ink-900"
                   />
                 </div>
 
@@ -697,8 +697,8 @@ export const LoginModal = ({
                     required
                     value={signUpEmail}
                     onChange={(e) => setSignUpEmail(e.target.value)}
-                    placeholder="Email Address"
-                    className="w-full h-10 pl-10 pr-3 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
+                    aria-label="Email Address" placeholder="Email Address"
+                    className="w-full h-10 pl-10 pr-3 text-xs sm:text-sm bg-brand-50 border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15 transition-all text-ink-900"
                   />
                 </div>
 
@@ -717,8 +717,8 @@ export const LoginModal = ({
                     required
                     value={signUpPhone}
                     onChange={(e) => setSignUpPhone(sanitizeIndianPhone(e.target.value))}
-                    placeholder="10-digit mobile number"
-                    className="w-full h-10 pl-16 pr-3 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22]"
+                    aria-label="Mobile number" placeholder="10-digit mobile number"
+                    className="w-full h-10 pl-16 pr-3 text-xs sm:text-sm bg-brand-50 border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15 transition-all text-ink-900"
                   />
                 </div>
 
@@ -727,10 +727,10 @@ export const LoginModal = ({
                   <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                     <GraduationCap className="w-4 h-4" />
                   </div>
-                  <select
+                  <select aria-label="Programme"
                     value={program}
                     onChange={(e) => setProgram(e.target.value)}
-                    className="w-full h-10 pl-10 pr-8 text-xs sm:text-sm bg-[#f4f8fe] border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/15 transition-all text-[#000f22] cursor-pointer appearance-none"
+                    className="w-full h-10 pl-10 pr-8 text-xs sm:text-sm bg-brand-50 border border-slate-200/90 rounded-xl focus:bg-white focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/15 transition-all text-ink-900 cursor-pointer appearance-none"
                   >
                     <option value="Online MBA">Online MBA</option>
                     <option value="Online MCA">Online MCA</option>
@@ -746,7 +746,7 @@ export const LoginModal = ({
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="w-auto min-w-[170px] px-8 py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#000f22] text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md shadow-[#115eaf]/25 active:scale-[0.98] cursor-pointer disabled:opacity-60"
+                  className="w-auto min-w-[170px] px-8 py-2.5 rounded-xl bg-brand-600 hover:bg-ink-900 text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md shadow-sm/25 active:scale-[0.98] cursor-pointer disabled:opacity-60"
                 >
                   {isLoading ? "Creating..." : "SIGN UP"}
                 </button>
@@ -776,7 +776,7 @@ export const LoginModal = ({
                       setIsSignUp(false);
                       setErrorMsg("");
                     }}
-                    className="border-2 border-white text-white hover:bg-white hover:text-[#115eaf] text-xs font-bold tracking-wider uppercase px-9 py-2.5 rounded-xl transition-all cursor-pointer active:scale-[0.98]"
+                    className="border-2 border-white text-white hover:bg-white hover:text-brand-600 text-xs font-bold tracking-wider uppercase px-9 py-2.5 rounded-xl transition-all cursor-pointer active:scale-[0.98]"
                   >
                     SIGN IN
                   </button>
@@ -800,7 +800,7 @@ export const LoginModal = ({
                       setIsSignUp(true);
                       setErrorMsg("");
                     }}
-                    className="border-2 border-white text-white hover:bg-white hover:text-[#115eaf] text-xs font-bold tracking-wider uppercase px-9 py-2.5 rounded-xl transition-all cursor-pointer active:scale-[0.98]"
+                    className="border-2 border-white text-white hover:bg-white hover:text-brand-600 text-xs font-bold tracking-wider uppercase px-9 py-2.5 rounded-xl transition-all cursor-pointer active:scale-[0.98]"
                   >
                     SIGN UP
                   </button>

@@ -37,20 +37,20 @@ export const CounselorModal = ({ isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-        className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-[#e7eeff] overflow-hidden max-h-[92vh] overflow-y-auto relative"
+        className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-brand-100 overflow-hidden max-h-[92vh] overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 py-5 border-b border-[#e7eeff] flex items-center justify-between bg-[#f0f3ff]">
+        <div className="px-6 py-5 border-b border-brand-100 flex items-center justify-between bg-brand-50">
           <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-xl bg-amber-500 text-white flex items-center justify-center shadow-xs shrink-0">
+            <div className="w-11 h-11 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center shrink-0">
               <PhoneCall className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-[#000f22] font-sans leading-tight">
+              <h3 className="text-base sm:text-lg font-bold text-ink-900 font-sans leading-tight">
                 Request Counselor Callback
               </h3>
-              <p className="text-xs sm:text-[13px] text-[#43474d] mt-0.5">
+              <p className="text-xs sm:text-[13px] text-ink-700 mt-0.5">
                 Get expert guidance on courses, fees & admissions
               </p>
             </div>
@@ -58,7 +58,7 @@ export const CounselorModal = ({ isOpen, onClose }) => {
           <button
             onClick={onClose}
             aria-label="Close modal"
-            className="p-2 min-h-[44px] text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
+            className="p-2 min-h-[44px] text-ink-500 hover:text-ink-900 rounded-lg hover:bg-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -73,50 +73,50 @@ export const CounselorModal = ({ isOpen, onClose }) => {
                 </div>
               )}
               <div>
-                <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
-                  Full Name <span className="text-[#e11d48]">*</span>
+                <label className="block text-xs sm:text-[13px] font-semibold text-ink-900 mb-1.5">
+                  Full Name <span className="text-danger-600">*</span>
                 </label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#74777e]">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-ink-500">
                     <User className="w-4 h-4" />
                   </div>
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Enter your full name"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#d5e3ff] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none transition-all bg-white"
+                    aria-label="Enter your full name" placeholder="Enter your full name"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-line-strong text-sm text-ink-900 placeholder:text-ink-400 focus:ring-2 focus:ring-brand-600/15 focus:border-brand-600 outline-none transition-all bg-white"
                     required
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
-                  Email Address <span className="text-[#e11d48]">*</span>
+                <label className="block text-xs sm:text-[13px] font-semibold text-ink-900 mb-1.5">
+                  Email Address <span className="text-danger-600">*</span>
                 </label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#74777e]">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-ink-500">
                     <Mail className="w-4 h-4" />
                   </div>
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="your.email@example.com"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#d5e3ff] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none transition-all bg-white"
+                    aria-label="your.email@example.com" placeholder="your.email@example.com"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-line-strong text-sm text-ink-900 placeholder:text-ink-400 focus:ring-2 focus:ring-brand-600/15 focus:border-brand-600 outline-none transition-all bg-white"
                     required
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
-                  Phone Number (+91) <span className="text-[#e11d48]">*</span>
+                <label className="block text-xs sm:text-[13px] font-semibold text-ink-900 mb-1.5">
+                  Phone Number (+91) <span className="text-danger-600">*</span>
                 </label>
                 <div className="relative flex items-center">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#000f22] font-bold text-xs gap-1.5">
-                    <Phone className="w-4 h-4 text-[#74777e]" />
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-ink-900 font-bold text-xs gap-1.5">
+                    <Phone className="w-4 h-4 text-ink-500" />
                     <span>+91</span>
                   </div>
                   <input
@@ -127,8 +127,8 @@ export const CounselorModal = ({ isOpen, onClose }) => {
                     title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                     value={phone}
                     onChange={(e) => setPhone(sanitizeIndianPhone(e.target.value))}
-                    placeholder="10-digit Mobile Number"
-                    className="w-full pl-16 pr-4 py-2.5 rounded-xl border border-[#d5e3ff] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 outline-none transition-all bg-white"
+                    aria-label="Mobile number" placeholder="10-digit Mobile Number"
+                    className="w-full pl-16 pr-4 py-2.5 rounded-lg border border-line-strong text-sm text-ink-900 placeholder:text-ink-400 focus:ring-2 focus:ring-brand-600/15 focus:border-brand-600 outline-none transition-all bg-white"
                     required
                   />
                 </div>
@@ -136,7 +136,7 @@ export const CounselorModal = ({ isOpen, onClose }) => {
 
               <button
                 type="submit"
-                className="w-full py-3 bg-amber-500 text-white rounded-xl text-sm font-semibold hover:bg-amber-600 active:scale-[0.99] transition-all shadow flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 bg-brand-600 text-white rounded-lg text-sm font-semibold hover:bg-brand-700 transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
                 <PhoneCall className="w-4 h-4" />
                 <span>Request Callback</span>
@@ -145,13 +145,13 @@ export const CounselorModal = ({ isOpen, onClose }) => {
           ) : (
             <div className="text-center py-6 space-y-3">
               <CheckCircle className="w-12 h-12 text-emerald-500 mx-auto" />
-              <h4 className="text-lg font-bold text-[#000f22]">Callback Requested!</h4>
-              <p className="text-xs sm:text-sm text-[#43474d]">
+              <h4 className="text-lg font-bold text-ink-900">Callback Requested!</h4>
+              <p className="text-xs sm:text-sm text-ink-700">
                 Our counselor will call you at +91 {phone} within 30 minutes during working hours.
               </p>
               <button
                 onClick={onClose}
-                className="mt-2 px-6 py-2.5 min-h-[44px] bg-[#115eaf] text-white rounded-xl text-xs sm:text-sm font-semibold hover:bg-[#004689] transition-all cursor-pointer"
+                className="mt-2 px-6 py-2.5 min-h-[44px] bg-brand-600 text-white rounded-xl text-xs sm:text-sm font-semibold hover:bg-brand-700 transition-all cursor-pointer"
               >
                 Close Window
               </button>

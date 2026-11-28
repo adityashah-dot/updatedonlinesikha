@@ -73,7 +73,7 @@ export default function ReadMoreText({
           aria-expanded={expanded}
           aria-controls={textId}
           onClick={() => setExpanded((value) => !value)}
-          className={`mt-1.5 inline-flex min-h-[36px] items-center gap-1 rounded-md text-sm font-semibold text-[#115eaf] transition-colors hover:text-[#004689] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf] focus-visible:ring-offset-2 ${buttonClassName}`}
+          className={`mt-1.5 inline-flex min-h-[36px] items-center gap-1 rounded-md text-sm font-semibold text-brand-600 transition-colors hover:text-brand-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 ${buttonClassName}`}
         >
           <span>{expanded ? collapseLabel : expandLabel}</span>
           {expanded ? (

@@ -52,11 +52,10 @@ export default function CollegeTableOfContents({
   return (
     <section
       aria-label="Table of contents"
-      className={`mx-3 sm:mx-0 my-3.5 sm:my-5 p-4 sm:p-5 rounded-2xl border border-[#d5e3ff] bg-gradient-to-b from-white via-white to-[#fbfdff] shadow-2xs ${className}`}
+      className={`mx-3 sm:mx-0 my-3.5 sm:my-5 p-4 sm:p-5 rounded-2xl border border-brand-200 bg-gradient-to-b from-white via-white to-canvas shadow-2xs ${className}`}
     >
-      <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-[#e7eeff]">
-        <span className="w-2 h-2 rounded-full bg-[#115eaf]" aria-hidden="true" />
-        <h2 className="text-sm sm:text-base font-bold text-[#000f22] tracking-tight m-0">
+      <div className="flex items-center gap-2 mb-3 pb-2.5 border-b border-brand-100">
+        <h2 className="text-sm sm:text-base font-bold text-ink-900 tracking-tight m-0">
           {title}
         </h2>
       </div>
@@ -72,13 +71,13 @@ export default function CollegeTableOfContents({
                 onClick={(e) => handleScrollTo(e, item.id)}
                 className={`group flex items-start gap-2.5 py-1 text-xs sm:text-[13.5px] leading-snug transition-colors ${
                   isActive
-                    ? "font-bold text-[#115eaf]"
-                    : "font-medium text-[#334155] hover:text-[#115eaf]"
+                    ? "font-bold text-brand-600"
+                    : "font-medium text-ink-700 hover:text-brand-600"
                 }`}
               >
                 <span
                   className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 transition-all ${
-                    isActive ? "bg-[#115eaf] scale-125" : "bg-slate-300 group-hover:bg-[#115eaf]"
+                    isActive ? "bg-brand-600 scale-125" : "bg-slate-300 group-hover:bg-brand-600"
                   }`}
                   aria-hidden="true"
                 />
@@ -90,14 +89,14 @@ export default function CollegeTableOfContents({
       </ul>
 
       {showToggle && (
-        <div className="mt-3 pt-2.5 border-t border-[#f1f5f9]">
+        <div className="mt-3 pt-2.5 border-t border-brand-50">
           <button
             type="button"
             onClick={() => setIsExpanded(!isExpanded)}
             aria-label={isExpanded ? "Collapse table of contents" : "Expand table of contents"}
             aria-expanded={isExpanded}
             aria-controls={listId}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#115eaf] hover:text-[#084a8c] hover:underline cursor-pointer transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 hover:text-brand-700 hover:underline cursor-pointer transition-colors"
           >
             <span>{isExpanded ? "View less" : "View more"}</span>
             <ChevronDown

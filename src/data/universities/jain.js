@@ -15,7 +15,7 @@ export const JAIN_UNIVERSITY_DATA = {
   approvals: ["UGC-DEB", "AICTE", "NAAC A++", "NIRF #68", "AIU", "LinkedIn Learning Bundled"],
   verifiedYear: "2026",
   logoImage: "https://images.DegreeFYD.com/colleges/7190/lovely_professional_university_online_course_logo.webp",
-  backgroundImage: "/images/campusviewlpu.jpeg",
+  backgroundImage: "/images/campusviewlpu.webp",
   brochureUrl: "https://images.degreefyd.com//jain-online-brochure.pdf",
   quickStats: {
     feeRange: "\u20B91,00,000 \u2013 \u20B91,60,000",

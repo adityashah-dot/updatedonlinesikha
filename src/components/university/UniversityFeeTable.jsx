@@ -12,21 +12,21 @@ const UniversityFeeTable = ({
   const isUG = level === "UG";
   const heading = isUG ? "Undergraduate (UG) Programs" : "Postgraduate (PG) Programs";
   const duration = isUG ? "Standard Duration: 3 Years / 6 Semesters" : "Standard Duration: 2 Years / 4 Semesters";
-  const badgeBg = isUG ? "bg-[#d3e4ff] text-[#011c37]" : "bg-[#d5e3ff] text-[#004689]";
+  const badgeBg = isUG ? "bg-brand-200 text-brand-900" : "bg-brand-200 text-brand-700";
   const badgeText = isUG ? "UG Degrees" : "PG Degrees";
-  return <div className="bg-white rounded-xl border border-[#e7eeff] overflow-hidden flex flex-col justify-between">
+  return <div className="bg-white rounded-xl border border-brand-100 overflow-hidden flex flex-col justify-between">
       <div>
-        <div className="px-5 py-3.5 bg-[#f0f3ff] border-b border-[#e7eeff] flex items-center justify-between">
+        <div className="px-5 py-3.5 bg-brand-50 border-b border-brand-100 flex items-center justify-between">
           <div>
-            <h3 className="font-semibold text-sm sm:text-base text-[#000f22] font-sans">{heading}</h3>
-            <p className="mt-[7.5px] text-xs text-[#43474d] font-normal">{duration}</p>
+            <h3 className="font-semibold text-sm sm:text-base text-ink-900 font-sans">{heading}</h3>
+            <p className="mt-[7.5px] text-xs text-ink-700 font-normal">{duration}</p>
           </div>
           <span className={`px-2 py-0.5 text-xs font-normal rounded-md ${badgeBg}`}>{badgeText}</span>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs sm:text-sm">
             <thead>
-              <tr className="bg-[#0b62be] text-white">
+              <tr className="bg-brand-600 text-white">
                 <th className="py-3 px-4 font-bold">Course Name</th>
                 <th className="py-3 px-4 font-bold">Duration</th>
                 <th className="py-3 px-4 font-bold">Per Sem Fee</th>
@@ -34,19 +34,19 @@ const UniversityFeeTable = ({
                 <th className="py-3 px-4 font-bold text-right">Details</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#e7eeff]">
-              {courses.map((c) => <tr key={c.id} className="bg-white hover:bg-[#f0f3ff]/60 transition-colors">
-                  <td className="py-3.5 px-4 font-bold text-[#000f22]">
+            <tbody className="divide-y divide-brand-100">
+              {courses.map((c) => <tr key={c.id} className="bg-white hover:bg-brand-50/60 transition-colors">
+                  <td className="py-3.5 px-4 font-bold text-ink-900">
                     {c.code}
-                    <span className="block text-[11px] font-normal text-[#74777e]">{c.name}</span>
+                    <span className="block text-[11px] font-normal text-ink-500">{c.name}</span>
                   </td>
-                  <td className="py-3.5 px-4 text-[#43474d] font-normal">{c.duration.split(" ")[0]} Years</td>
-                  <td className="py-3.5 px-4 font-normal text-[#000f22]">{c.feePerSemester}</td>
-                  <td className="py-3.5 px-4 font-normal text-[#115eaf]">{c.totalFee}</td>
+                  <td className="py-3.5 px-4 text-ink-700 font-normal">{c.duration.split(" ")[0]} Years</td>
+                  <td className="py-3.5 px-4 font-normal text-ink-900">{c.feePerSemester}</td>
+                  <td className="py-3.5 px-4 font-normal text-brand-600">{c.totalFee}</td>
                   <td className="py-3.5 px-4 text-right">
                     <button
     onClick={() => onSelectCourse(c)}
-    className="tap-hit inline-flex items-center text-[#115eaf] font-medium text-xs hover:underline"
+    className="tap-hit inline-flex items-center text-brand-600 font-medium text-xs hover:underline"
   >
                       <span>View</span>
                       <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
@@ -57,11 +57,11 @@ const UniversityFeeTable = ({
           </table>
         </div>
       </div>
-      <div className="p-3.5 bg-[#f9f9ff] border-t border-[#e7eeff] flex flex-wrap items-center justify-between gap-2 text-xs text-[#43474d] font-normal">
+      <div className="p-3.5 bg-canvas border-t border-brand-100 flex flex-wrap items-center justify-between gap-2 text-xs text-ink-700 font-normal">
         <span>{registrationFee}</span>
         <button
     onClick={() => onOpenApply(courses[0]?.id)}
-    className="text-[#115eaf] font-semibold hover:underline"
+    className="text-brand-600 font-semibold hover:underline"
   >
           {applyLabel}
         </button>

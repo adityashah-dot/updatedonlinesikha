@@ -15,7 +15,7 @@ export const UPES_UNIVERSITY_DATA = {
   approvals: ["UGC-DEB", "AICTE", "NIRF #55", "QS 5-Star Rated", "AIU", "WES"],
   verifiedYear: "2026",
   logoImage: "https://images.DegreeFYD.com/colleges/7190/lovely_professional_university_online_course_logo.webp",
-  backgroundImage: "/images/campusamity.png",
+  backgroundImage: "/images/campusamity.webp",
   brochureUrl: "https://images.degreefyd.com//upes-online-brochure.pdf",
   quickStats: {
     feeRange: "\u20B91,20,000 \u2013 \u20B91,55,000",

@@ -38,7 +38,7 @@ const RecruiterScroll = ({ recruiters = [] }) => {
       <div className="flex items-center gap-6 animate-[marquee_24s_linear_infinite] hover:[animation-play-state:paused]">
         {doubled.map((r, i) => <div
     key={`${r.name}-${i}`}
-    className="flex items-center justify-center h-16 min-w-[125px] px-3.5 bg-[#f9f9ff] border border-[#e7eeff] rounded-lg shrink-0"
+    className="flex items-center justify-center h-16 min-w-[125px] px-3.5 bg-canvas border border-brand-100 rounded-lg shrink-0"
   >
             <img
     src={r.src}
@@ -204,7 +204,7 @@ const OverviewView = ({
       stats.push({
         value: Number(collegeData.students).toLocaleString("en-IN"),
         label: "Active Learners",
-        tone: "text-[#000f22]",
+        tone: "text-ink-900",
       });
     }
 
@@ -288,18 +288,18 @@ const OverviewView = ({
       {
     /* Breadcrumb Bar */
   }
-      <div className="bg-[#f0f3ff] border-b border-[#e7eeff]">
+      <div className="bg-brand-50 border-b border-brand-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 overflow-x-auto whitespace-nowrap text-xs text-[#43474d] font-medium">
-            <Link to="/" className="shrink-0 hover:text-[#115eaf] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf]">Home</Link>
-            <ChevronRight aria-hidden="true" className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
-            <Link to="/universities" className="shrink-0 hover:text-[#115eaf] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf]">Colleges</Link>
-            <ChevronRight aria-hidden="true" className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
-            <Link to={collegeOverviewHref} className="shrink-0 hover:text-[#115eaf] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf]">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 overflow-x-auto whitespace-nowrap text-xs text-ink-700 font-medium">
+            <Link to="/" className="shrink-0 hover:text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600">Home</Link>
+            <ChevronRight aria-hidden="true" className="w-3.5 h-3.5 text-ink-500 shrink-0" />
+            <Link to="/universities" className="shrink-0 hover:text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600">Colleges</Link>
+            <ChevronRight aria-hidden="true" className="w-3.5 h-3.5 text-ink-500 shrink-0" />
+            <Link to={collegeOverviewHref} className="shrink-0 hover:text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600">
               {collegeData?.title}
             </Link>
-            <ChevronRight aria-hidden="true" className="w-3.5 h-3.5 text-[#74777e] shrink-0" />
-            <Link to={collegeOverviewHref} aria-current="page" className="shrink-0 font-bold text-[#000f22] hover:text-[#115eaf] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#115eaf]">
+            <ChevronRight aria-hidden="true" className="w-3.5 h-3.5 text-ink-500 shrink-0" />
+            <Link to={collegeOverviewHref} aria-current="page" className="shrink-0 font-bold text-ink-900 hover:text-brand-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600">
               {collegeData?.shortTitle || "Overview"}
             </Link>
           </nav>
@@ -309,7 +309,7 @@ const OverviewView = ({
       {
     /* HERO SECTION — college-hero layout */
   }
-      <section className="bg-white text-[#000f22] border-b border-[#e7eeff]">
+      <section className="bg-white text-ink-900 border-b border-brand-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
 
           {
@@ -319,26 +319,26 @@ const OverviewView = ({
             <img
               src={collegeData?.hero?.logoImage}
               alt={`${collegeData?.shortName || collegeData?.title || "College"} Logo`}
-              className="w-14 h-14 sm:w-20 sm:h-20 object-contain rounded-xl sm:rounded-2xl bg-white border border-[#e7eeff] p-1.5 shadow-sm shrink-0"
+              className="w-14 h-14 sm:w-20 sm:h-20 object-contain rounded-xl sm:rounded-2xl bg-white border border-brand-100 p-1.5 shadow-sm shrink-0"
               onError={(e) => {
                 e.target.style.display = "none";
               }}
             />
             <div className="min-w-0">
-              <h1 className="uni-title text-[18px] sm:text-2xl md:text-3xl tracking-tight font-sans text-[#000f22] font-bold leading-tight">
+              <h1 className="uni-title text-[18px] sm:text-2xl md:text-3xl tracking-tight font-sans text-ink-900 font-bold leading-tight">
                 {collegeData?.title}
               </h1>
               <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-2 sm:mt-3">
-                {collegeData?.nirfRanking && <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[10px] sm:text-[11px] font-bold">#{collegeData.nirfRanking} NIRF Rank</span>}
-                {collegeData?.naac && <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[10px] sm:text-[11px] font-bold">{collegeData.naac}</span>}
+                {collegeData?.nirfRanking && <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full bg-brand-50 border border-brand-200 text-brand-600 text-[10px] sm:text-[11px] font-bold">#{collegeData.nirfRanking} NIRF Rank</span>}
+                {collegeData?.naac && <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full bg-brand-50 border border-brand-200 text-brand-600 text-[10px] sm:text-[11px] font-bold">{collegeData.naac}</span>}
                 {collegeData?.rating && (
-                  <span className="inline-flex items-center gap-1 font-bold text-[#B45309] bg-amber-50 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full border border-amber-200/60 text-[10px] sm:text-[11px] shrink-0">
-                    <Star className="w-3 h-3 fill-[#D97706] text-[#D97706]" />
+                  <span className="inline-flex items-center gap-1 font-bold text-accent-700 bg-amber-50 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full border border-amber-200/60 text-[10px] sm:text-[11px] shrink-0">
+                    <Star className="w-3 h-3 fill-accent-500 text-accent-500" />
                     {collegeData.rating}
                   </span>
                 )}
-                {collegeData?.approvals?.filter(a => /UGC/i.test(a)).slice(0, 1).map(a => <span key={a} className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[10px] sm:text-[11px] font-bold">{a}</span>)}
-                {collegeData?.approvals?.filter(a => /AICTE/i.test(a)).slice(0, 1).map(a => <span key={a} className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[10px] sm:text-[11px] font-bold">{a}</span>)}
+                {collegeData?.approvals?.filter(a => /UGC/i.test(a)).slice(0, 1).map(a => <span key={a} className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full bg-brand-50 border border-brand-200 text-brand-600 text-[10px] sm:text-[11px] font-bold">{a}</span>)}
+                {collegeData?.approvals?.filter(a => /AICTE/i.test(a)).slice(0, 1).map(a => <span key={a} className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-full bg-brand-50 border border-brand-200 text-brand-600 text-[10px] sm:text-[11px] font-bold">{a}</span>)}
               </div>
             </div>
           </div>
@@ -346,16 +346,16 @@ const OverviewView = ({
           {/* Body: location + text left; image top-aligned to location line */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-3 sm:gap-y-4 items-start mt-3 sm:mt-4">
             <div className="order-2 lg:order-none lg:col-span-7 space-y-2.5 sm:space-y-3">
-              <div className="flex items-center justify-between gap-2 text-xs sm:text-sm text-[#43474d] flex-wrap">
-                <p className="section-description text-xs sm:text-sm text-[#43474d] font-normal flex items-center gap-1.5 mb-0">
-                  <MapPin className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
+              <div className="flex items-center justify-between gap-2 text-xs sm:text-sm text-ink-700 flex-wrap">
+                <p className="section-description text-xs sm:text-sm text-ink-700 font-normal flex items-center gap-1.5 mb-0">
+                  <MapPin className="w-3.5 h-3.5 text-brand-600 shrink-0" />
                   <span>{collegeData?.location} · {collegeData?.collegeType || "University"} · Est. {collegeData?.established}</span>
                 </p>
               </div>
               <ReadMoreText fullText
                 text={collegeData?.hero?.description}
                 lines={3}
-                className="text-xs sm:text-sm text-[#2d3137] leading-relaxed font-normal"
+                className="text-xs sm:text-sm text-ink-700 leading-relaxed font-normal"
               />
               {collegeData?.hero?.heroSub &&
                 ![collegeData?.title, collegeData?.shortName]
@@ -368,14 +368,14 @@ const OverviewView = ({
                   <ReadMoreText fullText
                     text={collegeData.hero.heroSub}
                     lines={2}
-                    className="text-xs sm:text-sm text-[#2d3137] leading-relaxed font-normal"
+                    className="text-xs sm:text-sm text-ink-700 leading-relaxed font-normal"
                   />
                 )}
             </div>
 
             {/* Right: Campus Image — top aligned with location line; 50px to Free Apply */}
             <div className="order-1 lg:order-none lg:col-span-5 lg:mr-[50px]">
-              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-[#e7eeff] shadow-xs bg-[#f9f9ff]">
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-brand-100 shadow-xs bg-canvas">
                 <img
                   src={collegeData?.hero?.backgroundImage}
                   alt={collegeData?.hero?.backgroundImage ? `${collegeData?.title} Campus` : `${collegeData?.title} Campus`}
@@ -389,27 +389,25 @@ const OverviewView = ({
           {/* Stats + Brochure + Apply Now — balanced 2x2 grid on mobile, inline on desktop */}
           <div className="flex flex-col lg:flex-row lg:items-center gap-2.5 sm:gap-3 mt-4 sm:mt-5 lg:mr-[100px]">
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:flex lg:items-stretch gap-2 sm:gap-3 w-full lg:w-auto">
-              <div className="bg-[#f0f3ff] border border-[#e7eeff] px-2.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-center min-w-0 lg:min-w-[110px] flex flex-col justify-center">
-                <span className="block text-xs sm:text-sm font-bold text-[#000f22] font-sans truncate">{collegeData?.feeRange || "—"}</span>
-                <span className="text-[10px] text-[#74777e] mt-0.5">Fee Range</span>
-              </div>
-              <div className="bg-[#f0f3ff] border border-[#e7eeff] px-2.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-center min-w-0 lg:min-w-[110px] flex flex-col justify-center">
-                <span className="block text-xs sm:text-sm font-bold text-[#115eaf] font-sans truncate">{collegeData?.duration || "—"}</span>
-                <span className="text-[10px] text-[#74777e] mt-0.5">Duration</span>
-              </div>
-              <div className="bg-[#f0f3ff] border border-[#e7eeff] px-2.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-center min-w-0 lg:min-w-[110px] flex flex-col justify-center">
-                <span className="block text-xs sm:text-sm font-bold text-[#000f22] font-sans truncate">{collegeData?.collegeMode === "online" ? "Online" : collegeData?.collegeMode || "—"}</span>
-                <span className="text-[10px] text-[#74777e] mt-0.5">Semester-based</span>
-              </div>
-              <div className="bg-[#f0f3ff] border border-[#e7eeff] px-2.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-center min-w-0 lg:min-w-[110px] flex flex-col justify-center">
-                <span className="block text-xs sm:text-sm font-bold text-[#B45309] font-sans truncate">{collegeData?.placements?.stats?.placementRate || "—"}</span>
-                <span className="text-[10px] text-[#74777e] mt-0.5">Placement Rate</span>
-              </div>
+              {[
+                { value: collegeData?.feeRange, label: "Fee Range", tone: "text-ink-900" },
+                { value: collegeData?.duration, label: "Duration", tone: "text-brand-600" },
+                { value: collegeData?.collegeMode === "online" ? "Online" : collegeData?.collegeMode, label: "Mode", tone: "text-ink-900" },
+                { value: collegeData?.placements?.stats?.placementRate, label: "Placement Rate", tone: "text-accent-700" },
+              ]
+                // Hide stats we have no data for instead of showing "—".
+                .filter((stat) => stat.value && String(stat.value).trim() && String(stat.value).trim() !== "—")
+                .map((stat) => (
+                  <div key={stat.label} className="bg-brand-50 border border-brand-100 px-2.5 py-2 sm:px-4 sm:py-2.5 rounded-xl text-center min-w-0 lg:min-w-[110px] flex flex-col justify-center">
+                    <span className={`block text-xs sm:text-sm font-bold ${stat.tone} font-sans truncate`}>{stat.value}</span>
+                    <span className="text-[10px] text-ink-500 mt-0.5">{stat.label}</span>
+                  </div>
+                ))}
             </div>
             <div className="grid grid-cols-2 gap-2 w-full sm:flex sm:w-auto lg:ml-auto">
               <button
                 onClick={() => onOpenBrochure()}
-                className="h-9 sm:h-10 px-4 sm:px-5 rounded-xl bg-white text-[#115eaf] border border-[#115eaf] text-xs sm:text-sm font-bold hover:bg-[#f0f3ff] active:scale-95 transition-all flex items-center justify-center gap-1.5 sm:gap-2"
+                className="h-9 sm:h-10 px-4 sm:px-5 rounded-xl bg-white text-brand-600 border border-brand-600 text-xs sm:text-sm font-bold hover:bg-brand-50 active:scale-95 transition-all flex items-center justify-center gap-1.5 sm:gap-2"
               >
                 <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 Brochure
@@ -417,7 +415,7 @@ const OverviewView = ({
               <button
                 type="button"
                 onClick={handleOverviewApply}
-                className="h-9 sm:h-10 px-4 sm:px-6 rounded-xl bg-[#115eaf] text-white text-xs sm:text-sm font-bold shadow hover:bg-[#004689] active:scale-95 transition-all flex items-center justify-center gap-1.5 sm:gap-2"
+                className="h-9 sm:h-10 px-4 sm:px-6 rounded-xl bg-brand-600 text-white text-xs sm:text-sm font-bold shadow hover:bg-brand-700 active:scale-95 transition-all flex items-center justify-center gap-1.5 sm:gap-2"
               >
                 Apply Now
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -447,17 +445,17 @@ const OverviewView = ({
     /* 1. Latest News and Updates */
   }
             {(collegeData?.latestNews) && (
-                <section id="latest-news" className="page-section card bg-[#f0f3ff] rounded-2xl border border-[#d5e3ff] scroll-mt-[130px]">
-              <h2 className="section-title text-lg sm:text-xl font-bold text-[#000f22] font-sans">
+                <section id="latest-news" className="page-section card bg-brand-50 rounded-2xl border border-brand-200 scroll-mt-[130px]">
+              <h2 className="section-title text-lg sm:text-xl font-bold text-ink-900 font-sans">
                 {collegeData?.latestNews?.title}
               </h2>
               <ReadMoreText fullText
                 text={collegeData?.latestNews?.description}
                 lines={3}
                 wrapperClassName="mt-1"
-                className="text-sm text-[#2d3137] leading-relaxed font-normal"
+                className="text-sm text-ink-700 leading-relaxed font-normal"
               />
-              <p className="text-[11px] text-[#74777e] font-normal">
+              <p className="text-[11px] text-ink-500 font-normal">
                 {collegeData?.latestNews?.date} · {collegeData?.latestNews?.author}
               </p>
             </section>
@@ -467,16 +465,16 @@ const OverviewView = ({
     /* 2. Highlights Table 2026 */
   }
             {(collegeData?.highlights) && (
-                <section id="highlights" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+                <section id="highlights" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
               <div className="flex items-center justify-between flex-wrap gap-3">
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans mt-2">
+                  <h2 className="text-xl sm:text-2xl font-bold text-ink-900 font-sans mt-2">
                     {sanitizeSectionHeading(collegeData?.highlights?.title, `${collegeData?.shortName || collegeData?.title} Highlights`, collegeData?.shortName || collegeData?.title)}
                   </h2>
                 </div>
                 <button
     onClick={() => onOpenBrochure()}
-    className="px-4 py-2 bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all flex items-center gap-1.5 shadow-xs"
+    className="px-4 py-2 bg-white text-brand-600 border border-brand-600 rounded-xl text-xs font-bold hover:bg-brand-50 transition-all flex items-center gap-1.5 shadow-xs"
   >
                   <Download className="w-3.5 h-3.5" />
                   <span>Download Factsheet</span>
@@ -487,7 +485,7 @@ const OverviewView = ({
                 text={collegeData?.highlights?.intro}
                 lines={3}
                 wrapperClassName="mt-[18px]"
-                className="text-sm font-normal text-[#2d3137] leading-relaxed"
+                className="text-sm font-normal text-ink-700 leading-relaxed"
               />
 
               {
@@ -497,7 +495,7 @@ const OverviewView = ({
                 {HIGHLIGHT_CATEGORIES.map((cat) => <button
     key={cat}
     onClick={() => setSelectedHighlightCategory(cat)}
-    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${selectedHighlightCategory === cat ? "bg-[#115eaf] text-white border-[#115eaf]" : "bg-[#f0f3ff] text-[#43474d] border-[#e7eeff] hover:border-[#115eaf]"}`}
+    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${selectedHighlightCategory === cat ? "bg-brand-600 text-white border-brand-600" : "bg-brand-50 text-ink-700 border-brand-100 hover:border-brand-600"}`}
   >
                     {cat}
                   </button>)}
@@ -506,25 +504,25 @@ const OverviewView = ({
               {
     /* Highlights Table */
   }
-              <div className="overflow-x-auto rounded-xl border border-[#e7eeff] mt-[18px]">
+              <div className="overflow-x-auto rounded-xl border border-brand-100 mt-[18px]">
                 <table className="w-full text-left border-collapse text-xs sm:text-sm">
                   <thead>
-                    <tr className="bg-[#0b62be] text-white">
+                    <tr className="bg-brand-600 text-white">
                       <th className="py-3 px-4 font-bold">Particulars</th>
                       <th className="py-3 px-4 font-bold">Details</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#e7eeff]">
+                  <tbody className="divide-y divide-brand-100">
                     {(() => {
     const filtered = collegeData?.highlights?.items.filter(
       (row) => selectedHighlightCategory === "All" || row.category === selectedHighlightCategory
     );
     const visible = highlightsExpanded ? filtered : filtered.slice(0, 8);
-    return visible.map((row, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                          <td className="py-3.5 px-4 font-bold text-[#000f22]">
+    return visible.map((row, idx) => <tr key={idx} className="hover:bg-brand-50/60 transition-colors">
+                          <td className="py-3.5 px-4 font-bold text-ink-900">
                             {row.label}
                           </td>
-                          <td className="py-3.5 px-4 font-normal text-[#43474d]">{row.value}</td>
+                          <td className="py-3.5 px-4 font-normal text-ink-700">{row.value}</td>
                         </tr>);
   })()}
                   </tbody>
@@ -537,21 +535,21 @@ const OverviewView = ({
     );
     return filtered.length > 8 && <button
       onClick={() => setHighlightsExpanded(!highlightsExpanded)}
-      className="w-full py-2 bg-[#f0f3ff] text-[#115eaf] border border-[#d5e3ff] rounded-xl text-xs font-bold hover:bg-[#e7eeff] transition-all mt-[18px]"
+      className="w-full py-2 bg-brand-50 text-brand-600 border border-brand-200 rounded-xl text-xs font-bold hover:bg-brand-100 transition-all mt-[18px]"
     >
                   {highlightsExpanded ? "Show Less" : "Show More Highlights"}
                 </button>;
   })()}
 
               {/* CTA */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-[#f0f3ff] border border-[#d5e3ff] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3.5 sm:gap-4 mt-[18px]">
-                <p className="text-sm font-medium text-[#2d3137] leading-relaxed">
+              <div className="p-4 sm:p-5 rounded-2xl bg-brand-50 border border-brand-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3.5 sm:gap-4 mt-[18px]">
+                <p className="text-sm font-medium text-ink-700 leading-relaxed">
                   Unlock Full College Insights to Choose the Right Program for Your Future
                 </p>
                 <div className="grid grid-cols-2 gap-2 w-full sm:w-auto sm:flex sm:flex-row sm:gap-2.5 shrink-0">
                   <button
                     onClick={() => onOpenBrochure()}
-                    className="px-3 py-2.5 bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all flex items-center justify-center gap-1.5 shadow-2xs active:scale-95"
+                    className="px-3 py-2.5 bg-white text-brand-600 border border-brand-600 rounded-xl text-xs font-bold hover:bg-brand-50 transition-all flex items-center justify-center gap-1.5 shadow-2xs active:scale-95"
                   >
                     <Download className="w-3.5 h-3.5 shrink-0" />
                     <span>Download Brochure</span>
@@ -559,7 +557,7 @@ const OverviewView = ({
                   <button
                     type="button"
                     onClick={handleOverviewApply}
-                    className="px-3 py-2.5 bg-[#115eaf] text-white rounded-xl text-xs font-bold hover:bg-[#004689] transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-95"
+                    className="px-3 py-2.5 bg-brand-600 text-white rounded-xl text-xs font-bold hover:bg-brand-700 transition-all flex items-center justify-center gap-1.5 shadow-sm active:scale-95"
                   >
                     <CheckCircle className="w-3.5 h-3.5 shrink-0" />
                     <span>Apply Now</span>
@@ -573,16 +571,16 @@ const OverviewView = ({
     /* 3. Courses & Fees 2026 */
   }
             {(collegeData?.coursesFees) && (
-                <section id="courses-fees" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+                <section id="courses-fees" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
               <div>
-                <h2 className="section-title text-[18px] sm:text-2xl font-bold text-[#000f22] font-sans leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.coursesFees?.title, `${collegeData?.shortName || collegeData?.title} Courses and Fees`, collegeData?.shortName || collegeData?.title)}>
+                <h2 className="section-title text-[18px] sm:text-2xl font-bold text-ink-900 font-sans leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.coursesFees?.title, `${collegeData?.shortName || collegeData?.title} Courses and Fees`, collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.coursesFees?.title, `${collegeData?.shortName || collegeData?.title} Courses and Fees`, collegeData?.shortName || collegeData?.title)}
                 </h2>
                 <ReadMoreText fullText
                   text={collegeData?.coursesFees?.intro}
                   lines={3}
                   wrapperClassName="mt-1"
-                  className="text-sm text-[#43474d] leading-relaxed font-normal"
+                  className="text-sm text-ink-700 leading-relaxed font-normal"
                 />
               </div>
 
@@ -592,48 +590,49 @@ const OverviewView = ({
     type="text"
     value={courseFeeSearch}
     onChange={(e) => setCourseFeeSearch(e.target.value)}
+    aria-label="Search programmes"
     placeholder={collegeData?.coursesFees?.searchPlaceholder}
-    className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#e7eeff] bg-[#f9f9ff] text-sm text-[#000f22] font-normal placeholder:text-[#74777e] focus:outline-none focus:border-[#115eaf] focus:bg-white transition-all"
+    className="w-full pl-10 pr-4 py-3 rounded-xl border border-brand-100 bg-canvas text-sm text-ink-900 font-normal placeholder:text-ink-500 focus:outline-none focus:border-brand-600 focus:bg-white transition-all"
   />
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#74777e]" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ink-500" />
               </div>
 
               {/* Fee Table */}
-              <div className="overflow-hidden rounded-xl border border-[#d5e3ff] bg-white mt-[18px]">
+              <div className="overflow-hidden rounded-xl border border-brand-200 bg-white mt-[18px]">
                 <div className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                 <table className="w-full text-left border-collapse text-xs sm:text-sm min-w-max">
                   <thead>
-                    <tr className="bg-[#115eaf] text-white">
+                    <tr className="bg-brand-600 text-white">
                       <th className="py-2.5 px-3 sm:px-4 font-semibold text-xs sm:text-sm">Degree</th>
                       <th className="py-2.5 px-3 sm:px-4 font-semibold text-xs sm:text-sm">Duration</th>
                       <th className="py-2.5 px-3 sm:px-4 font-semibold text-xs sm:text-sm">Sem Fees</th>
                       <th className="py-2.5 px-3 sm:px-4 font-semibold text-xs sm:text-sm">Total Fees</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#e7eeff]">
-                    {visibleFeeRows.map((c) => <tr key={c.degree} className="bg-white hover:bg-[#f0f3ff]/60 transition-colors">
+                  <tbody className="divide-y divide-brand-100">
+                    {visibleFeeRows.map((c) => <tr key={c.degree} className="bg-white hover:bg-brand-50/60 transition-colors">
                           <td className="py-3 px-3 sm:px-4 align-top min-w-[150px] sm:min-w-[190px]">
                             <button
     onClick={() => {
       const course = COURSES_DATA.find((x) => x.id === c.courseId);
       if (course) onSelectCourseHandler(course);
     }}
-    className="block text-left text-xs sm:text-sm font-bold text-[#000f22] hover:text-[#115eaf] hover:underline transition-colors"
+    className="block text-left text-xs sm:text-sm font-bold text-ink-900 hover:text-brand-600 hover:underline transition-colors"
   >
                               {c.degree}
                             </button>
                             {c.specializations ? (
-                              <span className="block text-[11px] text-[#74777e] font-normal leading-tight mt-0.5 whitespace-nowrap">
+                              <span className="block text-[11px] text-ink-500 font-normal leading-tight mt-0.5 whitespace-nowrap">
                                 {c.specializations}
                               </span>
                             ) : null}
                           </td>
-                          <td className="py-3 px-3 sm:px-4 text-[#43474d] font-normal align-top whitespace-nowrap">{c.duration}</td>
-                          <td className="py-3 px-3 sm:px-4 text-[#43474d] font-normal align-top whitespace-nowrap">{c.perSemFee || "—"}</td>
-                          <td className="py-3 px-3 sm:px-4 text-[#115eaf] font-semibold align-top whitespace-nowrap">{c.avgFees || "—"}</td>
+                          <td className="py-3 px-3 sm:px-4 text-ink-700 font-normal align-top whitespace-nowrap">{c.duration}</td>
+                          <td className="py-3 px-3 sm:px-4 text-ink-700 font-normal align-top whitespace-nowrap">{c.perSemFee || "—"}</td>
+                          <td className="py-3 px-3 sm:px-4 text-brand-600 font-semibold align-top whitespace-nowrap">{c.avgFees || "—"}</td>
                         </tr>)}
                     {filteredFeeRows.length === 0 && <tr className="bg-white">
-                        <td colSpan={4} className="py-6 text-center text-xs text-[#74777e] font-normal">No programmes match your search.</td>
+                        <td colSpan={4} className="py-6 text-center text-xs text-ink-500 font-normal">No programmes match your search.</td>
                       </tr>}
                   </tbody>
                 </table>
@@ -642,7 +641,7 @@ const OverviewView = ({
 
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-[18px]">
                 <div className="flex items-center gap-3 flex-wrap">
-                  <p className="text-xs text-[#74777e] font-normal m-0">
+                  <p className="text-xs text-ink-500 font-normal m-0">
                     {courseFeeSearch
                       ? `Showing ${filteredFeeRows.length} out of ${filteredFeeRows.length} degrees`
                       : `Showing ${visibleFeeRows.length} out of ${filteredFeeRows.length} degrees`}
@@ -652,7 +651,7 @@ const OverviewView = ({
                       type="button"
                       onClick={() => setShowAllFeeRows((value) => !value)}
                       aria-expanded={showAllFeeRows}
-                      className="px-3 py-1.5 rounded-lg bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-xs font-semibold hover:bg-[#e0ecff] transition-colors flex items-center gap-1.5"
+                      className="px-3 py-1.5 rounded-lg bg-brand-50 border border-brand-200 text-brand-600 text-xs font-semibold hover:bg-brand-100 transition-colors flex items-center gap-1.5"
                     >
                       <span>
                         {showAllFeeRows
@@ -667,12 +666,12 @@ const OverviewView = ({
                 </div>
 
                 <div className="flex flex-wrap items-center gap-3">
-                  <button className="px-5 py-2.5 bg-white text-[#115eaf] border border-[#115eaf] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] transition-all">
+                  <button className="px-5 py-2.5 bg-white text-brand-600 border border-brand-600 rounded-xl text-xs font-bold hover:bg-brand-50 transition-all">
                     {collegeData?.coursesFees?.roiCalculator}
                   </button>
                   <button
                     onClick={() => onOpenBrochure()}
-                    className="px-5 py-2.5 bg-[#115eaf] text-white rounded-xl text-xs font-bold hover:bg-[#004689] transition-all flex items-center gap-1.5 shadow-sm"
+                    className="px-5 py-2.5 bg-brand-600 text-white rounded-xl text-xs font-bold hover:bg-brand-700 transition-all flex items-center gap-1.5 shadow-sm"
                   >
                     <Download className="w-3.5 h-3.5" />
                     {collegeData?.coursesFees?.viewFeeStructure}
@@ -714,12 +713,12 @@ const OverviewView = ({
     /* 3. Eligibility and Selection Criteria (From API) */
   }
             {(collegeData?.eligibility) && (
-                <section id="eligibility-criteria" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+                <section id="eligibility-criteria" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
               <div>
-                <h2 className="section-title text-[17px] sm:text-2xl font-bold text-[#000f22] font-sans mt-2 tracking-tight leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.eligibility?.title, `${collegeData?.shortName || collegeData?.title} Eligibility and Selection Criteria`, collegeData?.shortName || collegeData?.title)}>
+                <h2 className="section-title text-[17px] sm:text-2xl font-bold text-ink-900 font-sans mt-2 tracking-tight leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.eligibility?.title, `${collegeData?.shortName || collegeData?.title} Eligibility and Selection Criteria`, collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.eligibility?.title, `${collegeData?.shortName || collegeData?.title} Eligibility and Selection Criteria`, collegeData?.shortName || collegeData?.title)}
                 </h2>
-                <span className="block w-16 h-[5px] rounded-[5px] bg-[#115eaf] mt-1" />
+                <span className="block w-16 h-[5px] rounded-[5px] bg-brand-600 mt-1" />
                 <ReadMoreText fullText
                   text={
                     collegeData?.eligibility?.intro ||
@@ -727,44 +726,44 @@ const OverviewView = ({
                   }
                   lines={3}
                   wrapperClassName="mt-1"
-                  className="text-sm text-[#43474d] leading-relaxed font-normal text-justify [text-justify:inter-word]"
+                  className="text-sm text-ink-700 leading-relaxed font-normal text-justify [text-justify:inter-word]"
                 />
               </div>
 
               {!hasPerCourseSelection && collegeData?.eligibility?.selectionProcess && (
-                <div className="mt-4 rounded-xl border border-[#d5e3ff] bg-[#f0f3ff] px-4 py-3">
-                  <h3 className="text-xs font-bold text-[#115eaf] mb-1">Selection Process</h3>
-                  <p className="m-0 text-sm text-[#43474d] leading-relaxed text-justify [text-justify:inter-word]">
+                <div className="mt-4 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3">
+                  <h3 className="text-xs font-bold text-brand-600 mb-1">Selection Process</h3>
+                  <p className="m-0 text-sm text-ink-700 leading-relaxed text-justify [text-justify:inter-word]">
                     {collegeData.eligibility.selectionProcess}
                   </p>
                 </div>
               )}
 
               {/* Eligibility Table — Matches DegreeFYD style */}
-              <div className="mt-5 overflow-hidden rounded-xl border border-[#d5e3ff] bg-white">
+              <div className="mt-5 overflow-hidden rounded-xl border border-brand-200 bg-white">
                 <div className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                   <table className="w-full border-collapse text-left text-xs sm:text-sm min-w-max">
                     <thead>
-                      <tr className="bg-[#115eaf] text-white">
+                      <tr className="bg-brand-600 text-white">
                         <th className="px-3 sm:px-4 py-2.5 font-semibold text-xs sm:text-sm">Course</th>
                         <th className="px-3 sm:px-4 py-2.5 font-semibold text-xs sm:text-sm">Eligibility</th>
                         {hasPerCourseSelection && <th className="px-3 sm:px-4 py-2.5 font-semibold text-xs sm:text-sm">Selection Process</th>}
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-[#e7eeff]">
+                    <tbody className="divide-y divide-brand-100">
                       {collegeData?.eligibility?.items.map((row, i) => (
-                        <tr key={i} className="bg-white transition-colors hover:bg-[#f0f3ff]/60">
-                          <td className="px-3 sm:px-4 py-3 font-bold text-[#000f22] align-top whitespace-nowrap">{row.course}</td>
-                          <td className="px-3 sm:px-4 py-3 text-[#43474d] align-top min-w-[200px] sm:min-w-[280px]">
+                        <tr key={i} className="bg-white transition-colors hover:bg-brand-50/60">
+                          <td className="px-3 sm:px-4 py-3 font-bold text-ink-900 align-top whitespace-nowrap">{row.course}</td>
+                          <td className="px-3 sm:px-4 py-3 text-ink-700 align-top min-w-[200px] sm:min-w-[280px]">
                             <ReadMoreText
                               fullText
                               text={row.eligibility}
                               lines={3}
-                              className="text-xs sm:text-sm leading-relaxed text-[#43474d] text-justify [text-justify:inter-word]"
+                              className="text-xs sm:text-sm leading-relaxed text-ink-700 text-justify [text-justify:inter-word]"
                             />
                           </td>
                           {hasPerCourseSelection && (
-                            <td className="px-3 sm:px-4 py-3 font-semibold text-[#115eaf] align-top whitespace-nowrap">
+                            <td className="px-3 sm:px-4 py-3 font-semibold text-brand-600 align-top whitespace-nowrap">
                               {row.selection}
                             </td>
                           )}
@@ -781,12 +780,12 @@ const OverviewView = ({
     /* 5. Admission Process 2026 (Accordion) */
   }
                         {ADMISSION_FLOW_STEPS.length > 0 && (
-                <section id="admission-process" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+                <section id="admission-process" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
               <div>
-                <h2 className="section-title text-[18px] sm:text-2xl font-bold text-[#000f22] font-sans mt-2 leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.admission?.title, collegeSectionTitle(collegeData?.shortName || collegeData?.title, `Admission Process ${CURRENT_YEAR}`), collegeData?.shortName || collegeData?.title)}>
+                <h2 className="section-title text-[18px] sm:text-2xl font-bold text-ink-900 font-sans mt-2 leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.admission?.title, collegeSectionTitle(collegeData?.shortName || collegeData?.title, `Admission Process ${CURRENT_YEAR}`), collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.admission?.title, collegeSectionTitle(collegeData?.shortName || collegeData?.title, `Admission Process ${CURRENT_YEAR}`), collegeData?.shortName || collegeData?.title)}
                 </h2>
-                <span className="block w-16 h-[5px] rounded-[5px] bg-[#115eaf] mt-1" />
+                <span className="block w-16 h-[5px] rounded-[5px] bg-brand-600 mt-1" />
                 <ReadMoreText fullText
                   text={
                     collegeData?.admission?.intro ||
@@ -794,7 +793,7 @@ const OverviewView = ({
                   }
                   lines={3}
                   wrapperClassName="mt-1"
-                  className="text-sm text-[#43474d] leading-relaxed font-normal text-justify [text-justify:inter-word]"
+                  className="text-sm text-ink-700 leading-relaxed font-normal text-justify [text-justify:inter-word]"
                 />
               </div>
 
@@ -815,7 +814,7 @@ const OverviewView = ({
       height: 34px;
       display: grid;
       place-items: center;
-      background: #0b2540;
+      background: #0b2a4d;
       color: #fff;
       font-size: 13px;
       font-weight: 600;
@@ -924,33 +923,33 @@ const OverviewView = ({
     /* 6. Rankings & Accreditations (From API) */
   }
             {(collegeData?.rankings) && (
-                <section id="rankings" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+                <section id="rankings" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
               <div>
-                <h2 className="section-title text-[18px] sm:text-2xl font-bold text-[#000f22] font-sans leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.rankings?.title, `${collegeData?.shortName || collegeData?.title} Rankings and Accreditations`, collegeData?.shortName || collegeData?.title)}>
+                <h2 className="section-title text-[18px] sm:text-2xl font-bold text-ink-900 font-sans leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.rankings?.title, `${collegeData?.shortName || collegeData?.title} Rankings and Accreditations`, collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.rankings?.title, `${collegeData?.shortName || collegeData?.title} Rankings and Accreditations`, collegeData?.shortName || collegeData?.title)}
                 </h2>
-                <span className="block w-16 h-[5px] rounded-[5px] bg-[#115eaf] mt-1" />
+                <span className="block w-16 h-[5px] rounded-[5px] bg-brand-600 mt-1" />
                 <ReadMoreText fullText
                   text={collegeData?.rankings?.intro}
                   lines={3}
                   wrapperClassName="mt-1"
-                  className="text-xs text-[#43474d] leading-relaxed font-normal text-justify [text-justify:inter-word]"
+                  className="text-xs text-ink-700 leading-relaxed font-normal text-justify [text-justify:inter-word]"
                 />
               </div>
 
-              {collegeData?.rankings?.table?.length > 0 && <div className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden rounded-xl border border-[#d5e3ff] mt-[18px]">
+              {collegeData?.rankings?.table?.length > 0 && <div className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden rounded-xl border border-brand-200 mt-[18px]">
                 <table className="w-full text-left border-collapse text-xs sm:text-sm min-w-max">
                   <thead>
-                    <tr className="bg-[#115eaf] text-white">
+                    <tr className="bg-brand-600 text-white">
                       {(collegeData?.rankings?.columns?.length ? collegeData.rankings.columns : ["Authority / Body", "Recognition / Status"]).map((column, columnIndex) => (
                         <th key={`${column}-${columnIndex}`} className="py-2.5 px-3 sm:px-4 font-semibold text-xs sm:text-sm">{column}</th>
                       ))}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#e7eeff]">
-                    {collegeData?.rankings?.table.map((r, idx) => <tr key={idx} className="bg-white hover:bg-[#f0f3ff]/60 transition-colors">
+                  <tbody className="divide-y divide-brand-100">
+                    {collegeData?.rankings?.table.map((r, idx) => <tr key={idx} className="bg-white hover:bg-brand-50/60 transition-colors">
                         {(collegeData?.rankings?.columns?.length ? r.values : [r.authority, r.status]).map((value, columnIndex) => (
-                          <td key={columnIndex} className={`py-3 px-3 sm:px-4 ${columnIndex === 0 ? "font-bold text-[#000f22]" : "font-normal text-[#43474d]"}`}>{value}</td>
+                          <td key={columnIndex} className={`py-3 px-3 sm:px-4 ${columnIndex === 0 ? "font-bold text-ink-900" : "font-normal text-ink-700"}`}>{value}</td>
                         ))}
                       </tr>)}
                   </tbody>
@@ -963,9 +962,9 @@ const OverviewView = ({
     /* 7. Examination Pattern (Interactive Module) */
   }
             {EXAM_STEPS.length > 0 && (
-                <section id="examination-pattern" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+                <section id="examination-pattern" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
               <div>
-                <h2 className="section-title text-[18px] sm:text-2xl font-bold text-[#000f22] font-sans mt-2 leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.examinationPattern?.title, collegeSectionTitle(collegeData?.shortName || collegeData?.title, "Examination Pattern"), collegeData?.shortName || collegeData?.title)}>
+                <h2 className="section-title text-[18px] sm:text-2xl font-bold text-ink-900 font-sans mt-2 leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.examinationPattern?.title, collegeSectionTitle(collegeData?.shortName || collegeData?.title, "Examination Pattern"), collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.examinationPattern?.title, collegeSectionTitle(collegeData?.shortName || collegeData?.title, "Examination Pattern"), collegeData?.shortName || collegeData?.title)}
                 </h2>
                 <ReadMoreText fullText
@@ -975,7 +974,7 @@ const OverviewView = ({
                   }
                   lines={3}
                   wrapperClassName="mt-1"
-                  className="text-sm text-[#43474d] leading-relaxed font-normal"
+                  className="text-sm text-ink-700 leading-relaxed font-normal"
                 />
               </div>
 
@@ -997,7 +996,7 @@ const OverviewView = ({
       top: 40px;
       bottom: 6px;
       width: 3px;
-      background: repeating-linear-gradient(180deg, #0b2540 0 4px, transparent 4px 9px);
+      background: repeating-linear-gradient(180deg, #0b2a4d 0 4px, transparent 4px 9px);
       animation: exam-flow-down 0.9s linear infinite;
     }
     @keyframes exam-flow-down {
@@ -1009,7 +1008,7 @@ const OverviewView = ({
       height: 34px;
       display: grid;
       place-items: center;
-      background: #0b2540;
+      background: #0b2a4d;
       color: #fff;
       font-size: 13px;
       font-weight: 600;
@@ -1023,13 +1022,13 @@ const OverviewView = ({
       font-size: 18px;
       font-weight: 600;
       line-height: 1.35;
-      color: #000f22;
+      color: #101828;
     }
     .exam-body p {
       margin: 0;
       font-size: 15px;
       line-height: 1.55;
-      color: #43474d;
+      color: #344054;
     }
     .exam-step-reveal {
       opacity: 0;
@@ -1073,12 +1072,12 @@ const OverviewView = ({
     /* 8. Placements & Salary Stats (From API) */
   }
             {(collegeData?.placements) && (
-                <section id="placements" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+                <section id="placements" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
               <div>
-                <h2 className="section-title text-[18px] sm:text-2xl font-bold text-[#000f22] font-sans leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.placements?.title, `${collegeData?.shortName || collegeData?.title} Placements`, collegeData?.shortName || collegeData?.title)}>
+                <h2 className="section-title text-[18px] sm:text-2xl font-bold text-ink-900 font-sans leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.placements?.title, `${collegeData?.shortName || collegeData?.title} Placements`, collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.placements?.title, `${collegeData?.shortName || collegeData?.title} Placements`, collegeData?.shortName || collegeData?.title)}
                 </h2>
-                <span className="block w-16 h-[5px] rounded-[5px] bg-[#115eaf] mt-1" />
+                <span className="block w-16 h-[5px] rounded-[5px] bg-brand-600 mt-1" />
                 <ReadMoreText fullText
                   text={
                     collegeData?.placements?.intro ||
@@ -1086,28 +1085,30 @@ const OverviewView = ({
                   }
                   lines={3}
                   wrapperClassName="mt-1"
-                  className="text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal text-justify [text-justify:inter-word]"
+                  className="text-xs sm:text-sm text-ink-700 leading-relaxed font-normal text-justify [text-justify:inter-word]"
                 />
               </div>
 
               {/* 4 Compact Stat Tiles from API */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-[18px]">
-                <div className="p-3.5 rounded-xl bg-[#f9f9ff] border border-[#e7eeff] text-center">
-                  <span className="block text-xl font-extrabold text-[#115eaf] font-sans leading-none">{collegeData?.placements?.stats.placementRate}</span>
-                  <span className="block text-[10px] font-normal text-[#43474d] uppercase tracking-wide mt-1.5">Placement Rate</span>
+                <div className="p-3.5 rounded-xl bg-canvas border border-brand-100 text-center">
+                  <span className="block text-xl font-extrabold text-brand-600 font-sans leading-none">{collegeData?.placements?.stats.placementRate}</span>
+                  <span className="block text-[10px] font-normal text-ink-700 uppercase tracking-wide mt-1.5">Placement Rate</span>
                 </div>
-                <div className="p-3.5 rounded-xl bg-[#f9f9ff] border border-[#e7eeff] text-center">
+                <div className="p-3.5 rounded-xl bg-canvas border border-brand-100 text-center">
                   <span className="block text-xl font-extrabold text-emerald-700 font-sans leading-none">{collegeData?.placements?.stats.highestPackage}</span>
-                  <span className="block text-[10px] font-normal text-[#43474d] uppercase tracking-wide mt-1.5">Highest Package</span>
+                  <span className="block text-[10px] font-normal text-ink-700 uppercase tracking-wide mt-1.5">Highest Package</span>
                 </div>
-                <div className="p-3.5 rounded-xl bg-[#f9f9ff] border border-[#e7eeff] text-center">
-                  <span className="block text-xl font-extrabold text-[#000f22] font-sans leading-none">{collegeData?.placements?.stats.hiringPartners}</span>
-                  <span className="block text-[10px] font-normal text-[#43474d] uppercase tracking-wide mt-1.5">Hiring Partners</span>
+                <div className="p-3.5 rounded-xl bg-canvas border border-brand-100 text-center">
+                  <span className="block text-xl font-extrabold text-ink-900 font-sans leading-none">{collegeData?.placements?.stats.hiringPartners}</span>
+                  <span className="block text-[10px] font-normal text-ink-700 uppercase tracking-wide mt-1.5">Hiring Partners</span>
                 </div>
-                <div className="p-3.5 rounded-xl bg-[#f9f9ff] border border-[#e7eeff] text-center">
-                  <span className="block text-xl font-extrabold text-[#B45309] font-sans leading-none">{collegeData?.placements?.stats.internshipsCount}</span>
-                  <span className="block text-[10px] font-normal text-[#43474d] uppercase tracking-wide mt-1.5">Internships</span>
+                {collegeData?.placements?.stats.internshipsCount && collegeData.placements.stats.internshipsCount !== "—" && (
+                <div className="p-3.5 rounded-xl bg-canvas border border-brand-100 text-center">
+                  <span className="block text-xl font-extrabold text-accent-700 font-sans leading-none">{collegeData.placements.stats.internshipsCount}</span>
+                  <span className="block text-[10px] font-normal text-ink-700 uppercase tracking-wide mt-1.5">Internships</span>
                 </div>
+                )}
               </div>
 
               <div className="mt-[18px]">
@@ -1120,33 +1121,33 @@ const OverviewView = ({
     /* 7. Campus */
   }
             {(collegeData?.campus) && (
-                <section id="campus" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+                <section id="campus" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
               <div>
-                <h2 className="section-title text-[18px] sm:text-2xl font-bold text-[#000f22] font-sans leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.campus?.title, `${collegeData?.shortName || collegeData?.title} Campus`, collegeData?.shortName || collegeData?.title)}>
+                <h2 className="section-title text-[18px] sm:text-2xl font-bold text-ink-900 font-sans leading-snug line-clamp-1" title={sanitizeSectionHeading(collegeData?.campus?.title, `${collegeData?.shortName || collegeData?.title} Campus`, collegeData?.shortName || collegeData?.title)}>
                   {sanitizeSectionHeading(collegeData?.campus?.title, `${collegeData?.shortName || collegeData?.title} Campus`, collegeData?.shortName || collegeData?.title)}
                 </h2>
-                <span className="block w-16 h-[5px] rounded-[5px] bg-[#115eaf] mt-1" />
+                <span className="block w-16 h-[5px] rounded-[5px] bg-brand-600 mt-1" />
                 <ReadMoreText fullText
                   text={collegeData?.campus?.description}
                   lines={3}
                   wrapperClassName="mt-1"
-                  className="text-xs sm:text-sm text-[#43474d] leading-relaxed font-normal text-justify [text-justify:inter-word]"
+                  className="text-xs sm:text-sm text-ink-700 leading-relaxed font-normal text-justify [text-justify:inter-word]"
                 />
               </div>
 
               {Boolean(collegeData?.campus?.travelTable && collegeData.campus.travelTable.length > 0) && (
-                <div className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden rounded-xl border border-[#d5e3ff] mt-[18px]">
+                <div className="overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden rounded-xl border border-brand-200 mt-[18px]">
                   <table className="w-full text-left border-collapse text-xs sm:text-sm min-w-max">
                     <thead>
-                      <tr className="bg-[#115eaf] text-white">
+                      <tr className="bg-brand-600 text-white">
                         <th className="py-2.5 px-3 sm:px-4 font-semibold text-xs sm:text-sm">Mode of Transport</th>
                         <th className="py-3 px-4 font-bold">Details</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-[#e7eeff]">
-                      {collegeData?.campus?.travelTable.map((t, idx) => <tr key={idx} className="hover:bg-[#f0f3ff]/60 transition-colors">
-                          <td className="py-3.5 px-4 font-bold text-[#000f22] align-top whitespace-nowrap">{t.mode}</td>
-                          <td className="py-3.5 px-4 text-[#43474d] leading-relaxed font-normal">{t.detail}</td>
+                    <tbody className="divide-y divide-brand-100">
+                      {collegeData?.campus?.travelTable.map((t, idx) => <tr key={idx} className="hover:bg-brand-50/60 transition-colors">
+                          <td className="py-3.5 px-4 font-bold text-ink-900 align-top whitespace-nowrap">{t.mode}</td>
+                          <td className="py-3.5 px-4 text-ink-700 leading-relaxed font-normal">{t.detail}</td>
                         </tr>)}
                     </tbody>
                   </table>
@@ -1161,8 +1162,8 @@ const OverviewView = ({
                   overflow: hidden;
                   position: relative;
                   border-radius: 18px;
-                  border: 1px solid #e7eeff;
-                  background: #f0f3ff;
+                  border: 1px solid #e6eefa;
+                  background: #f2f6fc;
                   margin-top: 18px;
                   padding: 10px;
                 }
@@ -1182,7 +1183,7 @@ const OverviewView = ({
                   width: min(360px, 78vw);
                   background: #ffffff;
                   overflow: hidden;
-                  border: 1px solid #e7eeff;
+                  border: 1px solid #e6eefa;
                   border-radius: 20px;
                   box-shadow: 0 12px 28px rgba(18, 37, 71, 0.12);
                 }
@@ -1201,9 +1202,9 @@ const OverviewView = ({
                   padding: 12px 14px;
                   font-size: 13px;
                   font-weight: 600;
-                  color: #43474d;
+                  color: #344054;
                   background: white;
-                  border-top: 1px solid #e7eeff;
+                  border-top: 1px solid #e6eefa;
                 }
                 @keyframes campus-marquee {
                   from {
@@ -1247,22 +1248,22 @@ const OverviewView = ({
     /* 8. UGC Sample Degree Section (From API) */
   }
             {(collegeData?.sampleDegree) && (
-                <section id="sample-degree" className="page-section card bg-[#f0f3ff] rounded-2xl border border-[#d5e3ff]">
+                <section id="sample-degree" className="page-section card bg-brand-50 rounded-2xl border border-brand-200">
               {
     /* Top Heading Block (Placed at the top of section) */
   }
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#d5e3ff]/70">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-brand-200/70">
                 <div>
                   <div className="flex items-center gap-2 mb-1.5">
                     <span className="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[11px] font-normal flex items-center gap-1">
                       <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
                       UGC-DEB Validated & Govt Approved
                     </span>
-                    <span className="px-2.5 py-0.5 rounded bg-white text-[#115eaf] text-[11px] font-normal border border-[#d5e3ff]">
+                    <span className="px-2.5 py-0.5 rounded bg-white text-brand-600 text-[11px] font-normal border border-brand-200">
                       100% Equivalent
                     </span>
                   </div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
+                  <h2 className="text-xl sm:text-2xl font-bold text-ink-900 font-sans">
                     {collegeData?.sampleDegree?.title || `${collegeData?.shortName || collegeData?.title} Sample Degree`}
                   </h2>
                 </div>
@@ -1272,7 +1273,7 @@ const OverviewView = ({
                     href={certificateImage}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-3.5 py-2 bg-white text-[#115eaf] border border-[#d5e3ff] rounded-xl text-xs font-semibold hover:bg-[#e0ecff] transition-all flex items-center gap-1.5 shrink-0 shadow-xs"
+                    className="px-3.5 py-2 bg-white text-brand-600 border border-brand-200 rounded-xl text-xs font-semibold hover:bg-brand-100 transition-all flex items-center gap-1.5 shrink-0 shadow-xs"
                   >
                     <span>View Full-Size Certificate</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -1288,15 +1289,15 @@ const OverviewView = ({
                   <ReadMoreText fullText
                     text={collegeData?.sampleDegree?.description}
                     lines={3}
-                    className="text-xs sm:text-sm text-[#2d3137] leading-relaxed font-normal"
+                    className="text-xs sm:text-sm text-ink-700 leading-relaxed font-normal"
                   />
                   
-                  <div className="flex flex-wrap items-center gap-2 text-[11px] text-[#2d3137]">
-                    <span className="p-1.5 rounded-lg bg-white/80 border border-[#d5e3ff] flex items-center gap-1.5">
+                  <div className="flex flex-wrap items-center gap-2 text-[11px] text-ink-700">
+                    <span className="p-1.5 rounded-lg bg-white/80 border border-brand-200 flex items-center gap-1.5">
                       <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                       UPSC & PSC Eligible
                     </span>
-                    <span className="p-1.5 rounded-lg bg-white/80 border border-[#d5e3ff] flex items-center gap-1.5">
+                    <span className="p-1.5 rounded-lg bg-white/80 border border-brand-200 flex items-center gap-1.5">
                       <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                       WES Evaluated (US & Canada)
                     </span>
@@ -1306,13 +1307,13 @@ const OverviewView = ({
                     <button
     type="button"
     onClick={handleOverviewApply}
-    className="px-4 py-2 bg-[#115eaf] text-white rounded-lg text-xs font-semibold shadow hover:bg-[#004689] active:scale-95 transition-all flex items-center gap-1.5"
+    className="px-4 py-2 bg-brand-600 text-white rounded-lg text-xs font-semibold shadow hover:bg-brand-700 active:scale-95 transition-all flex items-center gap-1.5"
   >
                       <span>Apply for Degree Enrollment</span>
                     </button>
                     <button
     onClick={onOpenHelpDesk}
-    className="px-3.5 py-2 bg-white text-[#000f22] border border-[#c4c6ce] rounded-lg text-xs font-medium hover:bg-[#f0f3ff] transition-all"
+    className="px-3.5 py-2 bg-white text-ink-900 border border-line-strong rounded-lg text-xs font-medium hover:bg-brand-50 transition-all"
   >
                       Verify Legal Equivalence
                     </button>
@@ -1336,14 +1337,14 @@ const OverviewView = ({
                     ) : null}
                     <div
                       data-certificate-fallback
-                      className={`${certificateImage ? "hidden" : ""} flex min-h-[180px] flex-col items-center justify-center gap-2 rounded bg-[#f9f9ff] px-4 text-center`}
+                      className={`${certificateImage ? "hidden" : ""} flex min-h-[180px] flex-col items-center justify-center gap-2 rounded bg-canvas px-4 text-center`}
                     >
-                      <FileText className="h-10 w-10 text-[#115eaf]" />
-                      <span className="text-xs font-medium text-[#74777e]">
+                      <FileText className="h-10 w-10 text-brand-600" />
+                      <span className="text-xs font-medium text-ink-500">
                         Certificate preview unavailable
                       </span>
                     </div>
-                    <div className="text-center pt-1.5 text-[10px] text-[#74777e] font-normal">
+                    <div className="text-center pt-1.5 text-[10px] text-ink-500 font-normal">
                       Specimen UGC-Entitled Degree Format
                     </div>
                   </div>
@@ -1356,11 +1357,11 @@ const OverviewView = ({
     /* 9. Verified Reviews & FAQs */
   }
             {Boolean(collegeData?.reviews?.length) && (
-                <section id="reviews-section" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
+                <section id="reviews-section" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
               {
     /* Header and Rating Summary Bar */
   }
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-2.5 border-b border-[#e7eeff]">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-2.5 border-b border-brand-100">
                 <div>
                   <div className="flex items-center gap-2">
                     {REVIEW_SUMMARY.rating && (
@@ -1375,10 +1376,10 @@ const OverviewView = ({
                     </span>
                     )}
                   </div>
-                  <h2 className="section-title text-xl sm:text-2xl font-extrabold text-[#000f22] font-sans mt-2">
+                  <h2 className="section-title text-xl sm:text-2xl font-extrabold text-ink-900 font-sans mt-2">
                     {collegeData?.reviewsMeta?.title || `${collegeData?.shortName || collegeData?.title} Reviews`}
                   </h2>
-                  <p className="text-xs text-[#74777e] m-0 mt-1 leading-relaxed">
+                  <p className="text-xs text-ink-500 m-0 mt-1 leading-relaxed">
                     {collegeData?.reviewsMeta?.subtitle || `Authentic feedback from students of ${collegeData?.shortName || collegeData?.title}`}
                   </p>
                 </div>
@@ -1392,13 +1393,13 @@ const OverviewView = ({
                   {REVIEW_CATEGORIES.map((cat) => <button
     key={cat}
     onClick={() => setSelectedReviewCategory(cat)}
-    className={`px-3 py-1 rounded-lg font-bold transition-all text-[11px] max-md:min-h-[36px] max-md:px-4 ${selectedReviewCategory === cat ? "bg-[#115eaf] text-white shadow-xs" : "bg-[#f0f3ff] text-[#43474d] hover:bg-[#e0ecff] hover:text-[#000f22]"}`}
+    className={`px-3 py-1 rounded-lg font-bold transition-all text-[11px] max-md:min-h-[36px] max-md:px-4 ${selectedReviewCategory === cat ? "bg-brand-600 text-white shadow-xs" : "bg-brand-50 text-ink-700 hover:bg-brand-100 hover:text-ink-900"}`}
   >
                       {cat}
                     </button>)}
                 </div>
 
-                <span className="text-[11px] text-[#74777e]">
+                <span className="text-[11px] text-ink-500">
                   Showing authentic verified reviews
                 </span>
               </div>
@@ -1412,7 +1413,7 @@ const OverviewView = ({
     return (t.course || "").toLowerCase().includes(selectedReviewCategory.toLowerCase());
   }).map((t, idx) => <div
     key={idx}
-    className="bg-white rounded-xl border border-[#e7eeff] hover:border-[#115eaf]/70 hover:shadow-md transition-all p-3 flex flex-col justify-between gap-2.5 group relative"
+    className="bg-white rounded-xl border border-brand-100 hover:border-brand-600/70 hover:shadow-md transition-all p-3 flex flex-col justify-between gap-2.5 group relative"
   >
                       {
     /* Top Bar: Stars + Tag */
@@ -1422,13 +1423,13 @@ const OverviewView = ({
                           {Number(t.ratingValue) > 0 ? (
                             <div className="flex text-amber-400 gap-0.5 items-center">
                               {[...Array(Math.max(0, Math.min(5, Math.round(Number(t.rating) || 0))))].map((_, i) => <Star key={i} className="w-3 h-3 fill-current text-amber-400" />)}
-                              <span className="text-[10px] font-normal text-[#000f22] ml-1.5">{t.ratingLabel || t.ratingValue}</span>
+                              <span className="text-[10px] font-normal text-ink-900 ml-1.5">{t.ratingLabel || t.ratingValue}</span>
                             </div>
                           ) : (
                             <span aria-hidden="true" />
                           )}
-                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-normal bg-[#eef4ff] text-[#115eaf] border border-[#d5e3ff]">
-                            <CheckCircle className="w-2.5 h-2.5 text-[#115eaf]" />
+                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-normal bg-brand-50 text-brand-600 border border-brand-200">
+                            <CheckCircle className="w-2.5 h-2.5 text-brand-600" />
                             {t.tag || "Verified Learner"}
                           </span>
                         </div>
@@ -1437,10 +1438,10 @@ const OverviewView = ({
     /* Program Badge */
   }
                         <div className="flex items-center justify-between gap-1 text-[10px]">
-                          <span className="font-normal text-[#115eaf] truncate">
+                          <span className="font-normal text-brand-600 truncate">
                             {t.course}
                           </span>
-                          <span className="text-[9px] text-[#74777e] shrink-0 font-normal">
+                          <span className="text-[9px] text-ink-500 shrink-0 font-normal">
                             {t.batch}
                           </span>
                         </div>
@@ -1453,7 +1454,7 @@ const OverviewView = ({
                             text={`"${t.text}"`}
                             lines={3}
                             buttonClassName="text-xs"
-                            className="text-[11px] text-[#2d3137] leading-relaxed font-normal"
+                            className="text-[11px] text-ink-700 leading-relaxed font-normal"
                           />
                         </div>
                       </div>
@@ -1461,27 +1462,27 @@ const OverviewView = ({
                       {
     /* Student Profile Footer */
   }
-                      <div className="pt-2 border-t border-[#f0f3ff] flex items-center justify-between gap-2">
+                      <div className="pt-2 border-t border-brand-50 flex items-center justify-between gap-2">
                         <div className="flex items-center gap-2 min-w-0">
-                          <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-[#115eaf] to-[#004689] text-white flex items-center justify-center text-[10px] font-semibold shrink-0 shadow-xs">
+                          <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-brand-600 to-brand-700 text-white flex items-center justify-center text-[10px] font-semibold shrink-0 shadow-xs">
                             {t.avatar}
                           </div>
                           <div className="min-w-0">
                             <div className="flex items-center gap-1">
-                              <span className="font-normal text-[11px] text-[#000f22] truncate block">{t.studentName}</span>
+                              <span className="font-normal text-[11px] text-ink-900 truncate block">{t.studentName}</span>
                               <ShieldCheck className="w-2.5 h-2.5 text-emerald-600 shrink-0" />
                             </div>
-                            <span className="text-[10px] text-[#115eaf] font-normal truncate block leading-tight">
+                            <span className="text-[10px] text-brand-600 font-normal truncate block leading-tight">
                               {t.profession}
                             </span>
-                            <span className="text-[9px] text-[#74777e] truncate block font-normal">
+                            <span className="text-[9px] text-ink-500 truncate block font-normal">
                               {t.company}
                             </span>
                           </div>
                         </div>
 
-                        <span className="text-[9px] text-[#74777e] flex items-center gap-0.5 shrink-0 font-normal">
-                          <MapPin className="w-2.5 h-2.5 text-[#74777e]" />
+                        <span className="text-[9px] text-ink-500 flex items-center gap-0.5 shrink-0 font-normal">
+                          <MapPin className="w-2.5 h-2.5 text-ink-500" />
                           <span>{t.location}</span>
                         </span>
                       </div>
@@ -1491,12 +1492,12 @@ const OverviewView = ({
               {
     /* Review Callout Action Box */
   }
-              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#f0f3ff] via-white to-[#f0f3ff] border border-[#d5e3ff] flex flex-col sm:flex-row items-center justify-between gap-3 mt-[18px]">
+              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-brand-50 via-white to-brand-50 border border-brand-200 flex flex-col sm:flex-row items-center justify-between gap-3 mt-[18px]">
                 <div className="space-y-1 text-center sm:text-left">
-                  <h4 className="font-bold text-sm text-[#000f22] font-sans">
+                  <h4 className="font-bold text-sm text-ink-900 font-sans">
                     Join {collegeData?.students ? `${Number(collegeData.students).toLocaleString("en-IN")}+` : "thousands of"} ambitious working professionals at {collegeData?.shortName || collegeData?.title}
                   </h4>
-                  <p className="text-xs text-[#43474d]">
+                  <p className="text-xs text-ink-700">
                     Admissions are currently open. Book a 1-on-1 counseling session with our admissions team.
                   </p>
                 </div>
@@ -1504,13 +1505,13 @@ const OverviewView = ({
                   <button
     type="button"
     onClick={handleOverviewApply}
-    className="px-5 py-2.5 bg-[#115eaf] text-white rounded-xl text-xs font-bold shadow hover:bg-[#004689] active:scale-95 transition-all"
+    className="px-5 py-2.5 bg-brand-600 text-white rounded-xl text-xs font-bold shadow hover:bg-brand-700 active:scale-95 transition-all"
   >
                     Apply Now {CURRENT_YEAR}
                   </button>
                   <button
     onClick={() => onOpenHelpDesk()}
-    className="px-4 py-2.5 bg-white text-[#000f22] border border-[#000f22] rounded-xl text-xs font-bold hover:bg-[#f0f3ff] active:scale-95 transition-all"
+    className="px-4 py-2.5 bg-white text-ink-900 border border-ink-900 rounded-xl text-xs font-bold hover:bg-brand-50 active:scale-95 transition-all"
   >
                     Talk to Counselor
                   </button>
@@ -1523,29 +1524,29 @@ const OverviewView = ({
     /* Compare Colleges */
   }
             {(collegeData?.compareSection) && (
-                <section id="compare-colleges" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs">
-              <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans">
+                <section id="compare-colleges" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs">
+              <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans">
                 {collegeData?.compareSection?.title}
               </h2>
-              <p className="section-description text-sm text-[#43474d] leading-relaxed font-normal">
+              <p className="section-description text-sm text-ink-700 leading-relaxed font-normal">
                 {collegeData?.compareSection?.description}
               </p>
               {
     /* MAIN COMPARISON BOX */
   }
-              <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_55px_minmax(0,1fr)] items-stretch gap-3 p-4 border border-[#e7eeff] rounded-2xl bg-white shadow-sm mt-[18px]">
+              <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_55px_minmax(0,1fr)] items-stretch gap-3 p-4 border border-brand-100 rounded-2xl bg-white shadow-sm mt-[18px]">
 
                 {
     /* COLLEGE CARD */
   }
-                <div className="min-h-[220px] rounded-xl border border-[#e7eeff] bg-[#f0f3ff] p-4 flex flex-col justify-between">
+                <div className="min-h-[220px] rounded-xl border border-brand-100 bg-brand-50 p-4 flex flex-col justify-between">
                   <div>
-                    <span className="inline-flex mb-2 px-2 py-1 rounded-full bg-[#e7eeff] text-[#115eaf] text-[11px] font-bold">
+                    <span className="inline-flex mb-2 px-2 py-1 rounded-full bg-brand-100 text-brand-600 text-[11px] font-bold">
                       Selected
                     </span>
 
                     <div className="flex gap-4 items-center">
-                      <div className="w-[115px] h-[85px] shrink-0 rounded-lg border border-[#e7eeff] bg-white flex items-center justify-center overflow-hidden">
+                      <div className="w-[115px] h-[85px] shrink-0 rounded-lg border border-brand-100 bg-white flex items-center justify-center overflow-hidden">
                         <img
     src={collegeData?.hero?.logoImage}
     alt={`${collegeData?.shortName || collegeData?.title || "College"} Logo`}
@@ -1556,18 +1557,18 @@ const OverviewView = ({
   />
                       </div>
                       <div>
-                        <h3 className="mb-1.5 leading-tight font-extrabold text-[#000f22] font-sans">
+                        <h3 className="mb-1.5 leading-tight font-extrabold text-ink-900 font-sans">
                           {collegeData?.title}
                         </h3>
-                        <p className="mt-[7.5px] flex items-center gap-1.5 text-sm text-[#43474d]">
-                          <MapPin className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
+                        <p className="mt-[7.5px] flex items-center gap-1.5 text-sm text-ink-700">
+                          <MapPin className="w-3.5 h-3.5 text-brand-600 shrink-0" />
                           {collegeData?.location}
                         </p>
                       </div>
                     </div>
 
                     <div className="flex flex-wrap gap-1.5 mt-3">
-                      {collegeData?.approvals.slice(0, 4).map((tag) => <span key={tag} className="px-2 py-1 rounded-[7px] bg-white border border-[#d5e3ff] text-[11px] font-normal text-[#43474d]">
+                      {collegeData?.approvals.slice(0, 4).map((tag) => <span key={tag} className="px-2 py-1 rounded-[7px] bg-white border border-brand-200 text-[11px] font-normal text-ink-700">
                           {tag}
                         </span>)}
                     </div>
@@ -1575,7 +1576,7 @@ const OverviewView = ({
 
                   <button
     onClick={() => onOpenBrochure()}
-    className="w-full h-11 mt-4 flex items-center justify-center gap-2 rounded-lg border border-[#115eaf] bg-white text-[#115eaf] text-sm font-bold hover:bg-[#f0f3ff] transition-all"
+    className="w-full h-11 mt-4 flex items-center justify-center gap-2 rounded-lg border border-brand-600 bg-white text-brand-600 text-sm font-bold hover:bg-brand-50 transition-all"
   >
                     <Download className="w-4 h-4" />
                     Brochure
@@ -1586,7 +1587,7 @@ const OverviewView = ({
     /* VS */
   }
                 <div className="compare-vs flex items-center justify-center">
-                  <span className="w-11 h-11 rounded-full flex items-center justify-center bg-[#115eaf] text-white text-sm font-extrabold">
+                  <span className="w-11 h-11 rounded-full flex items-center justify-center bg-brand-600 text-white text-sm font-extrabold">
                     VS
                   </span>
                 </div>
@@ -1594,21 +1595,21 @@ const OverviewView = ({
                 {
     /* ADD COLLEGE CARD */
   }
-                <div className="min-h-[220px] rounded-xl border border-dashed border-[#d5e3ff] bg-[#f9f9ff] p-4 flex flex-col items-center justify-center text-center">
-                  <div className="w-12 h-12 rounded-full border border-[#d5e3ff] bg-white flex items-center justify-center text-[#115eaf] text-2xl font-light mb-2.5">
+                <div className="min-h-[220px] rounded-xl border border-dashed border-brand-200 bg-canvas p-4 flex flex-col items-center justify-center text-center">
+                  <div className="w-12 h-12 rounded-full border border-brand-200 bg-white flex items-center justify-center text-brand-600 text-2xl font-light mb-2.5">
                     +
                   </div>
                   <div className="add-content">
-                    <h3 className="text-lg font-extrabold text-[#000f22] font-sans">
+                    <h3 className="text-lg font-extrabold text-ink-900 font-sans">
                       Add College
                     </h3>
-                    <p className="mt-[7.5px] text-[13px] leading-relaxed text-[#43474d] font-normal">
+                    <p className="mt-[7.5px] text-[13px] leading-relaxed text-ink-700 font-normal">
                       Select another college to compare side by side.
                     </p>
                   </div>
                   <button
     onClick={() => onOpenHelpDesk()}
-    className="w-full h-11 mt-4 rounded-lg border-none bg-[#0b62be] text-white text-sm font-bold hover:bg-[#011c37] transition-all"
+    className="w-full h-11 mt-4 rounded-lg border-none bg-brand-600 text-white text-sm font-bold hover:bg-brand-900 transition-all"
   >
                     Add College
                   </button>
@@ -1624,8 +1625,8 @@ const OverviewView = ({
               onOpenHelpDesk={onOpenHelpDesk}
               sectionId="blogs"
               title={collegeData?.blogsMeta?.title || "Latest Blogs"}
-              sub={collegeData?.blogsMeta?.description || "Want to learn more before you apply? Our blog has a wealth of information to help you."}
-              className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs p-5 md:p-6"
+              sub={collegeData?.blogsMeta?.description || "Guides to help you choose a programme and university."}
+              className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs p-5 md:p-6"
               posts={collegeData?.blogs}
               fetchLivePosts
               horizontal
@@ -1633,10 +1634,9 @@ const OverviewView = ({
 
             {/* 12. Frequently Asked Questions — Last Section on Detail Page */}
             {Boolean(collegeData?.faqs?.length) && (
-              <section id="faqs" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs p-5 md:p-6">
+              <section id="faqs" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs p-5 md:p-6">
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#115eaf]" aria-hidden="true" />
-                  <h2 className="section-title text-xl sm:text-2xl font-bold text-[#000f22] font-sans m-0">
+                  <h2 className="section-title text-xl sm:text-2xl font-bold text-ink-900 font-sans m-0">
                     {collegeData?.faqsMeta?.title || `Frequently Asked Questions (${collegeData?.shortName || collegeData?.title})`}
                   </h2>
                 </div>
@@ -1655,7 +1655,7 @@ const OverviewView = ({
   }
       <button
     onClick={() => setTocOpen(!tocOpen)}
-    className="fixed bottom-6 left-4 z-30 hidden h-11 w-11 items-center justify-center rounded-full bg-[#0b62be] text-white shadow-lg transition-colors hover:bg-[#115eaf] md:flex"
+    className="fixed bottom-6 left-4 z-30 hidden h-11 w-11 items-center justify-center rounded-full bg-brand-600 text-white shadow-lg transition-colors hover:bg-brand-600 md:flex"
     aria-label="Toggle Table of Contents"
   >
         <FileText className="w-5 h-5" />
@@ -1678,14 +1678,14 @@ const OverviewView = ({
               {
     /* Header */
   }
-              <div className="flex items-center justify-between pb-3.5 border-b border-[#e7eeff]">
+              <div className="flex items-center justify-between pb-3.5 border-b border-brand-100">
                 <div className="flex items-center gap-2">
-                  <FileText className="w-4 h-4 text-[#115eaf]" />
-                  <h3 className="font-bold text-sm text-[#000f22]">Table of Contents</h3>
+                  <FileText className="w-4 h-4 text-brand-600" />
+                  <h3 className="font-bold text-sm text-ink-900">Table of Contents</h3>
                 </div>
                 <button
     onClick={() => setTocOpen(false)}
-    className="w-7 h-7 rounded-lg bg-[#f0f3ff] text-[#43474d] flex items-center justify-center hover:bg-[#e7eeff] transition-colors"
+    className="w-7 h-7 rounded-lg bg-brand-50 text-ink-700 flex items-center justify-center hover:bg-brand-100 transition-colors"
   >
                   <span className="text-xs font-bold">✕</span>
                 </button>
@@ -1704,7 +1704,7 @@ const OverviewView = ({
         handleTocClick(e, item.id);
         setTocOpen(false);
       }}
-      className={`block px-3 py-2 rounded-lg text-xs transition-all ${isActive ? "bg-[#eef4ff] text-[#115eaf] font-bold" : "text-[#475569] hover:text-[#000f22] hover:bg-[#f8faff]"}`}
+      className={`block px-3 py-2 rounded-lg text-xs transition-all ${isActive ? "bg-brand-50 text-brand-600 font-bold" : "text-ink-700 hover:text-ink-900 hover:bg-canvas"}`}
     >
                         {item.label}
                       </a>
@@ -1715,17 +1715,17 @@ const OverviewView = ({
               {
     /* DEB Advisor Box */
   }
-              <div className="bg-[#0b62be] text-white rounded-xl p-4 space-y-2.5">
+              <div className="bg-brand-600 text-white rounded-xl p-4 space-y-2.5">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-[#115eaf] text-white flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-brand-600 text-white flex items-center justify-center">
                     <UserCheck className="w-4 h-4" />
                   </div>
                   <div>
                     <p className="font-bold text-xs leading-tight">UGC-DEB Expert Desk</p>
-                    <p className="text-[10px] text-[#b1c8eb]">Online Siksha Advisory</p>
+                    <p className="text-[10px] text-brand-300">Online Siksha Advisory</p>
                   </div>
                 </div>
-                <p className="text-[11px] text-[#b1c8eb] leading-relaxed">
+                <p className="text-[11px] text-brand-300 leading-relaxed">
                   Need guidance on degree equivalence, govt job validity, or fee plans?
                 </p>
                 <button
@@ -1733,7 +1733,7 @@ const OverviewView = ({
       onOpenHelpDesk();
       setTocOpen(false);
     }}
-    className="w-full py-2 bg-[#115eaf] text-white rounded-lg text-[11px] font-bold hover:bg-[#004689] transition-all"
+    className="w-full py-2 bg-brand-600 text-white rounded-lg text-[11px] font-bold hover:bg-brand-700 transition-all"
   >
                   Enquire Now
                 </button>
@@ -1752,18 +1752,18 @@ const OverviewView = ({
     /* Slide-up Panel */
   }
         <div
-    className={`w-72 max-w-[calc(100vw-48px)] bg-white border border-[#e7eeff] shadow-2xl rounded-2xl transition-all duration-300 ${counselPanelOpen ? "opacity-100 translate-x-0 pointer-events-auto" : "opacity-0 translate-x-3 pointer-events-none"}`}
+    className={`w-72 max-w-[calc(100vw-48px)] bg-white border border-brand-100 shadow-2xl rounded-2xl transition-all duration-300 ${counselPanelOpen ? "opacity-100 translate-x-0 pointer-events-auto" : "opacity-0 translate-x-3 pointer-events-none"}`}
   >
-        <div className="flex items-center justify-between px-4 py-3 border-b border-[#e7eeff]">
+        <div className="flex items-center justify-between px-4 py-3 border-b border-brand-100">
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-full bg-[#d5e3ff] flex items-center justify-center">
-              <PhoneCall className="w-3.5 h-3.5 text-[#115eaf]" />
+            <div className="w-7 h-7 rounded-full bg-brand-200 flex items-center justify-center">
+              <PhoneCall className="w-3.5 h-3.5 text-brand-600" />
             </div>
-            <h3 className="text-xs font-bold text-[#000f22]">Get Free Counselling</h3>
+            <h3 className="text-xs font-bold text-ink-900">Get Free Counselling</h3>
           </div>
           <button
     onClick={() => setCounselPanelOpen(false)}
-    className="w-6 h-6 rounded-md bg-[#f0f3ff] text-[#43474d] flex items-center justify-center hover:bg-[#e7eeff] transition-colors text-[10px] font-bold"
+    className="w-6 h-6 rounded-md bg-brand-50 text-ink-700 flex items-center justify-center hover:bg-brand-100 transition-colors text-[10px] font-bold"
   >
             ✕
           </button>
@@ -1772,7 +1772,7 @@ const OverviewView = ({
         <div className="p-4">
           {!formSubmitted ? <form onSubmit={handleCounselingSubmit} className="space-y-2.5">
               <div className="relative flex items-center">
-                <span className="absolute left-3 text-[11px] font-bold text-[#000f22]">+91</span>
+                <span className="absolute left-3 text-[11px] font-bold text-ink-900">+91</span>
                 <input
                   type="tel"
                   inputMode="numeric"
@@ -1782,8 +1782,8 @@ const OverviewView = ({
                   title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                   value={counselingForm.phone}
                   onChange={(e) => { setCounselingForm({ ...counselingForm, phone: sanitizeIndianPhone(e.target.value) }); if (formErrors.phone) setFormErrors({ ...formErrors, phone: "" }); }}
-                  placeholder="10-digit Mobile Number"
-                  className={`w-full pl-9 pr-3 py-2 rounded-lg border text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none ${formErrors.phone ? "border-red-500" : "border-[#c4c6ce]"}`}
+                  aria-label="Mobile number" placeholder="10-digit Mobile Number"
+                  className={`w-full pl-9 pr-3 py-2 rounded-lg border text-[11px] text-ink-900 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 outline-none ${formErrors.phone ? "border-red-500" : "border-line-strong"}`}
                   aria-invalid={formErrors.phone ? "true" : "false"}
                   aria-describedby={formErrors.phone ? "phone-error" : undefined}
                 />
@@ -1796,8 +1796,8 @@ const OverviewView = ({
     required
     value={counselingForm.email}
     onChange={(e) => { setCounselingForm({ ...counselingForm, email: e.target.value }); if (formErrors.email) setFormErrors({ ...formErrors, email: "" }); }}
-    placeholder="Email Address"
-    className={`w-full px-3 py-2 rounded-lg border text-[11px] text-[#000f22] focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 outline-none ${formErrors.email ? "border-red-500" : "border-[#c4c6ce]"}`}
+    aria-label="Email Address" placeholder="Email Address"
+    className={`w-full px-3 py-2 rounded-lg border text-[11px] text-ink-900 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 outline-none ${formErrors.email ? "border-red-500" : "border-line-strong"}`}
     aria-invalid={formErrors.email ? "true" : "false"}
     aria-describedby={formErrors.email ? "email-error" : undefined}
   />
@@ -1805,23 +1805,24 @@ const OverviewView = ({
                 <p id="email-error" role="alert" aria-live="polite" className="mt-1 text-[11px] text-red-600">{formErrors.email}</p>
               )}
               <select
+    aria-label="Programme of interest"
     value={counselingForm.course}
     onChange={(e) => setCounselingForm({ ...counselingForm, course: e.target.value })}
-    className="w-full px-3 py-2 rounded-lg border border-[#c4c6ce] text-[11px] text-[#000f22] focus:border-[#115eaf] outline-none cursor-pointer bg-white"
+    className="w-full px-3 py-2 rounded-lg border border-line-strong text-[11px] text-ink-900 focus:border-brand-600 outline-none cursor-pointer bg-white"
   >
                 {COURSES_DATA.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
               </select>
               <button
     type="submit"
-    className="w-full py-2 min-h-[44px] bg-[#115eaf] text-white rounded-lg text-[11px] font-bold shadow-sm hover:bg-[#004689] active:scale-95 transition-all"
+    className="w-full py-2 min-h-[44px] bg-brand-600 text-white rounded-lg text-[11px] font-bold shadow-sm hover:bg-brand-700 active:scale-95 transition-all"
   >
                 Submit
               </button>
             </form> : <div className="py-4 text-center space-y-1.5 text-[11px] animate-in fade-in">
               <CheckCircle className="w-6 h-6 text-emerald-600 mx-auto" />
-              <span className="font-bold text-[#000f22] block">Callback Requested!</span>
-              <p className="text-[#43474d]">We will call you at +91 {counselingForm.phone} shortly.</p>
-              <button onClick={() => setFormSubmitted(false)} className="text-[10px] font-bold text-[#115eaf] hover:underline">
+              <span className="font-bold text-ink-900 block">Callback Requested!</span>
+              <p className="text-ink-700">We will call you at +91 {counselingForm.phone} shortly.</p>
+              <button onClick={() => setFormSubmitted(false)} className="text-[10px] font-bold text-brand-600 hover:underline">
                 Submit another enquiry
               </button>
             </div>}
@@ -1832,7 +1833,7 @@ const OverviewView = ({
       <button
         type="button"
         onClick={handleOverviewApply}
-        className="pointer-events-auto hidden h-[200px] w-12 items-center justify-center rounded-l-2xl bg-[#115eaf] shadow-md transition-colors hover:bg-[#004689] lg:flex cursor-pointer active:scale-95"
+        className="pointer-events-auto hidden h-[200px] w-12 items-center justify-center rounded-l-2xl bg-brand-600 shadow-md transition-colors hover:bg-brand-700 lg:flex cursor-pointer active:scale-95"
         aria-label="Free Apply"
       >
         <span className="block text-white text-sm font-semibold tracking-wide whitespace-nowrap -rotate-90">

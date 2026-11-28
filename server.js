@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
 import { answerChat, syncDataset, datasetStatusOf } from './src/services/chatbotDataset.mjs';
 import { injectMetaHtml, buildBlogListing, buildBlogDetail, buildBlogSitemap } from './src/server/blogSsr.js';
+import { registerSeoRoutes } from './src/server/seoRoutes.js';
 
 dotenv.config();
 
@@ -13,14 +14,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Server-side initialization of Gemini SDK
 const apiKey = process.env.GEMINI_API_KEY || '';
-const ai = new GoogleGenAI({
-  apiKey,
-  httpOptions: {
-    headers: {
-      'User-Agent': 'aistudio-build',
-    },
-  },
-});
+const ai = new GoogleGenAI({ apiKey });
 
 /* Simple fixed-window rate limiter for the chat API. */
 const RATE_LIMIT_MAX = Number(process.env.CHAT_RATE_LIMIT || 30); // requests / minute / IP
@@ -142,6 +136,8 @@ async function startServer() {
   }
 
   // In development, let Vite serve the default transformed HTML (no meta injection) so HMR works.
+  registerSeoRoutes(app);
+
   app.get('/sitemap-blog.xml', async (req, res) => {
     try {
       const origin = `${req.protocol}://${req.get('host')}`;

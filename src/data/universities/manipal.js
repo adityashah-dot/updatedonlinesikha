@@ -15,7 +15,7 @@ export const MANIPAL_UNIVERSITY_DATA = {
   approvals: ["UGC-DEB", "AICTE", "NAAC A++", "NIRF #64", "AIU", "WES", "Coursera Access Free"],
   verifiedYear: "2026",
   logoImage: "https://images.DegreeFYD.com/colleges/7190/lovely_professional_university_online_course_logo.webp",
-  backgroundImage: "/images/campusamity.png",
+  backgroundImage: "/images/campusamity.webp",
   brochureUrl: "https://images.degreefyd.com//manipal-online-brochure.pdf",
   quickStats: {
     feeRange: "\u20B91,30,000 \u2013 \u20B91,75,000",

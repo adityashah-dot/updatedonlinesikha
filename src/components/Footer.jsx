@@ -22,22 +22,22 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
   };
 
   return (
-    <footer className="bg-[#000f22] text-[#d8e3fb] border-t border-[#0b2540] relative overflow-hidden">
+    <footer className="bg-ink-900 text-brand-200 border-t border-brand-900 relative overflow-hidden">
       {/* Subtle background glow */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#115eaf]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-10 w-96 h-96 bg-[#2563eb]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-600/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-10 w-96 h-96 bg-brand-600/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* 1. Value Proposition & Trust Highlights Strip */}
-      <div className="border-b border-[#182a44] bg-[#00142e]/70 backdrop-blur-sm">
+      <div className="border-b border-brand-900 bg-ink-900/70 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#115eaf]/20 border border-[#115eaf]/40 flex items-center justify-center shrink-0 text-[#70aaff]">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-brand-600/20 border border-brand-600/40 flex items-center justify-center shrink-0 text-brand-400">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
                 <p className="text-xs sm:text-[13px] font-bold text-white leading-tight">UGC-DEB Entitled</p>
-                <p className="text-[11px] text-[#8ea8cf] leading-tight mt-0.5">Government Equivalent</p>
+                <p className="text-[11px] text-[#8ea8cf] leading-tight mt-0.5">Recognised programmes</p>
               </div>
             </div>
 
@@ -46,8 +46,8 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
                 <CheckCircle className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-xs sm:text-[13px] font-bold text-white leading-tight">100% Unbiased Advisory</p>
-                <p className="text-[11px] text-[#8ea8cf] leading-tight mt-0.5">Zero Student Bias</p>
+                <p className="text-xs sm:text-[13px] font-bold text-white leading-tight">Free counselling</p>
+                <p className="text-[11px] text-[#8ea8cf] leading-tight mt-0.5">No obligation to apply</p>
               </div>
             </div>
 
@@ -56,8 +56,8 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
                 <Award className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-xs sm:text-[13px] font-bold text-white leading-tight">NAAC 'A+' Accredited</p>
-                <p className="text-[11px] text-[#8ea8cf] leading-tight mt-0.5">Top-Ranked Universities</p>
+                <p className="text-xs sm:text-[13px] font-bold text-white leading-tight">NAAC accredited</p>
+                <p className="text-[11px] text-[#8ea8cf] leading-tight mt-0.5">Partner universities</p>
               </div>
             </div>
 
@@ -66,8 +66,8 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
                 <Headphones className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-xs sm:text-[13px] font-bold text-white leading-tight">Zero-Cost Assistance</p>
-                <p className="text-[11px] text-[#8ea8cf] leading-tight mt-0.5">Free Admission Support</p>
+                <p className="text-xs sm:text-[13px] font-bold text-white leading-tight">Admission help</p>
+                <p className="text-[11px] text-[#8ea8cf] leading-tight mt-0.5">Forms, documents, deadlines</p>
               </div>
             </div>
           </div>
@@ -76,7 +76,7 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
 
       {/* 2. Main Footer Navigation & Brand Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 border-b border-[#182a44]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 pb-10 border-b border-brand-900">
           {/* Brand Summary Column (4 cols on desktop) */}
           <div className="lg:col-span-4 space-y-4">
             <Link to="/" onClick={scrollToTop} className="inline-block">
@@ -89,31 +89,19 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
               </div>
             </Link>
 
-            <p className="text-xs sm:text-[13px] text-[#9bb7df] max-w-sm leading-relaxed">
-              Online Siksha is India’s premier higher education admissions and counseling gateway, facilitating admissions for UGC-DEB recognized, NAAC 'A+' accredited universities across India.
+            <p className="text-xs sm:text-[13px] text-brand-300 max-w-sm leading-relaxed">
+              Online Siksha helps students compare UGC-entitled online degrees from Indian universities and get free admission guidance.
             </p>
 
-            {/* Badges */}
-            <div className="flex flex-wrap items-center gap-2 pt-1">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-medium bg-[#071930] px-2.5 py-1.5 rounded-lg border border-[#1b3456] text-[#b1c8eb]">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                ISO 9001:2015 Certified
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-medium bg-[#071930] px-2.5 py-1.5 rounded-lg border border-[#1b3456] text-[#b1c8eb]">
-                <CheckCircle className="w-3.5 h-3.5 text-[#70aaff] shrink-0" />
-                UGC-DEB Equivalent
-              </span>
-            </div>
-
             {/* Helpline quick-contact banner */}
-            <div className="p-3.5 rounded-xl bg-[#071930] border border-[#1b3456] flex items-center justify-between gap-3 mt-2 max-w-sm">
+            <div className="p-3.5 rounded-xl bg-ink-900 border border-brand-900 flex items-center justify-between gap-3 mt-2 max-w-sm">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-[#115eaf]/25 flex items-center justify-center text-[#70aaff]">
+                <div className="w-8 h-8 rounded-lg bg-brand-600/25 flex items-center justify-center text-brand-400">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div>
                   <p className="text-[10.5px] uppercase tracking-wider text-[#8ea8cf] font-semibold">Student Helpline</p>
-                  <a href="tel:18008894422" className="text-xs sm:text-sm font-bold text-white hover:text-[#70aaff] transition-colors">
+                  <a href="tel:18008894422" className="text-xs sm:text-sm font-bold text-white hover:text-brand-400 transition-colors">
                     1800-889-4422 (Toll-Free)
                   </a>
                 </div>
@@ -121,7 +109,7 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
               <button
                 type="button"
                 onClick={() => onOpenApply && onOpenApply()}
-                className="px-2.5 py-1.5 rounded-lg bg-[#115eaf] hover:bg-[#1570d1] text-white text-[11px] font-bold transition-all shadow-xs cursor-pointer shrink-0"
+                className="px-2.5 py-1.5 rounded-lg bg-brand-600 hover:bg-[#1570d1] text-white text-[11px] font-bold transition-all shadow-xs cursor-pointer shrink-0"
               >
                 Get Call
               </button>
@@ -133,10 +121,10 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
             {/* Column 1: Popular Online Degrees */}
             <div>
               <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3.5 flex items-center gap-1.5">
-                <GraduationCap className="w-3.5 h-3.5 text-[#70aaff]" />
+                <GraduationCap className="w-3.5 h-3.5 text-brand-400" />
                 Online Degrees
               </h4>
-              <ul className="space-y-2 text-xs text-[#9bb7df]">
+              <ul className="space-y-2 text-xs text-brand-300">
                 <li>
                   <Link to="/courses/online-mba" onClick={scrollToTop} className="hover:text-white hover:translate-x-0.5 transition-all inline-block">
                     Online MBA
@@ -173,7 +161,7 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/courses" onClick={scrollToTop} className="text-[#70aaff] font-semibold hover:underline inline-flex items-center gap-1 pt-1">
+                  <Link to="/courses" onClick={scrollToTop} className="text-brand-400 font-semibold hover:underline inline-flex items-center gap-1 pt-1">
                     <span>Explore All Courses</span>
                     <ArrowRight className="w-3 h-3" />
                   </Link>
@@ -184,10 +172,10 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
             {/* Column 2: Top Universities */}
             <div>
               <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3.5 flex items-center gap-1.5">
-                <Award className="w-3.5 h-3.5 text-[#70aaff]" />
+                <Award className="w-3.5 h-3.5 text-brand-400" />
                 Top Universities
               </h4>
-              <ul className="space-y-2 text-xs text-[#9bb7df]">
+              <ul className="space-y-2 text-xs text-brand-300">
                 <li>
                   <Link to="/colleges/amity-university-online" onClick={scrollToTop} className="hover:text-white hover:translate-x-0.5 transition-all inline-block">
                     Amity University Online
@@ -219,7 +207,7 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/universities" onClick={scrollToTop} className="text-[#70aaff] font-semibold hover:underline inline-flex items-center gap-1 pt-1">
+                  <Link to="/universities" onClick={scrollToTop} className="text-brand-400 font-semibold hover:underline inline-flex items-center gap-1 pt-1">
                     <span>View All Universities</span>
                     <ArrowRight className="w-3 h-3" />
                   </Link>
@@ -230,13 +218,13 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
             {/* Column 3: Admissions & Tools */}
             <div>
               <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3.5 flex items-center gap-1.5">
-                <BookOpen className="w-3.5 h-3.5 text-[#70aaff]" />
+                <BookOpen className="w-3.5 h-3.5 text-brand-400" />
                 Student Tools
               </h4>
-              <ul className="space-y-2 text-xs text-[#9bb7df]">
+              <ul className="space-y-2 text-xs text-brand-300">
                 <li>
                   <Link to="/explore-programs" onClick={scrollToTop} className="hover:text-white hover:translate-x-0.5 transition-all inline-block">
-                    AI Degree Explorer
+                    Degree Explorer
                   </Link>
                 </li>
                 <li>
@@ -283,31 +271,31 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
             {/* Column 4: Contact & Office */}
             <div>
               <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3.5 flex items-center gap-1.5">
-                <Mail className="w-3.5 h-3.5 text-[#70aaff]" />
+                <Mail className="w-3.5 h-3.5 text-brand-400" />
                 Direct Support
               </h4>
-              <div className="space-y-3 text-xs text-[#9bb7df]">
+              <div className="space-y-3 text-xs text-brand-300">
                 <p className="flex items-start gap-2">
-                  <Mail className="w-3.5 h-3.5 mt-0.5 text-[#70aaff] shrink-0" />
+                  <Mail className="w-3.5 h-3.5 mt-0.5 text-brand-400 shrink-0" />
                   <a href={`mailto:${INSTITUTION_HIGHLIGHTS.email}`} className="hover:text-white transition-colors [overflow-wrap:anywhere]">
                     {INSTITUTION_HIGHLIGHTS.email}
                   </a>
                 </p>
                 <p className="flex items-start gap-2">
-                  <Phone className="w-3.5 h-3.5 mt-0.5 text-[#70aaff] shrink-0" />
+                  <Phone className="w-3.5 h-3.5 mt-0.5 text-brand-400 shrink-0" />
                   <a href="tel:18008894422" className="hover:text-white transition-colors">
                     +91 1800-889-4422
                   </a>
                 </p>
                 <p className="flex items-start gap-2">
-                  <MapPin className="w-3.5 h-3.5 mt-0.5 text-[#70aaff] shrink-0" />
+                  <MapPin className="w-3.5 h-3.5 mt-0.5 text-brand-400 shrink-0" />
                   <span className="leading-relaxed">{INSTITUTION_HIGHLIGHTS.address}</span>
                 </p>
                 <div className="pt-2">
                   <button
                     type="button"
                     onClick={() => onOpenApply && onOpenApply()}
-                    className="w-full py-2 px-3 rounded-lg bg-[#071930] hover:bg-[#115eaf] text-[#b1c8eb] hover:text-white border border-[#1b3456] text-[11px] font-semibold transition-all text-center cursor-pointer"
+                    className="w-full py-2 px-3 rounded-lg bg-ink-900 hover:bg-brand-600 text-brand-300 hover:text-white border border-brand-900 text-[11px] font-semibold transition-all text-center cursor-pointer"
                   >
                     Request Callback
                   </button>
@@ -318,16 +306,16 @@ export const Footer = ({ setActiveTab, onSelectCourse, onOpenApply }) => {
         </div>
 
         {/* 3. UGC & Regulatory Disclaimer */}
-        <div className="py-5 border-b border-[#182a44] text-[11px] leading-relaxed text-[#768dad]">
+        <div className="py-5 border-b border-brand-900 text-[11px] leading-relaxed text-ink-500">
           <p>
-            <strong className="text-[#a5b8d0]">Regulatory Notice:</strong> Online Siksha is an authorized educational information & admissions facilitation platform. All degrees provided through our partner institutions are entitled by the Distance Education Bureau of the University Grants Commission (UGC-DEB) and recognized at par with on-campus conventional degrees under UGC Gazette Notification Regulation 22.
+            <strong className="text-brand-300">Regulatory Notice:</strong> Online Siksha is an independent education information and admissions guidance platform. All degrees provided through our partner institutions are entitled by the Distance Education Bureau of the University Grants Commission (UGC-DEB) and recognized at par with on-campus conventional degrees under UGC Gazette Notification Regulation 22.
           </p>
         </div>
 
         {/* 4. Legal & Copyright Bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#768dad]">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-500">
           <div>
-            © 2026 Online Siksha. All Rights Reserved. Empowering students with authorized digital degrees.
+            © 2026 Online Siksha. All Rights Reserved.
           </div>
           <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs">
             <Link to="/privacy-policy" onClick={scrollToTop} className="hover:text-white transition-colors">

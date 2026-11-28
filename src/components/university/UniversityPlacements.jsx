@@ -21,7 +21,7 @@ export const RecruitersGrid = ({
 
   const HeadingTag = headingLevel === "h2" ? "h2" : "h3";
   const headingClasses = headingLevel === "h2"
-    ? "text-lg sm:text-xl font-bold text-[#000f22]"
+    ? "text-lg sm:text-xl font-bold text-ink-900"
     : "text-base font-semibold text-slate-900";
 
   return (

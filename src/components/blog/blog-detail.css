@@ -1,14 +1,14 @@
 .blog-detail{
-  --primary:#115eaf;
-  --primary-hover:#084a8c;
-  --primary-soft:#e7eeff;
-  --primary-border:#d5e3ff;
-  --heading:#000f22;
-  --text:#1f2937;
-  --text-2:#43474d;
-  --text-muted:#6b7280;
-  --divider:#e5e7eb;
-  --border:#c4c6ce;
+  --primary:var(--color-brand-600);
+  --primary-hover:var(--color-brand-700);
+  --primary-soft:var(--color-brand-100);
+  --primary-border:var(--color-brand-200);
+  --heading:var(--color-ink-900);
+  --text:var(--color-ink-700);
+  --text-2:var(--color-ink-700);
+  --text-muted:var(--color-ink-500);
+  --divider:var(--color-line);
+  --border:var(--color-line-strong);
   --surface:#ffffff;
   --success:#087955;
   --rating:#92400e;
@@ -127,9 +127,9 @@
 .bd-prose blockquote{ margin:18px 0; padding:8px 16px; border-left:4px solid var(--primary); color:var(--heading); font-weight:500; font-size:1.02em; background:#f7faff; border-radius:0 8px 8px 0 }
 .bd-note{ margin:18px 0; padding:10px 14px; font-size:14px; line-height:1.6; color:var(--text-2); border-left:3px solid var(--primary); background:#f7faff; border-radius:0 6px 6px 0 }
 .bd-note.ok{ border-left-color:var(--success); background:#f0fdf6 }
-.bd-note.warn{ border-left-color:var(--rating); background:#fffbeb }
+.bd-note.warn{ border-left-color:var(--rating); background:var(--color-accent-50) }
 
-/* Unified Table Design (Matches img2 Dark Navy #0b2540 Header + Clean Row Gap) */
+/* Unified Table Design (Matches img2 Dark Navy var(--color-brand-900) Header + Clean Row Gap) */
 .bd-table-wrap,
 .bd-prose .bd-table-wrap,
 .exam-layout .bd-table-wrap {
@@ -178,7 +178,7 @@
 .exam-layout .bd-prose .bd-table-wrap table thead td,
 .exam-layout .bd-prose .bd-table-wrap table tr.header-row th,
 .exam-layout .bd-prose .bd-table-wrap table tr.header-row td {
-  background: #0b62be !important;
+  background: var(--color-brand-600) !important;
   color: #ffffff !important;
   font-weight: 700 !important;
   font-size: 13px;
@@ -188,7 +188,7 @@
   vertical-align: middle;
   text-align: left;
   border: 0 !important;
-  border-bottom: 1px solid #0b62be !important;
+  border-bottom: 1px solid var(--color-brand-600) !important;
 }
 
 @media (min-width: 640px) {
@@ -229,7 +229,7 @@
   padding: 14px 16px;
   border: 0 !important;
   vertical-align: middle;
-  color: #1e293b;
+  color: var(--color-ink-900);
   font-weight: 500;
   background-color: #ffffff;
 }
@@ -249,7 +249,7 @@
   background-color: #ffffff !important;
 }
 
-/* Ensure header rows stay solid #0b62be */
+/* Ensure header rows stay solid var(--color-brand-600) */
 .bd-table thead tr th,
 .bd-table thead tr td,
 .bd-prose .bd-table-wrap thead tr th,
@@ -266,7 +266,7 @@
 .exam-layout .bd-table tbody tr.header-row td,
 .exam-layout .bd-prose .bd-table-wrap tbody tr.header-row th,
 .exam-layout .bd-prose .bd-table-wrap tbody tr.header-row td {
-  background-color: #0b62be !important;
+  background-color: var(--color-brand-600) !important;
   color: #ffffff !important;
 }
 
@@ -290,7 +290,7 @@
 .exam-layout .bd-table tbody tr:not(.header-row) td:first-child,
 .exam-layout .bd-prose .bd-table-wrap tbody tr:not(.header-row) td:first-child {
   font-weight: 700;
-  color: #000f22;
+  color: var(--color-ink-900);
   background-color: transparent;
 }
 
@@ -301,12 +301,12 @@
 .exam-layout .bd-prose .bd-table-wrap tbody tr:not(.header-row) td:first-child p,
 .exam-layout .bd-prose .bd-table-wrap tbody tr:not(.header-row) td:first-child strong {
   font-weight: 700;
-  color: #000f22;
+  color: var(--color-ink-900);
 }
 
 .bd-prose .bd-table-wrap td a,
 .exam-layout .bd-prose .bd-table-wrap td a {
-  color: #0b4fa8;
+  color: var(--color-brand-700);
   opacity: 0.8;
   font-weight: 600;
   text-decoration: none;
@@ -347,7 +347,7 @@
   text-align: left !important;
 }
 
-/* 3-Column Tables: 1st col bold #000f22, 2nd col #43474d, 3rd col semibold #115eaf (matches img2) */
+/* 3-Column Tables: 1st col bold var(--color-ink-900), 2nd col var(--color-ink-700), 3rd col semibold var(--color-brand-600) (matches img2) */
 .bd-prose .bd-table-wrap.bd-table-3col table,
 .exam-layout .bd-prose table.table-3col {
   min-width: 520px;
@@ -359,13 +359,13 @@
 .exam-layout .bd-prose table:has(tr > th:nth-child(3):last-child) tbody tr:not(.header-row) td:nth-child(3),
 .exam-layout .bd-prose table:has(tr > td:nth-child(3):last-child) tbody tr:not(.header-row) td:nth-child(3) {
   font-weight: 500;
-  color: #43474d;
+  color: var(--color-ink-700);
 }
 
 .bd-prose .bd-table-wrap.bd-table-3col tbody tr:not(.header-row) td:nth-child(3) p,
 .exam-layout .bd-prose table.table-3col tbody tr:not(.header-row) td:nth-child(3) p {
   font-weight: 500;
-  color: #43474d;
+  color: var(--color-ink-700);
 }
 
 .bd-hint{ margin-top:6px; font-size:12px; color:var(--text-muted) }
@@ -386,7 +386,7 @@
   color: #374151;
 }
 .exam-layout .bd-prose h2 {
-  color: #0b1d3a;
+  color: var(--color-brand-900);
   font-weight: 700;
   letter-spacing: -0.012em;
   margin: 30px 0 14px;
@@ -404,7 +404,7 @@
   margin-bottom: 15px;
 }
 .exam-layout .bd-prose strong {
-  color: #000f22;
+  color: var(--color-ink-900);
   font-weight: 600;
 }
 .exam-layout .bd-prose li {
@@ -432,14 +432,14 @@
     overflow-x: hidden !important;
     overscroll-behavior: contain;
     scrollbar-width: thin;
-    scrollbar-color: #d5e3ff transparent;
+    scrollbar-color: var(--color-brand-200) transparent;
     padding-right: 2px;
   }
   .exam-layout .bd-side::-webkit-scrollbar {
     width: 4px;
   }
   .exam-layout .bd-side::-webkit-scrollbar-thumb {
-    background: #d5e3ff;
+    background: var(--color-brand-200);
     border-radius: 4px;
   }
 }
@@ -472,12 +472,12 @@
   display: block;
   font-size: 13px;
   line-height: 1.45;
-  color: #1e293b;
+  color: var(--color-ink-900);
   text-decoration: none;
 }
 .exam-layout .exam-toc a:hover,
 .exam-layout .bd-toc a:hover {
-  color: #0b4fa8;
+  color: var(--color-brand-700);
 }
 
 .bd-prose ul.bd-defs,
@@ -523,7 +523,7 @@
 .bd-faq .a{ padding:0 0 18px; line-height:1.6 }
 
 /* Figure/gallery/content image */
-.bd-prose img{ max-width:100%; height:auto; border-radius:8px; margin:16px auto; border:1px solid #e7eeff; box-shadow:0 1px 3px rgba(0,15,34,0.05) }
+.bd-prose img{ max-width:100%; height:auto; border-radius:8px; margin:16px auto; border:1px solid var(--color-brand-100); box-shadow:0 1px 3px rgba(0,15,34,0.05) }
 .bd-figure{ margin:20px 0 }
 .bd-figure img{ width:100%; height:auto; border:1px solid var(--border); border-radius:var(--radius); object-fit:cover; max-height:440px }
 .bd-figure figcaption{ padding:8px 2px; font-size:13px; color:var(--text-muted) }

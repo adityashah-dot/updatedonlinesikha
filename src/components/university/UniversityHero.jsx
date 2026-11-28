@@ -23,8 +23,8 @@ export const UniversityHero = ({
     className="max-h-full max-w-full object-contain"
     referrerPolicy="no-referrer"
   /> : <GraduationCap className="w-12 h-12 text-blue-800" />;
-  const topBadges = <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#115eaf] whitespace-nowrap">
-      <span className="inline-flex items-center gap-2 bg-[#f0f3ff] border border-[#d5e3ff] rounded-full px-2.5 py-1">
+  const topBadges = <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-brand-600 whitespace-nowrap">
+      <span className="inline-flex items-center gap-2 bg-brand-50 border border-brand-200 rounded-full px-2.5 py-1">
         <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
         Admissions Open {university.verifiedYear || "2026"}
       </span>
@@ -32,14 +32,14 @@ export const UniversityHero = ({
     href={`https://${university.officialWebsite}`}
     target="_blank"
     rel="noopener noreferrer"
-    className="inline-flex items-center gap-1 text-[#43474d] hover:text-[#115eaf]"
+    className="inline-flex items-center gap-1 text-ink-700 hover:text-brand-600"
   >
           <span>{university.officialWebsite}</span>
           <ExternalLink className="w-3.5 h-3.5" />
         </a>}
     </div>;
-  const metaRow = <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-[#43474d] font-medium">
-      <span className="text-[#115eaf] font-bold">{university.type || "UGC-DEB Entitled"}</span>
+  const metaRow = <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-ink-700 font-medium">
+      <span className="text-brand-600 font-bold">{university.type || "UGC-DEB Entitled"}</span>
       <span aria-hidden="true">·</span>
       <span className="flex items-center gap-1">
         <MapPin className="w-3.5 h-3.5 text-slate-400" />
@@ -55,7 +55,7 @@ export const UniversityHero = ({
           <span className="text-amber-700 font-semibold">★ {university.rating} ({university.reviewsCount || "1.2k+"} reviews)</span>
         </>}
     </div>;
-  const taglineEl = <p className="m-0 text-sm sm:text-base text-[#43474d] leading-relaxed">
+  const taglineEl = <p className="m-0 text-sm sm:text-base text-ink-700 leading-relaxed">
       {university.tagline}
     </p>;
   const badges = <div className="flex flex-wrap items-center gap-2 pt-0.5">
@@ -79,7 +79,7 @@ export const UniversityHero = ({
       <button
     type="button"
     onClick={() => onOpenApply()}
-    className="inline-flex items-center justify-center gap-2 min-h-[42px] px-4 sm:px-5 rounded-[7px] text-[13px] font-semibold text-white bg-[#1763b5] shadow-[0_3px_8px_rgba(23,99,181,0.14)] hover:bg-[#0d519b] transition-all duration-200 cursor-pointer"
+    className="inline-flex items-center justify-center gap-2 min-h-[42px] px-4 sm:px-5 rounded-[7px] text-[13px] font-semibold text-white bg-brand-600 shadow-sm hover:bg-brand-700 transition-all duration-200 cursor-pointer"
   >
         Apply Now
         <span aria-hidden="true">→</span>
@@ -88,7 +88,7 @@ export const UniversityHero = ({
       <button
     type="button"
     onClick={onOpenBrochure}
-    className="inline-flex items-center justify-center gap-2 min-h-[42px] px-4 sm:px-5 rounded-[7px] text-[13px] font-semibold text-[#0b2342] bg-white border border-[#17375e] hover:bg-[#f5f8ff] transition-all duration-200 cursor-pointer"
+    className="inline-flex items-center justify-center gap-2 min-h-[42px] px-4 sm:px-5 rounded-[7px] text-[13px] font-semibold text-brand-900 bg-white border border-brand-900 hover:bg-brand-50 transition-all duration-200 cursor-pointer"
   >
         <Download className="w-[17px] h-[17px]" />
         Download Brochure
@@ -97,7 +97,7 @@ export const UniversityHero = ({
       {university.quickStats.emiStarting && <button
     type="button"
     onClick={onOpenEmi}
-    className="inline-flex items-center justify-center gap-2 min-h-[42px] px-4 sm:px-5 rounded-[7px] text-[13px] font-semibold text-[#115eaf] bg-[#f0f3ff] border border-[#d5e3ff] hover:bg-[#e6eeff] transition-all duration-200 cursor-pointer"
+    className="inline-flex items-center justify-center gap-2 min-h-[42px] px-4 sm:px-5 rounded-[7px] text-[13px] font-semibold text-brand-600 bg-brand-50 border border-brand-200 hover:bg-brand-100 transition-all duration-200 cursor-pointer"
   >
           <Calculator className="w-[16px] h-[16px]" />
           EMI from {university.quickStats.emiStarting}
@@ -106,13 +106,13 @@ export const UniversityHero = ({
       {onOpenCounselor && <button
     type="button"
     onClick={onOpenCounselor}
-    className="inline-flex items-center justify-center gap-2 min-h-[42px] px-4 sm:px-5 rounded-[7px] text-[13px] font-semibold text-[#0b2342] bg-white border border-[#d5e3ff] hover:bg-[#f8fbff] transition-all duration-200 cursor-pointer"
+    className="inline-flex items-center justify-center gap-2 min-h-[42px] px-4 sm:px-5 rounded-[7px] text-[13px] font-semibold text-brand-900 bg-white border border-brand-200 hover:bg-canvas transition-all duration-200 cursor-pointer"
   >
           <PhoneCall className="w-[16px] h-[16px] text-emerald-600" />
           Free Counselling
         </button>}
     </>;
-  const imageBlock = <div className="rounded-2xl overflow-hidden border border-[#e7eeff] shadow-xs bg-[#f9f9ff]">
+  const imageBlock = <div className="rounded-2xl overflow-hidden border border-brand-100 shadow-xs bg-canvas">
       {university.backgroundImage ? <img
     src={university.backgroundImage}
     alt={university.name}
@@ -121,32 +121,32 @@ export const UniversityHero = ({
   /> : <div className="w-full h-56 sm:h-64 lg:h-[330px] bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900" />}
     </div>;
   const stats = <>
-      <div className="p-4 bg-[#f8faff] rounded-xl border border-[#e7eeff]">
-        <span className="block text-[10px] text-[#43474d] font-medium uppercase tracking-[0.08em]">Fee Range</span>
-        <span className="block text-base font-bold text-[#000f22] tabular-nums mt-1">{university.quickStats.feeRange}</span>
+      <div className="p-4 bg-canvas rounded-xl border border-brand-100">
+        <span className="block text-[10px] text-ink-700 font-medium uppercase tracking-[0.08em]">Fee Range</span>
+        <span className="block text-base font-bold text-ink-900 tabular-nums mt-1">{university.quickStats.feeRange}</span>
       </div>
-      <div className="p-4 bg-[#f8faff] rounded-xl border border-[#e7eeff]">
-        <span className="block text-[10px] text-[#43474d] font-medium uppercase tracking-[0.08em]">Duration</span>
-        <span className="block text-base font-bold text-[#000f22] mt-1">{university.quickStats.duration}</span>
+      <div className="p-4 bg-canvas rounded-xl border border-brand-100">
+        <span className="block text-[10px] text-ink-700 font-medium uppercase tracking-[0.08em]">Duration</span>
+        <span className="block text-base font-bold text-ink-900 mt-1">{university.quickStats.duration}</span>
       </div>
-      <div className="p-4 bg-[#f8faff] rounded-xl border border-[#e7eeff]">
-        <span className="block text-[10px] text-[#43474d] font-medium uppercase tracking-[0.08em]">Mode</span>
-        <span className="block text-base font-bold text-[#000f22] mt-1 truncate" title={university.quickStats.mode}>{university.quickStats.mode}</span>
+      <div className="p-4 bg-canvas rounded-xl border border-brand-100">
+        <span className="block text-[10px] text-ink-700 font-medium uppercase tracking-[0.08em]">Mode</span>
+        <span className="block text-base font-bold text-ink-900 mt-1 truncate" title={university.quickStats.mode}>{university.quickStats.mode}</span>
       </div>
-      <div className="p-4 bg-[#f8faff] rounded-xl border border-[#e7eeff]">
-        <span className="block text-[10px] text-[#43474d] font-medium uppercase tracking-[0.08em]">Placement</span>
+      <div className="p-4 bg-canvas rounded-xl border border-brand-100">
+        <span className="block text-[10px] text-ink-700 font-medium uppercase tracking-[0.08em]">Placement</span>
         <span className="block text-base font-bold text-emerald-700 tabular-nums mt-1">{university.quickStats.placementRate}</span>
       </div>
-      <div className="p-4 bg-[#f8faff] rounded-xl border border-[#e7eeff]">
-        <span className="block text-[10px] text-[#43474d] font-medium uppercase tracking-[0.08em]">Highest</span>
-        <span className="block text-base font-bold text-[#115eaf] tabular-nums mt-1">{university.quickStats.highestPackage}</span>
+      <div className="p-4 bg-canvas rounded-xl border border-brand-100">
+        <span className="block text-[10px] text-ink-700 font-medium uppercase tracking-[0.08em]">Highest</span>
+        <span className="block text-base font-bold text-brand-600 tabular-nums mt-1">{university.quickStats.highestPackage}</span>
       </div>
-      <div className="p-4 bg-[#f8faff] rounded-xl border border-[#e7eeff]">
-        <span className="block text-[10px] text-[#43474d] font-medium uppercase tracking-[0.08em]">EMI</span>
-        <span className="block text-base font-bold text-[#000f22] tabular-nums mt-1">{university.quickStats.emiStarting}</span>
+      <div className="p-4 bg-canvas rounded-xl border border-brand-100">
+        <span className="block text-[10px] text-ink-700 font-medium uppercase tracking-[0.08em]">EMI</span>
+        <span className="block text-base font-bold text-ink-900 tabular-nums mt-1">{university.quickStats.emiStarting}</span>
       </div>
     </>;
-  return <div className="relative bg-white border-b border-[#e7eeff]">
+  return <div className="relative bg-white border-b border-brand-100">
       {
     /* ===== Mobile (<= 767px): logo + name, then image, then text ===== */
   }
@@ -154,10 +154,10 @@ export const UniversityHero = ({
         {topBadges}
 
         <div className="mt-4 flex items-start gap-3">
-          <div className="w-16 h-16 rounded-xl bg-white border border-[#e7eeff] shadow-sm p-2 flex items-center justify-center shrink-0">
+          <div className="w-16 h-16 rounded-xl bg-white border border-brand-100 shadow-sm p-2 flex items-center justify-center shrink-0">
             {logoImg}
           </div>
-<h1 className="min-w-0 flex-1 m-0 text-[clamp(20px,5.5vw,26px)] font-bold tracking-[-0.02em] leading-[1.15] text-[#071a34] break-words">
+<h1 className="min-w-0 flex-1 m-0 text-[clamp(20px,5.5vw,26px)] font-bold tracking-[-0.02em] leading-[1.15] text-ink-900 break-words">
             {university.name}
           </h1>
         </div>
@@ -170,7 +170,7 @@ export const UniversityHero = ({
 
         <div className="mt-5 flex flex-wrap items-center gap-2.5">{actions}</div>
 
-        <div className="mt-6 grid grid-cols-2 gap-3 pt-5 border-t border-[#e7eeff]">{stats}</div>
+        <div className="mt-6 grid grid-cols-2 gap-3 pt-5 border-t border-brand-100">{stats}</div>
       </div>
 
       {
@@ -183,13 +183,13 @@ export const UniversityHero = ({
               {topBadges}
 
               <div className="mt-4 flex items-start gap-3 sm:gap-4">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-white border border-[#e7eeff] shadow-sm p-2.5 flex items-center justify-center shrink-0">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-white border border-brand-100 shadow-sm p-2.5 flex items-center justify-center shrink-0">
                   {logoImg}
                 </div>
 
                 <div className="min-w-0 flex-1 space-y-2.5">
                   {metaRow}
-<h1 className="m-0 text-[clamp(22px,2vw,28px)] font-semibold tracking-[-0.01em] leading-[1.15] text-[#071a34] max-w-[28ch]">
+<h1 className="m-0 text-[clamp(22px,2vw,28px)] font-semibold tracking-[-0.01em] leading-[1.15] text-ink-900 max-w-[28ch]">
                     {university.name}
                   </h1>
                   {taglineEl}
@@ -203,7 +203,7 @@ export const UniversityHero = ({
             <div className="lg:col-span-5 lg:ml-2">{imageBlock}</div>
           </div>
 
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 pt-6 border-t border-[#e7eeff]">
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 pt-6 border-t border-brand-100">
             {stats}
           </div>
         </div>

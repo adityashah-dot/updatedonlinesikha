@@ -3,15 +3,15 @@ export const UniversityOverview = ({ university }) => {
   const overview = university?.overview || {};
   const introParagraphs = Array.isArray(overview.introParagraphs) ? overview.introParagraphs : [];
   const highlightsTable = Array.isArray(overview.highlightsTable) ? overview.highlightsTable : [];
-  return <section id="overview" className="page-section card bg-white rounded-2xl border border-[#e7eeff] shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
+  return <section id="overview" className="page-section card bg-white rounded-2xl border border-brand-100 shadow-xs scroll-mt-[110px] p-5 sm:p-6 md:p-8 space-y-6">
       {
     /* Editorial Title & Lead */
   }
       <div>
-<h2 className="text-xl sm:text-2xl font-bold text-[#000f22] tracking-[-0.02em] leading-snug">
+<h2 className="text-xl sm:text-2xl font-bold text-ink-900 tracking-[-0.02em] leading-snug">
           About {university.name}
         </h2>
-        <div className="mt-2 space-y-2.5 text-[#43474d] text-sm sm:text-base leading-relaxed max-w-4xl">
+        <div className="mt-2 space-y-2.5 text-ink-700 text-sm sm:text-base leading-relaxed max-w-4xl">
           {introParagraphs.map((paragraph, idx) => <p key={idx}>{paragraph}</p>)}
         </div>
       </div>
@@ -19,7 +19,7 @@ export const UniversityOverview = ({ university }) => {
       {
     /* Latest News / Updates Banner (if present) */
   }
-      {overview.latestNews && (overview.latestNews.title || overview.latestNews.description || overview.latestNews.date) && <div className="p-4 sm:p-5 rounded-xl bg-[#f0f3ff] border border-[#d5e3ff] flex items-start gap-3">
+      {overview.latestNews && (overview.latestNews.title || overview.latestNews.description || overview.latestNews.date) && <div className="p-4 sm:p-5 rounded-xl bg-brand-50 border border-brand-200 flex items-start gap-3">
           <div className="p-2 rounded-lg bg-blue-100 text-blue-800 shrink-0 mt-0.5">
             <BookOpen className="w-4 h-4" />
           </div>
@@ -29,10 +29,10 @@ export const UniversityOverview = ({ university }) => {
               <span aria-hidden="true" className="text-blue-300">·</span>
               <span className="text-xs text-blue-700">{university.overview.latestNews.date}</span>
             </div>
-            <h3 className="text-sm font-semibold text-[#000f22]">
+            <h3 className="text-sm font-semibold text-ink-900">
               {university.overview.latestNews.title}
             </h3>
-            <p className="text-xs sm:text-sm text-[#43474d]">
+            <p className="text-xs sm:text-sm text-ink-700">
               {university.overview.latestNews.description}
             </p>
           </div>
@@ -43,31 +43,31 @@ export const UniversityOverview = ({ university }) => {
   }
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold text-[#000f22]">
+          <h3 className="text-lg font-semibold text-ink-900">
             Key Institutional Highlights
           </h3>
-          <span className="text-xs text-[#43474d] font-medium">
+          <span className="text-xs text-ink-700 font-medium">
             Verified {university.verifiedYear || "2026"}
           </span>
         </div>
 
-        <div className="bg-white border border-[#e7eeff] rounded-xl overflow-hidden shadow-xs">
-          <div className="divide-y divide-[#e7eeff]">
+        <div className="bg-white border border-brand-100 rounded-xl overflow-hidden shadow-xs">
+          <div className="divide-y divide-brand-100">
             {highlightsTable.map((item, idx) => <div
     key={idx}
-    className="grid grid-cols-1 sm:grid-cols-3 p-3.5 sm:px-6 hover:bg-[#f0f3ff]/60 transition-colors gap-1 sm:gap-4 items-baseline"
+    className="grid grid-cols-1 sm:grid-cols-3 p-3.5 sm:px-6 hover:bg-brand-50/60 transition-colors gap-1 sm:gap-4 items-baseline"
   >
-                <div className="text-xs sm:text-sm font-medium text-[#43474d]">
+                <div className="text-xs sm:text-sm font-medium text-ink-700">
                   {item.label}
                 </div>
-                <div className="sm:col-span-2 text-xs sm:text-sm font-semibold text-[#000f22]">
+                <div className="sm:col-span-2 text-xs sm:text-sm font-semibold text-ink-900">
                   {item.value}
                 </div>
               </div>)}
           </div>
         </div>
 
-        {overview.highlightsSummary && <p className="text-xs text-[#43474d] leading-normal">
+        {overview.highlightsSummary && <p className="text-xs text-ink-700 leading-normal">
             {overview.highlightsSummary}
           </p>}
       </div>

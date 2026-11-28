@@ -51,7 +51,7 @@ export const AMITY_PAGE_CONTENT = {
   paymentOptions: [
     "Semester-wise payment",
     "Annual or Total fee payment",
-    "Zero-Cost EMI",
+    "No-cost EMI",
     "Debit Card",
     "Net Banking",
     "Credit Card",
@@ -308,7 +308,7 @@ export const AMITY_PAGE_CONTENT = {
       }
     ]
   },
-  blogsIntro: "Want to learn more before you apply? Our blog has a wealth of information to help you.",
+  blogsIntro: "Guides to help you choose a programme and university.",
   compareIntro: "Choosing a regular university can be tough. We're here to make it simple.",
   faqHeading: "Amity University Online FAQs",
   faqs: [
@@ -614,7 +614,7 @@ export const AMITY_PAGE_CONTENT = {
       paymentOptions: [
         "Semester-wise payment",
         "Annual or Total fee payment",
-        "Zero-Cost EMI",
+        "No-cost EMI",
         "Debit Card",
         "Net Banking",
         "Credit Card",

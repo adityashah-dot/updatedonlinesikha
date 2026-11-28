@@ -124,10 +124,10 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
   }
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div>
-          <h2 className="font-bold text-[#000f22] dark:text-slate-100 tracking-tight">
+          <h2 className="font-bold text-ink-900 dark:text-slate-100 tracking-tight">
             What Our Students are Saying About us
           </h2>
-          <p className="text-xs sm:text-sm text-[#43474d] dark:text-slate-400 mt-1 max-w-2xl font-normal leading-relaxed">
+          <p className="text-xs sm:text-sm text-ink-700 dark:text-slate-400 mt-1 max-w-2xl font-normal leading-relaxed">
             See how working professionals and fresh graduates across India earned UGC-entitled degrees, achieved promotions, and transitioned into top MNCs without leaving their jobs.
           </p>
         </div>
@@ -140,28 +140,28 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
             <button
     type="button"
     onClick={() => setActiveCategory("all")}
-    className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium rounded-md sm:rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[32px] ${activeCategory === "all" ? "bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold" : "text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
+    className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium rounded-md sm:rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[32px] ${activeCategory === "all" ? "bg-white dark:bg-ink-900 text-brand-600 dark:text-blue-400 shadow-xs font-semibold" : "text-ink-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
   >
               All Programs
             </button>
             <button
     type="button"
     onClick={() => setActiveCategory("management")}
-    className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium rounded-md sm:rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[32px] ${activeCategory === "management" ? "bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold" : "text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
+    className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium rounded-md sm:rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[32px] ${activeCategory === "management" ? "bg-white dark:bg-ink-900 text-brand-600 dark:text-blue-400 shadow-xs font-semibold" : "text-ink-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
   >
               Management (MBA/BBA)
             </button>
             <button
     type="button"
     onClick={() => setActiveCategory("tech")}
-    className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium rounded-md sm:rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[32px] ${activeCategory === "tech" ? "bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold" : "text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
+    className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium rounded-md sm:rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[32px] ${activeCategory === "tech" ? "bg-white dark:bg-ink-900 text-brand-600 dark:text-blue-400 shadow-xs font-semibold" : "text-ink-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
   >
               Technology (MCA/BCA)
             </button>
             <button
     type="button"
     onClick={() => setActiveCategory("commerce")}
-    className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium rounded-md sm:rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[32px] ${activeCategory === "commerce" ? "bg-white dark:bg-[#121c2e] text-[#115eaf] dark:text-blue-400 shadow-xs font-semibold" : "text-[#43474d] dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
+    className={`px-2.5 py-1 text-[11px] sm:text-xs font-medium rounded-md sm:rounded-lg transition-all cursor-pointer whitespace-nowrap shrink-0 min-h-[32px] ${activeCategory === "commerce" ? "bg-white dark:bg-ink-900 text-brand-600 dark:text-blue-400 shadow-xs font-semibold" : "text-ink-700 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"}`}
   >
               Commerce (M.Com)
             </button>
@@ -172,7 +172,7 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
       {
     /* Trust Highlights Bar */
   }
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-3.5 bg-slate-50 dark:bg-[#121c2e]/70 border border-slate-200 dark:border-[#24344d] rounded-xl text-xs">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-3.5 bg-slate-50 dark:bg-ink-900/70 border border-slate-200 dark:border-ink-700 rounded-xl text-xs">
         <div className="flex items-center gap-2">
           <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
           <span className="text-slate-700 dark:text-slate-300">
@@ -229,13 +229,13 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
                     </div>
 
                     <div className="min-w-0 flex-1">
-                      <h3 className="block truncate text-[13.5px] sm:text-base font-bold text-[#000f22] dark:text-slate-100 tracking-tight leading-snug" title={item.name}>
+                      <h3 className="block truncate text-[13.5px] sm:text-base font-bold text-ink-900 dark:text-slate-100 tracking-tight leading-snug" title={item.name}>
                         {item.name}
                       </h3>
-                      <p className="block truncate text-[11px] sm:text-xs text-[#115eaf] dark:text-blue-400 font-medium" title={item.currentRole}>
+                      <p className="block truncate text-[11px] sm:text-xs text-brand-600 dark:text-blue-400 font-medium" title={item.currentRole}>
                         {item.currentRole}
                       </p>
-                      <p className="block truncate text-[10px] sm:text-[11px] text-[#74777e] dark:text-slate-400" title={item.company}>
+                      <p className="block truncate text-[10px] sm:text-[11px] text-ink-500 dark:text-slate-400" title={item.company}>
                         {item.company}
                       </p>
                     </div>
@@ -257,7 +257,7 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
                 {
       /* Course & University Metadata */
     }
-                <div className="flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[11px] sm:text-xs text-[#555960] dark:text-slate-400 pb-2 mb-2 border-b border-slate-100 dark:border-slate-800/80">
+                <div className="flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[11px] sm:text-xs text-ink-700 dark:text-slate-400 pb-2 mb-2 border-b border-slate-100 dark:border-slate-800/80">
                   <span className="block max-w-full truncate font-semibold leading-snug text-slate-800 dark:text-slate-200" title={item.courseName}>
                     {item.courseName}
                   </span>
@@ -291,7 +291,7 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
                 <button
       type="button"
       onClick={() => setSelectedStory(item)}
-      className="inline-flex items-center gap-1 font-semibold text-[#115eaf] dark:text-blue-400 hover:text-[#084a8c] dark:hover:text-blue-300 transition-colors cursor-pointer group-hover:underline"
+      className="inline-flex items-center gap-1 font-semibold text-brand-600 dark:text-blue-400 hover:text-brand-700 dark:hover:text-blue-300 transition-colors cursor-pointer group-hover:underline"
     >
                   <span>Read Full Journey</span>
                   <ExternalLink className="w-3 h-3" />
@@ -301,7 +301,7 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
                   <button
       type="button"
       onClick={() => toggleLike(item.id)}
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer border ${isLiked ? "bg-blue-50 dark:bg-blue-950/60 border-blue-200 dark:border-blue-800 text-[#115eaf] dark:text-blue-300" : "border-slate-200 dark:border-slate-700 text-[#555960] dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800"}`}
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-all cursor-pointer border ${isLiked ? "bg-blue-50 dark:bg-blue-950/60 border-blue-200 dark:border-blue-800 text-brand-600 dark:text-blue-300" : "border-slate-200 dark:border-slate-700 text-ink-700 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800"}`}
       title="Mark review as helpful"
     >
                     <ThumbsUp className={`w-3 h-3 ${isLiked ? "fill-current" : ""}`} />
@@ -316,16 +316,16 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
       {
     /* Bottom Counselor Connect CTA Strip */
   }
-      <div className="-mt-[20px] p-4 sm:p-5 rounded-xl bg-gradient-to-r from-blue-50 via-indigo-50/50 to-slate-50 dark:from-slate-900/80 dark:via-[#13233c] dark:to-slate-900/80 border border-blue-100 dark:border-[#223552] flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="-mt-[20px] p-4 sm:p-5 rounded-xl bg-gradient-to-r from-blue-50 via-indigo-50/50 to-slate-50 dark:from-slate-900/80 dark:via-brand-900 dark:to-slate-900/80 border border-blue-100 dark:border-brand-900 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-[#115eaf] text-white flex items-center justify-center shrink-0 shadow-sm">
+          <div className="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center shrink-0 shadow-sm">
             <GraduationCap className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-[#000f22] dark:text-slate-100">
+            <h4 className="text-sm font-bold text-ink-900 dark:text-slate-100">
               Want to speak with someone who completed this degree?
             </h4>
-            <p className="text-xs text-[#555960] dark:text-slate-400">
+            <p className="text-xs text-ink-700 dark:text-slate-400">
               Connect with an unbiased university admissions mentor for curriculum breakdowns and EMI estimates.
             </p>
           </div>
@@ -334,7 +334,7 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
         {onOpenCounseling && <button
     type="button"
     onClick={onOpenCounseling}
-    className="w-full sm:w-auto px-4 py-2 bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-semibold rounded-lg shadow-sm hover:shadow transition-all shrink-0 cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"
+    className="w-full sm:w-auto px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold rounded-lg shadow-sm hover:shadow transition-all shrink-0 cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"
   >
             <span>Talk to an Academic Advisor</span>
             <Sparkles className="w-3.5 h-3.5" />
@@ -349,7 +349,7 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
     onClick={() => setSelectedStory(null)}
   >
           <div
-    className="w-full max-w-[760px] bg-white dark:bg-[#121c2e] rounded-2xl border border-slate-200 dark:border-[#24344d] shadow-2xl overflow-hidden p-4 sm:p-5 space-y-3"
+    className="w-full max-w-[760px] bg-white dark:bg-ink-900 rounded-2xl border border-slate-200 dark:border-ink-700 shadow-2xl overflow-hidden p-4 sm:p-5 space-y-3"
     onClick={(e) => e.stopPropagation()}
   >
             {
@@ -357,7 +357,7 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
     }
             <div className="flex items-start justify-between gap-3">
               <div className="flex items-center gap-3">
-                <div className="relative shrink-0 rounded-full overflow-hidden border-2 border-[#115eaf] bg-slate-100 shadow-sm">
+                <div className="relative shrink-0 rounded-full overflow-hidden border-2 border-brand-600 bg-slate-100 shadow-sm">
                   <img
     src={selectedStory.avatarUrl}
     alt={selectedStory.name}
@@ -365,10 +365,10 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
   />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-xl font-bold text-[#000f22] dark:text-white leading-[1.1] tracking-[-0.02em]">
+                  <h3 className="text-xl font-bold text-ink-900 dark:text-white leading-[1.1] tracking-[-0.02em]">
                     {selectedStory.name}
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-[#115eaf] dark:text-blue-400 font-semibold leading-snug">
+                  <p className="text-[11px] sm:text-xs text-brand-600 dark:text-blue-400 font-semibold leading-snug">
                     {selectedStory.currentRole} · {selectedStory.company}
                   </p>
                   <p className="text-[10.5px] text-slate-500 dark:text-slate-400 leading-snug">
@@ -420,7 +420,7 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
                 {selectedStory.fullStory}
               </p>
-              <blockquote className="p-3 rounded-lg bg-blue-50/70 dark:bg-blue-950/40 border-l-4 border-[#115eaf] text-sm sm:text-base text-slate-700 dark:text-slate-300 italic leading-relaxed">
+              <blockquote className="p-3 rounded-lg bg-blue-50/70 dark:bg-blue-950/40 border-l-4 border-brand-600 text-sm sm:text-base text-slate-700 dark:text-slate-300 italic leading-relaxed">
                 "{selectedStory.quote}"
               </blockquote>
             </div>
@@ -442,7 +442,7 @@ export const StudentTestimonials = ({ onOpenCounseling }) => {
       setSelectedStory(null);
       onOpenCounseling();
     }}
-    className="px-4 py-2 text-sm font-semibold rounded-lg bg-[#115eaf] text-white hover:bg-[#084a8c] transition-colors cursor-pointer shadow-xs"
+    className="px-4 py-2 text-sm font-semibold rounded-lg bg-brand-600 text-white hover:bg-brand-700 transition-colors cursor-pointer shadow-xs"
   >
                   Explore Similar Programs
                 </button>}

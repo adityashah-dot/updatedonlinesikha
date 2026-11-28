@@ -112,20 +112,20 @@ export const BrochureModal = ({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-        className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-[#e7eeff] max-h-[92vh] overflow-y-auto relative"
+        className="bg-white rounded-2xl max-w-md w-full shadow-2xl border border-brand-100 max-h-[92vh] overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 py-5 border-b border-[#e7eeff] flex items-center justify-between bg-[#f0f3ff]">
+        <div className="px-6 py-5 border-b border-brand-100 flex items-center justify-between bg-brand-50">
           <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-xl bg-[#115eaf] text-white flex items-center justify-center shadow-xs shrink-0">
+            <div className="w-11 h-11 rounded-xl bg-brand-600 text-white flex items-center justify-center shadow-xs shrink-0">
               <Download className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-[#000f22] font-sans leading-tight">
+              <h3 className="text-base sm:text-lg font-bold text-ink-900 font-sans leading-tight">
                 {currentCourse ? `Download ${currentCourse.code} Syllabus PDF` : "Download Complete Fee Brochure"}
               </h3>
-              <p className="text-xs sm:text-[13px] text-[#43474d] mt-0.5">
+              <p className="text-xs sm:text-[13px] text-ink-700 mt-0.5">
                 Official curriculum handbook with semester credit breakdown
               </p>
             </div>
@@ -133,7 +133,7 @@ export const BrochureModal = ({
           <button
             onClick={onClose}
             aria-label="Close modal"
-            className="p-2 min-h-[44px] text-[#74777e] hover:text-[#000f22] rounded-lg hover:bg-white transition-colors"
+            className="p-2 min-h-[44px] text-ink-500 hover:text-ink-900 rounded-lg hover:bg-white transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -149,11 +149,11 @@ export const BrochureModal = ({
               )}
               {/* Program Curriculum Dropdown */}
               <div className="relative" ref={dropdownRef}>
-                <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5 flex items-center justify-between">
+                <label className="block text-xs sm:text-[13px] font-semibold text-ink-900 mb-1.5 flex items-center justify-between">
                   <span>
-                    Select Program Curriculum <span className="text-[#e11d48]">*</span>
+                    Select Program Curriculum <span className="text-danger-600">*</span>
                   </span>
-                  <span className="text-[11px] font-normal text-[#74777e]">
+                  <span className="text-[11px] font-normal text-ink-500">
                     {courseId === "all" ? "All Programs" : currentCourse?.code || "Specific Course"}
                   </span>
                 </label>
@@ -164,26 +164,26 @@ export const BrochureModal = ({
                   onClick={() => setIsDropdownOpen((prev) => !prev)}
                   aria-expanded={isDropdownOpen}
                   aria-haspopup="listbox"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#c4c6ce] hover:border-[#115eaf] bg-white text-left transition-all focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 shadow-xs flex items-center justify-between gap-2.5 cursor-pointer"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-line-strong hover:border-brand-600 bg-white text-left transition-all focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 shadow-xs flex items-center justify-between gap-2.5 cursor-pointer"
                 >
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-8 h-8 rounded-lg bg-[#e7eeff] text-[#115eaf] flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center shrink-0">
                       <GraduationCap className="w-4 h-4" />
                     </div>
                     <div className="min-w-0">
-                      <span className="block text-sm font-semibold text-[#000f22] truncate">
+                      <span className="block text-sm font-semibold text-ink-900 truncate">
                         {selectedTitle}
                       </span>
                       {selectedSubtitle && (
-                        <span className="block text-[11px] text-[#74777e] font-normal">
+                        <span className="block text-[11px] text-ink-500 font-normal">
                           {selectedSubtitle}
                         </span>
                       )}
                     </div>
                   </div>
                   <ChevronDown
-                    className={`w-4 h-4 text-[#74777e] shrink-0 transition-transform duration-200 ${
-                      isDropdownOpen ? "rotate-180 text-[#115eaf]" : ""
+                    className={`w-4 h-4 text-ink-500 shrink-0 transition-transform duration-200 ${
+                      isDropdownOpen ? "rotate-180 text-brand-600" : ""
                     }`}
                   />
                 </button>
@@ -192,7 +192,7 @@ export const BrochureModal = ({
                 {isDropdownOpen && (
                   <div
                     role="listbox"
-                    className="absolute left-0 right-0 top-full mt-1.5 z-40 bg-white border border-[#dfe9ff] rounded-xl shadow-2xl overflow-hidden max-h-64 overflow-y-auto p-1.5 space-y-1 animate-in fade-in duration-150"
+                    className="absolute left-0 right-0 top-full mt-1.5 z-40 bg-white border border-brand-200 rounded-xl shadow-2xl overflow-hidden max-h-64 overflow-y-auto p-1.5 space-y-1 animate-in fade-in duration-150"
                   >
                     {/* All Prospectus Option */}
                     <button
@@ -205,16 +205,16 @@ export const BrochureModal = ({
                       }}
                       className={`w-full px-3 py-2 rounded-lg flex items-center justify-between gap-2.5 text-left transition-colors cursor-pointer ${
                         courseId === "all"
-                          ? "bg-[#e7eeff] text-[#115eaf] font-semibold"
-                          : "hover:bg-[#f0f4f8] text-[#000f22]"
+                          ? "bg-brand-100 text-brand-600 font-semibold"
+                          : "hover:bg-canvas text-ink-900"
                       }`}
                     >
                       <div className="flex items-center gap-2.5 min-w-0">
                         <div
                           className={`w-7 h-7 rounded-md flex items-center justify-center shrink-0 ${
                             courseId === "all"
-                              ? "bg-[#115eaf] text-white"
-                              : "bg-[#f0f3ff] text-[#115eaf]"
+                              ? "bg-brand-600 text-white"
+                              : "bg-brand-50 text-brand-600"
                           }`}
                         >
                           <FileText className="w-3.5 h-3.5" />
@@ -223,17 +223,17 @@ export const BrochureModal = ({
                           <span className="text-sm font-semibold block truncate">
                             Complete University Prospectus & All 9 Syllabi
                           </span>
-                          <span className="text-xs text-[#74777e] font-normal block">
+                          <span className="text-xs text-ink-500 font-normal block">
                             Full curriculum handbook with all degree programs
                           </span>
                         </div>
                       </div>
                       {courseId === "all" && (
-                        <Check className="w-4 h-4 text-[#115eaf] shrink-0" />
+                        <Check className="w-4 h-4 text-brand-600 shrink-0" />
                       )}
                     </button>
 
-                    <div className="border-t border-[#f0f3ff] my-1" />
+                    <div className="border-t border-brand-50 my-1" />
 
                     {/* Individual Courses */}
                     {COURSES_DATA.map((c) => {
@@ -250,16 +250,16 @@ export const BrochureModal = ({
                           }}
                           className={`w-full px-3 py-2 rounded-lg flex items-center justify-between gap-2.5 text-left transition-colors cursor-pointer ${
                             isSelected
-                              ? "bg-[#e7eeff] text-[#115eaf] font-semibold"
-                              : "hover:bg-[#f0f4f8] text-[#000f22]"
+                              ? "bg-brand-100 text-brand-600 font-semibold"
+                              : "hover:bg-canvas text-ink-900"
                           }`}
                         >
                           <div className="flex items-center gap-2.5 min-w-0">
                             <div
                               className={`w-7 h-7 rounded-md flex items-center justify-center shrink-0 text-[11px] font-bold ${
                                 isSelected
-                                  ? "bg-[#115eaf] text-white"
-                                  : "bg-[#f0f3ff] text-[#115eaf]"
+                                  ? "bg-brand-600 text-white"
+                                  : "bg-brand-50 text-brand-600"
                               }`}
                             >
                               {c.code || c.id.toUpperCase()}
@@ -268,13 +268,13 @@ export const BrochureModal = ({
                               <span className="text-sm font-semibold block truncate">
                                 {c.name}
                               </span>
-                              <span className="text-xs text-[#74777e] font-normal block">
+                              <span className="text-xs text-ink-500 font-normal block">
                                 {c.duration} • {c.level || "Degree"}
                               </span>
                             </div>
                           </div>
                           {isSelected && (
-                            <Check className="w-4 h-4 text-[#115eaf] shrink-0" />
+                            <Check className="w-4 h-4 text-brand-600 shrink-0" />
                           )}
                         </button>
                       );
@@ -285,11 +285,11 @@ export const BrochureModal = ({
 
               {/* Email Address with Form Icon */}
               <div>
-                <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
-                  Email Address (To receive PDF copy) <span className="text-[#e11d48]">*</span>
+                <label className="block text-xs sm:text-[13px] font-semibold text-ink-900 mb-1.5">
+                  Email Address (To receive PDF copy) <span className="text-danger-600">*</span>
                 </label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#74777e]">
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-ink-500">
                     <Mail className="w-4 h-4" />
                   </div>
                   <input
@@ -297,20 +297,20 @@ export const BrochureModal = ({
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="your.email@example.com"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all bg-white"
+                    aria-label="your.email@example.com" placeholder="your.email@example.com"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-line-strong text-sm font-medium text-ink-900 placeholder:text-ink-500 focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition-all bg-white"
                   />
                 </div>
               </div>
 
               {/* Mobile Phone with Form Icon */}
               <div>
-                <label className="block text-xs sm:text-[13px] font-semibold text-[#1e293b] mb-1.5">
-                  Mobile Number (+91) (For SMS Download Link) <span className="text-[#e11d48]">*</span>
+                <label className="block text-xs sm:text-[13px] font-semibold text-ink-900 mb-1.5">
+                  Mobile Number (+91) (For SMS Download Link) <span className="text-danger-600">*</span>
                 </label>
                 <div className="relative flex items-center">
-                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#000f22] font-bold text-xs gap-1.5">
-                    <Phone className="w-4 h-4 text-[#74777e]" />
+                  <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-ink-900 font-bold text-xs gap-1.5">
+                    <Phone className="w-4 h-4 text-ink-500" />
                     <span>+91</span>
                   </div>
                   <input
@@ -322,18 +322,18 @@ export const BrochureModal = ({
                     title="10-digit Indian mobile number starting with 6, 7, 8, 9, or 2"
                     value={phone}
                     onChange={(e) => setPhone(sanitizeIndianPhone(e.target.value))}
-                    placeholder="10-digit Mobile Number"
-                    className="w-full pl-16 pr-4 py-2.5 rounded-xl border border-[#c4c6ce] text-sm font-medium text-[#000f22] placeholder:text-[#74777e] focus:outline-none focus:border-[#115eaf] focus:ring-2 focus:ring-[#115eaf]/20 transition-all bg-white"
+                    aria-label="Mobile number" placeholder="10-digit Mobile Number"
+                    className="w-full pl-16 pr-4 py-2.5 rounded-xl border border-line-strong text-sm font-medium text-ink-900 placeholder:text-ink-500 focus:outline-none focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition-all bg-white"
                   />
                 </div>
               </div>
 
               {/* Security / Guarantee Badge */}
-              <div className="p-3 rounded-xl bg-[#f0f3ff] border border-[#e7eeff] flex items-center gap-2.5 text-xs text-[#43474d]">
+              <div className="p-3 rounded-xl bg-brand-50 border border-brand-100 flex items-center gap-2.5 text-xs text-ink-700">
                 <div className="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0">
                   <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
                 </div>
-                <span className="font-medium text-[#2d3748]">
+                <span className="font-medium text-ink-700">
                   100% Free Instant Download. Official PDF dispatched instantly.
                 </span>
               </div>
@@ -341,7 +341,7 @@ export const BrochureModal = ({
               {/* Submit CTA */}
               <button
                 type="submit"
-                className="w-full py-3 rounded-xl bg-[#115eaf] text-white font-semibold text-sm shadow hover:bg-[#004689] active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                className="w-full py-3 rounded-xl bg-brand-600 text-white font-semibold text-sm shadow hover:bg-brand-700 active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Download className="w-4 h-4" />
                 <span>Download Brochure Now</span>
@@ -353,16 +353,16 @@ export const BrochureModal = ({
                 <CheckCircle className="w-8 h-8" />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-[#000f22] font-sans">
+                <h4 className="text-lg font-bold text-ink-900 font-sans">
                   Download Started!
                 </h4>
-                <p className="text-xs sm:text-sm text-[#43474d] mt-1">
+                <p className="text-xs sm:text-sm text-ink-700 mt-1">
                   Your PDF copy has also been dispatched to <strong>{email}</strong>.
                 </p>
               </div>
               <button
                 onClick={handleReset}
-                className="px-6 py-2.5 min-h-[44px] rounded-xl bg-[#115eaf] text-white font-semibold text-xs sm:text-sm shadow hover:bg-[#004689] transition-all cursor-pointer"
+                className="px-6 py-2.5 min-h-[44px] rounded-xl bg-brand-600 text-white font-semibold text-xs sm:text-sm shadow hover:bg-brand-700 transition-all cursor-pointer"
               >
                 Close Window
               </button>

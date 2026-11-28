@@ -56,7 +56,7 @@ export const UniversityPage = ({
       window.scrollTo({ top: topOffset, behavior: "smooth" });
     }
   };
-  return <div className="min-h-screen bg-[#f8fafc] text-slate-900">
+  return <div className="min-h-screen bg-canvas text-slate-900">
       {
     /* 1. Master University Header & Hero */
   }
@@ -182,7 +182,7 @@ export const UniversityPage = ({
             <div className="p-4 rounded-xl bg-slate-100/80 border border-slate-200 text-xs text-slate-600 space-y-2">
               <div className="flex items-center gap-1.5 font-semibold text-slate-800">
                 <ShieldCheck className="w-4 h-4 text-blue-700" />
-                <span>Verified Admissions Partner</span>
+                <span>Admissions guidance</span>
               </div>
               <p className="leading-relaxed">
                 Online Siksha is a direct education discovery portal providing verified, official tuition fees,

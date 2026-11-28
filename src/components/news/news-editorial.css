@@ -6,8 +6,8 @@
 
 .news-page {
   font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #111c2d;
-  background-color: #f9f9ff;
+  color: var(--color-ink-900);
+  background-color: var(--color-canvas);
   min-height: 100vh;
 }
 
@@ -18,7 +18,7 @@ h1.news-listing-h1 {
   line-height: 1.15 !important;
   font-weight: 700 !important;
   letter-spacing: -0.02em !important;
-  color: #000f22 !important;
+  color: var(--color-ink-900) !important;
   margin-top: 0 !important;
 }
 
@@ -141,7 +141,7 @@ h1.news-detail-h1 {
   line-height: 1.25 !important;
   font-weight: 700 !important;
   letter-spacing: -0.015em !important;
-  color: #000f22 !important;
+  color: var(--color-ink-900) !important;
   margin-top: 0 !important;
   word-break: break-word !important;
 }
@@ -165,8 +165,8 @@ h1.news-detail-h1 {
   width: 100%;
   aspect-ratio: 16 / 9;
   max-height: 380px;
-  background-color: #f8fbff;
-  border: 1px solid #e7eeff;
+  background-color: var(--color-canvas);
+  border: 1px solid var(--color-brand-100);
   border-radius: 1rem;
   overflow: hidden;
 }
@@ -202,7 +202,7 @@ h1.news-detail-h1 {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 18px 0;
-  border: 1px solid #dfe9ff;
+  border: 1px solid var(--color-brand-200);
   border-radius: 12px;
   background: #ffffff;
 }
@@ -226,14 +226,14 @@ h1.news-detail-h1 {
 }
 
 .news-prose h2 {
-  color: #000f22;
+  color: var(--color-ink-900);
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.015em;
   margin-top: 1.25rem;
   margin-bottom: 0.75rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #f0f4f8;
+  border-bottom: 1px solid var(--color-canvas);
 }
 
 @media (min-width: 640px) {
@@ -256,7 +256,7 @@ h1.news-detail-h1 {
 }
 
 .news-prose strong {
-  color: #000f22;
+  color: var(--color-ink-900);
   font-weight: 600;
 }
 
@@ -280,7 +280,7 @@ h1.news-detail-h1 {
 }
 
 .news-prose a {
-  color: #115eaf;
+  color: var(--color-brand-600);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -288,20 +288,20 @@ h1.news-detail-h1 {
 }
 
 .news-prose a:hover {
-  color: #084a8c;
+  color: var(--color-brand-700);
 }
 
 .news-prose blockquote {
-  border-left: 4px solid #115eaf;
-  background-color: #f8fbff;
+  border-left: 4px solid var(--color-brand-600);
+  background-color: var(--color-canvas);
   padding: 0.75rem 1rem;
   border-radius: 0 0.5rem 0.5rem 0;
   margin: 1.25rem 0;
   font-style: italic;
-  color: #1f2937;
+  color: var(--color-ink-700);
 }
 
-/* Scoped Table Styles inside .news-prose — Matches img2 (#0b2540 header + clean row gap) */
+/* Scoped Table Styles inside .news-prose — Matches img2 (var(--color-brand-900) header + clean row gap) */
 .news-prose table,
 .news-table-wrap table,
 .news-prose .bd-table-wrap table {
@@ -330,7 +330,7 @@ h1.news-detail-h1 {
 .news-prose tr.header-row th,
 .news-prose tr.header-row td,
 .news-prose table:not(:has(thead)) tbody tr:first-child td {
-  background-color: #0b62be !important;
+  background-color: var(--color-brand-600) !important;
   color: #ffffff !important;
   font-weight: 700 !important;
   padding: 12px 16px !important;
@@ -338,7 +338,7 @@ h1.news-detail-h1 {
   font-size: 13px;
   letter-spacing: 0 !important;
   border: 0 !important;
-  border-bottom: 1px solid #0b62be !important;
+  border-bottom: 1px solid var(--color-brand-600) !important;
   vertical-align: middle;
 }
 
@@ -367,11 +367,11 @@ h1.news-detail-h1 {
 .news-table-wrap td,
 .news-prose .bd-table-wrap td {
   padding: 14px 16px;
-  border-bottom: 1px solid #e7eeff;
+  border-bottom: 1px solid var(--color-brand-100);
   border-left: 0;
   border-right: 0;
   border-top: 0;
-  color: #43474d;
+  color: var(--color-ink-700);
   font-weight: 400;
   vertical-align: middle;
   background-color: #ffffff;
@@ -390,7 +390,7 @@ h1.news-detail-h1 {
   background-color: #ffffff !important;
 }
 
-/* Ensure the header row stays solid #0b62be */
+/* Ensure the header row stays solid var(--color-brand-600) */
 .news-prose thead tr th,
 .news-prose thead tr td,
 .news-table-wrap thead tr th,
@@ -398,7 +398,7 @@ h1.news-detail-h1 {
 .news-prose tbody tr.header-row th,
 .news-prose tbody tr.header-row td,
 .news-prose table:not(:has(thead)) tbody tr:first-child td {
-  background-color: #0b62be !important;
+  background-color: var(--color-brand-600) !important;
   color: #ffffff !important;
 }
 
@@ -414,19 +414,19 @@ h1.news-detail-h1 {
 .news-table-wrap tbody tr:not(.header-row) td:first-child,
 .news-prose .bd-table-wrap tbody tr:not(.header-row) td:first-child {
   font-weight: 700;
-  color: #000f22;
+  color: var(--color-ink-900);
 }
 
 .news-prose tbody tr:not(.header-row) td:first-child p,
 .news-prose tbody tr:not(.header-row) td:first-child strong {
   font-weight: 700;
-  color: #000f22;
+  color: var(--color-ink-900);
 }
 
 .news-prose td a,
 .news-table-wrap td a,
 .news-prose .bd-table-wrap td a {
-  color: #0b4fa8;
+  color: var(--color-brand-700);
   opacity: 0.8;
   font-weight: 600;
   text-decoration: none;
@@ -461,5 +461,5 @@ h1.news-detail-h1 {
 
 .news-prose table.table-3col tbody tr:not(.header-row) td:nth-child(3) {
   font-weight: 500;
-  color: #43474d;
+  color: var(--color-ink-700);
 }

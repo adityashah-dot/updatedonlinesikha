@@ -28,24 +28,24 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
     ...(data.approvals || []).filter((a) => /AICTE/i.test(a)).slice(0, 1),
   ].filter((badge, index, list) => badge && list.indexOf(badge) === index);
 
+  // Only show stats we actually have data for — never render "—" placeholders.
   const stats = [
-    { value: data.feeRange || "—", label: "Fee Range", tone: "text-[#000f22]" },
-    { value: data.duration || "—", label: "Duration", tone: "text-[#115eaf]" },
+    { value: data.feeRange, label: "Fee Range", tone: "text-ink-900" },
+    { value: data.duration, label: "Duration", tone: "text-brand-600" },
     {
-      value:
-        data.collegeMode === "online" ? "Online" : data.collegeMode || "—",
-      label: "Semester-based",
-      tone: "text-[#000f22]",
+      value: data.collegeMode === "online" ? "Online" : data.collegeMode,
+      label: "Mode",
+      tone: "text-ink-900",
     },
     {
-      value: data.placements?.stats?.placementRate || "—",
+      value: data.placements?.stats?.placementRate,
       label: "Placement Rate",
-      tone: "text-[#B45309]",
+      tone: "text-accent-700",
     },
-  ];
+  ].filter((stat) => stat.value && String(stat.value).trim() && String(stat.value).trim() !== "—");
 
   return (
-    <section className="bg-white text-[#000f22] border-b border-[#e7eeff]">
+    <section className="bg-white text-ink-900 border-b border-brand-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
         {/* Logo + Title + Badges */}
         <div className="flex flex-row items-start gap-3 sm:gap-5">
@@ -53,7 +53,7 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
             <img
               src={logo}
               alt={`${collegeTitle} Logo`}
-              className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-2xl bg-white border border-[#e7eeff] p-1.5 shadow-sm shrink-0"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-2xl bg-white border border-brand-100 p-1.5 shadow-sm shrink-0"
               onError={(e) => {
                 e.target.style.display = "none";
               }}
@@ -61,7 +61,7 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
           )}
 
           <div className="min-w-0">
-            <h1 className="section-title font-bold tracking-tight font-sans text-[#000f22]">
+            <h1 className="section-title font-bold tracking-tight font-sans text-ink-900">
               {collegeTitle}
             </h1>
 
@@ -70,7 +70,7 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
                 {badges.map((badge) => (
                   <span
                     key={badge}
-                    className="px-2.5 py-1 rounded-full bg-[#f0f3ff] border border-[#d5e3ff] text-[#115eaf] text-[11px] font-bold"
+                    className="px-2.5 py-1 rounded-full bg-brand-50 border border-brand-200 text-brand-600 text-[11px] font-bold"
                   >
                     {badge}
                   </span>
@@ -84,13 +84,13 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-10 gap-y-4 items-start mt-4">
           <div className="order-2 lg:order-none lg:col-span-7 space-y-3">
             {(data.location || data.collegeType || data.established || data.rating) && (
-              <p className="section-description text-xs sm:text-sm text-[#43474d] font-normal flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#115eaf] shrink-0" />
+              <p className="section-description text-xs sm:text-sm text-ink-700 font-normal flex items-center gap-1.5">
+                <MapPin className="w-3.5 h-3.5 text-brand-600 shrink-0" />
                 {data.location} · {data.collegeType || "University"} · Est.{" "}
                 {data.established} ·{" "}
                 {data.rating && (
-                  <span className="inline-flex items-center gap-0.5 font-bold text-[#B45309]">
-                    <Star className="w-3 h-3 fill-[#D97706] text-[#D97706]" />
+                  <span className="inline-flex items-center gap-0.5 font-bold text-accent-700">
+                    <Star className="w-3 h-3 fill-accent-500 text-accent-500" />
                     {data.rating}
                   </span>
                 )}
@@ -102,7 +102,7 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
                 text={description || hero.description}
                 lines={4}
                 fullText={fullText}
-                className="text-sm text-[#2d3137] leading-relaxed font-normal"
+                className="text-sm text-ink-700 leading-relaxed font-normal"
               />
             )}
 
@@ -111,14 +111,14 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
                 text={hero.heroSub}
                 lines={3}
                 fullText={fullText}
-                className="text-sm text-[#2d3137] leading-relaxed font-normal"
+                className="text-sm text-ink-700 leading-relaxed font-normal"
               />
             )}
           </div>
 
           {banner && (
             <div className="order-1 lg:order-none lg:col-span-5 lg:mr-[50px]">
-              <div className="rounded-2xl overflow-hidden border border-[#e7eeff] shadow-xs bg-[#f9f9ff]">
+              <div className="rounded-2xl overflow-hidden border border-brand-100 shadow-xs bg-canvas">
                 <img
                   src={banner}
                   alt={`${collegeTitle} Campus`}
@@ -135,14 +135,14 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="bg-[#f0f3ff] border border-[#e7eeff] px-4 py-2.5 rounded-xl text-center min-w-[110px]"
+              className="bg-brand-50 border border-brand-100 px-4 py-2.5 rounded-xl text-center min-w-[110px]"
             >
               <span
                 className={`block text-sm font-bold font-sans ${stat.tone}`}
               >
                 {stat.value}
               </span>
-              <span className="text-[10px] text-[#74777e]">{stat.label}</span>
+              <span className="text-[10px] text-ink-500">{stat.label}</span>
             </div>
           ))}
 
@@ -150,7 +150,7 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
             <button
               type="button"
               onClick={() => onOpenBrochure()}
-              className="px-5 py-2.5 rounded-xl bg-white text-[#115eaf] border border-[#115eaf] text-xs sm:text-sm font-bold hover:bg-[#f0f3ff] active:scale-95 transition-all flex items-center justify-center gap-2 min-h-[44px]"
+              className="px-5 py-2.5 rounded-xl bg-white text-brand-600 border border-brand-600 text-xs sm:text-sm font-bold hover:bg-brand-50 active:scale-95 transition-all flex items-center justify-center gap-2 min-h-[44px]"
             >
               <Download className="w-4 h-4" />
               Brochure
@@ -158,7 +158,7 @@ export default function CollegeHero({ overview = {}, college = {}, title, descri
             <button
               type="button"
               onClick={() => onOpenApply()}
-              className="px-6 py-2.5 rounded-xl bg-[#115eaf] text-white text-xs sm:text-sm font-bold shadow hover:bg-[#004689] active:scale-95 transition-all flex items-center justify-center gap-2 min-h-[44px]"
+              className="px-6 py-2.5 rounded-xl bg-brand-600 text-white text-xs sm:text-sm font-bold shadow hover:bg-brand-700 active:scale-95 transition-all flex items-center justify-center gap-2 min-h-[44px]"
             >
               Apply Now
               <ArrowRight className="w-4 h-4" />

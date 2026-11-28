@@ -77,12 +77,12 @@ function RichtextBlock({ block, sectionTitle }) {
 
   const heading = shouldShowHeading
     ? level === "h3"
-      ? <h3 className="text-base sm:text-lg font-bold text-[#000f22] mt-4 mb-2">{sanitizedTitle}</h3>
+      ? <h3 className="text-base sm:text-lg font-bold text-ink-900 mt-4 mb-2">{sanitizedTitle}</h3>
       : level === "h4"
-        ? <h4 className="text-sm sm:text-base font-semibold text-[#000f22] mt-3.5 mb-1.5">{sanitizedTitle}</h4>
+        ? <h4 className="text-sm sm:text-base font-semibold text-ink-900 mt-3.5 mb-1.5">{sanitizedTitle}</h4>
         : level === "h5"
-          ? <h5 className="text-xs sm:text-sm font-semibold text-[#000f22] mt-3 mb-1">{sanitizedTitle}</h5>
-          : <h2 className="text-lg sm:text-xl font-bold text-[#000f22] mt-5 mb-2.5">{sanitizedTitle}</h2>
+          ? <h5 className="text-xs sm:text-sm font-semibold text-ink-900 mt-3 mb-1">{sanitizedTitle}</h5>
+          : <h2 className="text-lg sm:text-xl font-bold text-ink-900 mt-5 mb-2.5">{sanitizedTitle}</h2>
     : null;
   return (
     <div className="mb-3.5 last:mb-0">
@@ -103,29 +103,29 @@ function CtaBlock({ block, onOpenCounseling }) {
       : [];
 
   return (
-    <div className="my-3 sm:my-3.5 px-3.5 py-3 sm:px-4.5 sm:py-3.5 rounded-2xl bg-gradient-to-r from-[#eef4ff] via-[#f5f8ff] to-[#edf4ff] border border-[#d5e3ff] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-2xs overflow-hidden relative">
+    <div className="my-3 sm:my-3.5 px-3.5 py-3 sm:px-4.5 sm:py-3.5 rounded-2xl bg-gradient-to-r from-brand-50 via-brand-50 to-brand-100 border border-brand-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 shadow-2xs overflow-hidden relative">
       <div className="min-w-0 flex-1">
-        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[10.5px] font-bold tracking-wide bg-[#e0ecff] text-[#115eaf] border border-[#c2daff] mb-1 sm:mb-1.5 shrink-0">
-          <Headphones className="w-3 h-3 text-[#115eaf] shrink-0" />
-          <span>Verified University Advisory</span>
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[10.5px] font-bold tracking-wide bg-brand-100 text-brand-600 border border-brand-200 mb-1 sm:mb-1.5 shrink-0">
+          <Headphones className="w-3 h-3 text-brand-600 shrink-0" />
+          <span>University counselling</span>
         </div>
-        <h3 className="text-sm sm:text-[15px] font-bold text-[#000f22] mb-0.5 sm:mb-1 leading-snug">{heading}</h3>
-        <p className="text-xs sm:text-[12.5px] text-[#43474d] mb-0 leading-relaxed">{subtext}</p>
+        <h3 className="text-sm sm:text-[15px] font-bold text-ink-900 mb-0.5 sm:mb-1 leading-snug">{heading}</h3>
+        <p className="text-xs sm:text-[12.5px] text-ink-700 mb-0 leading-relaxed">{subtext}</p>
       </div>
 
-      <div className="shrink-0 flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end pt-1.5 sm:pt-0 border-t sm:border-0 border-[#d5e3ff]/60">
+      <div className="shrink-0 flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end pt-1.5 sm:pt-0 border-t sm:border-0 border-brand-200/60">
         <div className="flex items-center gap-2">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-[#d5e3ff] shadow-2xs overflow-hidden shrink-0 flex items-center justify-center">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-brand-200 shadow-2xs overflow-hidden shrink-0 flex items-center justify-center">
             <img
-              src="/images/studentfigmaimg.png"
+              src="/images/studentfigmaimg.webp"
               alt="Academic Advisor"
               className="w-full h-full object-cover object-top"
               onError={(e) => { e.currentTarget.src = "/logos/amazon.jpg"; }}
             />
           </div>
           <div className="text-left">
-            <span className="block text-[11px] font-bold text-[#000f22] leading-tight">Free Guidance</span>
-            <span className="block text-[10px] text-emerald-700 font-semibold leading-tight">100% Unbiased</span>
+            <span className="block text-[11px] font-bold text-ink-900 leading-tight">Free Guidance</span>
+            <span className="block text-[10px] text-emerald-700 font-semibold leading-tight">Free counselling</span>
           </div>
         </div>
 
@@ -140,7 +140,7 @@ function CtaBlock({ block, onOpenCounseling }) {
                   key={i}
                   type="button"
                   onClick={onOpenCounseling}
-                  className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 h-8.5 sm:h-9 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer whitespace-nowrap"
+                  className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 h-8.5 sm:h-9 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer whitespace-nowrap"
                 >
                   <span>{btn.label || btn.title || "Get Guidance"}</span>
                   <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -151,7 +151,7 @@ function CtaBlock({ block, onOpenCounseling }) {
               <a
                 key={i}
                 href={href}
-                className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 h-8.5 sm:h-9 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-bold transition-all shadow-sm active:scale-95 whitespace-nowrap"
+                className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 h-8.5 sm:h-9 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold transition-all shadow-sm active:scale-95 whitespace-nowrap"
               >
                 <span>{btn.label || btn.title || "Learn More"}</span>
                 <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -162,7 +162,7 @@ function CtaBlock({ block, onOpenCounseling }) {
           <button
             type="button"
             onClick={onOpenCounseling}
-            className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 h-8.5 sm:h-9 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer whitespace-nowrap"
+            className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 h-8.5 sm:h-9 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold transition-all shadow-sm active:scale-95 cursor-pointer whitespace-nowrap"
           >
             <span>Get Guidance</span>
             <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -191,8 +191,8 @@ function StepFlowBlock({ block }) {
     <div className="my-5">
       {heading ? (
         <div className="flex items-center justify-between mb-3.5">
-          <h3 className="text-sm sm:text-base font-bold text-[#000f22] m-0">{heading}</h3>
-          <span className="text-[11px] font-semibold text-[#115eaf] bg-[#eef4ff] px-2.5 py-0.5 rounded-full border border-[#d5e3ff]">
+          <h3 className="text-sm sm:text-base font-bold text-ink-900 m-0">{heading}</h3>
+          <span className="text-[11px] font-semibold text-brand-600 bg-brand-50 px-2.5 py-0.5 rounded-full border border-brand-200">
             {steps.length} Simple Steps
           </span>
         </div>
@@ -211,8 +211,8 @@ function StepFlowBlock({ block }) {
               onClick={() => setActiveStep(i)}
               className={`group relative p-4 rounded-2xl border transition-all duration-300 flex flex-col justify-between cursor-pointer ${
                 isSelected
-                  ? "border-[#115eaf] bg-gradient-to-b from-[#f4f8ff] via-white to-white shadow-md -translate-y-1 ring-2 ring-[#115eaf]/15"
-                  : "border-[#e7eeff] bg-white hover:border-[#115eaf]/40 hover:-translate-y-1 hover:shadow-sm"
+                  ? "border-brand-600 bg-gradient-to-b from-brand-50 via-white to-white shadow-md -translate-y-1 ring-2 ring-brand-600/15"
+                  : "border-brand-100 bg-white hover:border-brand-600/40 hover:-translate-y-1 hover:shadow-sm"
               }`}
             >
               <div>
@@ -221,8 +221,8 @@ function StepFlowBlock({ block }) {
                   <div className="flex items-center gap-2">
                     <span className={`w-8 h-8 rounded-xl font-extrabold text-xs flex items-center justify-center transition-all duration-300 ${
                       isSelected
-                        ? "bg-gradient-to-br from-[#115eaf] to-[#0b427b] text-white shadow-xs scale-105"
-                        : "bg-[#eef4ff] text-[#115eaf] border border-[#d5e3ff] group-hover:bg-[#115eaf] group-hover:text-white"
+                        ? "bg-gradient-to-br from-brand-600 to-brand-800 text-white shadow-xs scale-105"
+                        : "bg-brand-50 text-brand-600 border border-brand-200 group-hover:bg-brand-600 group-hover:text-white"
                     }`}>
                       {stepNum}
                     </span>
@@ -230,27 +230,27 @@ function StepFlowBlock({ block }) {
                       <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block leading-tight">
                         Step {i + 1}
                       </span>
-                      <span className="text-[11px] font-extrabold text-[#000f22] leading-tight block">
+                      <span className="text-[11px] font-extrabold text-ink-900 leading-tight block">
                         {i === 0 ? "Application" : i === 1 ? "Verification" : i === 2 ? "Enrollment" : "Access"}
                       </span>
                     </div>
                   </div>
                   <IconComponent className={`w-4 h-4 transition-transform duration-300 group-hover:scale-110 ${
-                    isSelected ? "text-[#115eaf]" : "text-slate-400 group-hover:text-[#115eaf]"
+                    isSelected ? "text-brand-600" : "text-slate-400 group-hover:text-brand-600"
                   }`} />
                 </div>
 
-                <p className="text-xs sm:text-[13px] text-[#43474d] font-medium leading-relaxed mb-0">
+                <p className="text-xs sm:text-[13px] text-ink-700 font-medium leading-relaxed mb-0">
                   {rawText}
                 </p>
               </div>
 
               {/* Bottom Subtle Step Status */}
               <div className="mt-3.5 pt-2.5 border-t border-slate-50 flex items-center justify-between text-[10px] font-semibold tracking-wider">
-                <span className={isSelected ? "text-[#115eaf] font-bold" : "text-slate-400"}>
+                <span className={isSelected ? "text-brand-600 font-bold" : "text-slate-400"}>
                   {i === 0 ? "Start Journey" : i === steps.length - 1 ? "Get LMS Login" : "Verified Process"}
                 </span>
-                <span className="text-[#115eaf] group-hover:translate-x-1 transition-transform">→</span>
+                <span className="text-brand-600 group-hover:translate-x-1 transition-transform">→</span>
               </div>
             </div>
           );
@@ -273,7 +273,7 @@ function SyllabusBlock({ block, sectionTitle }) {
 
   return (
     <div className="my-4" data-testid="course-syllabus-block">
-      {heading ? <h3 className="text-sm sm:text-base font-bold text-[#000f22] mb-3">{heading}</h3> : null}
+      {heading ? <h3 className="text-sm sm:text-base font-bold text-ink-900 mb-3">{heading}</h3> : null}
       <div
         className={`grid grid-cols-1 ${
           isSingleCard ? "" : "md:grid-cols-2"
@@ -291,27 +291,27 @@ function SyllabusBlock({ block, sectionTitle }) {
             <div
               key={(sem && sem.id) || i}
               data-testid="syllabus-module-card"
-              className="rounded-xl border border-[#dce7fb] bg-[#fbfdff] p-[18px] sm:p-[20px] shadow-2xs hover:border-[#b1c8eb] transition-colors"
+              className="rounded-xl border border-brand-200 bg-canvas p-[18px] sm:p-[20px] shadow-2xs hover:border-brand-300 transition-colors"
             >
-              <div className="flex items-start justify-between gap-2.5 pb-2.5 mb-2.5 border-b border-[#e7eeff]">
+              <div className="flex items-start justify-between gap-2.5 pb-2.5 mb-2.5 border-b border-brand-100">
                 <div className="flex items-start gap-2.5 min-w-0 flex-1">
                   <span
-                    className="w-6 h-6 rounded-md bg-[#e7eeff] text-[#115eaf] text-[11px] font-bold flex items-center justify-center shrink-0 mt-0.5"
+                    className="w-6 h-6 rounded-md bg-brand-100 text-brand-600 text-[11px] font-bold flex items-center justify-center shrink-0 mt-0.5"
                     aria-hidden="true"
                   >
                     {unitNumber}
                   </span>
-                  <h4 className="text-[13px] sm:text-[14px] font-bold text-[#000f22] leading-[1.32] break-words m-0">
+                  <h4 className="text-[13px] sm:text-[14px] font-bold text-ink-900 leading-[1.32] break-words m-0">
                     {semTitle}
                   </h4>
                 </div>
                 <div className="flex items-center gap-1.5 shrink-0 mt-0.5">
                   {sem && sem.credits ? (
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#e7eeff] text-[#115eaf] whitespace-nowrap">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-brand-100 text-brand-600 whitespace-nowrap">
                       {sem.credits} Credits
                     </span>
                   ) : totalSubjectsCount > 0 ? (
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#eef4ff] text-[#115eaf] whitespace-nowrap">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-brand-50 text-brand-600 whitespace-nowrap">
                       {totalSubjectsCount} {totalSubjectsCount === 1 ? "Subject" : "Subjects"}
                     </span>
                   ) : null}
@@ -321,7 +321,7 @@ function SyllabusBlock({ block, sectionTitle }) {
               {coreSubjects.length > 0 ? (
                 <div>
                   {electives.length > 0 ? (
-                    <span className="text-[10px] font-bold text-[#115eaf] uppercase tracking-wider block mb-1.5">
+                    <span className="text-[10px] font-bold text-brand-600 uppercase tracking-wider block mb-1.5">
                       Core Subjects
                     </span>
                   ) : null}
@@ -333,8 +333,8 @@ function SyllabusBlock({ block, sectionTitle }) {
                     }`}
                   >
                     {coreSubjects.map((sub, j) => (
-                      <li key={j} className="text-xs sm:text-[13px] text-[#374151] leading-[1.45] flex items-start gap-2 m-0">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#115eaf] shrink-0 mt-[6px]" aria-hidden="true" />
+                      <li key={j} className="text-xs sm:text-[13px] text-ink-700 leading-[1.45] flex items-start gap-2 m-0">
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand-600 shrink-0 mt-[6px]" aria-hidden="true" />
                         <span className="min-w-0 break-words">{String(sub)}</span>
                       </li>
                     ))}
@@ -343,14 +343,14 @@ function SyllabusBlock({ block, sectionTitle }) {
               ) : null}
 
               {electives.length > 0 ? (
-                <div className={coreSubjects.length > 0 ? "mt-2.5 pt-2.5 border-t border-[#ecf2fc]" : ""}>
-                  <span className="text-[10px] font-bold text-[#b45309] uppercase tracking-wider block mb-1.5">
+                <div className={coreSubjects.length > 0 ? "mt-2.5 pt-2.5 border-t border-brand-100" : ""}>
+                  <span className="text-[10px] font-bold text-accent-700 uppercase tracking-wider block mb-1.5">
                     Elective Subjects
                   </span>
                   <ul className="flex flex-col gap-[8px] pl-0 list-none m-0">
                     {electives.map((elective, j) => (
-                      <li key={j} className="text-xs sm:text-[13px] text-[#374151] leading-[1.45] flex items-start gap-2 m-0">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#d97706] shrink-0 mt-[6px]" aria-hidden="true" />
+                      <li key={j} className="text-xs sm:text-[13px] text-ink-700 leading-[1.45] flex items-start gap-2 m-0">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent-500 shrink-0 mt-[6px]" aria-hidden="true" />
                         <span className="min-w-0 break-words">{String(elective)}</span>
                       </li>
                     ))}
@@ -376,7 +376,7 @@ function SkillsGainedBlock({ items = [], heading = "" }) {
   return (
     <div className="my-5">
       <div className="flex items-center justify-between mb-3.5">
-        {heading ? <h3 className="text-sm sm:text-base font-bold text-[#000f22] m-0">{heading}</h3> : null}
+        {heading ? <h3 className="text-sm sm:text-base font-bold text-ink-900 m-0">{heading}</h3> : null}
         <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
           Industry Verified
         </span>
@@ -392,19 +392,19 @@ function SkillsGainedBlock({ items = [], heading = "" }) {
               onClick={() => setSelectedSkill(isSelected ? null : i)}
               className={`group px-3.5 py-2 rounded-xl border text-left transition-all duration-200 flex items-center gap-2 cursor-pointer ${
                 isSelected
-                  ? "bg-[#115eaf] border-[#115eaf] text-white shadow-sm -translate-y-0.5 scale-102"
-                  : "bg-white border-[#d5e3ff] hover:bg-gradient-to-r hover:from-[#eef4ff] hover:to-[#f5f8ff] hover:border-[#115eaf] hover:-translate-y-0.5 hover:shadow-xs"
+                  ? "bg-brand-600 border-brand-600 text-white shadow-sm -translate-y-0.5 scale-102"
+                  : "bg-white border-brand-200 hover:bg-gradient-to-r hover:from-brand-50 hover:to-brand-50 hover:border-brand-600 hover:-translate-y-0.5 hover:shadow-xs"
               }`}
             >
               <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold transition-all ${
                 isSelected
-                  ? "bg-white text-[#115eaf]"
-                  : "bg-[#eef4ff] text-[#115eaf] group-hover:bg-[#115eaf] group-hover:text-white"
+                  ? "bg-white text-brand-600"
+                  : "bg-brand-50 text-brand-600 group-hover:bg-brand-600 group-hover:text-white"
               }`}>
                 ✓
               </span>
               <span className={`text-xs sm:text-[12.5px] font-semibold transition-colors ${
-                isSelected ? "text-white" : "text-[#000f22] group-hover:text-[#115eaf]"
+                isSelected ? "text-white" : "text-ink-900 group-hover:text-brand-600"
               }`}>
                 {label}
               </span>
@@ -442,7 +442,7 @@ function SpecializationListBlock({ block, isSkillsSection = false, course, secti
 
   return (
     <div className="my-5">
-      {heading ? <h3 className="text-sm sm:text-base font-bold text-[#000f22] mb-3.5">{heading}</h3> : null}
+      {heading ? <h3 className="text-sm sm:text-base font-bold text-ink-900 mb-3.5">{heading}</h3> : null}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
         {visibleItems.map((item, i) => {
           const label = item && item.label ? String(item.label) : String(item?.title || item?.name || "");
@@ -457,38 +457,38 @@ function SpecializationListBlock({ block, isSkillsSection = false, course, secti
           return (
             <div
               key={i}
-              className="group p-4 rounded-2xl border border-[#d5e3ff] bg-white hover:border-[#115eaf] hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
+              className="group p-4 rounded-2xl border border-brand-200 bg-white hover:border-brand-600 hover:-translate-y-0.5 hover:shadow-md transition-all duration-200 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div className="flex items-start gap-2.5 min-w-0">
-                    <span className="w-2 h-2 rounded-full bg-[#115eaf] mt-1.5 group-hover:scale-125 transition-transform shrink-0" aria-hidden="true" />
+                    <span className="w-2 h-2 rounded-full bg-brand-600 mt-1.5 group-hover:scale-125 transition-transform shrink-0" aria-hidden="true" />
                     {href ? (
                       isInternal ? (
-                        <Link to={href} className="text-xs sm:text-[13.5px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors leading-snug line-clamp-2">
+                        <Link to={href} className="text-xs sm:text-[13.5px] font-bold text-ink-900 group-hover:text-brand-600 transition-colors leading-snug line-clamp-2">
                           {label}
                         </Link>
                       ) : (
-                        <a href={href} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-[13.5px] font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors leading-snug line-clamp-2">
+                        <a href={href} target="_blank" rel="noopener noreferrer" className="text-xs sm:text-[13.5px] font-bold text-ink-900 group-hover:text-brand-600 transition-colors leading-snug line-clamp-2">
                           {label}
                         </a>
                       )
                     ) : (
-                      <span className="text-xs sm:text-[13.5px] text-[#000f22] font-bold group-hover:text-[#115eaf] transition-colors leading-snug line-clamp-2">{label}</span>
+                      <span className="text-xs sm:text-[13.5px] text-ink-900 font-bold group-hover:text-brand-600 transition-colors leading-snug line-clamp-2">{label}</span>
                     )}
                   </div>
                 </div>
 
                 {(itemDuration || itemFee) ? (
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pl-4.5 mt-1.5 mb-2 text-[11px] text-[#555960]">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 pl-4.5 mt-1.5 mb-2 text-[11px] text-ink-700">
                     {itemDuration ? (
                       <span className="inline-flex items-center gap-1 font-medium">
-                        <Clock className="w-3 h-3 text-[#115eaf] shrink-0" aria-hidden="true" />
+                        <Clock className="w-3 h-3 text-brand-600 shrink-0" aria-hidden="true" />
                         <span>{itemDuration}</span>
                       </span>
                     ) : null}
                     {itemFee ? (
-                      <span className="inline-flex items-center gap-1 font-bold text-[#115eaf]">
+                      <span className="inline-flex items-center gap-1 font-bold text-brand-600">
                         <span>{itemFee}</span>
                       </span>
                     ) : null}
@@ -496,28 +496,28 @@ function SpecializationListBlock({ block, isSkillsSection = false, course, secti
                 ) : null}
               </div>
 
-              <div className="flex items-center justify-between pt-2.5 border-t border-[#eef4ff] mt-1">
+              <div className="flex items-center justify-between pt-2.5 border-t border-brand-50 mt-1">
                 {isHighDemand ? (
                   <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200/80">
                     High Demand
                   </span>
                 ) : isTrending ? (
-                  <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-[#eef4ff] text-[#115eaf] border border-[#c8dcff]">
+                  <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-brand-50 text-brand-600 border border-brand-200">
                     Trending Track
                   </span>
                 ) : (
-                  <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-slate-50 text-[#43474d] border border-slate-200/80">
+                  <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-slate-50 text-ink-700 border border-slate-200/80">
                     UGC Entitled
                   </span>
                 )}
                 {href ? (
                   isInternal ? (
-                    <Link to={href} className="text-xs font-bold text-[#115eaf] group-hover:translate-x-0.5 transition-transform inline-flex items-center gap-0.5">
+                    <Link to={href} className="text-xs font-bold text-brand-600 group-hover:translate-x-0.5 transition-transform inline-flex items-center gap-0.5">
                       <span>Explore</span>
                       <span aria-hidden="true">→</span>
                     </Link>
                   ) : (
-                    <a href={href} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-[#115eaf] group-hover:translate-x-0.5 transition-transform inline-flex items-center gap-0.5">
+                    <a href={href} target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-brand-600 group-hover:translate-x-0.5 transition-transform inline-flex items-center gap-0.5">
                       <span>Explore</span>
                       <span aria-hidden="true">→</span>
                     </a>
@@ -538,7 +538,7 @@ function SpecializationListBlock({ block, isSkillsSection = false, course, secti
           <button
             type="button"
             onClick={() => setShowAll((prev) => !prev)}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#115eaf] bg-[#f4f8ff] hover:bg-[#115eaf] text-[#115eaf] hover:text-white text-xs font-bold transition-all cursor-pointer shadow-2xs"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-brand-600 bg-brand-50 hover:bg-brand-600 text-brand-600 hover:text-white text-xs font-bold transition-all cursor-pointer shadow-2xs"
           >
             <span>
               {showAll
@@ -560,18 +560,18 @@ function FeatureCardsBlock({ block }) {
   if (items.length === 0) return null;
   return (
     <div className="my-5">
-      {heading ? <h3 className="text-sm sm:text-base font-bold text-[#000f22] mb-3">{heading}</h3> : null}
+      {heading ? <h3 className="text-sm sm:text-base font-bold text-ink-900 mb-3">{heading}</h3> : null}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
         {items.map((item, i) => (
-          <div key={i} className="group p-4 rounded-2xl border border-[#e7eeff] bg-white shadow-2xs hover:-translate-y-1 hover:border-[#115eaf]/40 hover:shadow-md transition-all duration-300">
+          <div key={i} className="group p-4 rounded-2xl border border-brand-100 bg-white shadow-2xs hover:-translate-y-1 hover:border-brand-600/40 hover:shadow-md transition-all duration-300">
             {item && item.title ? (
-              <h4 className="text-xs sm:text-sm font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors mb-1.5 mt-0 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#115eaf]" />
+              <h4 className="text-xs sm:text-sm font-bold text-ink-900 group-hover:text-brand-600 transition-colors mb-1.5 mt-0 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-600" />
                 <span>{String(item.title).replace(/DegreeFYD/gi, "OnlineSiksha")}</span>
               </h4>
             ) : null}
             {item && item.description ? (
-              <p className="text-xs text-[#555960] leading-relaxed mb-0 pl-3.5">
+              <p className="text-xs text-ink-700 leading-relaxed mb-0 pl-3.5">
                 {String(item.description).replace(/DegreeFYD/gi, "OnlineSiksha")}
               </p>
             ) : null}
@@ -683,7 +683,7 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
     <article className="course-prose w-full min-w-0">
       {overviewHtml ? (
         <section className="mb-6" aria-label="Course overview">
-          <h2 className="text-lg sm:text-xl font-bold text-[#000f22] mt-0 mb-2.5">Course Overview</h2>
+          <h2 className="text-lg sm:text-xl font-bold text-ink-900 mt-0 mb-2.5">Course Overview</h2>
           <SafeHtml html={overviewHtml} />
         </section>
       ) : null}
@@ -691,7 +691,7 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
       {/* Banner 1: Immediately after Course Overview */}
       <div className="my-3.5 sm:my-4">
         <CoursesPromoBanner
-          heading="FREE 1-ON-1 ACADEMIC ADVISORY"
+          heading="Free counselling"
           title="1-on-1 Admission & University Guidance"
           message="Compare UGC-DEB recognized universities, verified semester fees, and zero-cost EMI options with our academic advisors."
           ctaLabel="Get Free Counselling"
@@ -701,7 +701,7 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
 
       {overviewAfterImage ? (
         <section className="mb-6" aria-label="Course snapshot table">
-          <h2 className="text-lg sm:text-xl font-bold text-[#000f22] mt-0 mb-2.5">Course Highlights &amp; Snapshot</h2>
+          <h2 className="text-lg sm:text-xl font-bold text-ink-900 mt-0 mb-2.5">Course Highlights &amp; Snapshot</h2>
           <SafeHtml html={overviewAfterImage} />
         </section>
       ) : null}
@@ -734,8 +734,7 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
             <section className="mb-6" aria-labelledby={"cms-sec-" + sectionKey}>
               {heading ? (
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="w-2 h-2 rounded-full bg-[#115eaf]" aria-hidden="true" />
-                  <h2 id={"cms-sec-" + sectionKey} className="text-lg sm:text-xl font-bold text-[#000f22] m-0">
+                  <h2 id={"cms-sec-" + sectionKey} className="text-lg sm:text-xl font-bold text-ink-900 m-0">
                     {heading}
                   </h2>
                 </div>
@@ -743,7 +742,7 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
 
               {/* Verified Recruiter Logos Image Scroll (continuous marquee animation with gradient fade edges) */}
               {isRecruiterSection ? (
-                <div className="my-4 overflow-hidden relative py-4 bg-gradient-to-r from-[#f8fbff] via-white to-[#f8fbff] rounded-2xl border border-[#d5e3ff]/80 shadow-2xs">
+                <div className="my-4 overflow-hidden relative py-4 bg-gradient-to-r from-canvas via-white to-canvas rounded-2xl border border-brand-200/80 shadow-2xs">
                   {/* Left & Right Gradient Fade Masks */}
                   <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
                   <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white via-white/80 to-transparent z-10" />
@@ -752,7 +751,7 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
                     {[...courseRecruiters, ...courseRecruiters, ...courseRecruiters].map((r, rIdx) => (
                       <div
                         key={rIdx}
-                        className="h-13 w-32 px-3.5 py-2 bg-white rounded-xl border border-[#e7eeff] flex items-center justify-center shrink-0 shadow-2xs hover:scale-108 hover:border-[#115eaf]/40 hover:shadow-xs transition-all duration-300 cursor-pointer"
+                        className="h-13 w-32 px-3.5 py-2 bg-white rounded-xl border border-brand-100 flex items-center justify-center shrink-0 shadow-2xs hover:scale-108 hover:border-brand-600/40 hover:shadow-xs transition-all duration-300 cursor-pointer"
                       >
                         <img src={r.logo} alt={r.name} className="max-h-8 max-w-[95px] object-contain transition-transform duration-300" />
                       </div>
@@ -772,7 +771,7 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
             {sIdx === banner2SecIdx ? (
               <div className="my-3.5 sm:my-4">
                 <CoursesPromoBanner
-                  heading="FREE 1-ON-1 ACADEMIC ADVISORY"
+                  heading="Free counselling"
                   title="Curriculum & Elective Advisory"
                   message="Speak 1-on-1 with our academic advisors to match curriculum electives and fee structures with your career goals."
                   ctaLabel="Talk to an Academic Advisor"
@@ -788,7 +787,7 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
       {sections.length === 0 ? (
         <div className="my-3.5 sm:my-4">
           <CoursesPromoBanner
-            heading="FREE 1-ON-1 ACADEMIC ADVISORY"
+            heading="Free counselling"
             title="Need guidance on syllabus, electives, or university shortlisting?"
             message="Speak 1-on-1 with our academic advisors to match curriculum electives and fee structures with your career goals."
             ctaLabel="Talk to an Academic Advisor"
@@ -801,17 +800,16 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
       {!hasRecruiterSectionInCms && courseRecruiters.length > 0 ? (
         <section className="mb-6" aria-labelledby="course-top-recruiters">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#115eaf]" aria-hidden="true" />
-            <h2 id="course-top-recruiters" className="text-lg sm:text-xl font-bold text-[#000f22] m-0">
+            <h2 id="course-top-recruiters" className="text-lg sm:text-xl font-bold text-ink-900 m-0">
               Top Recruiters
             </h2>
           </div>
-          <div className="my-4 overflow-hidden relative py-3.5 bg-gradient-to-r from-[#f8fbff] via-white to-[#f8fbff] rounded-2xl border border-[#d5e3ff]/80 shadow-2xs">
+          <div className="my-4 overflow-hidden relative py-3.5 bg-gradient-to-r from-canvas via-white to-canvas rounded-2xl border border-brand-200/80 shadow-2xs">
             <div className="flex gap-4 w-max animate-[marquee_24s_linear_infinite] hover:[animation-play-state:paused] items-center">
               {[...courseRecruiters, ...courseRecruiters].map((r, rIdx) => (
                 <div
                   key={rIdx}
-                  className="h-12 w-28 px-3 py-1.5 bg-white rounded-xl border border-[#e7eeff] flex items-center justify-center shrink-0 shadow-2xs hover:scale-105 transition-transform"
+                  className="h-12 w-28 px-3 py-1.5 bg-white rounded-xl border border-brand-100 flex items-center justify-center shrink-0 shadow-2xs hover:scale-105 transition-transform"
                 >
                   <img src={r.logo} alt={r.name} className="max-h-7 max-w-[90px] object-contain" />
                 </div>
@@ -826,14 +824,10 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
         <section className="mb-6" aria-labelledby="cms-testi-title">
           <div className="flex items-center justify-between gap-2 mb-3.5">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#115eaf]" aria-hidden="true" />
-              <h2 id="cms-testi-title" className="text-lg sm:text-xl font-bold text-[#000f22] m-0">
+              <h2 id="cms-testi-title" className="text-lg sm:text-xl font-bold text-ink-900 m-0">
                 What Learners Say
               </h2>
             </div>
-            <span className="text-[11px] font-semibold text-[#115eaf] bg-[#eef4ff] px-2.5 py-0.5 rounded-full border border-[#d5e3ff]">
-              ⭐ 4.9/5 Rating
-            </span>
           </div>
           <div className="flex overflow-x-auto overscroll-x-contain snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 gap-4 pb-2">
             {testimonials.map((t, i) => {
@@ -843,9 +837,9 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
               return (
                 <div
                   key={i}
-                  className="group relative w-[82vw] sm:w-[320px] md:w-auto shrink-0 snap-start p-5 rounded-2xl border border-[#e7eeff] bg-gradient-to-b from-white via-white to-[#fbfdff] shadow-2xs hover:-translate-y-1.5 hover:shadow-lg hover:border-[#115eaf]/40 transition-all duration-300 flex flex-col justify-between"
+                  className="group relative w-[82vw] sm:w-[320px] md:w-auto shrink-0 snap-start p-5 rounded-2xl border border-brand-100 bg-gradient-to-b from-white via-white to-canvas shadow-2xs hover:-translate-y-1.5 hover:shadow-lg hover:border-brand-600/40 transition-all duration-300 flex flex-col justify-between"
                 >
-                  <Quote className="w-6 h-6 text-[#115eaf]/10 absolute top-4 right-4 pointer-events-none" />
+                  <Quote className="w-6 h-6 text-brand-600/10 absolute top-4 right-4 pointer-events-none" />
                   <div>
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center gap-1 text-amber-400">
@@ -857,15 +851,15 @@ export default function CourseCmsContent({ course, onOpenCounseling }) {
                         ✓ Verified Learner
                       </span>
                     </div>
-                    <SafeHtml html={quote} className="text-xs sm:text-[13.5px] text-[#43474d] leading-relaxed italic [&_p]:mb-0" />
+                    <SafeHtml html={quote} className="text-xs sm:text-[13.5px] text-ink-700 leading-relaxed italic [&_p]:mb-0" />
                   </div>
-                  <div className="mt-4 pt-3 border-t border-[#f0f4f8] flex items-center gap-3">
-                    <div className="w-8.5 h-8.5 rounded-full bg-gradient-to-tr from-[#115eaf] to-[#2563eb] text-white text-xs font-bold flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
+                  <div className="mt-4 pt-3 border-t border-canvas flex items-center gap-3">
+                    <div className="w-8.5 h-8.5 rounded-full bg-gradient-to-tr from-brand-600 to-brand-600 text-white text-xs font-bold flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
                       {initial}
                     </div>
                     <div>
-                      <p className="text-xs sm:text-[13px] font-bold text-[#000f22] leading-tight m-0">{studentName}</p>
-                      <p className="text-[10.5px] text-[#74777e] leading-tight m-0 mt-0.5">{course?.name || "Online Degree"} Graduate</p>
+                      <p className="text-xs sm:text-[13px] font-bold text-ink-900 leading-tight m-0">{studentName}</p>
+                      <p className="text-[10.5px] text-ink-500 leading-tight m-0 mt-0.5">{course?.name || "Online Degree"} Graduate</p>
                     </div>
                   </div>
                 </div>

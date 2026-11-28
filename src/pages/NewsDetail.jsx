@@ -88,8 +88,8 @@ function LiveNewsBlock({ item }) {
           {isLive ? "Live Coverage Update" : "Verified Timeline Entry"}
         </span>
       </div>
-      <h4 className="text-sm sm:text-base font-bold text-[#000f22] mb-1">{title}</h4>
-      <p className="text-xs text-[#4b5563]">
+      <h4 className="text-sm sm:text-base font-bold text-ink-900 mb-1">{title}</h4>
+      <p className="text-xs text-ink-700">
         Real-time bulletin confirmed by the examination desk. Check official portals for verified individual roll-number scorecards.
       </p>
     </div>
@@ -317,26 +317,26 @@ export default function NewsDetail({ onOpenCounseling }) {
         {/* BREADCRUMB NAVIGATION */}
         {/* ========================================================= */}
         <nav aria-label="Breadcrumb" className="mb-3">
-          <ol className="flex items-center gap-1.5 text-xs text-[#6b7280] flex-wrap">
+          <ol className="flex items-center gap-1.5 text-xs text-ink-500 flex-wrap">
             <li>
-              <Link to="/" className="hover:text-[#115eaf] transition-colors">
+              <Link to="/" className="hover:text-brand-600 transition-colors">
                 Home
               </Link>
             </li>
-            <ChevronRight className="w-3.5 h-3.5 text-[#9ca3af] shrink-0" aria-hidden="true" />
+            <ChevronRight className="w-3.5 h-3.5 text-ink-400 shrink-0" aria-hidden="true" />
             <li>
-              <Link to="/news" className="hover:text-[#115eaf] transition-colors">
+              <Link to="/news" className="hover:text-brand-600 transition-colors">
                 News
               </Link>
             </li>
             {article?.category && (
               <>
-                <ChevronRight className="w-3.5 h-3.5 text-[#9ca3af] shrink-0" aria-hidden="true" />
-                <li className="text-[#4b5563] font-medium">{article.category}</li>
+                <ChevronRight className="w-3.5 h-3.5 text-ink-400 shrink-0" aria-hidden="true" />
+                <li className="text-ink-700 font-medium">{article.category}</li>
               </>
             )}
-            <ChevronRight className="w-3.5 h-3.5 text-[#9ca3af] shrink-0" aria-hidden="true" />
-            <li className="text-[#000f22] font-semibold truncate max-w-[200px] sm:max-w-md">
+            <ChevronRight className="w-3.5 h-3.5 text-ink-400 shrink-0" aria-hidden="true" />
+            <li className="text-ink-900 font-semibold truncate max-w-[200px] sm:max-w-md">
               {article ? article.title : "Article"}
             </li>
           </ol>
@@ -348,14 +348,14 @@ export default function NewsDetail({ onOpenCounseling }) {
         {loading && (
           <div className="space-y-6 max-w-4xl mx-auto py-4">
             <div className="animate-pulse space-y-4">
-              <div className="h-4 bg-[#f0f4f8] rounded w-28" />
-              <div className="h-10 bg-[#f0f4f8] rounded w-4/5" />
-              <div className="h-5 bg-[#f0f4f8] rounded w-2/3" />
-              <div className="h-80 bg-[#f0f4f8] rounded-2xl w-full" />
+              <div className="h-4 bg-canvas rounded w-28" />
+              <div className="h-10 bg-canvas rounded w-4/5" />
+              <div className="h-5 bg-canvas rounded w-2/3" />
+              <div className="h-80 bg-canvas rounded-2xl w-full" />
               <div className="space-y-3 pt-4">
-                <div className="h-4 bg-[#f0f4f8] rounded w-full" />
-                <div className="h-4 bg-[#f0f4f8] rounded w-5/6" />
-                <div className="h-4 bg-[#f0f4f8] rounded w-4/6" />
+                <div className="h-4 bg-canvas rounded w-full" />
+                <div className="h-4 bg-canvas rounded w-5/6" />
+                <div className="h-4 bg-canvas rounded w-4/6" />
               </div>
             </div>
           </div>
@@ -365,25 +365,25 @@ export default function NewsDetail({ onOpenCounseling }) {
         {/* 404 ARTICLE NOT FOUND STATE */}
         {/* ========================================================= */}
         {!loading && isNotFound && (
-          <div className="bg-white rounded-2xl border border-[#e7eeff] p-8 sm:p-12 text-center my-8 max-w-2xl mx-auto shadow-sm">
+          <div className="bg-white rounded-2xl border border-brand-100 p-8 sm:p-12 text-center my-8 max-w-2xl mx-auto shadow-sm">
             <div className="w-16 h-16 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center mx-auto mb-4 border border-rose-100">
               <AlertCircle className="w-8 h-8" aria-hidden="true" />
             </div>
-            <h1 className="text-2xl font-extrabold text-[#000f22] mb-2">News Article Not Found</h1>
-            <p className="text-sm text-[#4b5563] mb-6 max-w-md mx-auto">
+            <h1 className="text-2xl font-extrabold text-ink-900 mb-2">News Article Not Found</h1>
+            <p className="text-sm text-ink-700 mb-6 max-w-md mx-auto">
               The article you are looking for does not exist or may have been updated. You can browse all verified education news on our live desk.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/news"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-sm font-semibold transition-colors shadow-2xs"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold transition-colors shadow-2xs"
               >
                 <ArrowLeft className="w-4 h-4" aria-hidden="true" />
                 <span>Return to All News</span>
               </Link>
               <Link
                 to="/"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-[#e7eeff] hover:bg-[#f8fbff] text-[#4b5563] text-sm font-semibold transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-brand-100 hover:bg-canvas text-ink-700 text-sm font-semibold transition-colors"
               >
                 <span>Back to Home</span>
               </Link>
@@ -399,13 +399,13 @@ export default function NewsDetail({ onOpenCounseling }) {
             <div className="w-14 h-14 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center mx-auto mb-4 border border-rose-100">
               <AlertCircle className="w-7 h-7" aria-hidden="true" />
             </div>
-            <h2 className="text-xl font-bold text-[#000f22] mb-2">Unable to Load Article</h2>
-            <p className="text-sm text-[#4b5563] mb-6 max-w-md mx-auto">
+            <h2 className="text-xl font-bold text-ink-900 mb-2">Unable to Load Article</h2>
+            <p className="text-sm text-ink-700 mb-6 max-w-md mx-auto">
               We encountered an issue connecting to the news service. Please try again.
             </p>
             <button
               onClick={() => setRetryKey((k) => k + 1)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-sm font-semibold transition-colors shadow-2xs"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold transition-colors shadow-2xs"
             >
               <RefreshCw className="w-4 h-4" aria-hidden="true" />
               <span>Retry Article</span>
@@ -421,7 +421,7 @@ export default function NewsDetail({ onOpenCounseling }) {
             {/* 1. EDITORIAL ARTICLE HEADER */}
             <header className="mb-4 sm:mb-5">
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span data-testid="news-category-badge" className="px-2.5 py-0.5 rounded-md bg-[#115eaf] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wide shadow-2xs">
+                <span data-testid="news-category-badge" className="px-2.5 py-0.5 rounded-md bg-brand-600 text-white text-[11px] sm:text-xs font-bold uppercase tracking-wide shadow-2xs">
                   {article.category || "Exam Alerts"}
                 </span>
                 {article.isLive && (
@@ -432,34 +432,34 @@ export default function NewsDetail({ onOpenCounseling }) {
                 )}
               </div>
 
-              <h1 className="news-detail-h1 text-[24px] sm:text-[30px] lg:text-[34px] font-bold text-[#000f22] leading-[1.22] tracking-[-0.015em] mb-2.5 break-words">
+              <h1 className="news-detail-h1 text-[24px] sm:text-[30px] lg:text-[34px] font-bold text-ink-900 leading-[1.22] tracking-[-0.015em] mb-2.5 break-words">
                 {article.title}
               </h1>
 
               {/* Lead Summary Callout */}
               {(article.hero?.description || article.hero?.cleanExcerpt) && (
-                <div className="border-l-3 border-[#115eaf] pl-3.5 py-1.5 bg-[#f8fbff] rounded-r-xl mt-1.5 mb-3">
+                <div className="border-l-3 border-brand-600 pl-3.5 py-1.5 bg-canvas rounded-r-xl mt-1.5 mb-3">
                   <SafeHtml
                     html={article.hero?.description || article.hero?.cleanExcerpt}
-                    className="text-xs sm:text-sm text-[#374151] leading-relaxed font-normal"
+                    className="text-xs sm:text-sm text-ink-700 leading-relaxed font-normal"
                   />
                 </div>
               )}
 
               {/* Author, Date & Share Metadata Bar */}
-              <div data-testid="news-byline" className="pt-2.5 border-t border-[#f0f4f8] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-[#6b7280]">
+              <div data-testid="news-byline" className="pt-2.5 border-t border-canvas flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-ink-500">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-[#f0f5ff] text-[#115eaf] border border-[#d5e3ff] flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-brand-50 text-brand-600 border border-brand-200 flex items-center justify-center font-bold text-xs shrink-0">
                     {article.author?.name ? article.author.name.charAt(0).toUpperCase() : "O"}
                   </div>
                   <div>
-                    <div className="font-semibold text-[#000f22]">
+                    <div className="font-semibold text-ink-900">
                       Reported by {article.author?.name || "OnlineSiksha News Desk"}
                     </div>
-                    <div className="flex items-center gap-2 text-[11px] text-[#6b7280]">
+                    <div className="flex items-center gap-2 text-[11px] text-ink-500">
                       <span>{formatNewsDateTime(article.approvalDate)}</span>
                       <span>•</span>
-                      <Clock className="w-3 h-3 text-[#115eaf]" aria-hidden="true" />
+                      <Clock className="w-3 h-3 text-brand-600" aria-hidden="true" />
                       <span>{getTimeAgo(article.approvalDate)}</span>
                     </div>
                   </div>
@@ -467,7 +467,7 @@ export default function NewsDetail({ onOpenCounseling }) {
 
                 {/* Share Actions */}
                 <div className="flex items-center gap-2 self-start sm:self-center">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#9ca3af]">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-ink-400">
                     Share:
                   </span>
                   <button
@@ -496,13 +496,13 @@ export default function NewsDetail({ onOpenCounseling }) {
                   </button>
                   <button
                     onClick={() => handleShare("copy")}
-                    className="p-1.5 rounded-lg bg-[#f0f5ff] text-[#115eaf] hover:bg-[#d5e3ff] transition-colors border border-[#d5e3ff] relative"
+                    className="p-1.5 rounded-lg bg-brand-50 text-brand-600 hover:bg-brand-200 transition-colors border border-brand-200 relative"
                     title="Copy Link"
                     aria-label="Copy Link"
                   >
                     <Link2 className="w-3.5 h-3.5" />
                     {copied && (
-                      <span className="absolute -top-7 left-1/2 -translate-x-1/2 bg-[#000f22] text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm whitespace-nowrap">
+                      <span className="absolute -top-7 left-1/2 -translate-x-1/2 bg-ink-900 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm whitespace-nowrap">
                         Copied!
                       </span>
                     )}
@@ -516,7 +516,7 @@ export default function NewsDetail({ onOpenCounseling }) {
               {/* PRIMARY READING COLUMN */}
               <article className="min-w-0">
                 {/* Hero Media Asset */}
-                <div className="relative rounded-2xl overflow-hidden bg-[#f8fbff] border border-[#e7eeff] news-hero-img-wrap mb-4 sm:mb-5 shadow-2xs">
+                <div className="relative rounded-2xl overflow-hidden bg-canvas border border-brand-100 news-hero-img-wrap mb-4 sm:mb-5 shadow-2xs">
                   <img
                     src={article.hero?.image?.url || article.resolvedImage?.url || DEFAULT_NEWS_FALLBACK_IMAGE}
                     alt={article.hero?.image?.alt || article.title}
@@ -530,17 +530,17 @@ export default function NewsDetail({ onOpenCounseling }) {
 
                 {/* Mobile Collapsible TOC (Rendered on tablet/mobile) */}
                 {article.tableOfContents && article.tableOfContents.length > 0 && (
-                  <div data-testid="news-toc-mobile" className="lg:hidden mb-4 sm:mb-5 bg-white rounded-xl border border-[#e7eeff] p-3.5 shadow-2xs">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-[#000f22] mb-2 flex items-center justify-between">
+                  <div data-testid="news-toc-mobile" className="lg:hidden mb-4 sm:mb-5 bg-white rounded-xl border border-brand-100 p-3.5 shadow-2xs">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-ink-900 mb-2 flex items-center justify-between">
                       <span>In this article</span>
-                      <span className="text-[10px] text-[#6b7280] font-normal lowercase">{article.tableOfContents.length} sections</span>
+                      <span className="text-[10px] text-ink-500 font-normal lowercase">{article.tableOfContents.length} sections</span>
                     </h3>
                     <nav aria-label="Table of contents" className="space-y-1.5 text-xs">
                       {article.tableOfContents.map((toc, idx) => (
                         <a
                           key={toc.id || idx}
                           href={toc.anchor}
-                          className="block text-[#115eaf] hover:underline py-0.5"
+                          className="block text-brand-600 hover:underline py-0.5"
                         >
                           {toc.title}
                         </a>
@@ -555,7 +555,7 @@ export default function NewsDetail({ onOpenCounseling }) {
                     article.sections.map((sec, secIdx) => (
                       <section key={sec.id || secIdx} id={`section-${secIdx}`} className="pt-0">
                         {sec.heading && (
-                          <h2 className="text-lg sm:text-xl font-bold text-[#000f22] mb-3 pb-2 border-b border-[#f0f4f8]">
+                          <h2 className="text-lg sm:text-xl font-bold text-ink-900 mb-3 pb-2 border-b border-canvas">
                             {sec.heading}
                           </h2>
                         )}
@@ -581,14 +581,14 @@ export default function NewsDetail({ onOpenCounseling }) {
                 </div>
 
                 {/* Mid-Article Counselling CTA */}
-                <div data-testid="news-counselling-cta" className="my-8 rounded-xl border border-[#b1c8eb] bg-linear-to-r from-[#f0f5ff] via-white to-[#f0f5ff] p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xs">
+                <div data-testid="news-counselling-cta" className="my-8 rounded-xl border border-brand-300 bg-linear-to-r from-brand-50 via-white to-brand-50 p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xs">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#115eaf] text-white flex items-center justify-center shrink-0 shadow-2xs">
+                    <div className="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center shrink-0 shadow-2xs">
                       <Headphones className="w-5 h-5" aria-hidden="true" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-[#000f22]">Have Questions About Admissions?</h4>
-                      <p className="text-xs text-[#4b5563]">Connect with verified academic counsellors for 100% free guidance.</p>
+                      <h4 className="text-sm font-bold text-ink-900">Have Questions About Admissions?</h4>
+                      <p className="text-xs text-ink-700">Connect with verified academic counsellors for 100% free guidance.</p>
                     </div>
                   </div>
                   <button
@@ -600,7 +600,7 @@ export default function NewsDetail({ onOpenCounseling }) {
                         window.location.href = "tel:1800123456";
                       }
                     }}
-                    className="px-4 py-2 rounded-xl bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer shrink-0 shadow-2xs"
+                    className="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer shrink-0 shadow-2xs"
                   >
                     <span>Talk to Expert</span>
                   </button>
@@ -608,10 +608,9 @@ export default function NewsDetail({ onOpenCounseling }) {
 
                 {/* FAQs Section */}
                 {article.faqs && article.faqs.length > 0 && (
-                  <section data-testid="news-faqs" className="my-8 pt-4 border-t border-[#e7eeff]">
+                  <section data-testid="news-faqs" className="my-8 pt-4 border-t border-brand-100">
                     <div className="flex items-center gap-2 mb-4">
-                      <span className="w-2 h-2 rounded-full bg-[#115eaf]" aria-hidden="true" />
-                      <h3 className="text-lg font-bold text-[#000f22]">Frequently Asked Questions</h3>
+                      <h3 className="text-lg font-bold text-ink-900">Frequently Asked Questions</h3>
                     </div>
                     <FaqAccordion items={article.faqs} />
                   </section>
@@ -619,13 +618,13 @@ export default function NewsDetail({ onOpenCounseling }) {
 
                 {/* Tags Cluster */}
                 {article.tags && article.tags.length > 0 && (
-                  <div className="my-6 pt-4 border-t border-[#f0f4f8]">
-                    <span className="text-xs font-semibold text-[#6b7280] block mb-2">Related Topics:</span>
+                  <div className="my-6 pt-4 border-t border-canvas">
+                    <span className="text-xs font-semibold text-ink-500 block mb-2">Related Topics:</span>
                     <div className="flex flex-wrap gap-1.5">
                       {article.tags.map((tag, i) => (
                         <span
                           key={i}
-                          className="px-2.5 py-1 rounded-lg bg-[#f8fbff] text-[#4b5563] text-xs border border-[#e7eeff] font-medium"
+                          className="px-2.5 py-1 rounded-lg bg-canvas text-ink-700 text-xs border border-brand-100 font-medium"
                         >
                           #{tag}
                         </span>
@@ -639,17 +638,17 @@ export default function NewsDetail({ onOpenCounseling }) {
               <aside className="space-y-3.5 lg:sticky lg:top-24 hidden lg:block" aria-label="Article navigation and advisory">
                 {/* Table of Contents */}
                 {article.tableOfContents && article.tableOfContents.length > 0 && (
-                  <div data-testid="news-toc-desktop" className="bg-white rounded-2xl border border-[#e7eeff] p-4 shadow-2xs">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-[#000f22] mb-2.5 pb-2 border-b border-[#f0f4f8] flex items-center justify-between">
+                  <div data-testid="news-toc-desktop" className="bg-white rounded-2xl border border-brand-100 p-4 shadow-2xs">
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-ink-900 mb-2.5 pb-2 border-b border-canvas flex items-center justify-between">
                       <span>Table of Contents</span>
-                      <span className="text-[10px] text-[#6b7280] font-normal lowercase">{article.tableOfContents.length} sections</span>
+                      <span className="text-[10px] text-ink-500 font-normal lowercase">{article.tableOfContents.length} sections</span>
                     </h3>
                     <nav aria-label="Table of contents" className="space-y-1 text-xs">
                       {article.tableOfContents.map((toc, idx) => (
                         <a
                           key={toc.id || idx}
                           href={toc.anchor}
-                          className="block text-[#4b5563] hover:text-[#115eaf] hover:translate-x-0.5 transition-all py-1 border-l-2 border-transparent hover:border-[#115eaf] pl-2 leading-snug"
+                          className="block text-ink-700 hover:text-brand-600 hover:translate-x-0.5 transition-all py-1 border-l-2 border-transparent hover:border-brand-600 pl-2 leading-snug"
                         >
                           {toc.title}
                         </a>
@@ -659,19 +658,19 @@ export default function NewsDetail({ onOpenCounseling }) {
                 )}
 
                 {/* Counselling Sidebar Widget */}
-                <div data-testid="news-counselling-sidebar" className="bg-linear-to-br from-[#f0f5ff] via-[#f8fbff] to-white rounded-2xl p-4 sm:p-4.5 text-[#000f22] shadow-2xs border border-[#b1c8eb]">
+                <div data-testid="news-counselling-sidebar" className="bg-linear-to-br from-brand-50 via-canvas to-white rounded-2xl p-4 sm:p-4.5 text-ink-900 shadow-2xs border border-brand-300">
                   <div className="flex items-center gap-2 mb-2.5">
-                    <div className="w-7.5 h-7.5 rounded-lg bg-[#e7eeff] text-[#115eaf] flex items-center justify-center shrink-0">
+                    <div className="w-7.5 h-7.5 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center shrink-0">
                       <Headphones className="w-4 h-4" aria-hidden="true" />
                     </div>
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#115eaf] block">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-brand-600 block">
                         Free Counselling Desk
                       </span>
-                      <h4 className="text-xs sm:text-[13px] font-bold text-[#000f22]">Need Education Advice?</h4>
+                      <h4 className="text-xs sm:text-[13px] font-bold text-ink-900">Need Education Advice?</h4>
                     </div>
                   </div>
-                  <p className="text-[11.5px] text-[#4b5563] leading-snug mb-3">
+                  <p className="text-[11.5px] text-ink-700 leading-snug mb-3">
                     Speak with verified educational consultants regarding eligibility, fees, and application deadlines.
                   </p>
                   <button
@@ -683,7 +682,7 @@ export default function NewsDetail({ onOpenCounseling }) {
                         window.location.href = "tel:1800123456";
                       }
                     }}
-                    className="w-full h-8.5 rounded-lg bg-[#115eaf] hover:bg-[#084a8c] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
+                    className="w-full h-8.5 rounded-lg bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-2xs transition-colors cursor-pointer"
                   >
                     <Sparkles className="w-3.5 h-3.5 text-white" aria-hidden="true" />
                     <span>Talk to Admission Expert</span>
@@ -691,31 +690,31 @@ export default function NewsDetail({ onOpenCounseling }) {
                 </div>
 
                 {/* Quick News & Exams Shortcuts */}
-                <div className="bg-white rounded-2xl border border-[#e7eeff] p-4 shadow-2xs">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#000f22] mb-2 pb-1.5 border-b border-[#f0f4f8]">
+                <div className="bg-white rounded-2xl border border-brand-100 p-4 shadow-2xs">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-ink-900 mb-2 pb-1.5 border-b border-canvas">
                     Education Quick Links
                   </h4>
                   <div className="space-y-1.5 text-xs">
                     <Link
                       to="/news"
-                      className="flex items-center justify-between p-2 rounded-lg bg-[#f8fbff] hover:bg-[#f0f5ff] text-[#000f22] hover:text-[#115eaf] transition-colors"
+                      className="flex items-center justify-between p-2 rounded-lg bg-canvas hover:bg-brand-50 text-ink-900 hover:text-brand-600 transition-colors"
                     >
                       <span className="font-semibold">All Education News</span>
-                      <ArrowRight className="w-3 h-3 text-[#115eaf]" />
+                      <ArrowRight className="w-3 h-3 text-brand-600" />
                     </Link>
                     <Link
                       to="/exams"
-                      className="flex items-center justify-between p-2 rounded-lg bg-[#f8fbff] hover:bg-[#f0f5ff] text-[#000f22] hover:text-[#115eaf] transition-colors"
+                      className="flex items-center justify-between p-2 rounded-lg bg-canvas hover:bg-brand-50 text-ink-900 hover:text-brand-600 transition-colors"
                     >
                       <span className="font-semibold">Entrance Exams 2027</span>
-                      <ArrowRight className="w-3 h-3 text-[#115eaf]" />
+                      <ArrowRight className="w-3 h-3 text-brand-600" />
                     </Link>
                     <Link
                       to="/courses"
-                      className="flex items-center justify-between p-2 rounded-lg bg-[#f8fbff] hover:bg-[#f0f5ff] text-[#000f22] hover:text-[#115eaf] transition-colors"
+                      className="flex items-center justify-between p-2 rounded-lg bg-canvas hover:bg-brand-50 text-ink-900 hover:text-brand-600 transition-colors"
                     >
                       <span className="font-semibold">Online Degree Programs</span>
-                      <ArrowRight className="w-3 h-3 text-[#115eaf]" />
+                      <ArrowRight className="w-3 h-3 text-brand-600" />
                     </Link>
                   </div>
                 </div>
@@ -724,15 +723,14 @@ export default function NewsDetail({ onOpenCounseling }) {
 
             {/* 3. RELATED EDUCATION COVERAGE */}
             {effectiveRelated.length > 0 && (
-              <section className="mt-12 pt-8 border-t border-[#e7eeff]" aria-label="Related Stories">
+              <section className="mt-12 pt-8 border-t border-brand-100" aria-label="Related Stories">
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#115eaf]" aria-hidden="true" />
-                    <h3 className="text-lg sm:text-xl font-bold text-[#000f22]">Related Education Coverage</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-ink-900">Related Education Coverage</h3>
                   </div>
                   <Link
                     to="/news"
-                    className="text-xs font-semibold text-[#115eaf] hover:underline inline-flex items-center gap-1"
+                    className="text-xs font-semibold text-brand-600 hover:underline inline-flex items-center gap-1"
                   >
                     <span>View All News</span>
                     <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
@@ -743,10 +741,10 @@ export default function NewsDetail({ onOpenCounseling }) {
                   {effectiveRelated.slice(0, 4).map((rel, i) => (
                     <article
                       key={rel.id || i}
-                      className="group bg-white rounded-xl border border-[#e7eeff] hover:border-[#b1c8eb] hover:shadow-sm transition-all duration-200 overflow-hidden flex flex-col justify-between"
+                      className="group bg-white rounded-xl border border-brand-100 hover:border-brand-300 hover:shadow-sm transition-all duration-200 overflow-hidden flex flex-col justify-between"
                     >
                       <div>
-                        <div className="h-40 w-full relative bg-[#f8fbff] overflow-hidden">
+                        <div className="h-40 w-full relative bg-canvas overflow-hidden">
                           <img
                             src={rel.image?.url || rel.thumbnail?.url || DEFAULT_NEWS_FALLBACK_IMAGE}
                             alt={rel.image?.alt || rel.title}
@@ -767,12 +765,12 @@ export default function NewsDetail({ onOpenCounseling }) {
                         </div>
 
                         <div className="p-4">
-                          <div className="flex items-center gap-2 text-[11px] text-[#6b7280] mb-1.5 font-medium">
-                            <span className="text-[#115eaf] font-semibold">{rel.category || "Exam Alerts"}</span>
+                          <div className="flex items-center gap-2 text-[11px] text-ink-500 mb-1.5 font-medium">
+                            <span className="text-brand-600 font-semibold">{rel.category || "Exam Alerts"}</span>
                             <span>•</span>
                             <span>{getTimeAgo(rel.approvalDate)}</span>
                           </div>
-                          <h4 className="text-sm font-bold text-[#000f22] group-hover:text-[#115eaf] transition-colors leading-snug news-clamp-2">
+                          <h4 className="text-sm font-bold text-ink-900 group-hover:text-brand-600 transition-colors leading-snug news-clamp-2">
                             <Link to={`/news/${encodeURIComponent(rel.slug)}`}>
                               {rel.title}
                             </Link>
@@ -783,7 +781,7 @@ export default function NewsDetail({ onOpenCounseling }) {
                       <div className="p-4 pt-0">
                         <Link
                           to={`/news/${encodeURIComponent(rel.slug)}`}
-                          className="inline-flex items-center gap-1 text-xs font-bold text-[#115eaf] hover:text-[#084a8c] transition-colors"
+                          className="inline-flex items-center gap-1 text-xs font-bold text-brand-600 hover:text-brand-700 transition-colors"
                         >
                           <span>Read Story</span>
                           <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
@@ -799,7 +797,7 @@ export default function NewsDetail({ onOpenCounseling }) {
             <div className="mt-5 sm:mt-6">
               <Link
                 to="/news"
-                className="inline-flex items-center gap-2 px-5 h-10 rounded-xl border border-[#115eaf] hover:bg-[#f0f5ff] text-[#115eaf] text-xs sm:text-sm font-semibold transition-colors"
+                className="inline-flex items-center gap-2 px-5 h-10 rounded-xl border border-brand-600 hover:bg-brand-50 text-brand-600 text-xs sm:text-sm font-semibold transition-colors"
               >
                 <ArrowLeft className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>Back to Education News Desk</span>

@@ -189,10 +189,10 @@ export function getLPUCoursesAdapter() {
     relatedUniversityIds: ["amity-online", "cu-online", "manipal-online", "jain-online", "upes-online"],
     blogs: {
       posts: [
-        { title: "Top Online MBA Universities with NAAC A+ Accreditation in India 2026", excerpt: "Explore the best online MBA universities in India with NAAC A+ accreditation, key highlights, fees and career opportunities.", category: "Online MBA", date: "22 Sep 2026", image: "/images/mbaonline.png" },
-        { title: "Popular Online MBA Universities in India 2026", excerpt: "Check the list of online MBA universities in India 2026, along with fees, programmes, eligibility and career opportunities.", category: "Online MBA", date: "13 Sep 2026", image: "/images/mba02.png" },
-        { title: "Best Colleges Accepting CUET 2026", excerpt: "Find the top colleges accepting CUET 2026, including admission process, eligibility, important dates and more.", category: "CUET 2026", date: "18 May 2026", image: "/images/cuet2026.png" },
-        { title: "Online Degree Courses: Complete Guide for Students", excerpt: "Explore online degree courses, eligibility, duration, career opportunities and important things to consider.", category: "Online Education", date: "10 May 2026", image: "/images/onlinedegree.png" },
+        { title: "Top Online MBA Universities with NAAC A+ Accreditation in India 2026", excerpt: "Explore the best online MBA universities in India with NAAC A+ accreditation, key highlights, fees and career opportunities.", category: "Online MBA", date: "22 Sep 2026", image: "/images/mbaonline.webp" },
+        { title: "Popular Online MBA Universities in India 2026", excerpt: "Check the list of online MBA universities in India 2026, along with fees, programmes, eligibility and career opportunities.", category: "Online MBA", date: "13 Sep 2026", image: "/images/mba02.webp" },
+        { title: "Best Colleges Accepting CUET 2026", excerpt: "Find the top colleges accepting CUET 2026, including admission process, eligibility, important dates and more.", category: "CUET 2026", date: "18 May 2026", image: "/images/cuet2026.webp" },
+        { title: "Online Degree Courses: Complete Guide for Students", excerpt: "Explore online degree courses, eligibility, duration, career opportunities and important things to consider.", category: "Online Education", date: "10 May 2026", image: "/images/onlinedegree.webp" },
         { title: "Online MBA Fees in India: University-Wise Guide", excerpt: "Compare online MBA fees, payment options, programmes and other important admission information.", category: "MBA Guide", date: "05 May 2026", image: "https://placehold.co/900x500/e7eeff/0b2540?text=MBA+Fees+Guide" }
       ]
     }
